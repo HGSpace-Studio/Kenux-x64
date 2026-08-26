@@ -1,0 +1,350 @@
+-- Start building task run components -- (724384110)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<1> Generating bin/components/ld.exe
+<0> Generating bin/components/clang.exe
+<3> Generating bin/components/gcc.exe
+<2> Generating bin/components/make.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o "D:\\KenuxK\\build\\components\\clang_clang.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/ld -c src/ld/ld.c -o "D:\\KenuxK\\build\\components\\ld_ld.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o "D:\\KenuxK\\build\\components\\gcc_gcc.o""
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/make -c src/make/make.c -o "D:\\KenuxK\\build\\components\\make_make.o""
+In file included from src/clang/clang.c:11:
+src/clang/clang.h:314:9: error: duplicate member 'rdynamic'
+  314 |     int rdynamic;
+      |         ^~~~~~~~
+In file included from src/gcc/gcc.c:6:
+src/gcc/gcc.h:337:9: error: duplicate member 'warning_count'
+  337 |     int warning_count;
+      |         ^~~~~~~~~~~~~
+src/clang/clang.c: In function 'clang_parse_arguments':
+src/clang/clang.c:489:59: error: 'ClangState' has no member named 'fno_exceptions_unused'
+  489 |         else if (strcmp(a, "-fno-exceptions") == 0)  state->fno_exceptions_unused = 0;
+      |                                                           ^~
+src/clang/clang.c:490:60: error: 'ClangState' has no member named 'fno_rtti_unused'
+  490 |         else if (strcmp(a, "-fno-rtti") == 0)         state->fno_rtti_unused = 0;
+      |                                                            ^~
+src/gcc/gcc.c: In function 'gcc_run_command':
+src/gcc/gcc.c:515:5: error: implicit declaration of function 'waitpid' [-Wimplicit-function-declaration]
+  515 |     waitpid(pid, &status, 0);
+      |     ^~~~~~~
+In file included from src/make/make.c:6:
+src/make/make.h:49:9: warning: 'X_OK' redefined
+   49 | #define X_OK 0
+      |         ^~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/fcntl.h:8,
+                 from src/make/make.h:12:
+D:/mingw64/x86_64-w64-mingw32/include/io.h:203:9: note: this is the location of the previous definition
+  203 | #define X_OK    1       /* Check for execute permission. */
+      |         ^~~~
+src/make/make.c: In function 'load_makefile':
+src/make/make.c:93:27: warning: comparison of integer expressions of different signedness: 'int' and 'long long unsigned int' [-Wsign-compare]
+   93 |         for (int i = 0; i < sizeof(filenames) / sizeof(char *); i++) {
+      |                           ^
+src/clang/clang.c: At top level:
+src/clang/clang.c:22:20: warning: 'clang_basename' defined but not used [-Wunused-function]
+   22 | static const char *clang_basename(const char *path) {
+      |                    ^~~~~~~~~~~~~~
+src/make/make.c: In function 'print_help':
+src/make/make.c:422:25: error: 'state' undeclared (first use in this function); did you mean 'stat'?
+  422 |     for (int i = 0; i < state->num_targets; i++) {
+      |                         ^~~~~
+      |                         stat
+src/make/make.c:422:25: note: each undeclared identifier is reported only once for each function it appears in
+src/ld/ld.c: In function 'linker_cleanup':
+src/ld/ld.c:61:13: warning: the comparison will always evaluate as 'true' for the address of 'sections' will never be NULL [-Waddress]
+   61 |         if (state->objects[i].sections) {
+      |             ^~~~~
+In file included from src/ld/ld.c:6:
+src/ld/ld.h:71:13: note: 'sections' declared here
+   71 |     Section sections[MAX_SECTIONS];
+      |             ^~~~~~~~
+src/ld/ld.c: In function 'load_object_file':
+src/ld/ld.c:172:36: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'size_t' {aka 'long long unsigned int'} [-Wformat=]
+  172 |         printf("  Entry point: 0x%lx\n", obj->entry_point);
+      |                                  ~~^     ~~~~~~~~~~~~~~~~
+      |                                    |        |
+      |                                    |        size_t {aka long long unsigned int}
+      |                                    long unsigned int
+      |                                  %llx
+src/ld/ld.c: In function 'parse_elf_header':
+<3> Generating bin/components/git.exe
+src/ld/ld.c:182:26: error: 'EI_NIDENT' undeclared (first use in this function)
+  182 |     unsigned char header[EI_NIDENT];
+      |                          ^~~~~~~~~
+src/ld/ld.c:182:26: note: each undeclared identifier is reported only once for each function it appears in
+src/ld/ld.c:13:16: error: passing argument 2 of 'memcmp' makes pointer from integer without a cast [-Wint-conversion]
+   13 | #define ELFMAG 0x464c457f
+      |                ^~~~~~~~~~
+      |                |
+      |                int
+src/ld/ld.c:192:24: note: in expansion of macro 'ELFMAG'
+  192 |     if (memcmp(header, ELFMAG, 4) != 0) {
+      |                        ^~~~~~
+In file included from src/ld/ld.h:11:
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/git -c src/git/git.c -o "D:\\KenuxK\\build\\components\\git_git.o""
+D:/mingw64/x86_64-w64-mingw32/include/string.h:49:52: note: expected 'const void *' but argument is of type 'int'
+   49 |   int __cdecl memcmp(const void *_Buf1,const void *_Buf2,size_t _Size);
+      |                                        ~~~~~~~~~~~~^~~~~
+src/ld/ld.c:198:20: error: implicit declaration of function 'offsetof' [-Wimplicit-function-declaration]
+  198 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_entry), SEEK_SET);
+      |                    ^~~~~~~~
+src/ld/ld.c:7:1: note: 'offsetof' is defined in header '<stddef.h>'; this is probably fixable by adding '#include <stddef.h>'
+    6 | #include "ld.h"
+  +++ |+#include <stddef.h>
+    7 | 
+src/ld/ld.c:198:29: error: 'Elf32_Ehdr' undeclared (first use in this function)
+  198 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_entry), SEEK_SET);
+      |                             ^~~~~~~~~~
+src/ld/ld.c:198:41: error: 'e_entry' undeclared (first use in this function)
+  198 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_entry), SEEK_SET);
+      |                                         ^~~~~~~
+src/ld/ld.c:199:45: error: 'Elf32_Addr' undeclared (first use in this function)
+  199 |     read(obj->fd, &obj->entry_point, sizeof(Elf32_Addr));
+      |                                             ^~~~~~~~~~
+src/ld/ld.c:202:36: error: 'Elf32_Off' undeclared (first use in this function)
+  202 |     read(obj->fd, &e_shoff, sizeof(Elf32_Off));
+      |                                    ^~~~~~~~~
+src/ld/ld.c:205:40: error: 'Elf32_Half' undeclared (first use in this function)
+  205 |     read(obj->fd, &e_shentsize, sizeof(Elf32_Half));
+      |                                        ^~~~~~~~~~
+src/ld/ld.c:182:19: warning: unused variable 'header' [-Wunused-variable]
+  182 |     unsigned char header[EI_NIDENT];
+      |                   ^~~~~~
+src/ld/ld.c:181:35: warning: unused parameter 'state' [-Wunused-parameter]
+  181 | int parse_elf_header(LinkerState *state, ObjectFile *obj) {
+      |                      ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_section_headers':
+src/ld/ld.c:217:5: error: unknown type name 'Elf32_Shdr'
+  217 |     Elf32_Shdr shdr;
+      |     ^~~~~~~~~~
+src/ld/ld.c:222:36: error: 'Elf32_Ehdr' undeclared (first use in this function)
+  222 |     read(obj->fd, shstrtab, sizeof(Elf32_Ehdr));
+      |                                    ^~~~~~~~~~
+src/ld/ld.c:224:41: error: 'e_shstrndx' undeclared (first use in this function)
+  224 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_shstrndx), SEEK_SET);
+      |                                         ^~~~~~~~~~
+src/ld/ld.c:225:46: error: 'Elf32_Half' undeclared (first use in this function)
+  225 |     read(obj->fd, &obj->num_sections, sizeof(Elf32_Half));
+      |                                              ^~~~~~~~~~
+src/ld/ld.c:232:41: error: 'Elf32_Shdr' undeclared (first use in this function)
+  232 |         lseek(obj->fd, (i + 1) * sizeof(Elf32_Shdr), SEEK_SET);
+      |                                         ^~~~~~~~~~
+src/ld/ld.c:236:28: error: request for member 'sh_name' in something not a structure or union
+  236 |         lseek(obj->fd, shdr.sh_name, SEEK_SET);
+      |                            ^
+src/ld/ld.c:241:17: error: request for member 'sh_flags' in something not a structure or union
+  241 |         if (shdr.sh_flags & SHF_EXECINSTR) {
+      |                 ^
+src/ld/ld.c:243:24: error: request for member 'sh_flags' in something not a structure or union
+  243 |         } else if (shdr.sh_flags & SHF_WRITE) {
+      |                        ^
+src/ld/ld.c:245:24: error: request for member 'sh_type' in something not a structure or union
+  245 |         } else if (shdr.sh_type == SHT_NOBITS) {
+      |                        ^
+src/ld/ld.c:245:36: error: 'SHT_NOBITS' undeclared (first use in this function)
+  245 |         } else if (shdr.sh_type == SHT_NOBITS) {
+      |                                    ^~~~~~~~~~
+src/ld/ld.c:247:24: error: request for member 'sh_flags' in something not a structure or union
+  247 |         } else if (shdr.sh_flags & SHF_ALLOC) {
+      |                        ^
+src/ld/ld.c:251:29: error: request for member 'sh_size' in something not a structure or union
+  251 |         section->size = shdr.sh_size;
+      |                             ^
+src/ld/ld.c:252:40: error: request for member 'sh_addr' in something not a structure or union
+  252 |         section->virtual_address = shdr.sh_addr;
+      |                                        ^
+src/ld/ld.c:253:36: error: request for member 'sh_offset' in something not a structure or union
+  253 |         section->file_offset = shdr.sh_offset;
+      |                                    ^
+src/ld/ld.c:254:34: error: request for member 'sh_addralign' in something not a structure or union
+  254 |         section->alignment = shdr.sh_addralign;
+      |                                  ^
+src/ld/ld.c:216:40: warning: unused parameter 'state' [-Wunused-parameter]
+  216 | int parse_section_headers(LinkerState *state, ObjectFile *obj) {
+      |                           ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_symbol_table':
+src/ld/ld.c:274:5: error: unknown type name 'Elf32_Shdr'
+  274 |     Elf32_Shdr shdr;
+      |     ^~~~~~~~~~
+src/ld/ld.c:275:5: error: unknown type name 'Elf32_Sym'
+  275 |     Elf32_Sym sym;
+      |     ^~~~~~~~~
+src/ld/ld.c:280:41: error: 'Elf32_Shdr' undeclared (first use in this function)
+  280 |         lseek(obj->fd, (i + 1) * sizeof(Elf32_Shdr), SEEK_SET);
+      |                                         ^~~~~~~~~~
+src/ld/ld.c:283:17: error: request for member 'sh_type' in something not a structure or union
+  283 |         if (shdr.sh_type == SHT_SYMTAB) {
+      |                 ^
+src/ld/ld.c:283:29: error: 'SHT_SYMTAB' undeclared (first use in this function)
+  283 |         if (shdr.sh_type == SHT_SYMTAB) {
+      |                             ^~~~~~~~~~
+src/ld/ld.c:285:36: error: request for member 'sh_size' in something not a structure or union
+  285 |             obj->num_symbols = shdr.sh_size / sizeof(Elf32_Sym);
+      |                                    ^
+src/ld/ld.c:285:54: error: 'Elf32_Sym' undeclared (first use in this function)
+  285 |             obj->num_symbols = shdr.sh_size / sizeof(Elf32_Sym);
+      |                                                      ^~~~~~~~~
+src/ld/ld.c:288:32: error: request for member 'sh_link' in something not a structure or union
+  288 |             lseek(obj->fd, shdr.sh_link * sizeof(Elf32_Shdr), SEEK_SET);
+      |                                ^
+src/ld/ld.c:291:32: error: request for member 'sh_offset' in something not a structure or union
+  291 |             lseek(obj->fd, shdr.sh_offset, SEEK_SET);
+      |                                ^
+src/ld/ld.c:292:39: error: request for member 'sh_size' in something not a structure or union
+  292 |             read(obj->fd, strtab, shdr.sh_size);
+      |                                       ^
+src/ld/ld.c:298:36: error: request for member 'sh_offset' in something not a structure or union
+  298 |                 lseek(obj->fd, shdr.sh_offset + j * sizeof(Elf32_Sym), SEEK_SET);
+      |                                    ^
+src/ld/ld.c:302:50: error: request for member 'st_name' in something not a structure or union
+  302 |                 strcpy(symbol->name, strtab + sym.st_name);
+      |                                                  ^
+src/ld/ld.c:306:21: error: implicit declaration of function 'ELF32_ST_TYPE' [-Wimplicit-function-declaration]
+  306 |                 if (ELF32_ST_TYPE(sym.st_info) == STT_FUNC) {
+      |                     ^~~~~~~~~~~~~
+src/ld/ld.c:306:38: error: request for member 'st_info' in something not a structure or union
+  306 |                 if (ELF32_ST_TYPE(sym.st_info) == STT_FUNC) {
+      |                                      ^
+src/ld/ld.c:308:45: error: request for member 'st_info' in something not a structure or union
+  308 |                 } else if (ELF32_ST_TYPE(sym.st_info) == STT_OBJECT) {
+      |                                             ^
+src/ld/ld.c:310:45: error: request for member 'st_info' in something not a structure or union
+  310 |                 } else if (ELF32_ST_TYPE(sym.st_info) == STT_SECTION) {
+      |                                             ^
+src/ld/ld.c:314:36: error: request for member 'st_value' in something not a structure or union
+  314 |                 symbol->value = sym.st_value;
+      |                                    ^
+src/ld/ld.c:315:35: error: request for member 'st_size' in something not a structure or union
+  315 |                 symbol->size = sym.st_size;
+      |                                   ^
+src/ld/ld.c:316:44: error: request for member 'st_shndx' in something not a structure or union
+  316 |                 symbol->section_index = sym.st_shndx;
+      |                                            ^
+src/ld/ld.c:317:35: error: implicit declaration of function 'ELF32_ST_BIND' [-Wimplicit-function-declaration]
+  317 |                 symbol->binding = ELF32_ST_BIND(sym.st_info);
+      |                                   ^~~~~~~~~~~~~
+src/ld/ld.c:317:52: error: request for member 'st_info' in something not a structure or union
+  317 |                 symbol->binding = ELF32_ST_BIND(sym.st_info);
+      |                                                    ^
+src/ld/ld.c:318:41: error: request for member 'st_other' in something not a structure or union
+  318 |                 symbol->visibility = sym.st_other;
+      |                                         ^
+src/ld/ld.c:273:37: warning: unused parameter 'state' [-Wunused-parameter]
+  273 | int parse_symbol_table(LinkerState *state, ObjectFile *obj) {
+      |                        ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'write_output_sections':
+src/ld/ld.c:457:71: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  457 |             if (write(state->output_fd, section->data, section->size) != section->size) {
+      |                                                                       ^~
+src/git/git.c:10:5: error: unknown type name 'uint32_t'
+   10 |     uint32_t state[5];
+      |     ^~~~~~~~
+src/git/git.c:7:1: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+    6 | #include "git.h"
+  +++ |+#include <stdint.h>
+    7 | 
+src/git/git.c:11:5: error: unknown type name 'uint32_t'
+   11 |     uint32_t count[2];
+      |     ^~~~~~~~
+src/git/git.c:11:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c:15:27: error: unknown type name 'uint32_t'
+   15 | static void SHA1Transform(uint32_t state[5], const unsigned char buffer[64]);
+      |                           ^~~~~~~~
+src/git/git.c:15:27: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c:26:70: error: unknown type name 'uint32_t'
+   26 | static void SHA1Update(SHA1_CTX *context, const unsigned char *data, uint32_t len) {
+      |                                                                      ^~~~~~~~
+src/git/git.c:26:70: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c: In function 'SHA1Final':
+src/git/git.c:47:5: error: unknown type name 'uint32_t'
+   47 |     uint32_t i;
+      |     ^~~~~~~~
+src/git/git.c:47:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c:51:5: error: implicit declaration of function 'SHA1Update' [-Wimplicit-function-declaration]
+   51 |     SHA1Update(context, &c, 1);
+      |     ^~~~~~~~~~
+src/git/git.c: At top level:
+src/git/git.c:63:27: error: unknown type name 'uint32_t'
+   63 | static void SHA1Transform(uint32_t state[5], const unsigned char buffer[64]) {
+      |                           ^~~~~~~~
+src/git/git.c:63:27: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c: In function 'compute_sha1':
+src/git/git.c:85:29: error: 'uint32_t' undeclared (first use in this function)
+   85 |     SHA1Update(&ctx, data, (uint32_t)len);
+      |                             ^~~~~~~~
+src/git/git.c:85:29: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c:85:29: note: each undeclared identifier is reported only once for each function it appears in
+src/git/git.c:85:38: error: expected ')' before 'len'
+   85 |     SHA1Update(&ctx, data, (uint32_t)len);
+      |               ~                      ^~~
+      |                                      )
+src/git/git.c:82:52: warning: unused parameter 'len' [-Wunused-parameter]
+   82 | int compute_sha1(const unsigned char *data, size_t len, unsigned char *out_hash) {
+      |                                             ~~~~~~~^~~
+src/git/git.c: In function 'dir_mkdir_p':
+src/git/git.c:169:17: error: too many arguments to function 'mkdir'; expected 1, have 2
+  169 |             if (mkdir(tmp, mode) != 0 && errno != EEXIST) return -1;
+      |                 ^~~~~      ~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/unistd.h:10,
+                 from src/git/git.h:12,
+                 from src/git/git.c:6:
+D:/mingw64/x86_64-w64-mingw32/include/io.h:270:15: note: declared here
+  270 |   int __cdecl mkdir (const char *) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/git/git.c:173:9: error: too many arguments to function 'mkdir'; expected 1, have 2
+  173 |     if (mkdir(tmp, mode) != 0 && errno != EEXIST) return -1;
+      |         ^~~~~      ~~~~
+D:/mingw64/x86_64-w64-mingw32/include/io.h:270:15: note: declared here
+  270 |   int __cdecl mkdir (const char *) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/git/git.c: In function 'git_find_repo':
+src/git/git.c:209:10: error: implicit declaration of function 'realpath' [-Wimplicit-function-declaration]
+  209 |     if (!realpath(start_path, path)) return -1;
+      |          ^~~~~~~~
+src/git/git.c: In function 'git_init_repo':
+src/git/git.c:256:30: warning: comparison between pointer and integer
+  256 |     if (realpath(path, root) == NULL) {
+      |                              ^~
+src/git/git.c:258:13: error: too many arguments to function 'mkdir'; expected 1, have 2
+  258 |         if (mkdir(path, 0755) != 0 && errno != EEXIST) return -1;
+      |             ^~~~~       ~~~~
+D:/mingw64/x86_64-w64-mingw32/include/io.h:270:15: note: declared here
+  270 |   int __cdecl mkdir (const char *) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/git/git.c:259:34: warning: comparison between pointer and integer
+  259 |         if (realpath(path, root) == NULL) return -1;
+      |                                  ^~
+src/git/git.c:275:9: error: too many arguments to function 'mkdir'; expected 1, have 2
+  275 |         mkdir(sub, 0755);
+      |         ^~~~~      ~~~~
+D:/mingw64/x86_64-w64-mingw32/include/io.h:270:15: note: declared here
+  270 |   int __cdecl mkdir (const char *) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/git/git.c: In function 'git_hash_object':
+src/git/git.c:311:54: error: 'uint32_t' undeclared (first use in this function)
+  311 |     SHA1Update(&ctx, (const unsigned char *)header, (uint32_t)hlen);
+      |                                                      ^~~~~~~~
+src/git/git.c:311:54: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/git/git.c:311:63: error: expected ')' before 'hlen'
+  311 |     SHA1Update(&ctx, (const unsigned char *)header, (uint32_t)hlen);
+      |               ~                                               ^~~~
+      |                                                               )
+src/git/git.c:313:38: error: expected ')' before 'len'
+  313 |     SHA1Update(&ctx, data, (uint32_t)len);
+      |               ~                      ^~~
+      |                                      )
+src/git/git.c: In function 'build_tree_from_index':
+src/git/git.c:774:80: error: implicit declaration of function 'S_ISLNK'; did you mean 'S_ISBLK'? [-Wimplicit-function-declaration]
+  774 |         if (!S_ISDIR(entries[count].mode) && !S_ISREG(entries[count].mode) && !S_ISLNK(entries[count].mode)) {
+      |                                                                                ^~~~~~~
+      |                                                                                S_ISBLK
+src/git/git.c: In function 'cmd_rm':
+src/git/git.c:1144:21: warning: variable 'force' set but not used [-Wunused-but-set-variable=]
+ 1144 |     int cached = 0, force = 0;
+      |                     ^~~~~
+src/git/git.c: In function 'cmd_hash_object':
+src/git/git.c:1271:20: warning: variable 'show' set but not used [-Wunused-but-set-variable=]
+ 1271 |     int write = 0, show = 0;
+      |                    ^~~~
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/git -c src/git/git.c -o D:\KenuxK\build\components\git_git.o

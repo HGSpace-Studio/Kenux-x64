@@ -1,0 +1,895 @@
+-- Start building task run rebuild -- (314463346)
+-- Start building task rebuild -- (0)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/wmi.c
+<2> Building kernel/arch/x86_64/win32_shell.c
+<0> Building kernel/arch/x86_64/win32_security.c
+-- Enter folder kernel/kernel --
+<1> Building kernel/kernel/kernel.c
+In file included from kernel/arch/x86_64/win32_security.c:1:
+kernel/arch/x86_64/include/arch/win32.h:1257:5: error: unknown type name 'PWSTR'; did you mean 'LPWSTR'?
+ 1257 |     PWSTR  Buffer;
+      |     ^~~~~
+      |     LPWSTR
+kernel/arch/x86_64/include/arch/win32.h:1286:46: error: unknown type name 'PCWSTR'; did you mean 'LPCWSTR'?
+ 1286 | void RtlInitUnicodeString(PUNICODE_STRING s, PCWSTR p);
+      |                                              ^~~~~~
+      |                                              LPCWSTR
+kernel/arch/x86_64/include/arch/win32.h:1295:67: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1295 | NTSTATUS RtlUnicodeStringToInteger(PUNICODE_STRING s, ULONG base, PULONG val);
+      |                                                                   ^~~~~~
+      |                                                                   ULONG
+In file included from kernel/arch/x86_64/win32_shell.c:1:
+kernel/arch/x86_64/include/arch/win32.h:1257:5: error: unknown type name 'PWSTR'; did you mean 'LPWSTR'?
+ 1257 |     PWSTR  Buffer;
+      |     ^~~~~
+      |     LPWSTR
+kernel/arch/x86_64/include/arch/win32.h:1296:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1296 | ULONG RtlHashUnicodeString(PUNICODE_STRING s, BOOLEAN cs, ULONG hc);
+      |                                               ^~~~~~~
+      |                                               BOOL
+kernel/arch/x86_64/include/arch/win32.h:1298:1: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+      | ^~~~~~~
+      | BOOL
+kernel/arch/x86_64/include/arch/win32.h:1298:54: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+      |                                                      ^~~~~~
+      |                                                      SIZE
+kernel/arch/x86_64/include/arch/win32.h:1299:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1299 | VOID    RtlCopyMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                                                   ^~~~~~
+      |                                                   SIZE
+kernel/arch/x86_64/include/arch/win32.h:1300:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1300 | VOID    RtlFillMemory(PVOID dst, SIZE_T n, INT c);
+      |                                  ^~~~~~
+      |                                  SIZE
+kernel/arch/x86_64/include/arch/win32.h:1301:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1301 | VOID    RtlZeroMemory(PVOID dst, SIZE_T n);
+      |                                  ^~~~~~
+      |                                  SIZE
+kernel/arch/x86_64/include/arch/win32.h:1302:1: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+      | ^~~~~~
+      | SIZE
+kernel/arch/x86_64/include/arch/win32.h:1302:56: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+      |                                                        ^~~~~~
+      |                                                        SIZE
+kernel/arch/x86_64/include/arch/win32.h:1303:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1303 | VOID    RtlMoveMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                                                   ^~~~~~
+      |                                                   SIZE
+kernel/arch/x86_64/include/arch/win32.h:1305:18: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1305 | ULONG RtlUniform(PULONG seed);
+      |                  ^~~~~~
+      |                  ULONG
+kernel/arch/x86_64/include/arch/win32.h:1306:19: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1306 | ULONG RtlRandomEx(PULONG seed);
+      |                   ^~~~~~
+      |                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1311:43: error: unknown type name 'ACCESS_MASK'
+ 1311 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                           ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1314:23: error: unknown type name 'PLARGE_INTEGER'
+ 1314 |                       PLARGE_INTEGER AllocationSize,
+      |                       ^~~~~~~~~~~~~~
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1318:41: error: unknown type name 'ACCESS_MASK'
+ 1318 | NTSTATUS NtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                         ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1325:21: error: unknown type name 'PLARGE_INTEGER'
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                     ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1325:48: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                                                ^~~~~~
+      |                                                ULONG
+kernel/arch/x86_64/include/arch/win32.h:1329:22: error: unknown type name 'PLARGE_INTEGER'
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1329:49: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                                                 ^~~~~~
+      |                                                 ULONG
+kernel/arch/x86_64/include/arch/win32.h:1339:49: error: unknown type name 'ACCESS_MASK'
+ 1339 | NTSTATUS NtCreateSection(PHANDLE SectionHandle, ACCESS_MASK DesiredAccess,
+      |                                                 ^~~~~~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  275 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1341:26: error: unknown type name 'PLARGE_INTEGER'
+ 1341 |                          PLARGE_INTEGER MaximumSize,
+      |                          ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1348:29: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1348 |                             SIZE_T CommitSize,
+      |                             ^~~~~~
+      |                             SIZE
+In file included from kernel/arch/x86_64/wmi.c:1:
+kernel/arch/x86_64/include/arch/win32.h:1257:5: error: unknown type name 'PWSTR'; did you mean 'LPWSTR'?
+ 1257 |     PWSTR  Buffer;
+      |     ^~~~~
+      |     LPWSTR
+kernel/arch/x86_64/include/arch/win32.h:1286:46: error: unknown type name 'PCWSTR'; did you mean 'LPCWSTR'?
+ 1286 | void RtlInitUnicodeString(PUNICODE_STRING s, PCWSTR p);
+      |                                              ^~~~~~
+      |                                              LPCWSTR
+kernel/arch/x86_64/include/arch/win32.h:1295:67: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1295 | NTSTATUS RtlUnicodeStringToInteger(PUNICODE_STRING s, ULONG base, PULONG val);
+      |                                                                   ^~~~~~
+      |                                                                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1296:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1296 | ULONG RtlHashUnicodeString(PUNICODE_STRING s, BOOLEAN cs, ULONG hc);
+      |                                               ^~~~~~~
+      |                                               BOOL
+kernel/arch/x86_64/include/arch/win32.h:1349:29: error: unknown type name 'PLARGE_INTEGER'
+ 1349 |                             PLARGE_INTEGER SectionOffset,
+      |                             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1298:1: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+      | ^~~~~~~
+      | BOOL
+kernel/arch/x86_64/include/arch/win32.h:1350:29: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1350 |                             PSIZE_T ViewSize,
+      |                             ^~~~~~~
+      |                             PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1298:54: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+      |                                                      ^~~~~~
+      |                                                      SIZE
+kernel/arch/x86_64/include/arch/win32.h:1356:54: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1356 |                                  ULONG_PTR ZeroBits, PSIZE_T RegionSize,
+      |                                                      ^~~~~~~
+      |                                                      PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1299:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1299 | VOID    RtlCopyMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                                                   ^~~~~~
+      |                                                   SIZE
+kernel/arch/x86_64/include/arch/win32.h:1359:30: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1359 |                              PSIZE_T RegionSize, ULONG FreeType);
+      |                              ^~~~~~~
+      |                              PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1300:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1300 | VOID    RtlFillMemory(PVOID dst, SIZE_T n, INT c);
+      |                                  ^~~~~~
+      |                                  SIZE
+kernel/arch/x86_64/include/arch/win32.h:1301:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+kernel/arch/x86_64/include/arch/win32.h:1361:33: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1301 | VOID    RtlZeroMemory(PVOID dst, SIZE_T n);
+ 1361 |                                 PSIZE_T RegionSize, ULONG NewProtect,
+      |                                  ^~~~~~
+      |                                  SIZE
+      |                                 ^~~~~~~
+      |                                 PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1286:46: error: unknown type name 'PCWSTR'; did you mean 'LPCWSTR'?
+ 1286 | void RtlInitUnicodeString(PUNICODE_STRING s, PCWSTR p);
+      |                                              ^~~~~~
+      |                                              LPCWSTR
+kernel/arch/x86_64/include/arch/win32.h:1302:1: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+      | ^~~~~~
+      | SIZE
+kernel/arch/x86_64/include/arch/win32.h:1362:33: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1362 |                                 PULONG OldProtect);
+      |                                 ^~~~~~
+      |                                 ULONG
+kernel/arch/x86_64/include/arch/win32.h:1295:67: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1295 | NTSTATUS RtlUnicodeStringToInteger(PUNICODE_STRING s, ULONG base, PULONG val);
+      |                                                                   ^~~~~~
+      |                                                                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1302:56: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+      |                                                        ^~~~~~
+      |                                                        SIZE
+kernel/arch/x86_64/include/arch/win32.h:1303:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1303 | VOID    RtlMoveMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                                                   ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1296:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+      |                                                   SIZE
+ 1296 | ULONG RtlHashUnicodeString(PUNICODE_STRING s, BOOLEAN cs, ULONG hc);
+kernel/arch/x86_64/include/arch/win32.h:1305:18: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+      |                                               ^~~~~~~
+ 1305 | ULONG RtlUniform(PULONG seed);
+      |                                               BOOL
+      |                  ^~~~~~
+      |                  ULONG
+kernel/arch/x86_64/include/arch/win32.h:1306:19: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+kernel/arch/x86_64/include/arch/win32.h:1298:1: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1306 | ULONG RtlRandomEx(PULONG seed);
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+      |                   ^~~~~~
+      | ^~~~~~~
+      |                   ULONG
+      | BOOL
+kernel/arch/x86_64/include/arch/win32.h:1311:43: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1298:54: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1311 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+      |                                           ^~~~~~~~~~~
+      |                                                      ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1314:23: error: unknown type name 'PLARGE_INTEGER'
+      |                                                      SIZE
+ 1314 |                       PLARGE_INTEGER AllocationSize,
+kernel/arch/x86_64/include/arch/win32.h:1299:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                       ^~~~~~~~~~~~~~
+ 1299 | VOID    RtlCopyMemory(PVOID dst, const VOID* src, SIZE_T n);
+kernel/arch/x86_64/include/arch/win32.h:1318:41: error: unknown type name 'ACCESS_MASK'
+      |                                                   ^~~~~~
+ 1318 | NTSTATUS NtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                                   SIZE
+      |                                         ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1300:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+kernel/arch/x86_64/include/arch/win32.h:1325:21: error: unknown type name 'PLARGE_INTEGER'
+ 1300 | VOID    RtlFillMemory(PVOID dst, SIZE_T n, INT c);
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                                  ^~~~~~
+      |                     ^~~~~~~~~~~~~~
+      |                                  SIZE
+kernel/arch/x86_64/include/arch/win32.h:1325:48: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+kernel/arch/x86_64/include/arch/win32.h:1301:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+ 1301 | VOID    RtlZeroMemory(PVOID dst, SIZE_T n);
+      |                                                ^~~~~~
+      |                                  ^~~~~~
+      |                                                ULONG
+      |                                  SIZE
+kernel/arch/x86_64/include/arch/win32.h:1329:22: error: unknown type name 'PLARGE_INTEGER'
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1329:49: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+kernel/arch/x86_64/include/arch/win32.h:1302:1: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+kernel/arch/x86_64/include/arch/win32.h:1365:45: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+In file included from kernel/arch/x86_64/include/arch/registry.h:5,
+      |                                                 ^~~~~~
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+                 from kernel/kernel/kernel.c:54:
+      |                                                 ULONG
+kernel/arch/x86_64/include/arch/win32.h:1339:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1257:5: error: unknown type name 'PWSTR'; did you mean 'LPWSTR'?
+      |                                             ^~~~~~
+ 1339 | NTSTATUS NtCreateSection(PHANDLE SectionHandle, ACCESS_MASK DesiredAccess,
+ 1257 |     PWSTR  Buffer;
+      |                                             SIZE
+      | ^~~~~~
+      |                                                 ^~~~~~~~~~~
+      |     ^~~~~
+      | SIZE
+kernel/arch/x86_64/include/arch/win32.h:1365:60: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+kernel/arch/x86_64/include/arch/win32.h:1341:26: error: unknown type name 'PLARGE_INTEGER'
+      |     LPWSTR
+kernel/arch/x86_64/include/arch/win32.h:1302:56: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+ 1341 |                          PLARGE_INTEGER MaximumSize,
+kernel/arch/x86_64/include/arch/win32.h:1286:46: error: unknown type name 'PCWSTR'; did you mean 'LPCWSTR'?
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+      |                                                        ^~~~~~
+      |                          ^~~~~~~~~~~~~~
+ 1286 | void RtlInitUnicodeString(PUNICODE_STRING s, PCWSTR p);
+      |                                                            ^~~~~~~
+      |                                                        SIZE
+kernel/arch/x86_64/include/arch/win32.h:1348:29: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                                              ^~~~~~
+      |                                                            PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1303:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1348 |                             SIZE_T CommitSize,
+      |                                              LPCWSTR
+kernel/arch/x86_64/include/arch/win32.h:1366:49: error: unknown type name 'ACCESS_MASK'
+ 1303 | VOID    RtlMoveMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                             ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1295:67: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1366 | NTSTATUS NtCreateProcess(PHANDLE ProcessHandle, ACCESS_MASK DesiredAccess,
+      |                                                   ^~~~~~
+      |                             SIZE
+ 1295 | NTSTATUS RtlUnicodeStringToInteger(PUNICODE_STRING s, ULONG base, PULONG val);
+      |                                                                   ^~~~~~
+      |                                                   SIZE
+      |                                                 ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1349:29: error: unknown type name 'PLARGE_INTEGER'
+      |                                                                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1305:18: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+kernel/arch/x86_64/include/arch/win32.h:1369:26: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1349 |                             PLARGE_INTEGER SectionOffset,
+kernel/arch/x86_64/include/arch/win32.h:1296:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1305 | ULONG RtlUniform(PULONG seed);
+ 1369 |                          BOOLEAN InheritObjectTable,
+      |                             ^~~~~~~~~~~~~~
+ 1296 | ULONG RtlHashUnicodeString(PUNICODE_STRING s, BOOLEAN cs, ULONG hc);
+      |                  ^~~~~~
+      |                          ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1350:29: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+      |                                               ^~~~~~~
+      |                  ULONG
+      |                          BOOL
+ 1350 |                             PSIZE_T ViewSize,
+      |                                               BOOL
+kernel/arch/x86_64/include/arch/win32.h:1306:19: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1306 | ULONG RtlRandomEx(PULONG seed);
+      |                   ^~~~~~
+      |                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1311:43: error: unknown type name 'ACCESS_MASK'
+ 1311 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                           ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1314:23: error: unknown type name 'PLARGE_INTEGER'
+ 1314 |                       PLARGE_INTEGER AllocationSize,
+      |                       ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1318:41: error: unknown type name 'ACCESS_MASK'
+ 1318 | NTSTATUS NtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                         ^~~~~~~~~~~
+      |                             ^~~~~~~
+      |                             PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1372:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1298:1: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+kernel/arch/x86_64/include/arch/win32.h:1325:21: error: unknown type name 'PLARGE_INTEGER'
+kernel/arch/x86_64/include/arch/win32.h:1356:54: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1372 | NTSTATUS NtCreateThreadEx(PHANDLE ThreadHandle, ACCESS_MASK DesiredAccess,
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+ 1356 |                                  ULONG_PTR ZeroBits, PSIZE_T RegionSize,
+      |                                                 ^~~~~~~~~~~
+      | ^~~~~~~
+      |                     ^~~~~~~~~~~~~~
+      |                                                      ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:47: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      | BOOL
+kernel/arch/x86_64/include/arch/win32.h:1325:48: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+      |                                                      PSIZE
+ 1376 |                           ULONG_PTR ZeroBits, SIZE_T StackSize,
+kernel/arch/x86_64/include/arch/win32.h:1298:54: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                                                ^~~~~~
+      |                                               ^~~~~~
+ 1298 | BOOLEAN RtlEqualMemory(const void* a, const void* b, SIZE_T n);
+kernel/arch/x86_64/include/arch/win32.h:1359:30: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+      |                                                ULONG
+      |                                               SIZE
+      |                                                      ^~~~~~
+ 1359 |                              PSIZE_T RegionSize, ULONG FreeType);
+kernel/arch/x86_64/include/arch/win32.h:1329:22: error: unknown type name 'PLARGE_INTEGER'
+kernel/arch/x86_64/include/arch/win32.h:1377:27: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                                                      SIZE
+      |                              ^~~~~~~
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+ 1377 |                           SIZE_T MaximumStackSize, PVOID AttributeList);
+kernel/arch/x86_64/include/arch/win32.h:1299:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1299 | VOID    RtlCopyMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                              PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1361:33: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+      |                                                   ^~~~~~
+      |                                                   SIZE
+      |                      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1329:49: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+      |                           ^~~~~~
+ 1361 |                                 PSIZE_T RegionSize, ULONG NewProtect,
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+kernel/arch/x86_64/include/arch/win32.h:1300:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                                 ^~~~~~~
+      |                           SIZE
+      |                                                 ^~~~~~
+ 1300 | VOID    RtlFillMemory(PVOID dst, SIZE_T n, INT c);
+      |                                 PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1380:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+      |                                                 ULONG
+      |                                  ^~~~~~
+      |                                  SIZE
+ 1380 | NTSTATUS NtWaitForSingleObject(HANDLE Handle, BOOLEAN Alertable,
+kernel/arch/x86_64/include/arch/win32.h:1362:33: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+kernel/arch/x86_64/include/arch/win32.h:1339:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1301:34: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                                               ^~~~~~~
+ 1362 |                                 PULONG OldProtect);
+ 1339 | NTSTATUS NtCreateSection(PHANDLE SectionHandle, ACCESS_MASK DesiredAccess,
+ 1301 | VOID    RtlZeroMemory(PVOID dst, SIZE_T n);
+      |                                               BOOL
+      |                                 ^~~~~~
+      |                                                 ^~~~~~~~~~~
+      |                                  ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1381:38: error: unknown type name 'LARGE_INTEGER'
+      |                                 ULONG
+kernel/arch/x86_64/include/arch/win32.h:1341:26: error: unknown type name 'PLARGE_INTEGER'
+      |                                  SIZE
+ 1381 |                                const LARGE_INTEGER* Timeout);
+kernel/arch/x86_64/include/arch/win32.h:1365:45: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1341 |                          PLARGE_INTEGER MaximumSize,
+kernel/arch/x86_64/include/arch/win32.h:1302:1: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                                      ^~~~~~~~~~~~~
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+      |                          ^~~~~~~~~~~~~~
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+kernel/arch/x86_64/include/arch/win32.h:1383:51: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+      |                                             ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1348:29: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      | ^~~~~~
+ 1383 |                                   ULONG WaitType, BOOLEAN Alertable,
+      |                                             SIZE
+      |                                                   ^~~~~~~
+      | SIZE
+kernel/arch/x86_64/include/arch/win32.h:1365:60: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1348 |                             SIZE_T CommitSize,
+      |                             ^~~~~~
+      |                             SIZE
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+kernel/arch/x86_64/include/arch/win32.h:1302:56: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+kernel/arch/x86_64/include/arch/win32.h:1349:29: error: unknown type name 'PLARGE_INTEGER'
+      |                                                            ^~~~~~~
+ 1302 | SIZE_T  RtlCompareMemory(const VOID* a, const VOID* b, SIZE_T n);
+ 1349 |                             PLARGE_INTEGER SectionOffset,
+      |                                                            PSIZE
+      |                                                        ^~~~~~
+      |                                                        SIZE
+kernel/arch/x86_64/include/arch/win32.h:1303:51: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1303 | VOID    RtlMoveMemory(PVOID dst, const VOID* src, SIZE_T n);
+      |                                                   ^~~~~~
+      |                                                   SIZE
+kernel/arch/x86_64/include/arch/win32.h:1305:18: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1305 | ULONG RtlUniform(PULONG seed);
+      |                  ^~~~~~
+      |                  ULONG
+      |                             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1366:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1306:19: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+kernel/arch/x86_64/include/arch/win32.h:1350:29: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1366 | NTSTATUS NtCreateProcess(PHANDLE ProcessHandle, ACCESS_MASK DesiredAccess,
+ 1306 | ULONG RtlRandomEx(PULONG seed);
+ 1350 |                             PSIZE_T ViewSize,
+      |                                                 ^~~~~~~~~~~
+      |                   ^~~~~~
+      |                             ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1369:26: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+      |                   ULONG
+      |                             PSIZE
+ 1369 |                          BOOLEAN InheritObjectTable,
+kernel/arch/x86_64/include/arch/win32.h:1311:43: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1356:54: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+      |                          ^~~~~~~
+ 1311 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+ 1356 |                                  ULONG_PTR ZeroBits, PSIZE_T RegionSize,
+      |                          BOOL
+      |                                           ^~~~~~~~~~~
+      |                                                      ^~~~~~~
+      |                                                      PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1372:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/include/arch/win32.h:1314:23: error: unknown type name 'PLARGE_INTEGER'
+kernel/arch/x86_64/include/arch/win32.h:1359:30: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1372 | NTSTATUS NtCreateThreadEx(PHANDLE ThreadHandle, ACCESS_MASK DesiredAccess,
+ 1314 |                       PLARGE_INTEGER AllocationSize,
+ 1359 |                              PSIZE_T RegionSize, ULONG FreeType);
+      |                                                 ^~~~~~~~~~~
+      |                       ^~~~~~~~~~~~~~
+      |                              ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:47: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+kernel/arch/x86_64/include/arch/win32.h:1318:41: error: unknown type name 'ACCESS_MASK'
+      |                              PSIZE
+ 1376 |                           ULONG_PTR ZeroBits, SIZE_T StackSize,
+ 1318 | NTSTATUS NtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+kernel/arch/x86_64/include/arch/win32.h:1361:33: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+      |                                               ^~~~~~
+      |                                         ^~~~~~~~~~~
+ 1361 |                                 PSIZE_T RegionSize, ULONG NewProtect,
+      |                                               SIZE
+kernel/arch/x86_64/include/arch/win32.h:1325:21: error: unknown type name 'PLARGE_INTEGER'
+      |                                 ^~~~~~~
+      |                                 PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1362:33: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1362 |                                 PULONG OldProtect);
+      |                                 ^~~~~~
+      |                                 ULONG
+kernel/arch/x86_64/include/arch/win32.h:1365:45: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+      |                                             ^~~~~~
+      |                                             SIZE
+kernel/arch/x86_64/include/arch/win32.h:1365:60: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+      |                                                            ^~~~~~~
+      |                                                            PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1366:49: error: unknown type name 'ACCESS_MASK'
+ 1366 | NTSTATUS NtCreateProcess(PHANDLE ProcessHandle, ACCESS_MASK DesiredAccess,
+      |                                                 ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1369:26: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1369 |                          BOOLEAN InheritObjectTable,
+      |                          ^~~~~~~
+      |                          BOOL
+kernel/arch/x86_64/include/arch/win32.h:1372:49: error: unknown type name 'ACCESS_MASK'
+ 1372 | NTSTATUS NtCreateThreadEx(PHANDLE ThreadHandle, ACCESS_MASK DesiredAccess,
+      |                                                 ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:47: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1376 |                           ULONG_PTR ZeroBits, SIZE_T StackSize,
+      |                                               ^~~~~~
+      |                                               SIZE
+kernel/arch/x86_64/include/arch/win32.h:1377:27: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1377 |                           SIZE_T MaximumStackSize, PVOID AttributeList);
+      |                           ^~~~~~
+      |                           SIZE
+kernel/arch/x86_64/include/arch/win32.h:1380:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1380 | NTSTATUS NtWaitForSingleObject(HANDLE Handle, BOOLEAN Alertable,
+      |                                               ^~~~~~~
+      |                                               BOOL
+kernel/arch/x86_64/include/arch/win32.h:1381:38: error: unknown type name 'LARGE_INTEGER'
+ 1381 |                                const LARGE_INTEGER* Timeout);
+      |                                      ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1383:51: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1383 |                                   ULONG WaitType, BOOLEAN Alertable,
+      |                                                   ^~~~~~~
+      |                                                   BOOL
+kernel/arch/x86_64/include/arch/win32.h:1384:41: error: unknown type name 'LARGE_INTEGER'
+ 1384 |                                   const LARGE_INTEGER* Timeout);
+      |                                         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1388:36: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1388 |                                    PULONG ReturnLength);
+      |                                    ^~~~~~
+      |                                    ULONG
+kernel/arch/x86_64/include/arch/win32.h:1396:36: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1396 |                                    PULONG ReturnLength);
+      |                                    ^~~~~~
+      |                                    ULONG
+kernel/arch/x86_64/include/arch/win32.h:1401:35: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1401 |                                   PULONG ReturnLength);
+      |                                   ^~~~~~
+      |                                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1404:28: error: unknown type name 'ACCESS_MASK'
+ 1404 |                            ACCESS_MASK DesiredAccess, ULONG HandleAttributes,
+      |                            ^~~~~~~~~~~
+In file included from kernel/arch/x86_64/wmi.c:3:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1377:27: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1377 |                           SIZE_T MaximumStackSize, PVOID AttributeList);
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+kernel/arch/x86_64/wmi.c: In function 'wmi_exec_query':
+      |                           ^~~~~~
+      |                           SIZE
+kernel/arch/x86_64/include/arch/win32.h:1380:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1380 | NTSTATUS NtWaitForSingleObject(HANDLE Handle, BOOLEAN Alertable,
+      |                                               ^~~~~~~
+      |                                               BOOL
+kernel/arch/x86_64/include/arch/win32.h:1381:38: error: unknown type name 'LARGE_INTEGER'
+ 1381 |                                const LARGE_INTEGER* Timeout);
+      |                                      ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1383:51: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1383 |                                   ULONG WaitType, BOOLEAN Alertable,
+      |                                                   ^~~~~~~
+      |                                                   BOOL
+kernel/arch/x86_64/include/arch/win32.h:1384:41: error: unknown type name 'LARGE_INTEGER'
+ 1384 |                                   const LARGE_INTEGER* Timeout);
+      |                                         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1388:36: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1388 |                                    PULONG ReturnLength);
+      |                                    ^~~~~~
+      |                                    ULONG
+kernel/arch/x86_64/include/arch/win32.h:1396:36: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1396 |                                    PULONG ReturnLength);
+      |                                    ^~~~~~
+      |                                    ULONG
+kernel/arch/x86_64/include/arch/win32.h:1401:35: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1401 |                                   PULONG ReturnLength);
+      |                                   ^~~~~~
+      |                                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1404:28: error: unknown type name 'ACCESS_MASK'
+ 1404 |                            ACCESS_MASK DesiredAccess, ULONG HandleAttributes,
+      |                            ^~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_shell.c:5:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c:10:8: error: unknown type name 'win32_process_t'
+   10 | extern win32_process_t* win32_create_process(const char*, const char*, const char*);
+      |        ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:12:8: error: unknown type name 'win32_process_t'
+   12 | extern win32_process_t* win32_get_process(uint32_t);
+      |        ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'ShellExecuteA':
+kernel/arch/x86_64/win32_shell.c:206:30: warning: unused variable 'tmp' [-Wunused-variable]
+  206 |                         char tmp[512];
+      |                              ^~~
+kernel/arch/x86_64/win32_shell.c: In function 'PathCanonicalizeA':
+kernel/arch/x86_64/win32_shell.c:727:34: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  727 |             memcpy(tmp + ti, sp, ci);
+      |                                  ^~
+      |                     ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1325:48: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1325 |                     PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                                                ^~~~~~
+      |                                                ULONG
+kernel/arch/x86_64/include/arch/win32.h:1329:22: error: unknown type name 'PLARGE_INTEGER'
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1329:49: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1329 |                      PLARGE_INTEGER ByteOffset, PULONG Key);
+      |                                                 ^~~~~~
+      |                                                 ULONG
+kernel/arch/x86_64/wmi.c:498:21: warning: multi-character character constant [-Wmultichar]
+  498 |     en->signature = 'ENUM';
+      |                     ^~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_enum_get':
+kernel/arch/x86_64/wmi.c:531:36: warning: multi-character character constant [-Wmultichar]
+  531 |     if (en->signature != (uint32_t)'ENUM') return WBEM_E_INVALID_PARAMETER;
+      |                                    ^~~~~~
+      |                                                   BOOL
+kernel/arch/x86_64/include/arch/win32.h:1384:41: error: unknown type name 'LARGE_INTEGER'
+ 1384 |                                   const LARGE_INTEGER* Timeout);
+      |                                         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1388:36: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1388 |                                    PULONG ReturnLength);
+      |                                    ^~~~~~
+      |                                    ULONG
+kernel/arch/x86_64/include/arch/win32.h:1396:36: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1396 |                                    PULONG ReturnLength);
+      |                                    ^~~~~~
+      |                                    ULONG
+kernel/arch/x86_64/include/arch/win32.h:1401:35: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+ 1401 |                                   PULONG ReturnLength);
+      |                                   ^~~~~~
+      |                                   ULONG
+kernel/arch/x86_64/include/arch/win32.h:1404:28: error: unknown type name 'ACCESS_MASK'
+ 1404 |                            ACCESS_MASK DesiredAccess, ULONG HandleAttributes,
+      |                            ^~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:126:16: error: redefinition of 'struct _LUID'
+  126 | typedef struct _LUID {
+      |                ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:59:16: note: originally defined here
+   59 | typedef struct _LUID {
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_write_stdout':
+      |                ^~~~~
+kernel/arch/x86_64/win32_shell.c:1432:5: error: implicit declaration of function 'fflush' [-Wimplicit-function-declaration]
+kernel/arch/x86_64/win32_security.c:129:3: error: conflicting types for 'LUID'; have 'struct _LUID'
+ 1432 |     fflush(stdout);
+  129 | } LUID;
+      |     ^~~~~~
+      |   ^~~~
+kernel/arch/x86_64/include/arch/win32.h:62:3: note: previous declaration of 'LUID' with type 'LUID' {aka 'struct _LUID'}
+   62 | } LUID, *PLUID;
+      |   ^~~~
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_dir':
+      |                                           ^
+kernel/arch/x86_64/win32_shell.c:1597:9: warning: variable 'found' set but not used [-Wunused-but-set-variable=]
+ 1597 |     int found;
+      |         ^~~~~
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_set':
+kernel/arch/x86_64/win32_shell.c:1794:9: warning: variable 'expr_mode' set but not used [-Wunused-but-set-variable=]
+ 1794 |     int expr_mode = 0;
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:776:6: error: conflicting types for 'LookupPrivilegeValueA'; have 'BOOL(const char *, const char *, LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+  776 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName, LUID* lpLuid) {
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1597:6: note: previous declaration of 'LookupPrivilegeValueA' with type 'BOOL(const char *, const char *, struct _LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+ 1597 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName,
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:839:6: error: conflicting types for 'LookupAccountSidA'; have 'BOOL(const char *, struct _SID *, char *, uint32_t *, char *, uint32_t *, uint32_t *)' {aka 'int(const char *, struct _SID *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+  839 | BOOL LookupAccountSidA(const char* lpSystemName, PSID Sid, char* Name, uint32_t* cchName,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1606:6: note: previous declaration of 'LookupAccountSidA' with type 'BOOL(const char *, void *, char *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, void *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1606 | BOOL LookupAccountSidA(const char* lpSystemName, void* Sid,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:885:6: error: conflicting types for 'LookupAccountNameA'; have 'BOOL(const char *, const char *, struct _SID *, uint32_t *, char *, uint32_t *, uint32_t *)' {aka 'int(const char *, const char *, struct _SID *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+  885 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName, PSID Sid, uint32_t* cbSid,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1601:6: note: previous declaration of 'LookupAccountNameA' with type 'BOOL(const char *, const char *, void *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, const char *, void *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1601 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:894:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  894 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1339:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_sort':
+ 1339 | NTSTATUS NtCreateSection(PHANDLE SectionHandle, ACCESS_MASK DesiredAccess,
+      |                                                 ^~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2064:22: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+ 2064 |         qsort(lines, count, sizeof(char*), strcmp_void);
+      |                      ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_help':
+kernel/arch/x86_64/win32_shell.c:2115:42: warning: unused parameter 'cmd' [-Wunused-parameter]
+ 2115 | static int cmd_builtin_help(cmd_state_t* cmd, int argc, char** argv) {
+      |                             ~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_resolve_and_run':
+kernel/arch/x86_64/win32_shell.c:2223:23: warning: comparison between pointer and integer
+ 2223 |         if (fn && *fn != cmdname) {
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_execute_line':
+kernel/arch/x86_64/win32_shell.c:2372:13: warning: variable 'match_idx' set but not used [-Wunused-but-set-variable=]
+ 2372 |         int match_idx;
+      |             ^~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1341:26: error: unknown type name 'PLARGE_INTEGER'
+ 1341 |                          PLARGE_INTEGER MaximumSize,
+      |                          ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1348:29: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1348 |                             SIZE_T CommitSize,
+      |                             ^~~~~~
+      |                             SIZE
+kernel/arch/x86_64/win32_shell.c: In function 'CreateProcessA':
+kernel/arch/x86_64/win32_shell.c:2746:5: error: unknown type name 'win32_process_t'
+ 2746 |     win32_process_t* proc;
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2805:21: error: request for member 'pid' in something not a structure or union
+ 2805 |     pobj->pid = proc->pid;
+      |                     ^~
+kernel/arch/x86_64/win32_shell.c:2817:31: error: request for member 'pid' in something not a structure or union
+ 2817 |         pi->dwProcessId = proc->pid;
+      |                               ^~
+kernel/arch/x86_64/win32_shell.c: In function 'TerminateProcess':
+kernel/arch/x86_64/include/arch/win32.h:1349:29: error: unknown type name 'PLARGE_INTEGER'
+ 1349 |                             PLARGE_INTEGER SectionOffset,
+      |                             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2846:5: error: unknown type name 'win32_process_t'
+ 2846 |     win32_process_t* cproc;
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2856:18: error: request for member 'exit_code' in something not a structure or union
+ 2856 |             cproc->exit_code = uExitCode;
+      |                  ^~
+kernel/arch/x86_64/win32_shell.c:2857:18: error: request for member 'is_running' in something not a structure or union
+ 2857 |             cproc->is_running = FALSE;
+      |                  ^~
+kernel/arch/x86_64/include/arch/win32.h:1350:29: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1350 |                             PSIZE_T ViewSize,
+      |                             ^~~~~~~
+      |                             PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1356:54: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1356 |                                  ULONG_PTR ZeroBits, PSIZE_T RegionSize,
+      |                                                      ^~~~~~~
+      |                                                      PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1359:30: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+kernel/arch/x86_64/win32_shell.c:2861:28: error: implicit declaration of function 'win32_handle_to_object'; did you mean 'win32_handle_alloc'? [-Wimplicit-function-declaration]
+ 1359 |                              PSIZE_T RegionSize, ULONG FreeType);
+ 2861 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+<3> Building kernel/arch/x86_64/win32_process.c
+      |                              ^~~~~~~
+      |                            ^~~~~~~~~~~~~~~~~~~~~~
+      |                              PSIZE
+kernel/arch/x86_64/include/arch/win32.h:1361:33: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+      |                            win32_handle_alloc
+ 1361 |                                 PSIZE_T RegionSize, ULONG NewProtect,
+      |                                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c:2861:12: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+      |                                 PSIZE
+ 2861 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+kernel/arch/x86_64/include/arch/win32.h:1362:33: error: unknown type name 'PULONG'; did you mean 'ULONG'?
+      |            ^
+ 1362 |                                 PULONG OldProtect);
+      |                                 ^~~~~~
+      |                                 ULONG
+kernel/arch/x86_64/include/arch/win32.h:1365:45: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+      |                                             ^~~~~~
+      |                                             SIZE
+kernel/arch/x86_64/win32_shell.c: In function 'GetExitCodeProcess':
+kernel/arch/x86_64/win32_shell.c:2872:5: error: unknown type name 'win32_process_t'
+ 2872 |     win32_process_t* proc;
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2881:34: error: request for member 'exit_code' in something not a structure or union
+ 2881 |         *lpExitCode = proc ? proc->exit_code : 0;
+      |                                  ^~
+kernel/arch/x86_64/include/arch/win32.h:1365:60: error: unknown type name 'PSIZE_T'; did you mean 'PSIZE'?
+ 1365 |                               PVOID Buffer, SIZE_T Length, PSIZE_T Result);
+      |                                                            ^~~~~~~
+      |                                                            PSIZE
+kernel/arch/x86_64/win32_shell.c:2884:12: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2884 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |            ^
+kernel/arch/x86_64/win32_shell.c:2894:23: error: request for member 'exit_code' in something not a structure or union
+ 2894 |     *lpExitCode = proc->exit_code;
+      |                       ^~
+kernel/arch/x86_64/include/arch/win32.h:1366:49: error: unknown type name 'ACCESS_MASK'
+kernel/arch/x86_64/win32_shell.c: In function 'GetProcessTimes':
+ 1366 | NTSTATUS NtCreateProcess(PHANDLE ProcessHandle, ACCESS_MASK DesiredAccess,
+      |                                                 ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1369:26: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1369 |                          BOOLEAN InheritObjectTable,
+      |                          ^~~~~~~
+      |                          BOOL
+kernel/arch/x86_64/win32_shell.c:2905:5: error: unknown type name 'win32_process_t'
+ 2905 |     win32_process_t* proc;
+kernel/arch/x86_64/include/arch/win32.h:1372:49: error: unknown type name 'ACCESS_MASK'
+      |     ^~~~~~~~~~~~~~~
+ 1372 | NTSTATUS NtCreateThreadEx(PHANDLE ThreadHandle, ACCESS_MASK DesiredAccess,
+kernel/arch/x86_64/win32_shell.c:2919:16: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+      |                                                 ^~~~~~~~~~~
+ 2919 |         pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+kernel/arch/x86_64/include/arch/win32.h:1376:47: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+      |                ^
+ 1376 |                           ULONG_PTR ZeroBits, SIZE_T StackSize,
+kernel/arch/x86_64/win32_shell.c:2928:57: error: request for member 'creation_time_high' in something not a structure or union
+      |                                               ^~~~~~
+ 2928 |             *(uint64_t*)lpCreationTime = ((uint64_t)proc->creation_time_high << 32) | proc->creation_time_low;
+      |                                               SIZE
+      |                                                         ^~
+kernel/arch/x86_64/include/arch/win32.h:1377:27: error: unknown type name 'SIZE_T'; did you mean 'SIZE'?
+kernel/arch/x86_64/win32_shell.c:2928:91: error: request for member 'creation_time_low' in something not a structure or union
+ 1377 |                           SIZE_T MaximumStackSize, PVOID AttributeList);
+ 2928 |             *(uint64_t*)lpCreationTime = ((uint64_t)proc->creation_time_high << 32) | proc->creation_time_low;
+      |                                                                                           ^~
+kernel/arch/x86_64/win32_shell.c:2930:58: error: request for member 'kernel_time' in something not a structure or union
+      |                           ^~~~~~
+ 2930 |         if (lpKernelTime) *(uint64_t*)lpKernelTime = proc->kernel_time;
+      |                           SIZE
+      |                                                          ^~
+kernel/arch/x86_64/include/arch/win32.h:1380:47: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+kernel/arch/x86_64/win32_shell.c:2931:54: error: request for member 'user_time' in something not a structure or union
+ 1380 | NTSTATUS NtWaitForSingleObject(HANDLE Handle, BOOLEAN Alertable,
+ 2931 |         if (lpUserTime) *(uint64_t*)lpUserTime = proc->user_time;
+      |                                               ^~~~~~~
+      |                                                      ^~
+      |                                               BOOL
+kernel/arch/x86_64/include/arch/win32.h:1381:38: error: unknown type name 'LARGE_INTEGER'
+ 1381 |                                const LARGE_INTEGER* Timeout);
+      |                                      ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1383:51: error: unknown type name 'BOOLEAN'; did you mean 'BOOL'?
+ 1383 |                                   ULONG WaitType, BOOLEAN Alertable,
+      |                                                   ^~~~~~~
+      |                                                   BOOL

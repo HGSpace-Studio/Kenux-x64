@@ -1,0 +1,76 @@
+-- Start building task run all -- (606068011)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kal/src --
+<0> Building kal/src/kal_governance.c
+<3> Building kal/src/kal_ssi.c
+<2> Building kal/src/kal_registry.c
+<1> Building kal/src/kal_marshalling.c
+kal/src/kal_ssi.c: In function 'kal_read':
+kal/src/kal_ssi.c:77:57: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   77 |         return b->syscall ? b->syscall(KAL_NR_READ, fd, (long)buf, (long)n, 0,0,0)
+      |                                                         ^
+kal/src/kal_ssi.c: In function 'kal_write':
+kal/src/kal_ssi.c:90:58: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   90 |         return b->syscall ? b->syscall(KAL_NR_WRITE, fd, (long)buf, (long)n, 0,0,0)
+      |                                                          ^
+kal/src/kal_ssi.c: In function 'kal_sched_setaffinity':
+kal/src/kal_ssi.c:173:69: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  173 |     long r = b->syscall(KAL_NR_SCHED_SETAFF, pid, (long)cpusetsize, (long)mask, 0,0,0);
+      |                                                                     ^
+kal/src/kal_ssi.c: In function 'kal_ioctl':
+kal/src/kal_ssi.c:183:58: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  183 |     long r = b->syscall(KAL_NR_IOCTL, fd, (long)request, (long)arg, 0,0,0);
+      |                                                          ^
+kal/src/kal_ssi.c: In function 'kal_sendmsg':
+kal/src/kal_ssi.c:221:43: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  221 |     return b->syscall(KAL_NR_SENDMSG, fd, (long)msg, flags, 0,0,0);
+      |                                           ^
+kal/src/kal_ssi.c: In function 'kal_recvmsg':
+kal/src/kal_ssi.c:228:43: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  228 |     return b->syscall(KAL_NR_RECVMSG, fd, (long)msg, flags, 0,0,0);
+      |                                           ^
+kal/src/kal_ssi.c: In function 'kal_ipc_send':
+kal/src/kal_ssi.c:245:46: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  245 |         long r = b->syscall(KAL_NR_IPC_SEND, (long)ch, (long)data, (long)n, 0,0,0);
+      |                                              ^
+kal/src/kal_ssi.c:245:56: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  245 |         long r = b->syscall(KAL_NR_IPC_SEND, (long)ch, (long)data, (long)n, 0,0,0);
+      |                                                        ^
+<1> Building kal/src/kal_errno.c
+<2> Building kal/src/kal_dispatcher.c
+kal/src/kal_dispatcher.c: In function 'kal_dispatcher_syscall':
+kal/src/kal_dispatcher.c:97:47: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   97 |         kal_err_t e = kal_marshall_check_open((const char *)a0, (int)a1);
+      |                                               ^
+kal/src/kal_dispatcher.c:101:65: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  101 |                                             nr == KAL_NR_READ ? (void*)a1 : (void*)a1,
+      |                                                                 ^
+kal/src/kal_dispatcher.c:101:77: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  101 |                                             nr == KAL_NR_READ ? (void*)a1 : (void*)a1,
+      |                                                                             ^
+<0> Building kal/src/kal_capability.c
+-- Enter folder kal/adapters --
+<1> Building kal/adapters/kenux_adapter.c
+<3> Building kal/adapters/kal_builtins.c
+kal/adapters/kenux_adapter.c: In function 'ke_syscall':
+kal/adapters/kenux_adapter.c:44:38: warning: unused parameter 'a0' [-Wunused-parameter]
+   44 | static long ke_syscall(long nr, long a0, long a1, long a2,
+      |                                 ~~~~~^~
+kal/adapters/kenux_adapter.c:44:47: warning: unused parameter 'a1' [-Wunused-parameter]
+   44 | static long ke_syscall(long nr, long a0, long a1, long a2,
+      |                                          ~~~~~^~
+-- Enter folder img/boot --
+<2> Building img/boot/kernel.elf.pe
+<0> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<3> Generating esp/KENUXK.BIN
+DONE TASK run all IN 2.6s.
+Result:
+Started 3 tasks
+Entered 4 folders
+Built 10 files
+Generated 2 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

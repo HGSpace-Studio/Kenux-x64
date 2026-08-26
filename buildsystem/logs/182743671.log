@@ -1,0 +1,17 @@
+-- Start building task run all -- (182743671)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder img/boot --
+<1> Building img/boot/kernel.elf.pe
+<0> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<2> Generating esp/KENUXK.BIN
+DONE TASK run all IN 3.0s.
+Result:
+Started 3 tasks
+Entered 2 folders
+Built 1 files
+Generated 2 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

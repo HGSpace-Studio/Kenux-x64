@@ -1,0 +1,384 @@
+{
+  "command": [
+    "run",
+    "rebuild"
+  ],
+  "created_at": "2026-08-10T13:55:25+00:00",
+  "elapsed_seconds": 8.75,
+  "error": "",
+  "finished_at": "2026-08-10T13:55:34+00:00",
+  "id": "301642210",
+  "log": "buildsystem\\logs\\301642210.log",
+  "metrics": {
+    "built_files": 40,
+    "completed": 49,
+    "downloaded_files": 0,
+    "elapsed_seconds": 8.75,
+    "entered_folders": 4,
+    "errors": 1,
+    "executed_targets": 40,
+    "generated_files": 1,
+    "peak_parallel_workers": 4,
+    "ran_commands": 1,
+    "skipped_targets": 9,
+    "started_tasks": 4,
+    "timings": [
+      {
+        "kind": "assemble",
+        "seconds": 0.0013,
+        "status": "skipped",
+        "target": "assemble:kernel/arch/x86_64/interrupt.S",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 1.3776,
+        "status": "executed",
+        "target": "compile:kernel/systemd/util.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 1.5726,
+        "status": "executed",
+        "target": "compile:kernel/systemd/udev.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.6767,
+        "status": "executed",
+        "target": "compile:kernel/systemd/target.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 2.2303,
+        "status": "executed",
+        "target": "compile:kernel/systemd/timer.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.7095,
+        "status": "executed",
+        "target": "compile:kernel/systemd/systemctl.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.6171,
+        "status": "executed",
+        "target": "compile:kernel/systemd/swap.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3858,
+        "status": "executed",
+        "target": "compile:kernel/systemd/slice.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.7446,
+        "status": "executed",
+        "target": "compile:kernel/systemd/socket.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 2.0325,
+        "status": "executed",
+        "target": "compile:kernel/systemd/systemd.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3639,
+        "status": "executed",
+        "target": "compile:kernel/systemd/path.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3948,
+        "status": "executed",
+        "target": "compile:kernel/systemd/mount.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3845,
+        "status": "executed",
+        "target": "compile:kernel/systemd/journalctl.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5731,
+        "status": "executed",
+        "target": "compile:kernel/systemd/journal.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.366,
+        "status": "executed",
+        "target": "compile:kernel/systemd/fstab.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 1.5942,
+        "status": "executed",
+        "target": "compile:kernel/systemd/service.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0019,
+        "status": "skipped",
+        "target": "compile:kernel/lib/libc/vsprintf.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3744,
+        "status": "executed",
+        "target": "compile:kernel/systemd/device.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3505,
+        "status": "executed",
+        "target": "compile:kernel/systemd/automount.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0031,
+        "status": "skipped",
+        "target": "compile:kernel/lib/libc/string.c",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 5.2574,
+        "status": "executed",
+        "target": "bootloader",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0042,
+        "status": "skipped",
+        "target": "compile:kernel/lib/libc/stdio.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0022,
+        "status": "skipped",
+        "target": "compile:kernel/lib/libc/signal.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5682,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/unistd.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2437,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/setjmp.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5784,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/stdlib.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.7143,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/time.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2208,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/errno.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.7509,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/math.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5968,
+        "status": "executed",
+        "target": "compile:kernel/kernel/workqueue.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.553,
+        "status": "executed",
+        "target": "compile:kernel/kernel/wait.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0029,
+        "status": "skipped",
+        "target": "compile:boot:kernel/kernel/syscall.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4608,
+        "status": "executed",
+        "target": "compile:kernel/kernel/sysfs.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.963,
+        "status": "executed",
+        "target": "compile:kernel/kernel/unixsock.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5659,
+        "status": "executed",
+        "target": "compile:kernel/kernel/timer.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.7451,
+        "status": "executed",
+        "target": "compile:kernel/kernel/sync.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.6268,
+        "status": "executed",
+        "target": "compile:kernel/kernel/signal.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.7095,
+        "status": "executed",
+        "target": "compile:kernel/kernel/stacktrace.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0038,
+        "status": "skipped",
+        "target": "compile:kernel/kernel/printk.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4385,
+        "status": "executed",
+        "target": "compile:kernel/kernel/rcu.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.8258,
+        "status": "executed",
+        "target": "compile:kernel/kernel/shell_enhanced.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4073,
+        "status": "executed",
+        "target": "compile:kernel/kernel/kthread.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5934,
+        "status": "executed",
+        "target": "compile:kernel/kernel/process.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0031,
+        "status": "skipped",
+        "target": "compile:kernel/kernel/interrupt.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0025,
+        "status": "skipped",
+        "target": "compile:kernel/kernel/gdb_stub.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.454,
+        "status": "executed",
+        "target": "compile:boot:kernel/kernel/kernel.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.9927,
+        "status": "executed",
+        "target": "compile:kernel/kernel/module.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.397,
+        "status": "executed",
+        "target": "compile:kernel/kernel/fifo.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.6506,
+        "status": "executed",
+        "target": "compile:kernel/kernel/fs.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.9383,
+        "status": "executed",
+        "target": "compile:kernel/kernel/ipc.c",
+        "worker": 3
+      }
+    ],
+    "total": 233,
+    "worker_busy_seconds": 34.0002612000244
+  },
+  "started_at": "2026-08-10T13:55:25+00:00",
+  "status": "failed",
+  "task": "run rebuild",
+  "total_targets": 233
+}

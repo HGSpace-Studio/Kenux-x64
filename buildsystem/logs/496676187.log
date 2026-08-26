@@ -1,0 +1,10 @@
+-- Start building task run run-debug -- (496676187)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/smp.c
+kernel/arch/x86_64/smp.c: In function 'smp_send_init':
+kernel/arch/x86_64/smp.c:135:5: error: implicit declaration of function 'ap_wait' [-Wimplicit-function-declaration]
+  135 |     ap_wait(10000);  /* 10 ms = 10,000 us */
+      |     ^~~~~~~
+FAILED TASK run run-debug: 

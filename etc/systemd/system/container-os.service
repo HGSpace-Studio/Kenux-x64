@@ -1,0 +1,16 @@
+[Unit]
+Description=Container OS Service
+Documentation=man:container-os(1)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/apps/container-os/container-os
+WorkingDirectory=/apps/container-os
+Restart=always
+RestartSec=5
+StartLimitInterval=10
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

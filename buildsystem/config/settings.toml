@@ -1,0 +1,7 @@
+{
+  "build": {
+    "worker_threads": 4,
+    "max_processes": 4,
+    "download_retries": 3
+  }
+}

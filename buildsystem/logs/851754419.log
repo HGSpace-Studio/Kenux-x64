@@ -1,0 +1,1243 @@
+-- Start building task run all -- (851754419)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/interrupt.S
+-- Enter folder kernel/systemd --
+<0> Building kernel/systemd/timer.c
+<3> Building kernel/systemd/udev.c
+<2> Building kernel/systemd/util.c
+kernel/systemd/timer.c: In function 'timer_read_persist':
+kernel/systemd/timer.c:131:44: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  131 |                     timer->accuracy_usec = accuracy_usec;
+      |                                            ^~~~~~~~~~~~~
+kernel/systemd/udev.c: In function 'parse_udev_rule':
+kernel/systemd/udev.c:127:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  127 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:128:68: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  128 |             if (len > 12) strncpy(rule->subsystem, token + 11, len - 13);
+      |                                                                ~~~~^~~~
+kernel/systemd/udev.c:130:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  130 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:131:68: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  131 |             if (len > 13) strncpy(rule->subsystem, token + 12, len - 14);
+      |                                                                ~~~~^~~~
+kernel/systemd/udev.c:133:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  133 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:134:65: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  134 |             if (len > 13) strncpy(rule->vendor, token + 12, len - 14);
+      |                                                             ~~~~^~~~
+kernel/systemd/udev.c:136:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  136 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:137:65: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  137 |             if (len > 13) strncpy(rule->device, token + 12, len - 14);
+      |                                                             ~~~~^~~~
+kernel/systemd/udev.c:139:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  139 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:140:63: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  140 |             if (len > 9) strncpy(rule->action, token + 8, len - 10);
+      |                                                           ~~~~^~~~
+kernel/systemd/udev.c:142:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  142 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:143:64: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  143 |             if (len > 6) strncpy(rule->program, token + 5, len - 7);
+      |                                                            ~~~~^~~
+kernel/systemd/udev.c:145:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  145 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/timer.c: In function 'timer_calculate_calendar_next':
+kernel/systemd/udev.c:146:61: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+kernel/systemd/timer.c:419:22: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+  146 |             if (len > 6) strncpy(rule->name, token + 5, len - 7);
+  419 |     time_t current = now;
+      |                                                         ~~~~^~~
+      |                      ^~~
+kernel/systemd/udev.c:148:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  148 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:149:66: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  149 |             if (len > 11) strncpy(rule->symlink, token + 10, len - 12);
+kernel/systemd/timer.c:420:16: warning: conversion from 'time_t' {aka 'long long int'} to 'int' may change value [-Wconversion]
+      |                                                              ~~~~^~~~
+  420 |     int year = 1970 + current / (365 * 24 * 3600);
+kernel/systemd/udev.c:151:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+      |                ^~~~
+  151 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:152:64: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  152 |             if (len > 10) strncpy(rule->driver, token + 9, len - 11);
+      |                                                            ~~~~^~~~
+kernel/systemd/udev.c:154:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+kernel/systemd/timer.c:421:21: warning: conversion from 'time_t' {aka 'long long int'} to 'int' may change value [-Wconversion]
+  154 |             int len = strlen(token);
+  421 |     int remaining = current % (365 * 24 * 3600);
+      |                     ^~~~~~~
+      |                       ^~~~~~
+kernel/systemd/udev.c:155:62: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  155 |             if (len > 8) strncpy(rule->group, token + 7, len - 9);
+      |                                                          ~~~~^~~
+kernel/systemd/udev.c:157:23: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  157 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/timer.c:485:59: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  485 |                                 timer->next_elapse_time = seconds;
+      |                                                           ^~~~~~~
+kernel/systemd/timer.c:498:43: warning: conversion to 'long long unsigned int' from 'time_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+  498 |         timer->next_elapse_time = current + timer->interval_sec;
+      |                                           ^
+kernel/systemd/timer.c: In function 'timer_calculate_next_elapse':
+kernel/systemd/timer.c:510:9: warning: the comparison will always evaluate as 'true' for the address of 'calendar' will never be NULL [-Waddress]
+  510 |     if (timer->calendar && strlen(timer->calendar) > 0) {
+      |         ^~~~~
+In file included from kernel/systemd/timer.c:1:
+kernel/systemd/include/systemd.h:407:10: note: 'calendar' declared here
+  407 |     char calendar[SYSTEMD_MAX_PATH_LEN];
+      |          ^~~~~~~~
+kernel/systemd/timer.c:529:40: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  529 |         uint64_t rand_offset = (rand() % timer->accuracy_usec) / 1000000;
+      |                                        ^
+kernel/systemd/timer.c: In function 'timer_trigger':
+kernel/systemd/timer.c:551:9: warning: the comparison will always evaluate as 'true' for the address of 'unit' will never be NULL [-Waddress]
+  551 |     if (timer->unit) {
+      |         ^~~~~
+kernel/systemd/include/systemd.h:409:10: note: 'unit' declared here
+  409 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/timer.c: In function 'timer_load':
+kernel/systemd/timer.c:628:43: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  628 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:630:43: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  630 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:632:43: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  632 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:634:43: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  634 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:636:43: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  636 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c: In function 'timer_start':
+kernel/systemd/timer.c:695:19: warning: ISO C forbids passing argument 1 of 'thread_create' between function pointer and 'void *' [-Wpedantic]
+  695 |     thread_create(timer_monitor_thread, timer);
+      |                   ^~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:727:32: note: expected 'void *' but argument is of type 'void (*)(void *)'
+  727 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/timer.c: In function 'timer_find_next_activation':
+kernel/systemd/timer.c:746:9: warning: the comparison will always evaluate as 'true' for the address of 'calendar' will never be NULL [-Waddress]
+  746 |     if (timer->calendar && strlen(timer->calendar) > 0) {
+      |         ^~~~~
+kernel/systemd/include/systemd.h:407:10: note: 'calendar' declared here
+  407 |     char calendar[SYSTEMD_MAX_PATH_LEN];
+      |          ^~~~~~~~
+kernel/systemd/udev.c: In function 'udev_create_device_node':
+kernel/systemd/udev.c:205:47: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  205 |     vfs_mknod(devpath, FS_TYPE_CHARDEV, device->major, device->minor);
+      |                                         ~~~~~~^~~~~~~
+kernel/systemd/udev.c:205:62: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  205 |     vfs_mknod(devpath, FS_TYPE_CHARDEV, device->major, device->minor);
+      |                                                        ~~~~~~^~~~~~~
+kernel/systemd/udev.c: In function 'pci_class_to_subsystem':
+kernel/systemd/udev.c:283:66: warning: unused parameter 'subclass' [-Wunused-parameter]
+  283 | static const char* pci_class_to_subsystem(uint8_t class, uint8_t subclass)
+      |                                                          ~~~~~~~~^~~~~~~~
+kernel/systemd/udev.c: In function 'udev_scan_pci_devices':
+kernel/systemd/udev.c:327:64: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  327 |                 uint32_t vendor_device = pci_read_config_dword(bus, slot, func, 0);
+      |                                                                ^~~
+kernel/systemd/udev.c:327:69: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  327 |                 uint32_t vendor_device = pci_read_config_dword(bus, slot, func, 0);
+      |                                                                     ^~~~
+kernel/systemd/udev.c:327:75: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  327 |                 uint32_t vendor_device = pci_read_config_dword(bus, slot, func, 0);
+      |                                                                           ^~~~
+kernel/systemd/udev.c:332:38: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  332 |                 uint16_t device_id = (vendor_device >> 16) & 0xFFFF;
+      |                                      ^
+kernel/systemd/udev.c:336:60: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  336 |                 uint32_t class_rev = pci_read_config_dword(bus, slot, func, 8);
+      |                                                            ^~~
+kernel/systemd/udev.c:336:65: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  336 |                 uint32_t class_rev = pci_read_config_dword(bus, slot, func, 8);
+      |                                                                 ^~~~
+kernel/systemd/udev.c:336:71: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  336 |                 uint32_t class_rev = pci_read_config_dword(bus, slot, func, 8);
+      |                                                                       ^~~~
+kernel/systemd/udev.c:337:33: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  337 |                 uint8_t class = (class_rev >> 24) & 0xFF;
+      |                                 ^
+kernel/systemd/timer.c: At top level:
+kernel/systemd/timer.c:742:5: warning: 'timer_find_next_activation' defined but not used [-Wunused-function]
+  742 | int timer_find_next_activation(timer_t* timer, uint64_t now)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/udev.c: At top level:
+kernel/systemd/udev.c:109:20: warning: 'udev_subsystems' defined but not used [-Wunused-variable]
+  109 | static const char* udev_subsystems[UDEV_MAX_SUBSYSTEMS] = {
+      |                    ^~~~~~~~~~~~~~~
+kernel/systemd/util.c: In function 'fs_read_file_content':
+kernel/systemd/util.c:16:48: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   16 |     int bytes_read = vfs_read(fd, buffer, size - 1);
+      |                                           ~~~~~^~~
+kernel/systemd/util.c: In function 'fs_list_dir':
+kernel/systemd/util.c:43:19: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+   43 |         int len = strlen(name);
+      |                   ^~~~~~
+kernel/systemd/util.c: In function 'parse_ini_section':
+kernel/systemd/util.c:82:15: warning: conversion from 'long long int' to 'int' may change value [-Wconversion]
+   82 |     int len = end - line - 1;
+      |               ^~~
+kernel/systemd/util.c:86:32: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   86 |     strncpy(section, line + 1, len);
+      |                                ^~~
+kernel/systemd/util.c: In function 'parse_ini_keyvalue':
+kernel/systemd/util.c:100:19: warning: conversion from 'long long int' to 'int' may change value [-Wconversion]
+  100 |     int key_len = eq - line;
+      |                   ^~
+kernel/systemd/util.c:104:24: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  104 |     strncpy(key, line, key_len);
+      |                        ^~~~~~~
+kernel/systemd/util.c:109:21: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  109 |     int value_len = strlen(value_start);
+      |                     ^~~~~~
+kernel/systemd/util.c:112:33: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  112 |     strncpy(value, value_start, value_len);
+      |                                 ^~~~~~~~~
+<2> Building kernel/systemd/target.c
+<3> Building kernel/systemd/systemd.c
+In file included from kernel/systemd/systemd.c:6:
+kernel/kernel/cgroup.h:20:9: warning: 'MEM_LIMIT_MAX' redefined
+   20 | #define MEM_LIMIT_MAX           ((uint64_t)(-1))
+      |         ^~~~~~~~~~~~~
+In file included from kernel/systemd/systemd.c:1:
+kernel/systemd/include/systemd.h:725:9: note: this is the location of the previous definition
+  725 | #define MEM_LIMIT_MAX ((uint64_t)-1)
+      |         ^~~~~~~~~~~~~
+kernel/systemd/systemd.c: In function 'systemd_topological_sort':
+kernel/systemd/systemd.c:598:41: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+  598 |     int* in_degree = (int*)malloc(count * sizeof(int));
+      |                                         ^
+kernel/systemd/systemd.c:601:32: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+  601 |     memset(in_degree, 0, count * sizeof(int));
+      |                                ^
+kernel/systemd/systemd.c:615:37: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+  615 |     int* queue = (int*)malloc(count * sizeof(int));
+      |                                     ^
+kernel/systemd/systemd.c: In function 'systemd_list_services':
+kernel/systemd/systemd.c:986:9: warning: enumeration value 'UNIT_STATE_CONFIRMED' not handled in switch [-Wswitch]
+  986 |         switch (service->base.state) {
+      |         ^~~~~~
+kernel/systemd/systemd.c:986:9: warning: enumeration value 'UNIT_STATE_AWAITING' not handled in switch [-Wswitch]
+kernel/systemd/systemd.c:1000:19: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+ 1000 |         int len = strlen(line);
+      |                   ^~~~~~
+kernel/systemd/systemd.c: In function 'systemd_get_service_status':
+kernel/systemd/systemd.c:1017:5: warning: enumeration value 'UNIT_STATE_CONFIRMED' not handled in switch [-Wswitch]
+ 1017 |     switch (service->base.state) {
+      |     ^~~~~~
+kernel/systemd/systemd.c:1017:5: warning: enumeration value 'UNIT_STATE_AWAITING' not handled in switch [-Wswitch]
+kernel/systemd/systemd.c: In function 'systemd_list_units':
+kernel/systemd/systemd.c:1207:19: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+ 1207 |         int len = strlen(line);
+      |                   ^~~~~~
+kernel/systemd/systemd.c: In function 'systemd_list_units_by_type':
+kernel/systemd/systemd.c:1245:19: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+ 1245 |         int len = strlen(line);
+      |                   ^~~~~~
+kernel/systemd/systemd.c: At top level:
+kernel/systemd/systemd.c:527:13: warning: 'systemd_detect_cycle' defined but not used [-Wunused-function]
+  527 | static bool systemd_detect_cycle(unit_t* unit, unit_t** visited, int visited_count)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/systemd/systemd.c:110:16: warning: 'find_swap' defined but not used [-Wunused-function]
+  110 | static swap_t* find_swap(const char* name)
+      |                ^~~~~~~~~
+kernel/systemd/systemd.c:100:24: warning: 'find_path' defined but not used [-Wunused-function]
+  100 | static systemd_path_t* find_path(const char* name)
+      |                        ^~~~~~~~~
+kernel/systemd/systemd.c:90:21: warning: 'find_automount' defined but not used [-Wunused-function]
+   90 | static automount_t* find_automount(const char* name)
+      |                     ^~~~~~~~~~~~~~
+kernel/systemd/systemd.c:80:18: warning: 'find_device' defined but not used [-Wunused-function]
+   80 | static device_t* find_device(const char* name)
+      |                  ^~~~~~~~~~~
+kernel/systemd/systemd.c:70:17: warning: 'find_slice' defined but not used [-Wunused-function]
+   70 | static slice_t* find_slice(const char* name)
+      |                 ^~~~~~~~~~
+kernel/systemd/systemd.c:60:17: warning: 'find_mount' defined but not used [-Wunused-function]
+   60 | static mount_t* find_mount(const char* name)
+      |                 ^~~~~~~~~~
+kernel/systemd/systemd.c:50:17: warning: 'find_timer' defined but not used [-Wunused-function]
+   50 | static timer_t* find_timer(const char* name)
+      |                 ^~~~~~~~~~
+kernel/systemd/systemd.c:40:26: warning: 'find_socket' defined but not used [-Wunused-function]
+   40 | static systemd_socket_t* find_socket(const char* name)
+      |                          ^~~~~~~~~~~
+<1> Building kernel/systemd/systemctl.c
+<0> Building kernel/systemd/socket.c
+kernel/systemd/systemctl.c: In function 'systemctl_list_units':
+kernel/systemd/systemctl.c:73:21: warning: variable 'sub_state' set but not used [-Wunused-but-set-variable=]
+   73 |         const char* sub_state = "-";
+      |                     ^~~~~~~~~
+<2> Building kernel/systemd/service.c
+kernel/systemd/socket.c: In function 'parse_socket_config':
+kernel/systemd/socket.c:63:32: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   63 |                 socket->port = atoi(value);
+      |                                ^~~~
+kernel/systemd/socket.c: In function 'socket_accept_thread':
+kernel/systemd/socket.c:107:14: warning: declaration of 'msg' shadows a previous local [-Wshadow]
+  107 |         char msg[256];
+      |              ^~~
+kernel/systemd/socket.c:96:10: note: shadowed declaration is here
+   96 |     char msg[256];
+      |          ^~~
+kernel/systemd/socket.c: In function 'socket_start':
+kernel/systemd/socket.c:173:44: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  173 |     socket->unix_sock = unix_socket_create(unix_type);
+      |                                            ^~~~~~~~~
+kernel/systemd/socket.c:223:50: warning: ISO C forbids passing argument 1 of 'thread_create' between function pointer and 'void *' [-Wpedantic]
+  223 |         socket->accept_thread_id = thread_create(socket_accept_thread, socket);
+      |                                                  ^~~~~~~~~~~~~~~~~~~~
+In file included from kernel/systemd/socket.c:1:
+kernel/systemd/include/systemd.h:727:32: note: expected 'void *' but argument is of type 'void (*)(void *)'
+  727 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/socket.c:225:18: warning: declaration of 'msg' shadows a previous local [-Wshadow]
+  225 |             char msg[256];
+      |                  ^~~
+kernel/systemd/socket.c:219:14: note: shadowed declaration is here
+  219 |         char msg[256];
+      |              ^~~
+In file included from kernel/systemd/service.c:8:
+kernel/kernel/cgroup.h:20:9: warning: 'MEM_LIMIT_MAX' redefined
+   20 | #define MEM_LIMIT_MAX           ((uint64_t)(-1))
+      |         ^~~~~~~~~~~~~
+In file included from kernel/systemd/service.c:1:
+kernel/systemd/include/systemd.h:725:9: note: this is the location of the previous definition
+  725 | #define MEM_LIMIT_MAX ((uint64_t)-1)
+      |         ^~~~~~~~~~~~~
+kernel/systemd/service.c: In function 'strtoul':
+kernel/systemd/service.c:34:25: warning: conversion to 'long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:34:32: warning: conversion to 'long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: In function 'strtoull':
+kernel/systemd/service.c:64:25: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:64:32: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: In function 'parse_env_vars':
+kernel/systemd/service.c:138:15: warning: conversion from 'long long int' to 'int' may change value [-Wconversion]
+  138 |     int len = eq - line;
+      |               ^~
+kernel/systemd/service.c:143:58: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  143 |     strncpy(service->env[service->env_count].name, line, len);
+      |                                                          ^~~
+kernel/systemd/service.c: In function 'parse_install_section':
+kernel/systemd/service.c:217:70: warning: unused parameter 'value' [-Wunused-parameter]
+  217 | int parse_install_section(unit_t* unit, const char* key, const char* value)
+      |                                                          ~~~~~~~~~~~~^~~~~
+kernel/systemd/service.c: In function 'parse_service_section':
+kernel/systemd/service.c:244:24: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  244 |         service->uid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:247:24: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  247 |         service->gid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:251:32: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  251 |         service->restart_sec = atoi(value);
+      |                                ^~~~
+kernel/systemd/service.c:253:41: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  253 |         service->start_limit_interval = atoi(value);
+      |                                         ^~~~
+kernel/systemd/service.c:255:38: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  255 |         service->start_limit_burst = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:284:38: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  284 |         service->timeout_start_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:286:37: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  286 |         service->timeout_stop_sec = atoi(value);
+      |                                     ^~~~
+kernel/systemd/service.c:288:38: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  288 |         service->timeout_abort_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:306:31: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  306 |         service->cpu_shares = atoi(value);
+      |                               ^~~~
+kernel/systemd/service.c: In function 'service_build_envp':
+kernel/systemd/service.c:376:50: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+  376 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                                  ^
+kernel/systemd/service.c: In function 'service_create_dynamic_user':
+kernel/systemd/service.c:452:20: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  452 |     service->uid = 1000 + systemd.service_count;
+      |                    ^~~~
+kernel/systemd/service.c: In function 'service_setup_watchdog':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:536:35: note: in expansion of macro 'time_get_timestamp'
+  536 |     service->watchdog_last_ping = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: In function 'service_monitor_watchdog':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:550:43: note: in expansion of macro 'time_get_timestamp'
+  550 |             service->watchdog_last_ping = time_get_timestamp();
+      |                                           ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: In function 'service_check_start_limit':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:560:18: note: in expansion of macro 'time_get_timestamp'
+  560 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:563:44: warning: comparison of integer expressions of different signedness: 'time_t' {aka 'long long int'} and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  563 |         if (now - service->last_start_time < service->start_limit_interval) {
+      |                                            ^
+kernel/systemd/service.c: In function 'service_run_command':
+kernel/systemd/service.c:580:58: warning: unused parameter 'working_dir' [-Wunused-parameter]
+  580 | int service_run_command(exec_command_t* cmd, const char* working_dir)
+      |                                              ~~~~~~~~~~~~^~~~~~~~~~~
+kernel/systemd/service.c: In function 'service_start':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:730:32: note: in expansion of macro 'time_get_timestamp'
+  730 |     service->last_start_time = time_get_timestamp();
+      |                                ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:782:33: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  782 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:797:31: warning: ISO C forbids passing argument 1 of 'thread_create' between function pointer and 'void *' [-Wpedantic]
+  797 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:727:32: note: expected 'void *' but argument is of type 'void (*)(void *)'
+  727 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:810:39: note: in expansion of macro 'time_get_timestamp'
+  810 |             service->last_exit_time = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:841:33: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  841 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:852:31: warning: ISO C forbids passing argument 1 of 'thread_create' between function pointer and 'void *' [-Wpedantic]
+  852 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:727:32: note: expected 'void *' but argument is of type 'void (*)(void *)'
+  727 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:898:33: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  898 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:913:31: warning: ISO C forbids passing argument 1 of 'thread_create' between function pointer and 'void *' [-Wpedantic]
+  913 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:727:32: note: expected 'void *' but argument is of type 'void (*)(void *)'
+  727 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:932:33: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  932 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:947:31: warning: ISO C forbids passing argument 1 of 'thread_create' between function pointer and 'void *' [-Wpedantic]
+  947 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:727:32: note: expected 'void *' but argument is of type 'void (*)(void *)'
+  727 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:965:39: note: in expansion of macro 'time_get_timestamp'
+  965 |         service->watchdog_last_ping = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: In function 'service_stop':
+kernel/systemd/service.c:1009:57: warning: comparison of integer expressions of different signedness: 'int' and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+ 1009 |         if (service->main_pid != 0 && service->main_pid != service->pid) {
+      |                                                         ^~
+kernel/systemd/service.c:1010:33: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+ 1010 |             process_kill(service->main_pid, service->kill_signal);
+      |                          ~~~~~~~^~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1054:31: note: in expansion of macro 'time_get_timestamp'
+ 1054 |     service->last_exit_time = time_get_timestamp();
+      |                               ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: In function 'service_check_watchdog':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1132:18: note: in expansion of macro 'time_get_timestamp'
+ 1132 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1133:27: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'time_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+ 1133 |     uint64_t elapsed_ms = (now - service->watchdog_last_ping) * 1000;
+      |                           ^
+kernel/systemd/service.c: In function 'service_monitor':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1154:35: note: in expansion of macro 'time_get_timestamp'
+ 1154 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1171:35: note: in expansion of macro 'time_get_timestamp'
+ 1171 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+<1> Building kernel/systemd/path.c
+<0> Building kernel/systemd/mount.c
+In function 'parse_service_section',
+    inlined from 'service_load' at kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:310:13: warning: 'end' may be used uninitialized [-Wmaybe-uninitialized]
+  310 |         if (*end == 'M') service->memory_limit *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: In function 'service_load':
+kernel/systemd/service.c:308:15: note: 'end' was declared here
+  308 |         char* end;
+      |               ^~~
+In function 'parse_service_section',
+    inlined from 'service_load' at kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:315:13: warning: 'end' may be used uninitialized [-Wmaybe-uninitialized]
+  315 |         if (*end == 'M') service->memory_max *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: In function 'service_load':
+kernel/systemd/service.c:313:15: note: 'end' was declared here
+  313 |         char* end;
+      |               ^~~
+In function 'parse_service_section',
+    inlined from 'service_load' at kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:320:13: warning: 'end' may be used uninitialized [-Wmaybe-uninitialized]
+  320 |         if (*end == 'M') service->memory_high *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: In function 'service_load':
+kernel/systemd/service.c:318:15: note: 'end' was declared here
+  318 |         char* end;
+      |               ^~~
+In function 'parse_service_section',
+    inlined from 'service_load' at kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:325:13: warning: 'end' may be used uninitialized [-Wmaybe-uninitialized]
+  325 |         if (*end == 'M') service->memory_low *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: In function 'service_load':
+kernel/systemd/service.c:323:15: note: 'end' was declared here
+  323 |         char* end;
+      |               ^~~
+kernel/systemd/mount.c: In function 'parse_mount_config':
+kernel/systemd/mount.c:66:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   66 |                 mount->dump_freq = atoi(value);
+      |                                    ^~~~
+kernel/systemd/mount.c:68:35: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   68 |                 mount->pass_num = atoi(value);
+      |                                   ^~~~
+<1> Building kernel/systemd/journalctl.c
+kernel/systemd/journalctl.c: In function 'journalctl_print_entry':
+kernel/systemd/journalctl.c:53:52: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   53 |     const char* prio_str = priority_to_string(entry->priority);
+      |                                               ~~~~~^~~~~~~~~~
+kernel/systemd/journalctl.c: In function 'journalctl_main':
+kernel/systemd/journalctl.c:104:31: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  104 |                 query.since = parse_time(argv[++i]);
+      |                               ^~~~~~~~~~
+kernel/systemd/journalctl.c:108:31: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  108 |                 query.until = parse_time(argv[++i]);
+      |                               ^~~~~~~~~~
+kernel/systemd/journalctl.c:151:42: warning: comparison of integer expressions of different signedness: 'time_t' {aka 'long long int'} and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  151 |                 if (entries[i].timestamp > last_timestamp) {
+      |                                          ^
+kernel/systemd/journalctl.c:152:38: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'time_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+  152 |                     last_timestamp = entries[i].timestamp;
+      |                                      ^~~~~~~
+<0> Building kernel/systemd/journal.c
+<1> Building kernel/systemd/fstab.c
+kernel/systemd/journal.c: In function 'journal_crc32':
+kernel/systemd/journal.c:99:24: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+   99 |     return crc32(data, len);
+      |                        ^~~
+kernel/systemd/journal.c: In function 'journal_update_header':
+kernel/systemd/journal.c:148:24: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+  148 |         .entry_count = journal_index.count,
+      |                        ^~~~~~~~~~~~~
+kernel/systemd/journal.c: In function 'journal_write_binary':
+kernel/systemd/journal.c:191:33: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  191 |             journal_file_size = vfs_lseek(journal_fd, 0, SEEK_END);
+      |                                 ^~~~~~~~~
+kernel/systemd/journal.c:201:25: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  201 |     uint32_t unit_len = strlen(entry->unit);
+      |                         ^~~~~~
+kernel/systemd/journal.c:202:24: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  202 |     uint32_t msg_len = strlen(entry->message);
+      |                        ^~~~~~
+kernel/systemd/journal.c:203:25: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  203 |     uint32_t comm_len = strlen(entry->comm);
+      |                         ^~~~~~
+kernel/systemd/journal.c:215:23: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'time_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+  215 |     *(uint64_t*)ptr = entry->timestamp; ptr += sizeof(uint64_t);
+      |                       ^~~~~
+kernel/systemd/journal.c:225:27: warning: conversion to 'int64_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+  225 |     vfs_lseek(journal_fd, offset, SEEK_SET);
+      |                           ^~~~~~
+kernel/systemd/journal.c:232:64: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'time_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+  232 |         journal_index.entries[journal_index.count].timestamp = entry->timestamp;
+      |                                                                ^~~~~
+kernel/systemd/journal.c:236:40: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'time_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+  236 |         journal_index.last_timestamp = entry->timestamp;
+      |                                        ^~~~~
+kernel/systemd/journal.c: In function 'journal_read_binary':
+kernel/systemd/journal.c:254:27: warning: conversion to 'int64_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+  254 |     vfs_lseek(journal_fd, offset, SEEK_SET);
+      |                           ^~~~~~
+In file included from kernel/systemd/journal.c:1:
+kernel/systemd/journal.c: In function 'journal_log':
+kernel/systemd/include/systemd.h:9:30: warning: conversion to 'time_t' {aka 'long long int'} from 'uint64_t' {aka 'long long unsigned int'} may change the sign of the result [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/journal.c:279:23: note: in expansion of macro 'time_get_timestamp'
+  279 |     entry.timestamp = time_get_timestamp();
+      |                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/journal.c:280:22: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  280 |     entry.priority = priority;
+      |                      ^~~~~~~~
+kernel/systemd/journal.c: In function 'journal_query':
+kernel/systemd/journal.c:366:57: warning: comparison of integer expressions of different signedness: 'uint32_t' {aka 'unsigned int'} and 'int' [-Wsign-compare]
+  366 |         if (query->priority >= 0 && idx_entry->priority > query->priority) {
+      |                                                         ^
+kernel/systemd/journal.c:370:13: warning: the comparison will always evaluate as 'true' for the address of 'unit' will never be NULL [-Waddress]
+  370 |         if (query->unit && strlen(query->unit) > 0) {
+      |             ^~~~~
+kernel/systemd/include/systemd.h:551:10: note: 'unit' declared here
+  551 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/journal.c: In function 'journal_count':
+kernel/systemd/journal.c:410:57: warning: comparison of integer expressions of different signedness: 'uint32_t' {aka 'unsigned int'} and 'int' [-Wsign-compare]
+  410 |         if (query->priority >= 0 && idx_entry->priority > query->priority) {
+      |                                                         ^
+kernel/systemd/journal.c:414:13: warning: the comparison will always evaluate as 'true' for the address of 'unit' will never be NULL [-Waddress]
+  414 |         if (query->unit && strlen(query->unit) > 0) {
+      |             ^~~~~
+kernel/systemd/include/systemd.h:551:10: note: 'unit' declared here
+  551 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/journal.c: At top level:
+kernel/systemd/journal.c:88:13: warning: 'journal_current_file' defined but not used [-Wunused-variable]
+   88 | static char journal_current_file[SYSTEMD_MAX_PATH_LEN];
+      |             ^~~~~~~~~~~~~~~~~~~~
+<3> Building kernel/systemd/device.c
+kernel/systemd/fstab.c: In function 'parse_fstab_line':
+kernel/systemd/fstab.c:39:24: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   39 |     entry->dump_freq = atoi(token);
+      |                        ^~~~
+kernel/systemd/fstab.c:43:23: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   43 |     entry->pass_num = atoi(token);
+      |                       ^~~~
+<2> Building kernel/systemd/automount.c
+-- Enter folder kernel/lib/libc --
+<1> Building kernel/lib/libc/stdlib.c
+kernel/systemd/automount.c:7:25: warning: 'parse_automount_type' defined but not used [-Wunused-function]
+    7 | static automount_type_t parse_automount_type(const char* type)
+      |                         ^~~~~~~~~~~~~~~~~~~~
+In file included from kernel/lib/libc/stdlib.c:3:
+include/kapi_syscall.h: In function 'sys_read':
+include/kapi_syscall.h:494:38: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                      ^
+include/kapi_syscall.h:494:49: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                                 ^~~~~
+include/kapi_syscall.h: In function 'sys_write':
+include/kapi_syscall.h:497:39: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                       ^
+include/kapi_syscall.h:497:50: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                                  ^~~~~
+include/kapi_syscall.h: In function 'sys_open':
+include/kapi_syscall.h:500:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  500 | { return kapi_syscall3(SYS_open, (long)pathname, flags, mode); }
+      |                                  ^
+include/kapi_syscall.h: In function 'sys_mmap':
+include/kapi_syscall.h:509:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                  ^
+include/kapi_syscall.h:509:46: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                              ^~~~~~
+include/kapi_syscall.h: In function 'sys_munmap':
+include/kapi_syscall.h:512:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                    ^
+include/kapi_syscall.h:512:48: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                                ^~~~~~
+include/kapi_syscall.h: In function 'sys_mprotect':
+include/kapi_syscall.h:515:38: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                      ^
+include/kapi_syscall.h:515:50: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                                  ^~~
+include/kapi_syscall.h: In function 'sys_brk':
+include/kapi_syscall.h:518:33: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  518 | { return kapi_syscall1(SYS_brk, (long)addr); }
+      |                                 ^
+include/kapi_syscall.h: In function 'sys_clone':
+include/kapi_syscall.h:527:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                          ^
+include/kapi_syscall.h:527:55: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                       ^
+include/kapi_syscall.h:527:67: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                   ^
+include/kapi_syscall.h:527:35: warning: conversion to 'long int' from 'long unsigned int' may change the sign of the result [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                   ^~~~~
+include/kapi_syscall.h:527:79: warning: conversion to 'long int' from 'long unsigned int' may change the sign of the result [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                               ^~~
+include/kapi_syscall.h: In function 'sys_execve':
+include/kapi_syscall.h:530:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                    ^
+include/kapi_syscall.h:530:52: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                    ^
+include/kapi_syscall.h:530:64: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                                ^
+include/kapi_syscall.h: In function 'sys_wait4':
+include/kapi_syscall.h:539:40: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                        ^
+include/kapi_syscall.h:539:64: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                                                ^
+include/kapi_syscall.h: In function 'sys_stat':
+include/kapi_syscall.h:554:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                  ^
+include/kapi_syscall.h:554:50: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                                  ^
+include/kapi_syscall.h: In function 'sys_fstat':
+include/kapi_syscall.h:557:39: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  557 | { return kapi_syscall2(SYS_fstat, fd, (long)statbuf); }
+      |                                       ^
+include/kapi_syscall.h: In function 'sys_lstat':
+include/kapi_syscall.h:560:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                   ^
+include/kapi_syscall.h:560:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                                   ^
+include/kapi_syscall.h: In function 'sys_access':
+include/kapi_syscall.h:563:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  563 | { return kapi_syscall2(SYS_access, (long)pathname, mode); }
+      |                                    ^
+include/kapi_syscall.h: In function 'sys_chdir':
+include/kapi_syscall.h:566:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  566 | { return kapi_syscall1(SYS_chdir, (long)path); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_getcwd':
+include/kapi_syscall.h:569:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                    ^
+include/kapi_syscall.h:569:47: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                               ^~~~
+include/kapi_syscall.h: In function 'sys_mkdir':
+include/kapi_syscall.h:572:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  572 | { return kapi_syscall2(SYS_mkdir, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_rmdir':
+include/kapi_syscall.h:575:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  575 | { return kapi_syscall1(SYS_rmdir, (long)pathname); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_unlink':
+include/kapi_syscall.h:578:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  578 | { return kapi_syscall1(SYS_unlink, (long)pathname); }
+      |                                    ^
+include/kapi_syscall.h: In function 'sys_rename':
+include/kapi_syscall.h:581:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                    ^
+include/kapi_syscall.h:581:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                                   ^
+include/kapi_syscall.h: In function 'sys_creat':
+include/kapi_syscall.h:584:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  584 | { return kapi_syscall2(SYS_creat, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_link':
+include/kapi_syscall.h:587:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                  ^
+include/kapi_syscall.h:587:49: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                                 ^
+include/kapi_syscall.h: In function 'sys_symlink':
+include/kapi_syscall.h:590:37: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                     ^
+include/kapi_syscall.h:590:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                                   ^
+include/kapi_syscall.h: In function 'sys_readlink':
+include/kapi_syscall.h:593:38: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                      ^
+include/kapi_syscall.h:593:54: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                      ^
+include/kapi_syscall.h:593:65: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                                 ^~~~~~
+include/kapi_syscall.h: In function 'sys_chmod':
+include/kapi_syscall.h:596:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  596 | { return kapi_syscall2(SYS_chmod, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_chown':
+-- Enter folder kernel/kernel --
+include/kapi_syscall.h:599:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+<3> Building kernel/kernel/timer.c
+  599 | { return kapi_syscall3(SYS_chown, (long)pathname, owner, group); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_truncate':
+include/kapi_syscall.h:602:38: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  602 | { return kapi_syscall2(SYS_truncate, (long)path, length); }
+      |                                      ^
+include/kapi_syscall.h: In function 'sys_pipe':
+include/kapi_syscall.h:626:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  626 | { return kapi_syscall1(SYS_pipe, (long)pipefd); }
+      |                                  ^
+include/kapi_syscall.h: In function 'sys_pipe2':
+include/kapi_syscall.h:629:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  629 | { return kapi_syscall2(SYS_pipe2, (long)pipefd, flags); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_mount':
+include/kapi_syscall.h:634:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                   ^
+include/kapi_syscall.h:634:49: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                 ^
+include/kapi_syscall.h:634:63: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+<0> Building kernel/kernel/sysfs.c
+      |                                                               ^
+include/kapi_syscall.h:634:97: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                                 ^
+include/kapi_syscall.h:634:85: warning: conversion to 'long int' from 'long unsigned int' may change the sign of the result [-Wsign-conversion]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                     ^~~~~~~~~~
+include/kapi_syscall.h: In function 'sys_umount2':
+include/kapi_syscall.h:637:37: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  637 | { return kapi_syscall2(SYS_umount2, (long)target, flags); }
+      |                                     ^
+include/kapi_syscall.h: In function 'sys_swapon':
+include/kapi_syscall.h:640:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  640 | { return kapi_syscall2(SYS_swapon, (long)path, swapflags); }
+      |                                    ^
+include/kapi_syscall.h: In function 'sys_swapoff':
+include/kapi_syscall.h:643:37: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  643 | { return kapi_syscall1(SYS_swapoff, (long)path); }
+      |                                     ^
+include/kapi_syscall.h: In function 'sys_nanosleep':
+include/kapi_syscall.h:646:39: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                       ^
+include/kapi_syscall.h:646:50: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                                  ^
+include/kapi_syscall.h: In function 'sys_gettimeofday':
+include/kapi_syscall.h:649:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:649:52: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: In function 'sys_settimeofday':
+include/kapi_syscall.h:652:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:652:52: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: In function 'sys_time':
+include/kapi_syscall.h:655:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  655 | { return kapi_syscall1(SYS_time, (long)tloc); }
+      |                                  ^
+include/kapi_syscall.h: In function 'sys_clock_gettime':
+include/kapi_syscall.h:658:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  658 | { return kapi_syscall2(SYS_clock_gettime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: In function 'sys_clock_settime':
+include/kapi_syscall.h:661:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  661 | { return kapi_syscall2(SYS_clock_settime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: In function 'sys_clock_nanosleep':
+include/kapi_syscall.h:664:60: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                            ^
+include/kapi_syscall.h:664:71: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                                       ^
+include/kapi_syscall.h: In function 'sys_rt_sigaction':
+include/kapi_syscall.h:667:47: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                               ^
+include/kapi_syscall.h:667:58: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                          ^
+include/kapi_syscall.h:667:70: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                                      ^~~~~~~~~~
+include/kapi_syscall.h: In function 'sys_rt_sigprocmask':
+include/kapi_syscall.h:670:49: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                 ^
+include/kapi_syscall.h:670:60: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                            ^
+include/kapi_syscall.h:670:74: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                                          ^~~~~~~~~~
+include/kapi_syscall.h: In function 'sys_ioctl':
+include/kapi_syscall.h:679:39: warning: conversion to 'long int' from 'long unsigned int' may change the sign of the result [-Wsign-conversion]
+  679 | { return kapi_syscall3(SYS_ioctl, fd, request, arg); }
+      |                                       ^~~~~~~
+include/kapi_syscall.h: In function 'sys_pread64':
+include/kapi_syscall.h:682:41: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                         ^
+include/kapi_syscall.h:682:52: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                                    ^~~~~
+include/kapi_syscall.h: In function 'sys_pwrite64':
+include/kapi_syscall.h:685:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                          ^
+include/kapi_syscall.h:685:53: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'long int' may change value [-Wconversion]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                                     ^~~~~
+include/kapi_syscall.h: In function 'sys_readv':
+include/kapi_syscall.h:688:39: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  688 | { return kapi_syscall3(SYS_readv, fd, (long)iov, iovcnt); }
+      |                                       ^
+include/kapi_syscall.h: In function 'sys_writev':
+include/kapi_syscall.h:691:40: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  691 | { return kapi_syscall3(SYS_writev, fd, (long)iov, iovcnt); }
+      |                                        ^
+include/kapi_syscall.h: In function 'sys_getdents':
+include/kapi_syscall.h:694:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                          ^
+include/kapi_syscall.h:694:54: warning: conversion to 'long int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                                      ^~~~~
+include/kapi_syscall.h: In function 'sys_getdents64':
+include/kapi_syscall.h:697:44: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                            ^
+include/kapi_syscall.h:697:56: warning: conversion to 'long int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                                        ^~~~~
+include/kapi_syscall.h: In function 'sys_getgroups':
+include/kapi_syscall.h:718:45: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  718 | { return kapi_syscall2(SYS_getgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: In function 'sys_setgroups':
+include/kapi_syscall.h:721:45: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  721 | { return kapi_syscall2(SYS_setgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: In function 'sys_uname':
+include/kapi_syscall.h:724:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  724 | { return kapi_syscall1(SYS_uname, (long)buf); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_sysinfo':
+include/kapi_syscall.h:727:37: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  727 | { return kapi_syscall1(SYS_sysinfo, (long)info); }
+      |                                     ^
+include/kapi_syscall.h: In function 'sys_getrlimit':
+include/kapi_syscall.h:730:49: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  730 | { return kapi_syscall2(SYS_getrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: In function 'sys_setrlimit':
+include/kapi_syscall.h:733:49: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  733 | { return kapi_syscall2(SYS_setrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: In function 'sys_getrusage':
+include/kapi_syscall.h:736:44: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  736 | { return kapi_syscall2(SYS_getrusage, who, (long)usage); }
+      |                                            ^
+include/kapi_syscall.h: In function 'sys_times':
+include/kapi_syscall.h:739:35: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  739 | { return kapi_syscall1(SYS_times, (long)tbuf); }
+      |                                   ^
+include/kapi_syscall.h: In function 'sys_reboot':
+include/kapi_syscall.h:754:57: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  754 | { return kapi_syscall4(SYS_reboot, magic1, magic2, cmd, (long)arg); }
+      |                                                         ^
+include/kapi_syscall.h: In function 'sys_chroot':
+include/kapi_syscall.h:757:36: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  757 | { return kapi_syscall1(SYS_chroot, (long)path); }
+      |                                    ^
+include/kapi_syscall.h: In function 'sys_sethostname':
+include/kapi_syscall.h:760:41: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  760 | { return kapi_syscall2(SYS_sethostname, (long)name, len); }
+      |                                         ^
+include/kapi_syscall.h: In function 'sys_setdomainname':
+include/kapi_syscall.h:763:43: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  763 | { return kapi_syscall2(SYS_setdomainname, (long)name, len); }
+      |                                           ^
+include/kapi_syscall.h: In function 'sys_init_module':
+include/kapi_syscall.h:766:41: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                         ^
+include/kapi_syscall.h:766:66: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                                  ^
+include/kapi_syscall.h:766:61: warning: conversion to 'long int' from 'long unsigned int' may change the sign of the result [-Wsign-conversion]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                             ^~~
+include/kapi_syscall.h: In function 'sys_delete_module':
+include/kapi_syscall.h:769:43: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                           ^
+include/kapi_syscall.h:769:55: warning: conversion to 'long int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                                       ^~~~~
+include/kapi_syscall.h: In function 'sys_finit_module':
+include/kapi_syscall.h:772:46: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  772 | { return kapi_syscall3(SYS_finit_module, fd, (long)param_values, flags); }
+      |                                              ^
+kernel/kernel/sysfs.c: In function 'sysfs_vfs_read':
+kernel/kernel/sysfs.c:87:57: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+   87 |             len = attr->show(temp + total, sizeof(temp) - total);
+      |                                                         ^
+kernel/kernel/sysfs.c:89:55: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+   89 |             len = snprintf(temp + total, sizeof(temp) - total, "%s\n", attr->value);
+      |                                                       ^
+In file included from kernel/kernel/timer.c:3:
+kernel/kernel/timer.c: In function '__calc_index':
+kernel/kernel/timer.h:29:31: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   29 | #define TIMER_WHEEL_BITS      8
+      |                               ^
+kernel/kernel/timer.c:63:22: note: in expansion of macro 'TIMER_WHEEL_BITS'
+   63 |     uint64_t shift = TIMER_WHEEL_BITS * (*level);
+      |                      ^~~~~~~~~~~~~~~~
+kernel/kernel/timer.c: At top level:
+kernel/kernel/timer.c:274:13: warning: '__msleep_wakeup' defined but not used [-Wunused-function]
+  274 | static void __msleep_wakeup(void* arg)
+      |             ^~~~~~~~~~~~~~~
+<2> Building kernel/kernel/shell_enhanced.c
+In file included from include/kapi.h:23,
+                 from kernel/kernel/shell_enhanced.c:10:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+<1> Building kernel/kernel/kernel.c
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+<0> Building kernel/kernel/ipc.c
+kernel/kernel/shell_enhanced.c: In function 'shell_parse_line':
+kernel/kernel/shell_enhanced.c:203:41: warning: conversion to 'long long unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+  203 |     memset(cmds, 0, sizeof(shell_cmd_t) * max_cmds);
+      |                                         ^
+kernel/kernel/shell_enhanced.c: At top level:
+kernel/kernel/shell_enhanced.c:235:12: warning: 'shell_create_pipe' defined but not used [-Wunused-function]
+  235 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:136:13: warning: 'shell_unquote' defined but not used [-Wunused-function]
+  136 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:81:17: warning: 'history_index' defined but not used [-Wunused-variable]
+   81 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+<3> Building kernel/kernel/interrupt.c
+kernel/kernel/ipc.c: In function 'shm_get':
+kernel/kernel/ipc.c:73:40: warning: unsigned conversion from 'int' to 'uint64_t' {aka 'long long unsigned int'} changes value from '-4096' to '18446744073709547520' [-Wsign-conversion]
+   73 |     seg->size = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                        ^
+kernel/kernel/ipc.c:81:24: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+   81 |     seg->creator_pid = current_process;
+      |                        ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: In function 'shm_at':
+kernel/kernel/ipc.c:111:14: warning: unsigned conversion from 'int' to 'uint32_t' {aka 'unsigned int'} changes value from '-3' to '4294967293' [-Wsign-conversion]
+  111 |         prot &= ~PROT_WRITE;
+      |              ^~
+kernel/kernel/ipc.c: In function 'msg_get':
+kernel/kernel/ipc.c:245:34: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  245 |     msg_queues[id].creator_pid = current_process;
+      |                                  ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: In function 'sem_get':
+kernel/kernel/ipc.c:410:17: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  410 |     ss->nsems = nsems;
+      |                 ^~~~~
+kernel/kernel/ipc.c:412:23: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  412 |     ss->creator_pid = current_process;
+      |                       ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: In function 'sem_op':
+kernel/kernel/ipc.c:452:27: warning: conversion from 'int' to 'int16_t' {aka 'short int'} may change value [-Wconversion]
+  452 |         ss->values[num] = val;
+      |                           ^~~
+kernel/kernel/ipc.c: In function 'sem_ctl':
+kernel/kernel/ipc.c:472:38: warning: conversion from 'int' to 'int16_t' {aka 'short int'} may change value [-Wconversion]
+  472 |                 ss->values[semnum] = *(int*)arg;
+      |                                      ^
+kernel/kernel/ipc.c: In function 'futex_wait':
+kernel/kernel/ipc.c:503:52: warning: unused parameter 'timeout_ms' [-Wunused-parameter]
+  503 | int futex_wait(void* uaddr, uint32_t val, uint64_t timeout_ms)
+      |                                           ~~~~~~~~~^~~~~~~~~~
+kernel/kernel/ipc.c: In function 'futex_wake':
+kernel/kernel/ipc.c:573:12: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+  573 |     return woken;
+      |            ^~~~~
+kernel/kernel/ipc.c: In function 'futex_requeue':
+kernel/kernel/ipc.c:600:12: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+  600 |     return moved;
+      |            ^~~~~
+kernel/kernel/ipc.c: In function 'ipc_syscall':
+kernel/kernel/ipc.c:626:53: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  626 |                 void* ret = shm_at((uint32_t)first, (void*)second, (int)third);
+      |                                                     ^
+kernel/kernel/ipc.c:627:30: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  627 |                 return ret ? (long)ret : -1;
+      |                              ^
+kernel/kernel/ipc.c:630:27: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  630 |             return shm_dt((void*)first);
+      |                           ^
+kernel/kernel/ipc.c:632:58: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  632 |             return shm_ctl((uint32_t)first, (int)second, (void*)third);
+      |                                                          ^
+kernel/kernel/ipc.c:641:46: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  641 |             return msg_send((uint32_t)first, (void*)second, (uint64_t)third, (int)fourth);
+      |                                              ^
+kernel/kernel/ipc.c:643:46: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  643 |             return msg_recv((uint32_t)first, (void*)second, (uint64_t)third, (long)fourth, (int)fifth);
+      |                                              ^
+kernel/kernel/ipc.c:645:58: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  645 |             return msg_ctl((uint32_t)first, (int)second, (void*)third);
+      |                                                          ^
+kernel/kernel/ipc.c:654:44: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  654 |             return sem_op((uint32_t)first, (struct sembuf*)second, (uint32_t)third);
+      |                                            ^
+kernel/kernel/ipc.c:656:70: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  656 |             return sem_ctl((uint32_t)first, (int)second, (int)third, (void*)fifth);
+      |                                                                      ^
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  275 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:57:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/kernel/kernel.c: At top level:
+kernel/kernel/kernel.c:59:10: fatal error: kal.h: No such file or directory
+   59 | #include <kal.h>
+      |          ^~~~~~~
+compilation terminated.
+kernel/kernel/interrupt.c: In function 'interrupt_register':
+kernel/kernel/interrupt.c:16:13: warning: comparison is always true due to limited range of data type [-Wtype-limits]
+   16 |     if (irq < 256) {
+      |             ^
+kernel/kernel/interrupt.c: In function 'interrupt_dispatch':
+kernel/kernel/interrupt.c:75:33: warning: ISO C forbids conversion of object pointer to function pointer type [-Wpedantic]
+   75 |         void (*handler)(void) = (void (*)(void))interrupt_handlers[irq];
+      |                                 ^
+kernel/kernel/interrupt.c: At top level:
+kernel/kernel/interrupt.c:22:12: warning: 'exception_has_error_code' defined but not used [-Wunused-function]
+   22 | static int exception_has_error_code(uint8_t vector)
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~
+FAILED TASK run all: 

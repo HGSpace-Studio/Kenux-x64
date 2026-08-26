@@ -1,0 +1,15 @@
+-- Start building task run run-debug -- (678580737)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder img/boot --
+<0> Building img/boot/kernel.elf.pe
+<2> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<3> Generating esp/KENUXK.BIN
+<2> Running command: ""D:\\qemu\\qemu-system-x86_64.exe" -m 256M -pflash "D:\\KenuxK\\OVMF_CODE.fd" -drive "file=fat:rw:D:\\KenuxK\\esp,format=raw" -serial "file:D:\\KenuxK\\serial.log" -display none -no-reboot"
+WARNING: Image format was not specified for 'D:\KenuxK\OVMF_CODE.fd' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+D:\qemu\qemu-system-x86_64.exe: -serial file:D:\KenuxK\serial.log: open D:\KenuxK\serial.log failed
+D:\qemu\qemu-system-x86_64.exe: -serial file:D:\KenuxK\serial.log: could not connect serial device to character backend 'file:D:\KenuxK\serial.log'
+FAILED TASK run run-debug: command failed with exit 1: D:\qemu\qemu-system-x86_64.exe -m 256M -pflash D:\KenuxK\OVMF_CODE.fd -drive file=fat:rw:D:\KenuxK\esp,format=raw -serial file:D:\KenuxK\serial.log -display none -no-reboot

@@ -1,0 +1,72 @@
+-- Start building task run all -- (757767783)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/registry.c
+In file included from kernel/arch/x86_64/registry.c:1:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5:
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:797:9: note: this is the location of the previous definition
+  797 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:801:9: note: this is the location of the previous definition
+  801 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:807:9: note: this is the location of the previous definition
+  807 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:812:9: note: this is the location of the previous definition
+  812 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/registry.c:294:13: warning: 'seed_value_dword' defined but not used [-Wunused-function]
+  294 | static void seed_value_dword(reg_key_t* key, const char* name, uint32_t val)
+      |             ^~~~~~~~~~~~~~~~
+-- Enter folder img/boot --
+<0> Building img/boot/kernel.elf.pe
+<1> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<3> Generating esp/KENUXK.BIN
+DONE TASK run all IN 2.4s.
+Result:
+Started 3 tasks
+Entered 3 folders
+Built 2 files
+Generated 2 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

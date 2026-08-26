@@ -1,0 +1,18 @@
+-- Start building task run run -- (672762547)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+<0> Running command: ""D:\\qemu\\qemu-system-x86_64.exe" -m 256M -pflash "D:\\KenuxK\\OVMF_CODE.fd" -drive "file=fat:rw:D:\\KenuxK\\esp,format=raw" -serial "file:D:\\KenuxK\\serial.log" -display gtk -no-reboot"
+WARNING: Image format was not specified for 'D:\KenuxK\OVMF_CODE.fd' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+(qemu:7792): Gtk-WARNING **: 19:02:37.408: Could not load a pixbuf from /org/gtk/libgtk/theme/Adwaita/assets/bullet-symbolic.svg.
+This may indicate that pixbuf loaders or the mime database could not be found.
+DONE TASK run run IN 100.8s.
+Result:
+Started 3 tasks
+Entered 0 folders
+Built 0 files
+Generated 0 files
+Ran 1 commands
+Downloaded 0 files
+0 errors

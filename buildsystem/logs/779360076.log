@@ -1,0 +1,206 @@
+-- Start building task run all -- (779360076)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<0> Building kernel/arch/x86_64/uart.c
+<1> Building kernel/arch/x86_64/swap.c
+<3> Building kernel/arch/x86_64/spi.c
+<2> Building kernel/arch/x86_64/tcp_bbr.c
+kernel/arch/x86_64/uart.c: In function 'uart_set_baud':
+kernel/arch/x86_64/uart.c:101:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  101 |     outb(p->base + UART_REG_DLL, divisor & 0xFF);
+      |                                  ~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c:102:49: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  102 |     outb(p->base + UART_REG_DLH, (divisor >> 8) & 0xFF);
+      |                                  ~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_set_flow_control':
+kernel/arch/x86_64/uart.c:131:16: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-11' [-Wsign-conversion]
+  131 |         mcr &= ~(UART_MCR_RTS | UART_MCR_OUT2);
+      |                ^
+kernel/arch/x86_64/uart.c: In function 'uart_init_port':
+kernel/arch/x86_64/uart.c:171:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  171 |     outb(p->base + UART_REG_DLL, divisor & 0xFF);
+      |                                  ~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c:172:49: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  172 |     outb(p->base + UART_REG_DLH, (divisor >> 8) & 0xFF);
+      |                                  ~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/swap.c: In function 'bitmap_clear':
+kernel/arch/x86_64/swap.c:34:25: warning: conversion from 'unsigned int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |     bitmap[bit >> 3] &= ~(1U << (bit & 7));
+      |                         ^
+kernel/arch/x86_64/swap.c: In function 'swap_add_area':
+kernel/arch/x86_64/uart.c: In function 'uart_irq_handler':
+kernel/arch/x86_64/uart.c:419:28: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-3' [-Wsign-conversion]
+  419 |                     ier &= ~UART_IER_THRI;
+      |                            ^
+kernel/arch/x86_64/uart.c: In function 'uart_com1_irq_stub':
+kernel/arch/x86_64/uart.c:440:5: error: too many arguments to function 'interrupt_handler'; expected 0, have 2
+  440 |     interrupt_handler(UART_COM1_IRQ, 0);
+      |     ^~~~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/uart.c:5:
+kernel/arch/x86_64/include/arch/interrupt.h:11:6: note: declared here
+   11 | void interrupt_handler(void);       /* for IRQs and exceptions without error code */
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_com2_irq_stub':
+kernel/arch/x86_64/uart.c:446:5: error: too many arguments to function 'interrupt_handler'; expected 0, have 2
+  446 |     interrupt_handler(UART_COM2_IRQ, 0);
+      |     ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/interrupt.h:11:6: note: declared here
+   11 | void interrupt_handler(void);       /* for IRQs and exceptions without error code */
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_com3_irq_stub':
+kernel/arch/x86_64/uart.c:452:5: error: too many arguments to function 'interrupt_handler'; expected 0, have 2
+  452 |     interrupt_handler(UART_COM3_IRQ, 0);
+      |     ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/interrupt.h:11:6: note: declared here
+   11 | void interrupt_handler(void);       /* for IRQs and exceptions without error code */
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_com4_irq_stub':
+kernel/arch/x86_64/uart.c:458:5: error: too many arguments to function 'interrupt_handler'; expected 0, have 2
+  458 |     interrupt_handler(UART_COM4_IRQ, 0);
+      |     ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/interrupt.h:11:6: note: declared here
+   11 | void interrupt_handler(void);       /* for IRQs and exceptions without error code */
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_irq_register':
+kernel/arch/x86_64/uart.c:475:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  475 |             stub = (void*)uart_com1_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:478:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  478 |             stub = (void*)uart_com2_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:481:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  481 |             stub = (void*)uart_com3_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:484:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  484 |             stub = (void*)uart_com4_irq_stub;
+      |                    ^
+kernel/arch/x86_64/swap.c:210:21: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  210 |             current += n;
+      |                     ^~
+kernel/arch/x86_64/swap.c: In function 'swap_out':
+kernel/arch/x86_64/swap.c:386:18: warning: unused variable 'swap_pte' [-Wunused-variable]
+  386 |         uint64_t swap_pte = SWAP_ENTRY_TO_PTE(entry);
+      |                  ^~~~~~~~
+kernel/arch/x86_64/swap.c: At top level:
+kernel/arch/x86_64/swap.c:46:17: warning: 'bitmap_find_free_range' defined but not used [-Wunused-function]
+   46 | static uint64_t bitmap_find_free_range(const uint8_t* bitmap,
+      |                 ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/tcp_bbr.c: In function 'bbr_quantization_budget':
+kernel/arch/x86_64/tcp_bbr.c:227:54: warning: unused parameter 'bbr' [-Wunused-parameter]
+  227 | static uint64_t bbr_quantization_budget(bbr_state_t* bbr, uint64_t cwnd)
+      |                                         ~~~~~~~~~~~~~^~~
+<0> Building kernel/arch/x86_64/sound.c
+kernel/arch/x86_64/sound.c: In function 'sound_init':
+kernel/arch/x86_64/sound.c:19:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   19 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/sound.c:19:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   19 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/sound.c:19:65: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   19 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:23:38: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   23 |                 uint8_t class_code = (class_code_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/sound.c:29:36: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   29 |                         dev->bus = b;
+      |                                    ^
+kernel/arch/x86_64/sound.c:30:39: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   30 |                         dev->device = d;
+      |                                       ^
+kernel/arch/x86_64/sound.c:31:41: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   31 |                         dev->function = f;
+      |                                         ^
+kernel/arch/x86_64/sound.c:32:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   32 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:32:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   32 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:32:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   32 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:33:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   33 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/sound.c:33:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   33 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                              ^
+kernel/arch/x86_64/sound.c:33:65: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   33 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:34:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:34:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:34:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:35:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   35 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:35:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   35 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:35:67: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   35 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                   ^
+kernel/arch/x86_64/sound.c:41:36: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   41 |                         dev->bus = b;
+      |                                    ^
+kernel/arch/x86_64/sound.c:42:39: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   42 |                         dev->device = d;
+      |                                       ^
+kernel/arch/x86_64/sound.c:43:41: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   43 |                         dev->function = f;
+      |                                         ^
+kernel/arch/x86_64/sound.c:44:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   44 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:44:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   44 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:44:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   44 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:45:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   45 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/sound.c:45:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   45 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                              ^
+kernel/arch/x86_64/sound.c:45:65: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   45 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:46:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   46 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:46:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   46 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:46:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   46 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:47:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   47 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:47:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   47 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:47:67: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   47 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                   ^
+kernel/arch/x86_64/sound.c:15:26: warning: unused variable 'function' [-Wunused-variable]
+   15 |     uint8_t bus, device, function;
+      |                          ^~~~~~~~
+kernel/arch/x86_64/sound.c:15:18: warning: unused variable 'device' [-Wunused-variable]
+   15 |     uint8_t bus, device, function;
+      |                  ^~~~~~
+kernel/arch/x86_64/sound.c:15:13: warning: unused variable 'bus' [-Wunused-variable]
+   15 |     uint8_t bus, device, function;
+      |             ^~~
+FAILED TASK run all: 

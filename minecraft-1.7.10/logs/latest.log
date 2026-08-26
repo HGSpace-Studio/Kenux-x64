@@ -1,0 +1,89 @@
+[16:01:26] [main/INFO]: Setting user: KenuxPlayer
+[16:01:26] [main/INFO]: (Session ID is token:0:4b656e7578506c617965720000000001)
+[16:01:26] [Client thread/INFO]: LWJGL Version: 2.9.1
+[16:01:27] [Client thread/ERROR]: Couldn't initialize twitch stream
+[16:01:27] [Client thread/INFO]: Reloading ResourceManager: Default
+[16:01:27] [Sound Library Loader/INFO]: Sound engine started
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/bowhit1.ogg does not exist, cannot add it to event minecraft:random.bowhit
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/bowhit2.ogg does not exist, cannot add it to event minecraft:random.bowhit
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/bowhit3.ogg does not exist, cannot add it to event minecraft:random.bowhit
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/bowhit4.ogg does not exist, cannot add it to event minecraft:random.bowhit
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/break.ogg does not exist, cannot add it to event minecraft:random.break
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/burp.ogg does not exist, cannot add it to event minecraft:random.burp
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/chestclosed.ogg does not exist, cannot add it to event minecraft:random.chestclosed
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/chestopen.ogg does not exist, cannot add it to event minecraft:random.chestopen
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/click.ogg does not exist, cannot add it to event minecraft:gui.button.press
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/click.ogg does not exist, cannot add it to event minecraft:random.click
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/door_close.ogg does not exist, cannot add it to event minecraft:random.door_close
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/door_open.ogg does not exist, cannot add it to event minecraft:random.door_open
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/drink.ogg does not exist, cannot add it to event minecraft:random.drink
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/eat1.ogg does not exist, cannot add it to event minecraft:random.eat
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/eat2.ogg does not exist, cannot add it to event minecraft:random.eat
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/eat3.ogg does not exist, cannot add it to event minecraft:random.eat
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/explode1.ogg does not exist, cannot add it to event minecraft:random.explode
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/explode2.ogg does not exist, cannot add it to event minecraft:random.explode
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/explode3.ogg does not exist, cannot add it to event minecraft:random.explode
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/explode4.ogg does not exist, cannot add it to event minecraft:random.explode
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/fizz.ogg does not exist, cannot add it to event minecraft:random.fizz
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/fuse.ogg does not exist, cannot add it to event minecraft:game.tnt.primed
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/fuse.ogg does not exist, cannot add it to event minecraft:creeper.primed
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/glass1.ogg does not exist, cannot add it to event minecraft:dig.glass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/glass2.ogg does not exist, cannot add it to event minecraft:dig.glass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/glass3.ogg does not exist, cannot add it to event minecraft:dig.glass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/glass1.ogg does not exist, cannot add it to event minecraft:game.potion.smash
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/glass2.ogg does not exist, cannot add it to event minecraft:game.potion.smash
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/glass3.ogg does not exist, cannot add it to event minecraft:game.potion.smash
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/levelup.ogg does not exist, cannot add it to event minecraft:random.levelup
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/orb.ogg does not exist, cannot add it to event minecraft:random.orb
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/pop.ogg does not exist, cannot add it to event minecraft:random.pop
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/splash.ogg does not exist, cannot add it to event minecraft:random.splash
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/successful_hit.ogg does not exist, cannot add it to event minecraft:random.successful_hit
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/random/wood_click.ogg does not exist, cannot add it to event minecraft:random.wood_click
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/11.ogg does not exist, cannot add it to event minecraft:records.11
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/13.ogg does not exist, cannot add it to event minecraft:records.13
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/blocks.ogg does not exist, cannot add it to event minecraft:records.blocks
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/cat.ogg does not exist, cannot add it to event minecraft:records.cat
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/chirp.ogg does not exist, cannot add it to event minecraft:records.chirp
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/far.ogg does not exist, cannot add it to event minecraft:records.far
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/mall.ogg does not exist, cannot add it to event minecraft:records.mall
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/mellohi.ogg does not exist, cannot add it to event minecraft:records.mellohi
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/stal.ogg does not exist, cannot add it to event minecraft:records.stal
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/strad.ogg does not exist, cannot add it to event minecraft:records.strad
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/wait.ogg does not exist, cannot add it to event minecraft:records.wait
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/records/ward.ogg does not exist, cannot add it to event minecraft:records.ward
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/grass1.ogg does not exist, cannot add it to event minecraft:step.grass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/grass2.ogg does not exist, cannot add it to event minecraft:step.grass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/grass3.ogg does not exist, cannot add it to event minecraft:step.grass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/grass4.ogg does not exist, cannot add it to event minecraft:step.grass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/grass5.ogg does not exist, cannot add it to event minecraft:step.grass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/grass6.ogg does not exist, cannot add it to event minecraft:step.grass
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/gravel1.ogg does not exist, cannot add it to event minecraft:step.gravel
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/gravel2.ogg does not exist, cannot add it to event minecraft:step.gravel
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/gravel3.ogg does not exist, cannot add it to event minecraft:step.gravel
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/gravel4.ogg does not exist, cannot add it to event minecraft:step.gravel
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/ladder1.ogg does not exist, cannot add it to event minecraft:step.ladder
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/ladder2.ogg does not exist, cannot add it to event minecraft:step.ladder
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/ladder3.ogg does not exist, cannot add it to event minecraft:step.ladder
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/ladder4.ogg does not exist, cannot add it to event minecraft:step.ladder
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/ladder5.ogg does not exist, cannot add it to event minecraft:step.ladder
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/sand1.ogg does not exist, cannot add it to event minecraft:step.sand
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/sand2.ogg does not exist, cannot add it to event minecraft:step.sand
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/sand3.ogg does not exist, cannot add it to event minecraft:step.sand
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/sand4.ogg does not exist, cannot add it to event minecraft:step.sand
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/sand5.ogg does not exist, cannot add it to event minecraft:step.sand
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/stone1.ogg does not exist, cannot add it to event minecraft:step.stone
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/stone2.ogg does not exist, cannot add it to event minecraft:step.stone
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/stone3.ogg does not exist, cannot add it to event minecraft:step.stone
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/stone4.ogg does not exist, cannot add it to event minecraft:step.stone
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/stone5.ogg does not exist, cannot add it to event minecraft:step.stone
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/stone6.ogg does not exist, cannot add it to event minecraft:step.stone
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/wood1.ogg does not exist, cannot add it to event minecraft:step.wood
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/wood2.ogg does not exist, cannot add it to event minecraft:step.wood
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/wood3.ogg does not exist, cannot add it to event minecraft:step.wood
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/wood4.ogg does not exist, cannot add it to event minecraft:step.wood
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/wood5.ogg does not exist, cannot add it to event minecraft:step.wood
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/step/wood6.ogg does not exist, cannot add it to event minecraft:step.wood
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/tile/piston/in.ogg does not exist, cannot add it to event minecraft:tile.piston.in
+[16:01:27] [Client thread/WARN]: File minecraft:sounds/tile/piston/out.ogg does not exist, cannot add it to event minecraft:tile.piston.out
+[16:01:28] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:01:28] [Client thread/INFO]: Created: 256x256 textures/items-atlas

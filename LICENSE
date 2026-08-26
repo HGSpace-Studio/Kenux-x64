@@ -1,0 +1,116 @@
+Kenux OS Non-Commercial Open Source License (KNCOSL)
+Version 1.0
+
+Copyright (c) 2026 HGSpace-Studio
+Organization Website: https://hgspace-studio.github.io
+
+TERMS AND CONDITIONS
+
+1. DEFINITIONS
+
+   "Software" refers to Kenux OS (KenuxK) and all associated source code,
+   documentation, build scripts, configuration files, and any derivative works.
+
+   "Licensor" refers to HGSpace-Studio, the copyright holder of the Software.
+
+   "Licensee" refers to any individual or entity who obtains a copy of the Software.
+
+   "Derivative Work" refers to any work that is based on the Software and for
+   which the editorial revisions, annotations, elaborations, or other modifications
+   represent, as a whole, an original work of authorship.
+
+2. GRANT OF LICENSE
+
+   Subject to the terms and conditions of this License, the Licensor hereby grants
+   the Licensee a non-exclusive, worldwide, non-transferable, non-sublicensable
+   license to:
+
+   a) View and study the source code of the Software for personal, academic,
+      or research purposes;
+
+   b) Use, modify, and integrate the Software or any portion thereof into
+      the Licensee's own projects, PROVIDED THAT all such projects are released
+      as open source under a license approved by the Open Source Initiative (OSI);
+
+   c) Distribute copies of the original, unmodified Software.
+
+3. NON-COMMERCIAL USE ONLY
+
+   The Software may NOT be used, in whole or in part, for any commercial purpose,
+   including but not limited to:
+
+   a) Selling, leasing, or licensing the Software or any Derivative Work;
+
+   b) Using the Software in a product or service that is sold or offered for
+      commercial gain;
+
+   c) Using the Software within a commercial organization for internal operations
+      that contribute to commercial activity, except for pure research and
+      educational purposes.
+
+4. ATTRIBUTION AND ORIGIN PRESERVATION
+
+   The Licensee MUST NOT:
+
+   a) Rebrand, rename, or repackage the Software in any way that obscures or
+      removes its origin as Kenux OS by HGSpace-Studio;
+
+   b) Claim authorship or original creation of the Software or any substantial
+      portion thereof;
+
+   c) Remove, alter, or obscure any copyright notices, license headers, or
+      attribution statements present in the Software.
+
+   Any Derivative Work or project incorporating code from the Software MUST
+   include the following attribution in a prominent location (such as the
+   project README, about page, or license file):
+
+     "This project includes code from Kenux OS (KenuxK) by HGSpace-Studio.
+      Original project: https://hgspace-studio.github.io
+      Licensed under the Kenux OS Non-Commercial Open Source License (KNCOSL)."
+
+5. OPEN SOURCE REQUIREMENT
+
+   Any project that incorporates, uses, or derives from the Software (in whole
+   or in part) MUST be released under an OSI-approved open source license.
+   The complete source code of such project MUST be made publicly available
+   at no cost, within a reasonable time frame after distribution.
+
+   The Licensee MUST NOT:
+
+   a) Use the Software in any closed-source or proprietary project;
+
+   b) Distribute binary-only versions of any Derivative Work without making
+      the corresponding complete source code publicly available;
+
+   c) Impose additional restrictions on the recipients that contradict the
+      open source nature required by this License.
+
+6. NO WARRANTY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   LICENSOR OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+7. TERMINATION
+
+   This License and the rights granted hereunder will terminate automatically
+   upon any breach by the Licensee of the terms and conditions set forth herein.
+   Upon termination, the Licensee shall destroy all copies of the Software
+   and Derivative Works in their possession.
+
+8. MISCELLANEOUS
+
+   a) This License represents the complete agreement concerning the subject
+      matter hereof;
+
+   b) If any provision of this License is held to be unenforceable, such
+      provision shall be reformed only to the extent necessary to make it
+      enforceable;
+
+   c) This License shall be governed by the laws of the jurisdiction in which
+      the Licensor resides, without regard to its conflict of law provisions.

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "run",
+    "rebuild"
+  ],
+  "created_at": "2026-08-09T01:41:16+00:00",
+  "id": "314463346",
+  "log": "buildsystem\\logs\\314463346.log",
+  "started_at": "2026-08-09T01:41:16+00:00",
+  "status": "running",
+  "task": "run rebuild",
+  "total_targets": 230
+}

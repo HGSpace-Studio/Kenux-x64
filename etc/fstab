@@ -1,0 +1,8 @@
+# /etc/fstab: static file system information.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/sda1       /               ext4    defaults        0       1
+/dev/sda2       /home           ext4    defaults        0       2
+/dev/sda3       swap            swap    defaults        0       0
+proc            /proc           proc    defaults        0       0
+sysfs           /sys            sysfs   defaults        0       0

@@ -1,0 +1,93 @@
+-- Start building task run components -- (883634873)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<0> Generating bin/components/gcc.exe
+<2> Generating bin/components/clang.exe
+<1> Generating bin/components/ld.exe
+<3> Generating bin/components/make.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o "D:\\KenuxK\\build\\components\\clang_clang.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o "D:\\KenuxK\\build\\components\\gcc_gcc.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/make -c src/make/make.c -o "D:\\KenuxK\\build\\components\\make_make.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/ld -c src/ld/ld.c -o "D:\\KenuxK\\build\\components\\ld_ld.o""
+In file included from src/make/make.c:6:
+src/make/make.h:49:9: warning: 'X_OK' redefined
+   49 | #define X_OK 0
+      |         ^~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/fcntl.h:8,
+                 from src/make/make.h:12:
+D:/mingw64/x86_64-w64-mingw32/include/io.h:203:9: note: this is the location of the previous definition
+  203 | #define X_OK    1       /* Check for execute permission. */
+      |         ^~~~
+src/gcc/gcc.c: In function 'gcc_run_command':
+src/gcc/gcc.c:515:5: error: implicit declaration of function 'waitpid' [-Wimplicit-function-declaration]
+  515 |     waitpid(pid, &status, 0);
+      |     ^~~~~~~
+In file included from src/clang/clang.c:11:
+src/clang/clang.h:314:9: error: duplicate member 'rdynamic'
+  314 |     int rdynamic;
+      |         ^~~~~~~~
+src/ld/ld.c: In function 'linker_cleanup':
+src/ld/ld.c:132:13: warning: the comparison will always evaluate as 'true' for the address of 'sections' will never be NULL [-Waddress]
+  132 |         if (state->objects[i].sections) {
+      |             ^~~~~
+In file included from src/ld/ld.c:6:
+src/ld/ld.h:71:13: note: 'sections' declared here
+   71 |     Section sections[MAX_SECTIONS];
+      |             ^~~~~~~~
+src/make/make.c: In function 'load_makefile':
+src/ld/ld.c: In function 'load_object_file':
+src/ld/ld.c:243:36: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'size_t' {aka 'long long unsigned int'} [-Wformat=]
+  243 |         printf("  Entry point: 0x%lx\n", obj->entry_point);
+      |                                  ~~^     ~~~~~~~~~~~~~~~~
+      |                                    |        |
+      |                                    |        size_t {aka long long unsigned int}
+      |                                    long unsigned int
+      |                                  %llx
+src/make/make.c:93:27: warning: comparison of integer expressions of different signedness: 'int' and 'long long unsigned int' [-Wsign-compare]
+   93 |         for (int i = 0; i < sizeof(filenames) / sizeof(char *); i++) {
+      |                           ^
+src/ld/ld.c: In function 'parse_elf_header':
+src/ld/ld.c:253:26: error: 'EI_NIDENT' undeclared (first use in this function)
+  253 |     unsigned char header[EI_NIDENT];
+      |                          ^~~~~~~~~
+src/ld/ld.c:253:26: note: each undeclared identifier is reported only once for each function it appears in
+src/ld/ld.c:16:16: error: passing argument 2 of 'memcmp' makes pointer from integer without a cast [-Wint-conversion]
+   16 | #define ELFMAG 0x464c457f
+      |                ^~~~~~~~~~
+      |                |
+      |                int
+src/ld/ld.c:263:24: note: in expansion of macro 'ELFMAG'
+  263 |     if (memcmp(header, ELFMAG, 4) != 0) {
+      |                        ^~~~~~
+In file included from src/ld/ld.h:11:
+D:/mingw64/x86_64-w64-mingw32/include/string.h:49:52: note: expected 'const void *' but argument is of type 'int'
+   49 |   int __cdecl memcmp(const void *_Buf1,const void *_Buf2,size_t _Size);
+      |                                        ~~~~~~~~~~~~^~~~~
+src/ld/ld.c:253:19: warning: unused variable 'header' [-Wunused-variable]
+  253 |     unsigned char header[EI_NIDENT];
+      |                   ^~~~~~
+src/ld/ld.c:252:35: warning: unused parameter 'state' [-Wunused-parameter]
+  252 | int parse_elf_header(LinkerState *state, ObjectFile *obj) {
+      |                      ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_section_headers':
+src/ld/ld.c:287:40: warning: unused parameter 'state' [-Wunused-parameter]
+  287 | int parse_section_headers(LinkerState *state, ObjectFile *obj) {
+      |                           ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_symbol_table':
+src/make/make.c: In function 'print_help':
+src/make/make.c:422:25: error: 'state' undeclared (first use in this function); did you mean 'stat'?
+  422 |     for (int i = 0; i < state->num_targets; i++) {
+      |                         ^~~~~
+      |                         stat
+src/make/make.c:422:25: note: each undeclared identifier is reported only once for each function it appears in
+src/ld/ld.c:344:37: warning: unused parameter 'state' [-Wunused-parameter]
+  344 | int parse_symbol_table(LinkerState *state, ObjectFile *obj) {
+      |                        ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'write_output_sections':
+src/ld/ld.c:528:71: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  528 |             if (write(state->output_fd, section->data, section->size) != section->size) {
+      |                                                                       ^~
+src/clang/clang.c:22:20: warning: 'clang_basename' defined but not used [-Wunused-function]
+   22 | static const char *clang_basename(const char *path) {
+      |                    ^~~~~~~~~~~~~~
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o D:\KenuxK\build\components\clang_clang.o

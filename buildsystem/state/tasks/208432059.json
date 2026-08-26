@@ -1,0 +1,97 @@
+{
+  "command": [
+    "run",
+    "components"
+  ],
+  "created_at": "2026-08-23T10:02:37+00:00",
+  "elapsed_seconds": 2.656,
+  "error": "command failed with exit 1: D:\\mingw64\\bin\\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o D:\\KenuxK\\build\\components\\xorriso_xorriso.o",
+  "finished_at": "2026-08-23T10:02:40+00:00",
+  "id": "208432059",
+  "log": "buildsystem\\logs\\208432059.log",
+  "metrics": {
+    "built_files": 0,
+    "completed": 4,
+    "downloaded_files": 0,
+    "elapsed_seconds": 2.656,
+    "entered_folders": 1,
+    "errors": 1,
+    "executed_targets": 2,
+    "generated_files": 7,
+    "peak_parallel_workers": 4,
+    "ran_commands": 9,
+    "skipped_targets": 2,
+    "started_tasks": 2,
+    "timings": [
+      {
+        "kind": "generate",
+        "seconds": 0.001,
+        "status": "skipped",
+        "target": "component:systemd",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0012,
+        "status": "skipped",
+        "target": "component:firefox",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 1.1309,
+        "status": "executed",
+        "target": "component:wayland",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 1.3792,
+        "status": "executed",
+        "target": "component:qemu",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.1595,
+        "status": "executed",
+        "target": "component:dd",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.1718,
+        "status": "executed",
+        "target": "component:mkfs",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 1.924,
+        "status": "executed",
+        "target": "component:gnome",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 2.0486,
+        "status": "executed",
+        "target": "component:kde",
+        "worker": 3
+      },
+      {
+        "kind": "generate",
+        "seconds": 1.5194,
+        "status": "executed",
+        "target": "component:xorriso",
+        "worker": 0
+      }
+    ],
+    "total": 17,
+    "worker_busy_seconds": 8.333385300000373
+  },
+  "started_at": "2026-08-23T10:02:37+00:00",
+  "status": "failed",
+  "task": "run components",
+  "total_targets": 17
+}

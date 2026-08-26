@@ -1,0 +1,72 @@
+-- Start building task run components -- (923462476)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<2> Generating bin/components/gnome.exe
+<3> Generating bin/components/kde.exe
+<0> Generating bin/components/wayland.exe
+<1> Generating bin/components/qemu.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o "D:\\KenuxK\\build\\components\\wayland_wayland.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/qemu -c src/qemu/qemu.c -o "D:\\KenuxK\\build\\components\\qemu_qemu.o""
+src/qemu/qemu.c: In function 'qemu_parse_arguments':
+src/qemu/qemu.c:353:70: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+  353 |         } else if (strcmp(a, "-smp") == 0 || strcmp(a, "-boot") == 0 && i + 1 < argc) {
+      |                                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:446:44: warning: format '%s' expects argument of type 'char *', but argument 10 has type 'int' [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                           ~^
+      |                                            |
+      |                                            char *
+      |                                           %d
+......
+  453 |             d);
+      |             ~                               
+      |             |
+      |             int
+src/qemu/qemu.c:446:52: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                                   ~^
+      |                                                    |
+      |                                                    int
+src/qemu/qemu.c: In function 'qemu_start':
+src/qemu/qemu.c:593:31: warning: format '%d' expects argument of type 'int', but argument 3 has type 'pid_t' {aka 'long long int'} [-Wformat=]
+  593 |         if (f) { fprintf(f, "%d\n", pid); fclose(f); }
+      |                              ~^     ~~~
+      |                               |     |
+      |                               int   pid_t {aka long long int}
+      |                              %lld
+In file included from src/qemu/qemu.c:6:
+src/qemu/qemu.c: In function 'qemu_wait':
+src/qemu/qemu.h:26:24: warning: statement with no effect [-Wunused-value]
+   26 | #define waitpid(p,s,o) (-1)
+      |                        ^
+src/qemu/qemu.c:601:5: note: in expansion of macro 'waitpid'
+  601 |     waitpid(s->pid, &status, 0);
+      |     ^~~~~~~
+src/qemu/qemu.c: In function 'qemu_terminate':
+src/qemu/qemu.h:27:24: warning: statement with no effect [-Wunused-value]
+   27 | #define kill(p,s)      (-1)
+      |                        ^
+src/qemu/qemu.c:610:5: note: in expansion of macro 'kill'
+  610 |     kill(s->pid, SIGKILL);
+      |     ^~~~
+src/wayland/wayland.c: In function 'wayland_init_socket':
+src/wayland/wayland.c:411:5: warning: 'strncpy' output may be truncated copying 511 bytes from a string of length 511 [-Wstringop-truncation]
+  411 |     strncpy(s->wayland_socket_path, path, sizeof(s->wayland_socket_path) - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:431:75: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size 2010 [-Wformat-truncation=]
+  431 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,readonly=on,file=%s", s->pflash[0]);
+      |                                                                           ^~
+src/qemu/qemu.c:431:9: note: 'snprintf' output between 39 and 4134 bytes into a destination of size 2048
+  431 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,readonly=on,file=%s", s->pflash[0]);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/qemu/qemu.c:436:63: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size 2022 [-Wformat-truncation=]
+  436 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,file=%s", s->pflash[1]);
+      |                                                               ^~
+src/qemu/qemu.c:436:9: note: 'snprintf' output between 27 and 4122 bytes into a destination of size 2048
+  436 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,file=%s", s->pflash[1]);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\wayland_wayland.o" -o "D:\\KenuxK\\bin\\components\\wayland.exe""

@@ -1,0 +1,18 @@
+-- Start building task run run-debug -- (283857613)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder esp/EFI/BOOT --
+<0> Generating esp/EFI/BOOT/BOOTX64.EFI
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -ffreestanding -fno-stack-protector -fno-short-enums -Wall -Wextra -O2 -Wl,--subsystem,10 -Wl,-e,efi_main -nostdlib -nostartfiles -I bootloader -o esp/EFI/BOOT/BOOTX64.EFI bootloader/bootx64.c"
+bootloader/bootx64.c:169:15: warning: 'load_pe64' defined but not used [-Wunused-function]
+  169 | static UINT64 load_pe64(void *buf, struct EFI_SYSTEM_TABLE *ST) {
+      |               ^~~~~~~~~
+bootloader/bootx64.c:30:13: warning: 'serial_puthex64' defined but not used [-Wunused-function]
+   30 | static void serial_puthex64(UINT64 val) {
+      |             ^~~~~~~~~~~~~~~
+-- Enter folder esp --
+<2> Generating esp/KENUXK.BIN
+<0> Running command: ""D:\\qemu\\qemu-system-x86_64.exe" -m 256M -pflash "D:\\KenuxK\\OVMF_CODE.fd" -drive "file=fat:rw:D:\\KenuxK\\esp,format=raw" -serial "file:D:\\KenuxK\\serial.log" -display none -no-reboot"
+WARNING: Image format was not specified for 'D:\KenuxK\OVMF_CODE.fd' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.

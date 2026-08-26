@@ -1,0 +1,11 @@
+{
+  "command": [],
+  "created_at": "2026-08-23T10:12:26+00:00",
+  "error": "",
+  "finished_at": "2026-08-23T10:12:26+00:00",
+  "id": "623004639",
+  "log": "buildsystem\\logs\\623004639.log",
+  "started_at": "2026-08-23T10:12:26+00:00",
+  "status": "done",
+  "task": "help"
+}

@@ -1,0 +1,50 @@
+{
+  "ai_framework": {
+    "model_dir": "models",
+    "dataset_dir": "datasets",
+    "log_dir": "logs",
+    "max_model_versions": 5,
+    "auto_cleanup": true
+  },
+  "training": {
+    "default_batch_size": 32,
+    "default_learning_rate": 0.001,
+    "default_epochs": 100,
+    "patience": 10,
+    "min_delta": 0.001,
+    "early_stopping": true,
+    "save_best_only": true,
+    "validation_split": 0.2
+  },
+  "data_processing": {
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "random_state": 42,
+    "stratify": true,
+    "normalize_features": true,
+    "normalize_targets": false,
+    "feature_range": [0, 1],
+    "standard_scaler": "standard"
+  },
+  "evaluation": {
+    "cv_folds": 5,
+    "scoring": "accuracy",
+    "plot_curves": true,
+    "save_predictions": true,
+    "output_dir": "evaluations"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "ai_framework.log",
+    "max_size": "10MB",
+    "backup_count": 5
+  },
+  "inference": {
+    "batch_size": 32,
+    "threshold": 0.5,
+    "confidence_interval": 0.95,
+    "save_results": true,
+    "output_format": "json"
+  }
+}

@@ -1,0 +1,518 @@
+-- Start building task run all -- (695780738)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/pe.c
+<3> Building kernel/arch/x86_64/pnp.c
+<0> Building kernel/arch/x86_64/nvme.c
+<1> Building kernel/arch/x86_64/ntfs.c
+kernel/arch/x86_64/pe.c: In function 'pe_get_nt_headers':
+kernel/arch/x86_64/pe.c:9:59: error: 'gt' undeclared (first use in this function)
+    9 |     return (IMAGE_NT_HEADERS64*)(buffer + (uintptr_t)dos-&gt;e_lfanew);
+      |                                                           ^~
+kernel/arch/x86_64/pe.c:9:59: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/pe.c:9:61: error: expected ')' before ';' token
+kernel/arch/x86_64/ntfs.c: In function 'write_attr_filename':
+    9 |     return (IMAGE_NT_HEADERS64*)(buffer + (uintptr_t)dos-&gt;e_lfanew);
+kernel/arch/x86_64/ntfs.c:181:28: warning: taking address of packed member of 'struct <anonymous>' may result in an unaligned pointer value [-Waddress-of-packed-member]
+      |                                 ~                           ^
+      |                                                             )
+  181 |     ascii_to_utf16(name, fn->file_name, NTFS_MAX_FILENAME_LEN);
+      |                          ~~^~~~~~~~~~~
+kernel/arch/x86_64/pe.c: In function 'pe_validate':
+kernel/arch/x86_64/pe.c:14:15: error: 'lt' undeclared (first use in this function)
+   14 |     if (size &lt; (uint64_t)sizeof(IMAGE_DOS_HEADER)) {
+      |               ^~
+kernel/arch/x86_64/pe.c:14:17: error: expected ')' before ';' token
+   14 |     if (size &lt; (uint64_t)sizeof(IMAGE_DOS_HEADER)) {
+      |        ~        ^
+      |                 )
+kernel/arch/x86_64/pe.c:19:14: error: 'gt' undeclared (first use in this function)
+   19 |     if (dos-&gt;e_magic != (uint16_t)IMAGE_DOS_SIGNATURE) {
+      |              ^~
+kernel/arch/x86_64/pe.c:19:16: error: expected ')' before ';' token
+   19 |     if (dos-&gt;e_magic != (uint16_t)IMAGE_DOS_SIGNATURE) {
+      |        ~       ^
+      |                )
+kernel/arch/x86_64/pe.c:23:26: error: expected ')' before ';' token
+   23 |     if ((uint64_t)dos-&gt;e_lfanew + (uint64_t)sizeof(IMAGE_NT_HEADERS64) &gt; size) {
+      |        ~                 ^
+      |                          )
+kernel/arch/x86_64/pe.c:27:91: error: expected ')' before ';' token
+   27 |     const IMAGE_NT_HEADERS64* nt = (const IMAGE_NT_HEADERS64*)(buffer + (uintptr_t)dos-&gt;e_lfanew);
+      |                                                               ~                           ^
+      |                                                                                           )
+kernel/arch/x86_64/pe.c:28:15: error: expected ')' before ';' token
+   28 |     if (nt-&gt;Signature != (uint32_t)IMAGE_NT_SIGNATURE) {
+      |        ~      ^
+      |               )
+kernel/arch/x86_64/pe.c:32:15: error: expected ')' before ';' token
+   32 |     if (nt-&gt;OptionalHeader.Magic != (uint16_t)IMAGE_NT_OPTIONAL_HDR64_MAGIC) {
+      |        ~      ^
+      |               )
+kernel/arch/x86_64/pe.c:36:15: error: expected ')' before ';' token
+   36 |     if (nt-&gt;FileHeader.Machine != (uint16_t)IMAGE_FILE_MACHINE_AMD64) {
+      |        ~      ^
+      |               )
+kernel/arch/x86_64/pe.c: In function 'pe_get_entry_point':
+kernel/arch/x86_64/pe.c:46:37: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   46 |     return (uint64_t)((uint64_t)nt-&gt;OptionalHeader.AddressOfEntryPoint + nt-&gt;OptionalHeader.ImageBase);
+      |                                     ^~
+      |                                     nt
+kernel/arch/x86_64/pe.c:46:39: error: expected ')' before ';' token
+   46 |     return (uint64_t)((uint64_t)nt-&gt;OptionalHeader.AddressOfEntryPoint + nt-&gt;OptionalHeader.ImageBase);
+      |                      ~                ^
+      |                                       )
+kernel/arch/x86_64/pe.c: In function 'pe_get_image_base':
+kernel/arch/x86_64/pe.c:52:16: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   52 |     return nt-&gt;OptionalHeader.ImageBase;
+      |                ^~
+      |                nt
+kernel/arch/x86_64/pe.c:52:19: error: 'OptionalHeader' undeclared (first use in this function)
+   52 |     return nt-&gt;OptionalHeader.ImageBase;
+      |                   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c: In function 'pe_get_image_size':
+kernel/arch/x86_64/pe.c:58:16: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   58 |     return nt-&gt;OptionalHeader.SizeOfImage;
+      |                ^~
+      |                nt
+kernel/arch/x86_64/pe.c:58:19: error: 'OptionalHeader' undeclared (first use in this function)
+   58 |     return nt-&gt;OptionalHeader.SizeOfImage;
+      |                   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c: In function 'pe_get_rva':
+kernel/arch/x86_64/pe.c:64:40: error: 'amp' undeclared (first use in this function)
+   64 |     const IMAGE_DATA_DIRECTORY* dir = &amp;nt-&gt;OptionalHeader.DataDirectory[directory_index];
+      |                                        ^~~
+kernel/arch/x86_64/pe.c:64:48: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   64 |     const IMAGE_DATA_DIRECTORY* dir = &amp;nt-&gt;OptionalHeader.DataDirectory[directory_index];
+      |                                                ^~
+      |                                                nt
+kernel/arch/x86_64/pe.c:64:51: error: 'OptionalHeader' undeclared (first use in this function)
+   64 |     const IMAGE_DATA_DIRECTORY* dir = &amp;nt-&gt;OptionalHeader.DataDirectory[directory_index];
+      |                                                   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:66:29: error: 'Size' undeclared (first use in this function)
+   66 |         *out_size = dir-&gt;Size;
+      |                             ^~~~
+kernel/arch/x86_64/pe.c:68:30: error: 'VirtualAddress' undeclared (first use in this function)
+   68 |     return (uint64_t)dir-&gt;VirtualAddress;
+      |                              ^~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:61:48: warning: parameter 'directory_index' set but not used [-Wunused-but-set-parameter=]
+   61 | uint64_t pe_get_rva(const uint8_t* buffer, int directory_index, uint32_t* out_size)
+      |                                            ~~~~^~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c: In function 'pe_load_sections':
+kernel/arch/x86_64/pe.c:74:39: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   74 |     const uint16_t num_sections = nt-&gt;FileHeader.NumberOfSections;
+      |                                       ^~
+      |                                       nt
+kernel/arch/x86_64/pe.c:74:42: error: 'FileHeader' undeclared (first use in this function)
+   74 |     const uint16_t num_sections = nt-&gt;FileHeader.NumberOfSections;
+      |                                          ^~~~~~~~~~
+kernel/arch/x86_64/pe.c:76:26: error: 'amp' undeclared (first use in this function)
+   76 |         (const uint8_t*)&amp;nt-&gt;OptionalHeader + (uintptr_t)nt-&gt;FileHeader.SizeOfOptionalHeader);
+      |                          ^~~
+kernel/arch/x86_64/pe.c:76:29: error: expected ')' before ';' token
+   76 |         (const uint8_t*)&amp;nt-&gt;OptionalHeader + (uintptr_t)nt-&gt;FileHeader.SizeOfOptionalHeader);
+      |                             ^
+      |                             )
+kernel/arch/x86_64/pe.c:75:68: note: to match this '('
+   75 |     const IMAGE_SECTION_HEADER* sec = (const IMAGE_SECTION_HEADER*)(
+      |                                                                    ^
+kernel/arch/x86_64/pe.c:78:29: error: 'lt' undeclared (first use in this function); did you mean 'nt'?
+   78 |     for (uint16_t i = 0; i &lt; num_sections; i++) {
+      |                             ^~
+      |                             nt
+kernel/arch/x86_64/pe.c:78:33: warning: statement with no effect [-Wunused-value]
+   78 |     for (uint16_t i = 0; i &lt; num_sections; i++) {
+      |                                 ^~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:78:45: error: expected ')' before ';' token
+   78 |     for (uint16_t i = 0; i &lt; num_sections; i++) {
+      |         ~                                   ^
+      |                                             )
+kernel/arch/x86_64/pe.c:85:48: error: expected ')' before ';' token
+   85 |         uint32_t clear_size = (virtual_size &gt; raw_size) ? virtual_size : raw_size;
+      |                               ~                ^
+      |                                                )
+kernel/arch/x86_64/pe.c:90:25: error: expected ')' before ';' token
+   90 |         if (raw_size &gt; 0U) {
+      |            ~            ^
+      |                         )
+kernel/arch/x86_64/pe.c: In function 'pe_apply_relocations':
+kernel/arch/x86_64/pe.c:108:87: error: 'amp' undeclared (first use in this function)
+  108 |     const uint64_t reloc_rva = pe_get_rva(file_buf, IMAGE_DIRECTORY_ENTRY_BASERELOC, &amp;reloc_size);
+      |                                                                                       ^~~
+kernel/arch/x86_64/pe.c:108:90: error: expected ')' before ';' token
+  108 |     const uint64_t reloc_rva = pe_get_rva(file_buf, IMAGE_DIRECTORY_ENTRY_BASERELOC, &amp;reloc_size);
+      |                                          ~                                               ^
+      |                                                                                          )
+kernel/arch/x86_64/pe.c:114:19: error: 'gt' undeclared (first use in this function)
+  114 |     while (block-&gt;VirtualAddress != 0U &amp;&amp; block-&gt;SizeOfBlock != 0U) {
+      |                   ^~
+kernel/arch/x86_64/pe.c:114:21: error: expected ')' before ';' token
+  114 |     while (block-&gt;VirtualAddress != 0U &amp;&amp; block-&gt;SizeOfBlock != 0U) {
+      |           ~         ^
+      |                     )
+kernel/arch/x86_64/pe.c:115:53: error: expected ')' before ';' token
+  115 |         const uint32_t count = (uint32_t)((block-&gt;SizeOfBlock - 8U) / 2U);
+      |                                           ~         ^
+      |                                                     )
+kernel/arch/x86_64/pe.c:118:34: error: 'lt' undeclared (first use in this function)
+  118 |         for (uint32_t i = 0U; i &lt; count; i++) {
+      |                                  ^~
+kernel/arch/x86_64/pe.c:118:38: warning: statement with no effect [-Wunused-value]
+  118 |         for (uint32_t i = 0U; i &lt; count; i++) {
+      |                                      ^~~~~
+kernel/arch/x86_64/pe.c:118:43: error: expected ')' before ';' token
+  118 |         for (uint32_t i = 0U; i &lt; count; i++) {
+      |             ~                             ^
+      |                                           )
+kernel/arch/x86_64/pe.c:120:37: error: expected ')' before ';' token
+  120 |             if ((uint16_t)(entry &gt;&gt; 12) == (uint16_t)IMAGE_REL_BASED_DIR64) {
+      |                           ~         ^
+      |                                     )
+kernel/arch/x86_64/pe.c:121:62: error: expected ')' before ';' token
+  121 |                 const uint32_t offset = (uint32_t)(entry &amp; 0xFFFU);
+      |                                                   ~          ^
+      |                                                              )
+kernel/arch/x86_64/pe.c:122:85: error: expected ')' before ';' token
+  122 |                 uint64_t* fixup_addr = (uint64_t*)(image_base + (uintptr_t)block-&gt;VirtualAddress + (uintptr_t)offset);
+      |                                                   ~                                 ^
+      |                                                                                     )
+kernel/arch/x86_64/pe.c:121:32: warning: unused variable 'offset' [-Wunused-variable]
+  121 |                 const uint32_t offset = (uint32_t)(entry &amp; 0xFFFU);
+      |                                ^~~~~~
+kernel/arch/x86_64/pe.c:127:80: error: expected ')' before ';' token
+  127 |         block = (IMAGE_BASE_RELOCATION*)((uint8_t*)block + (uintptr_t)block-&gt;SizeOfBlock);
+      |                                         ~                                      ^
+      |                                                                                )
+kernel/arch/x86_64/pe.c:107:14: warning: unused variable 'reloc_size' [-Wunused-variable]
+  107 |     uint32_t reloc_size = 0U;
+      |              ^~~~~~~~~~
+kernel/arch/x86_64/pe.c: In function 'pe_resolve_imports':
+kernel/arch/x86_64/nvme.c: In function 'nvme_alloc_queue':
+kernel/arch/x86_64/pnp.c: In function 'add_pnp_root':
+kernel/arch/x86_64/pe.c:137:85: error: 'amp' undeclared (first use in this function)
+kernel/arch/x86_64/nvme.c:40:22: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+kernel/arch/x86_64/pnp.c:219:23: warning: multi-character character constant [-Wmultichar]
+  219 |     node->signature = 'PnPD';
+      |                       ^~~~~~
+kernel/arch/x86_64/pnp.c: In function 'pnp_init':
+kernel/arch/x86_64/pnp.c:325:39: warning: multi-character character constant [-Wmultichar]
+  325 |                 dev_node->signature = 'PnPD';
+      |                                       ^~~~~~
+  137 |     const uint64_t import_rva = pe_get_rva(file_buf, IMAGE_DIRECTORY_ENTRY_IMPORT, &amp;import_size);
+      |                                                                                     ^~~
+kernel/arch/x86_64/pe.c:137:88: error: expected ')' before ';' token
+  137 |     const uint64_t import_rva = pe_get_rva(file_buf, IMAGE_DIRECTORY_ENTRY_IMPORT, &amp;import_size);
+      |                                           ~                                            ^
+      |                                                                                        )
+kernel/arch/x86_64/pe.c:143:25: error: 'gt' undeclared (first use in this function)
+  143 |     while (import_desc-&gt;Name != 0U) {
+      |                         ^~
+kernel/arch/x86_64/pe.c:143:27: error: expected ')' before ';' token
+  143 |     while (import_desc-&gt;Name != 0U) {
+      |           ~               ^
+      |                           )
+kernel/arch/x86_64/pe.c:144:85: error: expected ')' before ';' token
+  144 |         const char* dll_name = (const char*)(image_base + (uintptr_t)import_desc-&gt;Name);
+      |                                             ~                                       ^
+      |                                                                                     )
+kernel/arch/x86_64/pe.c:147:28: error: expected ')' before ';' token
+  147 |         if (import_desc-&gt;u.OriginalFirstThunk != 0U) {
+      |            ~               ^
+      |                            )
+kernel/arch/x86_64/pe.c:148:51: error: 'u' undeclared (first use in this function); did you mean 'u8'?
+  148 |             thunk_rva = (uint64_t)import_desc-&gt;u.OriginalFirstThunk;
+      |                                                   ^
+      |                                                   u8
+kernel/arch/x86_64/pe.c:150:51: error: 'FirstThunk' undeclared (first use in this function)
+  150 |             thunk_rva = (uint64_t)import_desc-&gt;FirstThunk;
+      |                                                   ^~~~~~~~~~
+kernel/arch/x86_64/pe.c:154:76: error: expected ')' before ';' token
+  154 |         uint64_t* iat = (uint64_t*)(image_base + (uintptr_t)import_desc-&gt;FirstThunk);
+      |                                    ~                                       ^
+      |                                                                            )
+kernel/arch/x86_64/pe.c:156:25: error: expected ')' before ';' token
+  156 |         while (thunk-&gt;u1.AddressOfData != 0ULL) {
+      |               ~         ^
+      |                         )
+kernel/arch/x86_64/pe.c:157:27: error: expected ')' before ';' token
+  157 |             if ((thunk-&gt;u1.Ordinal &amp; IMAGE_ORDINAL_FLAG64) != 0ULL) {
+      |                 ~         ^
+      |                           )
+kernel/arch/x86_64/pe.c:158:58: error: expected ')' before ';' token
+  158 |                 const uint16_t ord = (uint16_t)(thunk-&gt;u1.Ordinal &amp; 0xFFFFULL);
+kernel/arch/x86_64/pnp.c: At top level:
+      |                                                ~         ^
+   40 |     uint32_t pages = (size + PAGE_SIZE - 1) / PAGE_SIZE;
+kernel/arch/x86_64/pnp.c:706:14: warning: 'find_hdevinfo' defined but not used [-Wunused-function]
+  706 | static void* find_hdevinfo(void* h) {
+      |              ^~~~~~~~~~~~~
+      |                                                          )
+kernel/arch/x86_64/pe.c:161:90: error: expected ')' before ';' token
+  161 |                 const char* import_name = (const char*)(image_base + (uintptr_t)thunk-&gt;u1.AddressOfData + 2U);
+      |                                                        ~                                 ^
+      |                                                                                          )
+kernel/arch/x86_64/pe.c:136:14: warning: unused variable 'import_size' [-Wunused-variable]
+  136 |     uint32_t import_size = 0U;
+      |              ^~~~~~~~~~~
+kernel/arch/x86_64/pe.c: In function 'pe_run_tls_callbacks':
+kernel/arch/x86_64/pe.c:180:79: error: 'amp' undeclared (first use in this function)
+  180 |     const uint64_t tls_rva = pe_get_rva(file_buf, IMAGE_DIRECTORY_ENTRY_TLS, &amp;tls_size);
+      |                                                                               ^~~
+kernel/arch/x86_64/pe.c:180:82: error: expected ')' before ';' token
+  180 |     const uint64_t tls_rva = pe_get_rva(file_buf, IMAGE_DIRECTORY_ENTRY_TLS, &amp;tls_size);
+      |                                        ~                                         ^
+      |                                                                                  )
+kernel/arch/x86_64/pe.c:186:14: error: 'gt' undeclared (first use in this function)
+  186 |     if (tls-&gt;AddressOfCallBacks == 0ULL) {
+      |              ^~
+kernel/arch/x86_64/pe.c:186:16: error: expected ')' before ';' token
+  186 |     if (tls-&gt;AddressOfCallBacks == 0ULL) {
+      |        ~       ^
+      |                )
+kernel/arch/x86_64/pe.c:191:44: error: 'AddressOfCallBacks' undeclared (first use in this function)
+  191 |     const uint64_t callbacks_rva = tls-&gt;AddressOfCallBacks - preferred_base;
+      |                                            ^~~~~~~~~~~~~~~~~~
+<2> Building kernel/arch/x86_64/netfilter.c
+      |                      ^
+kernel/arch/x86_64/nvme.c: In function 'nvme_free_queue':
+kernel/arch/x86_64/nvme.c:57:22: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+   57 |     uint32_t pages = (size + PAGE_SIZE - 1) / PAGE_SIZE;
+      |                      ^
+kernel/arch/x86_64/nvme.c: In function 'nvme_submit_cmd':
+kernel/arch/x86_64/nvme.c:106:26: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  106 |     uint16_t next_tail = (sq->tail + 1) % sq->depth;
+      |                          ^
+kernel/arch/x86_64/nvme.c: In function 'nvme_poll_cq':
+kernel/arch/x86_64/nvme.c:143:16: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  143 |     cq->head = (cq->head + 1) % cq->depth;
+      |                ^
+kernel/arch/x86_64/nvme.c: In function 'nvme_probe':
+kernel/arch/x86_64/nvme.c:210:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  210 |                 uint32_t vendor_device = pci_read_config(b, d, f, 0x00);
+In file included from kernel/arch/x86_64/netfilter.c:1:
+In function 'write_attr_data_resident',
+      |                                                          ^
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+    inlined from 'create_file' at kernel/arch/x86_64/ntfs.c:470:15:
+kernel/arch/x86_64/nvme.c:210:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+kernel/arch/x86_64/ntfs.c:199:22: warning: potential null pointer dereference [-Wnull-dereference]
+  210 |                 uint32_t vendor_device = pci_read_config(b, d, f, 0x00);
+   56 |         return verdict;
+      |                ^~~~~~~
+      |                                                             ^
+kernel/arch/x86_64/nvme.c:210:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  199 |     ah->attribute_id = (uint16_t)attr_id;
+  210 |                 uint32_t vendor_device = pci_read_config(b, d, f, 0x00);
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+      |                                                                ^
+kernel/arch/x86_64/ntfs.c:198:22: warning: potential null pointer dereference [-Wnull-dereference]
+kernel/arch/x86_64/nvme.c:216:54: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  198 |     ah->non_resident = 0;
+  216 |                 uint32_t class_reg = pci_read_config(b, d, f, 0x08);
+      |     ~~~~~~~~~~~~~~~~~^~~
+      |                                                      ^
+kernel/arch/x86_64/ntfs.c:197:14: warning: potential null pointer dereference [-Wnull-dereference]
+kernel/arch/x86_64/nvme.c:216:57: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  197 |     ah->type = NTFS_ATTRIBUTE_DATA;
+  216 |                 uint32_t class_reg = pci_read_config(b, d, f, 0x08);
+In function 'write_attr_data_nonresident',
+      |                                                         ^
+kernel/arch/x86_64/nvme.c:216:60: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  216 |                 uint32_t class_reg = pci_read_config(b, d, f, 0x08);
+      |                                                            ^
+kernel/arch/x86_64/nvme.c:217:38: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  217 |                 uint8_t class_code = (class_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/nvme.c:225:37: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  225 |                     nvme_ctrl.bus = b;
+      |                                     ^
+kernel/arch/x86_64/nvme.c:226:40: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  226 |                     nvme_ctrl.device = d;
+      |                                        ^
+kernel/arch/x86_64/nvme.c:227:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  227 |                     nvme_ctrl.function = f;
+      |                                          ^
+kernel/arch/x86_64/nvme.c:229:43: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  229 |                     nvme_ctrl.device_id = (vendor_device >> 16) & 0xFFFF;
+    inlined from 'create_file' at kernel/arch/x86_64/ntfs.c:485:15:
+      |                                           ^
+kernel/arch/x86_64/ntfs.c:223:42: warning: potential null pointer dereference [-Wnull-dereference]
+  223 |     ah->data.non_resident.allocated_size = alloc_size;
+kernel/arch/x86_64/nvme.c:231:56: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+  231 |                     uint32_t bar0_lo = pci_read_config(b, d, f, NVME_PCI_BAR0_OFFSET);
+kernel/arch/x86_64/ntfs.c:226:43: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                                        ^
+  226 |     ah->data.non_resident.compressed_size = alloc_size;
+kernel/arch/x86_64/nvme.c:231:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+  231 |                     uint32_t bar0_lo = pci_read_config(b, d, f, NVME_PCI_BAR0_OFFSET);
+kernel/arch/x86_64/ntfs.c:219:22: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                                           ^
+  219 |     ah->attribute_id = (uint16_t)attr_id;
+kernel/arch/x86_64/nvme.c:231:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+  231 |                     uint32_t bar0_lo = pci_read_config(b, d, f, NVME_PCI_BAR0_OFFSET);
+kernel/arch/x86_64/ntfs.c:227:16: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                                              ^
+  227 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+kernel/arch/x86_64/nvme.c:232:56: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  232 |                     uint32_t bar0_hi = pci_read_config(b, d, f, NVME_PCI_BAR1_OFFSET);
+kernel/arch/x86_64/ntfs.c:225:44: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                                        ^
+  225 |     ah->data.non_resident.initialized_size = data_size;
+kernel/arch/x86_64/nvme.c:232:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+  232 |                     uint32_t bar0_hi = pci_read_config(b, d, f, NVME_PCI_BAR1_OFFSET);
+kernel/arch/x86_64/ntfs.c:224:37: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                                           ^
+  224 |     ah->data.non_resident.data_size = data_size;
+kernel/arch/x86_64/nvme.c:232:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+  232 |                     uint32_t bar0_hi = pci_read_config(b, d, f, NVME_PCI_BAR1_OFFSET);
+kernel/arch/x86_64/ntfs.c:222:43: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                                              ^
+  222 |     ah->data.non_resident.data_run_offset = (uint16_t)(sizeof(NTFS_ATTRIBUTE_HEADER));
+kernel/arch/x86_64/nvme.c:248:56: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+      |                                                        ^
+kernel/arch/x86_64/nvme.c:248:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+kernel/arch/x86_64/ntfs.c:221:36: warning: potential null pointer dereference [-Wnull-dereference]
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+  221 |     ah->data.non_resident.high_vcn = 0;
+      |                                                           ^
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/nvme.c:248:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+kernel/arch/x86_64/ntfs.c:220:35: warning: potential null pointer dereference [-Wnull-dereference]
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+  220 |     ah->data.non_resident.low_vcn = 0;
+      |                                                              ^
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/nvme.c:248:40: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+kernel/arch/x86_64/ntfs.c:218:22: warning: potential null pointer dereference [-Wnull-dereference]
+  218 |     ah->non_resident = 1;
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+      |                                        ^~~~~~~~~~~~~~~
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/nvme.c:250:38: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+kernel/arch/x86_64/ntfs.c:217:14: warning: potential null pointer dereference [-Wnull-dereference]
+  250 |                     pci_write_config(b, d, f, NVME_PCI_COMMAND_OFFSET, cmd_reg);
+  217 |     ah->type = NTFS_ATTRIBUTE_DATA;
+      |                                      ^
+In function 'write_attr_end',
+kernel/arch/x86_64/nvme.c:250:41: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+    inlined from 'create_file' at kernel/arch/x86_64/ntfs.c:491:11:
+  250 |                     pci_write_config(b, d, f, NVME_PCI_COMMAND_OFFSET, cmd_reg);
+kernel/arch/x86_64/ntfs.c:270:16: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                         ^
+  270 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+kernel/arch/x86_64/nvme.c:250:44: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  250 |                     pci_write_config(b, d, f, NVME_PCI_COMMAND_OFFSET, cmd_reg);
+kernel/arch/x86_64/ntfs.c:269:14: warning: potential null pointer dereference [-Wnull-dereference]
+      |                                            ^
+  269 |     ah->type = NTFS_ATTRIBUTE_END;
+kernel/arch/x86_64/nvme.c: In function 'nvme_get_info':
+kernel/arch/x86_64/nvme.c:791:22: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  791 |     uint16_t major = (vs >> 16) & 0xFFFF;
+      |                      ^
+kernel/arch/x86_64/nvme.c: At top level:
+kernel/arch/x86_64/nvme.c:185:12: warning: 'nvme_poll_admin_cq' defined but not used [-Wunused-function]
+In function 'write_attr_index_root',
+  185 | static int nvme_poll_admin_cq(nvme_controller_t *ctrl, nvme_cqe_t *cqe)
+    inlined from 'create_standard_metadata_file.isra' at kernel/arch/x86_64/ntfs.c:394:15:
+      |            ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:261:16: warning: potential null pointer dereference [-Wnull-dereference]
+  261 |     ah->length = (uint32_t)(sizeof(NTFS_ATTRIBUTE_HEADER) + total);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:259:36: warning: potential null pointer dereference [-Wnull-dereference]
+  259 |     ah->data.resident.value_length = total;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/ntfs.c:238:22: warning: potential null pointer dereference [-Wnull-dereference]
+  238 |     ah->attribute_id = (uint16_t)attr_id;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:260:36: warning: potential null pointer dereference [-Wnull-dereference]
+  260 |     ah->data.resident.value_offset = (uint16_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:256:19: warning: potential null pointer dereference [-Wnull-dereference]
+  256 |     ih->leaf_flag = leaf_flag;
+      |     ~~~~~~~~~~~~~~^~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:255:24: warning: potential null pointer dereference [-Wnull-dereference]
+  255 |     ih->allocated_size = NTFS_INDEX_ROOT_SIZE - (uint32_t)sizeof(NTFS_INDEX_HEADER) - 16U;
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:254:28: warning: potential null pointer dereference [-Wnull-dereference]
+  254 |     ih->index_entries_size = entries_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:253:24: warning: potential null pointer dereference [-Wnull-dereference]
+  253 |     ih->entries_offset = (uint32_t)sizeof(NTFS_INDEX_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:250:23: warning: potential null pointer dereference [-Wnull-dereference]
+  250 |     *clusters_per_rec = 1;
+      |     ~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:247:21: warning: potential null pointer dereference [-Wnull-dereference]
+  247 |     *idx_block_size = 4096;
+      |     ~~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/ntfs.c:244:15: warning: potential null pointer dereference [-Wnull-dereference]
+  244 |     *idx_type = NTFS_ATTRIBUTE_FILE_NAME;
+kernel/arch/x86_64/ntfs.c:237:22: warning: potential null pointer dereference [-Wnull-dereference]
+  237 |     ah->non_resident = 0;
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:236:14: warning: potential null pointer dereference [-Wnull-dereference]
+  236 |     ah->type = NTFS_ATTRIBUTE_INDEX_ROOT;
+In function 'write_attr_end',
+    inlined from 'create_standard_metadata_file.isra' at kernel/arch/x86_64/ntfs.c:399:11:
+kernel/arch/x86_64/ntfs.c:270:16: warning: potential null pointer dereference [-Wnull-dereference]
+  270 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:269:14: warning: potential null pointer dereference [-Wnull-dereference]
+  269 |     ah->type = NTFS_ATTRIBUTE_END;
+In function 'write_attr_index_root',
+    inlined from 'create_directory' at kernel/arch/x86_64/ntfs.c:433:11:
+kernel/arch/x86_64/ntfs.c:261:16: warning: potential null pointer dereference [-Wnull-dereference]
+  261 |     ah->length = (uint32_t)(sizeof(NTFS_ATTRIBUTE_HEADER) + total);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:259:36: warning: potential null pointer dereference [-Wnull-dereference]
+  259 |     ah->data.resident.value_length = total;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/ntfs.c:238:22: warning: potential null pointer dereference [-Wnull-dereference]
+  238 |     ah->attribute_id = (uint16_t)attr_id;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:260:36: warning: potential null pointer dereference [-Wnull-dereference]
+  260 |     ah->data.resident.value_offset = (uint16_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:256:19: warning: potential null pointer dereference [-Wnull-dereference]
+  256 |     ih->leaf_flag = leaf_flag;
+      |     ~~~~~~~~~~~~~~^~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:255:24: warning: potential null pointer dereference [-Wnull-dereference]
+  255 |     ih->allocated_size = NTFS_INDEX_ROOT_SIZE - (uint32_t)sizeof(NTFS_INDEX_HEADER) - 16U;
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:254:28: warning: potential null pointer dereference [-Wnull-dereference]
+  254 |     ih->index_entries_size = entries_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:253:24: warning: potential null pointer dereference [-Wnull-dereference]
+  253 |     ih->entries_offset = (uint32_t)sizeof(NTFS_INDEX_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:250:23: warning: potential null pointer dereference [-Wnull-dereference]
+  250 |     *clusters_per_rec = 1;
+      |     ~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:247:21: warning: potential null pointer dereference [-Wnull-dereference]
+  247 |     *idx_block_size = 4096;
+      |     ~~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/ntfs.c:244:15: warning: potential null pointer dereference [-Wnull-dereference]
+  244 |     *idx_type = NTFS_ATTRIBUTE_FILE_NAME;
+kernel/arch/x86_64/ntfs.c:237:22: warning: potential null pointer dereference [-Wnull-dereference]
+  237 |     ah->non_resident = 0;
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:236:14: warning: potential null pointer dereference [-Wnull-dereference]
+  236 |     ah->type = NTFS_ATTRIBUTE_INDEX_ROOT;
+In function 'write_attr_end',
+    inlined from 'create_directory' at kernel/arch/x86_64/ntfs.c:437:11:
+kernel/arch/x86_64/ntfs.c:270:16: warning: potential null pointer dereference [-Wnull-dereference]
+  270 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:269:14: warning: potential null pointer dereference [-Wnull-dereference]
+  269 |     ah->type = NTFS_ATTRIBUTE_END;

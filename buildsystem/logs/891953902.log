@@ -1,0 +1,14 @@
+-- Start building task run kernel -- (891953902)
+-- Start building task kernel -- (0)
+-- Enter folder img/boot --
+<3> Building img/boot/kernel.elf.pe
+<2> Generating img/boot/kernel.bin
+DONE TASK run kernel IN 4.5s.
+Result:
+Started 2 tasks
+Entered 1 folders
+Built 1 files
+Generated 1 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

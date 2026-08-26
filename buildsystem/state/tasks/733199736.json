@@ -1,0 +1,13 @@
+{
+  "command": [
+    "run",
+    "run"
+  ],
+  "created_at": "2026-08-12T04:00:01+00:00",
+  "id": "733199736",
+  "log": "buildsystem\\logs\\733199736.log",
+  "started_at": "2026-08-12T04:00:01+00:00",
+  "status": "running",
+  "task": "run run",
+  "total_targets": 245
+}

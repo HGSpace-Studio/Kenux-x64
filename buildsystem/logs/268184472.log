@@ -1,0 +1,207 @@
+-- Start building task run kernel -- (268184472)
+-- Start building task kernel -- (0)
+-- Enter folder kernel/arch/x86_64 --
+<0> Building kernel/arch/x86_64/win32_security.c
+<2> Building kernel/arch/x86_64/win32_shell.c
+<1> Building kernel/arch/x86_64/win32_process.c
+<3> Building kernel/arch/x86_64/win32_ntdll.c
+kernel/arch/x86_64/win32_ntdll.c:12:5: error: unknown type name 'PCHAR'; did you mean 'WCHAR'?
+   12 |     PCHAR  Buffer;
+      |     ^~~~~
+      |     WCHAR
+kernel/arch/x86_64/win32_ntdll.c: In function 'RtlAnsiStringToUnicodeString':
+kernel/arch/x86_64/win32_ntdll.c:65:53: error: subscripted value is neither array nor pointer nor vector
+   65 |         buf[i] = (WCHAR)((unsigned char)ansi->Buffer[i]);
+      |                                                     ^
+kernel/arch/x86_64/win32_ntdll.c: In function 'RtlUnicodeStringToAnsiString':
+kernel/arch/x86_64/win32_ntdll.c:83:5: error: unknown type name 'PCHAR'; did you mean 'WCHAR'?
+   83 |     PCHAR buf;
+      |     ^~~~~
+      |     WCHAR
+kernel/arch/x86_64/win32_ntdll.c:93:16: error: 'PCHAR' undeclared (first use in this function); did you mean 'WCHAR'?
+   93 |         buf = (PCHAR)memory_alloc(unicode_len + 1);
+      |                ^~~~~
+      |                WCHAR
+kernel/arch/x86_64/win32_ntdll.c:93:16: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/win32_ntdll.c:93:22: error: expected ';' before 'memory_alloc'
+   93 |         buf = (PCHAR)memory_alloc(unicode_len + 1);
+      |                      ^~~~~~~~~~~~
+      |                      ;
+kernel/arch/x86_64/win32_ntdll.c:94:17: warning: comparison between pointer and integer
+   94 |         if (buf == NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_ntdll.c:98:26: warning: comparison between pointer and integer
+   98 |         if (ansi->Buffer == NULL || ansi->MaximumLength < unicode_len + 1) {
+      |                          ^~
+kernel/arch/x86_64/win32_ntdll.c:107:16: error: subscripted value is neither array nor pointer nor vector
+  107 |             buf[i] = '?';
+      |                ^
+kernel/arch/x86_64/win32_ntdll.c:109:16: error: subscripted value is neither array nor pointer nor vector
+  109 |             buf[i] = (CHAR)c;
+      |                ^
+kernel/arch/x86_64/win32_ntdll.c:112:8: error: subscripted value is neither array nor pointer nor vector
+  112 |     buf[unicode_len] = 0;
+      |        ^
+In file included from kernel/arch/x86_64/win32_shell.c:7:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'ShellExecuteA':
+kernel/arch/x86_64/win32_shell.c:207:30: warning: unused variable 'tmp' [-Wunused-variable]
+  207 |                         char tmp[512];
+      |                              ^~~
+kernel/arch/x86_64/win32_security.c:126:16: error: redefinition of 'struct _LUID'
+  126 | typedef struct _LUID {
+      |                ^~~~~
+In file included from kernel/arch/x86_64/win32_security.c:1:
+kernel/arch/x86_64/include/arch/win32.h:69:16: note: originally defined here
+   69 | typedef struct _LUID {
+      |                ^~~~~
+kernel/arch/x86_64/win32_security.c:129:3: error: conflicting types for 'LUID'; have 'struct _LUID'
+  129 | } LUID;
+      |   ^~~~
+kernel/arch/x86_64/include/arch/win32.h:72:3: note: previous declaration of 'LUID' with type 'LUID' {aka 'struct _LUID'}
+   72 | } LUID, *PLUID;
+      |   ^~~~
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'PathCanonicalizeA':
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_shell.c:728:34: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  728 |             memcpy(tmp + ti, sp, ci);
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                  ^~
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwClose':
+kernel/arch/x86_64/win32_process.c:1137:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1137 |     return NtClose(Handle);
+      |            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwAllocateVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1148:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1148 |     return NtAllocateVirtualMemory(ProcessHandle, BaseAddress, ZeroBits, RegionSize, AllocationType, Protect);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwFreeVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1157:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1157 |     return NtFreeVirtualMemory(ProcessHandle, BaseAddress, RegionSize, FreeType);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationProcess':
+kernel/arch/x86_64/win32_process.c:1167:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1167 |     return NtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationThread':
+kernel/arch/x86_64/win32_process.c:1177:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1177 |     return NtQueryInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwCreateFile':
+kernel/arch/x86_64/win32_process.c:1193:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1193 |     return NtCreateFile(FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock, AllocationSize, FileAttributes, ShareAccess, CreateDisposition, CreateOptions, EaBuffer, EaLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwReadFile':
+kernel/arch/x86_64/win32_process.c:1207:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1207 |     return NtReadFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwWriteFile':
+kernel/arch/x86_64/win32_process.c:1221:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1221 |     return NtWriteFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryAttributesFile':
+kernel/arch/x86_64/win32_process.c:1228:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1228 |     return NtQueryAttributesFile(ObjectAttributes, FileInformation);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:896:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  896 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_ntdll.c: In function 'NtCreateFile':
+kernel/arch/x86_64/win32_ntdll.c:391:55: warning: unused parameter 'DesiredAccess' [-Wunused-parameter]
+  391 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                           ~~~~~~~~~~~~^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: At top level:
+kernel/arch/x86_64/win32_process.c:291:13: warning: 'process_slot_cleanup' defined but not used [-Wunused-function]
+  291 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_write_stdout':
+kernel/arch/x86_64/win32_shell.c:1433:5: error: implicit declaration of function 'fflush' [-Wimplicit-function-declaration]
+ 1433 |     fflush(stdout);
+      |     ^~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_dir':
+kernel/arch/x86_64/win32_shell.c:1598:9: warning: variable 'found' set but not used [-Wunused-but-set-variable=]
+ 1598 |     int found;
+      |         ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_set':
+kernel/arch/x86_64/win32_shell.c:1795:9: warning: variable 'expr_mode' set but not used [-Wunused-but-set-variable=]
+ 1795 |     int expr_mode = 0;
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_sort':
+kernel/arch/x86_64/win32_shell.c:2065:22: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+ 2065 |         qsort(lines, count, sizeof(char*), strcmp_void);
+      |                      ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_help':
+kernel/arch/x86_64/win32_shell.c:2116:42: warning: unused parameter 'cmd' [-Wunused-parameter]
+ 2116 | static int cmd_builtin_help(cmd_state_t* cmd, int argc, char** argv) {
+      |                             ~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_resolve_and_run':
+kernel/arch/x86_64/win32_shell.c:2224:23: warning: comparison between pointer and integer
+ 2224 |         if (fn && *fn != cmdname) {
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_execute_line':
+kernel/arch/x86_64/win32_shell.c:2373:13: warning: variable 'match_idx' set but not used [-Wunused-but-set-variable=]
+ 2373 |         int match_idx;
+      |             ^~~~~~~~~
+FAILED TASK run kernel: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikal/include -MMD -MF build/obj/kernel/arch/x86_64/win32_shell.c.o.d -c kernel/arch/x86_64/win32_shell.c -o build/obj/kernel/arch/x86_64/win32_shell.c.o

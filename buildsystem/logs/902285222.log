@@ -1,0 +1,503 @@
+-- Start building task run kernel -- (902285222)
+-- Start building task kernel -- (0)
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/win32_shell.c
+<1> Building kernel/arch/x86_64/win32_security.c
+<3> Building kernel/arch/x86_64/win32_process.c
+<0> Building kernel/arch/x86_64/win32_ntdll.c
+kernel/arch/x86_64/win32_process.c:48:16: error: redefinition of 'struct _LIST_ENTRY'
+   48 | typedef struct _LIST_ENTRY {
+      |                ^~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_process.c:2:
+kernel/arch/x86_64/include/arch/win32_process.h:8:16: note: originally defined here
+    8 | typedef struct _LIST_ENTRY {
+      |                ^~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:51:3: error: conflicting types for 'LIST_ENTRY'; have 'struct _LIST_ENTRY'
+   51 | } LIST_ENTRY, *PLIST_ENTRY;
+      |   ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:11:3: note: previous declaration of 'LIST_ENTRY' with type 'LIST_ENTRY' {aka 'struct _LIST_ENTRY'}
+   11 | } LIST_ENTRY, *PLIST_ENTRY;
+      |   ^~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:51:16: error: conflicting types for 'PLIST_ENTRY'; have 'struct _LIST_ENTRY *'
+   51 | } LIST_ENTRY, *PLIST_ENTRY;
+      |                ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:11:16: note: previous declaration of 'PLIST_ENTRY' with type 'PLIST_ENTRY' {aka 'struct _LIST_ENTRY *'}
+   11 | } LIST_ENTRY, *PLIST_ENTRY;
+      |                ^~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:53:16: error: redefinition of 'struct _PEB_LDR_DATA'
+   53 | typedef struct _PEB_LDR_DATA {
+      |                ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:13:16: note: originally defined here
+   13 | typedef struct _PEB_LDR_DATA {
+      |                ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:60:3: error: conflicting types for 'PEB_LDR_DATA'; have 'struct _PEB_LDR_DATA'
+   60 | } PEB_LDR_DATA, *PPEB_LDR_DATA;
+      |   ^~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:20:3: note: previous declaration of 'PEB_LDR_DATA' with type 'PEB_LDR_DATA' {aka 'struct _PEB_LDR_DATA'}
+   20 | } PEB_LDR_DATA, *PPEB_LDR_DATA;
+      |   ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:60:18: error: conflicting types for 'PPEB_LDR_DATA'; have 'struct _PEB_LDR_DATA *'
+   60 | } PEB_LDR_DATA, *PPEB_LDR_DATA;
+      |                  ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:20:18: note: previous declaration of 'PPEB_LDR_DATA' with type 'PPEB_LDR_DATA' {aka 'struct _PEB_LDR_DATA *'}
+   20 | } PEB_LDR_DATA, *PPEB_LDR_DATA;
+      |                  ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:62:16: error: redefinition of 'struct _RTL_USER_PROCESS_PARAMETERS'
+   62 | typedef struct _RTL_USER_PROCESS_PARAMETERS {
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:22:16: note: originally defined here
+   22 | typedef struct _RTL_USER_PROCESS_PARAMETERS {
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:84:3: error: conflicting types for 'RTL_USER_PROCESS_PARAMETERS'; have 'struct _RTL_USER_PROCESS_PARAMETERS'
+   84 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:44:3: note: previous declaration of 'RTL_USER_PROCESS_PARAMETERS' with type 'RTL_USER_PROCESS_PARAMETERS' {aka 'struct _RTL_USER_PROCESS_PARAMETERS'}
+   44 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:84:33: error: conflicting types for 'PRTL_USER_PROCESS_PARAMETERS'; have 'struct _RTL_USER_PROCESS_PARAMETERS *'
+   84 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:44:33: note: previous declaration of 'PRTL_USER_PROCESS_PARAMETERS' with type 'PRTL_USER_PROCESS_PARAMETERS' {aka 'struct _RTL_USER_PROCESS_PARAMETERS *'}
+   44 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:86:16: error: redefinition of 'struct _PEB'
+   86 | typedef struct _PEB {
+      |                ^~~~
+kernel/arch/x86_64/include/arch/win32_process.h:46:16: note: originally defined here
+   46 | typedef struct _PEB {
+      |                ^~~~
+kernel/arch/x86_64/win32_process.c:163:3: error: conflicting types for 'PEB'; have 'struct _PEB'
+  163 | } PEB, *PPEB;
+      |   ^~~
+kernel/arch/x86_64/include/arch/win32_process.h:123:3: note: previous declaration of 'PEB' with type 'PEB' {aka 'struct _PEB'}
+  123 | } PEB, *PPEB;
+      |   ^~~
+kernel/arch/x86_64/win32_process.c:163:9: error: conflicting types for 'PPEB'; have 'struct _PEB *'
+  163 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/include/arch/win32_process.h:123:9: note: previous declaration of 'PPEB' with type 'PPEB' {aka 'struct _PEB *'}
+  123 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c:165:16: error: redefinition of 'struct _TEB'
+  165 | typedef struct _TEB {
+      |                ^~~~
+kernel/arch/x86_64/include/arch/win32_process.h:125:16: note: originally defined here
+  125 | typedef struct _TEB {
+      |                ^~~~
+kernel/arch/x86_64/win32_process.c:215:3: error: conflicting types for 'TEB'; have 'struct _TEB'
+  215 | } TEB, *PTEB;
+      |   ^~~
+kernel/arch/x86_64/include/arch/win32_process.h:175:3: note: previous declaration of 'TEB' with type 'TEB' {aka 'struct _TEB'}
+  175 | } TEB, *PTEB;
+      |   ^~~
+kernel/arch/x86_64/win32_process.c:215:9: error: conflicting types for 'PTEB'; have 'struct _TEB *'
+  215 | } TEB, *PTEB;
+      |         ^~~~
+kernel/arch/x86_64/include/arch/win32_process.h:175:9: note: previous declaration of 'PTEB' with type 'PTEB' {aka 'struct _TEB *'}
+  175 | } TEB, *PTEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c:224:3: error: conflicting types for 'handle_entry_t'; have 'struct <anonymous>'
+  224 | } handle_entry_t;
+      |   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:184:3: note: previous declaration of 'handle_entry_t' with type 'handle_entry_t'
+  184 | } handle_entry_t;
+      |   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:231:3: error: conflicting types for 'handle_table_t'; have 'struct <anonymous>'
+  231 | } handle_table_t;
+      |   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32_process.h:191:3: note: previous declaration of 'handle_table_t' with type 'handle_table_t'
+  191 | } handle_table_t;
+      |   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'win32_process_init':
+kernel/arch/x86_64/win32_process.c:535:18: error: passing argument 1 of 'peb_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  535 |         peb_init(&system_proc->peb);
+      |                  ^~~~~~~~~~~~~~~~~
+      |                  |
+      |                  PEB * {aka struct _PEB *}
+kernel/arch/x86_64/win32_process.c:369:27: note: expected 'PPEB' {aka 'struct _PEB *'} but argument is of type 'PEB *' {aka 'struct _PEB *'}
+  369 | static void peb_init(PPEB peb) {
+      |                      ~~~~~^~~
+kernel/arch/x86_64/win32_process.c:163:9: note: 'PPEB' declared here
+  163 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c:536:27: error: passing argument 1 of 'handle_table_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  536 |         handle_table_init(&system_proc->handle_table);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           handle_table_t *
+kernel/arch/x86_64/win32_process.c:346:47: note: expected 'handle_table_t *' but argument is of type 'handle_table_t *'
+  346 | static void handle_table_init(handle_table_t* ht) {
+      |                               ~~~~~~~~~~~~~~~~^~
+kernel/arch/x86_64/win32_process.c:559:18: error: passing argument 1 of 'peb_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  559 |         peb_init(&explorer_proc->peb);
+      |                  ^~~~~~~~~~~~~~~~~~~
+      |                  |
+      |                  PEB * {aka struct _PEB *}
+kernel/arch/x86_64/win32_process.c:369:27: note: expected 'PPEB' {aka 'struct _PEB *'} but argument is of type 'PEB *' {aka 'struct _PEB *'}
+  369 | static void peb_init(PPEB peb) {
+      |                      ~~~~~^~~
+kernel/arch/x86_64/win32_process.c:163:9: note: 'PPEB' declared here
+  163 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c:560:46: error: assignment to 'PRTL_USER_PROCESS_PARAMETERS' {aka 'struct _RTL_USER_PROCESS_PARAMETERS *'} from incompatible pointer type 'PRTL_USER_PROCESS_PARAMETERS' {aka 'struct _RTL_USER_PROCESS_PARAMETERS *'} [-Wincompatible-pointer-types]
+  560 |         explorer_proc->peb.ProcessParameters = create_process_parameters(
+      |                                              ^
+kernel/arch/x86_64/include/arch/win32_process.h:44:33: note: 'PRTL_USER_PROCESS_PARAMETERS' declared here
+   44 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:84:33: note: 'PRTL_USER_PROCESS_PARAMETERS' declared here
+   84 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:565:27: error: passing argument 1 of 'handle_table_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  565 |         handle_table_init(&explorer_proc->handle_table);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           handle_table_t *
+kernel/arch/x86_64/win32_process.c:346:47: note: expected 'handle_table_t *' but argument is of type 'handle_table_t *'
+  346 | static void handle_table_init(handle_table_t* ht) {
+      |                               ~~~~~~~~~~~~~~~~^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_create_process':
+kernel/arch/x86_64/win32_process.c:633:14: error: passing argument 1 of 'peb_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  633 |     peb_init(&proc->peb);
+      |              ^~~~~~~~~~
+      |              |
+      |              PEB * {aka struct _PEB *}
+kernel/arch/x86_64/win32_process.c:369:27: note: expected 'PPEB' {aka 'struct _PEB *'} but argument is of type 'PEB *' {aka 'struct _PEB *'}
+  369 | static void peb_init(PPEB peb) {
+      |                      ~~~~~^~~
+kernel/arch/x86_64/win32_process.c:163:9: note: 'PPEB' declared here
+  163 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c:634:33: error: assignment to 'PRTL_USER_PROCESS_PARAMETERS' {aka 'struct _RTL_USER_PROCESS_PARAMETERS *'} from incompatible pointer type 'PRTL_USER_PROCESS_PARAMETERS' {aka 'struct _RTL_USER_PROCESS_PARAMETERS *'} [-Wincompatible-pointer-types]
+  634 |     proc->peb.ProcessParameters = create_process_parameters(
+      |                                 ^
+kernel/arch/x86_64/include/arch/win32_process.h:44:33: note: 'PRTL_USER_PROCESS_PARAMETERS' declared here
+   44 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:84:33: note: 'PRTL_USER_PROCESS_PARAMETERS' declared here
+   84 | } RTL_USER_PROCESS_PARAMETERS, *PRTL_USER_PROCESS_PARAMETERS;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:640:23: error: passing argument 1 of 'handle_table_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  640 |     handle_table_init(&proc->handle_table);
+      |                       ^~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       handle_table_t *
+kernel/arch/x86_64/win32_process.c:346:47: note: expected 'handle_table_t *' but argument is of type 'handle_table_t *'
+  346 | static void handle_table_init(handle_table_t* ht) {
+      |                               ~~~~~~~~~~~~~~~~^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_terminate_process':
+kernel/arch/x86_64/win32_process.c:690:34: warning: comparison of distinct pointer types lacks a cast [-Wcompare-distinct-pointer-types]
+  690 |             if (g_current_thread == proc->threads[i]) {
+      |                                  ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_create_thread':
+kernel/arch/x86_64/win32_process.c:761:14: error: assignment to 'PPEB' {aka 'struct _PEB *'} from incompatible pointer type 'PEB *' {aka 'struct _PEB *'} [-Wincompatible-pointer-types]
+  761 |     teb->Peb = &process->peb;
+      |              ^
+kernel/arch/x86_64/win32_process.c:163:9: note: 'PPEB' declared here
+  163 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c:771:45: error: assignment to 'TEB *' {aka 'struct _TEB *'} from incompatible pointer type 'TEB *' {aka 'struct _TEB *'} [-Wincompatible-pointer-types]
+  771 |     process->threads[process->thread_count] = teb;
+      |                                             ^
+kernel/arch/x86_64/win32_process.c: In function 'win32_destroy_thread':
+kernel/arch/x86_64/win32_process.c:795:31: warning: comparison of distinct pointer types lacks a cast [-Wcompare-distinct-pointer-types]
+  795 |         if (owner->threads[i] == teb) {
+      |                               ^~
+kernel/arch/x86_64/win32_process.c:808:30: error: assignment to 'TEB *' {aka 'struct _TEB *'} from incompatible pointer type 'TEB *' {aka 'struct _TEB *'} [-Wincompatible-pointer-types]
+  808 |             g_current_thread = owner->threads[0];
+      |                              ^
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_alloc':
+kernel/arch/x86_64/win32_process.c:889:8: error: assignment to 'handle_table_t *' from incompatible pointer type 'handle_table_t *' [-Wincompatible-pointer-types]
+  889 |     ht = &proc->handle_table;
+      |        ^
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_to_object':
+kernel/arch/x86_64/win32_process.c:932:8: error: assignment to 'handle_table_t *' from incompatible pointer type 'handle_table_t *' [-Wincompatible-pointer-types]
+  932 |     ht = &proc->handle_table;
+      |        ^
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_close':
+kernel/arch/x86_64/win32_process.c:968:8: error: assignment to 'handle_table_t *' from incompatible pointer type 'handle_table_t *' [-Wincompatible-pointer-types]
+  968 |     ht = &proc->handle_table;
+      |        ^
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_duplicate':
+kernel/arch/x86_64/win32_process.c:1021:8: error: assignment to 'handle_table_t *' from incompatible pointer type 'handle_table_t *' [-Wincompatible-pointer-types]
+ 1021 |     ht = &proc->handle_table;
+      |        ^
+kernel/arch/x86_64/win32_process.c: In function 'ZwClose':
+kernel/arch/x86_64/win32_process.c:1324:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1324 |     return NtClose(Handle);
+      |            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwAllocateVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1335:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1335 |     return NtAllocateVirtualMemory(ProcessHandle, BaseAddress, ZeroBits, RegionSize, AllocationType, Protect);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwFreeVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1344:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1344 |     return NtFreeVirtualMemory(ProcessHandle, BaseAddress, RegionSize, FreeType);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationProcess':
+kernel/arch/x86_64/win32_process.c:1354:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1354 |     return NtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationThread':
+kernel/arch/x86_64/win32_process.c:1364:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1364 |     return NtQueryInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwCreateFile':
+kernel/arch/x86_64/win32_process.c:1380:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1380 |     return NtCreateFile(FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock, AllocationSize, FileAttributes, ShareAccess, CreateDisposition, CreateOptions, EaBuffer, EaLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwReadFile':
+kernel/arch/x86_64/win32_process.c:1394:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1394 |     return NtReadFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwWriteFile':
+kernel/arch/x86_64/win32_process.c:1408:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1408 |     return NtWriteFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryAttributesFile':
+kernel/arch/x86_64/win32_process.c:1415:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1415 |     return NtQueryAttributesFile(ObjectAttributes, FileInformation);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'NtCurrentPeb':
+kernel/arch/x86_64/win32_process.c:1422:12: error: returning 'PEB *' {aka 'struct _PEB *'} from a function with incompatible return type 'PPEB' {aka 'struct _PEB *'} [-Wincompatible-pointer-types]
+ 1422 |     return &g_processes[0].peb;
+      |            ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:163:9: note: 'PPEB' declared here
+  163 | } PEB, *PPEB;
+      |         ^~~~
+kernel/arch/x86_64/win32_process.c: In function 'win32_switch_to_process':
+kernel/arch/x86_64/win32_process.c:1440:26: error: assignment to 'TEB *' {aka 'struct _TEB *'} from incompatible pointer type 'TEB *' {aka 'struct _TEB *'} [-Wincompatible-pointer-types]
+ 1440 |         g_current_thread = proc->threads[0];
+      |                          ^
+kernel/arch/x86_64/win32_ntdll.c:12:5: error: unknown type name 'PCHAR'; did you mean 'WCHAR'?
+   12 |     PCHAR  Buffer;
+      |     ^~~~~
+      |     WCHAR
+kernel/arch/x86_64/win32_ntdll.c: In function 'RtlAnsiStringToUnicodeString':
+kernel/arch/x86_64/win32_ntdll.c:65:53: error: subscripted value is neither array nor pointer nor vector
+   65 |         buf[i] = (WCHAR)((unsigned char)ansi->Buffer[i]);
+      |                                                     ^
+kernel/arch/x86_64/win32_ntdll.c: In function 'RtlUnicodeStringToAnsiString':
+kernel/arch/x86_64/win32_ntdll.c:83:5: error: unknown type name 'PCHAR'; did you mean 'WCHAR'?
+   83 |     PCHAR buf;
+      |     ^~~~~
+      |     WCHAR
+kernel/arch/x86_64/win32_ntdll.c:93:16: error: 'PCHAR' undeclared (first use in this function); did you mean 'WCHAR'?
+   93 |         buf = (PCHAR)memory_alloc(unicode_len + 1);
+      |                ^~~~~
+      |                WCHAR
+kernel/arch/x86_64/win32_ntdll.c:93:16: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/win32_ntdll.c:93:22: error: expected ';' before 'memory_alloc'
+   93 |         buf = (PCHAR)memory_alloc(unicode_len + 1);
+      |                      ^~~~~~~~~~~~
+      |                      ;
+kernel/arch/x86_64/win32_ntdll.c:94:17: warning: comparison between pointer and integer
+   94 |         if (buf == NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_ntdll.c:98:26: warning: comparison between pointer and integer
+   98 |         if (ansi->Buffer == NULL || ansi->MaximumLength < unicode_len + 1) {
+      |                          ^~
+kernel/arch/x86_64/win32_ntdll.c:107:16: error: subscripted value is neither array nor pointer nor vector
+  107 |             buf[i] = '?';
+      |                ^
+kernel/arch/x86_64/win32_ntdll.c:109:16: error: subscripted value is neither array nor pointer nor vector
+  109 |             buf[i] = (CHAR)c;
+      |                ^
+kernel/arch/x86_64/win32_ntdll.c:112:8: error: subscripted value is neither array nor pointer nor vector
+  112 |     buf[unicode_len] = 0;
+      |        ^
+kernel/arch/x86_64/win32_security.c:126:16: error: redefinition of 'struct _LUID'
+  126 | typedef struct _LUID {
+      |                ^~~~~
+In file included from kernel/arch/x86_64/win32_security.c:1:
+kernel/arch/x86_64/include/arch/win32.h:69:16: note: originally defined here
+   69 | typedef struct _LUID {
+      |                ^~~~~
+kernel/arch/x86_64/win32_security.c:129:3: error: conflicting types for 'LUID'; have 'struct _LUID'
+  129 | } LUID;
+      |   ^~~~
+kernel/arch/x86_64/include/arch/win32.h:72:3: note: previous declaration of 'LUID' with type 'LUID' {aka 'struct _LUID'}
+   72 | } LUID, *PLUID;
+      |   ^~~~
+kernel/arch/x86_64/win32_ntdll.c: In function 'NtCreateFile':
+kernel/arch/x86_64/win32_ntdll.c:391:55: warning: unused parameter 'DesiredAccess' [-Wunused-parameter]
+  391 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                           ~~~~~~~~~~~~^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: At top level:
+kernel/arch/x86_64/win32_process.c:478:13: warning: 'process_slot_cleanup' defined but not used [-Wunused-function]
+  478 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:776:6: error: conflicting types for 'LookupPrivilegeValueA'; have 'BOOL(const char *, const char *, LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+  776 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName, LUID* lpLuid) {
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1607:6: note: previous declaration of 'LookupPrivilegeValueA' with type 'BOOL(const char *, const char *, struct _LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+ 1607 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName,
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:839:6: error: conflicting types for 'LookupAccountSidA'; have 'BOOL(const char *, struct _SID *, char *, uint32_t *, char *, uint32_t *, uint32_t *)' {aka 'int(const char *, struct _SID *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+  839 | BOOL LookupAccountSidA(const char* lpSystemName, PSID Sid, char* Name, uint32_t* cchName,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1616:6: note: previous declaration of 'LookupAccountSidA' with type 'BOOL(const char *, void *, char *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, void *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1616 | BOOL LookupAccountSidA(const char* lpSystemName, void* Sid,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:885:6: error: conflicting types for 'LookupAccountNameA'; have 'BOOL(const char *, const char *, struct _SID *, uint32_t *, char *, uint32_t *, uint32_t *)' {aka 'int(const char *, const char *, struct _SID *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+  885 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName, PSID Sid, uint32_t* cbSid,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1611:6: note: previous declaration of 'LookupAccountNameA' with type 'BOOL(const char *, const char *, void *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, const char *, void *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1611 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:894:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  894 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_shell.c:6:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'ShellExecuteA':
+kernel/arch/x86_64/win32_shell.c:206:30: warning: unused variable 'tmp' [-Wunused-variable]
+  206 |                         char tmp[512];
+      |                              ^~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'PathCanonicalizeA':
+kernel/arch/x86_64/win32_shell.c:727:34: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  727 |             memcpy(tmp + ti, sp, ci);
+      |                                  ^~
+<3> Building kernel/arch/x86_64/win32_msvcrt.c
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_write_stdout':
+kernel/arch/x86_64/win32_shell.c:1432:5: error: implicit declaration of function 'fflush' [-Wimplicit-function-declaration]
+ 1432 |     fflush(stdout);
+      |     ^~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_dir':
+kernel/arch/x86_64/win32_shell.c:1597:9: warning: variable 'found' set but not used [-Wunused-but-set-variable=]
+ 1597 |     int found;
+      |         ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_set':
+kernel/arch/x86_64/win32_shell.c:1794:9: warning: variable 'expr_mode' set but not used [-Wunused-but-set-variable=]
+ 1794 |     int expr_mode = 0;
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_sort':
+kernel/arch/x86_64/win32_shell.c:2064:22: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+ 2064 |         qsort(lines, count, sizeof(char*), strcmp_void);
+      |                      ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_help':
+kernel/arch/x86_64/win32_shell.c:2115:42: warning: unused parameter 'cmd' [-Wunused-parameter]
+ 2115 | static int cmd_builtin_help(cmd_state_t* cmd, int argc, char** argv) {
+      |                             ~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_resolve_and_run':
+kernel/arch/x86_64/win32_shell.c:2223:23: warning: comparison between pointer and integer
+ 2223 |         if (fn && *fn != cmdname) {
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_execute_line':
+kernel/arch/x86_64/win32_shell.c:2372:13: warning: variable 'match_idx' set but not used [-Wunused-but-set-variable=]
+ 2372 |         int match_idx;
+      |             ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'TerminateProcess':
+kernel/arch/x86_64/win32_shell.c:2861:28: error: implicit declaration of function 'win32_handle_to_object'; did you mean 'win32_handle_alloc'? [-Wimplicit-function-declaration]
+ 2861 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |                            ^~~~~~~~~~~~~~~~~~~~~~
+      |                            win32_handle_alloc
+kernel/arch/x86_64/win32_shell.c:2861:12: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2861 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |            ^
+kernel/arch/x86_64/win32_shell.c: In function 'GetExitCodeProcess':
+kernel/arch/x86_64/win32_shell.c:2884:12: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2884 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |            ^
+kernel/arch/x86_64/win32_shell.c: In function 'GetProcessTimes':
+kernel/arch/x86_64/win32_shell.c:2919:16: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2919 |         pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |                ^
+kernel/arch/x86_64/win32_msvcrt.c: In function 'output_char':
+kernel/arch/x86_64/win32_msvcrt.c:47:9: warning: the address of 'vga_putc' will always evaluate as 'true' [-Waddress]
+   47 |     if (vga_putc) vga_putc(c);
+      |         ^~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: In function 'output_string':
+kernel/arch/x86_64/win32_msvcrt.c:55:9: warning: the address of 'vga_print' will always evaluate as 'true' [-Waddress]
+   55 |     if (vga_print) vga_print(s);
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: At top level:
+kernel/arch/x86_64/win32_msvcrt.c:646:5: error: conflicting types for 'vprintf'; have 'int(const char *, void *)'
+  646 | int vprintf(const char* fmt, void* argptr)
+      |     ^~~~~~~
+In file included from kernel/arch/x86_64/win32_msvcrt.c:1:
+kernel/arch/x86_64/include/arch/win32.h:1168:5: note: previous declaration of 'vprintf' with type 'int(const char *, char *)'
+ 1168 | int vprintf(const char* fmt, va_list argptr);
+      |     ^~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c:655:5: error: conflicting types for 'vsprintf'; have 'int(char *, const char *, void *)'
+  655 | int vsprintf(char* buf, const char* fmt, void* argptr)
+      |     ^~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1169:5: note: previous declaration of 'vsprintf' with type 'int(char *, const char *, char *)'
+ 1169 | int vsprintf(char* buf, const char* fmt, va_list argptr);
+      |     ^~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c:661:5: error: conflicting types for 'vsnprintf'; have 'int(char *, size_t,  const char *, void *)' {aka 'int(char *, long long unsigned int,  const char *, void *)'}
+  661 | int vsnprintf(char* buf, size_t n, const char* fmt, void* argptr)
+      |     ^~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1170:5: note: previous declaration of 'vsnprintf' with type 'int(char *, size_t,  const char *, char *)' {aka 'int(char *, long long unsigned int,  const char *, char *)'}
+ 1170 | int vsnprintf(char* buf, size_t n, const char* fmt, va_list argptr);
+      |     ^~~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: In function 'fputs':
+kernel/arch/x86_64/win32_msvcrt.c:736:12: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  736 |     return strlen(s);
+      |            ^~~~~~~~~
+FAILED TASK run kernel: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikal/include -MMD -MF build/obj/kernel/arch/x86_64/win32_msvcrt.c.o.d -c kernel/arch/x86_64/win32_msvcrt.c -o build/obj/kernel/arch/x86_64/win32_msvcrt.c.o

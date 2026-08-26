@@ -1,0 +1,230 @@
+-- Start building task run all -- (642712759)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<3> Building kernel/kernel/kernel.c
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  275 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+In file included from kernel/kernel/kernel.c:54:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5:
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:797:9: note: this is the location of the previous definition
+  797 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:801:9: note: this is the location of the previous definition
+  801 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:807:9: note: this is the location of the previous definition
+  807 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:812:9: note: this is the location of the previous definition
+  812 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:67:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/kernel/kernel.c: In function 'kernel_main':
+kernel/kernel/kernel.c:237:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  237 |     drivers_register("PCI", pci_init);
+      |                             ^~~~~~~~
+In file included from kernel/kernel/kernel.c:2:
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:238:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  238 |     drivers_register("ACPI", acpi_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:239:32: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  239 |     drivers_register("SMBIOS", smbios_init);
+      |                                ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:240:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  240 |     drivers_register("RTC", rtc_init);
+      |                             ^~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:241:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  241 |     drivers_register("PIT", pit_init);
+      |                             ^~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:242:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  242 |     drivers_register("PIC", pic_init);
+      |                             ^~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:243:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  243 |     drivers_register("IDT", idt_init);
+      |                             ^~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:244:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  244 |     drivers_register("GDT", gdt_init);
+      |                             ^~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:245:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  245 |     drivers_register("HPET", hpet_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:246:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  246 |     drivers_register("AHCI", ahci_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:247:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  247 |     drivers_register("SATA", sata_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:248:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  248 |     drivers_register("EHCI", ehci_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:249:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  249 |     drivers_register("XHCI", xhci_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:250:33: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  250 |     drivers_register("NETWORK", network_init);
+      |                                 ^~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:251:31: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  251 |     drivers_register("SOUND", sound_init);
+      |                               ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:252:30: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  252 |     drivers_register("AC97", ac97_init);
+      |                              ^~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:253:29: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  253 |     drivers_register("HDA", hda_init);
+      |                             ^~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:254:34: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  254 |     drivers_register("USERMODE", usermode_init);
+      |                                  ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:255:31: warning: ISO C forbids passing argument 2 of 'drivers_register' between function pointer and 'void *' [-Wpedantic]
+  255 |     drivers_register("SHELL", shell_init);
+      |                               ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/drivers.h:7:47: note: expected 'void *' but argument is of type 'void (*)(void)'
+    7 | void drivers_register(const char* name, void* init_func);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/kernel/kernel.c:91:71: warning: unused parameter 'mmi' [-Wunused-parameter]
+   91 | void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~^~~
+-- Enter folder img/boot --
+<0> Building img/boot/kernel.elf.pe
+D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: build/obj/kernel/kernel/kernel.c.o:kernel.c:(.rdata$.refptr.wmi_init[.refptr.wmi_init]+0x0): undefined reference to `wmi_init'
+D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: build/obj/kernel/kernel/kernel.c.o:kernel.c:(.rdata$.refptr.scm_init[.refptr.scm_init]+0x0): undefined reference to `scm_init'
+D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: build/obj/kernel/kernel/kernel.c.o:kernel.c:(.rdata$.refptr.win32_process_init[.refptr.win32_process_init]+0x0): undefined reference to `win32_process_init'
+collect2.exe: error: ld returned 1 exit status
+FAILED TASK run all: command failed with exit 1: D:\mingw64\bin\gcc.exe -m64 -T kernel/arch/x86_64/boot/linker.ld -nostdlib -nodefaultlibs -nostartfiles -Wl,-e,_start -no-pie -Wl,-Ttext,0x200000 -Wl,--image-base=0x0 -o img/boot/kernel.elf.pe build/obj/kernel/arch/x86_64/boot/start64.s.o build/obj/apps/container-os/src/container.c.o build/obj/apps/container-os/src/image.c.o build/obj/apps/container-os/src/manager.c.o build/obj/apps/container-os/src/volume.c.o build/obj/kal/adapters/kal_builtins.c.o build/obj/kal/adapters/kenux_adapter.c.o build/obj/kal/src/kal_capability.c.o build/obj/kal/src/kal_dispatcher.c.o build/obj/kal/src/kal_errno.c.o build/obj/kal/src/kal_governance.c.o build/obj/kal/src/kal_marshalling.c.o build/obj/kal/src/kal_registry.c.o build/obj/kal/src/kal_ssi.c.o build/obj/kernel/api/kapi_atomic.c.o build/obj/kernel/api/kapi_bitmap.c.o build/obj/kernel/api/kapi_blkdev.c.o build/obj/kernel/api/kapi_cdev.c.o build/obj/kernel/api/kapi_completion.c.o build/obj/kernel/api/kapi_cpumask.c.o build/obj/kernel/api/kapi_crc.c.o build/obj/kernel/api/kapi_debugfs.c.o build/obj/kernel/api/kapi_device.c.o build/obj/kernel/api/kapi_dma.c.o build/obj/kernel/api/kapi_ebpf.c.o build/obj/kernel/api/kapi_fs.c.o build/obj/kernel/api/kapi_ftrace.c.o build/obj/kernel/api/kapi_hash.c.o build/obj/kernel/api/kapi_idr.c.o build/obj/kernel/api/kapi_init.c.o build/obj/kernel/api/kapi_io.c.o build/obj/kernel/api/kapi_irq.c.o build/obj/kernel/api/kapi_kfifo.c.o build/obj/kernel/api/kapi_kobject.c.o build/obj/kernel/api/kapi_kprobe.c.o build/obj/kernel/api/kapi_kthread.c.o build/obj/kernel/api/kapi_list.c.o build/obj/kernel/api/kapi_memory.c.o build/obj/kernel/api/kapi_mempool.c.o build/obj/kernel/api/kapi_module.c.o build/obj/kernel/api/kapi_mutex.c.o build/obj/kernel/api/kapi_netdevice.c.o build/obj/kernel/api/kapi_netlink.c.o build/obj/kernel/api/kapi_notifier.c.o build/obj/kernel/api/kapi_params.c.o build/obj/kernel/api/kapi_pci.c.o build/obj/kernel/api/kapi_process.c.o build/obj/kernel/api/kapi_random.c.o build/obj/kernel/api/kapi_rbtree.c.o build/obj/kernel/api/kapi_rcu.c.o build/obj/kernel/api/kapi_sched.c.o build/obj/kernel/api/kapi_security.c.o build/obj/kernel/api/kapi_seq_file.c.o build/obj/kernel/api/kapi_skbuff.c.o build/obj/kernel/api/kapi_smp.c.o build/obj/kernel/api/kapi_socket.c.o build/obj/kernel/api/kapi_sort.c.o build/obj/kernel/api/kapi_string.c.o build/obj/kernel/api/kapi_syscall.c.o build/obj/kernel/api/kapi_time.c.o build/obj/kernel/api/kapi_vfs.c.o build/obj/kernel/api/kapi_wait.c.o build/obj/kernel/arch/x86_64/ac97.c.o build/obj/kernel/arch/x86_64/acpi.c.o build/obj/kernel/arch/x86_64/acpi_madt.c.o build/obj/kernel/arch/x86_64/acpi_pm.c.o build/obj/kernel/arch/x86_64/ahci.c.o build/obj/kernel/arch/x86_64/apic.c.o build/obj/kernel/arch/x86_64/bpf.c.o build/obj/kernel/arch/x86_64/buddy.c.o build/obj/kernel/arch/x86_64/cfs.c.o build/obj/kernel/arch/x86_64/conntrack.c.o build/obj/kernel/arch/x86_64/cpufreq.c.o build/obj/kernel/arch/x86_64/cpuidle.c.o build/obj/kernel/arch/x86_64/dns.c.o build/obj/kernel/arch/x86_64/efi.c.o build/obj/kernel/arch/x86_64/efi_entry.c.o build/obj/kernel/arch/x86_64/efi_runtime.c.o build/obj/kernel/arch/x86_64/ehci.c.o build/obj/kernel/arch/x86_64/elf.c.o build/obj/kernel/arch/x86_64/ext2.c.o build/obj/kernel/arch/x86_64/ext4.c.o build/obj/kernel/arch/x86_64/framebuffer.c.o build/obj/kernel/arch/x86_64/gdt.c.o build/obj/kernel/arch/x86_64/hda.c.o build/obj/kernel/arch/x86_64/hpet.c.o build/obj/kernel/arch/x86_64/i2c.c.o build/obj/kernel/arch/x86_64/idt.c.o build/obj/kernel/arch/x86_64/ioapic.c.o build/obj/kernel/arch/x86_64/jbd2.c.o build/obj/kernel/arch/x86_64/keyboard.c.o build/obj/kernel/arch/x86_64/kvm.c.o build/obj/kernel/arch/x86_64/ldso.c.o build/obj/kernel/arch/x86_64/lsm.c.o build/obj/kernel/arch/x86_64/memory.c.o build/obj/kernel/arch/x86_64/mmap.c.o build/obj/kernel/arch/x86_64/mouse.c.o build/obj/kernel/arch/x86_64/net.c.o build/obj/kernel/arch/x86_64/netfilter.c.o build/obj/kernel/arch/x86_64/ntfs.c.o build/obj/kernel/arch/x86_64/nvme.c.o build/obj/kernel/arch/x86_64/pagecache.c.o build/obj/kernel/arch/x86_64/pagefault.c.o build/obj/kernel/arch/x86_64/pci.c.o build/obj/kernel/arch/x86_64/pe.c.o build/obj/kernel/arch/x86_64/pic.c.o build/obj/kernel/arch/x86_64/pit.c.o build/obj/kernel/arch/x86_64/pnp.c.o build/obj/kernel/arch/x86_64/procfs.c.o build/obj/kernel/arch/x86_64/registry.c.o build/obj/kernel/arch/x86_64/route.c.o build/obj/kernel/arch/x86_64/rtc.c.o build/obj/kernel/arch/x86_64/sata.c.o build/obj/kernel/arch/x86_64/security.c.o build/obj/kernel/arch/x86_64/selinux.c.o build/obj/kernel/arch/x86_64/slab.c.o build/obj/kernel/arch/x86_64/smbios.c.o build/obj/kernel/arch/x86_64/smp.c.o build/obj/kernel/arch/x86_64/sound.c.o build/obj/kernel/arch/x86_64/spi.c.o build/obj/kernel/arch/x86_64/swap.c.o build/obj/kernel/arch/x86_64/tcp_bbr.c.o build/obj/kernel/arch/x86_64/tcp_cong.c.o build/obj/kernel/arch/x86_64/thermal.c.o build/obj/kernel/arch/x86_64/tmpfs.c.o build/obj/kernel/arch/x86_64/uart.c.o build/obj/kernel/arch/x86_64/usb_hid.c.o build/obj/kernel/arch/x86_64/usermode.c.o build/obj/kernel/arch/x86_64/vga.c.o build/obj/kernel/arch/x86_64/virtio.c.o build/obj/kernel/arch/x86_64/vlan.c.o build/obj/kernel/arch/x86_64/watchdog.c.o build/obj/kernel/arch/x86_64/xhci.c.o build/obj/kernel/gui/src/browser.c.o build/obj/kernel/gui/src/cjk_font.c.o build/obj/kernel/gui/src/color.c.o build/obj/kernel/gui/src/cursor_data.c.o build/obj/kernel/gui/src/desktop.c.o build/obj/kernel/gui/src/emoji_font.c.o build/obj/kernel/gui/src/filemgr.c.o build/obj/kernel/gui/src/font.c.o build/obj/kernel/gui/src/font_data.c.o build/obj/kernel/gui/src/framebuffer.c.o build/obj/kernel/gui/src/graphics.c.o build/obj/kernel/gui/src/icon.c.o build/obj/kernel/gui/src/icon_data.c.o build/obj/kernel/gui/src/icon_registry.c.o build/obj/kernel/gui/src/kenux_render.c.o build/obj/kernel/gui/src/main.c.o build/obj/kernel/gui/src/msf.c.o build/obj/kernel/gui/src/sysinfo.c.o build/obj/kernel/gui/src/taskmgr.c.o build/obj/kernel/gui/src/terminal.c.o build/obj/kernel/gui/src/textedit.c.o build/obj/kernel/gui/src/thispc.c.o build/obj/kernel/gui/src/widget.c.o build/obj/kernel/gui/src/window.c.o build/obj/kernel/gui/src/window_manager.c.o build/obj/kernel/kernel/cgroup.c.o build/obj/kernel/kernel/devtmpfs.c.o build/obj/kernel/kernel/drivers.c.o build/obj/kernel/kernel/epoll.c.o build/obj/kernel/kernel/fifo.c.o build/obj/kernel/kernel/fs.c.o build/obj/kernel/kernel/gdb_stub.c.o build/obj/kernel/kernel/interrupt.c.o build/obj/kernel/kernel/ipc.c.o build/obj/kernel/kernel/kernel.c.o build/obj/kernel/kernel/kthread.c.o build/obj/kernel/kernel/module.c.o build/obj/kernel/kernel/printk.c.o build/obj/kernel/kernel/process.c.o build/obj/kernel/kernel/rcu.c.o build/obj/kernel/kernel/shell_enhanced.c.o build/obj/kernel/kernel/signal.c.o build/obj/kernel/kernel/stacktrace.c.o build/obj/kernel/kernel/sync.c.o build/obj/kernel/kernel/syscall.c.o build/obj/kernel/kernel/sysfs.c.o build/obj/kernel/kernel/timer.c.o build/obj/kernel/kernel/unixsock.c.o build/obj/kernel/kernel/wait.c.o build/obj/kernel/kernel/workqueue.c.o build/obj/kernel/lib/libc/errno.c.o build/obj/kernel/lib/libc/math.c.o build/obj/kernel/lib/libc/setjmp.c.o build/obj/kernel/lib/libc/signal.c.o build/obj/kernel/lib/libc/stdio.c.o build/obj/kernel/lib/libc/stdlib.c.o build/obj/kernel/lib/libc/string.c.o build/obj/kernel/lib/libc/time.c.o build/obj/kernel/lib/libc/unistd.c.o build/obj/kernel/lib/libc/vsprintf.c.o build/obj/kernel/systemd/automount.c.o build/obj/kernel/systemd/device.c.o build/obj/kernel/systemd/fstab.c.o build/obj/kernel/systemd/journal.c.o build/obj/kernel/systemd/journalctl.c.o build/obj/kernel/systemd/mount.c.o build/obj/kernel/systemd/path.c.o build/obj/kernel/systemd/service.c.o build/obj/kernel/systemd/slice.c.o build/obj/kernel/systemd/socket.c.o build/obj/kernel/systemd/swap.c.o build/obj/kernel/systemd/systemctl.c.o build/obj/kernel/systemd/systemd.c.o build/obj/kernel/systemd/target.c.o build/obj/kernel/systemd/timer.c.o build/obj/kernel/systemd/udev.c.o build/obj/kernel/systemd/util.c.o build/obj/kernel/arch/x86_64/interrupt.S.o -o img/boot/kernel.elf.pe

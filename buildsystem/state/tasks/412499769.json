@@ -1,0 +1,14 @@
+{
+  "command": [
+    "run",
+    "build"
+  ],
+  "created_at": "2026-08-14T14:06:30+00:00",
+  "error": "build: unknown task or file: build",
+  "finished_at": "2026-08-14T14:06:30+00:00",
+  "id": "412499769",
+  "log": "buildsystem\\logs\\412499769.log",
+  "started_at": "2026-08-14T14:06:30+00:00",
+  "status": "failed",
+  "task": "run"
+}

@@ -1,0 +1,19 @@
+-- Start building task run all -- (621197964)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/compat_ntvdm.c
+-- Enter folder img/boot --
+<2> Building img/boot/kernel.elf.pe
+<0> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<3> Generating esp/KENUXK.BIN
+DONE TASK run all IN 1.3s.
+Result:
+Started 3 tasks
+Entered 3 folders
+Built 2 files
+Generated 2 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

@@ -1,0 +1,40 @@
+{
+  "command": [
+    "run",
+    "clean"
+  ],
+  "created_at": "2026-08-08T13:22:22+00:00",
+  "elapsed_seconds": 0.648,
+  "finished_at": "2026-08-08T13:22:23+00:00",
+  "id": "297324817",
+  "log": "buildsystem\\logs\\297324817.log",
+  "metrics": {
+    "built_files": 0,
+    "completed": 1,
+    "downloaded_files": 0,
+    "elapsed_seconds": 0.648,
+    "entered_folders": 0,
+    "errors": 0,
+    "executed_targets": 1,
+    "generated_files": 0,
+    "peak_parallel_workers": 1,
+    "ran_commands": 0,
+    "skipped_targets": 0,
+    "started_tasks": 1,
+    "timings": [
+      {
+        "kind": "command",
+        "seconds": 0.6416,
+        "status": "executed",
+        "target": "clean",
+        "worker": 0
+      }
+    ],
+    "total": 1,
+    "worker_busy_seconds": 0.6415723999962211
+  },
+  "started_at": "2026-08-08T13:22:22+00:00",
+  "status": "done",
+  "task": "run clean",
+  "total_targets": 1
+}

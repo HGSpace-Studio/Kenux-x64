@@ -1,0 +1,134 @@
+-- Start building task run components -- (968958195)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<2> Generating bin/components/gnome.exe
+<3> Generating bin/components/kde.exe
+<0> Generating bin/components/wayland.exe
+<1> Generating bin/components/qemu.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/qemu -c src/qemu/qemu.c -o "D:\\KenuxK\\build\\components\\qemu_qemu.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o "D:\\KenuxK\\build\\components\\wayland_wayland.o""
+src/qemu/qemu.c: In function 'qemu_parse_arguments':
+src/qemu/qemu.c:353:70: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+  353 |         } else if (strcmp(a, "-smp") == 0 || strcmp(a, "-boot") == 0 && i + 1 < argc) {
+      |                                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:446:44: warning: format '%s' expects argument of type 'char *', but argument 10 has type 'int' [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                           ~^
+      |                                            |
+      |                                            char *
+      |                                           %d
+......
+  453 |             d);
+      |             ~                               
+      |             |
+      |             int
+src/qemu/qemu.c:446:52: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                                   ~^
+      |                                                    |
+      |                                                    int
+src/qemu/qemu.c: In function 'qemu_start':
+src/qemu/qemu.c:593:31: warning: format '%d' expects argument of type 'int', but argument 3 has type 'pid_t' {aka 'long long int'} [-Wformat=]
+  593 |         if (f) { fprintf(f, "%d\n", pid); fclose(f); }
+      |                              ~^     ~~~
+      |                               |     |
+      |                               int   pid_t {aka long long int}
+      |                              %lld
+In file included from src/qemu/qemu.c:6:
+src/qemu/qemu.c: In function 'qemu_wait':
+src/qemu/qemu.h:26:24: warning: statement with no effect [-Wunused-value]
+   26 | #define waitpid(p,s,o) (-1)
+      |                        ^
+src/qemu/qemu.c:601:5: note: in expansion of macro 'waitpid'
+  601 |     waitpid(s->pid, &status, 0);
+      |     ^~~~~~~
+src/qemu/qemu.c: In function 'qemu_terminate':
+src/qemu/qemu.h:27:24: warning: statement with no effect [-Wunused-value]
+   27 | #define kill(p,s)      (-1)
+      |                        ^
+src/qemu/qemu.c:610:5: note: in expansion of macro 'kill'
+  610 |     kill(s->pid, SIGKILL);
+      |     ^~~~
+src/wayland/wayland.c: In function 'wayland_init_socket':
+src/wayland/wayland.c:411:5: warning: 'strncpy' output may be truncated copying 511 bytes from a string of length 511 [-Wstringop-truncation]
+  411 |     strncpy(s->wayland_socket_path, path, sizeof(s->wayland_socket_path) - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:431:75: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size 2010 [-Wformat-truncation=]
+  431 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,readonly=on,file=%s", s->pflash[0]);
+      |                                                                           ^~
+src/qemu/qemu.c:431:9: note: 'snprintf' output between 39 and 4134 bytes into a destination of size 2048
+  431 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,readonly=on,file=%s", s->pflash[0]);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/qemu/qemu.c:436:63: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size 2022 [-Wformat-truncation=]
+  436 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,file=%s", s->pflash[1]);
+      |                                                               ^~
+src/qemu/qemu.c:436:9: note: 'snprintf' output between 27 and 4122 bytes into a destination of size 2048
+  436 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,file=%s", s->pflash[1]);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\wayland_wayland.o" -o "D:\\KenuxK\\bin\\components\\wayland.exe""
+D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/lib/../lib/libmingw32.a(lib64_libmingw32_a-crtexewin.o):crtexewin.c:(.text+0x11d): undefined reference to `WinMain'
+collect2.exe: error: ld returned 1 exit status
+<0> Generating bin/components/xorriso.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o "D:\\KenuxK\\build\\components\\xorriso_xorriso.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\qemu_qemu.o" -o "D:\\KenuxK\\bin\\components\\qemu.exe""
+In file included from src/xorriso/xorriso.c:6:
+src/xorriso/xorriso.h:104:5: error: unknown type name 'uid_t'; did you mean 'pid_t'?
+  104 |     uid_t uid;
+      |     ^~~~~
+      |     pid_t
+src/xorriso/xorriso.h:105:5: error: unknown type name 'gid_t'; did you mean 'pid_t'?
+  105 |     gid_t gid;
+      |     ^~~~~
+      |     pid_t
+src/xorriso/xorriso.c: In function 'xorriso_init':
+src/xorriso/xorriso.c:36:5: error: implicit declaration of function 'time' [-Wimplicit-function-declaration]
+   36 |     time(&s->vol.creation_time);
+      |     ^~~~
+src/xorriso/xorriso.c:7:1: note: 'time' is defined in header '<time.h>'; this is probably fixable by adding '#include <time.h>'
+    6 | #include "xorriso.h"
+  +++ |+#include <time.h>
+    7 | 
+src/xorriso/xorriso.c: In function 'xorriso_walk_tree':
+src/xorriso/xorriso.c:109:13: error: implicit declaration of function 'lstat'; did you mean 'wstat'? [-Wimplicit-function-declaration]
+  109 |         if (lstat(full, &st) < 0) continue;
+      |             ^~~~~
+      |             wstat
+src/xorriso/xorriso.c:111:22: error: implicit declaration of function 'S_ISLNK'; did you mean 'S_ISBLK'? [-Wimplicit-function-declaration]
+  111 |         int is_sym = S_ISLNK(st.st_mode);
+      |                      ^~~~~~~
+      |                      S_ISBLK
+src/xorriso/xorriso.c:128:25: error: implicit declaration of function 'readlink' [-Wimplicit-function-declaration]
+  128 |             ssize_t r = readlink(full, e->symlink_target, XORRISO_MAX_PATH - 1);
+      |                         ^~~~~~~~
+src/xorriso/xorriso.c: In function 'xorriso_set_iso_datetime':
+src/xorriso/xorriso.c:180:21: error: implicit declaration of function 'gmtime' [-Wimplicit-function-declaration]
+  180 |     struct tm *tm = gmtime(&t);
+      |                     ^~~~~~
+src/xorriso/xorriso.c:180:21: note: 'gmtime' is defined in header '<time.h>'; this is probably fixable by adding '#include <time.h>'
+src/xorriso/xorriso.c:180:21: error: initialization of 'struct tm *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+src/xorriso/xorriso.c:182:47: error: invalid use of undefined type 'struct tm'
+  182 |     snprintf((char *)buf, 5, "%04d", 1900 + tm->tm_year);
+      |                                               ^~
+src/xorriso/xorriso.c:183:26: error: invalid use of undefined type 'struct tm'
+  183 |     buf[4] = (uint8_t)(tm->tm_mon + 1);
+      |                          ^~
+src/xorriso/xorriso.c:184:25: error: invalid use of undefined type 'struct tm'
+  184 |     buf[5] = (uint8_t)tm->tm_mday;
+      |                         ^~
+src/xorriso/xorriso.c:185:25: error: invalid use of undefined type 'struct tm'
+  185 |     buf[6] = (uint8_t)tm->tm_hour;
+      |                         ^~
+src/xorriso/xorriso.c:186:25: error: invalid use of undefined type 'struct tm'
+  186 |     buf[7] = (uint8_t)tm->tm_min;
+      |                         ^~
+src/xorriso/xorriso.c:187:25: error: invalid use of undefined type 'struct tm'
+  187 |     buf[8] = (uint8_t)tm->tm_sec;
+      |                         ^~
+src/xorriso/xorriso.c: In function 'xorriso_list_iso':
+src/xorriso/xorriso.c:754:43: warning: unused parameter 's' [-Wunused-parameter]
+  754 | static int xorriso_list_iso(XorrisoState *s, const char *iso) {
+      |                             ~~~~~~~~~~~~~~^

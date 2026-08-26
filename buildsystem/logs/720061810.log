@@ -1,0 +1,200 @@
+-- Start building task run rebuild -- (720061810)
+-- Start building task rebuild -- (0)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder kernel/kernel --
+<3> Building kernel/kernel/epoll.c
+<2> Building kernel/kernel/devtmpfs.c
+<1> Building kernel/kernel/cgroup.c
+<0> Building kernel/kernel/kernel.c
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  275 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5,
+                 from kernel/kernel/kernel.c:54:
+kernel/arch/x86_64/include/arch/win32.h:2005:5: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2005 |     PDEVICE_OBJECT  DeviceObject;
+      |     ^~~~~~~~~~~~~~
+      |     DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2007:5: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2007 |     PIRP            Irp;
+      |     ^~~~
+      |     IRP
+kernel/arch/x86_64/include/arch/win32.h:2034:5: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2034 |     PDEVICE_OBJECT      DeviceObject;
+      |     ^~~~~~~~~~~~~~
+      |     DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2042:5: error: unknown type name 'PDRIVER_OBJECT'; did you mean 'DRIVER_OBJECT'?
+ 2042 |     PDRIVER_OBJECT  DriverObject;
+      |     ^~~~~~~~~~~~~~
+      |     DRIVER_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2043:5: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2043 |     PDEVICE_OBJECT  NextDevice;
+      |     ^~~~~~~~~~~~~~
+      |     DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2044:5: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2044 |     PDEVICE_OBJECT  AttachedDevice;
+      |     ^~~~~~~~~~~~~~
+      |     DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2057:5: error: unknown type name 'PDRIVER_OBJECT'; did you mean 'DRIVER_OBJECT'?
+ 2057 |     PDRIVER_OBJECT  DriverObject;
+      |     ^~~~~~~~~~~~~~
+      |     DRIVER_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2067:5: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2067 |     PDEVICE_OBJECT      DeviceObject;
+      |     ^~~~~~~~~~~~~~
+      |     DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2075:5: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+ 2075 |     NTSTATUS (*MajorFunction[28])(PDEVICE_OBJECT, PIRP);
+      |     ^~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:2082:55: error: expected ')' before 'PUNICODE_STRING'
+ 2082 | typedef NTSTATUS (*PDRIVER_INITIALIZE)(PDRIVER_OBJECT, PUNICODE_STRING);
+      |                                                       ^~~~~~~~~~~~~~~~
+      |                                                       )
+kernel/arch/x86_64/include/arch/win32.h:2083:1: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+ 2083 | typedef NTSTATUS (*PDRIVER_ADD_DEVICE)(PDRIVER_OBJECT, PDEVICE_OBJECT);
+      | ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:2084:1: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+ 2084 | typedef NTSTATUS (*PDRIVER_DISPATCH)(PDEVICE_OBJECT, PIRP);
+      | ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:2085:1: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+ 2085 | typedef void (*PDRIVER_UNLOAD)(PDRIVER_OBJECT);
+      | ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:2090:5: error: unknown type name 'PDRIVER_OBJECT'; did you mean 'DRIVER_OBJECT'?
+ 2090 |     PDRIVER_OBJECT      driver_obj;
+      |     ^~~~~~~~~~~~~~
+      |     DRIVER_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2091:5: error: unknown type name 'PDRIVER_INITIALIZE'
+ 2091 |     PDRIVER_INITIALIZE  driver_init;
+      |     ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:2098:25: error: unknown type name 'PDRIVER_OBJECT'; did you mean 'DRIVER_OBJECT'?
+ 2098 | NTSTATUS IoCreateDevice(PDRIVER_OBJECT DriverObject, ULONG DeviceExtensionSize,
+      |                         ^~~~~~~~~~~~~~
+      |                         DRIVER_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2101:25: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2101 |                         PDEVICE_OBJECT* DeviceObject);
+      |                         ^~~~~~~~~~~~~~
+      |                         DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2102:25: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2102 | VOID     IoDeleteDevice(PDEVICE_OBJECT DeviceObject);
+      |                         ^~~~~~~~~~~~~~
+      |                         DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2106:39: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2106 | PVOID    IoGetCurrentIrpStackLocation(PIRP Irp);
+      |                                       ^~~~
+      |                                       IRP
+kernel/arch/x86_64/include/arch/win32.h:2107:36: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2107 | PVOID    IoGetNextIrpStackLocation(PIRP Irp);
+      |                                    ^~~~
+      |                                    IRP
+kernel/arch/x86_64/include/arch/win32.h:2108:40: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2108 | VOID     IoSkipCurrentIrpStackLocation(PIRP Irp);
+      |                                        ^~~~
+      |                                        IRP
+kernel/arch/x86_64/include/arch/win32.h:2109:27: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2109 | VOID     IoMarkIrpPending(PIRP Irp);
+      |                           ^~~~
+      |                           IRP
+kernel/arch/x86_64/include/arch/win32.h:2110:23: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2110 | NTSTATUS IoCallDriver(PDEVICE_OBJECT DeviceObject, PIRP Irp);
+      |                       ^~~~~~~~~~~~~~
+      |                       DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2110:52: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2110 | NTSTATUS IoCallDriver(PDEVICE_OBJECT DeviceObject, PIRP Irp);
+      |                                                    ^~~~
+      |                                                    IRP
+kernel/arch/x86_64/include/arch/win32.h:2111:28: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2111 | VOID     IoCompleteRequest(PIRP Irp, UCHAR PriorityBoost);
+      |                            ^~~~
+      |                            IRP
+kernel/arch/x86_64/include/arch/win32.h:2112:1: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2112 | PIRP     IoAllocateIrp(CCHAR StackSize, BOOL ChargeQuota);
+      | ^~~~
+      | IRP
+kernel/arch/x86_64/include/arch/win32.h:2112:24: error: unknown type name 'CCHAR'; did you mean 'PCHAR'?
+ 2112 | PIRP     IoAllocateIrp(CCHAR StackSize, BOOL ChargeQuota);
+      |                        ^~~~~
+      |                        PCHAR
+kernel/arch/x86_64/include/arch/win32.h:2113:20: error: unknown type name 'PIRP'; did you mean 'IRP'?
+ 2113 | VOID     IoFreeIrp(PIRP Irp);
+      |                    ^~~~
+      |                    IRP
+kernel/arch/x86_64/include/arch/win32.h:2114:27: error: unknown type name 'PDRIVER_INITIALIZE'
+ 2114 | NTSTATUS IoRegisterDriver(PDRIVER_INITIALIZE init, PUNICODE_STRING name);
+      |                           ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:2115:38: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2115 | NTSTATUS IoAttachDeviceToDeviceStack(PDEVICE_OBJECT SourceDevice,
+      |                                      ^~~~~~~~~~~~~~
+      |                                      DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2116:38: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2116 |                                      PDEVICE_OBJECT TargetDevice);
+      |                                      ^~~~~~~~~~~~~~
+      |                                      DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2117:1: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2117 | PDEVICE_OBJECT IoGetAttachedDevice(PDEVICE_OBJECT DeviceObject);
+      | ^~~~~~~~~~~~~~
+      | DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2117:36: error: unknown type name 'PDEVICE_OBJECT'; did you mean 'DEVICE_OBJECT'?
+ 2117 | PDEVICE_OBJECT IoGetAttachedDevice(PDEVICE_OBJECT DeviceObject);
+      |                                    ^~~~~~~~~~~~~~
+      |                                    DEVICE_OBJECT
+kernel/arch/x86_64/include/arch/win32.h:2119:44: error: unknown type name 'PDRIVER_INITIALIZE'
+ 2119 | NTSTATUS wdm_load_driver(const char* name, PDRIVER_INITIALIZE init_func);
+      |                                            ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:72:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/kernel/kernel.c: In function 'kernel_main':
+kernel/kernel/kernel.c:96:71: warning: unused parameter 'mmi' [-Wunused-parameter]
+   96 | void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~^~~
+FAILED TASK run rebuild: 

@@ -1,0 +1,716 @@
+-- Start building task run kernel -- (981406452)
+-- Start building task kernel -- (0)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/win32_shell.c
+<0> Building kernel/arch/x86_64/win32_process.c
+<2> Building kernel/arch/x86_64/win32_security.c
+<1> Building kernel/arch/x86_64/win32_ntdll.c
+kernel/arch/x86_64/win32_ntdll.c:12:5: error: unknown type name 'PCHAR'; did you mean 'WCHAR'?
+   12 |     PCHAR  Buffer;
+      |     ^~~~~
+      |     WCHAR
+kernel/arch/x86_64/win32_process.c:233:24: error: array type has incomplete element type 'win32_process_t' {aka 'struct _win32_process_t'}
+  233 | static win32_process_t g_processes[WIN32_MAX_PROCESSES];
+      |                        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_ntdll.c: In function 'RtlAnsiStringToUnicodeString':
+kernel/arch/x86_64/win32_ntdll.c:65:53: error: subscripted value is neither array nor pointer nor vector
+   65 |         buf[i] = (WCHAR)((unsigned char)ansi->Buffer[i]);
+      |                                                     ^
+kernel/arch/x86_64/win32_process.c: In function 'allocate_pid':
+kernel/arch/x86_64/win32_process.c:473:28: error: invalid application of 'sizeof' to incomplete type 'win32_process_t' {aka 'struct _win32_process_t'}
+  473 |     memset(proc, 0, sizeof(win32_process_t));
+      |                            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:474:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  474 |     proc->pid = pid;
+      |         ^~
+kernel/arch/x86_64/win32_process.c: In function 'process_slot_cleanup':
+kernel/arch/x86_64/win32_process.c:485:26: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  485 |     for (i = 0U; i < proc->thread_count; i++) {
+      |                          ^~
+kernel/arch/x86_64/win32_process.c:486:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  486 |         if (proc->threads[i] != NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:487:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  487 |             memory_free(proc->threads[i]);
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:488:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  488 |             proc->threads[i] = NULL;
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:491:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  491 |     proc->thread_count = 0U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:493:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  493 |     if (proc->peb.LoaderData != NULL) {
+      |             ^~
+kernel/arch/x86_64/win32_process.c:494:25: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  494 |         memory_free(proc->peb.LoaderData);
+      |                         ^~
+kernel/arch/x86_64/win32_process.c:495:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  495 |         proc->peb.LoaderData = NULL;
+      |             ^~
+kernel/arch/x86_64/win32_process.c:498:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  498 |     if (proc->peb.ProcessParameters != NULL) {
+      |             ^~
+kernel/arch/x86_64/win32_process.c:499:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  499 |         if (proc->peb.ProcessParameters->CurrentDirectory.Buffer != NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:500:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  500 |             memory_free(proc->peb.ProcessParameters->CurrentDirectory.Buffer);
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:502:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  502 |         if (proc->peb.ProcessParameters->DllPath.Buffer != NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:503:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  503 |             memory_free(proc->peb.ProcessParameters->DllPath.Buffer);
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:505:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  505 |         if (proc->peb.ProcessParameters->ImagePathName.Buffer != NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:506:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  506 |             memory_free(proc->peb.ProcessParameters->ImagePathName.Buffer);
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:508:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  508 |         if (proc->peb.ProcessParameters->CommandLine.Buffer != NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:509:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  509 |             memory_free(proc->peb.ProcessParameters->CommandLine.Buffer);
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:511:25: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  511 |         memory_free(proc->peb.ProcessParameters);
+      |                         ^~
+kernel/arch/x86_64/win32_process.c:512:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  512 |         proc->peb.ProcessParameters = NULL;
+      |             ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_process_init':
+kernel/arch/x86_64/win32_process.c:522:43: error: invalid application of 'sizeof' to incomplete type 'win32_process_t' {aka 'struct _win32_process_t'}
+  522 |         memset(&g_processes[i], 0, sizeof(win32_process_t));
+      |                                           ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:531:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  531 |         system_proc->parent_pid = 0U;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:532:28: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  532 |         strncpy(system_proc->image_path, "System", sizeof(system_proc->image_path) - 1);
+      |                            ^~
+kernel/arch/x86_64/win32_process.c:532:70: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  532 |         strncpy(system_proc->image_path, "System", sizeof(system_proc->image_path) - 1);
+      |                                                                      ^~
+kernel/arch/x86_64/win32_process.c:533:28: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  533 |         strncpy(system_proc->command_line, "System", sizeof(system_proc->command_line) - 1);
+      |                            ^~
+kernel/arch/x86_64/win32_process.c:533:72: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_ntdll.c: In function 'RtlUnicodeStringToAnsiString':
+kernel/arch/x86_64/win32_security.c:126:16: error: redefinition of 'struct _LUID'
+  533 |         strncpy(system_proc->command_line, "System", sizeof(system_proc->command_line) - 1);
+kernel/arch/x86_64/win32_ntdll.c:83:5: error: unknown type name 'PCHAR'; did you mean 'WCHAR'?
+  126 | typedef struct _LUID {
+      |                                                                        ^~
+   83 |     PCHAR buf;
+      |                ^~~~~
+kernel/arch/x86_64/win32_process.c:534:28: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+In file included from kernel/arch/x86_64/win32_security.c:1:
+      |     ^~~~~
+  534 |         strncpy(system_proc->current_dir, "C:\\", sizeof(system_proc->current_dir) - 1);
+kernel/arch/x86_64/include/arch/win32.h:69:16: note: originally defined here
+      |     WCHAR
+      |                            ^~
+   69 | typedef struct _LUID {
+kernel/arch/x86_64/win32_ntdll.c:93:16: error: 'PCHAR' undeclared (first use in this function); did you mean 'WCHAR'?
+kernel/arch/x86_64/win32_process.c:534:69: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+      |                ^~~~~
+   93 |         buf = (PCHAR)memory_alloc(unicode_len + 1);
+  534 |         strncpy(system_proc->current_dir, "C:\\", sizeof(system_proc->current_dir) - 1);
+kernel/arch/x86_64/win32_security.c:129:3: error: conflicting types for 'LUID'; have 'struct _LUID'
+      |                                                                     ^~
+      |                ^~~~~
+  129 | } LUID;
+kernel/arch/x86_64/win32_process.c:535:30: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+      |                WCHAR
+      |   ^~~~
+  535 |         peb_init(&system_proc->peb);
+kernel/arch/x86_64/win32_ntdll.c:93:16: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/include/arch/win32.h:72:3: note: previous declaration of 'LUID' with type 'LUID' {aka 'struct _LUID'}
+      |                              ^~
+kernel/arch/x86_64/win32_ntdll.c:93:22: error: expected ';' before 'memory_alloc'
+   72 | } LUID, *PLUID;
+kernel/arch/x86_64/win32_process.c:536:39: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+   93 |         buf = (PCHAR)memory_alloc(unicode_len + 1);
+      |   ^~~~
+  536 |         handle_table_init(&system_proc->handle_table);
+      |                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+      |                                       ^~
+      |                      ;
+kernel/arch/x86_64/win32_process.c:537:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+kernel/arch/x86_64/win32_ntdll.c:94:17: warning: comparison between pointer and integer
+  537 |         system_proc->thread_count = 0U;
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+   94 |         if (buf == NULL) {
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+      |                 ^~
+      |                    ^~
+kernel/arch/x86_64/win32_ntdll.c:98:26: warning: comparison between pointer and integer
+kernel/arch/x86_64/win32_process.c:538:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+   98 |         if (ansi->Buffer == NULL || ansi->MaximumLength < unicode_len + 1) {
+      |                          ^~
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  538 |         system_proc->exit_code = 0U;
+kernel/arch/x86_64/win32_ntdll.c:107:16: error: subscripted value is neither array nor pointer nor vector
+      |                    ^~
+  107 |             buf[i] = '?';
+kernel/arch/x86_64/win32_process.c:539:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+      |                ^
+  539 |         system_proc->is_running = TRUE;
+kernel/arch/x86_64/win32_ntdll.c:109:16: error: subscripted value is neither array nor pointer nor vector
+      |                    ^~
+  109 |             buf[i] = (CHAR)c;
+kernel/arch/x86_64/win32_process.c:540:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+      |                ^
+  540 |         system_proc->creation_time_low = 0U;
+kernel/arch/x86_64/win32_ntdll.c:112:8: error: subscripted value is neither array nor pointer nor vector
+      |                    ^~
+  112 |     buf[unicode_len] = 0;
+kernel/arch/x86_64/win32_process.c:541:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+      |        ^
+  541 |         system_proc->creation_time_high = 0U;
+kernel/arch/x86_64/win32_ntdll.c: In function 'NtCreateFile':
+      |                    ^~
+kernel/arch/x86_64/win32_ntdll.c:391:55: warning: unused parameter 'DesiredAccess' [-Wunused-parameter]
+kernel/arch/x86_64/win32_process.c:542:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  391 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+  542 |         system_proc->user_time = 0ULL;
+      |                                           ~~~~~~~~~~~~^~~~~~~~~~~~~
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:543:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  543 |         system_proc->kernel_time = 0ULL;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:544:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  544 |         system_proc->image_base = NULL;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:545:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  545 |         system_proc->image_size = 0U;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:546:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  546 |         system_proc->priority_class = 0x00000010U;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:547:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  547 |         system_proc->page_directory = NULL;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:548:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  548 |         system_proc->is_32bit_process = FALSE;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:549:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  549 |         system_proc->session_id = 0U;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:550:20: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  550 |         system_proc->wow64_process = FALSE;
+      |                    ^~
+kernel/arch/x86_64/win32_process.c:555:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  555 |         explorer_proc->parent_pid = 4U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:556:30: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  556 |         strncpy(explorer_proc->image_path, "C:\\Windows\\explorer.exe", sizeof(explorer_proc->image_path) - 1);
+      |                              ^~
+kernel/arch/x86_64/win32_process.c:556:93: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  556 |         strncpy(explorer_proc->image_path, "C:\\Windows\\explorer.exe", sizeof(explorer_proc->image_path) - 1);
+      |                                                                                             ^~
+kernel/arch/x86_64/win32_process.c:557:30: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  557 |         strncpy(explorer_proc->command_line, "C:\\Windows\\explorer.exe", sizeof(explorer_proc->command_line) - 1);
+      |                              ^~
+kernel/arch/x86_64/win32_process.c:557:95: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  557 |         strncpy(explorer_proc->command_line, "C:\\Windows\\explorer.exe", sizeof(explorer_proc->command_line) - 1);
+      |                                                                                               ^~
+kernel/arch/x86_64/win32_process.c:558:30: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  558 |         strncpy(explorer_proc->current_dir, "C:\\Windows", sizeof(explorer_proc->current_dir) - 1);
+      |                              ^~
+kernel/arch/x86_64/win32_process.c:558:80: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  558 |         strncpy(explorer_proc->current_dir, "C:\\Windows", sizeof(explorer_proc->current_dir) - 1);
+      |                                                                                ^~
+kernel/arch/x86_64/win32_process.c:559:32: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  559 |         peb_init(&explorer_proc->peb);
+      |                                ^~
+kernel/arch/x86_64/win32_process.c:560:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  560 |         explorer_proc->peb.ProcessParameters = create_process_parameters(
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:561:26: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  561 |             explorer_proc->image_path,
+      |                          ^~
+kernel/arch/x86_64/win32_process.c:562:26: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  562 |             explorer_proc->command_line,
+      |                          ^~
+kernel/arch/x86_64/win32_process.c:563:26: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  563 |             explorer_proc->current_dir
+      |                          ^~
+kernel/arch/x86_64/win32_process.c:565:41: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  565 |         handle_table_init(&explorer_proc->handle_table);
+      |                                         ^~
+kernel/arch/x86_64/win32_process.c:566:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  566 |         explorer_proc->thread_count = 0U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:567:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  567 |         explorer_proc->exit_code = 0U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:568:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  568 |         explorer_proc->is_running = TRUE;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:569:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  569 |         explorer_proc->creation_time_low = 0U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:570:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  570 |         explorer_proc->creation_time_high = 0U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:571:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  571 |         explorer_proc->user_time = 0ULL;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:572:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  572 |         explorer_proc->kernel_time = 0ULL;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:573:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  573 |         explorer_proc->image_base = NULL;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:574:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  574 |         explorer_proc->image_size = 0U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:575:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  575 |         explorer_proc->priority_class = 0x00000020U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:576:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  576 |         explorer_proc->page_directory = NULL;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:577:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  577 |         explorer_proc->is_32bit_process = FALSE;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:578:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  578 |         explorer_proc->session_id = 1U;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:579:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  579 |         explorer_proc->wow64_process = FALSE;
+      |                      ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_create_process':
+kernel/arch/x86_64/win32_process.c:612:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  612 |     proc->parent_pid = g_current_process != NULL ? g_current_process->pid : 4U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:612:69: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  612 |     proc->parent_pid = g_current_process != NULL ? g_current_process->pid : 4U;
+      |                                                                     ^~
+kernel/arch/x86_64/win32_process.c:614:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  614 |     strncpy(proc->image_path, image_path, sizeof(proc->image_path) - 1);
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:614:54: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  614 |     strncpy(proc->image_path, image_path, sizeof(proc->image_path) - 1);
+      |                                                      ^~
+kernel/arch/x86_64/win32_process.c:615:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  615 |     proc->image_path[sizeof(proc->image_path) - 1] = '\0';
+      |         ^~
+kernel/arch/x86_64/win32_process.c:615:33: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  615 |     proc->image_path[sizeof(proc->image_path) - 1] = '\0';
+      |                                 ^~
+kernel/arch/x86_64/win32_process.c:622:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  622 |     strncpy(proc->command_line, effective_cmd, sizeof(proc->command_line) - 1);
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:622:59: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  622 |     strncpy(proc->command_line, effective_cmd, sizeof(proc->command_line) - 1);
+      |                                                           ^~
+kernel/arch/x86_64/win32_process.c:623:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  623 |     proc->command_line[sizeof(proc->command_line) - 1] = '\0';
+      |         ^~
+kernel/arch/x86_64/win32_process.c:623:35: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  623 |     proc->command_line[sizeof(proc->command_line) - 1] = '\0';
+      |                                   ^~
+kernel/arch/x86_64/win32_process.c:630:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  630 |     strncpy(proc->current_dir, effective_dir, sizeof(proc->current_dir) - 1);
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:630:58: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  630 |     strncpy(proc->current_dir, effective_dir, sizeof(proc->current_dir) - 1);
+      |                                                          ^~
+kernel/arch/x86_64/win32_process.c:631:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  631 |     proc->current_dir[sizeof(proc->current_dir) - 1] = '\0';
+      |         ^~
+kernel/arch/x86_64/win32_process.c:631:34: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  631 |     proc->current_dir[sizeof(proc->current_dir) - 1] = '\0';
+      |                                  ^~
+kernel/arch/x86_64/win32_process.c:633:19: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  633 |     peb_init(&proc->peb);
+      |                   ^~
+kernel/arch/x86_64/win32_process.c:634:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  634 |     proc->peb.ProcessParameters = create_process_parameters(
+      |         ^~
+kernel/arch/x86_64/win32_process.c:635:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  635 |         proc->image_path,
+      |             ^~
+kernel/arch/x86_64/win32_process.c:636:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  636 |         proc->command_line,
+      |             ^~
+kernel/arch/x86_64/win32_process.c:637:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  637 |         proc->current_dir
+      |             ^~
+kernel/arch/x86_64/win32_process.c:640:28: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+  640 |     handle_table_init(&proc->handle_table);
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                            ^~
+      |                                           ^
+kernel/arch/x86_64/win32_process.c:642:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  642 |     proc->thread_count = 0U;
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |         ^~
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:643:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+  643 |     proc->exit_code = 0U;
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |         ^~
+      |                                           ^
+kernel/arch/x86_64/win32_process.c:644:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  644 |     proc->is_running = TRUE;
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |         ^~
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:645:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  645 |     proc->creation_time_low = 0U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:646:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  646 |     proc->creation_time_high = 0U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:647:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  647 |     proc->user_time = 0ULL;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:648:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  648 |     proc->kernel_time = 0ULL;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:649:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  649 |     proc->image_base = NULL;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:650:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  650 |     proc->image_size = 0U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:651:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  651 |     proc->priority_class = 0x00000020U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:652:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  652 |     proc->page_directory = NULL;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:653:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  653 |     proc->is_32bit_process = FALSE;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:654:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  654 |     proc->session_id = 1U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:655:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  655 |     proc->wow64_process = FALSE;
+      |         ^~
+kernel/arch/x86_64/win32_process.c:657:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  657 |     proc->peb.ImageBaseAddress = 0x0000000000400000ULL;
+      |         ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_terminate_process':
+kernel/arch/x86_64/win32_process.c:671:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+  671 |     proc->exit_code = exit_code;
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |         ^~
+      |                                           ^
+kernel/arch/x86_64/win32_process.c:672:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  672 |     proc->is_running = FALSE;
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |         ^~
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:674:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  674 |     if (proc->handle_table.entries != NULL) {
+      |             ^~
+kernel/arch/x86_64/win32_process.c:675:30: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  675 |         for (i = 0U; i < proc->handle_table.capacity; i++) {
+      |                              ^~
+kernel/arch/x86_64/win32_process.c:676:21: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  676 |             if (proc->handle_table.entries[i].ObjectType != HANDLE_OBJECT_TYPE_FREE) {
+      |                     ^~
+kernel/arch/x86_64/win32_process.c:677:21: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  677 |                 proc->handle_table.entries[i].ObjectType = HANDLE_OBJECT_TYPE_FREE;
+      |                     ^~
+kernel/arch/x86_64/win32_process.c:678:21: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  678 |                 proc->handle_table.entries[i].Object = NULL;
+      |                     ^~
+kernel/arch/x86_64/win32_process.c:679:21: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  679 |                 proc->handle_table.entries[i].Handle = NULL;
+      |                     ^~
+kernel/arch/x86_64/win32_process.c:680:21: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  680 |                 proc->handle_table.entries[i].RefCount = 0U;
+      |                     ^~
+kernel/arch/x86_64/win32_process.c:681:25: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  681 |                 if (proc->handle_table.handle_count > 0U) {
+      |                         ^~
+kernel/arch/x86_64/win32_process.c:682:25: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  682 |                     proc->handle_table.handle_count--;
+      |                         ^~
+kernel/arch/x86_64/win32_process.c:688:26: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  688 |     for (i = 0U; i < proc->thread_count; i++) {
+      |                          ^~
+kernel/arch/x86_64/win32_process.c:689:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  689 |         if (proc->threads[i] != NULL) {
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:690:41: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  690 |             if (g_current_thread == proc->threads[i]) {
+      |                                         ^~
+kernel/arch/x86_64/win32_process.c:693:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  693 |             memory_free(proc->threads[i]);
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:694:17: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  694 |             proc->threads[i] = NULL;
+      |                 ^~
+kernel/arch/x86_64/win32_process.c:697:9: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  697 |     proc->thread_count = 0U;
+      |         ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_create_thread':
+kernel/arch/x86_64/win32_process.c:736:16: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  736 |     if (process->thread_count >= WIN32_MAX_THREADS_PER_PROCESS) {
+      |                ^~
+kernel/arch/x86_64/win32_process.c:755:42: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  755 |     teb->ClientId_UniqueProcess = process->pid;
+      |                                          ^~
+kernel/arch/x86_64/win32_process.c:756:41: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  756 |     teb->ClientId_UniqueThread = process->thread_count + 1U;
+      |                                         ^~
+kernel/arch/x86_64/win32_process.c:761:24: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  761 |     teb->Peb = &process->peb;
+      |                        ^~
+kernel/arch/x86_64/win32_process.c:771:12: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  771 |     process->threads[process->thread_count] = teb;
+      |            ^~
+kernel/arch/x86_64/win32_process.c:771:29: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  771 |     process->threads[process->thread_count] = teb;
+      |                             ^~
+kernel/arch/x86_64/win32_process.c:772:12: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  772 |     process->thread_count++;
+      |            ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_destroy_thread':
+kernel/arch/x86_64/win32_process.c:794:27: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  794 |     for (i = 0U; i < owner->thread_count; i++) {
+      |                           ^~
+kernel/arch/x86_64/win32_process.c:795:18: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  795 |         if (owner->threads[i] == teb) {
+      |                  ^~
+kernel/arch/x86_64/win32_process.c:797:34: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  797 |             for (j = i; j < owner->thread_count - 1U; j++) {
+      |                                  ^~
+kernel/arch/x86_64/win32_process.c:798:22: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  798 |                 owner->threads[j] = owner->threads[j + 1U];
+      |                      ^~
+kernel/arch/x86_64/win32_process.c:798:42: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  798 |                 owner->threads[j] = owner->threads[j + 1U];
+      |                                          ^~
+kernel/arch/x86_64/win32_process.c:800:18: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  800 |             owner->threads[owner->thread_count - 1U] = NULL;
+      |                  ^~
+kernel/arch/x86_64/win32_process.c:800:33: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  800 |             owner->threads[owner->thread_count - 1U] = NULL;
+      |                                 ^~
+kernel/arch/x86_64/win32_process.c:801:18: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  801 |             owner->thread_count--;
+      |                  ^~
+kernel/arch/x86_64/win32_process.c:807:18: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  807 |         if (owner->thread_count > 0U) {
+      |                  ^~
+kernel/arch/x86_64/win32_process.c:808:37: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  808 |             g_current_thread = owner->threads[0];
+      |                                     ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_alloc':
+kernel/arch/x86_64/win32_process.c:889:15: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  889 |     ht = &proc->handle_table;
+      |               ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_to_object':
+kernel/arch/x86_64/win32_process.c:932:15: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  932 |     ht = &proc->handle_table;
+      |               ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_close':
+kernel/arch/x86_64/win32_process.c:968:15: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+  968 |     ht = &proc->handle_table;
+      |               ^~
+kernel/arch/x86_64/win32_process.c: In function 'win32_handle_duplicate':
+kernel/arch/x86_64/win32_process.c:1021:15: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 1021 |     ht = &proc->handle_table;
+      |               ^~
+kernel/arch/x86_64/win32_process.c: In function 'ZwClose':
+kernel/arch/x86_64/win32_process.c:1324:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1324 |     return NtClose(Handle);
+      |            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwAllocateVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1335:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1335 |     return NtAllocateVirtualMemory(ProcessHandle, BaseAddress, ZeroBits, RegionSize, AllocationType, Protect);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwFreeVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1344:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1344 |     return NtFreeVirtualMemory(ProcessHandle, BaseAddress, RegionSize, FreeType);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationProcess':
+kernel/arch/x86_64/win32_process.c:1354:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1354 |     return NtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationThread':
+kernel/arch/x86_64/win32_process.c:1364:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1364 |     return NtQueryInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwCreateFile':
+kernel/arch/x86_64/win32_process.c:1380:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1380 |     return NtCreateFile(FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock, AllocationSize, FileAttributes, ShareAccess, CreateDisposition, CreateOptions, EaBuffer, EaLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwReadFile':
+kernel/arch/x86_64/win32_process.c:1394:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1394 |     return NtReadFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwWriteFile':
+kernel/arch/x86_64/win32_process.c:1408:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1408 |     return NtWriteFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryAttributesFile':
+kernel/arch/x86_64/win32_process.c:1415:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1415 |     return NtQueryAttributesFile(ObjectAttributes, FileInformation);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'win32_switch_to_process':
+kernel/arch/x86_64/win32_process.c:1439:13: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 1439 |     if (proc->thread_count > 0U && proc->threads[0] != NULL) {
+      |             ^~
+kernel/arch/x86_64/win32_process.c:1439:40: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 1439 |     if (proc->thread_count > 0U && proc->threads[0] != NULL) {
+      |                                        ^~
+kernel/arch/x86_64/win32_process.c:1440:32: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 1440 |         g_current_thread = proc->threads[0];
+      |                                ^~
+kernel/arch/x86_64/win32_process.c: At top level:
+kernel/arch/x86_64/win32_process.c:478:13: warning: 'process_slot_cleanup' defined but not used [-Wunused-function]
+  478 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:233:24: warning: 'g_processes' defined but not used [-Wunused-variable]
+  233 | static win32_process_t g_processes[WIN32_MAX_PROCESSES];
+      |                        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_shell.c:7:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'ShellExecuteA':
+kernel/arch/x86_64/win32_shell.c:207:30: warning: unused variable 'tmp' [-Wunused-variable]
+  207 |                         char tmp[512];
+      |                              ^~~
+kernel/arch/x86_64/win32_shell.c: In function 'PathCanonicalizeA':
+kernel/arch/x86_64/win32_shell.c:728:34: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  728 |             memcpy(tmp + ti, sp, ci);
+      |                                  ^~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+<1> Building kernel/arch/x86_64/win32_msvcrt.c
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:896:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  896 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_write_stdout':
+kernel/arch/x86_64/win32_shell.c:1433:5: error: implicit declaration of function 'fflush' [-Wimplicit-function-declaration]
+ 1433 |     fflush(stdout);
+      |     ^~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_dir':
+kernel/arch/x86_64/win32_shell.c:1598:9: warning: variable 'found' set but not used [-Wunused-but-set-variable=]
+ 1598 |     int found;
+      |         ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_set':
+kernel/arch/x86_64/win32_shell.c:1795:9: warning: variable 'expr_mode' set but not used [-Wunused-but-set-variable=]
+ 1795 |     int expr_mode = 0;
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_sort':
+kernel/arch/x86_64/win32_shell.c:2065:22: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+ 2065 |         qsort(lines, count, sizeof(char*), strcmp_void);
+      |                      ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_help':
+kernel/arch/x86_64/win32_shell.c:2116:42: warning: unused parameter 'cmd' [-Wunused-parameter]
+ 2116 | static int cmd_builtin_help(cmd_state_t* cmd, int argc, char** argv) {
+      |                             ~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_resolve_and_run':
+kernel/arch/x86_64/win32_shell.c:2224:23: warning: comparison between pointer and integer
+ 2224 |         if (fn && *fn != cmdname) {
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_execute_line':
+kernel/arch/x86_64/win32_shell.c:2373:13: warning: variable 'match_idx' set but not used [-Wunused-but-set-variable=]
+ 2373 |         int match_idx;
+      |             ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'CreateProcessA':
+kernel/arch/x86_64/win32_shell.c:2806:21: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2806 |     pobj->pid = proc->pid;
+      |                     ^~
+kernel/arch/x86_64/win32_shell.c:2818:31: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2818 |         pi->dwProcessId = proc->pid;
+      |                               ^~
+kernel/arch/x86_64/win32_shell.c: In function 'TerminateProcess':
+kernel/arch/x86_64/win32_shell.c:2857:18: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2857 |             cproc->exit_code = uExitCode;
+      |                  ^~
+kernel/arch/x86_64/win32_shell.c:2858:18: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2858 |             cproc->is_running = FALSE;
+      |                  ^~
+kernel/arch/x86_64/win32_shell.c: In function 'GetExitCodeProcess':
+kernel/arch/x86_64/win32_shell.c:2882:34: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2882 |         *lpExitCode = proc ? proc->exit_code : 0;
+      |                                  ^~
+kernel/arch/x86_64/win32_shell.c:2895:23: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2895 |     *lpExitCode = proc->exit_code;
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: In function 'GetProcessTimes':
+kernel/arch/x86_64/win32_shell.c:2929:57: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2929 |             *(uint64_t*)lpCreationTime = ((uint64_t)proc->creation_time_high << 32) | proc->creation_time_low;
+      |                                                         ^~
+kernel/arch/x86_64/win32_shell.c:2929:91: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2929 |             *(uint64_t*)lpCreationTime = ((uint64_t)proc->creation_time_high << 32) | proc->creation_time_low;
+      |                                                                                           ^~
+kernel/arch/x86_64/win32_shell.c:2931:58: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2931 |         if (lpKernelTime) *(uint64_t*)lpKernelTime = proc->kernel_time;
+      |                                                          ^~
+kernel/arch/x86_64/win32_shell.c:2932:54: error: invalid use of incomplete typedef 'win32_process_t' {aka 'struct _win32_process_t'}
+ 2932 |         if (lpUserTime) *(uint64_t*)lpUserTime = proc->user_time;
+      |                                                      ^~
+kernel/arch/x86_64/win32_msvcrt.c: In function 'output_char':
+kernel/arch/x86_64/win32_msvcrt.c:47:9: warning: the address of 'vga_putc' will always evaluate as 'true' [-Waddress]
+   47 |     if (vga_putc) vga_putc(c);
+      |         ^~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: In function 'output_string':
+kernel/arch/x86_64/win32_msvcrt.c:55:9: warning: the address of 'vga_print' will always evaluate as 'true' [-Waddress]
+   55 |     if (vga_print) vga_print(s);
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: In function 'fputs':
+kernel/arch/x86_64/win32_msvcrt.c:739:12: warning: conversion from 'size_t' {aka 'long long unsigned int'} to 'int' may change value [-Wconversion]
+  739 |     return strlen(s);
+      |            ^~~~~~~~~
+FAILED TASK run kernel: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikal/include -MMD -MF build/obj/kernel/arch/x86_64/win32_shell.c.o.d -c kernel/arch/x86_64/win32_shell.c -o build/obj/kernel/arch/x86_64/win32_shell.c.o

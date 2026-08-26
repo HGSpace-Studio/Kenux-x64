@@ -1,0 +1,97 @@
+{
+  "command": [
+    "run",
+    "components"
+  ],
+  "created_at": "2026-08-23T10:09:47+00:00",
+  "elapsed_seconds": 4.234,
+  "error": "",
+  "finished_at": "2026-08-23T10:09:52+00:00",
+  "id": "106847525",
+  "log": "buildsystem\\logs\\106847525.log",
+  "metrics": {
+    "built_files": 0,
+    "completed": 7,
+    "downloaded_files": 0,
+    "elapsed_seconds": 4.234,
+    "entered_folders": 1,
+    "errors": 1,
+    "executed_targets": 3,
+    "generated_files": 5,
+    "peak_parallel_workers": 4,
+    "ran_commands": 8,
+    "skipped_targets": 4,
+    "started_tasks": 2,
+    "timings": [
+      {
+        "kind": "generate",
+        "seconds": 0.0014,
+        "status": "skipped",
+        "target": "component:systemd",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0012,
+        "status": "skipped",
+        "target": "component:firefox",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0007,
+        "status": "skipped",
+        "target": "component:wayland",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0011,
+        "status": "skipped",
+        "target": "component:qemu",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.4471,
+        "status": "executed",
+        "target": "component:dd",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.2029,
+        "status": "executed",
+        "target": "component:mkfs",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 3.7364,
+        "status": "executed",
+        "target": "component:xorriso",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 4.0653,
+        "status": "executed",
+        "target": "component:gnome",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 4.2221,
+        "status": "executed",
+        "target": "component:kde",
+        "worker": 3
+      }
+    ],
+    "total": 17,
+    "worker_busy_seconds": 12.673809199999596
+  },
+  "started_at": "2026-08-23T10:09:47+00:00",
+  "status": "failed",
+  "task": "run components",
+  "total_targets": 17
+}

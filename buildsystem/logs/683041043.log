@@ -1,0 +1,725 @@
+-- Start building task run components -- (683041043)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<3> Generating bin/components/dd.exe
+<1> Generating bin/components/clang.exe
+<2> Generating bin/components/ld.exe
+<0> Generating bin/components/gcc.exe
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/dd -c src/dd/dd.c -o "D:\\KenuxK\\build\\components\\dd_dd.o""
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/ld -c src/ld/ld.c -o "D:\\KenuxK\\build\\components\\ld_ld.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o "D:\\KenuxK\\build\\components\\clang_clang.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o "D:\\KenuxK\\build\\components\\gcc_gcc.o""
+src/dd/dd.c: In function 'apply_conversions':
+src/dd/dd.c:200:48: warning: comparison is always true due to limited range of data type [-Wtype-limits]
+  200 |                 if (data[i] >= 0x40 && data[i] <= 0xFE) {
+      |                                                ^~
+In file included from src/gcc/gcc.c:6:
+src/gcc/gcc.h:337:9: error: duplicate member 'warning_count'
+  337 |     int warning_count;
+      |         ^~~~~~~~~~~~~
+src/gcc/gcc.c: In function 'gcc_run_command':
+src/gcc/gcc.c:515:5: error: implicit declaration of function 'waitpid' [-Wimplicit-function-declaration]
+  515 |     waitpid(pid, &status, 0);
+      |     ^~~~~~~
+src/ld/ld.c: In function 'linker_cleanup':
+src/ld/ld.c:61:13: warning: the comparison will always evaluate as 'true' for the address of 'sections' will never be NULL [-Waddress]
+   61 |         if (state->objects[i].sections) {
+      |             ^~~~~
+In file included from src/ld/ld.c:6:
+src/ld/ld.h:71:13: note: 'sections' declared here
+   71 |     Section sections[MAX_SECTIONS];
+      |             ^~~~~~~~
+src/ld/ld.c: In function 'load_object_file':
+src/ld/ld.c:172:36: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'size_t' {aka 'long long unsigned int'} [-Wformat=]
+  172 |         printf("  Entry point: 0x%lx\n", obj->entry_point);
+      |                                  ~~^     ~~~~~~~~~~~~~~~~
+      |                                    |        |
+      |                                    |        size_t {aka long long unsigned int}
+      |                                    long unsigned int
+      |                                  %llx
+src/ld/ld.c: In function 'parse_elf_header':
+src/ld/ld.c:182:26: error: 'EI_NIDENT' undeclared (first use in this function)
+  182 |     unsigned char header[EI_NIDENT];
+      |                          ^~~~~~~~~
+src/ld/ld.c:182:26: note: each undeclared identifier is reported only once for each function it appears in
+src/ld/ld.c:13:16: error: passing argument 2 of 'memcmp' makes pointer from integer without a cast [-Wint-conversion]
+   13 | #define ELFMAG 0x464c457f
+      |                ^~~~~~~~~~
+      |                |
+      |                int
+src/ld/ld.c:192:24: note: in expansion of macro 'ELFMAG'
+  192 |     if (memcmp(header, ELFMAG, 4) != 0) {
+      |                        ^~~~~~
+In file included from src/ld/ld.h:11:
+D:/mingw64/x86_64-w64-mingw32/include/string.h:49:52: note: expected 'const void *' but argument is of type 'int'
+   49 |   int __cdecl memcmp(const void *_Buf1,const void *_Buf2,size_t _Size);
+      |                                        ~~~~~~~~~~~~^~~~~
+src/ld/ld.c:198:20: error: implicit declaration of function 'offsetof' [-Wimplicit-function-declaration]
+  198 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_entry), SEEK_SET);
+      |                    ^~~~~~~~
+src/ld/ld.c:7:1: note: 'offsetof' is defined in header '<stddef.h>'; this is probably fixable by adding '#include <stddef.h>'
+    6 | #include "ld.h"
+  +++ |+#include <stddef.h>
+    7 | 
+src/ld/ld.c:198:29: error: 'Elf32_Ehdr' undeclared (first use in this function)
+  198 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_entry), SEEK_SET);
+      |                             ^~~~~~~~~~
+src/ld/ld.c:198:41: error: 'e_entry' undeclared (first use in this function)
+  198 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_entry), SEEK_SET);
+      |                                         ^~~~~~~
+src/ld/ld.c:199:45: error: 'Elf32_Addr' undeclared (first use in this function)
+  199 |     read(obj->fd, &obj->entry_point, sizeof(Elf32_Addr));
+      |                                             ^~~~~~~~~~
+src/ld/ld.c:202:36: error: 'Elf32_Off' undeclared (first use in this function)
+  202 |     read(obj->fd, &e_shoff, sizeof(Elf32_Off));
+      |                                    ^~~~~~~~~
+src/ld/ld.c:205:40: error: 'Elf32_Half' undeclared (first use in this function)
+  205 |     read(obj->fd, &e_shentsize, sizeof(Elf32_Half));
+      |                                        ^~~~~~~~~~
+src/ld/ld.c:182:19: warning: unused variable 'header' [-Wunused-variable]
+  182 |     unsigned char header[EI_NIDENT];
+      |                   ^~~~~~
+src/ld/ld.c:181:35: warning: unused parameter 'state' [-Wunused-parameter]
+  181 | int parse_elf_header(LinkerState *state, ObjectFile *obj) {
+      |                      ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_section_headers':
+src/ld/ld.c:217:5: error: unknown type name 'Elf32_Shdr'
+  217 |     Elf32_Shdr shdr;
+      |     ^~~~~~~~~~
+src/ld/ld.c:222:36: error: 'Elf32_Ehdr' undeclared (first use in this function)
+  222 |     read(obj->fd, shstrtab, sizeof(Elf32_Ehdr));
+      |                                    ^~~~~~~~~~
+src/ld/ld.c:224:41: error: 'e_shstrndx' undeclared (first use in this function)
+  224 |     lseek(obj->fd, offsetof(Elf32_Ehdr, e_shstrndx), SEEK_SET);
+      |                                         ^~~~~~~~~~
+In file included from src/clang/clang.c:6:
+src/clang/clang.h:314:9: error: duplicate member 'rdynamic'
+  314 |     int rdynamic;
+      |         ^~~~~~~~
+src/ld/ld.c:225:46: error: 'Elf32_Half' undeclared (first use in this function)
+  225 |     read(obj->fd, &obj->num_sections, sizeof(Elf32_Half));
+      |                                              ^~~~~~~~~~
+src/clang/clang.c: In function 'clang_init':
+src/clang/clang.c:13:24: error: 'CLANG_OPT_O2' undeclared (first use in this function); did you mean 'CLANG_OPT_2'?
+   13 |     state->opt_level = CLANG_OPT_O2;
+      |                        ^~~~~~~~~~~~
+      |                        CLANG_OPT_2
+src/clang/clang.c:13:24: note: each undeclared identifier is reported only once for each function it appears in
+src/clang/clang.c:15:12: error: 'ClangState' has no member named 'arch'; did you mean 'march'?
+   15 |     state->arch = CLANG_ARCH_X86_64;
+      |            ^~~~
+      |            march
+src/ld/ld.c:232:41: error: 'Elf32_Shdr' undeclared (first use in this function)
+  232 |         lseek(obj->fd, (i + 1) * sizeof(Elf32_Shdr), SEEK_SET);
+      |                                         ^~~~~~~~~~
+src/ld/ld.c:236:28: error: request for member 'sh_name' in something not a structure or union
+  236 |         lseek(obj->fd, shdr.sh_name, SEEK_SET);
+      |                            ^
+src/ld/ld.c:241:17: error: request for member 'sh_flags' in something not a structure or union
+  241 |         if (shdr.sh_flags & SHF_EXECINSTR) {
+      |                 ^
+src/ld/ld.c:243:24: error: request for member 'sh_flags' in something not a structure or union
+  243 |         } else if (shdr.sh_flags & SHF_WRITE) {
+      |                        ^
+src/ld/ld.c:245:24: error: request for member 'sh_type' in something not a structure or union
+  245 |         } else if (shdr.sh_type == SHT_NOBITS) {
+      |                        ^
+src/ld/ld.c:245:36: error: 'SHT_NOBITS' undeclared (first use in this function)
+  245 |         } else if (shdr.sh_type == SHT_NOBITS) {
+      |                                    ^~~~~~~~~~
+src/clang/clang.c:15:19: error: 'CLANG_ARCH_X86_64' undeclared (first use in this function)
+   15 |     state->arch = CLANG_ARCH_X86_64;
+      |                   ^~~~~~~~~~~~~~~~~
+src/ld/ld.c:247:24: error: request for member 'sh_flags' in something not a structure or union
+  247 |         } else if (shdr.sh_flags & SHF_ALLOC) {
+      |                        ^
+src/ld/ld.c:251:29: error: request for member 'sh_size' in something not a structure or union
+  251 |         section->size = shdr.sh_size;
+      |                             ^
+src/ld/ld.c:252:40: error: request for member 'sh_addr' in something not a structure or union
+  252 |         section->virtual_address = shdr.sh_addr;
+      |                                        ^
+src/ld/ld.c:253:36: error: request for member 'sh_offset' in something not a structure or union
+  253 |         section->file_offset = shdr.sh_offset;
+      |                                    ^
+src/ld/ld.c:254:34: error: request for member 'sh_addralign' in something not a structure or union
+  254 |         section->alignment = shdr.sh_addralign;
+      |                                  ^
+src/ld/ld.c:216:40: warning: unused parameter 'state' [-Wunused-parameter]
+  216 | int parse_section_headers(LinkerState *state, ObjectFile *obj) {
+      |                           ~~~~~~~~~~~~~^~~~~
+src/clang/clang.c:18:26: error: 'CLANG_DBG_NONE' undeclared (first use in this function); did you mean 'CLANG_DEBUG_NONE'?
+   18 |     state->debug_level = CLANG_DBG_NONE;
+      |                          ^~~~~~~~~~~~~~
+      |                          CLANG_DEBUG_NONE
+src/ld/ld.c: In function 'parse_symbol_table':
+src/ld/ld.c:274:5: error: unknown type name 'Elf32_Shdr'
+  274 |     Elf32_Shdr shdr;
+      |     ^~~~~~~~~~
+src/clang/clang.c:20:10: error: 'ClangState' has no member named 'float_abi'
+   20 |     state->float_abi = CLANG_FP_DEFAULT;
+      |          ^~
+src/ld/ld.c:275:5: error: unknown type name 'Elf32_Sym'
+  275 |     Elf32_Sym sym;
+      |     ^~~~~~~~~
+src/clang/clang.c:20:24: error: 'CLANG_FP_DEFAULT' undeclared (first use in this function); did you mean 'CLANG_FPU_DEFAULT'?
+   20 |     state->float_abi = CLANG_FP_DEFAULT;
+      |                        ^~~~~~~~~~~~~~~~
+      |                        CLANG_FPU_DEFAULT
+src/clang/clang.c:22:12: error: 'ClangState' has no member named 'pic_level'; did you mean 'opt_level'?
+   22 |     state->pic_level = 0;
+      |            ^~~~~~~~~
+      |            opt_level
+src/clang/clang.c:23:12: error: 'ClangState' has no member named 'pie_level'; did you mean 'opt_level'?
+   23 |     state->pie_level = 0;
+      |            ^~~~~~~~~
+      |            opt_level
+src/clang/clang.c:24:12: error: 'ClangState' has no member named 'reloc_mode'; did you mean 'reloc_model'?
+   24 |     state->reloc_mode = CLANG_RELOC_STATIC;
+      |            ^~~~~~~~~~
+      |            reloc_model
+src/clang/clang.c:25:10: error: 'ClangState' has no member named 'diag_color'
+   25 |     state->diag_color = CLANG_DIAG_AUTO;
+      |          ^~
+src/ld/ld.c:280:41: error: 'Elf32_Shdr' undeclared (first use in this function)
+  280 |         lseek(obj->fd, (i + 1) * sizeof(Elf32_Shdr), SEEK_SET);
+      |                                         ^~~~~~~~~~
+src/ld/ld.c:283:17: error: request for member 'sh_type' in something not a structure or union
+  283 |         if (shdr.sh_type == SHT_SYMTAB) {
+      |                 ^
+src/clang/clang.c:25:25: error: 'CLANG_DIAG_AUTO' undeclared (first use in this function); did you mean 'CLANG_LANG_AUTO'?
+   25 |     state->diag_color = CLANG_DIAG_AUTO;
+      |                         ^~~~~~~~~~~~~~~
+      |                         CLANG_LANG_AUTO
+src/clang/clang.c:26:12: error: 'ClangState' has no member named 'stack_protector'; did you mean 'fstack_protector'?
+   26 |     state->stack_protector = 1;
+      |            ^~~~~~~~~~~~~~~
+      |            fstack_protector
+src/clang/clang.c:29:19: error: 'ClangState' has no member named 'clang_path'; did you mean 'clang_cc1_path'?
+   29 |     strcpy(state->clang_path, "/usr/bin/clang-18");
+      |                   ^~~~~~~~~~
+      |                   clang_cc1_path
+src/clang/clang.c:33:19: error: 'ClangState' has no member named 'lld_path'; did you mean 'ld_path'?
+   33 |     strcpy(state->lld_path, "/usr/bin/ld.lld");
+      |                   ^~~~~~~~
+      |                   ld_path
+src/ld/ld.c:283:29: error: 'SHT_SYMTAB' undeclared (first use in this function)
+  283 |         if (shdr.sh_type == SHT_SYMTAB) {
+      |                             ^~~~~~~~~~
+src/ld/ld.c:285:36: error: request for member 'sh_size' in something not a structure or union
+  285 |             obj->num_symbols = shdr.sh_size / sizeof(Elf32_Sym);
+      |                                    ^
+src/clang/clang.c: In function 'clang_opt_option':
+src/clang/clang.c:47:14: error: 'CLANG_OPT_O0' undeclared (first use in this function); did you mean 'CLANG_OPT_Z'?
+   47 |         case CLANG_OPT_O0: return "-O0";
+      |              ^~~~~~~~~~~~
+      |              CLANG_OPT_Z
+src/ld/ld.c:285:54: error: 'Elf32_Sym' undeclared (first use in this function)
+  285 |             obj->num_symbols = shdr.sh_size / sizeof(Elf32_Sym);
+      |                                                      ^~~~~~~~~
+src/ld/ld.c:288:32: error: request for member 'sh_link' in something not a structure or union
+  288 |             lseek(obj->fd, shdr.sh_link * sizeof(Elf32_Shdr), SEEK_SET);
+      |                                ^
+src/ld/ld.c:291:32: error: request for member 'sh_offset' in something not a structure or union
+  291 |             lseek(obj->fd, shdr.sh_offset, SEEK_SET);
+      |                                ^
+src/ld/ld.c:292:39: error: request for member 'sh_size' in something not a structure or union
+  292 |             read(obj->fd, strtab, shdr.sh_size);
+      |                                       ^
+src/ld/ld.c:298:36: error: request for member 'sh_offset' in something not a structure or union
+  298 |                 lseek(obj->fd, shdr.sh_offset + j * sizeof(Elf32_Sym), SEEK_SET);
+      |                                    ^
+src/ld/ld.c:302:50: error: request for member 'st_name' in something not a structure or union
+  302 |                 strcpy(symbol->name, strtab + sym.st_name);
+      |                                                  ^
+src/clang/clang.c:48:14: error: 'CLANG_OPT_O1' undeclared (first use in this function); did you mean 'CLANG_OPT_1'?
+   48 |         case CLANG_OPT_O1: return "-O1";
+      |              ^~~~~~~~~~~~
+      |              CLANG_OPT_1
+src/ld/ld.c:306:21: error: implicit declaration of function 'ELF32_ST_TYPE' [-Wimplicit-function-declaration]
+  306 |                 if (ELF32_ST_TYPE(sym.st_info) == STT_FUNC) {
+      |                     ^~~~~~~~~~~~~
+src/ld/ld.c:306:38: error: request for member 'st_info' in something not a structure or union
+  306 |                 if (ELF32_ST_TYPE(sym.st_info) == STT_FUNC) {
+      |                                      ^
+src/ld/ld.c:308:45: error: request for member 'st_info' in something not a structure or union
+  308 |                 } else if (ELF32_ST_TYPE(sym.st_info) == STT_OBJECT) {
+      |                                             ^
+src/ld/ld.c:310:45: error: request for member 'st_info' in something not a structure or union
+  310 |                 } else if (ELF32_ST_TYPE(sym.st_info) == STT_SECTION) {
+      |                                             ^
+src/ld/ld.c:314:36: error: request for member 'st_value' in something not a structure or union
+  314 |                 symbol->value = sym.st_value;
+      |                                    ^
+src/ld/ld.c:315:35: error: request for member 'st_size' in something not a structure or union
+  315 |                 symbol->size = sym.st_size;
+      |                                   ^
+src/ld/ld.c:316:44: error: request for member 'st_shndx' in something not a structure or union
+  316 |                 symbol->section_index = sym.st_shndx;
+      |                                            ^
+src/clang/clang.c:49:14: error: 'CLANG_OPT_O2' undeclared (first use in this function); did you mean 'CLANG_OPT_2'?
+   49 |         case CLANG_OPT_O2: return "-O2";
+      |              ^~~~~~~~~~~~
+      |              CLANG_OPT_2
+src/clang/clang.c:50:14: error: 'CLANG_OPT_O3' undeclared (first use in this function); did you mean 'CLANG_OPT_3'?
+   50 |         case CLANG_OPT_O3: return "-O3";
+      |              ^~~~~~~~~~~~
+      |              CLANG_OPT_3
+<0> Generating bin/components/make.exe
+src/clang/clang.c:51:14: error: 'CLANG_OPT_Os' undeclared (first use in this function); did you mean 'CLANG_OPT_S'?
+   51 |         case CLANG_OPT_Os: return "-Os";
+      |              ^~~~~~~~~~~~
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/make -c src/make/make.c -o "D:\\KenuxK\\build\\components\\make_make.o""
+      |              CLANG_OPT_S
+src/ld/ld.c:317:35: error: implicit declaration of function 'ELF32_ST_BIND' [-Wimplicit-function-declaration]
+  317 |                 symbol->binding = ELF32_ST_BIND(sym.st_info);
+      |                                   ^~~~~~~~~~~~~
+src/ld/ld.c:317:52: error: request for member 'st_info' in something not a structure or union
+  317 |                 symbol->binding = ELF32_ST_BIND(sym.st_info);
+      |                                                    ^
+src/ld/ld.c:318:41: error: request for member 'st_other' in something not a structure or union
+  318 |                 symbol->visibility = sym.st_other;
+      |                                         ^
+src/ld/ld.c:273:37: warning: unused parameter 'state' [-Wunused-parameter]
+  273 | int parse_symbol_table(LinkerState *state, ObjectFile *obj) {
+      |                        ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'write_output_sections':
+src/ld/ld.c:457:71: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  457 |             if (write(state->output_fd, section->data, section->size) != section->size) {
+      |                                                                       ^~
+src/clang/clang.c:52:14: error: 'CLANG_OPT_Oz' undeclared (first use in this function); did you mean 'CLANG_OPT_Z'?
+   52 |         case CLANG_OPT_Oz: return "-Oz";
+      |              ^~~~~~~~~~~~
+      |              CLANG_OPT_Z
+src/clang/clang.c:53:14: error: 'CLANG_OPT_Ofast' undeclared (first use in this function); did you mean 'CLANG_OPT_FAST'?
+   53 |         case CLANG_OPT_Ofast: return "-Ofast";
+      |              ^~~~~~~~~~~~~~~
+      |              CLANG_OPT_FAST
+src/clang/clang.c:54:14: error: 'CLANG_OPT_Og' undeclared (first use in this function); did you mean 'CLANG_OPT_Z'?
+   54 |         case CLANG_OPT_Og: return "-Og";
+      |              ^~~~~~~~~~~~
+      |              CLANG_OPT_Z
+src/clang/clang.c: In function 'clang_debug_option':
+src/clang/clang.c:86:14: error: 'CLANG_DBG_NONE' undeclared (first use in this function); did you mean 'CLANG_DEBUG_NONE'?
+   86 |         case CLANG_DBG_NONE: return NULL;
+      |              ^~~~~~~~~~~~~~
+      |              CLANG_DEBUG_NONE
+src/clang/clang.c:87:14: error: 'CLANG_DBG_LINE' undeclared (first use in this function); did you mean 'CLANG_DEBUG_LINE'?
+   87 |         case CLANG_DBG_LINE: return "-gline-tables-only";
+      |              ^~~~~~~~~~~~~~
+      |              CLANG_DEBUG_LINE
+src/clang/clang.c:88:14: error: 'CLANG_DBG_DEFAULT' undeclared (first use in this function); did you mean 'CLANG_DEBUG_DEFAULT'?
+   88 |         case CLANG_DBG_DEFAULT: return "-g";
+      |              ^~~~~~~~~~~~~~~~~
+      |              CLANG_DEBUG_DEFAULT
+src/clang/clang.c:89:14: error: 'CLANG_DBG_EXTENDED' undeclared (first use in this function); did you mean 'CLANG_DEBUG_EXTENDED'?
+   89 |         case CLANG_DBG_EXTENDED: return "-g3";
+      |              ^~~~~~~~~~~~~~~~~~
+      |              CLANG_DEBUG_EXTENDED
+src/clang/clang.c:90:14: error: 'CLANG_DBG_DWARF2' undeclared (first use in this function); did you mean 'CLANG_DEBUG_DWARF2'?
+   90 |         case CLANG_DBG_DWARF2: return "-gdwarf-2";
+      |              ^~~~~~~~~~~~~~~~
+      |              CLANG_DEBUG_DWARF2
+src/clang/clang.c:91:14: error: 'CLANG_DBG_DWARF3' undeclared (first use in this function); did you mean 'CLANG_DEBUG_DWARF3'?
+   91 |         case CLANG_DBG_DWARF3: return "-gdwarf-3";
+      |              ^~~~~~~~~~~~~~~~
+      |              CLANG_DEBUG_DWARF3
+src/clang/clang.c:92:14: error: 'CLANG_DBG_DWARF4' undeclared (first use in this function); did you mean 'CLANG_DEBUG_DWARF4'?
+   92 |         case CLANG_DBG_DWARF4: return "-gdwarf-4";
+      |              ^~~~~~~~~~~~~~~~
+      |              CLANG_DEBUG_DWARF4
+src/clang/clang.c:93:14: error: 'CLANG_DBG_DWARF5' undeclared (first use in this function); did you mean 'CLANG_DEBUG_DWARF5'?
+   93 |         case CLANG_DBG_DWARF5: return "-gdwarf-5";
+      |              ^~~~~~~~~~~~~~~~
+      |              CLANG_DEBUG_DWARF5
+src/clang/clang.c: At top level:
+src/clang/clang.c:108:34: error: unknown type name 'ClangSanitizer'; did you mean 'ClangSanitizerFlags'?
+  108 | const char *clang_sanitizer_name(ClangSanitizer san) {
+      |                                  ^~~~~~~~~~~~~~
+      |                                  ClangSanitizerFlags
+src/clang/clang.c:127:19: error: conflicting types for 'clang_infer_language'; have 'ClangLanguageMode(const char *)'
+  127 | ClangLanguageMode clang_infer_language(const char *filename) {
+      |                   ^~~~~~~~~~~~~~~~~~~~
+src/clang/clang.h:418:5: note: previous declaration of 'clang_infer_language' with type 'int(const char *, ClangLanguageMode *)'
+  418 | int clang_infer_language(const char *filename, ClangLanguageMode *out);
+      |     ^~~~~~~~~~~~~~~~~~~~
+src/clang/clang.c: In function 'clang_infer_language':
+src/clang/clang.c:130:48: error: 'CLANG_LANG_CPP_OUTPUT_C' undeclared (first use in this function)
+  130 |     if (clang_ext_match(filename, "i")) return CLANG_LANG_CPP_OUTPUT_C;
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~~
+src/clang/clang.c:133:49: error: 'CLANG_LANG_CPP_OUTPUT_CXX' undeclared (first use in this function)
+  133 |     if (clang_ext_match(filename, "ii")) return CLANG_LANG_CPP_OUTPUT_CXX;
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~
+src/clang/clang.c:134:82: error: 'CLANG_LANG_ASM' undeclared (first use in this function); did you mean 'CLANG_LANG_AST'?
+  134 |     if (clang_ext_match(filename, "s") || clang_ext_match(filename, "S")) return CLANG_LANG_ASM;
+      |                                                                                  ^~~~~~~~~~~~~~
+      |                                                                                  CLANG_LANG_AST
+src/clang/clang.c: In function 'clang_lang_from_name':
+src/clang/clang.c:148:48: error: 'CLANG_LANG_ASM' undeclared (first use in this function); did you mean 'CLANG_LANG_AST'?
+  148 |     if (strcmp(name, "assembler") == 0) return CLANG_LANG_ASM;
+      |                                                ^~~~~~~~~~~~~~
+      |                                                CLANG_LANG_AST
+src/clang/clang.c:154:49: error: 'CLANG_LANG_CPP_OUTPUT_C' undeclared (first use in this function)
+  154 |     if (strcmp(name, "cpp-output") == 0) return CLANG_LANG_CPP_OUTPUT_C;
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~
+src/clang/clang.c: In function 'clang_parse_arguments':
+src/clang/clang.c:163:38: error: 'CLANG_MAX_INPUTS' undeclared (first use in this function); did you mean 'CLANG_MAX_INPUT_FILES'?
+  163 |             if (state->input_count < CLANG_MAX_INPUTS) {
+      |                                      ^~~~~~~~~~~~~~~~
+      |                                      CLANG_MAX_INPUT_FILES
+src/clang/clang.c:164:70: error: 'CLANG_MAX_PATH' undeclared (first use in this function); did you mean 'CLANG_MAX_PATH_LEN'?
+  164 |                 strncpy(state->input_files[state->input_count++], a, CLANG_MAX_PATH - 1);
+      |                                                                      ^~~~~~~~~~~~~~
+      |                                                                      CLANG_MAX_PATH_LEN
+src/clang/clang.c:172:53: error: 'ClangState' has no member named 'emit_llvm'
+  172 |         else if (strcmp(a, "-emit-llvm") == 0) state->emit_llvm = 1;
+      |                                                     ^~
+src/clang/clang.c:178:60: error: 'CLANG_OPT_O0' undeclared (first use in this function); did you mean 'CLANG_OPT_Z'?
+  178 |         else if (strcmp(a, "-O0") == 0) state->opt_level = CLANG_OPT_O0;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            CLANG_OPT_Z
+src/clang/clang.c:179:60: error: 'CLANG_OPT_O1' undeclared (first use in this function); did you mean 'CLANG_OPT_1'?
+  179 |         else if (strcmp(a, "-O1") == 0) state->opt_level = CLANG_OPT_O1;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            CLANG_OPT_1
+src/clang/clang.c:180:84: error: 'CLANG_OPT_O2' undeclared (first use in this function); did you mean 'CLANG_OPT_2'?
+  180 |         else if (strcmp(a, "-O2") == 0 || strcmp(a, "-O") == 0) state->opt_level = CLANG_OPT_O2;
+      |                                                                                    ^~~~~~~~~~~~
+      |                                                                                    CLANG_OPT_2
+src/clang/clang.c:181:60: error: 'CLANG_OPT_O3' undeclared (first use in this function); did you mean 'CLANG_OPT_3'?
+  181 |         else if (strcmp(a, "-O3") == 0) state->opt_level = CLANG_OPT_O3;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            CLANG_OPT_3
+src/clang/clang.c:182:60: error: 'CLANG_OPT_Os' undeclared (first use in this function); did you mean 'CLANG_OPT_S'?
+  182 |         else if (strcmp(a, "-Os") == 0) state->opt_level = CLANG_OPT_Os;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            CLANG_OPT_S
+src/clang/clang.c:183:60: error: 'CLANG_OPT_Oz' undeclared (first use in this function); did you mean 'CLANG_OPT_Z'?
+  183 |         else if (strcmp(a, "-Oz") == 0) state->opt_level = CLANG_OPT_Oz;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            CLANG_OPT_Z
+src/clang/clang.c:184:63: error: 'CLANG_OPT_Ofast' undeclared (first use in this function); did you mean 'CLANG_OPT_FAST'?
+  184 |         else if (strcmp(a, "-Ofast") == 0) state->opt_level = CLANG_OPT_Ofast;
+      |                                                               ^~~~~~~~~~~~~~~
+      |                                                               CLANG_OPT_FAST
+src/clang/clang.c:185:60: error: 'CLANG_OPT_Og' undeclared (first use in this function); did you mean 'CLANG_OPT_Z'?
+  185 |         else if (strcmp(a, "-Og") == 0) state->opt_level = CLANG_OPT_Og;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            CLANG_OPT_Z
+src/clang/clang.c:186:61: error: 'CLANG_DBG_DEFAULT' undeclared (first use in this function); did you mean 'CLANG_DEBUG_DEFAULT'?
+  186 |         else if (strcmp(a, "-g") == 0) state->debug_level = CLANG_DBG_DEFAULT;
+      |                                                             ^~~~~~~~~~~~~~~~~
+      |                                                             CLANG_DEBUG_DEFAULT
+src/clang/clang.c:187:62: error: 'CLANG_DBG_EXTENDED' undeclared (first use in this function); did you mean 'CLANG_DEBUG_EXTENDED'?
+  187 |         else if (strcmp(a, "-g3") == 0) state->debug_level = CLANG_DBG_EXTENDED;
+      |                                                              ^~~~~~~~~~~~~~~~~~
+      |                                                              CLANG_DEBUG_EXTENDED
+src/clang/clang.c:210:51: error: 'ClangState' has no member named 'arch'; did you mean 'march'?
+  210 |         else if (strcmp(a, "-m32") == 0) { state->arch = CLANG_ARCH_X86; state->m32 = 1; }
+      |                                                   ^~~~
+      |                                                   march
+src/clang/clang.c:210:58: error: 'CLANG_ARCH_X86' undeclared (first use in this function)
+  210 |         else if (strcmp(a, "-m32") == 0) { state->arch = CLANG_ARCH_X86; state->m32 = 1; }
+      |                                                          ^~~~~~~~~~~~~~
+src/clang/clang.c:211:51: error: 'ClangState' has no member named 'arch'; did you mean 'march'?
+  211 |         else if (strcmp(a, "-m64") == 0) { state->arch = CLANG_ARCH_X86_64; state->m64 = 1; }
+      |                                                   ^~~~
+      |                                                   march
+src/clang/clang.c:211:58: error: 'CLANG_ARCH_X86_64' undeclared (first use in this function)
+  211 |         else if (strcmp(a, "-m64") == 0) { state->arch = CLANG_ARCH_X86_64; state->m64 = 1; }
+      |                                                          ^~~~~~~~~~~~~~~~~
+src/clang/clang.c:227:39: error: 'CLANG_MAX_DEFINES' undeclared (first use in this function); did you mean 'CLANG_MAX_DEFINE'?
+  227 |             if (state->define_count < CLANG_MAX_DEFINES)
+      |                                       ^~~~~~~~~~~~~~~~~
+      |                                       CLANG_MAX_DEFINE
+src/clang/clang.c:235:44: error: 'CLANG_MAX_INCLUDES' undeclared (first use in this function); did you mean 'CLANG_MAX_INCLUDE_DIRS'?
+  235 |             if (state->include_dir_count < CLANG_MAX_INCLUDES)
+      |                                            ^~~~~~~~~~~~~~~~~~
+      |                                            CLANG_MAX_INCLUDE_DIRS
+src/clang/clang.c:240:27: error: 'ClangState' has no member named 'sysinclude_count'
+  240 |             if (s && state->sysinclude_count < CLANG_MAX_INCLUDES)
+      |                           ^~
+src/clang/clang.c:241:30: error: 'ClangState' has no member named 'sysincludes'
+  241 |                 strncpy(state->sysincludes[state->sysinclude_count++], s, CLANG_MAX_PATH - 1);
+      |                              ^~
+src/clang/clang.c:241:49: error: 'ClangState' has no member named 'sysinclude_count'
+  241 |                 strncpy(state->sysincludes[state->sysinclude_count++], s, CLANG_MAX_PATH - 1);
+      |                                                 ^~
+src/clang/clang.c:244:44: error: 'CLANG_MAX_LIB_DIRS' undeclared (first use in this function); did you mean 'CLANG_MAX_LIBRARY_DIRS'?
+  244 |             if (state->library_dir_count < CLANG_MAX_LIB_DIRS)
+      |                                            ^~~~~~~~~~~~~~~~~~
+      |                                            CLANG_MAX_LIBRARY_DIRS
+src/clang/clang.c:256:60: error: 'ClangState' has no member named 'wno_everything'; did you mean 'weverything'?
+  256 |         else if (strcmp(a, "-Wno-everything") == 0) state->wno_everything = 1;
+      |                                                            ^~~~~~~~~~~~~~
+      |                                                            weverything
+src/clang/clang.c:257:51: error: 'ClangState' has no member named 'pthread'
+  257 |         else if (strcmp(a, "-pthread") == 0) state->pthread = 1;
+      |                                                   ^~
+src/clang/clang.c:258:78: error: 'ClangState' has no member named 'reloc_mode'; did you mean 'reloc_model'?
+  258 |         else if (strcmp(a, "-static") == 0) { state->static_link = 1; state->reloc_mode = CLANG_RELOC_STATIC; }
+      |                                                                              ^~~~~~~~~~
+      |                                                                              reloc_model
+src/clang/clang.c:259:71: error: 'ClangState' has no member named 'build_shared'
+  259 |         else if (strcmp(a, "-shared") == 0) { state->shared = 1; state->build_shared = 1; }
+      |                                                                       ^~
+src/clang/clang.c:262:55: error: 'ClangState' has no member named 'fno_builtin'
+  262 |         else if (strcmp(a, "-fno-builtin") == 0) state->fno_builtin = 1;
+      |                                                       ^~
+src/clang/clang.c:263:62: error: 'ClangState' has no member named 'ffunction_sections'
+  263 |         else if (strcmp(a, "-ffunction-sections") == 0) state->ffunction_sections = 1;
+      |                                                              ^~
+src/clang/clang.c:264:60: error: 'ClangState' has no member named 'fdata_sections'; did you mean 'gc_sections'?
+  264 |         else if (strcmp(a, "-fdata-sections") == 0) state->fdata_sections = 1;
+      |                                                            ^~~~~~~~~~~~~~
+      |                                                            gc_sections
+src/clang/clang.c:266:68: error: 'ClangState' has no member named 'fno_omit_frame_pointer'; did you mean 'fomit_frame_pointer'?
+  266 |         else if (strcmp(a, "-fno-omit-frame-pointer") == 0) state->fno_omit_frame_pointer = 1;
+      |                                                                    ^~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    fomit_frame_pointer
+src/clang/clang.c:267:65: error: 'ClangState' has no member named 'stack_protector'; did you mean 'fstack_protector'?
+  267 |         else if (strcmp(a, "-fno-stack-protector") == 0) state->stack_protector = 0;
+      |                                                                 ^~~~~~~~~~~~~~~
+      |                                                                 fstack_protector
+src/clang/clang.c:268:62: error: 'ClangState' has no member named 'stack_protector'; did you mean 'fstack_protector'?
+  268 |         else if (strcmp(a, "-fstack-protector") == 0) state->stack_protector = 1;
+      |                                                              ^~~~~~~~~~~~~~~
+      |                                                              fstack_protector
+src/clang/clang.c:269:69: error: 'ClangState' has no member named 'stack_protector_strong'; did you mean 'fstack_protector_strong'?
+  269 |         else if (strcmp(a, "-fstack-protector-strong") == 0) state->stack_protector_strong = 1;
+      |                                                                     ^~~~~~~~~~~~~~~~~~~~~~
+      |                                                                     fstack_protector_strong
+src/clang/clang.c:270:52: error: 'ClangState' has no member named 'pic_level'; did you mean 'opt_level'?
+  270 |         else if (strcmp(a, "-fpic") == 0) { state->pic_level = 1; state->pie_mode = 0; }
+      |                                                    ^~~~~~~~~
+      |                                                    opt_level
+src/clang/clang.c:270:72: error: 'ClangState' has no member named 'pie_mode'
+  270 |         else if (strcmp(a, "-fpic") == 0) { state->pic_level = 1; state->pie_mode = 0; }
+      |                                                                        ^~
+src/clang/clang.c:271:52: error: 'ClangState' has no member named 'pic_level'; did you mean 'opt_level'?
+  271 |         else if (strcmp(a, "-fPIC") == 0) { state->pic_level = 2; state->pie_mode = 0; }
+      |                                                    ^~~~~~~~~
+      |                                                    opt_level
+src/clang/clang.c:271:72: error: 'ClangState' has no member named 'pie_mode'
+  271 |         else if (strcmp(a, "-fPIC") == 0) { state->pic_level = 2; state->pie_mode = 0; }
+      |                                                                        ^~
+src/clang/clang.c:272:52: error: 'ClangState' has no member named 'pie_level'; did you mean 'opt_level'?
+  272 |         else if (strcmp(a, "-fpie") == 0) { state->pie_level = 1; }
+      |                                                    ^~~~~~~~~
+      |                                                    opt_level
+src/clang/clang.c:273:52: error: 'ClangState' has no member named 'pie_level'; did you mean 'opt_level'?
+  273 |         else if (strcmp(a, "-fPIE") == 0) { state->pie_level = 2; }
+      |                                                    ^~~~~~~~~
+      |                                                    opt_level
+src/clang/clang.c:274:53: error: 'ClangState' has no member named 'pic_level'; did you mean 'opt_level'?
+  274 |         else if (strcmp(a, "-fno-pic") == 0) state->pic_level = 0;
+      |                                                     ^~~~~~~~~
+      |                                                     opt_level
+src/clang/clang.c:275:53: error: 'ClangState' has no member named 'pie_level'; did you mean 'opt_level'?
+  275 |         else if (strcmp(a, "-fno-pie") == 0) state->pie_level = 0;
+      |                                                     ^~~~~~~~~
+      |                                                     opt_level
+src/clang/clang.c:276:52: error: 'ClangState' has no member named 'pie_level'; did you mean 'opt_level'?
+  276 |         else if (strcmp(a, "-no-pie") == 0) state->pie_level = 0;
+      |                                                    ^~~~~~~~~
+      |                                                    opt_level
+src/clang/clang.c:277:58: error: 'ClangState' has no member named 'fno_exceptions'
+  277 |         else if (strcmp(a, "-fno-exceptions") == 0) state->fno_exceptions = 1;
+      |                                                          ^~
+src/clang/clang.c:278:52: error: 'ClangState' has no member named 'fno_rtti'
+  278 |         else if (strcmp(a, "-fno-rtti") == 0) state->fno_rtti = 1;
+      |                                                    ^~
+src/clang/clang.c:279:55: error: 'ClangState' has no member named 'use_lld'
+  279 |         else if (strcmp(a, "-fuse-ld=lld") == 0) state->use_lld = 1;
+      |                                                       ^~
+src/clang/clang.c:280:56: error: 'ClangState' has no member named 'use_gold'
+  280 |         else if (strcmp(a, "-fuse-ld=gold") == 0) state->use_gold = 1;
+      |                                                        ^~
+src/clang/clang.c:281:55: error: 'ClangState' has no member named 'use_bfd'
+  281 |         else if (strcmp(a, "-fuse-ld=bfd") == 0) state->use_bfd = 1;
+      |                                                       ^~
+src/clang/clang.c:286:64: error: 'CLANG_SAN_ADDR' undeclared (first use in this function); did you mean 'CLANG_SAN_ADDRESS'?
+  286 |             if (strstr(s, "address")) state->sanitizers |= (1<<CLANG_SAN_ADDR);
+      |                                                                ^~~~~~~~~~~~~~
+      |                                                                CLANG_SAN_ADDRESS
+src/clang/clang.c:287:59: warning: left shift count >= width of type [-Wshift-count-overflow]
+  287 |             if (strstr(s, "leak")) state->sanitizers |= (1<<CLANG_SAN_LEAK);
+      |                                                           ^~
+src/clang/clang.c:288:66: error: 'CLANG_SAN_UB' undeclared (first use in this function); did you mean 'CLANG_SAN_CFI'?
+  288 |             if (strstr(s, "undefined")) state->sanitizers |= (1<<CLANG_SAN_UB);
+      |                                                                  ^~~~~~~~~~~~
+      |                                                                  CLANG_SAN_CFI
+src/clang/clang.c:289:63: error: 'CLANG_SAN_TSAN' undeclared (first use in this function); did you mean 'CLANG_SAN_KTSAN'?
+  289 |             if (strstr(s, "thread")) state->sanitizers |= (1<<CLANG_SAN_TSAN);
+      |                                                               ^~~~~~~~~~~~~~
+      |                                                               CLANG_SAN_KTSAN
+src/clang/clang.c:290:63: error: 'CLANG_SAN_MSAN' undeclared (first use in this function); did you mean 'CLANG_SAN_KMSAN'?
+  290 |             if (strstr(s, "memory")) state->sanitizers |= (1<<CLANG_SAN_MSAN);
+      |                                                               ^~~~~~~~~~~~~~
+      |                                                               CLANG_SAN_KMSAN
+src/clang/clang.c:291:66: error: 'CLANG_SAN_HWASAN' undeclared (first use in this function); did you mean 'CLANG_SAN_KASAN'?
+  291 |             if (strstr(s, "hwaddress")) state->sanitizers |= (1<<CLANG_SAN_HWASAN);
+      |                                                                  ^~~~~~~~~~~~~~~~
+      |                                                                  CLANG_SAN_KASAN
+src/clang/clang.c:292:61: error: 'CLANG_SAN_KCFI' undeclared (first use in this function); did you mean 'CLANG_SAN_CFI'?
+  292 |             if (strstr(s, "kcfi")) state->sanitizers |= (1<<CLANG_SAN_KCFI);
+      |                                                             ^~~~~~~~~~~~~~
+      |                                                             CLANG_SAN_CFI
+src/clang/clang.c:301:29: error: 'ClangState' has no member named 'linker_script_count'; did you mean 'linker_flag_count'?
+  301 |             if (s && state->linker_script_count < CLANG_MAX_LINKER_SCRIPTS)
+      |                             ^~~~~~~~~~~~~~~~~~~
+      |                             linker_flag_count
+src/clang/clang.c:301:51: error: 'CLANG_MAX_LINKER_SCRIPTS' undeclared (first use in this function); did you mean 'CLANG_MAX_LINKER_FLAGS'?
+  301 |             if (s && state->linker_script_count < CLANG_MAX_LINKER_SCRIPTS)
+      |                                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                   CLANG_MAX_LINKER_FLAGS
+src/clang/clang.c:302:32: error: 'ClangState' has no member named 'linker_scripts'; did you mean 'linker_script'?
+  302 |                 strncpy(state->linker_scripts[state->linker_script_count++], s, CLANG_MAX_PATH - 1);
+      |                                ^~~~~~~~~~~~~~
+      |                                linker_script
+src/clang/clang.c:302:54: error: 'ClangState' has no member named 'linker_script_count'; did you mean 'linker_flag_count'?
+  302 |                 strncpy(state->linker_scripts[state->linker_script_count++], s, CLANG_MAX_PATH - 1);
+      |                                                      ^~~~~~~~~~~~~~~~~~~
+      |                                                      linker_flag_count
+src/clang/clang.c:305:56: error: 'ClangState' has no member named 'nobuiltininc'
+  305 |         else if (strcmp(a, "-nobuiltininc") == 0) state->nobuiltininc = 1;
+      |                                                        ^~
+src/clang/clang.c:306:66: error: 'ClangState' has no member named 'print_effective_triple'
+  306 |         else if (strcmp(a, "-print-effective-triple") == 0) state->print_effective_triple = 1;
+      |                                                                  ^~
+src/clang/clang.c:307:65: error: 'ClangState' has no member named 'print_target_triple'; did you mean 'target_triple'?
+  307 |         else if (strcmp(a, "-print-target-triple") == 0) state->print_target_triple = 1;
+      |                                                                 ^~~~~~~~~~~~~~~~~~~
+      |                                                                 target_triple
+src/clang/clang.c: In function 'clang_run_cmd':
+src/clang/clang.c:322:21: error: implicit declaration of function 'waitpid' [-Wimplicit-function-declaration]
+  322 |     int status = 0; waitpid(pid, &status, 0);
+      |                     ^~~~~~~
+src/clang/clang.c: At top level:
+src/clang/clang.c:326:73: error: unknown type name 'ClangCompilerPhase'
+  326 | static void clang_determine_output(const ClangState *s, const char *in, ClangCompilerPhase ph, char *out) {
+      |                                                                         ^~~~~~~~~~~~~~~~~~
+src/clang/clang.c: In function 'clang_execute_phases':
+src/clang/clang.c:345:9: error: unknown type name 'ClangCompilerPhase'
+  345 |         ClangCompilerPhase end = (s->output_kind == CLANG_OUTPUT_PREPROCESS) ? CLANG_PHASE_PREPROCESS
+      |         ^~~~~~~~~~~~~~~~~~
+src/clang/clang.c:345:80: error: 'CLANG_PHASE_PREPROCESS' undeclared (first use in this function); did you mean 'CLANG_OUTPUT_PREPROCESS'?
+  345 |         ClangCompilerPhase end = (s->output_kind == CLANG_OUTPUT_PREPROCESS) ? CLANG_PHASE_PREPROCESS
+      |                                                                                ^~~~~~~~~~~~~~~~~~~~~~
+      |                                                                                CLANG_OUTPUT_PREPROCESS
+src/clang/clang.c:346:57: error: 'CLANG_PHASE_COMPILE' undeclared (first use in this function); did you mean 'CLANG_OUTPUT_COMPILE'?
+  346 |             : (s->output_kind == CLANG_OUTPUT_COMPILE ? CLANG_PHASE_COMPILE
+      |                                                         ^~~~~~~~~~~~~~~~~~~
+      |                                                         CLANG_OUTPUT_COMPILE
+src/clang/clang.c:347:34: error: 'CLANG_OUTPUT_BC' undeclared (first use in this function); did you mean 'CLANG_OUTPUT_AST'?
+  347 |             : (s->output_kind == CLANG_OUTPUT_BC ? CLANG_PHASE_BC : CLANG_PHASE_ASSEMBLE));
+      |                                  ^~~~~~~~~~~~~~~
+      |                                  CLANG_OUTPUT_AST
+src/clang/clang.c:347:52: error: 'CLANG_PHASE_BC' undeclared (first use in this function); did you mean 'CLANG_LANG_C'?
+  347 |             : (s->output_kind == CLANG_OUTPUT_BC ? CLANG_PHASE_BC : CLANG_PHASE_ASSEMBLE));
+      |                                                    ^~~~~~~~~~~~~~
+      |                                                    CLANG_LANG_C
+src/clang/clang.c:347:69: error: 'CLANG_PHASE_ASSEMBLE' undeclared (first use in this function); did you mean 'CLANG_LANG_ASSEMBLER'?
+  347 |             : (s->output_kind == CLANG_OUTPUT_BC ? CLANG_PHASE_BC : CLANG_PHASE_ASSEMBLE));
+      |                                                                     ^~~~~~~~~~~~~~~~~~~~
+      |                                                                     CLANG_LANG_ASSEMBLER
+src/clang/clang.c:348:14: error: unknown type name 'ClangCompilerPhase'
+  348 |         for (ClangCompilerPhase ph = CLANG_PHASE_PREPROCESS; ph <= end; ph = (ClangCompilerPhase)(ph + 1)) {
+      |              ^~~~~~~~~~~~~~~~~~
+src/clang/clang.c:348:79: error: 'ClangCompilerPhase' undeclared (first use in this function)
+  348 |         for (ClangCompilerPhase ph = CLANG_PHASE_PREPROCESS; ph <= end; ph = (ClangCompilerPhase)(ph + 1)) {
+      |                                                                               ^~~~~~~~~~~~~~~~~~
+src/clang/clang.c:349:22: error: 'CLANG_MAX_PATH' undeclared (first use in this function); did you mean 'CLANG_MAX_PATH_LEN'?
+  349 |             char out[CLANG_MAX_PATH];
+      |                      ^~~~~~~~~~~~~~
+      |                      CLANG_MAX_PATH_LEN
+src/clang/clang.c:350:13: error: implicit declaration of function 'clang_determine_output' [-Wimplicit-function-declaration]
+  350 |             clang_determine_output(s, s->input_files[i], ph, out);
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+src/clang/clang.c:353:29: error: 'ClangState' has no member named 'clang_path'; did you mean 'clang_cc1_path'?
+  353 |             argv[ai++] = s->clang_path;
+      |                             ^~~~~~~~~~
+      |                             clang_cc1_path
+src/clang/clang.c:361:35: error: 'CLANG_DBG_NONE' undeclared (first use in this function); did you mean 'CLANG_DEBUG_NONE'?
+  361 |             if (s->debug_level != CLANG_DBG_NONE) argv[ai++] = clang_debug_option(s->debug_level);
+      |                                   ^~~~~~~~~~~~~~
+      |                                   CLANG_DEBUG_NONE
+src/clang/clang.c:349:18: warning: unused variable 'out' [-Wunused-variable]
+  349 |             char out[CLANG_MAX_PATH];
+      |                  ^~~
+src/clang/clang.c: At top level:
+src/clang/clang.c:371:12: error: conflicting types for 'clang_do_link'; have 'int(ClangState *)'
+  371 | static int clang_do_link(ClangState *s) {
+      |            ^~~~~~~~~~~~~
+src/clang/clang.h:432:5: note: previous declaration of 'clang_do_link' with type 'int(ClangState *, const ClangJob *, int)'
+  432 | int clang_do_link(ClangState *state, const ClangJob *jobs, int njobs);
+      |     ^~~~~~~~~~~~~
+src/clang/clang.c: In function 'clang_do_link':
+src/clang/clang.c:374:23: error: 'ClangState' has no member named 'use_lld'
+  374 |     const char *ld = s->use_lld ? s->lld_path : s->ld_path;
+      |                       ^~
+src/clang/clang.c:374:38: error: 'ClangState' has no member named 'lld_path'; did you mean 'ld_path'?
+  374 |     const char *ld = s->use_lld ? s->lld_path : s->ld_path;
+      |                                      ^~~~~~~~
+      |                                      ld_path
+src/clang/clang.c:375:22: error: 'CLANG_MAX_INPUTS' undeclared (first use in this function); did you mean 'CLANG_MAX_INPUT_FILES'?
+  375 |     const char *argv[CLANG_MAX_INPUTS + 64]; int ai = 0;
+      |                      ^~~~~~~~~~~~~~~~
+      |                      CLANG_MAX_INPUT_FILES
+src/clang/clang.c:378:19: error: 'CLANG_MAX_PATH' undeclared (first use in this function); did you mean 'CLANG_MAX_PATH_LEN'?
+  378 |     char out_file[CLANG_MAX_PATH];
+      |                   ^~~~~~~~~~~~~~
+      |                   CLANG_MAX_PATH_LEN
+src/clang/clang.c:384:10: error: 'ClangState' has no member named 'build_shared'
+  384 |     if (s->build_shared) argv[ai++] = "-shared";
+      |          ^~
+src/clang/clang.c:385:12: error: 'ClangState' has no member named 'pie_level'; did you mean 'opt_level'?
+  385 |     if (s->pie_level) argv[ai++] = "-pie";
+      |            ^~~~~~~~~
+      |            opt_level
+src/clang/clang.c:386:10: error: 'ClangState' has no member named 'ffunction_sections'
+  386 |     if (s->ffunction_sections && s->fdata_sections) argv[ai++] = "--gc-sections";
+      |          ^~
+src/clang/clang.c:386:37: error: 'ClangState' has no member named 'fdata_sections'; did you mean 'gc_sections'?
+  386 |     if (s->ffunction_sections && s->fdata_sections) argv[ai++] = "--gc-sections";
+      |                                     ^~~~~~~~~~~~~~
+      |                                     gc_sections
+src/clang/clang.c:387:28: error: 'ClangState' has no member named 'linker_script_count'; did you mean 'linker_flag_count'?
+  387 |     for (int t = 0; t < s->linker_script_count; t++) { argv[ai++] = "-T"; argv[ai++] = s->linker_scripts[t]; }
+      |                            ^~~~~~~~~~~~~~~~~~~
+      |                            linker_flag_count
+src/clang/clang.c:387:91: error: 'ClangState' has no member named 'linker_scripts'; did you mean 'linker_script'?
+  387 |     for (int t = 0; t < s->linker_script_count; t++) { argv[ai++] = "-T"; argv[ai++] = s->linker_scripts[t]; }
+      |                                                                                           ^~~~~~~~~~~~~~
+      |                                                                                           linker_script
+src/clang/clang.c:397:58: error: 'CLANG_PHASE_ASSEMBLE' undeclared (first use in this function); did you mean 'CLANG_LANG_ASSEMBLER'?
+  397 |             clang_determine_output(s, s->input_files[i], CLANG_PHASE_ASSEMBLE, obj);
+      |                                                          ^~~~~~~~~~~~~~~~~~~~
+      |                                                          CLANG_LANG_ASSEMBLER
+src/clang/clang.c:396:18: warning: unused variable 'obj' [-Wunused-variable]
+  396 |             char obj[CLANG_MAX_PATH];
+      |                  ^~~
+src/clang/clang.c:378:10: warning: unused variable 'out_file' [-Wunused-variable]
+  378 |     char out_file[CLANG_MAX_PATH];
+      |          ^~~~~~~~
+src/clang/clang.c:375:50: warning: variable 'ai' set but not used [-Wunused-but-set-variable=]
+  375 |     const char *argv[CLANG_MAX_INPUTS + 64]; int ai = 0;
+      |                                                  ^~
+src/clang/clang.c:375:17: warning: unused variable 'argv' [-Wunused-variable]
+  375 |     const char *argv[CLANG_MAX_INPUTS + 64]; int ai = 0;
+      |                 ^~~~
+src/clang/clang.c: In function 'clang_main_internal':
+src/clang/clang.c:450:10: error: 'ClangState' has no member named 'print_effective_triple'
+  450 |     if (s.print_effective_triple || s.print_target_triple) {
+      |          ^
+src/clang/clang.c:450:39: error: 'ClangState' has no member named 'print_target_triple'; did you mean 'target_triple'?
+  450 |     if (s.print_effective_triple || s.print_target_triple) {
+      |                                       ^~~~~~~~~~~~~~~~~~~
+      |                                       target_triple
+In file included from src/make/make.c:6:
+src/make/make.h:13:10: fatal error: sys/wait.h: No such file or directory
+   13 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\dd_dd.o" -o "D:\\KenuxK\\bin\\components\\dd.exe""
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/make -c src/make/make.c -o D:\KenuxK\build\components\make_make.o

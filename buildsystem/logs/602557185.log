@@ -1,0 +1,23 @@
+-- Start building task run run-debug -- (602557185)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/smp.c
+kernel/arch/x86_64/smp.c: In function 'smp_boot_ap':
+kernel/arch/x86_64/smp.c:19:51: error: 'ap_trampoline_bin' undeclared (first use in this function); did you mean 'ap_trampoline_bin_end'?
+   19 | #define ap_trampoline_bin_start  ((const uint8_t*)ap_trampoline_bin)
+      |                                                   ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/smp.c:201:42: note: in expansion of macro 'ap_trampoline_bin_start'
+  201 |     const uint8_t* src = (const uint8_t*)ap_trampoline_bin_start;
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/smp.c:19:51: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/smp.c:201:42: note: in expansion of macro 'ap_trampoline_bin_start'
+  201 |     const uint8_t* src = (const uint8_t*)ap_trampoline_bin_start;
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/smp.c:20:71: error: 'AP_TRAMPOLINE_BIN_SIZE' undeclared (first use in this function); did you mean 'AP_TRAMPOLINE_BIN_H'?
+   20 | #define ap_trampoline_bin_end    ((const uint8_t*)ap_trampoline_bin + AP_TRAMPOLINE_BIN_SIZE)
+      |                                                                       ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/smp.c:202:37: note: in expansion of macro 'ap_trampoline_bin_end'
+  202 |     size_t sz = (size_t)((uintptr_t)ap_trampoline_bin_end - (uintptr_t)ap_trampoline_bin_start);
+      |                                     ^~~~~~~~~~~~~~~~~~~~~
+FAILED TASK run run-debug: 

@@ -1,0 +1,146 @@
+{
+  "command": [
+    "run",
+    "components"
+  ],
+  "created_at": "2026-08-23T10:23:58+00:00",
+  "elapsed_seconds": 24.047,
+  "error": "command failed with exit 1: D:\\mingw64\\bin\\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/fastfetch -c src/fastfetch/fastfetch.c -o D:\\KenuxK\\build\\components\\fastfetch_fastfetch.o",
+  "finished_at": "2026-08-23T10:24:48+00:00",
+  "id": "443036680",
+  "log": "buildsystem\\logs\\443036680.log",
+  "metrics": {
+    "built_files": 0,
+    "completed": 14,
+    "downloaded_files": 0,
+    "elapsed_seconds": 24.047,
+    "entered_folders": 1,
+    "errors": 1,
+    "executed_targets": 0,
+    "generated_files": 2,
+    "peak_parallel_workers": 4,
+    "ran_commands": 2,
+    "skipped_targets": 14,
+    "started_tasks": 2,
+    "timings": [
+      {
+        "kind": "generate",
+        "seconds": 0.0035,
+        "status": "skipped",
+        "target": "component:systemd",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0093,
+        "status": "skipped",
+        "target": "component:firefox",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.012,
+        "status": "skipped",
+        "target": "component:gnome",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0168,
+        "status": "skipped",
+        "target": "component:kde",
+        "worker": 3
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0092,
+        "status": "skipped",
+        "target": "component:wayland",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0162,
+        "status": "skipped",
+        "target": "component:xorriso",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0195,
+        "status": "skipped",
+        "target": "component:qemu",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0125,
+        "status": "skipped",
+        "target": "component:dd",
+        "worker": 3
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0047,
+        "status": "skipped",
+        "target": "component:mkfs",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0139,
+        "status": "skipped",
+        "target": "component:gcc",
+        "worker": 3
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0147,
+        "status": "skipped",
+        "target": "component:clang",
+        "worker": 1
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0157,
+        "status": "skipped",
+        "target": "component:ld",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.011,
+        "status": "skipped",
+        "target": "component:git",
+        "worker": 3
+      },
+      {
+        "kind": "generate",
+        "seconds": 0.0137,
+        "status": "skipped",
+        "target": "component:make",
+        "worker": 0
+      },
+      {
+        "kind": "generate",
+        "seconds": 20.4828,
+        "status": "executed",
+        "target": "component:bash",
+        "worker": 2
+      },
+      {
+        "kind": "generate",
+        "seconds": 20.5761,
+        "status": "executed",
+        "target": "component:fastfetch",
+        "worker": 1
+      }
+    ],
+    "total": 17,
+    "worker_busy_seconds": 41.05891829999928
+  },
+  "started_at": "2026-08-23T10:24:23+00:00",
+  "status": "failed",
+  "task": "run components",
+  "total_targets": 17
+}

@@ -1,0 +1,192 @@
+-- Start building task run all -- (511127854)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/win32_advapi32.c
+-- Enter folder kernel/kernel --
+<0> Building kernel/arch/x86_64/wdm.c
+<2> Building kernel/kernel/kernel.c
+<3> Building kernel/arch/x86_64/scm.c
+kernel/arch/x86_64/win32_advapi32.c: In function 'AdjustTokenPrivileges':
+kernel/arch/x86_64/win32_advapi32.c:1948:36: warning: unsigned conversion from 'long int' to 'long unsigned int' changes value from '-3' to '4294967293' [-Wsign-conversion]
+ 1948 |             t->privileges[j].attrs &= ~SE_PRIVILEGE_ENABLED;
+      |                                    ^~
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+kernel/arch/x86_64/win32_advapi32.c: At top level:
+kernel/arch/x86_64/win32_advapi32.c:2081:54: warning: excess elements in struct initializer
+ 2081 |      {1,1,0,0,0,0,0,5,0x20,0,0,0,0x20,0x20,0,0}, 16, SidTypeUser},
+      |                                                      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2081:54: note: (near initialization for 'g_account_map[0]')
+kernel/arch/x86_64/win32_advapi32.c:2083:54: warning: excess elements in struct initializer
+ 2083 |      {1,1,0,0,0,0,0,5,0x20,0,0,0,0x22,0x20,0,0}, 16, SidTypeUser},
+      |                                                      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2083:54: note: (near initialization for 'g_account_map[1]')
+kernel/arch/x86_64/win32_advapi32.c:2085:40: warning: excess elements in struct initializer
+ 2085 |      {1,1,0,0,0,0,0,5,0x12,0,0,0}, 12, SidTypeWellKnownGroup},
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2085:40: note: (near initialization for 'g_account_map[2]')
+kernel/arch/x86_64/win32_advapi32.c:2087:40: warning: excess elements in struct initializer
+ 2087 |      {1,1,0,0,0,0,0,5,0x13,0,0,0}, 12, SidTypeUser},
+      |                                        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2087:40: note: (near initialization for 'g_account_map[3]')
+kernel/arch/x86_64/win32_advapi32.c:2089:40: warning: excess elements in struct initializer
+ 2089 |      {1,1,0,0,0,0,0,5,0x14,0,0,0}, 12, SidTypeUser},
+      |                                        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2089:40: note: (near initialization for 'g_account_map[4]')
+kernel/arch/x86_64/win32_advapi32.c:2091:37: warning: excess elements in struct initializer
+ 2091 |      {1,1,0,0,0,0,0,1,0,0,0,0}, 12, SidTypeWellKnownGroup},
+      |                                     ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2091:37: note: (near initialization for 'g_account_map[5]')
+kernel/arch/x86_64/win32_advapi32.c:2093:54: warning: excess elements in struct initializer
+ 2093 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x20,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2093:54: note: (near initialization for 'g_account_map[6]')
+kernel/arch/x86_64/win32_advapi32.c:2095:54: warning: excess elements in struct initializer
+ 2095 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x21,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2095:54: note: (near initialization for 'g_account_map[7]')
+kernel/arch/x86_64/win32_advapi32.c:2097:54: warning: excess elements in struct initializer
+ 2097 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x22,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2097:54: note: (near initialization for 'g_account_map[8]')
+kernel/arch/x86_64/win32_advapi32.c:2099:54: warning: excess elements in struct initializer
+ 2099 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x23,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2099:54: note: (near initialization for 'g_account_map[9]')
+kernel/arch/x86_64/wdm.c: In function 'wdm_register_internal':
+kernel/arch/x86_64/wdm.c:339:23: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  339 |     drv->DriverInit = (PVOID)init;
+      |                       ^
+In file included from kernel/arch/x86_64/scm.c:2:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  275 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+In file included from kernel/kernel/kernel.c:54:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:72:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/kernel/kernel.c: In function 'kernel_main':
+kernel/kernel/kernel.c:96:71: warning: unused parameter 'mmi' [-Wunused-parameter]
+   96 | void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~^~~
+<2> Building kernel/arch/x86_64/registry.c
+<0> Building kernel/arch/x86_64/powershell.c
+In file included from kernel/arch/x86_64/registry.c:1:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/registry.c: In function 'registry_init':
+kernel/arch/x86_64/registry.c:344:14: warning: unused variable 'dword_zero' [-Wunused-variable]
+  344 |     uint32_t dword_zero = 0;
+      |              ^~~~~~~~~~
+kernel/arch/x86_64/registry.c: At top level:
+kernel/arch/x86_64/registry.c:294:13: warning: 'seed_value_dword' defined but not used [-Wunused-function]
+  294 | static void seed_value_dword(reg_key_t* key, const char* name, uint32_t val)
+      |             ^~~~~~~~~~~~~~~~
+<3> Building kernel/arch/x86_64/pnp.c
+kernel/arch/x86_64/pnp.c: In function 'add_pnp_root':
+kernel/arch/x86_64/pnp.c:219:23: warning: multi-character character constant [-Wmultichar]
+  219 |     node->signature = 'PnPD';
+      |                       ^~~~~~
+kernel/arch/x86_64/pnp.c: In function 'pnp_init':
+kernel/arch/x86_64/pnp.c:325:39: warning: multi-character character constant [-Wmultichar]
+  325 |                 dev_node->signature = 'PnPD';
+      |                                       ^~~~~~
+kernel/arch/x86_64/pnp.c: At top level:
+kernel/arch/x86_64/pnp.c:706:14: warning: 'find_hdevinfo' defined but not used [-Wunused-function]
+  706 | static void* find_hdevinfo(void* h) {
+      |              ^~~~~~~~~~~~~
+<2> Building kernel/arch/x86_64/drv_usb.c
+<3> Building kernel/arch/x86_64/drv_serial.c
+<2> Building kernel/arch/x86_64/drv_network.c
+<1> Building kernel/arch/x86_64/drv_main.c
+<1> Building kernel/arch/x86_64/drv_hid.c
+<2> Building kernel/arch/x86_64/drv_display.c
+<3> Building kernel/arch/x86_64/drv_disk.c
+kernel/arch/x86_64/drv_display.c: In function 'pixel_addr':
+kernel/arch/x86_64/drv_display.c:41:43: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   41 |     return (volatile uint32_t*)(base + (y * g_display.pitch + x) * 4);
+      |                                           ^
+kernel/arch/x86_64/drv_display.c:41:61: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   41 |     return (volatile uint32_t*)(base + (y * g_display.pitch + x) * 4);
+      |                                                             ^
+kernel/arch/x86_64/drv_display.c: In function 'display_blit':
+kernel/arch/x86_64/drv_display.c:86:54: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   86 |             display_set_pixel(x + xx, y + yy, src[yy * src_pitch + xx]);
+      |                                                      ^
+kernel/arch/x86_64/drv_display.c:86:66: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   86 |             display_set_pixel(x + xx, y + yy, src[yy * src_pitch + xx]);
+      |                                                                  ^
+<1> Building kernel/arch/x86_64/drv_audio.c
+<2> Building kernel/arch/x86_64/com.c
+-- Enter folder img/boot --
+<0> Building img/boot/kernel.elf.pe
+<3> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<1> Generating esp/KENUXK.BIN
+DONE TASK run all IN 4.3s.
+Result:
+Started 3 tasks
+Entered 4 folders
+Built 17 files
+Generated 2 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

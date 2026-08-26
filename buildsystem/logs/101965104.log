@@ -1,0 +1,252 @@
+-- Start building task run all -- (101965104)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/pnp.c
+<0> Building kernel/arch/x86_64/pic.c
+<2> Building kernel/arch/x86_64/pit.c
+<3> Building kernel/arch/x86_64/registry.c
+kernel/arch/x86_64/pic.c: In function 'pic_enable':
+kernel/arch/x86_64/pic.c:38:16: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   38 |         mask = inb(PIC1_DATA) & ~(1 << irq);
+      |                ^~~
+kernel/arch/x86_64/pic.c:41:16: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-5' [-Wsign-conversion]
+   41 |         mask = inb(PIC1_DATA) & ~(1 << 2);
+      |                ^~~
+kernel/arch/x86_64/pic.c:43:16: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   43 |         mask = inb(PIC2_DATA) & ~(1 << (irq - 8));
+      |                ^~~
+kernel/arch/x86_64/pnp.c: In function 'add_pnp_root':
+kernel/arch/x86_64/pnp.c:218:23: warning: multi-character character constant [-Wmultichar]
+  218 |     node->signature = 'PnPD';
+      |                       ^~~~~~
+kernel/arch/x86_64/pnp.c: In function 'pnp_init':
+kernel/arch/x86_64/pnp.c:263:9: error: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  263 |         sprintf(tmp, "PCIROOT(0)#PCI(0000)");
+      |         ^~~~~~~
+In file included from kernel/arch/x86_64/registry.c:1:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5:
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:797:9: note: this is the location of the previous definition
+  797 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:801:9: note: this is the location of the previous definition
+  801 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:807:9: note: this is the location of the previous definition
+  807 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:812:9: note: this is the location of the previous definition
+  812 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/pnp.c:5:1: note: 'sprintf' is defined in header '<stdio.h>'; this is probably fixable by adding '#include <stdio.h>'
+    4 | #include <string.h>
+  +++ |+#include <stdio.h>
+    5 | extern void* memory_alloc(uint64_t size);
+kernel/arch/x86_64/pnp.c:324:39: warning: multi-character character constant [-Wmultichar]
+  324 |                 dev_node->signature = 'PnPD';
+      |                                       ^~~~~~
+kernel/arch/x86_64/pnp.c: At top level:
+kernel/arch/x86_64/pnp.c:705:14: warning: 'find_hdevinfo' defined but not used [-Wunused-function]
+  705 | static void* find_hdevinfo(void* h) {
+      |              ^~~~~~~~~~~~~
+kernel/arch/x86_64/registry.c:294:13: warning: 'seed_value_dword' defined but not used [-Wunused-function]
+  294 | static void seed_value_dword(reg_key_t* key, const char* name, uint32_t val)
+      |             ^~~~~~~~~~~~~~~~
+<1> Building kernel/arch/x86_64/pe.c
+kernel/arch/x86_64/pe.c:2:10: error: '#include' expects '"FILENAME"' or '<FILENAME>'
+    2 | #include &lt;arch/pe.h&gt;
+      |          ^
+kernel/arch/x86_64/pe.c:3:10: error: '#include' expects '"FILENAME"' or '<FILENAME>'
+    3 | #include &lt;string.h&gt;
+      |          ^
+kernel/arch/x86_64/pe.c:4:10: error: '#include' expects '"FILENAME"' or '<FILENAME>'
+    4 | #include &lt;arch/slab.h&gt;
+      |          ^
+kernel/arch/x86_64/pe.c:6:15: error: unknown type name 'IMAGE_NT_HEADERS64'
+    6 | static inline IMAGE_NT_HEADERS64* pe_get_nt_headers(const uint8_t* buffer)
+      |               ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:6:59: error: unknown type name 'uint8_t'
+    6 | static inline IMAGE_NT_HEADERS64* pe_get_nt_headers(const uint8_t* buffer)
+      |                                                           ^~~~~~~
+kernel/arch/x86_64/pe.c:1:1: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+  +++ |+#include <stdint.h>
+    1 | 
+kernel/arch/x86_64/pe.c: In function 'pe_get_nt_headers':
+kernel/arch/x86_64/pe.c:8:11: error: unknown type name 'IMAGE_DOS_HEADER'
+    8 |     const IMAGE_DOS_HEADER* dos = (const IMAGE_DOS_HEADER*)buffer;
+      |           ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:8:42: error: unknown type name 'IMAGE_DOS_HEADER'
+    8 |     const IMAGE_DOS_HEADER* dos = (const IMAGE_DOS_HEADER*)buffer;
+      |                                          ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:9:13: error: 'IMAGE_NT_HEADERS64' undeclared (first use in this function)
+    9 |     return (IMAGE_NT_HEADERS64*)(buffer + (uintptr_t)dos-&gt;e_lfanew);
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:9:13: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/pe.c:9:32: error: expected expression before ')' token
+    9 |     return (IMAGE_NT_HEADERS64*)(buffer + (uintptr_t)dos-&gt;e_lfanew);
+      |                                ^
+kernel/arch/x86_64/pe.c:8:29: warning: unused variable 'dos' [-Wunused-variable]
+    8 |     const IMAGE_DOS_HEADER* dos = (const IMAGE_DOS_HEADER*)buffer;
+      |                             ^~~
+kernel/arch/x86_64/pe.c: At top level:
+kernel/arch/x86_64/pe.c:12:23: error: unknown type name 'uint8_t'
+   12 | int pe_validate(const uint8_t* buffer, uint64_t size)
+      |                       ^~~~~~~
+kernel/arch/x86_64/pe.c:12:23: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:12:40: error: unknown type name 'uint64_t'
+   12 | int pe_validate(const uint8_t* buffer, uint64_t size)
+      |                                        ^~~~~~~~
+kernel/arch/x86_64/pe.c:12:40: note: 'uint64_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:43:1: error: unknown type name 'uint64_t'
+   43 | uint64_t pe_get_entry_point(const uint8_t* buffer)
+      | ^~~~~~~~
+kernel/arch/x86_64/pe.c:43:1: note: 'uint64_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:43:35: error: unknown type name 'uint8_t'
+   43 | uint64_t pe_get_entry_point(const uint8_t* buffer)
+      |                                   ^~~~~~~
+kernel/arch/x86_64/pe.c:43:35: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c: In function 'pe_get_entry_point':
+kernel/arch/x86_64/pe.c:45:11: error: unknown type name 'IMAGE_NT_HEADERS64'
+   45 |     const IMAGE_NT_HEADERS64* nt = pe_get_nt_headers(buffer);
+      |           ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:46:13: error: 'uint64_t' undeclared (first use in this function)
+   46 |     return (uint64_t)((uint64_t)nt-&gt;OptionalHeader.AddressOfEntryPoint + nt-&gt;OptionalHeader.ImageBase);
+      |             ^~~~~~~~
+kernel/arch/x86_64/pe.c:46:13: note: 'uint64_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:46:33: error: expected ')' before 'nt'
+   46 |     return (uint64_t)((uint64_t)nt-&gt;OptionalHeader.AddressOfEntryPoint + nt-&gt;OptionalHeader.ImageBase);
+      |                      ~          ^~
+      |                                 )
+kernel/arch/x86_64/pe.c:45:31: warning: unused variable 'nt' [-Wunused-variable]
+   45 |     const IMAGE_NT_HEADERS64* nt = pe_get_nt_headers(buffer);
+      |                               ^~
+kernel/arch/x86_64/pe.c: At top level:
+kernel/arch/x86_64/pe.c:49:1: error: unknown type name 'uint64_t'
+   49 | uint64_t pe_get_image_base(const uint8_t* buffer)
+      | ^~~~~~~~
+kernel/arch/x86_64/pe.c:49:1: note: 'uint64_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:49:34: error: unknown type name 'uint8_t'
+   49 | uint64_t pe_get_image_base(const uint8_t* buffer)
+      |                                  ^~~~~~~
+kernel/arch/x86_64/pe.c:49:34: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c: In function 'pe_get_image_base':
+kernel/arch/x86_64/pe.c:51:11: error: unknown type name 'IMAGE_NT_HEADERS64'
+   51 |     const IMAGE_NT_HEADERS64* nt = pe_get_nt_headers(buffer);
+      |           ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:52:16: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   52 |     return nt-&gt;OptionalHeader.ImageBase;
+      |                ^~
+      |                nt
+kernel/arch/x86_64/pe.c:52:19: error: 'OptionalHeader' undeclared (first use in this function)
+   52 |     return nt-&gt;OptionalHeader.ImageBase;
+      |                   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c: At top level:
+kernel/arch/x86_64/pe.c:55:1: error: unknown type name 'uint32_t'
+   55 | uint32_t pe_get_image_size(const uint8_t* buffer)
+      | ^~~~~~~~
+kernel/arch/x86_64/pe.c:55:1: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:55:34: error: unknown type name 'uint8_t'
+   55 | uint32_t pe_get_image_size(const uint8_t* buffer)
+      |                                  ^~~~~~~
+kernel/arch/x86_64/pe.c:55:34: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c: In function 'pe_get_image_size':
+kernel/arch/x86_64/pe.c:57:11: error: unknown type name 'IMAGE_NT_HEADERS64'
+   57 |     const IMAGE_NT_HEADERS64* nt = pe_get_nt_headers(buffer);
+      |           ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c:58:16: error: 'gt' undeclared (first use in this function); did you mean 'nt'?
+   58 |     return nt-&gt;OptionalHeader.SizeOfImage;
+      |                ^~
+      |                nt
+kernel/arch/x86_64/pe.c:58:19: error: 'OptionalHeader' undeclared (first use in this function)
+   58 |     return nt-&gt;OptionalHeader.SizeOfImage;
+      |                   ^~~~~~~~~~~~~~
+kernel/arch/x86_64/pe.c: At top level:
+kernel/arch/x86_64/pe.c:61:1: error: unknown type name 'uint64_t'
+   61 | uint64_t pe_get_rva(const uint8_t* buffer, int directory_index, uint32_t* out_size)
+      | ^~~~~~~~
+kernel/arch/x86_64/pe.c:61:1: note: 'uint64_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:61:27: error: unknown type name 'uint8_t'
+   61 | uint64_t pe_get_rva(const uint8_t* buffer, int directory_index, uint32_t* out_size)
+      |                           ^~~~~~~
+kernel/arch/x86_64/pe.c:61:27: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:61:65: error: unknown type name 'uint32_t'
+   61 | uint64_t pe_get_rva(const uint8_t* buffer, int directory_index, uint32_t* out_size)
+      |                                                                 ^~~~~~~~
+kernel/arch/x86_64/pe.c:61:65: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:71:28: error: unknown type name 'uint8_t'
+   71 | int pe_load_sections(const uint8_t* file_buf, uint8_t* image_base)
+      |                            ^~~~~~~
+kernel/arch/x86_64/pe.c:71:28: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:71:47: error: unknown type name 'uint8_t'
+   71 | int pe_load_sections(const uint8_t* file_buf, uint8_t* image_base)
+      |                                               ^~~~~~~
+kernel/arch/x86_64/pe.c:71:47: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:99:32: error: unknown type name 'uint8_t'
+   99 | int pe_apply_relocations(const uint8_t* file_buf, uint8_t* image_base, uint64_t actual_base)
+      |                                ^~~~~~~
+kernel/arch/x86_64/pe.c:99:32: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:99:51: error: unknown type name 'uint8_t'
+   99 | int pe_apply_relocations(const uint8_t* file_buf, uint8_t* image_base, uint64_t actual_base)
+      |                                                   ^~~~~~~
+kernel/arch/x86_64/pe.c:99:51: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:99:72: error: unknown type name 'uint64_t'
+   99 | int pe_apply_relocations(const uint8_t* file_buf, uint8_t* image_base, uint64_t actual_base)
+      |                                                                        ^~~~~~~~
+kernel/arch/x86_64/pe.c:99:72: note: 'uint64_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:133:30: error: unknown type name 'uint8_t'
+  133 | int pe_resolve_imports(const uint8_t* file_buf, uint8_t* image_base,
+      |                              ^~~~~~~
+kernel/arch/x86_64/pe.c:133:30: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:133:49: error: unknown type name 'uint8_t'
+  133 | int pe_resolve_imports(const uint8_t* file_buf, uint8_t* image_base,
+      |                                                 ^~~~~~~
+kernel/arch/x86_64/pe.c:133:49: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:134:82: error: unknown type name 'uint16_t'
+  134 |                         void* (*resolve_func)(const char* dll, const char* name, uint16_t ordinal))
+      |                                                                                  ^~~~~~~~
+kernel/arch/x86_64/pe.c:134:82: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:174:32: error: unknown type name 'uint8_t'
+  174 | int pe_run_tls_callbacks(const uint8_t* file_buf, uint8_t* image_base,
+      |                                ^~~~~~~
+kernel/arch/x86_64/pe.c:174:32: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+kernel/arch/x86_64/pe.c:174:51: error: unknown type name 'uint8_t'
+  174 | int pe_run_tls_callbacks(const uint8_t* file_buf, uint8_t* image_base,
+      |                                                   ^~~~~~~
+kernel/arch/x86_64/pe.c:174:51: note: 'uint8_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+FAILED TASK run all: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikal/include -MMD -MF build/obj/kernel/arch/x86_64/pe.c.o.d -c kernel/arch/x86_64/pe.c -o build/obj/kernel/arch/x86_64/pe.c.o

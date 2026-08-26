@@ -1,0 +1,428 @@
+-- Start building task run kernel -- (660803118)
+-- Start building task kernel -- (0)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/win32_security.c
+<0> Building kernel/arch/x86_64/win32_advapi32.c
+<2> Building kernel/arch/x86_64/scm.c
+<3> Building kernel/arch/x86_64/pnp.c
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:414:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  414 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:415:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  415 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:416:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  416 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:417:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  417 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:608:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  608 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:609:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  609 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:679:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  679 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:680:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  680 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:683:5: error: unknown type name 'LUID_AND_ATTRIBUTES'
+  683 |     LUID_AND_ATTRIBUTES* privs;
+      |     ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:708:14: error: 'LUID_AND_ATTRIBUTES' undeclared (first use in this function)
+  708 |     privs = (LUID_AND_ATTRIBUTES*)memory_alloc(sizeof(LUID_AND_ATTRIBUTES) * 24u);
+      |              ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:708:14: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/win32_security.c:708:34: error: expected expression before ')' token
+  708 |     privs = (LUID_AND_ATTRIBUTES*)memory_alloc(sizeof(LUID_AND_ATTRIBUTES) * 24u);
+      |                                  ^
+kernel/arch/x86_64/win32_security.c:710:17: error: request for member 'Luid' in something not a structure or union
+  710 |         privs[i].Luid.LowPart = 2u + i;
+      |                 ^
+kernel/arch/x86_64/win32_security.c:711:17: error: request for member 'Luid' in something not a structure or union
+  711 |         privs[i].Luid.HighPart = 0;
+      |                 ^
+kernel/arch/x86_64/win32_security.c:712:17: error: request for member 'Attributes' in something not a structure or union
+  712 |         privs[i].Attributes = SE_PRIVILEGE_ENABLED | SE_PRIVILEGE_ENABLED_BY_DEFAULT;
+      |                 ^
+kernel/arch/x86_64/win32_advapi32.c:21:16: error: redefinition of 'struct _LUID'
+   21 | typedef struct _LUID {
+      |                ^~~~~
+In file included from kernel/arch/x86_64/win32_advapi32.c:1:
+kernel/arch/x86_64/include/arch/win32.h:70:16: note: originally defined here
+   70 | typedef struct _LUID {
+      |                ^~~~~
+kernel/arch/x86_64/win32_advapi32.c:24:3: error: conflicting types for 'LUID'; have 'struct _LUID'
+   24 | } LUID, *PLUID;
+      |   ^~~~
+kernel/arch/x86_64/include/arch/win32.h:73:3: note: previous declaration of 'LUID' with type 'LUID' {aka 'struct _LUID'}
+   73 | } LUID, *PLUID;
+      |   ^~~~
+kernel/arch/x86_64/win32_advapi32.c:24:10: error: conflicting types for 'PLUID'; have 'struct _LUID *'
+   24 | } LUID, *PLUID;
+      |          ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:73:10: note: previous declaration of 'PLUID' with type 'PLUID' {aka 'struct _LUID *'}
+   73 | } LUID, *PLUID;
+      |          ^~~~~
+kernel/arch/x86_64/win32_advapi32.c:40:3: error: redefinition of typedef 'SID_NAME_USE' with different type
+   40 | } SID_NAME_USE, *PSID_NAME_USE;
+      |   ^~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:65:22: note: previous declaration of 'SID_NAME_USE' with type 'SID_NAME_USE' {aka 'unsigned int'}
+   65 | typedef unsigned int SID_NAME_USE;
+      |                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:40:18: error: redefinition of typedef 'PSID_NAME_USE' with different type
+   40 | } SID_NAME_USE, *PSID_NAME_USE;
+      |                  ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:66:23: note: previous declaration of 'PSID_NAME_USE' with type 'PSID_NAME_USE' {aka 'unsigned int *'}
+   66 | typedef SID_NAME_USE* PSID_NAME_USE;
+      |                       ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:903:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  903 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:192:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  192 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c: In function 'StartServiceCtrlDispatcherA':
+kernel/arch/x86_64/win32_advapi32.c:665:31: error: 'ERROR_FAILED_SERVICE_CONTROLLER_CONNECT' undeclared (first use in this function)
+  665 |         advapi_set_last_error(ERROR_FAILED_SERVICE_CONTROLLER_CONNECT);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:59:49: note: in definition of macro 'advapi_set_last_error'
+   59 | #define advapi_set_last_error(err) SetLastError(err)
+      |                                                 ^~~
+kernel/arch/x86_64/win32_advapi32.c:665:31: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/win32_advapi32.c:59:49: note: in definition of macro 'advapi_set_last_error'
+   59 | #define advapi_set_last_error(err) SetLastError(err)
+      |                                                 ^~~
+In file included from kernel/arch/x86_64/scm.c:2:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/scm.c:653:6: error: conflicting types for 'SetServiceStatus'; have 'BOOL(void *, void *)' {aka 'int(void *, void *)'}
+  653 | BOOL SetServiceStatus(HANDLE hServiceStatus, void* lpServiceStatus) {
+      |      ^~~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/scm.c:1:
+kernel/arch/x86_64/include/arch/win32.h:1497:6: note: previous declaration of 'SetServiceStatus' with type 'BOOL(void *, const void *)' {aka 'int(void *, const void *)'}
+ 1497 | BOOL SetServiceStatus(SC_HANDLE hServiceStatus,
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/pnp.c: In function 'add_pnp_root':
+kernel/arch/x86_64/pnp.c:219:23: warning: multi-character character constant [-Wmultichar]
+  219 |     node->signature = 'PnPD';
+      |                       ^~~~~~
+kernel/arch/x86_64/pnp.c: In function 'pnp_init':
+kernel/arch/x86_64/pnp.c:325:39: warning: multi-character character constant [-Wmultichar]
+  325 |                 dev_node->signature = 'PnPD';
+      |                                       ^~~~~~
+kernel/arch/x86_64/win32_advapi32.c: In function 'CredReadA':
+kernel/arch/x86_64/win32_advapi32.c:1402:31: error: 'ERROR_NOT_FOUND' undeclared (first use in this function); did you mean 'ERROR_FILE_NOT_FOUND'?
+ 1402 |         advapi_set_last_error(ERROR_NOT_FOUND);
+      |                               ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:59:49: note: in definition of macro 'advapi_set_last_error'
+   59 | #define advapi_set_last_error(err) SetLastError(err)
+      |                                                 ^~~
+kernel/arch/x86_64/win32_advapi32.c: In function 'CredDeleteA':
+kernel/arch/x86_64/win32_advapi32.c:1513:31: error: 'ERROR_NOT_FOUND' undeclared (first use in this function); did you mean 'ERROR_FILE_NOT_FOUND'?
+ 1513 |         advapi_set_last_error(ERROR_NOT_FOUND);
+      |                               ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:59:49: note: in definition of macro 'advapi_set_last_error'
+   59 | #define advapi_set_last_error(err) SetLastError(err)
+      |                                                 ^~~
+kernel/arch/x86_64/win32_advapi32.c: At top level:
+kernel/arch/x86_64/win32_advapi32.c:1632:33: error: expected identifier or '(' before numeric constant
+ 1632 | #define TOKEN_USER              1
+      |                                 ^
+kernel/arch/x86_64/win32_advapi32.c:1732:3: note: in expansion of macro 'TOKEN_USER'
+ 1732 | } TOKEN_USER, *PTOKEN_USER;
+      |   ^~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:1635:33: error: expected identifier or '(' before numeric constant
+ 1635 | #define TOKEN_OWNER             4
+      |                                 ^
+kernel/arch/x86_64/win32_advapi32.c:1736:3: note: in expansion of macro 'TOKEN_OWNER'
+ 1736 | } TOKEN_OWNER, *PTOKEN_OWNER;
+      |   ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:1636:33: error: expected identifier or '(' before numeric constant
+ 1636 | #define TOKEN_PRIMARY_GROUP     5
+      |                                 ^
+kernel/arch/x86_64/win32_advapi32.c:1740:3: note: in expansion of macro 'TOKEN_PRIMARY_GROUP'
+ 1740 | } TOKEN_PRIMARY_GROUP, *PTOKEN_PRIMARY_GROUP;
+      |   ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:1634:33: error: expected identifier or '(' before numeric constant
+ 1634 | #define TOKEN_PRIVILEGES        3
+      |                                 ^
+kernel/arch/x86_64/win32_advapi32.c:1748:3: note: in expansion of macro 'TOKEN_PRIVILEGES'
+ 1748 | } TOKEN_PRIVILEGES, *PTOKEN_PRIVILEGES;
+      |   ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:1641:33: error: expected identifier or '(' before numeric constant
+ 1641 | #define TOKEN_STATISTICS        10
+      |                                 ^~
+kernel/arch/x86_64/win32_advapi32.c:1761:3: note: in expansion of macro 'TOKEN_STATISTICS'
+ 1761 | } TOKEN_STATISTICS, *PTOKEN_STATISTICS;
+      |   ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c: In function 'GetTokenInformation':
+kernel/arch/x86_64/win32_advapi32.c:1857:13: error: unknown type name 'PTOKEN_USER'; did you mean 'TOKEN_USER'?
+ 1857 |             PTOKEN_USER tu = (PTOKEN_USER)out;
+      |             ^~~~~~~~~~~
+      |             TOKEN_USER
+kernel/arch/x86_64/win32_advapi32.c:1857:31: error: 'PTOKEN_USER' undeclared (first use in this function); did you mean 'TOKEN_USER'?
+ 1857 |             PTOKEN_USER tu = (PTOKEN_USER)out;
+      |                               ^~~~~~~~~~~
+      |                               TOKEN_USER
+kernel/arch/x86_64/win32_advapi32.c:1857:43: error: expected ',' or ';' before 'out'
+ 1857 |             PTOKEN_USER tu = (PTOKEN_USER)out;
+      |                                           ^~~
+kernel/arch/x86_64/win32_advapi32.c:1858:15: error: invalid type argument of '->' (have 'int')
+ 1858 |             tu->User.Sid = out + sizeof(TOKEN_USER);
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1859:15: error: invalid type argument of '->' (have 'int')
+ 1859 |             tu->User.Attributes = 0;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1860:22: error: invalid type argument of '->' (have 'int')
+ 1860 |             memcpy(tu->User.Sid, t->user_sid, t->user_sid_len);
+      |                      ^~
+kernel/arch/x86_64/win32_advapi32.c:1864:13: error: unknown type name 'PTOKEN_OWNER'; did you mean 'TOKEN_OWNER'?
+ 1864 |             PTOKEN_OWNER to = (PTOKEN_OWNER)out;
+      |             ^~~~~~~~~~~~
+      |             TOKEN_OWNER
+kernel/arch/x86_64/win32_advapi32.c:1864:32: error: 'PTOKEN_OWNER' undeclared (first use in this function); did you mean 'TOKEN_OWNER'?
+ 1864 |             PTOKEN_OWNER to = (PTOKEN_OWNER)out;
+      |                                ^~~~~~~~~~~~
+      |                                TOKEN_OWNER
+kernel/arch/x86_64/win32_advapi32.c:1864:45: error: expected ',' or ';' before 'out'
+ 1864 |             PTOKEN_OWNER to = (PTOKEN_OWNER)out;
+      |                                             ^~~
+kernel/arch/x86_64/win32_advapi32.c:1865:15: error: invalid type argument of '->' (have 'int')
+ 1865 |             to->Owner = out + sizeof(TOKEN_OWNER);
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1866:22: error: invalid type argument of '->' (have 'int')
+ 1866 |             memcpy(to->Owner, t->user_sid, t->user_sid_len);
+      |                      ^~
+kernel/arch/x86_64/pnp.c: At top level:
+kernel/arch/x86_64/pnp.c:706:14: warning: 'find_hdevinfo' defined but not used [-Wunused-function]
+  706 | static void* find_hdevinfo(void* h) {
+      |              ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:1870:13: error: unknown type name 'PTOKEN_PRIMARY_GROUP'; did you mean 'TOKEN_PRIMARY_GROUP'?
+ 1870 |             PTOKEN_PRIMARY_GROUP tpg = (PTOKEN_PRIMARY_GROUP)out;
+      |             ^~~~~~~~~~~~~~~~~~~~
+      |             TOKEN_PRIMARY_GROUP
+kernel/arch/x86_64/win32_advapi32.c:1870:41: error: 'PTOKEN_PRIMARY_GROUP' undeclared (first use in this function); did you mean 'TOKEN_PRIMARY_GROUP'?
+ 1870 |             PTOKEN_PRIMARY_GROUP tpg = (PTOKEN_PRIMARY_GROUP)out;
+      |                                         ^~~~~~~~~~~~~~~~~~~~
+      |                                         TOKEN_PRIMARY_GROUP
+kernel/arch/x86_64/win32_advapi32.c:1870:62: error: expected ',' or ';' before 'out'
+ 1870 |             PTOKEN_PRIMARY_GROUP tpg = (PTOKEN_PRIMARY_GROUP)out;
+      |                                                              ^~~
+kernel/arch/x86_64/win32_advapi32.c:1871:16: error: invalid type argument of '->' (have 'int')
+ 1871 |             tpg->PrimaryGroup = out + sizeof(TOKEN_PRIMARY_GROUP);
+      |                ^~
+kernel/arch/x86_64/win32_advapi32.c:1872:23: error: invalid type argument of '->' (have 'int')
+ 1872 |             memcpy(tpg->PrimaryGroup, t->user_sid, t->user_sid_len);
+      |                       ^~
+kernel/arch/x86_64/win32_advapi32.c:1876:13: error: unknown type name 'PTOKEN_PRIVILEGES'; did you mean 'TOKEN_PRIVILEGES'?
+ 1876 |             PTOKEN_PRIVILEGES tp = (PTOKEN_PRIVILEGES)out;
+      |             ^~~~~~~~~~~~~~~~~
+      |             TOKEN_PRIVILEGES
+kernel/arch/x86_64/win32_advapi32.c:1876:37: error: 'PTOKEN_PRIVILEGES' undeclared (first use in this function); did you mean 'TOKEN_PRIVILEGES'?
+ 1876 |             PTOKEN_PRIVILEGES tp = (PTOKEN_PRIVILEGES)out;
+      |                                     ^~~~~~~~~~~~~~~~~
+      |                                     TOKEN_PRIVILEGES
+kernel/arch/x86_64/win32_advapi32.c:1876:55: error: expected ',' or ';' before 'out'
+ 1876 |             PTOKEN_PRIVILEGES tp = (PTOKEN_PRIVILEGES)out;
+      |                                                       ^~~
+kernel/arch/x86_64/win32_advapi32.c:1877:15: error: invalid type argument of '->' (have 'int')
+ 1877 |             tp->PrivilegeCount = t->privilege_count;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1879:19: error: invalid type argument of '->' (have 'int')
+ 1879 |                 tp->Privileges[i].Luid = t->privileges[i].luid;
+      |                   ^~
+kernel/arch/x86_64/win32_advapi32.c:1880:19: error: invalid type argument of '->' (have 'int')
+ 1880 |                 tp->Privileges[i].Attributes = t->privileges[i].attrs;
+      |                   ^~
+kernel/arch/x86_64/win32_advapi32.c:1885:13: error: unknown type name 'PTOKEN_STATISTICS'; did you mean 'TOKEN_STATISTICS'?
+ 1885 |             PTOKEN_STATISTICS ts = (PTOKEN_STATISTICS)out;
+      |             ^~~~~~~~~~~~~~~~~
+      |             TOKEN_STATISTICS
+kernel/arch/x86_64/win32_advapi32.c:1885:37: error: 'PTOKEN_STATISTICS' undeclared (first use in this function); did you mean 'TOKEN_STATISTICS'?
+ 1885 |             PTOKEN_STATISTICS ts = (PTOKEN_STATISTICS)out;
+      |                                     ^~~~~~~~~~~~~~~~~
+      |                                     TOKEN_STATISTICS
+kernel/arch/x86_64/win32_advapi32.c:1885:55: error: expected ',' or ';' before 'out'
+ 1885 |             PTOKEN_STATISTICS ts = (PTOKEN_STATISTICS)out;
+      |                                                       ^~~
+kernel/arch/x86_64/win32_advapi32.c:1886:15: error: invalid type argument of '->' (have 'int')
+ 1886 |             ts->TokenId.LowPart = 1; ts->TokenId.HighPart = 0;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1886:40: error: invalid type argument of '->' (have 'int')
+ 1886 |             ts->TokenId.LowPart = 1; ts->TokenId.HighPart = 0;
+      |                                        ^~
+kernel/arch/x86_64/win32_advapi32.c:1887:15: error: invalid type argument of '->' (have 'int')
+ 1887 |             ts->AuthenticationId.LowPart = 999; ts->AuthenticationId.HighPart = 0;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1887:51: error: invalid type argument of '->' (have 'int')
+ 1887 |             ts->AuthenticationId.LowPart = 999; ts->AuthenticationId.HighPart = 0;
+      |                                                   ^~
+kernel/arch/x86_64/win32_advapi32.c:1888:15: error: invalid type argument of '->' (have 'int')
+ 1888 |             ts->TokenType = t->token_type;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1889:15: error: invalid type argument of '->' (have 'int')
+ 1889 |             ts->ImpersonationLevel = t->impersonation_level;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1890:15: error: invalid type argument of '->' (have 'int')
+ 1890 |             ts->PrivilegeCount = t->privilege_count;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c:1891:15: error: invalid type argument of '->' (have 'int')
+ 1891 |             ts->GroupCount = 1;
+      |               ^~
+kernel/arch/x86_64/win32_advapi32.c: In function 'AdjustTokenPrivileges':
+kernel/arch/x86_64/win32_advapi32.c:1930:5: error: unknown type name 'PTOKEN_PRIVILEGES'; did you mean 'TOKEN_PRIVILEGES'?
+ 1930 |     PTOKEN_PRIVILEGES newp;
+      |     ^~~~~~~~~~~~~~~~~
+      |     TOKEN_PRIVILEGES
+kernel/arch/x86_64/win32_advapi32.c:1931:5: error: unknown type name 'PTOKEN_PRIVILEGES'; did you mean 'TOKEN_PRIVILEGES'?
+ 1931 |     PTOKEN_PRIVILEGES prevp;
+      |     ^~~~~~~~~~~~~~~~~
+      |     TOKEN_PRIVILEGES
+kernel/arch/x86_64/win32_advapi32.c:1943:18: error: 'PTOKEN_PRIVILEGES' undeclared (first use in this function); did you mean 'TOKEN_PRIVILEGES'?
+ 1943 |         prevp = (PTOKEN_PRIVILEGES)PreviousState;
+      |                  ^~~~~~~~~~~~~~~~~
+      |                  TOKEN_PRIVILEGES
+kernel/arch/x86_64/win32_advapi32.c:1943:36: error: expected ';' before 'PreviousState'
+ 1943 |         prevp = (PTOKEN_PRIVILEGES)PreviousState;
+      |                                    ^~~~~~~~~~~~~
+      |                                    ;
+kernel/arch/x86_64/win32_advapi32.c:1944:14: error: invalid type argument of '->' (have 'int')
+ 1944 |         prevp->PrivilegeCount = t->privilege_count;
+      |              ^~
+kernel/arch/x86_64/win32_advapi32.c:1946:18: error: invalid type argument of '->' (have 'int')
+ 1946 |             prevp->Privileges[j].Luid = t->privileges[j].luid;
+      |                  ^~
+kernel/arch/x86_64/win32_advapi32.c:1947:18: error: invalid type argument of '->' (have 'int')
+ 1947 |             prevp->Privileges[j].Attributes = t->privileges[j].attrs;
+      |                  ^~
+kernel/arch/x86_64/win32_advapi32.c:1952:36: warning: unsigned conversion from 'long int' to 'long unsigned int' changes value from '-3' to '4294967293' [-Wsign-conversion]
+ 1952 |             t->privileges[j].attrs &= ~SE_PRIVILEGE_ENABLED;
+      |                                    ^~
+kernel/arch/x86_64/win32_advapi32.c:1957:35: error: expected ';' before 'NewState'
+ 1957 |         newp = (PTOKEN_PRIVILEGES)NewState;
+      |                                   ^~~~~~~~
+      |                                   ;
+kernel/arch/x86_64/win32_advapi32.c:1958:29: error: invalid type argument of '->' (have 'int')
+ 1958 |         for (i = 0; i < newp->PrivilegeCount; i++) {
+      |                             ^~
+kernel/arch/x86_64/win32_advapi32.c:1960:58: error: invalid type argument of '->' (have 'int')
+ 1960 |                 if (t->privileges[j].luid.LowPart == newp->Privileges[i].Luid.LowPart &&
+      |                                                          ^~
+kernel/arch/x86_64/win32_advapi32.c:1961:59: error: invalid type argument of '->' (have 'int')
+ 1961 |                     t->privileges[j].luid.HighPart == newp->Privileges[i].Luid.HighPart) {
+      |                                                           ^~
+kernel/arch/x86_64/win32_advapi32.c:1962:50: error: invalid type argument of '->' (have 'int')
+ 1962 |                     t->privileges[j].attrs = newp->Privileges[i].Attributes;
+      |                                                  ^~
+kernel/arch/x86_64/win32_advapi32.c:1967:62: error: invalid type argument of '->' (have 'int')
+ 1967 |                 t->privileges[t->privilege_count].luid = newp->Privileges[i].Luid;
+      |                                                              ^~
+kernel/arch/x86_64/win32_advapi32.c:1968:63: error: invalid type argument of '->' (have 'int')
+ 1968 |                 t->privileges[t->privilege_count].attrs = newp->Privileges[i].Attributes;
+      |                                                               ^~
+kernel/arch/x86_64/win32_advapi32.c: At top level:
+kernel/arch/x86_64/win32_advapi32.c:2018:6: error: conflicting types for 'LookupPrivilegeValueA'; have 'BOOL(const char *, const char *, struct _LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+ 2018 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName,
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1609:6: note: previous declaration of 'LookupPrivilegeValueA' with type 'BOOL(const char *, const char *, struct _LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+ 1609 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName,
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2038:6: error: conflicting types for 'LookupPrivilegeNameA'; have 'BOOL(const char *, struct _LUID *, char *, DWORD *)' {aka 'int(const char *, struct _LUID *, char *, unsigned int *)'}
+ 2038 | BOOL LookupPrivilegeNameA(const char* lpSystemName, PLUID lpLuid,
+      |      ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1611:6: note: previous declaration of 'LookupPrivilegeNameA' with type 'BOOL(const char *, struct _LUID *, char *, DWORD *)' {aka 'int(const char *, struct _LUID *, char *, unsigned int *)'}
+ 1611 | BOOL LookupPrivilegeNameA(const char* lpSystemName, PLUID lpLuid,
+      |      ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2085:54: warning: excess elements in struct initializer
+ 2085 |      {1,1,0,0,0,0,0,5,0x20,0,0,0,0x20,0x20,0,0}, 16, SidTypeUser},
+      |                                                      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2085:54: note: (near initialization for 'g_account_map[0]')
+kernel/arch/x86_64/win32_advapi32.c:2087:54: warning: excess elements in struct initializer
+ 2087 |      {1,1,0,0,0,0,0,5,0x20,0,0,0,0x22,0x20,0,0}, 16, SidTypeUser},
+      |                                                      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2087:54: note: (near initialization for 'g_account_map[1]')
+kernel/arch/x86_64/win32_advapi32.c:2089:40: warning: excess elements in struct initializer
+ 2089 |      {1,1,0,0,0,0,0,5,0x12,0,0,0}, 12, SidTypeWellKnownGroup},
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2089:40: note: (near initialization for 'g_account_map[2]')
+kernel/arch/x86_64/win32_advapi32.c:2091:40: warning: excess elements in struct initializer
+ 2091 |      {1,1,0,0,0,0,0,5,0x13,0,0,0}, 12, SidTypeUser},
+      |                                        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2091:40: note: (near initialization for 'g_account_map[3]')
+kernel/arch/x86_64/win32_advapi32.c:2093:40: warning: excess elements in struct initializer
+ 2093 |      {1,1,0,0,0,0,0,5,0x14,0,0,0}, 12, SidTypeUser},
+      |                                        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2093:40: note: (near initialization for 'g_account_map[4]')
+kernel/arch/x86_64/win32_advapi32.c:2095:37: warning: excess elements in struct initializer
+ 2095 |      {1,1,0,0,0,0,0,1,0,0,0,0}, 12, SidTypeWellKnownGroup},
+      |                                     ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2095:37: note: (near initialization for 'g_account_map[5]')
+kernel/arch/x86_64/win32_advapi32.c:2097:54: warning: excess elements in struct initializer
+ 2097 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x20,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2097:54: note: (near initialization for 'g_account_map[6]')
+kernel/arch/x86_64/win32_advapi32.c:2099:54: warning: excess elements in struct initializer
+ 2099 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x21,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2099:54: note: (near initialization for 'g_account_map[7]')
+kernel/arch/x86_64/win32_advapi32.c:2101:54: warning: excess elements in struct initializer
+ 2101 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x22,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2101:54: note: (near initialization for 'g_account_map[8]')
+kernel/arch/x86_64/win32_advapi32.c:2103:54: warning: excess elements in struct initializer
+ 2103 |      {1,2,0,0,0,0,0,5,0x20,0,0,0,0x23,0x20,0,0}, 16, SidTypeAlias},
+      |                                                      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2103:54: note: (near initialization for 'g_account_map[9]')
+kernel/arch/x86_64/win32_advapi32.c:2118:6: warning: conflicting types for 'LookupAccountNameA' due to enum/integer mismatch; have 'BOOL(const char *, const char *, void *, DWORD *, char *, DWORD *, enum _SID_NAME_USE *)' {aka 'int(const char *, const char *, void *, unsigned int *, char *, unsigned int *, enum _SID_NAME_USE *)'} [-Wenum-int-mismatch]
+ 2118 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1613:6: note: previous declaration of 'LookupAccountNameA' with type 'BOOL(const char *, const char *, void *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, const char *, void *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1613 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_advapi32.c:2179:6: warning: conflicting types for 'LookupAccountSidA' due to enum/integer mismatch; have 'BOOL(const char *, void *, char *, DWORD *, char *, DWORD *, enum _SID_NAME_USE *)' {aka 'int(const char *, void *, char *, unsigned int *, char *, unsigned int *, enum _SID_NAME_USE *)'} [-Wenum-int-mismatch]
+ 2179 | BOOL LookupAccountSidA(const char* lpSystemName, void* Sid,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1618:6: note: previous declaration of 'LookupAccountSidA' with type 'BOOL(const char *, void *, char *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, void *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1618 | BOOL LookupAccountSidA(const char* lpSystemName, void* Sid,
+      |      ^~~~~~~~~~~~~~~~~
+FAILED TASK run kernel: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikal/include -MMD -MF build/obj/kernel/arch/x86_64/win32_advapi32.c.o.d -c kernel/arch/x86_64/win32_advapi32.c -o build/obj/kernel/arch/x86_64/win32_advapi32.c.o

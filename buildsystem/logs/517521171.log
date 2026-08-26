@@ -1,0 +1,16 @@
+-- Start building task run kernel -- (517521171)
+-- Start building task kernel -- (0)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/compat_sdb.c
+-- Enter folder img/boot --
+<2> Building img/boot/kernel.elf.pe
+<0> Generating img/boot/kernel.bin
+DONE TASK run kernel IN 2.9s.
+Result:
+Started 2 tasks
+Entered 2 folders
+Built 2 files
+Generated 1 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

@@ -1,0 +1,231 @@
+-- Start building task run components -- (106847525)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<3> Generating bin/components/kde.exe
+<2> Generating bin/components/gnome.exe
+<0> Generating bin/components/xorriso.exe
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<1> Generating bin/components/dd.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o "D:\\KenuxK\\build\\components\\xorriso_xorriso.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/dd -c src/dd/dd.c -o "D:\\KenuxK\\build\\components\\dd_dd.o""
+src/dd/dd.c:8:10: fatal error: sys/mman.h: No such file or directory
+    8 | #include <sys/mman.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<1> Generating bin/components/mkfs.exe
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/mkfs -c src/mkfs/mkfs.c -o "D:\\KenuxK\\build\\components\\mkfs_mkfs.o""
+src/mkfs/mkfs.c: In function 'validate_device':
+src/mkfs/mkfs.c:174:9: error: implicit declaration of function 'ioctl' [-Wimplicit-function-declaration]
+  174 |     if (ioctl(state->device_fd, BLKGETSIZE64, &state->stats.total_blocks) != 0) {
+      |         ^~~~~
+src/mkfs/mkfs.c:174:33: error: 'BLKGETSIZE64' undeclared (first use in this function)
+  174 |     if (ioctl(state->device_fd, BLKGETSIZE64, &state->stats.total_blocks) != 0) {
+      |                                 ^~~~~~~~~~~~
+src/mkfs/mkfs.c:174:33: note: each undeclared identifier is reported only once for each function it appears in
+src/kde/kde.c: In function 'kde_end_session':
+src/kde/kde.c:28:24: warning: statement with no effect [-Wunused-value]
+   28 | #define kill(p,s)      (-1)
+      |                        ^
+src/kde/kde.c:1449:17: note: in expansion of macro 'kill'
+ 1449 |                 kill(*procs[i].pid, SIGTERM);
+      |                 ^~~~
+src/kde/kde.c:28:24: warning: statement with no effect [-Wunused-value]
+   28 | #define kill(p,s)      (-1)
+      |                        ^
+src/kde/kde.c:1455:17: note: in expansion of macro 'kill'
+ 1455 |                 kill(*procs[i].pid, SIGKILL);
+      |                 ^~~~
+src/xorriso/xorriso.c: In function 'xorriso_list_iso':
+src/xorriso/xorriso.c:755:43: warning: unused parameter 's' [-Wunused-parameter]
+  755 | static int xorriso_list_iso(XorrisoState *s, const char *iso) {
+      |                             ~~~~~~~~~~~~~~^
+src/gnome/gnome.c:78:20: warning: 'gnome_color_style_name' defined but not used [-Wunused-function]
+   78 | static const char *gnome_color_style_name(GnomeColorStyle s) {
+      |                    ^~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c:53:19: warning: 'localtime_r' defined but not used [-Wunused-function]
+   53 | static struct tm *localtime_r(const time_t *t, struct tm *tm) {
+      |                   ^~~~~~~~~~~
+src/kde/kde.c: At top level:
+src/kde/kde.c:263:20: warning: 'wallpaper_mode_name' defined but not used [-Wunused-function]
+  263 | static const char *wallpaper_mode_name(KdeWallpaperMode m) {
+      |                    ^~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:257:20: warning: 'menu_type_name' defined but not used [-Wunused-function]
+  257 | static const char *menu_type_name(KdeMenuType m) {
+      |                    ^~~~~~~~~~~~~~
+src/kde/kde.c:238:22: warning: 'widget_type_from_str' defined but not used [-Wunused-function]
+  238 | static KdeWidgetType widget_type_from_str(const char *s) {
+      |                      ^~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:202:20: warning: 'COLOR_SCHEME_SEARCH_DIRS' defined but not used [-Wunused-variable]
+  202 | static const char *COLOR_SCHEME_SEARCH_DIRS[] = {
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:65:19: warning: 'localtime_r' defined but not used [-Wunused-function]
+   65 | static struct tm *localtime_r(const time_t *t, struct tm *tm) {
+      |                   ^~~~~~~~~~~
+In function 'gs_strncpy',
+    inlined from 'gs_strncpy' at src/gnome/gnome.c:61:14,
+    inlined from 'gnome_probe_hardware.part.0' at src/gnome/gnome.c:736:13:
+src/gnome/gnome.c:63:16: warning: 'strncpy' output may be truncated copying 63 bytes from a string of length 63 [-Wstringop-truncation]
+   63 |     if (src) { strncpy(dst, src, n - 1); dst[n - 1] = '\0'; }
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~
+src/xorriso/xorriso.c: In function 'xorriso_set_iso_datetime':
+src/xorriso/xorriso.c:183:31: warning: '%04d' directive output may be truncated writing between 4 and 11 bytes into a region of size 5 [-Wformat-truncation=]
+  183 |     snprintf((char *)buf, 5, "%04d", 1900 + tm->tm_year);
+      |                               ^~~~
+src/xorriso/xorriso.c:183:30: note: directive argument in the range [-2147481748, 2147483647]
+  183 |     snprintf((char *)buf, 5, "%04d", 1900 + tm->tm_year);
+      |                              ^~~~~~
+src/xorriso/xorriso.c:183:5: note: 'snprintf' output between 5 and 12 bytes into a destination of size 5
+  183 |     snprintf((char *)buf, 5, "%04d", 1900 + tm->tm_year);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_init.part.0':
+src/gnome/gnome.c:132:69: warning: '/.config' directive output may be truncated writing 8 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  132 |         snprintf(s->user_config_dir, sizeof(s->user_config_dir), "%s/.config", s->home);
+      |                                                                     ^~~~~~~~
+In function 'gnome_setup_env_defaults',
+    inlined from 'gnome_init.part.0' at src/gnome/gnome.c:391:5:
+src/gnome/gnome.c:132:9: note: 'snprintf' output between 9 and 4104 bytes into a destination of size 4096
+  132 |         snprintf(s->user_config_dir, sizeof(s->user_config_dir), "%s/.config", s->home);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_init.part.0':
+src/gnome/gnome.c:133:69: warning: '/.local/share' directive output may be truncated writing 13 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  133 |         snprintf(s->user_data_dir,   sizeof(s->user_data_dir),   "%s/.local/share", s->home);
+      |                                                                     ^~~~~~~~~~~~~
+In function 'gnome_setup_env_defaults',
+    inlined from 'gnome_init.part.0' at src/gnome/gnome.c:391:5:
+src/gnome/gnome.c:133:9: note: 'snprintf' output between 14 and 4109 bytes into a destination of size 4096
+  133 |         snprintf(s->user_data_dir,   sizeof(s->user_data_dir),   "%s/.local/share", s->home);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_init.part.0':
+src/gnome/gnome.c:134:69: warning: '/.cache' directive output may be truncated writing 7 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  134 |         snprintf(s->user_cache_dir,  sizeof(s->user_cache_dir),  "%s/.cache", s->home);
+      |                                                                     ^~~~~~~
+In function 'gnome_setup_env_defaults',
+    inlined from 'gnome_init.part.0' at src/gnome/gnome.c:391:5:
+src/gnome/gnome.c:134:9: note: 'snprintf' output between 8 and 4103 bytes into a destination of size 4096
+  134 |         snprintf(s->user_cache_dir,  sizeof(s->user_cache_dir),  "%s/.cache", s->home);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_init.part.0':
+src/gnome/gnome.c:135:69: warning: '/.local/state' directive output may be truncated writing 13 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  135 |         snprintf(s->user_state_dir,  sizeof(s->user_state_dir),  "%s/.local/state", s->home);
+      |                                                                     ^~~~~~~~~~~~~
+In function 'gnome_setup_env_defaults',
+    inlined from 'gnome_init.part.0' at src/gnome/gnome.c:391:5:
+src/gnome/gnome.c:135:9: note: 'snprintf' output between 14 and 4109 bytes into a destination of size 4096
+  135 |         snprintf(s->user_state_dir,  sizeof(s->user_state_dir),  "%s/.local/state", s->home);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gs_strncpy',
+    inlined from 'gs_strncpy' at src/gnome/gnome.c:61:14,
+    inlined from 'gnome_setup_default_workspaces' at src/gnome/gnome.c:158:13,
+    inlined from 'gnome_init.part.0' at src/gnome/gnome.c:413:5:
+src/gnome/gnome.c:63:16: warning: 'strncpy' output may be truncated copying 127 bytes from a string of length 127 [-Wstringop-truncation]
+   63 |     if (src) { strncpy(dst, src, n - 1); dst[n - 1] = '\0'; }
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gs_strncpy',
+    inlined from 'gs_strncpy' at src/gnome/gnome.c:61:14,
+    inlined from 'gnome_setup_default_workspaces' at src/gnome/gnome.c:159:13,
+    inlined from 'gnome_init.part.0' at src/gnome/gnome.c:413:5:
+src/gnome/gnome.c:63:16: warning: 'strncpy' output may be truncated copying 127 bytes from a string of length 127 [-Wstringop-truncation]
+   63 |     if (src) { strncpy(dst, src, n - 1); dst[n - 1] = '\0'; }
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_load_gsettings':
+src/gnome/gnome.c:643:29: warning: '/.config/gnome-shell/gsettin...' directive output may be truncated writing 33 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  643 |         snprintf(out, n, "%s/.config/gnome-shell/gsettings.db", s->home[0] ? s->home : "/tmp");
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gnome_gsettings_path',
+    inlined from 'gnome_load_gsettings' at src/gnome/gnome.c:649:5:
+src/gnome/gnome.c:643:9: note: 'snprintf' output between 34 and 4129 bytes into a destination of size 4096
+  643 |         snprintf(out, n, "%s/.config/gnome-shell/gsettings.db", s->home[0] ? s->home : "/tmp");
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_load_gsettings':
+src/gnome/gnome.c:641:29: warning: '/gnome-shell/gsettings.db' directive output may be truncated writing 25 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  641 |         snprintf(out, n, "%s/gnome-shell/gsettings.db", s->user_config_dir);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gnome_gsettings_path',
+    inlined from 'gnome_gsettings_path' at src/gnome/gnome.c:639:13,
+    inlined from 'gnome_load_gsettings' at src/gnome/gnome.c:649:5:
+src/gnome/gnome.c:641:9: note: 'snprintf' output between 26 and 4121 bytes into a destination of size 4096
+  641 |         snprintf(out, n, "%s/gnome-shell/gsettings.db", s->user_config_dir);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_save_gsettings':
+src/gnome/gnome.c:643:29: warning: '/.config/gnome-shell/gsettin...' directive output may be truncated writing 33 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  643 |         snprintf(out, n, "%s/.config/gnome-shell/gsettings.db", s->home[0] ? s->home : "/tmp");
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gnome_gsettings_path',
+    inlined from 'gnome_save_gsettings' at src/gnome/gnome.c:692:5:
+src/gnome/gnome.c:643:9: note: 'snprintf' output between 34 and 4129 bytes into a destination of size 4096
+  643 |         snprintf(out, n, "%s/.config/gnome-shell/gsettings.db", s->home[0] ? s->home : "/tmp");
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_save_gsettings':
+src/gnome/gnome.c:641:29: warning: '/gnome-shell/gsettings.db' directive output may be truncated writing 25 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  641 |         snprintf(out, n, "%s/gnome-shell/gsettings.db", s->user_config_dir);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gnome_gsettings_path',
+    inlined from 'gnome_gsettings_path' at src/gnome/gnome.c:639:13,
+    inlined from 'gnome_save_gsettings' at src/gnome/gnome.c:692:5:
+src/gnome/gnome.c:641:9: note: 'snprintf' output between 26 and 4121 bytes into a destination of size 4096
+  641 |         snprintf(out, n, "%s/gnome-shell/gsettings.db", s->user_config_dir);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_save_gsettings':
+src/gnome/gnome.c:695:35: warning: '/gnome-shell' directive output may be truncated writing 12 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  695 |     snprintf(dir, sizeof(dir), "%s/gnome-shell", s->user_config_dir[0] ? s->user_config_dir : "/tmp");
+      |                                   ^~~~~~~~~~~~
+src/gnome/gnome.c:695:5: note: 'snprintf' output between 13 and 4108 bytes into a destination of size 4096
+  695 |     snprintf(dir, sizeof(dir), "%s/gnome-shell", s->user_config_dir[0] ? s->user_config_dir : "/tmp");
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c: In function 'kde_widget_add':
+src/kde/kde.c:1512:5: warning: 'snprintf' argument 4 may overlap destination object 's' [-Wrestrict]
+ 1512 |     snprintf(w->title, sizeof(w->title), "%s #%d", w->plugin, pid);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:1497:30: note: destination object referenced by 'restrict'-qualified argument 1 was declared here
+ 1497 | int kde_widget_add(KdeState *s, int panel_id, KdeWidgetType type) {
+      |                    ~~~~~~~~~~^
+src/gnome/gnome.c: In function 'gnome_extension_scan':
+src/gnome/gnome.c:1133:39: warning: '/.local/share/gnome-shell/ex...' directive output may be truncated writing 36 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1133 |         snprintf(dir, sizeof(dir), "%s/.local/share/gnome-shell/extensions", s->home[0] ? s->home : "");
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c:1133:9: note: 'snprintf' output between 37 and 4132 bytes into a destination of size 4096
+ 1133 |         snprintf(dir, sizeof(dir), "%s/.local/share/gnome-shell/extensions", s->home[0] ? s->home : "");
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c:1131:39: warning: '/gnome-shell/extensions' directive output may be truncated writing 23 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1131 |         snprintf(dir, sizeof(dir), "%s/gnome-shell/extensions", s->user_data_dir);
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c:1131:9: note: 'snprintf' output between 24 and 4119 bytes into a destination of size 4096
+ 1131 |         snprintf(dir, sizeof(dir), "%s/gnome-shell/extensions", s->user_data_dir);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_app_scan':
+src/gnome/gnome.c:1289:39: warning: '/applications' directive output may be truncated writing 13 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1289 |         snprintf(dir, sizeof(dir), "%s/applications", s->user_data_dir);
+      |                                       ^~~~~~~~~~~~~
+src/gnome/gnome.c:1289:9: note: 'snprintf' output between 14 and 4109 bytes into a destination of size 4096
+ 1289 |         snprintf(dir, sizeof(dir), "%s/applications", s->user_data_dir);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'gs_strncpy',
+    inlined from 'gs_strncpy' at src/gnome/gnome.c:61:14,
+    inlined from 'gnome_app_launch' at src/gnome/gnome.c:1302:5:
+src/gnome/gnome.c:63:16: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+   63 |     if (src) { strncpy(dst, src, n - 1); dst[n - 1] = '\0'; }
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\xorriso_xorriso.o" -o "D:\\KenuxK\\bin\\components\\xorriso.exe""
+src/kde/kde.c: In function 'kde_parse_arguments':
+src/kde/kde.c:780:59: warning: '/.kde' directive output may be truncated writing 5 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  780 |             snprintf(s->kde_home, sizeof(s->kde_home), "%s/.kde", s->home);
+      |                                                           ^~~~~
+src/kde/kde.c:780:13: note: 'snprintf' output between 6 and 4101 bytes into a destination of size 4096
+  780 |             snprintf(s->kde_home, sizeof(s->kde_home), "%s/.kde", s->home);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:781:71: warning: '/.config' directive output may be truncated writing 8 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  781 |             snprintf(s->kde_config_dir, sizeof(s->kde_config_dir), "%s/.config", s->home);
+      |                                                                       ^~~~~~~~
+src/kde/kde.c:781:13: note: 'snprintf' output between 9 and 4104 bytes into a destination of size 4096
+  781 |             snprintf(s->kde_config_dir, sizeof(s->kde_config_dir), "%s/.config", s->home);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:782:67: warning: '/.local/share' directive output may be truncated writing 13 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  782 |             snprintf(s->kde_data_dir, sizeof(s->kde_data_dir), "%s/.local/share", s->home);
+      |                                                                   ^~~~~~~~~~~~~
+src/kde/kde.c:782:13: note: 'snprintf' output between 14 and 4109 bytes into a destination of size 4096
+  782 |             snprintf(s->kde_data_dir, sizeof(s->kde_data_dir), "%s/.local/share", s->home);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\gnome_gnome.o" -o "D:\\KenuxK\\bin\\components\\gnome.exe""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\kde_kde.o" -o "D:\\KenuxK\\bin\\components\\kde.exe""
+FAILED TASK run components: 

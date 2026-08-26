@@ -1,0 +1,366 @@
+-- Start building task run components -- (754262076)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<2> Generating bin/components/clang.exe
+<0> Generating bin/components/gcc.exe
+<3> Generating bin/components/make.exe
+<1> Generating bin/components/ld.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o "D:\\KenuxK\\build\\components\\clang_clang.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o "D:\\KenuxK\\build\\components\\gcc_gcc.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/ld -c src/ld/ld.c -o "D:\\KenuxK\\build\\components\\ld_ld.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/make -c src/make/make.c -o "D:\\KenuxK\\build\\components\\make_make.o""
+In file included from src/clang/clang.c:11:
+src/clang/clang.h:314:9: error: duplicate member 'rdynamic'
+  314 |     int rdynamic;
+      |         ^~~~~~~~
+src/ld/ld.c: In function 'linker_cleanup':
+src/ld/ld.c:132:13: warning: the comparison will always evaluate as 'true' for the address of 'sections' will never be NULL [-Waddress]
+  132 |         if (state->objects[i].sections) {
+      |             ^~~~~
+In file included from src/ld/ld.c:6:
+src/ld/ld.h:71:13: note: 'sections' declared here
+   71 |     Section sections[MAX_SECTIONS];
+      |             ^~~~~~~~
+In file included from src/make/make.c:6:
+src/make/make.h:49:9: warning: 'X_OK' redefined
+   49 | #define X_OK 0
+      |         ^~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/fcntl.h:8,
+                 from src/make/make.h:12:
+src/ld/ld.c: In function 'load_object_file':
+D:/mingw64/x86_64-w64-mingw32/include/io.h:203:9: note: this is the location of the previous definition
+src/ld/ld.c:243:36: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'size_t' {aka 'long long unsigned int'} [-Wformat=]
+  203 | #define X_OK    1       /* Check for execute permission. */
+  243 |         printf("  Entry point: 0x%lx\n", obj->entry_point);
+      |         ^~~~
+      |                                  ~~^     ~~~~~~~~~~~~~~~~
+      |                                    |        |
+      |                                    |        size_t {aka long long unsigned int}
+      |                                    long unsigned int
+      |                                  %llx
+src/make/make.c: In function 'load_makefile':
+src/make/make.c:93:27: warning: comparison of integer expressions of different signedness: 'int' and 'long long unsigned int' [-Wsign-compare]
+   93 |         for (int i = 0; i < sizeof(filenames) / sizeof(char *); i++) {
+      |                           ^
+src/ld/ld.c: In function 'parse_elf_header':
+src/ld/ld.c:253:26: error: 'EI_NIDENT' undeclared (first use in this function)
+  253 |     unsigned char header[EI_NIDENT];
+      |                          ^~~~~~~~~
+src/ld/ld.c:253:26: note: each undeclared identifier is reported only once for each function it appears in
+src/ld/ld.c:16:16: error: passing argument 2 of 'memcmp' makes pointer from integer without a cast [-Wint-conversion]
+   16 | #define ELFMAG 0x464c457f
+      |                ^~~~~~~~~~
+      |                |
+      |                int
+src/ld/ld.c:263:24: note: in expansion of macro 'ELFMAG'
+  263 |     if (memcmp(header, ELFMAG, 4) != 0) {
+      |                        ^~~~~~
+In file included from src/ld/ld.h:11:
+D:/mingw64/x86_64-w64-mingw32/include/string.h:49:52: note: expected 'const void *' but argument is of type 'int'
+   49 |   int __cdecl memcmp(const void *_Buf1,const void *_Buf2,size_t _Size);
+      |                                        ~~~~~~~~~~~~^~~~~
+src/ld/ld.c:253:19: warning: unused variable 'header' [-Wunused-variable]
+  253 |     unsigned char header[EI_NIDENT];
+      |                   ^~~~~~
+src/ld/ld.c:252:35: warning: unused parameter 'state' [-Wunused-parameter]
+  252 | int parse_elf_header(LinkerState *state, ObjectFile *obj) {
+      |                      ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_section_headers':
+src/ld/ld.c:287:40: warning: unused parameter 'state' [-Wunused-parameter]
+  287 | int parse_section_headers(LinkerState *state, ObjectFile *obj) {
+      |                           ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_symbol_table':
+src/ld/ld.c:344:37: warning: unused parameter 'state' [-Wunused-parameter]
+  344 | int parse_symbol_table(LinkerState *state, ObjectFile *obj) {
+      |                        ~~~~~~~~~~~~~^~~~~
+In file included from src/gcc/gcc.c:6:
+src/gcc/gcc.h:337:9: error: duplicate member 'warning_count'
+  337 |     int warning_count;
+      |         ^~~~~~~~~~~~~
+src/ld/ld.c: In function 'write_output_sections':
+src/ld/ld.c:528:71: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  528 |             if (write(state->output_fd, section->data, section->size) != section->size) {
+      |                                                                       ^~
+src/make/make.c: In function 'print_help':
+src/make/make.c:422:25: error: 'state' undeclared (first use in this function); did you mean 'stat'?
+  422 |     for (int i = 0; i < state->num_targets; i++) {
+      |                         ^~~~~
+      |                         stat
+src/make/make.c:422:25: note: each undeclared identifier is reported only once for each function it appears in
+src/gcc/gcc.c: In function 'gcc_run_command':
+src/gcc/gcc.c:515:5: error: implicit declaration of function 'waitpid' [-Wimplicit-function-declaration]
+  515 |     waitpid(pid, &status, 0);
+      |     ^~~~~~~
+src/clang/clang.c:22:20: warning: 'clang_basename' defined but not used [-Wunused-function]
+   22 | static const char *clang_basename(const char *path) {
+      |                    ^~~~~~~~~~~~~~
+<1> Generating bin/components/git.exe
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/git -c src/git/git.c -o "D:\\KenuxK\\build\\components\\git_git.o""
+src/git/git.c: In function 'cmd_rm':
+src/git/git.c:1144:21: warning: variable 'force' set but not used [-Wunused-but-set-variable=]
+ 1144 |     int cached = 0, force = 0;
+      |                     ^~~~~
+src/git/git.c: In function 'cmd_hash_object':
+src/git/git.c:1271:20: warning: variable 'show' set but not used [-Wunused-but-set-variable=]
+ 1271 |     int write = 0, show = 0;
+      |                    ^~~~
+src/git/git.c: In function 'git_parse_tree.part.0':
+src/git/git.c:483:9: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  483 |         strncpy(entries[count].name, name, MAX_PATH_LEN - 1);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_branch.part.0':
+src/git/git.c:1049:37: warning: '/refs/heads/' directive output may be truncated writing 12 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1049 |     snprintf(path, sizeof(path), "%s/refs/heads/%s", state->git_dir, name);
+      |                                     ^~~~~~~~~~~~
+src/git/git.c:1049:5: note: 'snprintf' output 13 or more bytes (assuming 4108) into a destination of size 4096
+ 1049 |     snprintf(path, sizeof(path), "%s/refs/heads/%s", state->git_dir, name);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:1038:41: warning: '/refs/heads/' directive output may be truncated writing 12 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1038 |         snprintf(path, sizeof(path), "%s/refs/heads/%s", state->git_dir, name);
+      |                                         ^~~~~~~~~~~~
+src/git/git.c:1038:9: note: 'snprintf' output 13 or more bytes (assuming 4108) into a destination of size 4096
+ 1038 |         snprintf(path, sizeof(path), "%s/refs/heads/%s", state->git_dir, name);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:1022:51: warning: '/refs/heads' directive output may be truncated writing 11 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1022 |         snprintf(heads_dir, sizeof(heads_dir), "%s/refs/heads", state->git_dir);
+      |                                                   ^~~~~~~~~~~
+src/git/git.c:1022:9: note: 'snprintf' output between 12 and 4107 bytes into a destination of size 4096
+ 1022 |         snprintf(heads_dir, sizeof(heads_dir), "%s/refs/heads", state->git_dir);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_tag':
+src/git/git.c:1197:37: warning: '/refs/tags/' directive output may be truncated writing 11 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1197 |     snprintf(path, sizeof(path), "%s/refs/tags/%s", state->git_dir, name);
+      |                                     ^~~~~~~~~~~
+src/git/git.c:1197:5: note: 'snprintf' output 12 or more bytes (assuming 4107) into a destination of size 4096
+ 1197 |     snprintf(path, sizeof(path), "%s/refs/tags/%s", state->git_dir, name);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:1182:47: warning: '/refs/tags' directive output may be truncated writing 10 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1182 |         snprintf(tag_dir, sizeof(tag_dir), "%s/refs/tags", state->git_dir);
+      |                                               ^~~~~~~~~~
+src/git/git.c:1182:9: note: 'snprintf' output between 11 and 4106 bytes into a destination of size 4096
+ 1182 |         snprintf(tag_dir, sizeof(tag_dir), "%s/refs/tags", state->git_dir);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_find_repo':
+src/git/git.c:212:46: warning: '%s' directive output may be truncated writing 9 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  212 |         snprintf(gitdir, sizeof(gitdir), "%s/%s", path, GIT_DIR);
+      |                                              ^~
+src/git/git.c:212:9: note: 'snprintf' output between 11 and 4106 bytes into a destination of size 4096
+  212 |         snprintf(gitdir, sizeof(gitdir), "%s/%s", path, GIT_DIR);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:214:13: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  214 |             strncpy(state->repo_root, path, MAX_PATH_LEN - 1);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:215:13: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  215 |             strncpy(state->git_dir, gitdir, MAX_PATH_LEN - 1);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:219:55: warning: '/HEAD' directive output may be truncated writing 5 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  219 |             snprintf(head_file, sizeof(head_file), "%s/HEAD", gitdir);
+      |                                                       ^~~~~
+src/git/git.c:219:13: note: 'snprintf' output between 6 and 4101 bytes into a destination of size 4096
+  219 |             snprintf(head_file, sizeof(head_file), "%s/HEAD", gitdir);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:226:60: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  226 |                     snprintf(refpath, sizeof(refpath), "%s/%s", gitdir, state->head_ref);
+      |                                                            ^~
+src/git/git.c:226:21: note: 'snprintf' output between 2 and 8192 bytes into a destination of size 4096
+  226 |                     snprintf(refpath, sizeof(refpath), "%s/%s", gitdir, state->head_ref);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_init_repo':
+src/git/git.c:265:46: warning: '%s' directive output may be truncated writing 9 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  265 |         snprintf(gitdir, sizeof(gitdir), "%s/%s", root, GIT_DIR);
+      |                                              ^~
+src/git/git.c:265:9: note: 'snprintf' output between 11 and 4106 bytes into a destination of size 4096
+  265 |         snprintf(gitdir, sizeof(gitdir), "%s/%s", root, GIT_DIR);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:269:35: warning: '/objects' directive output may be truncated writing 8 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  269 |     snprintf(buf, sizeof(buf), "%s/objects", gitdir);
+      |                                   ^~~~~~~~
+src/git/git.c:269:5: note: 'snprintf' output between 9 and 4104 bytes into a destination of size 4096
+  269 |     snprintf(buf, sizeof(buf), "%s/objects", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:274:39: warning: '/objects/' directive output may be truncated writing 9 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  274 |         snprintf(sub, sizeof(sub), "%s/objects/%02x", gitdir, i);
+      |                                       ^~~~~~~~~
+src/git/git.c:274:36: note: directive argument in the range [0, 255]
+  274 |         snprintf(sub, sizeof(sub), "%s/objects/%02x", gitdir, i);
+      |                                    ^~~~~~~~~~~~~~~~~
+src/git/git.c:274:9: note: 'snprintf' output between 12 and 4107 bytes into a destination of size 4096
+  274 |         snprintf(sub, sizeof(sub), "%s/objects/%02x", gitdir, i);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:277:35: warning: '/refs/heads' directive output may be truncated writing 11 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  277 |     snprintf(buf, sizeof(buf), "%s/refs/heads", gitdir);
+      |                                   ^~~~~~~~~~~
+src/git/git.c:277:5: note: 'snprintf' output between 12 and 4107 bytes into a destination of size 4096
+  277 |     snprintf(buf, sizeof(buf), "%s/refs/heads", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:279:35: warning: '/refs/tags' directive output may be truncated writing 10 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  279 |     snprintf(buf, sizeof(buf), "%s/refs/tags", gitdir);
+      |                                   ^~~~~~~~~~
+src/git/git.c:279:5: note: 'snprintf' output between 11 and 4106 bytes into a destination of size 4096
+  279 |     snprintf(buf, sizeof(buf), "%s/refs/tags", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:281:35: warning: '/logs' directive output may be truncated writing 5 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  281 |     snprintf(buf, sizeof(buf), "%s/logs", gitdir);
+      |                                   ^~~~~
+src/git/git.c:281:5: note: 'snprintf' output between 6 and 4101 bytes into a destination of size 4096
+  281 |     snprintf(buf, sizeof(buf), "%s/logs", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:284:35: warning: '/HEAD' directive output may be truncated writing 5 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  284 |     snprintf(buf, sizeof(buf), "%s/HEAD", gitdir);
+      |                                   ^~~~~
+src/git/git.c:284:5: note: 'snprintf' output between 6 and 4101 bytes into a destination of size 4096
+  284 |     snprintf(buf, sizeof(buf), "%s/HEAD", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:288:35: warning: '/config' directive output may be truncated writing 7 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  288 |     snprintf(buf, sizeof(buf), "%s/config", gitdir);
+      |                                   ^~~~~~~
+src/git/git.c:288:5: note: 'snprintf' output between 8 and 4103 bytes into a destination of size 4096
+  288 |     snprintf(buf, sizeof(buf), "%s/config", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:295:35: warning: '/description' directive output may be truncated writing 12 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  295 |     snprintf(buf, sizeof(buf), "%s/description", gitdir);
+      |                                   ^~~~~~~~~~~~
+src/git/git.c:295:5: note: 'snprintf' output between 13 and 4108 bytes into a destination of size 4096
+  295 |     snprintf(buf, sizeof(buf), "%s/description", gitdir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_write_object':
+src/git/git.c:321:36: warning: '/objects/' directive output may be truncated writing 9 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  321 |     snprintf(out, MAX_PATH_LEN, "%s/objects/%c%c/%s",
+      |                                    ^~~~~~~~~
+In function 'object_path_for',
+    inlined from 'git_write_object' at src/git/git.c:329:5:
+src/git/git.c:321:5: note: 'snprintf' output 13 or more bytes (assuming 4108) into a destination of size 4096
+  321 |     snprintf(out, MAX_PATH_LEN, "%s/objects/%c%c/%s",
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  322 |              state->git_dir, sha[0], sha[1], sha + 2);
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_write_object':
+src/git/git.c:342:35: warning: '/objects/' directive output may be truncated writing 9 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  342 |     snprintf(dir, sizeof(dir), "%s/objects/%c%c", state->git_dir, obj->sha[0], obj->sha[1]);
+      |                                   ^~~~~~~~~
+src/git/git.c:342:5: note: 'snprintf' output between 12 and 4107 bytes into a destination of size 4096
+  342 |     snprintf(dir, sizeof(dir), "%s/objects/%c%c", state->git_dir, obj->sha[0], obj->sha[1]);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_hash_object':
+src/git/git.c:1290:9: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+ 1290 |         strncpy(obj.sha, sha, MAX_SHA_LEN - 1);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_read_object':
+src/git/git.c:321:36: warning: '/objects/' directive output may be truncated writing 9 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  321 |     snprintf(out, MAX_PATH_LEN, "%s/objects/%c%c/%s",
+      |                                    ^~~~~~~~~
+In function 'object_path_for',
+    inlined from 'git_read_object' at src/git/git.c:352:5:
+src/git/git.c:321:5: note: 'snprintf' output 13 or more bytes (assuming 4108) into a destination of size 4096
+  321 |     snprintf(out, MAX_PATH_LEN, "%s/objects/%c%c/%s",
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  322 |              state->git_dir, sha[0], sha[1], sha + 2);
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_object_exists':
+src/git/git.c:321:36: warning: '/objects/' directive output may be truncated writing 9 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  321 |     snprintf(out, MAX_PATH_LEN, "%s/objects/%c%c/%s",
+      |                                    ^~~~~~~~~
+In function 'object_path_for',
+    inlined from 'git_object_exists' at src/git/git.c:383:5:
+src/git/git.c:321:5: note: 'snprintf' output 13 or more bytes (assuming 4108) into a destination of size 4096
+  321 |     snprintf(out, MAX_PATH_LEN, "%s/objects/%c%c/%s",
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  322 |              state->git_dir, sha[0], sha[1], sha + 2);
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_create_blob_from_file':
+src/git/git.c:403:29: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  403 |     if (rc == 0 && out_sha) strncpy(out_sha, obj.sha, MAX_SHA_LEN - 1);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_create_tree_from_entries':
+src/git/git.c:450:29: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  450 |     if (rc == 0 && out_sha) strncpy(out_sha, obj.sha, MAX_SHA_LEN - 1);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_create_commit':
+src/git/git.c:516:29: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  516 |     if (rc == 0 && out_sha) strncpy(out_sha, obj.sha, MAX_SHA_LEN - 1);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_commit_tree.part.0':
+src/git/git.c:1262:5: warning: 'strncpy' output may be truncated copying 255 bytes from a string of length 255 [-Wstringop-truncation]
+ 1262 |     strncpy(cd.committer, cd.author, MAX_AUTHOR_LEN - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'git_get_head_commit',
+    inlined from 'cmd_log' at src/git/git.c:911:9:
+src/git/git.c:585:18: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  585 |     if (out_sha) strncpy(out_sha, state->head_sha, MAX_SHA_LEN - 1);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_log':
+src/git/git.c:924:5: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  924 |     strncpy(cur, sha, MAX_SHA_LEN - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:942:9: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  942 |         strncpy(cur, data.parent_sha, MAX_SHA_LEN - 1);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_get_head_commit':
+src/git/git.c:585:18: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  585 |     if (out_sha) strncpy(out_sha, state->head_sha, MAX_SHA_LEN - 1);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_update_head':
+src/git/git.c:593:44: warning: 'snprintf' output may be truncated before the last format character [-Wformat-truncation=]
+  593 |         snprintf(path, sizeof(path), "%s/%s", state->git_dir, state->head_ref);
+      |                                            ^
+src/git/git.c:593:9: note: 'snprintf' output 2 or more bytes (assuming 4097) into a destination of size 4096
+  593 |         snprintf(path, sizeof(path), "%s/%s", state->git_dir, state->head_ref);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_reset':
+src/git/git.c:1133:9: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+ 1133 |         strncpy(sha, state->head_sha, MAX_SHA_LEN - 1);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_load_index':
+src/git/git.c:614:43: warning: '/index' directive output may be truncated writing 6 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  614 |     snprintf(idxfile, sizeof(idxfile), "%s/index", state->git_dir);
+      |                                           ^~~~~~
+src/git/git.c:614:5: note: 'snprintf' output between 7 and 4102 bytes into a destination of size 4096
+  614 |     snprintf(idxfile, sizeof(idxfile), "%s/index", state->git_dir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:641:21: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  641 |                     strncpy(e->sha, sha, MAX_SHA_LEN - 1);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:642:21: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  642 |                     strncpy(e->path, pathv, MAX_PATH_LEN - 1);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_commit':
+src/git/git.c:812:5: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  812 |     strncpy(cd.tree_sha, tree_sha, MAX_SHA_LEN - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:813:29: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+  813 |     if (state->head_sha[0]) strncpy(cd.parent_sha, state->head_sha, MAX_SHA_LEN - 1);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:819:5: warning: 'strncpy' output may be truncated copying 255 bytes from a string of length 255 [-Wstringop-truncation]
+  819 |     strncpy(cd.author, author_buf, MAX_AUTHOR_LEN - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:820:5: warning: 'strncpy' output may be truncated copying 255 bytes from a string of length 255 [-Wstringop-truncation]
+  820 |     strncpy(cd.committer, author_buf, MAX_AUTHOR_LEN - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'git_save_index':
+src/git/git.c:655:43: warning: '/index' directive output may be truncated writing 6 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  655 |     snprintf(idxfile, sizeof(idxfile), "%s/index", state->git_dir);
+      |                                           ^~~~~~
+src/git/git.c:655:5: note: 'snprintf' output between 7 and 4102 bytes into a destination of size 4096
+  655 |     snprintf(idxfile, sizeof(idxfile), "%s/index", state->git_dir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c: In function 'cmd_checkout':
+src/git/git.c:1065:44: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+ 1065 |     snprintf(refpath, sizeof(refpath), "%s/%s", state->git_dir, branch_ref);
+      |                                            ^~                   ~~~~~~~~~~
+src/git/git.c:1065:5: note: 'snprintf' output between 2 and 8192 bytes into a destination of size 4096
+ 1065 |     snprintf(refpath, sizeof(refpath), "%s/%s", state->git_dir, branch_ref);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:1110:47: warning: '/HEAD' directive output may be truncated writing 5 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+ 1110 |     snprintf(head_path, sizeof(head_path), "%s/HEAD", state->git_dir);
+      |                                               ^~~~~
+src/git/git.c:1110:5: note: 'snprintf' output between 6 and 4101 bytes into a destination of size 4096
+ 1110 |     snprintf(head_path, sizeof(head_path), "%s/HEAD", state->git_dir);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:1115:9: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+ 1115 |         strncpy(state->head_ref, branch_ref, MAX_PATH_LEN - 1);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/git/git.c:1121:5: warning: 'strncpy' output may be truncated copying 40 bytes from a string of length 40 [-Wstringop-truncation]
+ 1121 |     strncpy(state->head_sha, sha, MAX_SHA_LEN - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\git_git.o" -o "D:\\KenuxK\\bin\\components\\git.exe""
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o D:\KenuxK\build\components\gcc_gcc.o

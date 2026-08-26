@@ -1,0 +1,101 @@
+-- Start building task run components -- (737275575)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<2> Generating bin/components/gnome.exe
+<0> Generating bin/components/wayland.exe
+<3> Generating bin/components/kde.exe
+<1> Generating bin/components/qemu.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o "D:\\KenuxK\\build\\components\\wayland_wayland.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/qemu -c src/qemu/qemu.c -o "D:\\KenuxK\\build\\components\\qemu_qemu.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+src/qemu/qemu.c: In function 'qemu_parse_arguments':
+src/qemu/qemu.c:353:70: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+  353 |         } else if (strcmp(a, "-smp") == 0 || strcmp(a, "-boot") == 0 && i + 1 < argc) {
+      |                                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+src/wayland/wayland.c: In function 'wayland_handle_client_connect':
+src/wayland/wayland.c:479:14: error: implicit declaration of function 'getuid'; did you mean 'getcwd'? [-Wimplicit-function-declaration]
+  479 |     c->uid = getuid();
+      |              ^~~~~~
+      |              getcwd
+src/wayland/wayland.c:480:14: error: implicit declaration of function 'getgid'; did you mean 'getcwd'? [-Wimplicit-function-declaration]
+  480 |     c->gid = getgid();
+      |              ^~~~~~
+      |              getcwd
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:446:44: warning: format '%s' expects argument of type 'char *', but argument 10 has type 'int' [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                           ~^
+      |                                            |
+      |                                            char *
+      |                                           %d
+......
+  453 |             d);
+      |             ~                               
+      |             |
+      |             int
+src/qemu/qemu.c:446:52: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                                   ~^
+      |                                                    |
+      |                                                    int
+src/qemu/qemu.c: In function 'qemu_start':
+src/qemu/qemu.c:593:31: warning: format '%d' expects argument of type 'int', but argument 3 has type 'pid_t' {aka 'long long int'} [-Wformat=]
+  593 |         if (f) { fprintf(f, "%d\n", pid); fclose(f); }
+      |                              ~^     ~~~
+      |                               |     |
+      |                               int   pid_t {aka long long int}
+      |                              %lld
+In file included from src/qemu/qemu.c:6:
+src/qemu/qemu.c: In function 'qemu_wait':
+src/qemu/qemu.h:25:24: warning: statement with no effect [-Wunused-value]
+   25 | #define waitpid(p,s,o) (-1)
+      |                        ^
+src/qemu/qemu.c:601:5: note: in expansion of macro 'waitpid'
+  601 |     waitpid(s->pid, &status, 0);
+      |     ^~~~~~~
+src/qemu/qemu.c:603:12: error: implicit declaration of function 'WIFEXITED' [-Wimplicit-function-declaration]
+  603 |     return WIFEXITED(status) ? WEXITSTATUS(status) : -1;
+      |            ^~~~~~~~~
+src/qemu/qemu.c:603:32: error: implicit declaration of function 'WEXITSTATUS' [-Wimplicit-function-declaration]
+  603 |     return WIFEXITED(status) ? WEXITSTATUS(status) : -1;
+      |                                ^~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_terminate':
+src/qemu/qemu.c:608:9: error: implicit declaration of function 'kill' [-Wimplicit-function-declaration]
+  608 |     if (kill(s->pid, SIGTERM) < 0) return -1;
+      |         ^~~~
+src/qemu/qemu.c:610:18: error: 'SIGKILL' undeclared (first use in this function); did you mean 'SIGILL'?
+  610 |     kill(s->pid, SIGKILL);
+      |                  ^~~~~~~
+      |                  SIGILL
+src/qemu/qemu.c:610:18: note: each undeclared identifier is reported only once for each function it appears in
+src/qemu/qemu.c: In function 'qemu_create_disk_image':
+src/qemu/qemu.c:620:60: error: expected ')' before 'PRIu64'
+  620 |     snprintf(cmd, sizeof(cmd), "qemu-img create -f %s %s %" PRIu64 "M",
+      |             ~                                              ^~~~~~~
+      |                                                            )
+src/qemu/qemu.c:7:1: note: 'PRIu64' is defined in header '<inttypes.h>'; this is probably fixable by adding '#include <inttypes.h>'
+    6 | #include "qemu.h"
+  +++ |+#include <inttypes.h>
+    7 | 
+src/qemu/qemu.c:620:53: warning: format '%s' expects a matching 'char *' argument [-Wformat=]
+  620 |     snprintf(cmd, sizeof(cmd), "qemu-img create -f %s %s %" PRIu64 "M",
+      |                                                    ~^
+      |                                                     |
+      |                                                     char *
+src/qemu/qemu.c:620:56: warning: format '%s' expects a matching 'char *' argument [-Wformat=]
+  620 |     snprintf(cmd, sizeof(cmd), "qemu-img create -f %s %s %" PRIu64 "M",
+      |                                                       ~^
+      |                                                        |
+      |                                                        char *
+src/qemu/qemu.c:620:58: warning: spurious trailing '%' in format [-Wformat=]
+  620 |     snprintf(cmd, sizeof(cmd), "qemu-img create -f %s %s %" PRIu64 "M",
+      |                                                          ^
+src/qemu/qemu.c:619:14: warning: unused variable 'sz_mb' [-Wunused-variable]
+  619 |     uint64_t sz_mb = (d->size_bytes + 1024 * 1024 - 1) / (1024 * 1024);
+      |              ^~~~~
+src/qemu/qemu.c:618:17: warning: unused variable 'fmt' [-Wunused-variable]
+  618 |     const char *fmt = qemu_disk_format_name(d->format);
+      |                 ^~~
+<0> Generating bin/components/xorriso.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o "D:\\KenuxK\\build\\components\\xorriso_xorriso.o""

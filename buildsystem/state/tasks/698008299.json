@@ -1,0 +1,14 @@
+{
+  "command": [
+    "run",
+    "debug"
+  ],
+  "created_at": "2026-08-14T13:50:53+00:00",
+  "error": "build: unknown task or file: debug",
+  "finished_at": "2026-08-14T13:50:53+00:00",
+  "id": "698008299",
+  "log": "buildsystem\\logs\\698008299.log",
+  "started_at": "2026-08-14T13:50:53+00:00",
+  "status": "failed",
+  "task": "run"
+}

@@ -1,0 +1,23 @@
+-- Start building task run run-debug -- (352012071)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder kernel/arch/x86_64 --
+<0> Building kernel/arch/x86_64/smp.c
+-- Enter folder img/boot --
+<1> Building img/boot/kernel.elf.pe
+<3> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<0> Generating esp/KENUXK.BIN
+<3> Running command: ""D:\\qemu\\qemu-system-x86_64.exe" -m 256M -smp 4,sockets=1,cores=4,threads=1 -pflash "D:\\KenuxK\\OVMF_CODE.fd" -drive "file=fat:rw:D:\\KenuxK\\esp,format=raw" -serial "file:D:\\KenuxK\\serial.log" -display none -no-reboot"
+WARNING: Image format was not specified for 'D:\KenuxK\OVMF_CODE.fd' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+DONE TASK run run-debug IN 12.0s.
+Result:
+Started 3 tasks
+Entered 3 folders
+Built 2 files
+Generated 2 files
+Ran 1 commands
+Downloaded 0 files
+0 errors

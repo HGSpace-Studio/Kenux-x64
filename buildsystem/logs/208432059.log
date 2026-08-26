@@ -1,0 +1,381 @@
+-- Start building task run components -- (208432059)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<3> Generating bin/components/kde.exe
+<0> Generating bin/components/wayland.exe
+<2> Generating bin/components/gnome.exe
+<1> Generating bin/components/qemu.exe
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o "D:\\KenuxK\\build\\components\\wayland_wayland.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/qemu -c src/qemu/qemu.c -o "D:\\KenuxK\\build\\components\\qemu_qemu.o""
+src/qemu/qemu.c: In function 'qemu_parse_arguments':
+src/qemu/qemu.c:353:70: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+  353 |         } else if (strcmp(a, "-smp") == 0 || strcmp(a, "-boot") == 0 && i + 1 < argc) {
+      |                                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:446:44: warning: format '%s' expects argument of type 'char *', but argument 10 has type 'int' [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                           ~^
+      |                                            |
+      |                                            char *
+      |                                           %d
+......
+  453 |             d);
+      |             ~                               
+      |             |
+      |             int
+src/qemu/qemu.c:446:52: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  446 |             "file=%s,format=%s,if=%s%s%s%s%s,id=dr%d",
+      |                                                   ~^
+      |                                                    |
+      |                                                    int
+src/qemu/qemu.c: In function 'qemu_start':
+src/qemu/qemu.c:593:31: warning: format '%d' expects argument of type 'int', but argument 3 has type 'pid_t' {aka 'long long int'} [-Wformat=]
+  593 |         if (f) { fprintf(f, "%d\n", pid); fclose(f); }
+      |                              ~^     ~~~
+      |                               |     |
+      |                               int   pid_t {aka long long int}
+      |                              %lld
+In file included from src/qemu/qemu.c:6:
+src/qemu/qemu.c: In function 'qemu_wait':
+src/qemu/qemu.h:26:24: warning: statement with no effect [-Wunused-value]
+   26 | #define waitpid(p,s,o) (-1)
+      |                        ^
+src/qemu/qemu.c:601:5: note: in expansion of macro 'waitpid'
+  601 |     waitpid(s->pid, &status, 0);
+      |     ^~~~~~~
+src/qemu/qemu.c: In function 'qemu_terminate':
+src/qemu/qemu.h:27:24: warning: statement with no effect [-Wunused-value]
+   27 | #define kill(p,s)      (-1)
+      |                        ^
+src/qemu/qemu.c:610:5: note: in expansion of macro 'kill'
+  610 |     kill(s->pid, SIGKILL);
+      |     ^~~~
+src/wayland/wayland.c: In function 'wayland_init_socket':
+src/wayland/wayland.c:411:5: warning: 'strncpy' output may be truncated copying 511 bytes from a string of length 511 [-Wstringop-truncation]
+  411 |     strncpy(s->wayland_socket_path, path, sizeof(s->wayland_socket_path) - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/qemu/qemu.c: In function 'qemu_build_command_line':
+src/qemu/qemu.c:431:75: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size 2010 [-Wformat-truncation=]
+  431 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,readonly=on,file=%s", s->pflash[0]);
+      |                                                                           ^~
+src/qemu/qemu.c:431:9: note: 'snprintf' output between 39 and 4134 bytes into a destination of size 2048
+  431 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,readonly=on,file=%s", s->pflash[0]);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/qemu/qemu.c:436:63: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size 2022 [-Wformat-truncation=]
+  436 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,file=%s", s->pflash[1]);
+      |                                                               ^~
+src/qemu/qemu.c:436:9: note: 'snprintf' output between 27 and 4122 bytes into a destination of size 2048
+  436 |         snprintf(buf, sizeof(buf), "if=pflash,format=raw,file=%s", s->pflash[1]);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\wayland_wayland.o" -o "D:\\KenuxK\\bin\\components\\wayland.exe""
+<0> Generating bin/components/xorriso.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o "D:\\KenuxK\\build\\components\\xorriso_xorriso.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\qemu_qemu.o" -o "D:\\KenuxK\\bin\\components\\qemu.exe""
+<1> Generating bin/components/dd.exe
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/dd -c src/dd/dd.c -o "D:\\KenuxK\\build\\components\\dd_dd.o""
+src/dd/dd.c:8:10: fatal error: sys/mman.h: No such file or directory
+    8 | #include <sys/mman.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<1> Generating bin/components/mkfs.exe
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/mkfs -c src/mkfs/mkfs.c -o "D:\\KenuxK\\build\\components\\mkfs_mkfs.o""
+In file included from src/mkfs/mkfs.c:6:
+src/mkfs/mkfs.h:48:5: error: unknown type name 'uint32_t'
+   48 |     uint32_t s_magic;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:17:1: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+   16 | #include <time.h>
+  +++ |+#include <stdint.h>
+   17 | 
+src/mkfs/mkfs.h:49:5: error: unknown type name 'uint32_t'
+   49 |     uint32_t s_block_size;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:49:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:50:5: error: unknown type name 'uint32_t'
+   50 |     uint32_t s_blocks_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:50:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:51:5: error: unknown type name 'uint32_t'
+   51 |     uint32_t s_free_blocks_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:51:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:52:5: error: unknown type name 'uint32_t'
+   52 |     uint32_t s_free_inodes_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:52:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:53:5: error: unknown type name 'uint32_t'
+   53 |     uint32_t s_data_blocks_per_group;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:53:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:54:5: error: unknown type name 'uint32_t'
+   54 |     uint32_t s_inodes_per_group;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:54:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:55:5: error: unknown type name 'uint32_t'
+   55 |     uint32_t s_first_data_block;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:55:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:56:5: error: unknown type name 'uint32_t'
+   56 |     uint32_t s_log_block_size;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:56:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:57:5: error: unknown type name 'uint32_t'
+   57 |     uint32_t s_blocks_per_group;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:57:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:58:5: error: unknown type name 'uint32_t'
+   58 |     uint32_t s_frags_per_group;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:58:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:59:5: error: unknown type name 'uint32_t'
+   59 |     uint32_t s_inodes_per_group;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:59:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:60:5: error: unknown type name 'uint32_t'
+   60 |     uint32_t s_mtime;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:60:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:61:5: error: unknown type name 'uint32_t'
+   61 |     uint32_t s_wtime;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:61:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:62:5: error: unknown type name 'uint16_t'
+   62 |     uint16_t s_mnt_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:62:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:63:5: error: unknown type name 'uint16_t'
+   63 |     uint16_t s_max_mnt_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:63:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:64:5: error: unknown type name 'uint16_t'
+   64 |     uint16_t s_magic;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:64:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:65:5: error: unknown type name 'uint16_t'
+   65 |     uint16_t s_state;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:65:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:66:5: error: unknown type name 'uint16_t'
+   66 |     uint16_t s_errors;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:66:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:67:5: error: unknown type name 'uint16_t'
+   67 |     uint16_t s_minor_rev_level;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:67:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:68:5: error: unknown type name 'uint32_t'
+   68 |     uint32_t s_lastcheck;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:68:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:69:5: error: unknown type name 'uint32_t'
+   69 |     uint32_t s_checkinterval;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:69:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:70:5: error: unknown type name 'uint32_t'
+   70 |     uint32_t s_creator_os;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:70:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:71:5: error: unknown type name 'uint32_t'
+   71 |     uint32_t s_rev_level;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:71:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:59:14: error: duplicate member 's_inodes_per_group'
+   59 |     uint32_t s_inodes_per_group;
+      |              ^~~~~~~~~~~~~~~~~~
+src/mkfs/mkfs.h:64:14: error: duplicate member 's_magic'
+   64 |     uint16_t s_magic;
+      |              ^~~~~~~
+src/mkfs/mkfs.h:77:5: error: unknown type name 'uint32_t'
+   77 |     uint32_t bg_block_bitmap;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:77:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:78:5: error: unknown type name 'uint32_t'
+   78 |     uint32_t bg_inode_bitmap;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:78:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:79:5: error: unknown type name 'uint32_t'
+   79 |     uint32_t bg_inode_table;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:79:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:80:5: error: unknown type name 'uint16_t'
+   80 |     uint16_t bg_free_blocks_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:80:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:81:5: error: unknown type name 'uint16_t'
+   81 |     uint16_t bg_free_inodes_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:81:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:82:5: error: unknown type name 'uint16_t'
+   82 |     uint16_t bg_used_dirs_count;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:82:5: note: 'uint16_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:83:5: error: unknown type name 'uint32_t'
+   83 |     uint32_t bg_pad;
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:83:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.h:84:5: error: unknown type name 'uint32_t'
+   84 |     uint32_t bg_reserved[3];
+      |     ^~~~~~~~
+src/mkfs/mkfs.h:84:5: note: 'uint32_t' is defined in header '<stdint.h>'; this is probably fixable by adding '#include <stdint.h>'
+src/mkfs/mkfs.c:8:10: fatal error: sys/mman.h: No such file or directory
+    8 | #include <sys/mman.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+src/kde/kde.c:34:19: error: static declaration of 'gethostname' follows non-static declaration
+   34 | static inline int gethostname(char *name, int len) {
+      |                   ^~~~~~~~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/windows.h:92,
+                 from src/kde/kde.c:23:
+D:/mingw64/x86_64-w64-mingw32/include/winsock.h:309:34: note: previous declaration of 'gethostname' with type 'int(char *, int)'
+  309 |   WINSOCK_API_LINKAGE int WSAAPI gethostname(char *name,int namelen);
+      |                                  ^~~~~~~~~~~
+src/gnome/gnome.c:33:19: error: static declaration of 'gethostname' follows non-static declaration
+   33 | static inline int gethostname(char *name, int len) {
+      |                   ^~~~~~~~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/windows.h:92,
+                 from src/gnome/gnome.c:22:
+D:/mingw64/x86_64-w64-mingw32/include/winsock.h:309:34: note: previous declaration of 'gethostname' with type 'int(char *, int)'
+  309 |   WINSOCK_API_LINKAGE int WSAAPI gethostname(char *name,int namelen);
+      |                                  ^~~~~~~~~~~
+src/kde/kde.c: In function 'kde_start_session':
+src/kde/kde.c:1360:5: error: implicit declaration of function 'setenv'; did you mean 'getenv'? [-Wimplicit-function-declaration]
+ 1360 |     setenv("XDG_RUNTIME_DIR",  s->xdg_runtime_dir,   1);
+      |     ^~~~~~
+      |     getenv
+src/gnome/gnome.c: In function 'gnome_start_session':
+src/gnome/gnome.c:884:5: error: implicit declaration of function 'signal' [-Wimplicit-function-declaration]
+  884 |     signal(SIGINT,  gnome_on_term_signal);
+      |     ^~~~~~
+src/gnome/gnome.c:884:12: error: 'SIGINT' undeclared (first use in this function); did you mean 'MININT'?
+  884 |     signal(SIGINT,  gnome_on_term_signal);
+      |            ^~~~~~
+      |            MININT
+src/gnome/gnome.c:884:12: note: each undeclared identifier is reported only once for each function it appears in
+src/kde/kde.c: In function 'kde_run_session_loop':
+src/kde/kde.c:1411:9: error: implicit declaration of function 'WIFEXITED' [-Wimplicit-function-declaration]
+ 1411 |     if (WIFEXITED(status))      s->exit_code = WEXITSTATUS(status);
+      |         ^~~~~~~~~
+src/gnome/gnome.c:885:12: error: 'SIGTERM' undeclared (first use in this function)
+  885 |     signal(SIGTERM, gnome_on_term_signal);
+      |            ^~~~~~~
+src/gnome/gnome.c: In function 'gnome_run_session_loop':
+src/gnome/gnome.c:902:9: error: implicit declaration of function 'pause'; did you mean '_tpause'? [-Wimplicit-function-declaration]
+  902 |         pause();
+      |         ^~~~~
+      |         _tpause
+src/gnome/gnome.c: At top level:
+src/kde/kde.c:1411:48: error: implicit declaration of function 'WEXITSTATUS' [-Wimplicit-function-declaration]
+src/gnome/gnome.c:74:20: warning: 'gnome_color_style_name' defined but not used [-Wunused-function]
+ 1411 |     if (WIFEXITED(status))      s->exit_code = WEXITSTATUS(status);
+   74 | static const char *gnome_color_style_name(GnomeColorStyle s) {
+      |                                                ^~~~~~~~~~~
+      |                    ^~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c:49:19: warning: 'localtime_r' defined but not used [-Wunused-function]
+   49 | static struct tm *localtime_r(const time_t *t, struct tm *tm) {
+      |                   ^~~~~~~~~~~
+src/kde/kde.c:1412:14: error: implicit declaration of function 'WIFSIGNALED' [-Wimplicit-function-declaration]
+ 1412 |     else if (WIFSIGNALED(status)) s->exit_code = 128 + WTERMSIG(status);
+      |              ^~~~~~~~~~~
+src/kde/kde.c:1412:56: error: implicit declaration of function 'WTERMSIG' [-Wimplicit-function-declaration]
+ 1412 |     else if (WIFSIGNALED(status)) s->exit_code = 128 + WTERMSIG(status);
+      |                                                        ^~~~~~~~
+src/kde/kde.c: In function 'kde_end_session':
+src/kde/kde.c:28:24: warning: statement with no effect [-Wunused-value]
+   28 | #define kill(p,s)      (-1)
+      |                        ^
+src/kde/kde.c:1434:17: note: in expansion of macro 'kill'
+ 1434 |                 kill(*procs[i].pid, SIGTERM);
+      |                 ^~~~
+src/kde/kde.c:1437:9: error: implicit declaration of function 'usleep'; did you mean '_sleep'? [-Wimplicit-function-declaration]
+ 1437 |         usleep(150000);
+      |         ^~~~~~
+      |         _sleep
+src/kde/kde.c:28:24: warning: statement with no effect [-Wunused-value]
+   28 | #define kill(p,s)      (-1)
+      |                        ^
+src/kde/kde.c:1440:17: note: in expansion of macro 'kill'
+ 1440 |                 kill(*procs[i].pid, SIGKILL);
+      |                 ^~~~
+src/kde/kde.c: In function 'build_exec_argv':
+src/kde/kde.c:1624:24: error: assignment to 'char **' from incompatible pointer type 'char *' [-Wincompatible-pointer-types]
+ 1624 |         out_argv[ai++] = tok;
+      |                        ^
+src/kde/kde.c:1629:28: error: assignment to 'char **' from incompatible pointer type 'char *' [-Wincompatible-pointer-types]
+ 1629 |             out_argv[ai++] = argv_extra[i];
+      |                            ^
+src/kde/kde.c: In function 'kde_app_launch':
+src/kde/kde.c:1638:49: error: passing argument 3 of 'build_exec_argv' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1638 |     int argc = build_exec_argv(app, argv_extra, argv, 64);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char **
+src/kde/kde.c:1613:35: note: expected 'char ***' but argument is of type 'char **'
+ 1613 |                            char **out_argv[], int out_max) {
+      |                            ~~~~~~~^~~~~~~~~~
+src/kde/kde.c: At top level:
+src/kde/kde.c:248:20: warning: 'wallpaper_mode_name' defined but not used [-Wunused-function]
+  248 | static const char *wallpaper_mode_name(KdeWallpaperMode m) {
+      |                    ^~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:242:20: warning: 'menu_type_name' defined but not used [-Wunused-function]
+  242 | static const char *menu_type_name(KdeMenuType m) {
+      |                    ^~~~~~~~~~~~~~
+src/kde/kde.c:223:22: warning: 'widget_type_from_str' defined but not used [-Wunused-function]
+  223 | static KdeWidgetType widget_type_from_str(const char *s) {
+      |                      ^~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:187:20: warning: 'COLOR_SCHEME_SEARCH_DIRS' defined but not used [-Wunused-variable]
+  187 | static const char *COLOR_SCHEME_SEARCH_DIRS[] = {
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:50:19: warning: 'localtime_r' defined but not used [-Wunused-function]
+   50 | static struct tm *localtime_r(const time_t *t, struct tm *tm) {
+      |                   ^~~~~~~~~~~
+src/xorriso/xorriso.c: In function 'xorriso_init':
+src/xorriso/xorriso.c:36:5: error: implicit declaration of function 'time' [-Wimplicit-function-declaration]
+   36 |     time(&s->vol.creation_time);
+      |     ^~~~
+src/xorriso/xorriso.c:7:1: note: 'time' is defined in header '<time.h>'; this is probably fixable by adding '#include <time.h>'
+    6 | #include "xorriso.h"
+  +++ |+#include <time.h>
+    7 | 
+src/xorriso/xorriso.c: In function 'xorriso_walk_tree':
+src/xorriso/xorriso.c:109:13: error: implicit declaration of function 'lstat'; did you mean 'wstat'? [-Wimplicit-function-declaration]
+  109 |         if (lstat(full, &st) < 0) continue;
+      |             ^~~~~
+      |             wstat
+src/xorriso/xorriso.c:111:22: error: implicit declaration of function 'S_ISLNK'; did you mean 'S_ISBLK'? [-Wimplicit-function-declaration]
+  111 |         int is_sym = S_ISLNK(st.st_mode);
+      |                      ^~~~~~~
+      |                      S_ISBLK
+src/xorriso/xorriso.c:128:25: error: implicit declaration of function 'readlink' [-Wimplicit-function-declaration]
+  128 |             ssize_t r = readlink(full, e->symlink_target, XORRISO_MAX_PATH - 1);
+      |                         ^~~~~~~~
+src/xorriso/xorriso.c: In function 'xorriso_set_iso_datetime':
+src/xorriso/xorriso.c:180:21: error: implicit declaration of function 'gmtime' [-Wimplicit-function-declaration]
+  180 |     struct tm *tm = gmtime(&t);
+      |                     ^~~~~~
+src/xorriso/xorriso.c:180:21: note: 'gmtime' is defined in header '<time.h>'; this is probably fixable by adding '#include <time.h>'
+src/xorriso/xorriso.c:180:21: error: initialization of 'struct tm *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+src/xorriso/xorriso.c:182:47: error: invalid use of undefined type 'struct tm'
+  182 |     snprintf((char *)buf, 5, "%04d", 1900 + tm->tm_year);
+      |                                               ^~
+src/xorriso/xorriso.c:183:26: error: invalid use of undefined type 'struct tm'
+  183 |     buf[4] = (uint8_t)(tm->tm_mon + 1);
+      |                          ^~
+src/xorriso/xorriso.c:184:25: error: invalid use of undefined type 'struct tm'
+  184 |     buf[5] = (uint8_t)tm->tm_mday;
+      |                         ^~
+src/xorriso/xorriso.c:185:25: error: invalid use of undefined type 'struct tm'
+  185 |     buf[6] = (uint8_t)tm->tm_hour;
+      |                         ^~
+src/xorriso/xorriso.c:186:25: error: invalid use of undefined type 'struct tm'
+  186 |     buf[7] = (uint8_t)tm->tm_min;
+      |                         ^~
+src/xorriso/xorriso.c:187:25: error: invalid use of undefined type 'struct tm'
+  187 |     buf[8] = (uint8_t)tm->tm_sec;
+      |                         ^~
+src/xorriso/xorriso.c: In function 'xorriso_list_iso':
+src/xorriso/xorriso.c:754:43: warning: unused parameter 's' [-Wunused-parameter]
+  754 | static int xorriso_list_iso(XorrisoState *s, const char *iso) {
+      |                             ~~~~~~~~~~~~~~^
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o D:\KenuxK\build\components\xorriso_xorriso.o

@@ -1,0 +1,301 @@
+-- Start building task run run-debug -- (553609963)
+-- Start building task all -- (1)
+-- Start building task kernel -- (2)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/ipi_stubs.S
+-- Enter folder kernel/gui/src --
+<3> Building kernel/gui/src/kenux_render.c
+<1> Building kernel/arch/x86_64/usermode.c
+<0> Building kernel/arch/x86_64/uart.c
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/kernel.c
+kernel/gui/src/kenux_render.c: In function 'KENUX_Render_DrawDashboardCard':
+kernel/gui/src/kenux_render.c:363:36: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'char' may change value [-Wconversion]
+  363 |         while (v > 0) { tmp[i++] = '0' + (v % 10); v /= 10; }
+      |                                    ^~~
+kernel/gui/src/kenux_render.c: In function 'KAPI_Process_GetCount':
+kernel/gui/src/kenux_render.c:599:23: warning: comparison of integer expressions of different signedness: 'int' and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  599 |     for (int i = 0; i < process_count; i++) {
+      |                       ^
+kernel/gui/src/kenux_render.c: In function 'KAPI_Process_GetList':
+kernel/gui/src/kenux_render.c:612:23: warning: comparison of integer expressions of different signedness: 'int' and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  612 |     for (int i = 0; i < process_count; i++) {
+      |                       ^
+kernel/gui/src/kenux_render.c:620:23: warning: comparison of integer expressions of different signedness: 'int' and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  620 |     for (int i = 0; i < process_count && out < max_count; i++) {
+      |                       ^
+kernel/arch/x86_64/usermode.c: In function 'usermode_create_process':
+kernel/arch/x86_64/usermode.c:20:46: warning: unused parameter 'name' [-Wunused-parameter]
+   20 | uint64_t usermode_create_process(const char* name, void* entry, uint64_t* pid)
+      |                                  ~~~~~~~~~~~~^~~~
+kernel/arch/x86_64/usermode.c: In function 'usermode_syscall_handler':
+kernel/arch/x86_64/usermode.c:124:41: warning: unused parameter 'context' [-Wunused-parameter]
+  124 | void usermode_syscall_handler(uint64_t* context)
+      |                               ~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/usermode.c: In function 'usermode_page_fault_handler':
+kernel/arch/x86_64/usermode.c:130:43: warning: unused parameter 'fault_addr' [-Wunused-parameter]
+  130 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                  ~~~~~~~~~^~~~~~~~~~
+kernel/arch/x86_64/usermode.c:130:64: warning: unused parameter 'error_code' [-Wunused-parameter]
+  130 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                                       ~~~~~~~~~^~~~~~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_set_baud':
+kernel/arch/x86_64/uart.c:101:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  101 |     outb(p->base + UART_REG_DLL, divisor & 0xFF);
+      |                                  ~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c:102:49: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  102 |     outb(p->base + UART_REG_DLH, (divisor >> 8) & 0xFF);
+      |                                  ~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_set_flow_control':
+kernel/arch/x86_64/uart.c:131:16: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-11' [-Wsign-conversion]
+  131 |         mcr &= ~(UART_MCR_RTS | UART_MCR_OUT2);
+      |                ^
+kernel/arch/x86_64/uart.c: In function 'uart_init_port':
+kernel/arch/x86_64/uart.c:171:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  171 |     outb(p->base + UART_REG_DLL, divisor & 0xFF);
+      |                                  ~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c:172:49: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  172 |     outb(p->base + UART_REG_DLH, (divisor >> 8) & 0xFF);
+      |                                  ~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_irq_handler':
+kernel/arch/x86_64/uart.c:419:28: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-3' [-Wsign-conversion]
+  419 |                     ier &= ~UART_IER_THRI;
+      |                            ^
+kernel/arch/x86_64/uart.c: In function 'uart_irq_register':
+kernel/arch/x86_64/uart.c:471:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  471 |             stub = (void*)uart_com1_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:474:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  474 |             stub = (void*)uart_com2_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:477:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  477 |             stub = (void*)uart_com3_irq_stub;
+      |                    ^
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/uart.c:480:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  480 |             stub = (void*)uart_com4_irq_stub;
+      |                    ^
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  275 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+In file included from kernel/kernel/kernel.c:55:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:73:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/kernel/kernel.c: In function 'kernel_main':
+kernel/kernel/kernel.c:403:39: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  403 |                 mi = monitor_get_info(i);
+      |                                       ^
+kernel/kernel/kernel.c:416:49: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'char' may change value [-Wconversion]
+  416 |                     while (w > 0) { tmp[tl++] = '0' + (w % 10); w /= 10; }
+      |                                                 ^~~
+kernel/kernel/kernel.c:422:49: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'char' may change value [-Wconversion]
+  422 |                     while (h > 0) { tmp[tl++] = '0' + (h % 10); h /= 10; }
+      |                                                 ^~~
+kernel/kernel/kernel.c:431:50: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'char' may change value [-Wconversion]
+  431 |                     while (hz > 0) { tmp[tl++] = '0' + (hz % 10); hz /= 10; }
+      |                                                  ^~~
+kernel/kernel/kernel.c:97:71: warning: unused parameter 'mmi' [-Wunused-parameter]
+   97 | void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~^~~
+C:\Users\Administrator\AppData\Local\Temp\ccXhNldt.s: Assembler messages:
+C:\Users\Administrator\AppData\Local\Temp\ccXhNldt.s:80: Warning: no instruction mnemonic suffix given and no register operands; using default for `sysret'
+<1> Building kernel/arch/x86_64/smp.c
+<2> Building kernel/arch/x86_64/procfs.c
+<0> Building kernel/arch/x86_64/pagefault.c
+In file included from include/kapi.h:23,
+                 from kernel/arch/x86_64/procfs.c:10:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/procfs.c: In function 'procfs_cpuinfo_read':
+kernel/arch/x86_64/procfs.c:29:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   29 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: In function 'procfs_meminfo_read':
+kernel/arch/x86_64/procfs.c:65:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   65 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: In function 'procfs_stat_read':
+kernel/arch/x86_64/procfs.c:123:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  123 |     n += snprintf(buf + n, max_len - n, "cpu  %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:128:44: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  128 |             n += snprintf(buf + n, max_len - n, "cpu%u %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                            ^
+kernel/arch/x86_64/procfs.c:132:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  132 |     n += snprintf(buf + n, max_len - n, "intr %lu\n", irq_total);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:134:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  134 |     n += snprintf(buf + n, max_len - n, "ctxt %lu\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:136:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  136 |     n += snprintf(buf + n, max_len - n, "btime %lu\n", __uptime_cached / 1000);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:147:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  147 |     n += snprintf(buf + n, max_len - n, "processes %lu\n", proc_count);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:148:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  148 |     n += snprintf(buf + n, max_len - n, "procs_running %lu\n", running ? running : 1);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:149:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  149 |     n += snprintf(buf + n, max_len - n, "procs_blocked %lu\n", blocked);
+      |                                    ^
+kernel/arch/x86_64/procfs.c: In function 'procfs_finddir':
+kernel/arch/x86_64/procfs.c:272:24: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  272 |         pid = pid * 10 + (*p - '0');
+      |                        ^
+<1> Building kernel/arch/x86_64/idt.c
+kernel/arch/x86_64/pagefault.c: In function 'stack_expand':
+kernel/arch/x86_64/pagefault.c:157:37: warning: unsigned conversion from 'int' to 'uint64_t' {aka 'long long unsigned int'} changes value from '-4096' to '18446744073709547520' [-Wsign-conversion]
+  157 |     uint64_t page_addr = fault_addr & ~(PAGE_SIZE - 1);
+      |                                     ^
+kernel/arch/x86_64/pagefault.c: In function 'pagefault_handler':
+kernel/arch/x86_64/pagefault.c:230:48: warning: unsigned conversion from 'int' to 'uint64_t' {aka 'long long unsigned int'} changes value from '-4096' to '18446744073709547520' [-Wsign-conversion]
+  230 |                 if (demand_page_alloc(cr3, cr2 & ~(PAGE_SIZE - 1),
+      |                                                ^
+kernel/arch/x86_64/pagefault.c:243:56: warning: unsigned conversion from 'int' to 'uint64_t' {aka 'long long unsigned int'} changes value from '-4096' to '18446744073709547520' [-Wsign-conversion]
+  243 |                         proc->stack_base = (void*)(cr2 & ~(PAGE_SIZE - 1));
+      |                                                        ^
+kernel/arch/x86_64/pagefault.c: At top level:
+kernel/arch/x86_64/pagefault.c:27:13: warning: 'pf_log_buf' defined but not used [-Wunused-variable]
+   27 | static char pf_log_buf[PF_LOG_BUF_SIZE];
+      |             ^~~~~~~~~~
+<3> Building kernel/arch/x86_64/gdt.c
+kernel/arch/x86_64/idt.c: In function 'idt_init':
+kernel/arch/x86_64/idt.c:39:26: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   39 |             idt_set_gate(i, (uint64_t)interrupt_handler_err, 0x08, 0x8E, 0);
+      |                          ^
+kernel/arch/x86_64/idt.c:41:26: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   41 |             idt_set_gate(i, (uint64_t)interrupt_handler, 0x08, 0x8E, 0);
+      |                          ^
+kernel/arch/x86_64/idt.c: In function 'idt_set_gate':
+kernel/arch/x86_64/idt.c:60:28: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+   60 |     idt[index].base_high = (handler >> 32) & 0xFFFFFFFF;
+      |                            ^
+-- Enter folder kernel/api --
+<0> Building kernel/api/kapi_smp.c
+In file included from include/kapi.h:23,
+                 from kernel/api/kapi_smp.c:3:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+-- Enter folder img/boot --
+<3> Building img/boot/kernel.elf.pe
+<2> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<1> Generating esp/KENUXK.BIN
+<2> Running command: ""D:\\qemu\\qemu-system-x86_64.exe" -m 256M -pflash "D:\\KenuxK\\OVMF_CODE.fd" -drive "file=fat:rw:D:\\KenuxK\\esp,format=raw" -serial "file:D:\\KenuxK\\serial.log" -display none -no-reboot"
+WARNING: Image format was not specified for 'D:\KenuxK\OVMF_CODE.fd' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.

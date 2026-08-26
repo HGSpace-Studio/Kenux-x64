@@ -1,0 +1,809 @@
+-- Start building task run all -- (137320829)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/win32_security.c
+<3> Building kernel/arch/x86_64/win32_kernel32.c
+<1> Building kernel/arch/x86_64/wmi.c
+<0> Building kernel/arch/x86_64/win32_process.c
+In file included from kernel/arch/x86_64/wmi.c:3:
+kernel/arch/x86_64/include/arch/registry.h:6:18: error: conflicting types for 'HKEY'; have 'uint64_t' {aka 'long long unsigned int'}
+    6 | typedef uint64_t HKEY;
+      |                  ^~~~
+In file included from kernel/arch/x86_64/wmi.c:1:
+kernel/arch/x86_64/include/arch/win32.h:13:15: note: previous declaration of 'HKEY' with type 'HKEY' {aka 'void *'}
+   13 | typedef void* HKEY;
+      |               ^~~~
+kernel/arch/x86_64/include/arch/registry.h:8:9: warning: 'HKEY_CLASSES_ROOT' redefined
+    8 | #define HKEY_CLASSES_ROOT        ((HKEY)0x80000000)
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:811:9: note: this is the location of the previous definition
+  811 | #define HKEY_CLASSES_ROOT       ((HKEY)(ULONG_PTR)0x80000000)
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:9:9: warning: 'HKEY_CURRENT_USER' redefined
+    9 | #define HKEY_CURRENT_USER        ((HKEY)0x80000001)
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:812:9: note: this is the location of the previous definition
+  812 | #define HKEY_CURRENT_USER       ((HKEY)(ULONG_PTR)0x80000001)
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:10:9: warning: 'HKEY_LOCAL_MACHINE' redefined
+   10 | #define HKEY_LOCAL_MACHINE       ((HKEY)0x80000002)
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:813:9: note: this is the location of the previous definition
+  813 | #define HKEY_LOCAL_MACHINE      ((HKEY)(ULONG_PTR)0x80000002)
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:11:9: warning: 'HKEY_USERS' redefined
+   11 | #define HKEY_USERS               ((HKEY)0x80000003)
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:814:9: note: this is the location of the previous definition
+  814 | #define HKEY_USERS              ((HKEY)(ULONG_PTR)0x80000003)
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:12:9: warning: 'HKEY_PERFORMANCE_DATA' redefined
+   12 | #define HKEY_PERFORMANCE_DATA    ((HKEY)0x80000004)
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:815:9: note: this is the location of the previous definition
+  815 | #define HKEY_PERFORMANCE_DATA   ((HKEY)(ULONG_PTR)0x80000004)
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:13:9: warning: 'HKEY_CURRENT_CONFIG' redefined
+   13 | #define HKEY_CURRENT_CONFIG      ((HKEY)0x80000005)
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:816:9: note: this is the location of the previous definition
+  816 | #define HKEY_CURRENT_CONFIG     ((HKEY)(ULONG_PTR)0x80000005)
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:17:9: warning: 'KEY_QUERY_VALUE' redefined
+   17 | #define KEY_QUERY_VALUE          0x00000001
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:819:9: note: this is the location of the previous definition
+  819 | #define KEY_QUERY_VALUE         0x0001
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:18:9: warning: 'KEY_SET_VALUE' redefined
+   18 | #define KEY_SET_VALUE            0x00000002
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:820:9: note: this is the location of the previous definition
+  820 | #define KEY_SET_VALUE           0x0002
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:19:9: warning: 'KEY_CREATE_SUB_KEY' redefined
+   19 | #define KEY_CREATE_SUB_KEY       0x00000004
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:821:9: note: this is the location of the previous definition
+  821 | #define KEY_CREATE_SUB_KEY      0x0004
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:20:9: warning: 'KEY_ENUMERATE_SUB_KEYS' redefined
+   20 | #define KEY_ENUMERATE_SUB_KEYS   0x00000008
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:822:9: note: this is the location of the previous definition
+  822 | #define KEY_ENUMERATE_SUB_KEYS  0x0008
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:21:9: warning: 'KEY_NOTIFY' redefined
+   21 | #define KEY_NOTIFY               0x00000010
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:823:9: note: this is the location of the previous definition
+  823 | #define KEY_NOTIFY              0x0010
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:22:9: warning: 'KEY_CREATE_LINK' redefined
+   22 | #define KEY_CREATE_LINK          0x00000020
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:824:9: note: this is the location of the previous definition
+  824 | #define KEY_CREATE_LINK         0x0020
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:23:9: warning: 'KEY_WOW64_64KEY' redefined
+   23 | #define KEY_WOW64_64KEY          0x00000100
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:826:9: note: this is the location of the previous definition
+  826 | #define KEY_WOW64_64KEY         0x0100
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:24:9: warning: 'KEY_WOW64_32KEY' redefined
+   24 | #define KEY_WOW64_32KEY          0x00000200
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:825:9: note: this is the location of the previous definition
+  825 | #define KEY_WOW64_32KEY         0x0200
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:26:9: warning: 'KEY_READ' redefined
+   26 | #define KEY_READ                 (KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | 0x00020000)
+      |         ^~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:828:9: note: this is the location of the previous definition
+  828 | #define KEY_READ                ((0x00020000L | KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY) & (~0x00100000L))
+      |         ^~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:27:9: warning: 'KEY_WRITE' redefined
+   27 | #define KEY_WRITE                (KEY_SET_VALUE | KEY_CREATE_SUB_KEY | 0x00020000)
+      |         ^~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:829:9: note: this is the location of the previous definition
+  829 | #define KEY_WRITE               ((0x00020000L | KEY_SET_VALUE | KEY_CREATE_SUB_KEY) & (~0x00100000L))
+      |         ^~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:28:9: warning: 'KEY_EXECUTE' redefined
+   28 | #define KEY_EXECUTE              (KEY_READ)
+      |         ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:830:9: note: this is the location of the previous definition
+  830 | #define KEY_EXECUTE             ((KEY_READ) & (~0x00100000L))
+      |         ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:29:9: warning: 'KEY_ALL_ACCESS' redefined
+   29 | #define KEY_ALL_ACCESS           (KEY_QUERY_VALUE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | KEY_CREATE_LINK | 0x000F0000)
+      |         ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:831:9: note: this is the location of the previous definition
+  831 | #define KEY_ALL_ACCESS          ((0x000F0000L | KEY_QUERY_VALUE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | KEY_CREATE_LINK) & (~0x00100000L))
+      |         ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_SUCCESS' redefined
+   48 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:790:9: note: this is the location of the previous definition
+  790 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   49 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:791:9: note: this is the location of the previous definition
+  791 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   50 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:793:9: note: this is the location of the previous definition
+  793 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:51:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   51 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:794:9: note: this is the location of the previous definition
+  794 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:52:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   52 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:795:9: note: this is the location of the previous definition
+  795 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:53:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   53 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:801:9: note: this is the location of the previous definition
+  801 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:54:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   54 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:806:9: note: this is the location of the previous definition
+  806 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:134:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  134 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:147:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  147 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:166:5: error: conflicting types for 'RegOpenKeyExA'; have 'int(int,  const char *, uint32_t,  REGSAM,  int *)' {aka 'int(int,  const char *, unsigned int,  unsigned int,  int *)'}
+  166 | int RegOpenKeyExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1060:5: note: previous declaration of 'RegOpenKeyExA' with type 'int(void *, const char *, DWORD,  REGSAM,  void **)' {aka 'int(void *, const char *, unsigned int,  unsigned int,  void **)'}
+ 1060 | int RegOpenKeyExA(HKEY hKey, const char* lpSubKey, DWORD ulOptions, REGSAM samDesired, HKEY* phkResult);
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:172:5: error: conflicting types for 'RegCreateKeyExA'; have 'int(int,  const char *, uint32_t,  char *, uint32_t,  REGSAM,  void *, int *, uint32_t *)' {aka 'int(int,  const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, int *, unsigned int *)'}
+  172 | int RegCreateKeyExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1061:5: note: previous declaration of 'RegCreateKeyExA' with type 'int(void *, const char *, DWORD,  char *, DWORD,  REGSAM,  void *, void **, DWORD *)' {aka 'int(void *, const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, void **, unsigned int *)'}
+ 1061 | int RegCreateKeyExA(HKEY hKey, const char* lpSubKey, DWORD Reserved, char* lpClass, DWORD dwOptions, REGSAM samDesired, void* lpSecurityAttributes, HKEY* phkResult, DWORD* lpdwDisposition);
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:182:5: error: conflicting types for 'RegCloseKey'; have 'int(int)'
+In file included from kernel/arch/x86_64/win32_kernel32.c:2:
+kernel/arch/x86_64/win32_security.c: In function 'InitializeSecurityDescriptor':
+  182 | int RegCloseKey(HKEY hKey);
+kernel/arch/x86_64/include/arch/registry.h:6:18: error: conflicting types for 'HKEY'; have 'uint64_t' {aka 'long long unsigned int'}
+      |     ^~~~~~~~~~~
+    6 | typedef uint64_t HKEY;
+kernel/arch/x86_64/win32_security.c:192:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+kernel/arch/x86_64/include/arch/win32.h:1062:5: note: previous declaration of 'RegCloseKey' with type 'int(void *)'
+  192 |     if (pSD == NULL) return FALSE;
+ 1062 | int RegCloseKey(HKEY hKey);
+      |             ^~
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:194:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+kernel/arch/x86_64/include/arch/registry.h:184:5: error: conflicting types for 'RegQueryValueExA'; have 'int(int,  const char *, uint32_t *, uint32_t *, uint8_t *, uint32_t *)' {aka 'int(int,  const char *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+  194 |     pSD->Revision = (uint8_t)dwRevision;
+  184 | int RegQueryValueExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1063:5: note: previous declaration of 'RegQueryValueExA' with type 'int(void *, const char *, DWORD *, DWORD *, BYTE *, DWORD *)' {aka 'int(void *, const char *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+ 1063 | int RegQueryValueExA(HKEY hKey, const char* lpValueName, DWORD* lpReserved, DWORD* lpType, BYTE* lpData, DWORD* lpcbData);
+      |        ^~
+      |     ^~~~~~~~~~~~~~~~
+      |                  ^~~~
+kernel/arch/x86_64/win32_security.c:195:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  195 |     pSD->Sbz1 = 0;
+      |        ^~
+kernel/arch/x86_64/win32_security.c:196:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  196 |     pSD->Control = 0;
+      |        ^~
+kernel/arch/x86_64/include/arch/registry.h:191:5: error: conflicting types for 'RegSetValueExA'; have 'int(int,  const char *, uint32_t,  uint32_t,  const uint8_t *, uint32_t)' {aka 'int(int,  const char *, unsigned int,  unsigned int,  const unsigned char *, unsigned int)'}
+kernel/arch/x86_64/win32_security.c:197:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  191 | int RegSetValueExA(HKEY hKey,
+  197 |     pSD->Owner = 0;
+      |     ^~~~~~~~~~~~~~
+      |        ^~
+kernel/arch/x86_64/include/arch/win32.h:1064:5: note: previous declaration of 'RegSetValueExA' with type 'int(void *, const char *, DWORD,  DWORD,  const BYTE *, DWORD)' {aka 'int(void *, const char *, unsigned int,  unsigned int,  const unsigned char *, unsigned int)'}
+kernel/arch/x86_64/win32_security.c:198:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  198 |     pSD->Group = 0;
+      |        ^~
+kernel/arch/x86_64/win32_security.c:199:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  199 |     pSD->Sacl = 0;
+      |        ^~
+kernel/arch/x86_64/win32_security.c:200:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  200 |     pSD->Dacl = 0;
+      |        ^~
+kernel/arch/x86_64/win32_security.c: In function 'SetSecurityDescriptorOwner':
+kernel/arch/x86_64/win32_security.c:205:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+ 1064 | int RegSetValueExA(HKEY hKey, const char* lpValueName, DWORD Reserved, DWORD dwType, const BYTE* lpData, DWORD cbData);
+In file included from kernel/arch/x86_64/win32_kernel32.c:1:
+  205 |     if (pSD == NULL) return FALSE;
+      |     ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:198:5: error: conflicting types for 'RegEnumKeyExA'; have 'int(int,  uint32_t,  char *, uint32_t *, uint32_t *, char *, uint32_t *, uint64_t *)' {aka 'int(int,  unsigned int,  char *, unsigned int *, unsigned int *, char *, unsigned int *, long long unsigned int *)'}
+      |             ^~
+  198 | int RegEnumKeyExA(HKEY hKey,
+kernel/arch/x86_64/win32_security.c:207:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+      |     ^~~~~~~~~~~~~
+  207 |         pSD->Owner = (uint32_t)((uint8_t*)pOwner - (uint8_t*)pSD);
+kernel/arch/x86_64/include/arch/win32.h:1065:5: note: previous declaration of 'RegEnumKeyExA' with type 'int(void *, DWORD,  char *, DWORD *, DWORD *, char *, DWORD *, uint64_t *)' {aka 'int(void *, unsigned int,  char *, unsigned int *, unsigned int *, char *, unsigned int *, long long unsigned int *)'}
+      |            ^~
+ 1065 | int RegEnumKeyExA(HKEY hKey, DWORD dwIndex, char* lpName, DWORD* lpcchName, DWORD* lpReserved, char* lpClass, DWORD* lpcchClass, uint64_t* lpftLastWriteTime);
+kernel/arch/x86_64/win32_security.c:207:9: error: cannot convert to a pointer type
+      |     ^~~~~~~~~~~~~
+  207 |         pSD->Owner = (uint32_t)((uint8_t*)pOwner - (uint8_t*)pSD);
+kernel/arch/x86_64/include/arch/registry.h:207:5: error: conflicting types for 'RegEnumValueA'; have 'int(int,  uint32_t,  char *, uint32_t *, uint32_t *, uint32_t *, uint8_t *, uint32_t *)' {aka 'int(int,  unsigned int,  char *, unsigned int *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+  207 | int RegEnumValueA(HKEY hKey,
+      |         ^~~
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:209:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+kernel/arch/x86_64/include/arch/win32.h:1066:5: note: previous declaration of 'RegEnumValueA' with type 'int(void *, DWORD,  char *, DWORD *, DWORD *, DWORD *, BYTE *, DWORD *)' {aka 'int(void *, unsigned int,  char *, unsigned int *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+  209 |         pSD->Owner = 0;
+ 1066 | int RegEnumValueA(HKEY hKey, DWORD dwIndex, char* lpValueName, DWORD* lpcchValueName, DWORD* lpReserved, DWORD* lpType, BYTE* lpData, DWORD* lpcbData);
+      |            ^~
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:212:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+kernel/arch/x86_64/include/arch/registry.h:216:5: error: conflicting types for 'RegDeleteKeyA'; have 'int(int,  const char *)'
+  212 |         pSD->Control |= SE_OWNER_DEFAULTED;
+  216 | int RegDeleteKeyA(HKEY hKey, const char* lpSubKey);
+      |            ^~
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:214:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+kernel/arch/x86_64/include/arch/win32.h:1067:5: note: previous declaration of 'RegDeleteKeyA' with type 'int(void *, const char *)'
+  214 |         pSD->Control &= (uint16_t)~SE_OWNER_DEFAULTED;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:216:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  216 |     pSD->Control |= SE_SELF_RELATIVE;
+      |        ^~
+kernel/arch/x86_64/win32_security.c: In function 'SetSecurityDescriptorGroup':
+ 1067 | int RegDeleteKeyA(HKEY hKey, const char* lpSubKey);
+kernel/arch/x86_64/win32_security.c:221:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:13:15: note: previous declaration of 'HKEY' with type 'HKEY' {aka 'void *'}
+   13 | typedef void* HKEY;
+kernel/arch/x86_64/include/arch/registry.h:218:5: error: conflicting types for 'RegDeleteValueA'; have 'int(int,  const char *)'
+  221 |     if (pSD == NULL) return FALSE;
+      |             ^~
+  218 | int RegDeleteValueA(HKEY hKey, const char* lpValueName);
+kernel/arch/x86_64/win32_security.c:223:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  223 |         pSD->Group = (uint32_t)((uint8_t*)pGroup - (uint8_t*)pSD);
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1068:5: note: previous declaration of 'RegDeleteValueA' with type 'int(void *, const char *)'
+      |            ^~
+kernel/arch/x86_64/win32_security.c:223:9: error: cannot convert to a pointer type
+  223 |         pSD->Group = (uint32_t)((uint8_t*)pGroup - (uint8_t*)pSD);
+      |         ^~~
+kernel/arch/x86_64/win32_security.c:225:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+ 1068 | int RegDeleteValueA(HKEY hKey, const char* lpValueName);
+  225 |         pSD->Group = 0;
+      |     ^~~~~~~~~~~~~~~
+      |            ^~
+kernel/arch/x86_64/include/arch/registry.h:220:5: error: conflicting types for 'RegFlushKey'; have 'int(int)'
+  220 | int RegFlushKey(HKEY hKey);
+kernel/arch/x86_64/win32_security.c:228:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1069:5: note: previous declaration of 'RegFlushKey' with type 'int(void *)'
+ 1069 | int RegFlushKey(HKEY hKey);
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_init':
+kernel/arch/x86_64/wmi.c:282:51: error: hexadecimal floating constants require an exponent
+  282 |         wmi_add_property_u64(inst, "ReleaseDate", 0x07E20101000000.000000+000ull);
+      |                                                   ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_exec_query':
+kernel/arch/x86_64/wmi.c:498:21: warning: multi-character character constant [-Wmultichar]
+  498 |     en->signature = 'ENUM';
+      |                     ^~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_enum_get':
+kernel/arch/x86_64/wmi.c:531:36: warning: multi-character character constant [-Wmultichar]
+  531 |     if (en->signature != (uint32_t)'ENUM') return WBEM_E_INVALID_PARAMETER;
+      |                                    ^~~~~~
+  228 |         pSD->Control |= SE_GROUP_DEFAULTED;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:230:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  230 |         pSD->Control &= (uint16_t)~SE_GROUP_DEFAULTED;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:232:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  232 |     pSD->Control |= SE_SELF_RELATIVE;
+      |        ^~
+kernel/arch/x86_64/win32_security.c: In function 'SetSecurityDescriptorDacl':
+kernel/arch/x86_64/win32_security.c:237:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+  237 |     if (pSD == NULL) return FALSE;
+      |             ^~
+kernel/arch/x86_64/win32_security.c:239:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  239 |         pSD->Control |= SE_DACL_PRESENT;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:241:16: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  241 |             pSD->Dacl = (uint32_t)((uint8_t*)pDacl - (uint8_t*)pSD);
+      |                ^~
+kernel/arch/x86_64/win32_security.c:241:13: error: cannot convert to a pointer type
+  241 |             pSD->Dacl = (uint32_t)((uint8_t*)pDacl - (uint8_t*)pSD);
+      |             ^~~
+kernel/arch/x86_64/win32_security.c:243:16: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  243 |             pSD->Dacl = 0;
+      |                ^~
+kernel/arch/x86_64/win32_security.c:246:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  246 |         pSD->Control &= (uint16_t)~SE_DACL_PRESENT;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:247:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  247 |         pSD->Dacl = 0;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:250:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  250 |         pSD->Control |= SE_DACL_DEFAULTED;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:252:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  252 |         pSD->Control &= (uint16_t)~SE_DACL_DEFAULTED;
+      |            ^~
+kernel/arch/x86_64/win32_security.c:254:8: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  254 |     pSD->Control |= SE_SELF_RELATIVE;
+      |        ^~
+kernel/arch/x86_64/win32_security.c: In function 'GetSecurityDescriptorOwner':
+kernel/arch/x86_64/win32_security.c:259:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+  259 |     if (pSD == NULL || pOwner == NULL) return FALSE;
+      |             ^~
+kernel/arch/x86_64/win32_security.c:260:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  260 |     if (pSD->Owner == 0) {
+      |            ^~
+kernel/arch/x86_64/win32_security.c:263:9: error: cannot convert to a pointer type
+  263 |         *pOwner = (PSID)((uint8_t*)pSD + pSD->Owner);
+      |         ^
+kernel/arch/x86_64/win32_security.c:263:45: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  263 |         *pOwner = (PSID)((uint8_t*)pSD + pSD->Owner);
+      |                                             ^~
+kernel/arch/x86_64/win32_security.c:266:34: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  266 |         *lpbOwnerDefaulted = (pSD->Control & SE_OWNER_DEFAULTED) ? TRUE : FALSE;
+      |                                  ^~
+kernel/arch/x86_64/win32_security.c: In function 'GetSecurityDescriptorGroup':
+kernel/arch/x86_64/win32_security.c:272:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+  272 |     if (pSD == NULL || pGroup == NULL) return FALSE;
+      |             ^~
+kernel/arch/x86_64/win32_security.c:273:12: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+      |               ^~~~
+<1> Building kernel/arch/x86_64/win32_gdi_and_msg.c
+  273 |     if (pSD->Group == 0) {
+kernel/arch/x86_64/include/arch/registry.h:8:9: warning: 'HKEY_CLASSES_ROOT' redefined
+      |            ^~
+    8 | #define HKEY_CLASSES_ROOT        ((HKEY)0x80000000)
+kernel/arch/x86_64/win32_security.c:276:9: error: cannot convert to a pointer type
+      |         ^~~~~~~~~~~~~~~~~
+  276 |         *pGroup = (PSID)((uint8_t*)pSD + pSD->Group);
+kernel/arch/x86_64/include/arch/win32.h:811:9: note: this is the location of the previous definition
+      |         ^
+kernel/arch/x86_64/win32_security.c:276:45: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  276 |         *pGroup = (PSID)((uint8_t*)pSD + pSD->Group);
+      |                                             ^~
+kernel/arch/x86_64/win32_security.c:279:34: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  279 |         *lpbGroupDefaulted = (pSD->Control & SE_GROUP_DEFAULTED) ? TRUE : FALSE;
+      |                                  ^~
+kernel/arch/x86_64/win32_security.c: In function 'GetSecurityDescriptorDacl':
+  811 | #define HKEY_CLASSES_ROOT       ((HKEY)(ULONG_PTR)0x80000000)
+kernel/arch/x86_64/win32_security.c:285:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+      |         ^~~~~~~~~~~~~~~~~
+  285 |     if (pSD == NULL) return FALSE;
+kernel/arch/x86_64/include/arch/registry.h:9:9: warning: 'HKEY_CURRENT_USER' redefined
+      |             ^~
+    9 | #define HKEY_CURRENT_USER        ((HKEY)0x80000001)
+kernel/arch/x86_64/win32_security.c:287:31: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+      |         ^~~~~~~~~~~~~~~~~
+  287 |         *lpbDaclPresent = (pSD->Control & SE_DACL_PRESENT) ? TRUE : FALSE;
+kernel/arch/x86_64/include/arch/win32.h:812:9: note: this is the location of the previous definition
+      |                               ^~
+  812 | #define HKEY_CURRENT_USER       ((HKEY)(ULONG_PTR)0x80000001)
+kernel/arch/x86_64/win32_security.c:290:16: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+      |         ^~~~~~~~~~~~~~~~~
+  290 |         if (pSD->Dacl == 0) {
+kernel/arch/x86_64/include/arch/registry.h:10:9: warning: 'HKEY_LOCAL_MACHINE' redefined
+      |                ^~
+   10 | #define HKEY_LOCAL_MACHINE       ((HKEY)0x80000002)
+kernel/arch/x86_64/win32_security.c:293:13: error: cannot convert to a pointer type
+      |         ^~~~~~~~~~~~~~~~~~
+  293 |             *pDacl = (PACL)((uint8_t*)pSD + pSD->Dacl);
+      |             ^
+kernel/arch/x86_64/win32_security.c:293:48: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  293 |             *pDacl = (PACL)((uint8_t*)pSD + pSD->Dacl);
+      |                                                ^~
+kernel/arch/x86_64/win32_security.c:297:33: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+  297 |         *lpbDaclDefaulted = (pSD->Control & SE_DACL_DEFAULTED) ? TRUE : FALSE;
+      |                                 ^~
+kernel/arch/x86_64/win32_security.c: In function 'GetSecurityDescriptorControl':
+kernel/arch/x86_64/include/arch/win32.h:813:9: note: this is the location of the previous definition
+kernel/arch/x86_64/win32_security.c:303:13: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+  813 | #define HKEY_LOCAL_MACHINE      ((HKEY)(ULONG_PTR)0x80000002)
+kernel/arch/x86_64/win32_process.c: In function 'win32_terminate_process':
+  303 |     if (pSD == NULL) return 0;
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:678:12: error: implicit declaration of function 'win32_get_process'; did you mean 'win32_create_process'? [-Wimplicit-function-declaration]
+      |             ^~
+  678 |     proc = win32_get_process(pid);
+      |            ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:305:24: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+kernel/arch/x86_64/include/arch/registry.h:11:9: warning: 'HKEY_USERS' redefined
+      |            win32_create_process
+kernel/arch/x86_64/win32_process.c:678:10: error: assignment to 'win32_process_t *' {aka 'struct _win32_process_t *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   11 | #define HKEY_USERS               ((HKEY)0x80000003)
+  305 |         *pControl = pSD->Control;
+  678 |     proc = win32_get_process(pid);
+      |         ^~~~~~~~~~
+      |                        ^~
+      |          ^
+kernel/arch/x86_64/include/arch/win32.h:814:9: note: this is the location of the previous definition
+kernel/arch/x86_64/win32_security.c:308:38: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+kernel/arch/x86_64/win32_process.c: At top level:
+  814 | #define HKEY_USERS              ((HKEY)(ULONG_PTR)0x80000003)
+  308 |         *lpdwRevision = (uint32_t)pSD->Revision;
+kernel/arch/x86_64/win32_process.c:717:18: error: conflicting types for 'win32_get_process'; have 'win32_process_t *(uint32_t)' {aka 'struct _win32_process_t *(unsigned int)'}
+      |         ^~~~~~~~~~
+      |                                      ^~
+  717 | win32_process_t* win32_get_process(uint32_t pid) {
+kernel/arch/x86_64/include/arch/registry.h:12:9: warning: 'HKEY_PERFORMANCE_DATA' redefined
+kernel/arch/x86_64/win32_security.c:310:25: error: invalid type argument of '->' (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'})
+      |                  ^~~~~~~~~~~~~~~~~
+   12 | #define HKEY_PERFORMANCE_DATA    ((HKEY)0x80000004)
+  310 |     return (uint32_t)pSD->Control;
+kernel/arch/x86_64/win32_process.c:678:12: note: previous implicit declaration of 'win32_get_process' with type 'int()'
+      |         ^~~~~~~~~~~~~~~~~~~~~
+      |                         ^~
+  678 |     proc = win32_get_process(pid);
+kernel/arch/x86_64/include/arch/win32.h:815:9: note: this is the location of the previous definition
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+      |            ^~~~~~~~~~~~~~~~~
+  815 | #define HKEY_PERFORMANCE_DATA   ((HKEY)(ULONG_PTR)0x80000004)
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+kernel/arch/x86_64/win32_process.c:490:13: warning: 'process_slot_cleanup' defined but not used [-Wunused-function]
+      |         ^~~~~~~~~~~~~~~~~~~~~
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+  490 | static void process_slot_cleanup(win32_process_t* proc) {
+kernel/arch/x86_64/include/arch/registry.h:13:9: warning: 'HKEY_CURRENT_CONFIG' redefined
+      |                                           ^
+      |             ^~~~~~~~~~~~~~~~~~~~
+   13 | #define HKEY_CURRENT_CONFIG      ((HKEY)0x80000005)
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'GetSystemMetrics':
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+kernel/arch/x86_64/include/arch/win32.h:816:9: note: this is the location of the previous definition
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:383:14: error: 'SM_CXTHUMB' undeclared (first use in this function); did you mean 'SM_CXHTHUMB'?
+  816 | #define HKEY_CURRENT_CONFIG     ((HKEY)(ULONG_PTR)0x80000005)
+  383 |         case SM_CXTHUMB: return 16;
+      |              ^~~~~~~~~~
+      |              SM_CXHTHUMB
+kernel/arch/x86_64/win32_gdi_and_msg.c:383:14: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+kernel/arch/x86_64/win32_gdi_and_msg.c: At top level:
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+kernel/arch/x86_64/win32_gdi_and_msg.c:525:42: warning: overflow in conversion from 'int' to 'short int' changes value from '33999' to '-31537' [-Woverflow]
+      |                                           ^
+  525 |     0, 8363, 16069, 22765, 28138, 31939, 33999, 34263, 32702,
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+      |                                          ^~~~~
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+kernel/arch/x86_64/win32_gdi_and_msg.c:525:49: warning: overflow in conversion from 'int' to 'short int' changes value from '34263' to '-31273' [-Woverflow]
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  525 |     0, 8363, 16069, 22765, 28138, 31939, 33999, 34263, 32702,
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+      |                                                 ^~~~~
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+kernel/arch/x86_64/win32_gdi_and_msg.c:527:21: warning: overflow in conversion from 'int' to 'short int' changes value from '-32787' to '32749' [-Woverflow]
+      |                                           ^
+  527 |     -25102, -29755, -32787, -34104, -33649, -31480, -27710, -22506
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+      |                     ^
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+kernel/arch/x86_64/win32_gdi_and_msg.c:527:29: warning: overflow in conversion from 'int' to 'short int' changes value from '-34104' to '31432' [-Woverflow]
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  527 |     -25102, -29755, -32787, -34104, -33649, -31480, -27710, -22506
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+      |                             ^
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+kernel/arch/x86_64/win32_gdi_and_msg.c:527:37: warning: overflow in conversion from 'int' to 'short int' changes value from '-33649' to '31887' [-Woverflow]
+      |                                           ^
+  527 |     -25102, -29755, -32787, -34104, -33649, -31480, -27710, -22506
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+      |                                     ^
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+kernel/arch/x86_64/win32_gdi_and_msg.c:531:29: warning: overflow in conversion from 'int' to 'short int' changes value from '-34183' to '31353' [-Woverflow]
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+  531 |     -21473, -27452, -31783, -34183, -34516, -32730, -28899, -23224,
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:17:9: warning: 'KEY_QUERY_VALUE' redefined
+      |                             ^
+   17 | #define KEY_QUERY_VALUE          0x00000001
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+kernel/arch/x86_64/win32_gdi_and_msg.c:531:37: warning: overflow in conversion from 'int' to 'short int' changes value from '-34516' to '31020' [-Woverflow]
+      |         ^~~~~~~~~~~~~~~
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+  531 |     -21473, -27452, -31783, -34183, -34516, -32730, -28899, -23224,
+      |                                     ^
+      |                                           ^
+kernel/arch/x86_64/include/arch/win32.h:819:9: note: this is the location of the previous definition
+  819 | #define KEY_QUERY_VALUE         0x0001
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+kernel/arch/x86_64/win32_gdi_and_msg.c:532:54: warning: overflow in conversion from 'int' to 'short int' changes value from '33497' to '-32039' [-Woverflow]
+      |         ^~~~~~~~~~~~~~~
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+  532 |     -16016, -7649, 1299, 10197, 18435, 25369, 30478, 33497
+kernel/arch/x86_64/include/arch/registry.h:18:9: warning: 'KEY_SET_VALUE' redefined
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                      ^~~~~
+   18 | #define KEY_SET_VALUE            0x00000002
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'Ellipse':
+      |         ^~~~~~~~~~~~~
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+kernel/arch/x86_64/win32_gdi_and_msg.c:537:14: warning: variable 'brush_color' set but not used [-Wunused-but-set-variable=]
+kernel/arch/x86_64/include/arch/win32.h:820:9: note: this is the location of the previous definition
+      |                                           ^
+  537 |     COLORREF brush_color = RGB(255, 255, 255);
+  820 | #define KEY_SET_VALUE           0x0002
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+      |              ^~~~~~~~~~~
+      |         ^~~~~~~~~~~~~
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'default_window_proc':
+kernel/arch/x86_64/include/arch/registry.h:19:9: warning: 'KEY_CREATE_SUB_KEY' redefined
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:1041:64: warning: unused parameter 'wparam' [-Wunused-parameter]
+   19 | #define KEY_CREATE_SUB_KEY       0x00000004
+kernel/arch/x86_64/win32_security.c: In function 'AccessCheck':
+ 1041 | static LRESULT default_window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:624:29: error: invalid operands to binary == (have 'PSECURITY_DESCRIPTOR' {aka 'struct _SECURITY_DESCRIPTOR'} and 'void *')
+      |                                                         ~~~~~~~^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:821:9: note: this is the location of the previous definition
+  624 |     if (pSecurityDescriptor == NULL) {
+kernel/arch/x86_64/win32_gdi_and_msg.c:1041:79: warning: unused parameter 'lparam' [-Wunused-parameter]
+  821 | #define KEY_CREATE_SUB_KEY      0x0004
+      |                             ^~
+ 1041 | static LRESULT default_window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+      |                                                                        ~~~~~~~^~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'CreateWindowExA':
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:1232:20: warning: conversion to 'LONG' {aka 'long int'} from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+kernel/arch/x86_64/include/arch/registry.h:20:9: warning: 'KEY_ENUMERATE_SUB_KEYS' redefined
+ 1232 |         cs.style = dwStyle;
+   20 | #define KEY_ENUMERATE_SUB_KEYS   0x00000008
+      |                    ^~~~~~~
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'ShowWindow':
+kernel/arch/x86_64/include/arch/win32.h:822:9: note: this is the location of the previous definition
+kernel/arch/x86_64/win32_gdi_and_msg.c:1295:9: error: duplicate case value
+  822 | #define KEY_ENUMERATE_SUB_KEYS  0x0008
+ 1295 |         case SW_MAXIMIZE:
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+      |         ^~~~
+kernel/arch/x86_64/include/arch/registry.h:21:9: warning: 'KEY_NOTIFY' redefined
+   21 | #define KEY_NOTIFY               0x00000010
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:823:9: note: this is the location of the previous definition
+  823 | #define KEY_NOTIFY              0x0010
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:22:9: warning: 'KEY_CREATE_LINK' redefined
+   22 | #define KEY_CREATE_LINK          0x00000020
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:824:9: note: this is the location of the previous definition
+  824 | #define KEY_CREATE_LINK         0x0020
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:23:9: warning: 'KEY_WOW64_64KEY' redefined
+   23 | #define KEY_WOW64_64KEY          0x00000100
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:826:9: note: this is the location of the previous definition
+  826 | #define KEY_WOW64_64KEY         0x0100
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:24:9: warning: 'KEY_WOW64_32KEY' redefined
+   24 | #define KEY_WOW64_32KEY          0x00000200
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:825:9: note: this is the location of the previous definition
+  825 | #define KEY_WOW64_32KEY         0x0200
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:26:9: warning: 'KEY_READ' redefined
+   26 | #define KEY_READ                 (KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | 0x00020000)
+      |         ^~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:828:9: note: this is the location of the previous definition
+  828 | #define KEY_READ                ((0x00020000L | KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY) & (~0x00100000L))
+      |         ^~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:27:9: warning: 'KEY_WRITE' redefined
+   27 | #define KEY_WRITE                (KEY_SET_VALUE | KEY_CREATE_SUB_KEY | 0x00020000)
+      |         ^~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:829:9: note: this is the location of the previous definition
+  829 | #define KEY_WRITE               ((0x00020000L | KEY_SET_VALUE | KEY_CREATE_SUB_KEY) & (~0x00100000L))
+      |         ^~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:28:9: warning: 'KEY_EXECUTE' redefined
+   28 | #define KEY_EXECUTE              (KEY_READ)
+      |         ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:830:9: note: this is the location of the previous definition
+  830 | #define KEY_EXECUTE             ((KEY_READ) & (~0x00100000L))
+      |         ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:29:9: warning: 'KEY_ALL_ACCESS' redefined
+   29 | #define KEY_ALL_ACCESS           (KEY_QUERY_VALUE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | KEY_CREATE_LINK | 0x000F0000)
+      |         ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:831:9: note: this is the location of the previous definition
+  831 | #define KEY_ALL_ACCESS          ((0x000F0000L | KEY_QUERY_VALUE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | KEY_CREATE_LINK) & (~0x00100000L))
+      |         ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_SUCCESS' redefined
+   48 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:790:9: note: this is the location of the previous definition
+  790 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   49 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:791:9: note: this is the location of the previous definition
+  791 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   50 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:793:9: note: this is the location of the previous definition
+  793 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:1294:9: note: previously used here
+ 1294 |         case SW_SHOWMAXIMIZED:
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+      |         ^~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'TranslateMessage':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+kernel/arch/x86_64/win32_gdi_and_msg.c:1751:35: error: 'KEY_RETURN' undeclared (first use in this function); did you mean 'KEY_RCTRL'?
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+ 1751 |         } else if (key == (WPARAM)KEY_RETURN) {
+      |                                           ^
+      |                                   ^~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+      |                                   KEY_RCTRL
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:690:15: error: too few arguments to function 'AllocateAndInitializeSid'; expected 10, have 9
+  690 |     sys_sid = AllocateAndInitializeSid(&nt_auth, 1, SECURITY_LOCAL_SYSTEM_RID, 0, 0, 0, 0, 0, 0);
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:550:6: note: declared here
+  550 | PSID AllocateAndInitializeSid(SID_IDENTIFIER_AUTHORITY* pIdentifierAuthority, uint8_t nSubAuthorityCount,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:695:17: error: too few arguments to function 'AllocateAndInitializeSid'; expected 10, have 9
+  695 |     groups[0] = AllocateAndInitializeSid(&nt_auth, 2, 32u, DOMAIN_GROUP_RID_ADMINS, 0, 0, 0, 0, 0);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:550:6: note: declared here
+  550 | PSID AllocateAndInitializeSid(SID_IDENTIFIER_AUTHORITY* pIdentifierAuthority, uint8_t nSubAuthorityCount,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:696:17: error: too few arguments to function 'AllocateAndInitializeSid'; expected 10, have 9
+  696 |     groups[1] = AllocateAndInitializeSid(&nt_auth, 1, SECURITY_AUTHENTICATED_USER_RID, 0, 0, 0, 0, 0, 0);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:550:6: note: declared here
+  550 | PSID AllocateAndInitializeSid(SID_IDENTIFIER_AUTHORITY* pIdentifierAuthority, uint8_t nSubAuthorityCount,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:697:17: error: too few arguments to function 'AllocateAndInitializeSid'; expected 10, have 9
+  697 |     groups[2] = AllocateAndInitializeSid(&world_auth, 1, SECURITY_WORLD_RID, 0, 0, 0, 0, 0, 0);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:550:6: note: declared here
+  550 | PSID AllocateAndInitializeSid(SID_IDENTIFIER_AUTHORITY* pIdentifierAuthority, uint8_t nSubAuthorityCount,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:894:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  894 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:51:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   51 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:794:9: note: this is the location of the previous definition
+  794 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:52:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   52 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:795:9: note: this is the location of the previous definition
+  795 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:53:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   53 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:801:9: note: this is the location of the previous definition
+  801 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:54:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   54 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:806:9: note: this is the location of the previous definition
+  806 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:134:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  134 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:147:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  147 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:166:5: error: conflicting types for 'RegOpenKeyExA'; have 'int(int,  const char *, uint32_t,  REGSAM,  int *)' {aka 'int(int,  const char *, unsigned int,  unsigned int,  int *)'}
+  166 | int RegOpenKeyExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1060:5: note: previous declaration of 'RegOpenKeyExA' with type 'int(void *, const char *, DWORD,  REGSAM,  void **)' {aka 'int(void *, const char *, unsigned int,  unsigned int,  void **)'}
+ 1060 | int RegOpenKeyExA(HKEY hKey, const char* lpSubKey, DWORD ulOptions, REGSAM samDesired, HKEY* phkResult);
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:172:5: error: conflicting types for 'RegCreateKeyExA'; have 'int(int,  const char *, uint32_t,  char *, uint32_t,  REGSAM,  void *, int *, uint32_t *)' {aka 'int(int,  const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, int *, unsigned int *)'}
+  172 | int RegCreateKeyExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1061:5: note: previous declaration of 'RegCreateKeyExA' with type 'int(void *, const char *, DWORD,  char *, DWORD,  REGSAM,  void *, void **, DWORD *)' {aka 'int(void *, const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, void **, unsigned int *)'}
+ 1061 | int RegCreateKeyExA(HKEY hKey, const char* lpSubKey, DWORD Reserved, char* lpClass, DWORD dwOptions, REGSAM samDesired, void* lpSecurityAttributes, HKEY* phkResult, DWORD* lpdwDisposition);
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:182:5: error: conflicting types for 'RegCloseKey'; have 'int(int)'
+  182 | int RegCloseKey(HKEY hKey);
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1062:5: note: previous declaration of 'RegCloseKey' with type 'int(void *)'
+ 1062 | int RegCloseKey(HKEY hKey);
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:184:5: error: conflicting types for 'RegQueryValueExA'; have 'int(int,  const char *, uint32_t *, uint32_t *, uint8_t *, uint32_t *)' {aka 'int(int,  const char *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+  184 | int RegQueryValueExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1063:5: note: previous declaration of 'RegQueryValueExA' with type 'int(void *, const char *, DWORD *, DWORD *, BYTE *, DWORD *)' {aka 'int(void *, const char *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+ 1063 | int RegQueryValueExA(HKEY hKey, const char* lpValueName, DWORD* lpReserved, DWORD* lpType, BYTE* lpData, DWORD* lpcbData);
+      |     ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:191:5: error: conflicting types for 'RegSetValueExA'; have 'int(int,  const char *, uint32_t,  uint32_t,  const uint8_t *, uint32_t)' {aka 'int(int,  const char *, unsigned int,  unsigned int,  const unsigned char *, unsigned int)'}
+  191 | int RegSetValueExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1064:5: note: previous declaration of 'RegSetValueExA' with type 'int(void *, const char *, DWORD,  DWORD,  const BYTE *, DWORD)' {aka 'int(void *, const char *, unsigned int,  unsigned int,  const unsigned char *, unsigned int)'}
+ 1064 | int RegSetValueExA(HKEY hKey, const char* lpValueName, DWORD Reserved, DWORD dwType, const BYTE* lpData, DWORD cbData);
+      |     ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:198:5: error: conflicting types for 'RegEnumKeyExA'; have 'int(int,  uint32_t,  char *, uint32_t *, uint32_t *, char *, uint32_t *, uint64_t *)' {aka 'int(int,  unsigned int,  char *, unsigned int *, unsigned int *, char *, unsigned int *, long long unsigned int *)'}
+  198 | int RegEnumKeyExA(HKEY hKey,
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1065:5: note: previous declaration of 'RegEnumKeyExA' with type 'int(void *, DWORD,  char *, DWORD *, DWORD *, char *, DWORD *, uint64_t *)' {aka 'int(void *, unsigned int,  char *, unsigned int *, unsigned int *, char *, unsigned int *, long long unsigned int *)'}
+ 1065 | int RegEnumKeyExA(HKEY hKey, DWORD dwIndex, char* lpName, DWORD* lpcchName, DWORD* lpReserved, char* lpClass, DWORD* lpcchClass, uint64_t* lpftLastWriteTime);
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:207:5: error: conflicting types for 'RegEnumValueA'; have 'int(int,  uint32_t,  char *, uint32_t *, uint32_t *, uint32_t *, uint8_t *, uint32_t *)' {aka 'int(int,  unsigned int,  char *, unsigned int *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+  207 | int RegEnumValueA(HKEY hKey,
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1066:5: note: previous declaration of 'RegEnumValueA' with type 'int(void *, DWORD,  char *, DWORD *, DWORD *, DWORD *, BYTE *, DWORD *)' {aka 'int(void *, unsigned int,  char *, unsigned int *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'}
+ 1066 | int RegEnumValueA(HKEY hKey, DWORD dwIndex, char* lpValueName, DWORD* lpcchValueName, DWORD* lpReserved, DWORD* lpType, BYTE* lpData, DWORD* lpcbData);
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:216:5: error: conflicting types for 'RegDeleteKeyA'; have 'int(int,  const char *)'
+  216 | int RegDeleteKeyA(HKEY hKey, const char* lpSubKey);
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1067:5: note: previous declaration of 'RegDeleteKeyA' with type 'int(void *, const char *)'
+ 1067 | int RegDeleteKeyA(HKEY hKey, const char* lpSubKey);
+      |     ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:218:5: error: conflicting types for 'RegDeleteValueA'; have 'int(int,  const char *)'
+  218 | int RegDeleteValueA(HKEY hKey, const char* lpValueName);
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1068:5: note: previous declaration of 'RegDeleteValueA' with type 'int(void *, const char *)'
+ 1068 | int RegDeleteValueA(HKEY hKey, const char* lpValueName);
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:220:5: error: conflicting types for 'RegFlushKey'; have 'int(int)'
+  220 | int RegFlushKey(HKEY hKey);
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1069:5: note: previous declaration of 'RegFlushKey' with type 'int(void *)'
+ 1069 | int RegFlushKey(HKEY hKey);
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:393:24: error: 'MAX_PATH' undeclared here (not in a function)
+  393 |     CHAR     cFileName[MAX_PATH];
+      |                        ^~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: In function 'SetFilePointer':
+kernel/arch/x86_64/win32_kernel32.c:663:48: warning: conversion to 'long long unsigned int' from 'long long int' may change the sign of the result [-Wsign-conversion]
+  663 |         offset = (int64_t)((uint64_t)hi << 32) | (uint64_t)(uint32_t)lDistanceToMove;
+      |                                                ^
+kernel/arch/x86_64/win32_kernel32.c:663:18: warning: conversion to 'int64_t' {aka 'long long int'} from 'long long unsigned int' may change the sign of the result [-Wsign-conversion]
+  663 |         offset = (int64_t)((uint64_t)hi << 32) | (uint64_t)(uint32_t)lDistanceToMove;
+      |                  ^

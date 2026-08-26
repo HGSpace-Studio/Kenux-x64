@@ -1,0 +1,14 @@
+[Unit]
+Description=Shell Service
+Documentation=man:shell(1)
+After=systemd-journald.service
+
+[Service]
+Type=simple
+ExecStart=/bin/shell
+WorkingDirectory=/
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

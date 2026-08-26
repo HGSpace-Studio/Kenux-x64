@@ -1,0 +1,1132 @@
+-- Start building task run all -- (732376358)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/win32_process.c
+<3> Building kernel/arch/x86_64/wmi.c
+<1> Building kernel/arch/x86_64/win32_security.c
+<0> Building kernel/arch/x86_64/win32_kernel32.c
+In file included from kernel/arch/x86_64/win32_kernel32.c:2:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_kernel32.c:1:
+kernel/arch/x86_64/include/arch/win32.h:795:9: note: this is the location of the previous definition
+  795 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:798:9: note: this is the location of the previous definition
+  798 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:806:9: note: this is the location of the previous definition
+  806 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:811:9: note: this is the location of the previous definition
+  811 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+In file included from kernel/arch/x86_64/wmi.c:3:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/wmi.c:1:
+kernel/arch/x86_64/include/arch/win32.h:795:9: note: this is the location of the previous definition
+  795 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:798:9: note: this is the location of the previous definition
+  798 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:806:9: note: this is the location of the previous definition
+  806 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:811:9: note: this is the location of the previous definition
+  811 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_exec_query':
+kernel/arch/x86_64/wmi.c:498:21: warning: multi-character character constant [-Wmultichar]
+  498 |     en->signature = 'ENUM';
+      |                     ^~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_enum_get':
+kernel/arch/x86_64/wmi.c:531:36: warning: multi-character character constant [-Wmultichar]
+  531 |     if (en->signature != (uint32_t)'ENUM') return WBEM_E_INVALID_PARAMETER;
+      |                                    ^~~~~~
+kernel/arch/x86_64/win32_kernel32.c: In function 'SetFilePointer':
+kernel/arch/x86_64/win32_kernel32.c:663:48: warning: conversion to 'long long unsigned int' from 'long long int' may change the sign of the result [-Wsign-conversion]
+  663 |         offset = (int64_t)((uint64_t)hi << 32) | (uint64_t)(uint32_t)lDistanceToMove;
+      |                                                ^
+kernel/arch/x86_64/win32_kernel32.c:663:18: warning: conversion to 'int64_t' {aka 'long long int'} from 'long long unsigned int' may change the sign of the result [-Wsign-conversion]
+  663 |         offset = (int64_t)((uint64_t)hi << 32) | (uint64_t)(uint32_t)lDistanceToMove;
+      |                  ^
+kernel/arch/x86_64/win32_kernel32.c: At top level:
+kernel/arch/x86_64/win32_kernel32.c:1017:23: warning: cast between incompatible function types from 'uint32_t (*)(void)' {aka 'unsigned int (*)(void)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1017 |     { "GetTickCount", (FARPROC)GetTickCount },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1019:16: warning: cast between incompatible function types from 'void (*)(uint32_t)' {aka 'void (*)(unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1019 |     { "Sleep", (FARPROC)Sleep },
+      |                ^
+kernel/arch/x86_64/win32_kernel32.c:1020:23: warning: cast between incompatible function types from 'void * (*)(void *, uint64_t,  uint32_t (*)(void *), void *, uint32_t,  uint32_t *)' {aka 'void * (*)(void *, long long unsigned int,  unsigned int (*)(void *), void *, unsigned int,  unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1020 |     { "CreateThread", (FARPROC)CreateThread },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1021:26: warning: cast between incompatible function types from 'BOOL (*)(void *, uint32_t)' {aka 'int (*)(void *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1021 |     { "TerminateThread", (FARPROC)TerminateThread },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:1022:22: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1022 |     { "CloseHandle", (FARPROC)CloseHandle },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1023:30: warning: cast between incompatible function types from 'uint32_t (*)(void *, uint32_t)' {aka 'unsigned int (*)(void *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1023 |     { "WaitForSingleObject", (FARPROC)WaitForSingleObject },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:1024:23: warning: cast between incompatible function types from 'uint32_t (*)(void)' {aka 'unsigned int (*)(void)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1024 |     { "GetLastError", (FARPROC)GetLastError },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1025:23: warning: cast between incompatible function types from 'void (*)(uint32_t)' {aka 'void (*)(unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1025 |     { "SetLastError", (FARPROC)SetLastError },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1026:30: warning: cast between incompatible function types from 'uint32_t (*)(void)' {aka 'unsigned int (*)(void)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1026 |     { "GetCurrentProcessId", (FARPROC)GetCurrentProcessId },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:1027:29: warning: cast between incompatible function types from 'uint32_t (*)(void)' {aka 'unsigned int (*)(void)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1027 |     { "GetCurrentThreadId", (FARPROC)GetCurrentThreadId },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:1028:28: warning: cast between incompatible function types from 'void * (*)(void)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1028 |     { "GetCurrentProcess", (FARPROC)GetCurrentProcess },
+      |                            ^
+kernel/arch/x86_64/win32_kernel32.c:1029:27: warning: cast between incompatible function types from 'void * (*)(void)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1029 |     { "GetCurrentThread", (FARPROC)GetCurrentThread },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1030:34: warning: cast between incompatible function types from 'BOOL (*)(void *, BOOL)' {aka 'int (*)(void *, int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1030 |     { "SetProcessPriorityBoost", (FARPROC)SetProcessPriorityBoost },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:1031:29: warning: cast between incompatible function types from 'BOOL (*)(void *, uint32_t *)' {aka 'int (*)(void *, unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1031 |     { "GetExitCodeProcess", (FARPROC)GetExitCodeProcess },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:1032:19: warning: cast between incompatible function types from 'BOOL (*)(void *, void *, uint32_t,  uint32_t *, void *)' {aka 'int (*)(void *, void *, unsigned int,  unsigned int *, void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1032 |     { "ReadFile", (FARPROC)ReadFile },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:1033:20: warning: cast between incompatible function types from 'BOOL (*)(void *, const void *, uint32_t,  uint32_t *, void *)' {aka 'int (*)(void *, const void *, unsigned int,  unsigned int *, void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1033 |     { "WriteFile", (FARPROC)WriteFile },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1034:22: warning: cast between incompatible function types from 'void * (*)(const char *, uint32_t,  uint32_t,  void *, uint32_t,  uint32_t,  void *)' {aka 'void * (*)(const char *, unsigned int,  unsigned int,  void *, unsigned int,  unsigned int,  void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1034 |     { "CreateFileA", (FARPROC)CreateFileA },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1035:25: warning: cast between incompatible function types from 'BOOL (*)(void *, int32_t,  int32_t *, uint32_t)' {aka 'int (*)(void *, int,  int *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1035 |     { "SetFilePointer", (FARPROC)SetFilePointer },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:1036:23: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1036 |     { "SetEndOfFile", (FARPROC)SetEndOfFile },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1037:27: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1037 |     { "FlushFileBuffers", (FARPROC)FlushFileBuffers },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1038:25: warning: cast between incompatible function types from 'void * (*)(const char *, void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1038 |     { "FindFirstFileA", (FARPROC)FindFirstFileA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:1039:24: warning: cast between incompatible function types from 'BOOL (*)(void *, void *)' {aka 'int (*)(void *, void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1039 |     { "FindNextFileA", (FARPROC)FindNextFileA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1040:20: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1040 |     { "FindClose", (FARPROC)FindClose },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1041:27: warning: cast between incompatible function types from 'BOOL (*)(const char *, void *)' {aka 'int (*)(const char *, void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1041 |     { "CreateDirectoryA", (FARPROC)CreateDirectoryA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1042:27: warning: cast between incompatible function types from 'BOOL (*)(const char *)' {aka 'int (*)(const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1042 |     { "RemoveDirectoryA", (FARPROC)RemoveDirectoryA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1043:22: warning: cast between incompatible function types from 'BOOL (*)(const char *)' {aka 'int (*)(const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1043 |     { "DeleteFileA", (FARPROC)DeleteFileA },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1044:20: warning: cast between incompatible function types from 'BOOL (*)(const char *, const char *)' {aka 'int (*)(const char *, const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1044 |     { "MoveFileA", (FARPROC)MoveFileA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1045:20: warning: cast between incompatible function types from 'BOOL (*)(const char *, const char *, BOOL)' {aka 'int (*)(const char *, const char *, int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1045 |     { "CopyFileA", (FARPROC)CopyFileA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1046:29: warning: cast between incompatible function types from 'uint32_t (*)(const char *)' {aka 'unsigned int (*)(const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1046 |     { "GetFileAttributesA", (FARPROC)GetFileAttributesA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:1047:24: warning: cast between incompatible function types from 'BOOL (*)(void *, int64_t *)' {aka 'int (*)(void *, long long int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1047 |     { "GetFileSizeEx", (FARPROC)GetFileSizeEx },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1048:29: warning: cast between incompatible function types from 'uint32_t (*)(void *, char *, uint32_t)' {aka 'unsigned int (*)(void *, char *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1048 |     { "GetModuleFileNameA", (FARPROC)GetModuleFileNameA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:1049:27: warning: cast between incompatible function types from 'void * (*)(const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1049 |     { "GetModuleHandleA", (FARPROC)GetModuleHandleA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1050:25: warning: cast between incompatible function types from 'intptr_t (* (*)(void *, const char *))()' {aka 'long long int (* (*)(void *, const char *))()'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1050 |     { "GetProcAddress", (FARPROC)GetProcAddress },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:1051:23: warning: cast between incompatible function types from 'void * (*)(const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1051 |     { "LoadLibraryA", (FARPROC)LoadLibraryA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1052:22: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1052 |     { "FreeLibrary", (FARPROC)FreeLibrary },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1053:22: warning: cast between incompatible function types from 'void * (*)(UINT,  uint64_t)' {aka 'void * (*)(unsigned int,  long long unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1053 |     { "GlobalAlloc", (FARPROC)GlobalAlloc },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1054:21: warning: cast between incompatible function types from 'void * (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1054 |     { "GlobalFree", (FARPROC)GlobalFree },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1055:21: warning: cast between incompatible function types from 'void * (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1055 |     { "GlobalLock", (FARPROC)GlobalLock },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1056:23: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1056 |     { "GlobalUnlock", (FARPROC)GlobalUnlock },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1058:21: warning: cast between incompatible function types from 'void * (*)(UINT,  uint64_t)' {aka 'void * (*)(unsigned int,  long long unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1058 |     { "LocalAlloc", (FARPROC)LocalAlloc },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1059:20: warning: cast between incompatible function types from 'void * (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1059 |     { "LocalFree", (FARPROC)LocalFree },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1060:20: warning: cast between incompatible function types from 'void * (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1060 |     { "LocalLock", (FARPROC)LocalLock },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1061:22: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1061 |     { "LocalUnlock", (FARPROC)LocalUnlock },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1063:23: warning: cast between incompatible function types from 'void * (*)(void *, uint64_t,  DWORD,  DWORD)' {aka 'void * (*)(void *, long long unsigned int,  unsigned int,  unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1063 |     { "VirtualAlloc", (FARPROC)VirtualAlloc },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1064:22: warning: cast between incompatible function types from 'BOOL (*)(void *, uint64_t,  DWORD)' {aka 'int (*)(void *, long long unsigned int,  unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1064 |     { "VirtualFree", (FARPROC)VirtualFree },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1065:25: warning: cast between incompatible function types from 'BOOL (*)(void *, uint64_t,  DWORD,  DWORD *)' {aka 'int (*)(void *, long long unsigned int,  unsigned int,  unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1065 |     { "VirtualProtect", (FARPROC)VirtualProtect },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:1066:23: warning: cast between incompatible function types from 'BOOL (*)(const void *, void *, uint64_t)' {aka 'int (*)(const void *, void *, long long unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1066 |     { "VirtualQuery", (FARPROC)VirtualQuery },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1067:21: warning: cast between incompatible function types from 'void * (*)(DWORD,  uint64_t,  uint64_t)' {aka 'void * (*)(unsigned int,  long long unsigned int,  long long unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1067 |     { "HeapCreate", (FARPROC)HeapCreate },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1068:22: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1068 |     { "HeapDestroy", (FARPROC)HeapDestroy },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1069:20: warning: cast between incompatible function types from 'void * (*)(void *, DWORD,  uint64_t)' {aka 'void * (*)(void *, unsigned int,  long long unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1069 |     { "HeapAlloc", (FARPROC)HeapAlloc },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1070:19: warning: cast between incompatible function types from 'BOOL (*)(void *, DWORD,  void *)' {aka 'int (*)(void *, unsigned int,  void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1070 |     { "HeapFree", (FARPROC)HeapFree },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:1071:25: warning: cast between incompatible function types from 'void * (*)(void)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1071 |     { "GetProcessHeap", (FARPROC)GetProcessHeap },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:1072:24: warning: cast between incompatible function types from 'void (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1072 |     { "GetSystemInfo", (FARPROC)GetSystemInfo },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1073:21: warning: cast between incompatible function types from 'DWORD (*)(void)' {aka 'unsigned int (*)(void)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1073 |     { "GetVersion", (FARPROC)GetVersion },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1074:24: warning: cast between incompatible function types from 'BOOL (*)(void *)' {aka 'int (*)(void *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1074 |     { "GetVersionExA", (FARPROC)GetVersionExA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1075:30: warning: cast between incompatible function types from 'UINT (*)(char *, UINT)' {aka 'unsigned int (*)(char *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1075 |     { "GetSystemDirectoryA", (FARPROC)GetSystemDirectoryA },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:1076:31: warning: cast between incompatible function types from 'UINT (*)(char *, UINT)' {aka 'unsigned int (*)(char *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1076 |     { "GetWindowsDirectoryA", (FARPROC)GetWindowsDirectoryA },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:1077:23: warning: cast between incompatible function types from 'UINT (*)(uint32_t,  char *)' {aka 'unsigned int (*)(unsigned int,  char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1077 |     { "GetTempPathA", (FARPROC)GetTempPathA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1078:34: warning: cast between incompatible function types from 'DWORD (*)(const char *, char *, DWORD)' {aka 'unsigned int (*)(const char *, char *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1078 |     { "GetEnvironmentVariableA", (FARPROC)GetEnvironmentVariableA },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:1079:34: warning: cast between incompatible function types from 'BOOL (*)(const char *, const char *)' {aka 'int (*)(const char *, const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1079 |     { "SetEnvironmentVariableA", (FARPROC)SetEnvironmentVariableA },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:1080:36: warning: cast between incompatible function types from 'DWORD (*)(const char *, char *, DWORD)' {aka 'unsigned int (*)(const char *, char *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1080 |     { "ExpandEnvironmentStringsA", (FARPROC)ExpandEnvironmentStringsA },
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:1081:27: warning: cast between incompatible function types from 'BOOL (*)(char *, uint32_t *)' {aka 'int (*)(char *, unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1081 |     { "GetComputerNameA", (FARPROC)GetComputerNameA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1082:23: warning: cast between incompatible function types from 'BOOL (*)(char *, uint32_t *)' {aka 'int (*)(char *, unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1082 |     { "GetUserNameA", (FARPROC)GetUserNameA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1083:19: warning: cast between incompatible function types from 'int (*)(const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1083 |     { "lstrlenA", (FARPROC)lstrlenA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:1084:19: warning: cast between incompatible function types from 'char * (*)(char *, const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1084 |     { "lstrcpyA", (FARPROC)lstrcpyA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:1085:20: warning: cast between incompatible function types from 'char * (*)(char *, const char *, int)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1085 |     { "lstrcpynA", (FARPROC)lstrcpynA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1086:19: warning: cast between incompatible function types from 'int (*)(const char *, const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1086 |     { "lstrcmpA", (FARPROC)lstrcmpA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:1087:20: warning: cast between incompatible function types from 'int (*)(const char *, const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1087 |     { "lstrcmpiA", (FARPROC)lstrcmpiA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1088:19: warning: cast between incompatible function types from 'char * (*)(char *, const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1088 |     { "lstrcatA", (FARPROC)lstrcatA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:1089:20: warning: cast between incompatible function types from 'CHAR * (*)(const CHAR *)' {aka 'char * (*)(const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1089 |     { "CharNextA", (FARPROC)CharNextA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1090:20: warning: cast between incompatible function types from 'CHAR * (*)(const CHAR *, const CHAR *)' {aka 'char * (*)(const char *, const char *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1090 |     { "CharPrevA", (FARPROC)CharPrevA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:1091:23: warning: cast between incompatible function types from 'BOOL (*)(CHAR)' {aka 'int (*)(char)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1091 |     { "IsCharAlphaA", (FARPROC)IsCharAlphaA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1092:30: warning: cast between incompatible function types from 'BOOL (*)(CHAR)' {aka 'int (*)(char)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1092 |     { "IsCharAlphaNumericA", (FARPROC)IsCharAlphaNumericA },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:1093:23: warning: cast between incompatible function types from 'BOOL (*)(CHAR)' {aka 'int (*)(char)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1093 |     { "IsCharUpperA", (FARPROC)IsCharUpperA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1094:23: warning: cast between incompatible function types from 'BOOL (*)(CHAR)' {aka 'int (*)(char)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1094 |     { "IsCharLowerA", (FARPROC)IsCharLowerA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:1095:21: warning: cast between incompatible function types from 'CHAR (*)(CHAR)' {aka 'char (*)(char)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1095 |     { "CharUpperA", (FARPROC)CharUpperA },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1096:21: warning: cast between incompatible function types from 'CHAR (*)(CHAR)' {aka 'char (*)(char)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1096 |     { "CharLowerA", (FARPROC)CharLowerA },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1097:21: warning: cast between incompatible function types from 'int (*)(char *, const char *, void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1097 |     { "wvsprintfA", (FARPROC)wvsprintfA },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:1098:24: warning: cast between incompatible function types from 'int (*)(void *, const char *, unsigned int,  unsigned int,  void **)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1098 |     { "RegOpenKeyExA", (FARPROC)RegOpenKeyExA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1099:26: warning: cast between incompatible function types from 'int (*)(void *, const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, void **, DWORD *)' {aka 'int (*)(void *, const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, void **, unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1099 |     { "RegCreateKeyExA", (FARPROC)RegCreateKeyExA },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:1100:22: warning: cast between incompatible function types from 'int (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1100 |     { "RegCloseKey", (FARPROC)RegCloseKey },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:1101:27: warning: cast between incompatible function types from 'int (*)(void *, const char *, DWORD *, DWORD *, BYTE *, DWORD *)' {aka 'int (*)(void *, const char *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1101 |     { "RegQueryValueExA", (FARPROC)RegQueryValueExA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:1102:25: warning: cast between incompatible function types from 'int (*)(void *, const char *, unsigned int,  unsigned int,  const BYTE *, unsigned int)' {aka 'int (*)(void *, const char *, unsigned int,  unsigned int,  const unsigned char *, unsigned int)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1102 |     { "RegSetValueExA", (FARPROC)RegSetValueExA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:1103:24: warning: cast between incompatible function types from 'int (*)(void *, unsigned int,  char *, DWORD *, DWORD *, char *, DWORD *, uint64_t *)' {aka 'int (*)(void *, unsigned int,  char *, unsigned int *, unsigned int *, char *, unsigned int *, long long unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1103 |     { "RegEnumKeyExA", (FARPROC)RegEnumKeyExA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1104:24: warning: cast between incompatible function types from 'int (*)(void *, unsigned int,  char *, DWORD *, DWORD *, DWORD *, BYTE *, DWORD *)' {aka 'int (*)(void *, unsigned int,  char *, unsigned int *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)'} to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1104 |     { "RegEnumValueA", (FARPROC)RegEnumValueA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1105:24: warning: cast between incompatible function types from 'int (*)(void *, const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1105 |     { "RegDeleteKeyA", (FARPROC)RegDeleteKeyA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:1106:26: warning: cast between incompatible function types from 'int (*)(void *, const char *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1106 |     { "RegDeleteValueA", (FARPROC)RegDeleteValueA },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:1107:22: warning: cast between incompatible function types from 'int (*)(void *)' to 'intptr_t (*)()' {aka 'long long int (*)()'} [-Wcast-function-type]
+ 1107 |     { "RegFlushKey", (FARPROC)RegFlushKey },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c: In function 'pe_import_resolver':
+kernel/arch/x86_64/win32_kernel32.c:1146:12: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+ 1146 |     return (void*)result;
+      |            ^
+kernel/arch/x86_64/win32_kernel32.c: In function 'LoadLibraryA':
+kernel/arch/x86_64/win32_kernel32.c:1185:40: warning: conversion to 'long long unsigned int' from 'off_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+ 1185 |     file_buf = memory_alloc(st.st_size + 16ULL);
+      |                                        ^
+kernel/arch/x86_64/win32_kernel32.c:1191:36: warning: conversion to 'long long unsigned int' from 'off_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+ 1191 |     memset(file_buf, 0, st.st_size + 16ULL);
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:1193:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'off_t' {aka 'long long int'} may change the sign of the result [-Wsign-conversion]
+ 1193 |     res = vfs_read(fd, file_buf, st.st_size);
+      |                                  ~~^~~~~~~~
+kernel/arch/x86_64/win32_process.c:493:13: warning: 'process_slot_cleanup' defined but not used [-Wunused-function]
+  493 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: At top level:
+kernel/arch/x86_64/win32_kernel32.c:1658:9: warning: 'ERROR_BUFFER_OVERFLOW' redefined
+ 1658 | #define ERROR_BUFFER_OVERFLOW 111
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:814:9: note: this is the location of the previous definition
+  814 | #define ERROR_BUFFER_OVERFLOW       111L
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:894:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  894 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+<1> Building kernel/arch/x86_64/win32_gdi_and_msg.c
+<3> Building kernel/arch/x86_64/watchdog.c
+<2> Building kernel/arch/x86_64/vlan.c
+<0> Building kernel/arch/x86_64/virtio.c
+kernel/arch/x86_64/virtio.c: In function '__vq_alloc':
+kernel/arch/x86_64/virtio.c:16:47: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   16 |     vq->avail = (virtq_avail_t*)kzalloc(2 + 2 + 2 * num);
+      |                                         ~~~~~~^~~~~~~~~
+kernel/arch/x86_64/virtio.c:19:45: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   19 |     vq->used = (virtq_used_t*)kzalloc(2 + 2 + 8 * num);
+      |                                       ~~~~~~^~~~~~~~~
+kernel/arch/x86_64/virtio.c:23:29: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   23 |         vq->descs[i].next = (i + 1) % num;
+      |                             ^
+kernel/arch/x86_64/virtio.c: In function '__vq_get_used':
+kernel/arch/x86_64/virtio.c:61:11: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   61 |     *id = elem->id;
+      |           ^~~~
+kernel/arch/x86_64/virtio.c: In function 'virtio_blk_init':
+kernel/arch/x86_64/virtio.c:91:27: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   91 |     uint16_t queue_size = mmio->queue_size;
+      |                           ^~~~
+kernel/arch/x86_64/virtio.c: In function 'virtio_net_init':
+kernel/arch/x86_64/virtio.c:188:24: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  188 |     uint16_t rx_size = mmio->queue_size;
+      |                        ^~~~
+kernel/arch/x86_64/virtio.c:194:24: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  194 |     uint16_t tx_size = mmio->queue_size;
+      |                        ^~~~
+<0> Building kernel/arch/x86_64/vga.c
+<0> Building kernel/arch/x86_64/usermode.c
+kernel/arch/x86_64/watchdog.c: In function 'watchdog_acpi_set_timer':
+kernel/arch/x86_64/watchdog.c:93:25: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   93 |     uint32_t sci_en = *((volatile uint32_t*)(watchdog_acpi_pmbase + WDT_ACPI_WDT_SMI_EN));
+      |                         ^
+kernel/arch/x86_64/watchdog.c:96:7: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   96 |     *((volatile uint16_t*)(watchdog_acpi_pmbase + WDT_ACPI_WDT_PM1a_EVT)) = 0;
+      |       ^
+kernel/arch/x86_64/watchdog.c:102:26: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  102 |     uint32_t evt_reg = *((volatile uint32_t*)(watchdog_acpi_pmbase + WDT_ACPI_WDT_PM1a_EVT));
+      |                          ^
+kernel/arch/x86_64/watchdog.c:104:7: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  104 |     *((volatile uint32_t*)(watchdog_acpi_pmbase + WDT_ACPI_WDT_PM1a_EVT)) = evt_reg;
+      |       ^
+kernel/arch/x86_64/watchdog.c:98:14: warning: variable 'wdt_val' set but not used [-Wunused-but-set-variable=]
+   98 |     uint32_t wdt_val = (uint32_t)timeout_sec;
+      |              ^~~~~~~
+kernel/arch/x86_64/watchdog.c: In function 'watchdog_acpi_stop_timer':
+kernel/arch/x86_64/watchdog.c:113:26: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  113 |     uint32_t evt_reg = *((volatile uint32_t*)(watchdog_acpi_pmbase + WDT_ACPI_WDT_PM1a_EVT));
+      |                          ^
+kernel/arch/x86_64/watchdog.c:114:13: warning: unsigned conversion from 'int' to 'uint32_t' {aka 'unsigned int'} changes value from '-8193' to '4294959103' [-Wsign-conversion]
+  114 |     evt_reg &= ~0x2000;
+      |             ^~
+kernel/arch/x86_64/watchdog.c:115:7: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  115 |     *((volatile uint32_t*)(watchdog_acpi_pmbase + WDT_ACPI_WDT_PM1a_EVT)) = evt_reg;
+      |       ^
+kernel/arch/x86_64/watchdog.c: In function 'watchdog_start':
+kernel/arch/x86_64/watchdog.c:234:27: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  234 |     wdt->last_ping_tick = watchdog_get_ticks();
+      |                           ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/watchdog.c: In function 'watchdog_ping':
+kernel/arch/x86_64/watchdog.c:301:27: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  301 |     wdt->last_ping_tick = watchdog_get_ticks();
+      |                           ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/watchdog.c: In function 'watchdog_init_acpi_wdt':
+kernel/arch/x86_64/watchdog.c:388:25: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  388 |     uint32_t sci_en = *((volatile uint32_t*)(pm1a_evt + WDT_ACPI_WDT_SMI_EN));
+      |                         ^
+kernel/arch/x86_64/usermode.c: In function 'usermode_create_process':
+kernel/arch/x86_64/usermode.c:20:46: warning: unused parameter 'name' [-Wunused-parameter]
+   20 | uint64_t usermode_create_process(const char* name, void* entry, uint64_t* pid)
+      |                                  ~~~~~~~~~~~~^~~~
+kernel/arch/x86_64/usermode.c: In function 'usermode_syscall_handler':
+kernel/arch/x86_64/usermode.c:124:41: warning: unused parameter 'context' [-Wunused-parameter]
+  124 | void usermode_syscall_handler(uint64_t* context)
+      |                               ~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/usermode.c: In function 'usermode_page_fault_handler':
+kernel/arch/x86_64/usermode.c:130:43: warning: unused parameter 'fault_addr' [-Wunused-parameter]
+  130 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                  ~~~~~~~~~^~~~~~~~~~
+kernel/arch/x86_64/usermode.c:130:64: warning: unused parameter 'error_code' [-Wunused-parameter]
+  130 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                                       ~~~~~~~~~^~~~~~~~~~
+C:\Users\Administrator\AppData\Local\Temp\ccsKb65s.s: Assembler messages:
+C:\Users\Administrator\AppData\Local\Temp\ccsKb65s.s:80: Warning: no instruction mnemonic suffix given and no register operands; using default for `sysret'
+<0> Building kernel/arch/x86_64/usb_hid.c
+kernel/arch/x86_64/usb_hid.c: In function 'hid_probe_device':
+kernel/arch/x86_64/usb_hid.c:207:31: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  207 |         hid_parse_report_desc(slot);
+      |                               ^~~~
+kernel/arch/x86_64/usb_hid.c: In function 'hid_parse_report_desc':
+kernel/arch/x86_64/usb_hid.c:369:27: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  369 |             total_bits += report_size * report_count;
+      |                           ^~~~~~~~~~~
+kernel/arch/x86_64/usb_hid.c:372:14: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  372 |         i += 1 + bSize;
+      |              ^
+kernel/arch/x86_64/usb_hid.c: At top level:
+kernel/arch/x86_64/usb_hid.c:55:12: warning: 'usb_submit_interrupt' defined but not used [-Wunused-function]
+   55 | static int usb_submit_interrupt(void* dev, uint8_t ep_addr,
+      |            ^~~~~~~~~~~~~~~~~~~~
+<3> Building kernel/arch/x86_64/uart.c
+kernel/arch/x86_64/uart.c: In function 'uart_set_baud':
+kernel/arch/x86_64/uart.c:101:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  101 |     outb(p->base + UART_REG_DLL, divisor & 0xFF);
+      |                                  ~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c:102:49: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  102 |     outb(p->base + UART_REG_DLH, (divisor >> 8) & 0xFF);
+      |                                  ~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_set_flow_control':
+kernel/arch/x86_64/uart.c:131:16: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-11' [-Wsign-conversion]
+  131 |         mcr &= ~(UART_MCR_RTS | UART_MCR_OUT2);
+      |                ^
+kernel/arch/x86_64/uart.c: In function 'uart_init_port':
+kernel/arch/x86_64/uart.c:171:42: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  171 |     outb(p->base + UART_REG_DLL, divisor & 0xFF);
+      |                                  ~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c:172:49: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+  172 |     outb(p->base + UART_REG_DLH, (divisor >> 8) & 0xFF);
+      |                                  ~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/uart.c: In function 'uart_irq_handler':
+kernel/arch/x86_64/uart.c:419:28: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes the value of '-3' [-Wsign-conversion]
+  419 |                     ier &= ~UART_IER_THRI;
+      |                            ^
+kernel/arch/x86_64/uart.c: In function 'uart_irq_register':
+kernel/arch/x86_64/uart.c:471:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  471 |             stub = (void*)uart_com1_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:474:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  474 |             stub = (void*)uart_com2_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:477:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  477 |             stub = (void*)uart_com3_irq_stub;
+      |                    ^
+kernel/arch/x86_64/uart.c:480:20: warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]
+  480 |             stub = (void*)uart_com4_irq_stub;
+      |                    ^
+<0> Building kernel/arch/x86_64/tmpfs.c
+<0> Building kernel/arch/x86_64/thermal.c
+kernel/arch/x86_64/thermal.c:24:12: warning: 'read_tsc' defined but not used [-Wunused-function]
+   24 | static u64 read_tsc(void)
+      |            ^~~~~~~~
+<3> Building kernel/arch/x86_64/tcp_cong.c
+kernel/arch/x86_64/tcp_cong.c: In function 'tcp_reno_cong_avoid':
+kernel/arch/x86_64/tcp_cong.c:23:23: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   23 |         sk->snd_wnd = new_cwnd;
+      |                       ^~~~~~~~
+kernel/arch/x86_64/tcp_cong.c:27:24: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   27 |         sk->snd_wnd += incr;
+      |                        ^~~~
+kernel/arch/x86_64/tcp_cong.c: In function 'tcp_cubic_cong_avoid':
+kernel/arch/x86_64/tcp_cong.c:160:23: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  160 |         sk->snd_wnd = new_cwnd;
+      |                       ^~~~~~~~
+kernel/arch/x86_64/tcp_cong.c:170:28: warning: conversion from 'uint64_t' {aka 'long long unsigned int'} to 'uint32_t' {aka 'unsigned int'} may change value [-Wconversion]
+  170 |             ca->bictcp_K = cubic_root((ca->w_max - sk->snd_wnd) * 1000000 * TCP_CUBIC_SCALE / TCP_CUBIC_C);
+      |                            ^~~~~~~~~~
+kernel/arch/x86_64/tcp_cong.c:180:23: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  180 |         sk->snd_wnd = ca->last_wnd + 1;
+      |                       ^~
+kernel/arch/x86_64/tcp_cong.c:199:25: warning: comparison is always true due to limited range of data type [-Wtype-limits]
+  199 |         if (sk->snd_wnd < TCP_CONG_MAX_CWND)
+      |                         ^
+kernel/arch/x86_64/tcp_cong.c: In function 'tcp_bbr_cong_avoid':
+kernel/arch/x86_64/tcp_cong.c:399:19: warning: conversion from 'unsigned int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+  399 |     sk->snd_wnd = (uint32_t)bbr->target_cwnd;
+      |                   ^
+<0> Building kernel/arch/x86_64/tcp_bbr.c
+kernel/arch/x86_64/tcp_bbr.c: In function 'bbr_quantization_budget':
+kernel/arch/x86_64/tcp_bbr.c:227:54: warning: unused parameter 'bbr' [-Wunused-parameter]
+  227 | static uint64_t bbr_quantization_budget(bbr_state_t* bbr, uint64_t cwnd)
+      |                                         ~~~~~~~~~~~~~^~~
+<3> Building kernel/arch/x86_64/swap.c
+kernel/arch/x86_64/swap.c: In function 'bitmap_clear':
+kernel/arch/x86_64/swap.c:34:25: warning: conversion from 'unsigned int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |     bitmap[bit >> 3] &= ~(1U << (bit & 7));
+      |                         ^
+kernel/arch/x86_64/swap.c: In function 'swap_add_area':
+kernel/arch/x86_64/swap.c:210:21: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  210 |             current += n;
+      |                     ^~
+kernel/arch/x86_64/swap.c: In function 'swap_out':
+kernel/arch/x86_64/swap.c:386:18: warning: unused variable 'swap_pte' [-Wunused-variable]
+  386 |         uint64_t swap_pte = SWAP_ENTRY_TO_PTE(entry);
+      |                  ^~~~~~~~
+kernel/arch/x86_64/swap.c: At top level:
+kernel/arch/x86_64/swap.c:46:17: warning: 'bitmap_find_free_range' defined but not used [-Wunused-function]
+   46 | static uint64_t bitmap_find_free_range(const uint8_t* bitmap,
+      |                 ^~~~~~~~~~~~~~~~~~~~~~
+<0> Building kernel/arch/x86_64/spi.c
+kernel/arch/x86_64/win32_gdi_and_msg.c:525:42: warning: overflow in conversion from 'int' to 'short int' changes value from '33999' to '-31537' [-Woverflow]
+  525 |     0, 8363, 16069, 22765, 28138, 31939, 33999, 34263, 32702,
+      |                                          ^~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:525:49: warning: overflow in conversion from 'int' to 'short int' changes value from '34263' to '-31273' [-Woverflow]
+  525 |     0, 8363, 16069, 22765, 28138, 31939, 33999, 34263, 32702,
+      |                                                 ^~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:527:21: warning: overflow in conversion from 'int' to 'short int' changes value from '-32787' to '32749' [-Woverflow]
+  527 |     -25102, -29755, -32787, -34104, -33649, -31480, -27710, -22506
+      |                     ^
+kernel/arch/x86_64/win32_gdi_and_msg.c:527:29: warning: overflow in conversion from 'int' to 'short int' changes value from '-34104' to '31432' [-Woverflow]
+  527 |     -25102, -29755, -32787, -34104, -33649, -31480, -27710, -22506
+      |                             ^
+kernel/arch/x86_64/win32_gdi_and_msg.c:527:37: warning: overflow in conversion from 'int' to 'short int' changes value from '-33649' to '31887' [-Woverflow]
+  527 |     -25102, -29755, -32787, -34104, -33649, -31480, -27710, -22506
+      |                                     ^
+kernel/arch/x86_64/win32_gdi_and_msg.c:531:29: warning: overflow in conversion from 'int' to 'short int' changes value from '-34183' to '31353' [-Woverflow]
+  531 |     -21473, -27452, -31783, -34183, -34516, -32730, -28899, -23224,
+      |                             ^
+kernel/arch/x86_64/win32_gdi_and_msg.c:531:37: warning: overflow in conversion from 'int' to 'short int' changes value from '-34516' to '31020' [-Woverflow]
+  531 |     -21473, -27452, -31783, -34183, -34516, -32730, -28899, -23224,
+      |                                     ^
+kernel/arch/x86_64/win32_gdi_and_msg.c:532:54: warning: overflow in conversion from 'int' to 'short int' changes value from '33497' to '-32039' [-Woverflow]
+  532 |     -16016, -7649, 1299, 10197, 18435, 25369, 30478, 33497
+      |                                                      ^~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'Ellipse':
+kernel/arch/x86_64/win32_gdi_and_msg.c:537:14: warning: variable 'brush_color' set but not used [-Wunused-but-set-variable=]
+  537 |     COLORREF brush_color = RGB(255, 255, 255);
+      |              ^~~~~~~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'default_window_proc':
+kernel/arch/x86_64/win32_gdi_and_msg.c:1041:64: warning: unused parameter 'wparam' [-Wunused-parameter]
+ 1041 | static LRESULT default_window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+      |                                                         ~~~~~~~^~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c:1041:79: warning: unused parameter 'lparam' [-Wunused-parameter]
+ 1041 | static LRESULT default_window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+      |                                                                        ~~~~~~~^~~~~~
+kernel/arch/x86_64/win32_gdi_and_msg.c: In function 'CreateWindowExA':
+kernel/arch/x86_64/win32_gdi_and_msg.c:1232:20: warning: conversion to 'LONG' {aka 'long int'} from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+ 1232 |         cs.style = dwStyle;
+      |                    ^~~~~~~
+<3> Building kernel/arch/x86_64/sound.c
+kernel/arch/x86_64/sound.c: In function 'sound_init':
+kernel/arch/x86_64/sound.c:19:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   19 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/sound.c:19:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   19 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/sound.c:19:65: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   19 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:23:38: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   23 |                 uint8_t class_code = (class_code_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/sound.c:29:36: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   29 |                         dev->bus = b;
+      |                                    ^
+kernel/arch/x86_64/sound.c:30:39: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   30 |                         dev->device = d;
+      |                                       ^
+kernel/arch/x86_64/sound.c:31:41: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   31 |                         dev->function = f;
+      |                                         ^
+kernel/arch/x86_64/sound.c:32:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   32 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:32:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   32 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:32:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   32 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:33:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   33 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/sound.c:33:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   33 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                              ^
+kernel/arch/x86_64/sound.c:33:65: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   33 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:34:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:34:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:34:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   34 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:35:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   35 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:35:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   35 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:35:67: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   35 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                   ^
+kernel/arch/x86_64/sound.c:41:36: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   41 |                         dev->bus = b;
+      |                                    ^
+kernel/arch/x86_64/sound.c:42:39: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   42 |                         dev->device = d;
+      |                                       ^
+kernel/arch/x86_64/sound.c:43:41: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   43 |                         dev->function = f;
+      |                                         ^
+kernel/arch/x86_64/sound.c:44:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   44 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:44:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   44 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:44:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   44 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:45:59: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   45 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/sound.c:45:62: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   45 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                              ^
+kernel/arch/x86_64/sound.c:45:65: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   45 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:46:58: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   46 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:46:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   46 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:46:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   46 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:47:61: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   47 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:47:64: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   47 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:47:67: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   47 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                   ^
+kernel/arch/x86_64/sound.c:15:26: warning: unused variable 'function' [-Wunused-variable]
+   15 |     uint8_t bus, device, function;
+      |                          ^~~~~~~~
+kernel/arch/x86_64/sound.c:15:18: warning: unused variable 'device' [-Wunused-variable]
+   15 |     uint8_t bus, device, function;
+      |                  ^~~~~~
+kernel/arch/x86_64/sound.c:15:13: warning: unused variable 'bus' [-Wunused-variable]
+   15 |     uint8_t bus, device, function;
+      |             ^~~
+<2> Building kernel/arch/x86_64/smp.c
+<0> Building kernel/arch/x86_64/smbios.c
+In file included from kernel/arch/x86_64/smp.c:3:
+kernel/arch/x86_64/smp.c: In function 'ioapic_set_irq':
+kernel/arch/x86_64/include/arch/smp.h:122:31: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  122 | #define IOAPIC_REG_REDIR_BASE 0x10
+      |                               ^~~~
+kernel/arch/x86_64/smp.c:58:20: note: in expansion of macro 'IOAPIC_REG_REDIR_BASE'
+   58 |     uint32_t reg = IOAPIC_REG_REDIR_BASE + irq * 2;
+      |                    ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/smp.c: In function 'smp_setup_percpu':
+kernel/arch/x86_64/smp.c:63:32: warning: unused parameter 'apic_id' [-Wunused-parameter]
+   63 | void smp_setup_percpu(uint32_t apic_id, void* percpu_base)
+      |                       ~~~~~~~~~^~~~~~~
+<3> Building kernel/arch/x86_64/slab.c
+<0> Building kernel/arch/x86_64/selinux.c
+<2> Building kernel/arch/x86_64/security.c
+kernel/arch/x86_64/slab.c: In function '__slab_order':
+kernel/arch/x86_64/slab.c:18:33: warning: comparison of integer expressions of different signedness: 'int' and 'uint32_t' {aka 'unsigned int'} [-Wsign-compare]
+   18 |     while ((PAGE_SIZE << order) < need && order < BUDDY_MAX_ORDER) {
+      |                                 ^
+kernel/arch/x86_64/slab.c: In function '__slab_destroy':
+kernel/arch/x86_64/slab.c:85:22: warning: unsigned conversion from 'int' to 'uint32_t' {aka 'unsigned int'} changes value from '-5' to '4294967291' [-Wsign-conversion]
+   85 |             p->flags &= ~PAGE_FLAG_SLAB;
+      |                      ^~
+kernel/arch/x86_64/slab.c: In function 'slab_init':
+kernel/arch/x86_64/slab.c:152:27: warning: conversion from 'uint32_t' {aka 'unsigned int'} to 'char' may change value [-Wconversion]
+  152 |             buf[bpos++] = '0' + (n % 10);
+      |                           ^~~
+kernel/arch/x86_64/slab.c: In function 'kmalloc':
+kernel/arch/x86_64/slab.c:297:37: warning: comparison of integer expressions of different signedness: 'int' and 'uint64_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  297 |         while ((PAGE_SIZE << order) < size && order < BUDDY_MAX_ORDER) order++;
+      |                                     ^
+kernel/arch/x86_64/selinux.c: In function 'selinux_parse_context':
+kernel/arch/x86_64/selinux.c:208:16: warning: conversion to 'u64' {aka 'long long unsigned int'} from 'long long int' may change the sign of the result [-Wsign-conversion]
+  208 |     u64 ulen = p - user_start;
+      |                ^
+kernel/arch/x86_64/selinux.c:216:16: warning: conversion to 'u64' {aka 'long long unsigned int'} from 'long long int' may change the sign of the result [-Wsign-conversion]
+  216 |     u64 rlen = p - role_start;
+      |                ^
+kernel/arch/x86_64/selinux.c:224:16: warning: conversion to 'u64' {aka 'long long unsigned int'} from 'long long int' may change the sign of the result [-Wsign-conversion]
+  224 |     u64 tlen = p - type_start;
+      |                ^
+kernel/arch/x86_64/selinux.c:232:16: warning: conversion to 'u64' {aka 'long long unsigned int'} from 'long long int' may change the sign of the result [-Wsign-conversion]
+  232 |     u64 llen = p - level_start;
+      |                ^
+kernel/arch/x86_64/selinux.c: In function 'selinux_context_to_string':
+kernel/arch/x86_64/selinux.c:243:9: warning: unused variable 'remaining' [-Wunused-variable]
+  243 |     s64 remaining = (s64)size - 1;
+      |         ^~~~~~~~~
+<2> Building kernel/arch/x86_64/scm.c
+<3> Building kernel/arch/x86_64/sata.c
+In file included from kernel/arch/x86_64/scm.c:2:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/scm.c:1:
+kernel/arch/x86_64/include/arch/win32.h:795:9: note: this is the location of the previous definition
+  795 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:798:9: note: this is the location of the previous definition
+  798 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:806:9: note: this is the location of the previous definition
+  806 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:811:9: note: this is the location of the previous definition
+  811 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/sata.c: In function 'sata_read':
+kernel/arch/x86_64/sata.c:40:82: warning: unused parameter 'sectors' [-Wunused-parameter]
+   40 | int sata_read(uint8_t port, uint8_t device, uint64_t lba, void* buffer, uint32_t sectors)
+      |                                                                         ~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/sata.c: In function 'sata_write':
+kernel/arch/x86_64/sata.c:50:89: warning: unused parameter 'sectors' [-Wunused-parameter]
+   50 | int sata_write(uint8_t port, uint8_t device, uint64_t lba, const void* buffer, uint32_t sectors)
+      |                                                                                ~~~~~~~~~^~~~~~~
+<0> Building kernel/arch/x86_64/rtc.c
+kernel/arch/x86_64/rtc.c: In function 'bcd_to_binary':
+kernel/arch/x86_64/rtc.c:29:32: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   29 |     return ((value >> 4) * 10) + (value & 0x0F);
+      |            ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/rtc.c: In function 'rtc_get_time':
+kernel/arch/x86_64/rtc.c:54:40: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   54 |         time->year = bcd_to_binary(time->year);
+      |                                    ~~~~^~~~~~
+kernel/arch/x86_64/rtc.c:60:27: warning: conversion from 'int' to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   60 |             time->hours = ((time->hours & 0x7F) + 12) % 24;
+      |                           ^
+kernel/arch/x86_64/rtc.c:64:19: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   64 |     time->year += time->century * 100;
+      |                   ^~~~
+kernel/arch/x86_64/rtc.c: In function 'rtc_set_time':
+kernel/arch/x86_64/rtc.c:82:36: warning: conversion from 'uint16_t' {aka 'short unsigned int'} to 'uint8_t' {aka 'unsigned char'} may change value [-Wconversion]
+   82 |     rtc_set_register(RTC_YEAR, time->year);
+      |                                ~~~~^~~~~~
+kernel/arch/x86_64/rtc.c: At top level:
+kernel/arch/x86_64/rtc.c:18:16: warning: 'rtc_last_seconds' defined but not used [-Wunused-variable]
+   18 | static uint8_t rtc_last_seconds = 0;
+      |                ^~~~~~~~~~~~~~~~
+<3> Building kernel/arch/x86_64/route.c
+kernel/arch/x86_64/route.c: In function 'route_table_get':
+kernel/arch/x86_64/route.c:42:68: warning: comparison of unsigned expression in '>= 0' is always true [-Wtype-limits]
+   42 |         if (fib.tables[i].tb_id == table_id && fib.tables[i].count >= 0) {
+      |                                                                    ^~
+<0> Building kernel/arch/x86_64/registry.c
+In file included from kernel/arch/x86_64/registry.c:1:
+kernel/arch/x86_64/include/arch/registry.h:44:9: warning: 'ERROR_SUCCESS' redefined
+   44 | #define ERROR_SUCCESS            0
+      |         ^~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5:
+kernel/arch/x86_64/include/arch/win32.h:795:9: note: this is the location of the previous definition
+  795 | #define ERROR_SUCCESS               0L
+      |         ^~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:45:9: warning: 'ERROR_FILE_NOT_FOUND' redefined
+   45 | #define ERROR_FILE_NOT_FOUND     2
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:796:9: note: this is the location of the previous definition
+  796 | #define ERROR_FILE_NOT_FOUND        2L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:46:9: warning: 'ERROR_ACCESS_DENIED' redefined
+   46 | #define ERROR_ACCESS_DENIED      5
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:798:9: note: this is the location of the previous definition
+  798 | #define ERROR_ACCESS_DENIED         5L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:47:9: warning: 'ERROR_INVALID_HANDLE' redefined
+   47 | #define ERROR_INVALID_HANDLE     6
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:799:9: note: this is the location of the previous definition
+  799 | #define ERROR_INVALID_HANDLE        6L
+      |         ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:48:9: warning: 'ERROR_NOT_ENOUGH_MEMORY' redefined
+   48 | #define ERROR_NOT_ENOUGH_MEMORY  8
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:800:9: note: this is the location of the previous definition
+  800 | #define ERROR_NOT_ENOUGH_MEMORY     8L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:49:9: warning: 'ERROR_INVALID_PARAMETER' redefined
+   49 | #define ERROR_INVALID_PARAMETER  87
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:806:9: note: this is the location of the previous definition
+  806 | #define ERROR_INVALID_PARAMETER     87L
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:50:9: warning: 'ERROR_NO_MORE_ITEMS' redefined
+   50 | #define ERROR_NO_MORE_ITEMS      259
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:811:9: note: this is the location of the previous definition
+  811 | #define ERROR_NO_MORE_ITEMS         259L
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:130:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  130 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:143:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  143 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/registry.c: In function 'registry_init':
+kernel/arch/x86_64/include/arch/win32.h:816:41: error: 'ULONG_PTR' undeclared (first use in this function); did you mean 'LONG_PTR'?
+  816 | #define HKEY_CLASSES_ROOT       ((HKEY)(ULONG_PTR)0x80000000)
+      |                                         ^~~~~~~~~
+kernel/arch/x86_64/registry.c:334:9: note: in expansion of macro 'HKEY_CLASSES_ROOT'
+  334 |         HKEY_CLASSES_ROOT,
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:816:41: note: each undeclared identifier is reported only once for each function it appears in
+kernel/arch/x86_64/registry.c:334:9: note: in expansion of macro 'HKEY_CLASSES_ROOT'
+  334 |         HKEY_CLASSES_ROOT,
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:816:51: error: expected ')' before numeric constant
+  816 | #define HKEY_CLASSES_ROOT       ((HKEY)(ULONG_PTR)0x80000000)
+      |                                 ~                 ^~~~~~~~~~
+kernel/arch/x86_64/registry.c:334:9: note: in expansion of macro 'HKEY_CLASSES_ROOT'
+  334 |         HKEY_CLASSES_ROOT,
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:817:51: error: expected ')' before numeric constant
+  817 | #define HKEY_CURRENT_USER       ((HKEY)(ULONG_PTR)0x80000001)
+      |                                 ~                 ^~~~~~~~~~
+kernel/arch/x86_64/registry.c:335:9: note: in expansion of macro 'HKEY_CURRENT_USER'
+  335 |         HKEY_CURRENT_USER,
+      |         ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:818:51: error: expected ')' before numeric constant
+  818 | #define HKEY_LOCAL_MACHINE      ((HKEY)(ULONG_PTR)0x80000002)
+      |                                 ~                 ^~~~~~~~~~
+kernel/arch/x86_64/registry.c:336:9: note: in expansion of macro 'HKEY_LOCAL_MACHINE'
+  336 |         HKEY_LOCAL_MACHINE,
+      |         ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:819:51: error: expected ')' before numeric constant
+  819 | #define HKEY_USERS              ((HKEY)(ULONG_PTR)0x80000003)
+      |                                 ~                 ^~~~~~~~~~
+kernel/arch/x86_64/registry.c:337:9: note: in expansion of macro 'HKEY_USERS'
+  337 |         HKEY_USERS,
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:821:51: error: expected ')' before numeric constant
+  821 | #define HKEY_CURRENT_CONFIG     ((HKEY)(ULONG_PTR)0x80000005)
+      |                                 ~                 ^~~~~~~~~~
+kernel/arch/x86_64/registry.c:338:9: note: in expansion of macro 'HKEY_CURRENT_CONFIG'
+  338 |         HKEY_CURRENT_CONFIG,
+      |         ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:820:51: error: expected ')' before numeric constant
+  820 | #define HKEY_PERFORMANCE_DATA   ((HKEY)(ULONG_PTR)0x80000004)
+      |                                 ~                 ^~~~~~~~~~
+kernel/arch/x86_64/registry.c:339:9: note: in expansion of macro 'HKEY_PERFORMANCE_DATA'
+  339 |         HKEY_PERFORMANCE_DATA
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/registry.c: At top level:
+kernel/arch/x86_64/registry.c:293:13: warning: 'seed_value_dword' defined but not used [-Wunused-function]
+  293 | static void seed_value_dword(reg_key_t* key, const char* name, uint32_t val)
+      |             ^~~~~~~~~~~~~~~~
+<0> Building kernel/arch/x86_64/procfs.c
+In file included from include/kapi.h:23,
+                 from kernel/arch/x86_64/procfs.c:10:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/procfs.c: In function 'procfs_cpuinfo_read':
+kernel/arch/x86_64/procfs.c:29:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   29 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: In function 'procfs_meminfo_read':
+kernel/arch/x86_64/procfs.c:65:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+   65 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: In function 'procfs_stat_read':
+kernel/arch/x86_64/procfs.c:123:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  123 |     n += snprintf(buf + n, max_len - n, "cpu  %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:128:44: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  128 |             n += snprintf(buf + n, max_len - n, "cpu%u %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                            ^
+kernel/arch/x86_64/procfs.c:132:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  132 |     n += snprintf(buf + n, max_len - n, "intr %lu\n", irq_total);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:134:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  134 |     n += snprintf(buf + n, max_len - n, "ctxt %lu\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:136:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  136 |     n += snprintf(buf + n, max_len - n, "btime %lu\n", __uptime_cached / 1000);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:147:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  147 |     n += snprintf(buf + n, max_len - n, "processes %lu\n", proc_count);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:148:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  148 |     n += snprintf(buf + n, max_len - n, "procs_running %lu\n", running ? running : 1);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:149:36: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  149 |     n += snprintf(buf + n, max_len - n, "procs_blocked %lu\n", blocked);
+      |                                    ^
+kernel/arch/x86_64/procfs.c: In function 'procfs_finddir':
+kernel/arch/x86_64/procfs.c:272:24: warning: conversion to 'uint64_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  272 |         pid = pid * 10 + (*p - '0');
+      |                        ^
+FAILED TASK run all: 

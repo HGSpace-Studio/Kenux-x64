@@ -1,0 +1,237 @@
+-- Start building task run components -- (581249912)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<2> Generating bin/components/gnome.exe
+<0> Generating bin/components/wayland.exe
+<3> Generating bin/components/kde.exe
+<1> Generating bin/components/qemu.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o "D:\\KenuxK\\build\\components\\wayland_wayland.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/qemu -c src/qemu/qemu.c -o "D:\\KenuxK\\build\\components\\qemu_qemu.o""
+In file included from src/kde/kde.c:6:
+src/kde/kde.h:21:13: error: conflicting types for 'pid_t'; have 'int'
+   21 | typedef int pid_t;
+      |             ^~~~~
+In file included from src/kde/kde.h:14:
+D:/mingw64/x86_64-w64-mingw32/include/sys/types.h:68:17: note: previous declaration of 'pid_t' with type 'pid_t' {aka 'long long int'}
+   68 | typedef _pid_t  pid_t;
+      |                 ^~~~~
+In file included from src/wayland/wayland.c:6:
+src/wayland/wayland.h:23:13: error: conflicting types for 'pid_t'; have 'int'
+   23 | typedef int pid_t;
+      |             ^~~~~
+In file included from src/wayland/wayland.h:14:
+D:/mingw64/x86_64-w64-mingw32/include/sys/types.h:68:17: note: previous declaration of 'pid_t' with type 'pid_t' {aka 'long long int'}
+   68 | typedef _pid_t  pid_t;
+      |                 ^~~~~
+src/wayland/wayland.h:24:13: error: conflicting types for 'ssize_t'; have 'int'
+   24 | typedef int ssize_t;
+      |             ^~~~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h:10,
+                 from D:/mingw64/x86_64-w64-mingw32/include/stdio.h:9,
+                 from src/wayland/wayland.h:9:
+D:/mingw64/x86_64-w64-mingw32/include/corecrt.h:45:35: note: previous declaration of 'ssize_t' with type 'ssize_t' {aka 'long long int'}
+   45 | __MINGW_EXTENSION typedef __int64 ssize_t;
+      |                                   ^~~~~~~
+src/wayland/wayland.h:31:19: error: static declaration of 'access' follows non-static declaration
+   31 | static inline int access(const char *path, int mode) {
+      |                   ^~~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/sys/stat.h:14,
+                 from src/wayland/wayland.h:15:
+D:/mingw64/x86_64-w64-mingw32/include/io.h:315:15: note: previous declaration of 'access' with type 'int(const char *, int)'
+  315 |   int __cdecl access(const char *_Filename,int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~~
+src/wayland/wayland.h: In function 'access':
+src/wayland/wayland.h:32:24: error: too few arguments to function '_access'; expected 2, have 1
+   32 |     (void)mode; return _access(path);
+      |                        ^~~~~~~
+D:/mingw64/x86_64-w64-mingw32/include/io.h:207:23: note: declared here
+  207 |   _CRTIMP int __cdecl _access(const char *_Filename,int _AccessMode);
+      |                       ^~~~~~~
+In file included from src/gnome/gnome.c:6:
+src/gnome/gnome.h:21:13: error: conflicting types for 'pid_t'; have 'int'
+   21 | typedef int pid_t;
+      |             ^~~~~
+In file included from src/gnome/gnome.h:14:
+D:/mingw64/x86_64-w64-mingw32/include/sys/types.h:68:17: note: previous declaration of 'pid_t' with type 'pid_t' {aka 'long long int'}
+   68 | typedef _pid_t  pid_t;
+      |                 ^~~~~
+src/wayland/wayland.h: In function 'sleep':
+src/wayland/wayland.h:34:52: error: implicit declaration of function 'Sleep'; did you mean 'sleep'? [-Wimplicit-function-declaration]
+   34 | static inline unsigned int sleep(unsigned int s) { Sleep(s * 1000); return 0; }
+      |                                                    ^~~~~
+      |                                                    sleep
+src/kde/kde.c:51:14: error: static declaration of 'strtok_r' follows non-static declaration
+   51 | static char *strtok_r(char *str, const char *delim, char **save) {
+      |              ^~~~~~~~
+In file included from src/kde/kde.h:12:
+D:/mingw64/x86_64-w64-mingw32/include/string.h:107:9: note: previous declaration of 'strtok_r' with type 'char *(char * restrict,  const char * restrict,  char ** restrict)'
+  107 |   char *strtok_r(char * __restrict__ _Str, const char * __restrict__ _Delim, char ** __restrict__ __last);
+      |         ^~~~~~~~
+In file included from src/qemu/qemu.c:6:
+src/qemu/qemu.h:16:10: fatal error: sys/wait.h: No such file or directory
+   16 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+src/kde/kde.c: In function 'kde_init':
+src/kde/kde.c:342:14: error: implicit declaration of function 'getuid'; did you mean 'getpid'? [-Wimplicit-function-declaration]
+  342 |     s->uid = getuid();
+      |              ^~~~~~
+      |              getpid
+src/kde/kde.c:343:14: error: implicit declaration of function 'getgid'; did you mean 'getpid'? [-Wimplicit-function-declaration]
+  343 |     s->gid = getgid();
+      |              ^~~~~~
+      |              getpid
+src/kde/kde.c:348:13: error: implicit declaration of function 'gethostname' [-Wimplicit-function-declaration]
+  348 |         if (gethostname(s->hostname, sizeof(s->hostname) - 1) != 0)
+      |             ^~~~~~~~~~~
+src/wayland/wayland.c: In function 'wayland_handle_client_connect':
+src/wayland/wayland.c:479:14: error: implicit declaration of function 'getuid'; did you mean 'getcwd'? [-Wimplicit-function-declaration]
+  479 |     c->uid = getuid();
+      |              ^~~~~~
+      |              getcwd
+<1> Generating bin/components/xorriso.exe
+src/wayland/wayland.c:480:14: error: implicit declaration of function 'getgid'; did you mean 'getcwd'? [-Wimplicit-function-declaration]
+  480 |     c->gid = getgid();
+      |              ^~~~~~
+      |              getcwd
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/xorriso -c src/xorriso/xorriso.c -o "D:\\KenuxK\\build\\components\\xorriso_xorriso.o""
+src/gnome/gnome.c:52:14: error: static declaration of 'strtok_r' follows non-static declaration
+   52 | static char *strtok_r(char *str, const char *delim, char **save) {
+      |              ^~~~~~~~
+In file included from src/gnome/gnome.h:12:
+D:/mingw64/x86_64-w64-mingw32/include/string.h:107:9: note: previous declaration of 'strtok_r' with type 'char *(char * restrict,  const char * restrict,  char ** restrict)'
+  107 |   char *strtok_r(char * __restrict__ _Str, const char * __restrict__ _Delim, char ** __restrict__ __last);
+      |         ^~~~~~~~
+src/kde/kde.c: In function 'kde_start_session':
+src/kde/kde.c:1356:5: error: too many arguments to function 'mkdir'; expected 1, have 2
+ 1356 |     mkdir(s->xdg_runtime_dir, 0700);
+      |     ^~~~~                     ~~~~
+In file included from src/kde/kde.c:21:
+D:/mingw64/x86_64-w64-mingw32/include/direct.h:98:15: note: declared here
+   98 |   int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/kde/kde.c:1357:5: error: too many arguments to function 'mkdir'; expected 1, have 2
+ 1357 |     mkdir(s->kde_config_dir, 0755);
+      |     ^~~~~                    ~~~~
+D:/mingw64/x86_64-w64-mingw32/include/direct.h:98:15: note: declared here
+   98 |   int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/kde/kde.c:1358:5: error: too many arguments to function 'mkdir'; expected 1, have 2
+ 1358 |     mkdir(s->kde_data_dir,   0755);
+      |     ^~~~~                    ~~~~
+D:/mingw64/x86_64-w64-mingw32/include/direct.h:98:15: note: declared here
+   98 |   int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/kde/kde.c:1361:5: error: implicit declaration of function 'setenv'; did you mean 'getenv'? [-Wimplicit-function-declaration]
+ 1361 |     setenv("XDG_RUNTIME_DIR",  s->xdg_runtime_dir,   1);
+      |     ^~~~~~
+      |     getenv
+src/kde/kde.c: In function 'kde_run_session_loop':
+src/kde/kde.c:1412:9: error: implicit declaration of function 'WIFEXITED' [-Wimplicit-function-declaration]
+ 1412 |     if (WIFEXITED(status))      s->exit_code = WEXITSTATUS(status);
+src/gnome/gnome.c: In function 'gnome_init':
+      |         ^~~~~~~~~
+src/gnome/gnome.c:392:14: error: implicit declaration of function 'getuid'; did you mean 'getpid'? [-Wimplicit-function-declaration]
+  392 |     s->uid = getuid();
+      |              ^~~~~~
+      |              getpid
+src/gnome/gnome.c:393:14: error: implicit declaration of function 'getgid'; did you mean 'getpid'? [-Wimplicit-function-declaration]
+  393 |     s->gid = getgid();
+      |              ^~~~~~
+      |              getpid
+src/kde/kde.c:1412:48: error: implicit declaration of function 'WEXITSTATUS' [-Wimplicit-function-declaration]
+ 1412 |     if (WIFEXITED(status))      s->exit_code = WEXITSTATUS(status);
+      |                                                ^~~~~~~~~~~
+src/gnome/gnome.c:396:13: error: implicit declaration of function 'gethostname' [-Wimplicit-function-declaration]
+  396 |         if (gethostname(s->hostname, sizeof(s->hostname) - 1) != 0)
+      |             ^~~~~~~~~~~
+src/kde/kde.c:1413:14: error: implicit declaration of function 'WIFSIGNALED' [-Wimplicit-function-declaration]
+ 1413 |     else if (WIFSIGNALED(status)) s->exit_code = 128 + WTERMSIG(status);
+      |              ^~~~~~~~~~~
+src/kde/kde.c:1413:56: error: implicit declaration of function 'WTERMSIG' [-Wimplicit-function-declaration]
+ 1413 |     else if (WIFSIGNALED(status)) s->exit_code = 128 + WTERMSIG(status);
+      |                                                        ^~~~~~~~
+src/kde/kde.c: In function 'kde_end_session':
+src/kde/kde.c:27:24: warning: statement with no effect [-Wunused-value]
+   27 | #define kill(p,s)      (-1)
+      |                        ^
+src/kde/kde.c:1435:17: note: in expansion of macro 'kill'
+ 1435 |                 kill(*procs[i].pid, SIGTERM);
+      |                 ^~~~
+src/gnome/gnome.c: In function 'gnome_save_gsettings':
+src/gnome/gnome.c:695:5: error: too many arguments to function 'mkdir'; expected 1, have 2
+  695 |     mkdir(dir, 0700);
+      |     ^~~~~      ~~~~
+In file included from src/gnome/gnome.c:20:
+D:/mingw64/x86_64-w64-mingw32/include/direct.h:98:15: note: declared here
+   98 |   int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      |               ^~~~~
+src/kde/kde.c:1438:9: error: implicit declaration of function 'usleep'; did you mean '_sleep'? [-Wimplicit-function-declaration]
+ 1438 |         usleep(150000);
+      |         ^~~~~~
+      |         _sleep
+src/kde/kde.c:27:24: warning: statement with no effect [-Wunused-value]
+   27 | #define kill(p,s)      (-1)
+      |                        ^
+src/kde/kde.c:1441:17: note: in expansion of macro 'kill'
+ 1441 |                 kill(*procs[i].pid, SIGKILL);
+      |                 ^~~~
+src/gnome/gnome.c: In function 'gnome_start_session':
+src/gnome/gnome.c:887:5: error: implicit declaration of function 'signal' [-Wimplicit-function-declaration]
+  887 |     signal(SIGINT,  gnome_on_term_signal);
+      |     ^~~~~~
+src/gnome/gnome.c:887:12: error: 'SIGINT' undeclared (first use in this function)
+  887 |     signal(SIGINT,  gnome_on_term_signal);
+      |            ^~~~~~
+src/gnome/gnome.c:887:12: note: each undeclared identifier is reported only once for each function it appears in
+src/kde/kde.c: In function 'build_exec_argv':
+src/kde/kde.c:1625:24: error: assignment to 'char **' from incompatible pointer type 'char *' [-Wincompatible-pointer-types]
+ 1625 |         out_argv[ai++] = tok;
+      |                        ^
+src/gnome/gnome.c:888:12: error: 'SIGTERM' undeclared (first use in this function)
+  888 |     signal(SIGTERM, gnome_on_term_signal);
+      |            ^~~~~~~
+src/kde/kde.c:1630:28: error: assignment to 'char **' from incompatible pointer type 'char *' [-Wincompatible-pointer-types]
+ 1630 |             out_argv[ai++] = argv_extra[i];
+      |                            ^
+src/kde/kde.c: In function 'kde_app_launch':
+src/kde/kde.c:1639:49: error: passing argument 3 of 'build_exec_argv' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1639 |     int argc = build_exec_argv(app, argv_extra, argv, 64);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char **
+src/kde/kde.c:1614:35: note: expected 'char ***' but argument is of type 'char **'
+ 1614 |                            char **out_argv[], int out_max) {
+      |                            ~~~~~~~^~~~~~~~~~
+src/gnome/gnome.c: In function 'gnome_run_session_loop':
+src/gnome/gnome.c:905:9: error: implicit declaration of function 'pause' [-Wimplicit-function-declaration]
+  905 |         pause();
+      |         ^~~~~
+src/gnome/gnome.c: At top level:
+src/gnome/gnome.c:77:20: warning: 'gnome_color_style_name' defined but not used [-Wunused-function]
+   77 | static const char *gnome_color_style_name(GnomeColorStyle s) {
+      |                    ^~~~~~~~~~~~~~~~~~~~~~
+src/gnome/gnome.c:52:14: warning: 'strtok_r' defined but not used [-Wunused-function]
+   52 | static char *strtok_r(char *str, const char *delim, char **save) {
+      |              ^~~~~~~~
+src/gnome/gnome.c:47:19: warning: 'localtime_r' defined but not used [-Wunused-function]
+   47 | static struct tm *localtime_r(const time_t *t, struct tm *tm) {
+      |                   ^~~~~~~~~~~
+src/kde/kde.c: At top level:
+src/kde/kde.c:249:20: warning: 'wallpaper_mode_name' defined but not used [-Wunused-function]
+  249 | static const char *wallpaper_mode_name(KdeWallpaperMode m) {
+      |                    ^~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:243:20: warning: 'menu_type_name' defined but not used [-Wunused-function]
+  243 | static const char *menu_type_name(KdeMenuType m) {
+      |                    ^~~~~~~~~~~~~~
+src/kde/kde.c:224:22: warning: 'widget_type_from_str' defined but not used [-Wunused-function]
+  224 | static KdeWidgetType widget_type_from_str(const char *s) {
+      |                      ^~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:188:20: warning: 'COLOR_SCHEME_SEARCH_DIRS' defined but not used [-Wunused-variable]
+  188 | static const char *COLOR_SCHEME_SEARCH_DIRS[] = {
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+src/kde/kde.c:47:19: warning: 'localtime_r' defined but not used [-Wunused-function]
+   47 | static struct tm *localtime_r(const time_t *t, struct tm *tm) {
+      |                   ^~~~~~~~~~~

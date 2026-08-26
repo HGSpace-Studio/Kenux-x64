@@ -1,0 +1,93 @@
+-- Start building task run components -- (941590166)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<0> Generating bin/components/systemd.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/systemd -c src/systemd/systemd_tools.c -o "D:\\KenuxK\\build\\components\\systemd_systemd_tools.o""
+<1> Generating bin/components/firefox.exe
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/firefox -c src/firefox/firefox.c -o "D:\\KenuxK\\build\\components\\firefox_firefox.o""
+<2> Generating bin/components/gnome.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gnome -c src/gnome/gnome.c -o "D:\\KenuxK\\build\\components\\gnome_gnome.o""
+<3> Generating bin/components/kde.exe
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/kde -c src/kde/kde.c -o "D:\\KenuxK\\build\\components\\kde_kde.o""
+In file included from src/gnome/gnome.c:6:
+src/gnome/gnome.h:365:5: error: unknown type name 'uid_t'; did you mean 'pid_t'?
+  365 |     uid_t uid;
+      |     ^~~~~
+      |     pid_t
+src/gnome/gnome.h:366:5: error: unknown type name 'gid_t'; did you mean 'pid_t'?
+  366 |     gid_t gid;
+      |     ^~~~~
+      |     pid_t
+src/gnome/gnome.c:9:10: fatal error: sys/wait.h: No such file or directory
+    9 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+src/firefox/firefox.c: In function 'ff_generate_guid':
+src/firefox/firefox.c:68:14: warning: operation on 'counter' may be undefined [-Wsequence-point]
+   68 |              ++counter,
+      |              ^~~~~~~~~
+In file included from src/kde/kde.c:6:
+src/kde/kde.h:400:5: error: unknown type name 'uid_t'; did you mean 'pid_t'?
+  400 |     uid_t uid;
+      |     ^~~~~
+      |     pid_t
+src/kde/kde.h:401:5: error: unknown type name 'gid_t'; did you mean 'pid_t'?
+  401 |     gid_t gid;
+      |     ^~~~~
+      |     pid_t
+src/kde/kde.c:14:10: fatal error: sys/wait.h: No such file or directory
+   14 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<2> Generating bin/components/wayland.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o "D:\\KenuxK\\build\\components\\wayland_wayland.o""
+src/firefox/firefox.c: In function 'firefox_profile_scan':
+src/firefox/firefox.c:398:53: warning: '%s' directive output may be truncated writing up to 8191 bytes into a region of size 4096 [-Wformat-truncation=]
+  398 |         snprintf(p->root_dir, sizeof(p->root_dir), "%s/default",
+      |                                                     ^~
+src/firefox/firefox.c:398:9: note: 'snprintf' output between 9 and 8200 bytes into a destination of size 4096
+  398 |         snprintf(p->root_dir, sizeof(p->root_dir), "%s/default",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  399 |                  s->profile_path);
+      |                  ~~~~~~~~~~~~~~~~
+src/firefox/firefox.c: In function 'firefox_profile_create':
+src/firefox/firefox.c:425:49: warning: '%s' directive output may be truncated writing up to 8191 bytes into a region of size 4096 [-Wformat-truncation=]
+  425 |     snprintf(p->root_dir, sizeof(p->root_dir), "%s/%s",
+      |                                                 ^~
+src/firefox/firefox.c:425:5: note: 'snprintf' output 2 or more bytes (assuming 8193) into a destination of size 4096
+  425 |     snprintf(p->root_dir, sizeof(p->root_dir), "%s/%s",
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  426 |              s->profile_path, name);
+      |              ~~~~~~~~~~~~~~~~~~~~~~
+src/systemd/systemd_tools.c: In function 'journal_dump_emit':
+src/systemd/systemd_tools.c:1497:41: warning: '%s' directive output may be truncated writing up to 4095 bytes into a region of size between 3506 and 4089 [-Wformat-truncation=]
+ 1497 |     snprintf(buf, bufsz, "%s %s %s[%d]: %s",
+      |                                         ^~
+In function 'journal_format_short',
+    inlined from 'journal_dump_emit' at src/systemd/systemd_tools.c:1539:5:
+src/systemd/systemd_tools.c:1497:5: note: 'snprintf' output between 8 and 4686 bytes into a destination of size 4096
+ 1497 |     snprintf(buf, bufsz, "%s %s %s[%d]: %s",
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1498 |              tbuf,
+      |              ~~~~~
+ 1499 |              e->hostname[0] ? e->hostname : "",
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1500 |              ident, (int)e->pid,
+      |              ~~~~~~~~~~~~~~~~~~~
+ 1501 |              e->message[0] ? e->message : "");
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/systemd/systemd_tools.c: In function 'sysctl_load_unit_files.part.0':
+src/systemd/systemd_tools.c:527:13: warning: 'strncpy' output may be truncated copying 255 bytes from a string of length 259 [-Wstringop-truncation]
+  527 |             strncpy(u->name, de->d_name, sizeof(u->name) - 1);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/systemd/systemd_tools.c:528:13: warning: 'strncpy' output may be truncated copying 255 bytes from a string of length 259 [-Wstringop-truncation]
+  528 |             strncpy(u->id, de->d_name, sizeof(u->id) - 1);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/wayland/wayland.c:6:
+src/wayland/wayland.h:17:10: fatal error: sys/mman.h: No such file or directory
+   17 | #include <sys/mman.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\firefox_firefox.o" -o "D:\\KenuxK\\bin\\components\\firefox.exe""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\systemd_systemd_tools.o" -o "D:\\KenuxK\\bin\\components\\systemd.exe""
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/wayland -c src/wayland/wayland.c -o D:\KenuxK\build\components\wayland_wayland.o

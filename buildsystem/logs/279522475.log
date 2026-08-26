@@ -1,0 +1,104 @@
+-- Start building task run components -- (279522475)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<0> Generating bin/components/ld.exe
+<3> Generating bin/components/gcc.exe
+<1> Generating bin/components/make.exe
+<2> Generating bin/components/clang.exe
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/ld -c src/ld/ld.c -o "D:\\KenuxK\\build\\components\\ld_ld.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/make -c src/make/make.c -o "D:\\KenuxK\\build\\components\\make_make.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o "D:\\KenuxK\\build\\components\\gcc_gcc.o""
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o "D:\\KenuxK\\build\\components\\clang_clang.o""
+src/ld/ld.c: In function 'linker_cleanup':
+src/ld/ld.c:133:13: warning: the comparison will always evaluate as 'true' for the address of 'sections' will never be NULL [-Waddress]
+  133 |         if (state->objects[i].sections) {
+      |             ^~~~~
+In file included from src/ld/ld.c:6:
+src/ld/ld.h:71:13: note: 'sections' declared here
+   71 |     Section sections[MAX_SECTIONS];
+      |             ^~~~~~~~
+src/ld/ld.c: In function 'load_object_file':
+src/ld/ld.c:244:36: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'size_t' {aka 'long long unsigned int'} [-Wformat=]
+  244 |         printf("  Entry point: 0x%lx\n", obj->entry_point);
+      |                                  ~~^     ~~~~~~~~~~~~~~~~
+      |                                    |        |
+      |                                    |        size_t {aka long long unsigned int}
+      |                                    long unsigned int
+      |                                  %llx
+src/ld/ld.c: In function 'parse_elf_header':
+src/ld/ld.c:264:30: warning: hex escape sequence out of range
+  264 |     if (memcmp(header, ELFMAG, 4) != 0) {
+      |                              ^
+src/ld/ld.c:253:35: warning: unused parameter 'state' [-Wunused-parameter]
+  253 | int parse_elf_header(LinkerState *state, ObjectFile *obj) {
+      |                      ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_section_headers':
+src/ld/ld.c:288:40: warning: unused parameter 'state' [-Wunused-parameter]
+  288 | int parse_section_headers(LinkerState *state, ObjectFile *obj) {
+      |                           ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'parse_symbol_table':
+src/ld/ld.c:345:37: warning: unused parameter 'state' [-Wunused-parameter]
+  345 | int parse_symbol_table(LinkerState *state, ObjectFile *obj) {
+      |                        ~~~~~~~~~~~~~^~~~~
+src/ld/ld.c: In function 'write_output_sections':
+src/ld/ld.c:529:71: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long long unsigned int'} [-Wsign-compare]
+  529 |             if (write(state->output_fd, section->data, section->size) != section->size) {
+      |                                                                       ^~
+In file included from src/make/make.c:6:
+src/make/make.h:49:9: warning: 'X_OK' redefined
+   49 | #define X_OK 0
+      |         ^~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/fcntl.h:8,
+                 from src/make/make.h:12:
+D:/mingw64/x86_64-w64-mingw32/include/io.h:203:9: note: this is the location of the previous definition
+  203 | #define X_OK    1       /* Check for execute permission. */
+      |         ^~~~
+src/make/make.c: In function 'load_makefile':
+src/make/make.c:93:27: warning: comparison of integer expressions of different signedness: 'int' and 'long long unsigned int' [-Wsign-compare]
+   93 |         for (int i = 0; i < sizeof(filenames) / sizeof(char *); i++) {
+      |                           ^
+src/clang/clang.c:22:20: warning: 'clang_basename' defined but not used [-Wunused-function]
+   22 | static const char *clang_basename(const char *path) {
+      |                    ^~~~~~~~~~~~~~
+src/clang/clang.c: In function 'clang_build_jobs.part.0':
+src/clang/clang.c:567:52: warning: '%s' directive output may be truncated writing up to 15 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  567 |         snprintf(j->output, CLANG_MAX_PATH_LEN, "%s%s", stem, ext);
+      |                                                    ^~         ~~~
+src/clang/clang.c:567:9: note: 'snprintf' output between 1 and 4111 bytes into a destination of size 4096
+  567 |         snprintf(j->output, CLANG_MAX_PATH_LEN, "%s%s", stem, ext);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gcc/gcc.c: In function 'gcc_determine_output_file':
+src/gcc/gcc.c:398:17: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  398 |                 strncpy(out_path, state->output_file, MAX_PATH_LEN - 1);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\ld_ld.o" -o "D:\\KenuxK\\bin\\components\\ld.exe""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\make_make.o" -o "D:\\KenuxK\\bin\\components\\make.exe""
+src/gcc/gcc.c: In function 'gcc_do_link.part.0':
+src/gcc/gcc.c:582:32: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  582 |     if (state->output_file[0]) strncpy(out, state->output_file, MAX_PATH_LEN - 1);
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gcc/gcc.c: In function 'gcc_build_jobs':
+src/gcc/gcc.c:447:17: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  447 |                 strncpy(j->output, state->output_file, MAX_PATH_LEN - 1);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/gcc/gcc.c: In function 'gcc_resolve_tool_paths':
+src/gcc/gcc.c:475:17: warning: 'strncpy' output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]
+  475 |                 strncpy(store, candidate, MAX_PATH_LEN - 1);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<1> Generating bin/components/fastfetch.exe
+<0> Generating bin/components/bash.exe
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/fastfetch -c src/fastfetch/fastfetch.c -o "D:\\KenuxK\\build\\components\\fastfetch_fastfetch.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/bash -c src/bash/shell.c -o "D:\\KenuxK\\build\\components\\bash_shell.o""
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\gcc_gcc.o" -o "D:\\KenuxK\\bin\\components\\gcc.exe""
+In file included from src/fastfetch/fastfetch.c:6:
+src/fastfetch/fastfetch.h:13:10: fatal error: sys/sysinfo.h: No such file or directory
+   13 | #include <sys/sysinfo.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+In file included from src/bash/shell.c:6:
+src/bash/shell.h:13:10: fatal error: sys/wait.h: No such file or directory
+   13 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\clang_clang.o" -o "D:\\KenuxK\\bin\\components\\clang.exe""
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/bash -c src/bash/shell.c -o D:\KenuxK\build\components\bash_shell.o

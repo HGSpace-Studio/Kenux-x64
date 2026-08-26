@@ -1,0 +1,94 @@
+-- Start building task run components -- (443036680)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<2> Generating bin/components/bash.exe
+<1> Generating bin/components/fastfetch.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/bash -c src/bash/shell.c -o "D:\\KenuxK\\build\\components\\bash_shell.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/fastfetch -c src/fastfetch/fastfetch.c -o "D:\\KenuxK\\build\\components\\fastfetch_fastfetch.o""
+In file included from src/bash/shell.c:6:
+src/bash/shell.h:34:13: error: conflicting types for 'pid_t'; have 'int'
+   34 | typedef int pid_t;
+      |             ^~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/sys/stat.h:26,
+                 from src/bash/shell.h:13:
+D:/mingw64/x86_64-w64-mingw32/include/sys/types.h:68:17: note: previous declaration of 'pid_t' with type 'pid_t' {aka 'long long int'}
+   68 | typedef _pid_t  pid_t;
+      |                 ^~~~~
+src/bash/shell.c:18:5: error: initialization of 'int (*)(char **, int,  ShellState *)' from incompatible pointer type 'int (*)(char *, ShellState *)' [-Wincompatible-pointer-types]
+   18 |     builtin_cd, builtin_pwd, builtin_echo, builtin_exit, builtin_help,
+      |     ^~~~~~~~~~
+src/bash/shell.c:18:5: note: (near initialization for 'builtin_funcs[0]')
+src/bash/shell.h:102:5: note: 'builtin_cd' declared here
+  102 | int builtin_cd(char *path, ShellState *state);
+      |     ^~~~~~~~~~
+src/bash/shell.c:18:17: error: initialization of 'int (*)(char **, int,  ShellState *)' from incompatible pointer type 'int (*)(void)' [-Wincompatible-pointer-types]
+   18 |     builtin_cd, builtin_pwd, builtin_echo, builtin_exit, builtin_help,
+      |                 ^~~~~~~~~~~
+src/bash/shell.c:18:17: note: (near initialization for 'builtin_funcs[1]')
+src/bash/shell.h:103:5: note: 'builtin_pwd' declared here
+  103 | int builtin_pwd(void);
+      |     ^~~~~~~~~~~
+src/bash/shell.c:18:30: error: initialization of 'int (*)(char **, int,  ShellState *)' from incompatible pointer type 'int (*)(char **, int)' [-Wincompatible-pointer-types]
+   18 |     builtin_cd, builtin_pwd, builtin_echo, builtin_exit, builtin_help,
+      |                              ^~~~~~~~~~~~
+src/bash/shell.c:18:30: note: (near initialization for 'builtin_funcs[2]')
+src/bash/shell.h:104:5: note: 'builtin_echo' declared here
+  104 | int builtin_echo(char **args, int argc);
+      |     ^~~~~~~~~~~~
+src/bash/shell.c:18:44: error: initialization of 'int (*)(char **, int,  ShellState *)' from incompatible pointer type 'int (*)(void)' [-Wincompatible-pointer-types]
+   18 |     builtin_cd, builtin_pwd, builtin_echo, builtin_exit, builtin_help,
+      |                                            ^~~~~~~~~~~~
+src/bash/shell.c:18:44: note: (near initialization for 'builtin_funcs[3]')
+src/bash/shell.h:105:5: note: 'builtin_exit' declared here
+  105 | int builtin_exit(void);
+      |     ^~~~~~~~~~~~
+src/bash/shell.c:18:58: error: initialization of 'int (*)(char **, int,  ShellState *)' from incompatible pointer type 'int (*)(void)' [-Wincompatible-pointer-types]
+   18 |     builtin_cd, builtin_pwd, builtin_echo, builtin_exit, builtin_help,
+      |                                                          ^~~~~~~~~~~~
+src/bash/shell.c:18:58: note: (near initialization for 'builtin_funcs[4]')
+src/bash/shell.h:106:5: note: 'builtin_help' declared here
+  106 | int builtin_help(void);
+      |     ^~~~~~~~~~~~
+src/bash/shell.c:19:5: error: initialization of 'int (*)(char **, int,  ShellState *)' from incompatible pointer type 'int (*)(char **, int)' [-Wincompatible-pointer-types]
+   19 |     builtin_export, NULL, NULL
+      |     ^~~~~~~~~~~~~~
+src/bash/shell.c:19:5: note: (near initialization for 'builtin_funcs[5]')
+src/bash/shell.h:107:5: note: 'builtin_export' declared here
+  107 | int builtin_export(char **args, int argc);
+      |     ^~~~~~~~~~~~~~
+src/bash/shell.c: In function 'shell_init':
+src/bash/shell.c:39:12: error: 'SIGQUIT' undeclared (first use in this function)
+   39 |     signal(SIGQUIT, SIG_IGN);
+      |            ^~~~~~~
+src/bash/shell.c:39:12: note: each undeclared identifier is reported only once for each function it appears in
+src/bash/shell.c:40:12: error: 'SIGTSTP' undeclared (first use in this function)
+   40 |     signal(SIGTSTP, SIG_IGN);
+      |            ^~~~~~~
+src/bash/shell.c: In function 'read_line':
+src/bash/shell.c:61:9: error: implicit declaration of function 'getline' [-Wimplicit-function-declaration]
+   61 |     if (getline(&line, &bufsize, stdin) == -1) {
+      |         ^~~~~~~
+src/bash/shell.c: In function 'builtin_export':
+src/bash/shell.c:241:13: error: implicit declaration of function 'setenv'; did you mean 'getenv'? [-Wimplicit-function-declaration]
+  241 |         if (setenv(var, value, 1) != 0) {
+      |             ^~~~~~
+      |             getenv
+In file included from src/fastfetch/fastfetch.c:6:
+src/fastfetch/fastfetch.h:40:13: error: conflicting types for 'pid_t'; have 'int'
+   40 | typedef int pid_t;
+      |             ^~~~~
+In file included from D:/mingw64/x86_64-w64-mingw32/include/sys/stat.h:26,
+                 from src/fastfetch/fastfetch.h:13:
+D:/mingw64/x86_64-w64-mingw32/include/sys/types.h:68:17: note: previous declaration of 'pid_t' with type 'pid_t' {aka 'long long int'}
+   68 | typedef _pid_t  pid_t;
+      |                 ^~~~~
+src/fastfetch/fastfetch.c:8:10: fatal error: sys/sysinfo.h: No such file or directory
+    8 | #include <sys/sysinfo.h>
+      |          ^~~~~~~~~~~~~~~
+src/bash/shell.c: In function 'main':
+src/bash/shell.c:399:34: error: 'cmd' undeclared (first use in this function); did you mean 'chmod'?
+  399 |             parse_command(line, &cmd);
+      |                                  ^~~
+      |                                  chmod
+compilation terminated.
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/fastfetch -c src/fastfetch/fastfetch.c -o D:\KenuxK\build\components\fastfetch_fastfetch.o

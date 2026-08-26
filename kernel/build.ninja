@@ -1,0 +1,136 @@
+builddir = build
+
+includes = -Iinclude -Ikernel/include -Ikernel -Ikernel/include -Iarch/x86_64/include -Ilib/libc/include -Iapi
+cflags = -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs
+asflags = -f elf64
+
+rule cc
+  command = gcc $cflags $includes -c $in -o $out
+  description = CC $in
+
+rule cc_boot
+  command = gcc $cflags $includes -c $in -o $out
+  description = CC_BOOT $in
+
+rule nasm
+  command = nasm $asflags -o $out $in
+  description = NASM $in
+
+rule ld
+  command = ld -T d:/Kenux kernel/kernel/arch/x86_64/boot/linker.ld -o $out $in
+  description = LD $out
+
+build build/boot.o: nasm arch/x86_64/boot/boot.S
+build build/interrupt_asm.o: nasm arch/x86_64/interrupt.S
+build build/api/kapi_device.o: cc api/kapi_device.c
+build build/api/kapi_fs.o: cc api/kapi_fs.c
+build build/api/kapi_init.o: cc api/kapi_init.c
+build build/api/kapi_memory.o: cc api/kapi_memory.c
+build build/api/kapi_process.o: cc api/kapi_process.c
+build build/api/kapi_syscall.o: cc api/kapi_syscall.c
+build build/arch_x86_64/ac97.o: cc arch/x86_64/ac97.c
+build build/arch_x86_64/acpi.o: cc arch/x86_64/acpi.c
+build build/arch_x86_64/acpi_madt.o: cc arch/x86_64/acpi_madt.c
+build build/arch_x86_64/acpi_pm.o: cc arch/x86_64/acpi_pm.c
+build build/arch_x86_64/ahci.o: cc arch/x86_64/ahci.c
+build build/arch_x86_64/apic.o: cc arch/x86_64/apic.c
+build build/arch_x86_64/bpf.o: cc arch/x86_64/bpf.c
+build build/arch_x86_64/buddy.o: cc arch/x86_64/buddy.c
+build build/arch_x86_64/cfs.o: cc arch/x86_64/cfs.c
+build build/arch_x86_64/conntrack.o: cc arch/x86_64/conntrack.c
+build build/arch_x86_64/cpufreq.o: cc arch/x86_64/cpufreq.c
+build build/arch_x86_64/cpuidle.o: cc arch/x86_64/cpuidle.c
+build build/arch_x86_64/dns.o: cc arch/x86_64/dns.c
+build build/arch_x86_64/efi.o: cc arch/x86_64/efi.c
+build build/arch_x86_64/efi_entry.o: cc arch/x86_64/efi_entry.c
+build build/arch_x86_64/efi_runtime.o: cc arch/x86_64/efi_runtime.c
+build build/arch_x86_64/ehci.o: cc arch/x86_64/ehci.c
+build build/arch_x86_64/elf.o: cc arch/x86_64/elf.c
+build build/arch_x86_64/ext2.o: cc arch/x86_64/ext2.c
+build build/arch_x86_64/ext4.o: cc arch/x86_64/ext4.c
+build build/arch_x86_64/framebuffer.o: cc arch/x86_64/framebuffer.c
+build build/arch_x86_64/ftrace.o: cc arch/x86_64/ftrace.c
+build build/arch_x86_64/gdt.o: cc arch/x86_64/gdt.c
+build build/arch_x86_64/hda.o: cc arch/x86_64/hda.c
+build build/arch_x86_64/hpet.o: cc arch/x86_64/hpet.c
+build build/arch_x86_64/i2c.o: cc arch/x86_64/i2c.c
+build build/arch_x86_64/idt.o: cc arch/x86_64/idt.c
+build build/arch_x86_64/ioapic.o: cc arch/x86_64/ioapic.c
+build build/arch_x86_64/jbd2.o: cc arch/x86_64/jbd2.c
+build build/arch_x86_64/keyboard.o: cc arch/x86_64/keyboard.c
+build build/arch_x86_64/kvm.o: cc arch/x86_64/kvm.c
+build build/arch_x86_64/ldso.o: cc arch/x86_64/ldso.c
+build build/arch_x86_64/lsm.o: cc arch/x86_64/lsm.c
+build build/arch_x86_64/memory.o: cc arch/x86_64/memory.c
+build build/arch_x86_64/mmap.o: cc arch/x86_64/mmap.c
+build build/arch_x86_64/mouse.o: cc arch/x86_64/mouse.c
+build build/arch_x86_64/net.o: cc arch/x86_64/net.c
+build build/arch_x86_64/netfilter.o: cc arch/x86_64/netfilter.c
+build build/arch_x86_64/nvme.o: cc arch/x86_64/nvme.c
+build build/arch_x86_64/pagecache.o: cc arch/x86_64/pagecache.c
+build build/arch_x86_64/pagefault.o: cc arch/x86_64/pagefault.c
+build build/arch_x86_64/pci.o: cc arch/x86_64/pci.c
+build build/arch_x86_64/pic.o: cc arch/x86_64/pic.c
+build build/arch_x86_64/pit.o: cc arch/x86_64/pit.c
+build build/arch_x86_64/procfs.o: cc arch/x86_64/procfs.c
+build build/arch_x86_64/route.o: cc arch/x86_64/route.c
+build build/arch_x86_64/rtc.o: cc arch/x86_64/rtc.c
+build build/arch_x86_64/sata.o: cc arch/x86_64/sata.c
+build build/arch_x86_64/security.o: cc arch/x86_64/security.c
+build build/arch_x86_64/selinux.o: cc arch/x86_64/selinux.c
+build build/arch_x86_64/slab.o: cc arch/x86_64/slab.c
+build build/arch_x86_64/smbios.o: cc arch/x86_64/smbios.c
+build build/arch_x86_64/smp.o: cc arch/x86_64/smp.c
+build build/arch_x86_64/sound.o: cc arch/x86_64/sound.c
+build build/arch_x86_64/spi.o: cc arch/x86_64/spi.c
+build build/arch_x86_64/swap.o: cc arch/x86_64/swap.c
+build build/arch_x86_64/tcp_bbr.o: cc arch/x86_64/tcp_bbr.c
+build build/arch_x86_64/tcp_cong.o: cc arch/x86_64/tcp_cong.c
+build build/arch_x86_64/thermal.o: cc arch/x86_64/thermal.c
+build build/arch_x86_64/tmpfs.o: cc arch/x86_64/tmpfs.c
+build build/arch_x86_64/uart.o: cc arch/x86_64/uart.c
+build build/arch_x86_64/usb_hid.o: cc arch/x86_64/usb_hid.c
+build build/arch_x86_64/usermode.o: cc arch/x86_64/usermode.c
+build build/arch_x86_64/vga.o: cc arch/x86_64/vga.c
+build build/arch_x86_64/virtio.o: cc arch/x86_64/virtio.c
+build build/arch_x86_64/vlan.o: cc arch/x86_64/vlan.c
+build build/arch_x86_64/watchdog.o: cc arch/x86_64/watchdog.c
+build build/arch_x86_64/xhci.o: cc arch/x86_64/xhci.c
+build build/kernel/cgroup.o: cc kernel/cgroup.c
+build build/kernel/devtmpfs.o: cc kernel/devtmpfs.c
+build build/kernel/drivers.o: cc kernel/drivers.c
+build build/kernel/epoll.o: cc kernel/epoll.c
+build build/kernel/fifo.o: cc kernel/fifo.c
+build build/kernel/fs.o: cc kernel/fs.c
+build build/kernel/gdb_stub.o: cc kernel/gdb_stub.c
+build build/kernel/interrupt.o: cc_boot kernel/interrupt.c
+build build/kernel/ipc.o: cc kernel/ipc.c
+build build/kernel/kernel.o: cc_boot kernel/kernel.c
+build build/kernel/kthread.o: cc kernel/kthread.c
+build build/kernel/module.o: cc kernel/module.c
+build build/kernel/namespace.o: cc kernel/namespace.c
+build build/kernel/printk.o: cc kernel/printk.c
+build build/kernel/process.o: cc kernel/process.c
+build build/kernel/rcu.o: cc kernel/rcu.c
+build build/kernel/shell_enhanced.o: cc kernel/shell_enhanced.c
+build build/kernel/signal.o: cc kernel/signal.c
+build build/kernel/stacktrace.o: cc kernel/stacktrace.c
+build build/kernel/sync.o: cc kernel/sync.c
+build build/kernel/syscall.o: cc_boot kernel/syscall.c
+build build/kernel/sysfs.o: cc kernel/sysfs.c
+build build/kernel/timer.o: cc kernel/timer.c
+build build/kernel/unixsock.o: cc kernel/unixsock.c
+build build/kernel/wait.o: cc kernel/wait.c
+build build/kernel/workqueue.o: cc kernel/workqueue.c
+build build/lib_libc/errno.o: cc lib/libc/errno.c
+build build/lib_libc/math.o: cc lib/libc/math.c
+build build/lib_libc/setjmp.o: cc lib/libc/setjmp.c
+build build/lib_libc/signal.o: cc lib/libc/signal.c
+build build/lib_libc/stdio.o: cc lib/libc/stdio.c
+build build/lib_libc/stdlib.o: cc lib/libc/stdlib.c
+build build/lib_libc/string.o: cc lib/libc/string.c
+build build/lib_libc/time.o: cc lib/libc/time.c
+build build/lib_libc/unistd.o: cc lib/libc/unistd.c
+build build/lib_libc/vsprintf.o: cc lib/libc/vsprintf.c
+
+build build/kernel.elf: ld build/boot.o build/interrupt_asm.o build/api/kapi_device.o build/api/kapi_fs.o build/api/kapi_init.o build/api/kapi_memory.o build/api/kapi_process.o build/api/kapi_syscall.o build/arch_x86_64/ac97.o build/arch_x86_64/acpi.o build/arch_x86_64/acpi_madt.o build/arch_x86_64/acpi_pm.o build/arch_x86_64/ahci.o build/arch_x86_64/apic.o build/arch_x86_64/bpf.o build/arch_x86_64/buddy.o build/arch_x86_64/cfs.o build/arch_x86_64/conntrack.o build/arch_x86_64/cpufreq.o build/arch_x86_64/cpuidle.o build/arch_x86_64/dns.o build/arch_x86_64/efi.o build/arch_x86_64/efi_entry.o build/arch_x86_64/efi_runtime.o build/arch_x86_64/ehci.o build/arch_x86_64/elf.o build/arch_x86_64/ext2.o build/arch_x86_64/ext4.o build/arch_x86_64/framebuffer.o build/arch_x86_64/ftrace.o build/arch_x86_64/gdt.o build/arch_x86_64/hda.o build/arch_x86_64/hpet.o build/arch_x86_64/i2c.o build/arch_x86_64/idt.o build/arch_x86_64/ioapic.o build/arch_x86_64/jbd2.o build/arch_x86_64/keyboard.o build/arch_x86_64/kvm.o build/arch_x86_64/ldso.o build/arch_x86_64/lsm.o build/arch_x86_64/memory.o build/arch_x86_64/mmap.o build/arch_x86_64/mouse.o build/arch_x86_64/net.o build/arch_x86_64/netfilter.o build/arch_x86_64/nvme.o build/arch_x86_64/pagecache.o build/arch_x86_64/pagefault.o build/arch_x86_64/pci.o build/arch_x86_64/pic.o build/arch_x86_64/pit.o build/arch_x86_64/procfs.o build/arch_x86_64/route.o build/arch_x86_64/rtc.o build/arch_x86_64/sata.o build/arch_x86_64/security.o build/arch_x86_64/selinux.o build/arch_x86_64/slab.o build/arch_x86_64/smbios.o build/arch_x86_64/smp.o build/arch_x86_64/sound.o build/arch_x86_64/spi.o build/arch_x86_64/swap.o build/arch_x86_64/tcp_bbr.o build/arch_x86_64/tcp_cong.o build/arch_x86_64/thermal.o build/arch_x86_64/tmpfs.o build/arch_x86_64/uart.o build/arch_x86_64/usb_hid.o build/arch_x86_64/usermode.o build/arch_x86_64/vga.o build/arch_x86_64/virtio.o build/arch_x86_64/vlan.o build/arch_x86_64/watchdog.o build/arch_x86_64/xhci.o build/kernel/cgroup.o build/kernel/devtmpfs.o build/kernel/drivers.o build/kernel/epoll.o build/kernel/fifo.o build/kernel/fs.o build/kernel/gdb_stub.o build/kernel/interrupt.o build/kernel/ipc.o build/kernel/kernel.o build/kernel/kthread.o build/kernel/module.o build/kernel/namespace.o build/kernel/printk.o build/kernel/process.o build/kernel/rcu.o build/kernel/shell_enhanced.o build/kernel/signal.o build/kernel/stacktrace.o build/kernel/sync.o build/kernel/syscall.o build/kernel/sysfs.o build/kernel/timer.o build/kernel/unixsock.o build/kernel/wait.o build/kernel/workqueue.o build/lib_libc/errno.o build/lib_libc/math.o build/lib_libc/setjmp.o build/lib_libc/signal.o build/lib_libc/stdio.o build/lib_libc/stdlib.o build/lib_libc/string.o build/lib_libc/time.o build/lib_libc/unistd.o build/lib_libc/vsprintf.o

@@ -1,0 +1,41 @@
+-- Start building task run components -- (877682063)
+-- Start building task components -- (0)
+-- Enter folder bin/components --
+<3> Generating bin/components/dd.exe
+<0> Generating bin/components/mkfs.exe
+<2> Generating bin/components/ld.exe
+<1> Generating bin/components/clang.exe
+<3> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/dd -c src/dd/dd.c -o "D:\\KenuxK\\build\\components\\dd_dd.o""
+<1> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/clang -c src/clang/clang.c -o "D:\\KenuxK\\build\\components\\clang_clang.o""
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/mkfs -c src/mkfs/mkfs.c -o "D:\\KenuxK\\build\\components\\mkfs_mkfs.o""
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/ld -c src/ld/ld.c -o "D:\\KenuxK\\build\\components\\ld_ld.o""
+src/ld/ld.c:8:10: fatal error: sys/mman.h: No such file or directory
+    8 | #include <sys/mman.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<2> Generating bin/components/gcc.exe
+<2> Running command: ""D:\\mingw64\\bin\\gcc.exe" -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o "D:\\KenuxK\\build\\components\\gcc_gcc.o""
+In file included from src/clang/clang.c:6:
+src/clang/clang.h:16:10: fatal error: sys/wait.h: No such file or directory
+   16 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+src/dd/dd.c: In function 'apply_conversions':
+src/dd/dd.c:186:48: warning: comparison is always true due to limited range of data type [-Wtype-limits]
+  186 |                 if (data[i] >= 0x40 && data[i] <= 0xFE) {
+      |                                                ^~
+src/dd/dd.c: In function 'process_data':
+src/dd/dd.c:315:13: error: implicit declaration of function 'fsync' [-Wimplicit-function-declaration]
+  315 |             fsync(state->ofd);
+      |             ^~~~~
+src/mkfs/mkfs.c: In function 'init_superblock':
+src/mkfs/mkfs.c:256:13: warning: 'strncpy' output may be truncated copying 15 bytes from a string of length 15 [-Wstringop-truncation]
+  256 |             strncpy(state->superblock.s_volume_name, state->label, MAX_LABEL_LEN - 1);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/gcc/gcc.c:6:
+src/gcc/gcc.h:16:10: fatal error: sys/wait.h: No such file or directory
+   16 | #include <sys/wait.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+<0> Running command: ""D:\\mingw64\\bin\\gcc.exe" "D:\\KenuxK\\build\\components\\mkfs_mkfs.o" -o "D:\\KenuxK\\bin\\components\\mkfs.exe""
+FAILED TASK run components: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -std=c17 -O2 -Isrc/gcc -c src/gcc/gcc.c -o D:\KenuxK\build\components\gcc_gcc.o

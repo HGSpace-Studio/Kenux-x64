@@ -1,0 +1,384 @@
+-- Start building task run kernel -- (553895109)
+-- Start building task kernel -- (0)
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/wmi.c
+<3> Building kernel/arch/x86_64/win32_shell.c
+<0> Building kernel/arch/x86_64/win32_security.c
+-- Enter folder kernel/kernel --
+<1> Building kernel/kernel/kernel.c
+In file included from kernel/arch/x86_64/win32_shell.c:5:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c:10:8: error: unknown type name 'win32_process_t'
+   10 | extern win32_process_t* win32_create_process(const char*, const char*, const char*);
+      |        ^~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/wmi.c:3:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c:12:8: error: unknown type name 'win32_process_t'
+   12 | extern win32_process_t* win32_get_process(uint32_t);
+      |        ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'ShellExecuteA':
+kernel/arch/x86_64/win32_shell.c:206:30: warning: unused variable 'tmp' [-Wunused-variable]
+  206 |                         char tmp[512];
+      |                              ^~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_exec_query':
+kernel/arch/x86_64/wmi.c:498:21: warning: multi-character character constant [-Wmultichar]
+  498 |     en->signature = 'ENUM';
+      |                     ^~~~~~
+kernel/arch/x86_64/wmi.c: In function 'wmi_enum_get':
+kernel/arch/x86_64/wmi.c:531:36: warning: multi-character character constant [-Wmultichar]
+  531 |     if (en->signature != (uint32_t)'ENUM') return WBEM_E_INVALID_PARAMETER;
+      |                                    ^~~~~~
+In file included from kernel/kernel/kernel.c:32:
+kernel/arch/x86_64/include/arch/netfilter.h: In function 'nf_hook_slow_eval':
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from 'int' to 'uint16_t' {aka 'short unsigned int'} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'PathCanonicalizeA':
+kernel/arch/x86_64/win32_shell.c:727:34: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+  727 |             memcpy(tmp + ti, sp, ci);
+      |                                  ^~
+kernel/arch/x86_64/win32_security.c:126:16: error: redefinition of 'struct _LUID'
+  126 | typedef struct _LUID {
+      |                ^~~~~
+In file included from kernel/arch/x86_64/win32_security.c:1:
+kernel/arch/x86_64/include/arch/win32.h:68:16: note: originally defined here
+   68 | typedef struct _LUID {
+      |                ^~~~~
+kernel/arch/x86_64/win32_security.c:129:3: error: conflicting types for 'LUID'; have 'struct _LUID'
+  129 | } LUID;
+      |   ^~~~
+kernel/arch/x86_64/include/arch/win32.h:71:3: note: previous declaration of 'LUID' with type 'LUID' {aka 'struct _LUID'}
+   71 | } LUID, *PLUID;
+      |   ^~~~
+kernel/arch/x86_64/win32_security.c: In function 'CreateWellKnownSid':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:407:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  407 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: missing braces around initializer [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:408:43: note: in expansion of macro 'SECURITY_LOCAL_SID_AUTHORITY'
+  408 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: missing braces around initializer [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:409:45: note: in expansion of macro 'SECURITY_CREATOR_SID_AUTHORITY'
+  409 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:410:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  410 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'sid_is_world_or_auth':
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:601:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  601 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:602:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  602 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'create_system_token':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:672:40: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  672 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: missing braces around initializer [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:673:43: note: in expansion of macro 'SECURITY_WORLD_SID_AUTHORITY'
+  673 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from kernel/kernel/kernel.c:40:
+kernel/arch/x86_64/include/arch/ext4.h: At top level:
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:776:6: error: conflicting types for 'LookupPrivilegeValueA'; have 'BOOL(const char *, const char *, LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+  776 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName, LUID* lpLuid) {
+      |      ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1606:6: note: previous declaration of 'LookupPrivilegeValueA' with type 'BOOL(const char *, const char *, struct _LUID *)' {aka 'int(const char *, const char *, struct _LUID *)'}
+kernel/arch/x86_64/include/arch/ext4.h:275:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+ 1606 | BOOL LookupPrivilegeValueA(const char* lpSystemName, const char* lpName,
+  275 |     } dx_entry[0];
+      |      ^~~~~~~~~~~~~~~~~~~~~
+      |       ^~~~~~~~
+kernel/arch/x86_64/include/arch/ext4.h:289:7: warning: ISO C forbids zero-size array 'dx_entry' [-Wpedantic]
+  289 |     } dx_entry[0];
+      |       ^~~~~~~~
+kernel/arch/x86_64/win32_security.c:839:6: error: conflicting types for 'LookupAccountSidA'; have 'BOOL(const char *, struct _SID *, char *, uint32_t *, char *, uint32_t *, uint32_t *)' {aka 'int(const char *, struct _SID *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+  839 | BOOL LookupAccountSidA(const char* lpSystemName, PSID Sid, char* Name, uint32_t* cchName,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1615:6: note: previous declaration of 'LookupAccountSidA' with type 'BOOL(const char *, void *, char *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, void *, char *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1615 | BOOL LookupAccountSidA(const char* lpSystemName, void* Sid,
+      |      ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:885:6: error: conflicting types for 'LookupAccountNameA'; have 'BOOL(const char *, const char *, struct _SID *, uint32_t *, char *, uint32_t *, uint32_t *)' {aka 'int(const char *, const char *, struct _SID *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+  885 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName, PSID Sid, uint32_t* cbSid,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1610:6: note: previous declaration of 'LookupAccountNameA' with type 'BOOL(const char *, const char *, void *, DWORD *, char *, DWORD *, SID_NAME_USE *)' {aka 'int(const char *, const char *, void *, unsigned int *, char *, unsigned int *, unsigned int *)'}
+ 1610 | BOOL LookupAccountNameA(const char* lpSystemName, const char* lpAccountName,
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: In function 'LookupAccountNameA':
+kernel/arch/x86_64/win32_security.c:12:43: warning: missing braces around initializer [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:894:44: note: in expansion of macro 'SECURITY_NT_AUTHORITY'
+  894 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_write_stdout':
+kernel/arch/x86_64/win32_shell.c:1432:5: error: implicit declaration of function 'fflush' [-Wimplicit-function-declaration]
+ 1432 |     fflush(stdout);
+      |     ^~~~~~
+kernel/arch/x86_64/win32_security.c: At top level:
+kernel/arch/x86_64/win32_security.c:185:13: warning: 'set_last_error' defined but not used [-Wunused-function]
+  185 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_dir':
+kernel/arch/x86_64/win32_shell.c:1597:9: warning: variable 'found' set but not used [-Wunused-but-set-variable=]
+ 1597 |     int found;
+      |         ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_set':
+kernel/arch/x86_64/win32_shell.c:1794:9: warning: variable 'expr_mode' set but not used [-Wunused-but-set-variable=]
+ 1794 |     int expr_mode = 0;
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_sort':
+kernel/arch/x86_64/win32_shell.c:2064:22: warning: conversion to 'size_t' {aka 'long long unsigned int'} from 'int' may change the sign of the result [-Wsign-conversion]
+ 2064 |         qsort(lines, count, sizeof(char*), strcmp_void);
+      |                      ^~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_builtin_help':
+kernel/arch/x86_64/win32_shell.c:2115:42: warning: unused parameter 'cmd' [-Wunused-parameter]
+ 2115 | static int cmd_builtin_help(cmd_state_t* cmd, int argc, char** argv) {
+      |                             ~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_resolve_and_run':
+kernel/arch/x86_64/win32_shell.c:2223:23: warning: comparison between pointer and integer
+ 2223 |         if (fn && *fn != cmdname) {
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: In function 'cmd_execute_line':
+kernel/arch/x86_64/win32_shell.c:2372:13: warning: variable 'match_idx' set but not used [-Wunused-but-set-variable=]
+ 2372 |         int match_idx;
+      |             ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'CreateProcessA':
+kernel/arch/x86_64/win32_shell.c:2746:5: error: unknown type name 'win32_process_t'
+ 2746 |     win32_process_t* proc;
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2805:21: error: request for member 'pid' in something not a structure or union
+ 2805 |     pobj->pid = proc->pid;
+      |                     ^~
+kernel/arch/x86_64/win32_shell.c:2817:31: error: request for member 'pid' in something not a structure or union
+ 2817 |         pi->dwProcessId = proc->pid;
+      |                               ^~
+kernel/arch/x86_64/win32_shell.c: In function 'TerminateProcess':
+kernel/arch/x86_64/win32_shell.c:2846:5: error: unknown type name 'win32_process_t'
+ 2846 |     win32_process_t* cproc;
+      |     ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2856:18: error: request for member 'exit_code' in something not a structure or union
+ 2856 |             cproc->exit_code = uExitCode;
+      |                  ^~
+kernel/arch/x86_64/win32_shell.c:2857:18: error: request for member 'is_running' in something not a structure or union
+ 2857 |             cproc->is_running = FALSE;
+      |                  ^~
+In file included from kernel/kernel/kernel.c:54:
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: invalid use of structure with flexible array member [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/win32_shell.c:2861:28: error: implicit declaration of function 'win32_handle_to_object'; did you mean 'win32_handle_alloc'? [-Wimplicit-function-declaration]
+ 2861 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |                            ^~~~~~~~~~~~~~~~~~~~~~
+      |                            win32_handle_alloc
+kernel/arch/x86_64/win32_shell.c:2861:12: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2861 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |            ^
+kernel/arch/x86_64/win32_shell.c: In function 'GetExitCodeProcess':
+kernel/arch/x86_64/win32_shell.c:2872:5: error: unknown type name 'win32_process_t'
+ 2872 |     win32_process_t* proc;
+      |     ^~~~~~~~~~~~~~~
+<0> Building kernel/arch/x86_64/win32_process.c
+kernel/arch/x86_64/win32_shell.c:2881:34: error: request for member 'exit_code' in something not a structure or union
+ 2881 |         *lpExitCode = proc ? proc->exit_code : 0;
+      |                                  ^~
+kernel/arch/x86_64/win32_shell.c:2884:12: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2884 |     pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |            ^
+kernel/arch/x86_64/win32_shell.c:2894:23: error: request for member 'exit_code' in something not a structure or union
+ 2894 |     *lpExitCode = proc->exit_code;
+      |                       ^~
+In file included from kernel/kernel/kernel.c:70:
+kernel/lib/libc/include/stdio.h:10:5: error: conflicting types for 'vsprintf'; have 'int(char *, const char *, char *)'
+   10 | int vsprintf(char* str, const char* format, va_list args);
+      |     ^~~~~~~~
+kernel/arch/x86_64/win32_shell.c: In function 'GetProcessTimes':
+kernel/arch/x86_64/win32_shell.c:2905:5: error: unknown type name 'win32_process_t'
+ 2905 |     win32_process_t* proc;
+      |     ^~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5:
+kernel/arch/x86_64/include/arch/win32.h:1168:5: note: previous declaration of 'vsprintf' with type 'int(char *, const char *, void *)'
+ 1168 | int vsprintf(char* buf, const char* fmt, void* argptr);
+      |     ^~~~~~~~
+kernel/lib/libc/include/stdio.h:11:5: error: conflicting types for 'vsnprintf'; have 'int(char *, size_t,  const char *, char *)' {aka 'int(char *, long long unsigned int,  const char *, char *)'}
+   11 | int vsnprintf(char* str, size_t size, const char* format, va_list args);
+      |     ^~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1169:5: note: previous declaration of 'vsnprintf' with type 'int(char *, size_t,  const char *, void *)' {aka 'int(char *, long long unsigned int,  const char *, void *)'}
+ 1169 | int vsnprintf(char* buf, size_t n, const char* fmt, void* argptr);
+      |     ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:2919:16: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ 2919 |         pobj = (process_obj_t*)win32_handle_to_object(hProcess, HANDLE_OBJECT_TYPE_PROCESS2);
+      |                ^
+kernel/arch/x86_64/win32_shell.c:2928:57: error: request for member 'creation_time_high' in something not a structure or union
+ 2928 |             *(uint64_t*)lpCreationTime = ((uint64_t)proc->creation_time_high << 32) | proc->creation_time_low;
+      |                                                         ^~
+kernel/arch/x86_64/win32_shell.c:2928:91: error: request for member 'creation_time_low' in something not a structure or union
+ 2928 |             *(uint64_t*)lpCreationTime = ((uint64_t)proc->creation_time_high << 32) | proc->creation_time_low;
+      |                                                                                           ^~
+kernel/arch/x86_64/win32_shell.c:2930:58: error: request for member 'kernel_time' in something not a structure or union
+ 2930 |         if (lpKernelTime) *(uint64_t*)lpKernelTime = proc->kernel_time;
+      |                                                          ^~
+kernel/arch/x86_64/win32_shell.c:2931:54: error: request for member 'user_time' in something not a structure or union
+ 2931 |         if (lpUserTime) *(uint64_t*)lpUserTime = proc->user_time;
+      |                                                      ^~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:72:
+include/kapi_bitmap.h: In function 'kapi_bitmap_set_all':
+include/kapi_bitmap.h:33:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_clear_all':
+include/kapi_bitmap.h:41:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first':
+include/kapi_bitmap.h:49:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_find_first_zero':
+include/kapi_bitmap.h:66:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: conversion to 'int' from 'unsigned int' may change the sign of the result [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: In function 'kapi_bitmap_count':
+include/kapi_bitmap.h:84:26: warning: conversion from 'long long unsigned int' to 'unsigned int' may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: In function 'kapi_nlmsg_next':
+include/kapi_netlink.h:19:37: warning: conversion to 'int' from 'uint32_t' {aka 'unsigned int'} may change the sign of the result [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro 'KAPI_NLMSG_ALIGNTO'
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/kernel/kernel.c: In function 'kernel_main':
+kernel/kernel/kernel.c:96:71: warning: unused parameter 'mmi' [-Wunused-parameter]
+   96 | void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_process.c:1102:10: error: conflicting types for 'NtAllocateVirtualMemory'; have 'NTSTATUS(void *, void **, uint32_t,  uint64_t *, uint32_t,  uint32_t)' {aka 'long int(void *, void **, unsigned int,  long long unsigned int *, unsigned int,  unsigned int)'}
+ 1102 | NTSTATUS NtAllocateVirtualMemory(
+      |          ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_process.c:1:
+kernel/arch/x86_64/include/arch/win32.h:1364:10: note: previous declaration of 'NtAllocateVirtualMemory' with type 'NTSTATUS(void *, void **, ULONG_PTR,  SIZE_T *, ULONG,  ULONG)' {aka 'long int(void *, void **, long long unsigned int,  long long unsigned int *, long unsigned int,  long unsigned int)'}
+ 1364 | NTSTATUS NtAllocateVirtualMemory(HANDLE ProcessHandle, PVOID* BaseAddress,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:1130:10: error: conflicting types for 'NtFreeVirtualMemory'; have 'NTSTATUS(void *, void **, uint64_t *, uint32_t)' {aka 'long int(void *, void **, long long unsigned int *, unsigned int)'}
+ 1130 | NTSTATUS NtFreeVirtualMemory(
+      |          ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1367:10: note: previous declaration of 'NtFreeVirtualMemory' with type 'NTSTATUS(void *, void **, SIZE_T *, ULONG)' {aka 'long int(void *, void **, long long unsigned int *, long unsigned int)'}
+ 1367 | NTSTATUS NtFreeVirtualMemory(HANDLE ProcessHandle, PVOID* BaseAddress,
+      |          ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:1152:10: error: conflicting types for 'NtQueryInformationProcess'; have 'NTSTATUS(void *, uint32_t,  void *, uint32_t,  uint32_t *)' {aka 'long int(void *, unsigned int,  void *, unsigned int,  unsigned int *)'}
+ 1152 | NTSTATUS NtQueryInformationProcess(
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1401:10: note: previous declaration of 'NtQueryInformationProcess' with type 'NTSTATUS(void *, ULONG,  void *, ULONG,  ULONG *)' {aka 'long int(void *, long unsigned int,  void *, long unsigned int,  long unsigned int *)'}
+ 1401 | NTSTATUS NtQueryInformationProcess(HANDLE ProcessHandle,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:1185:10: error: conflicting types for 'NtQueryInformationThread'; have 'NTSTATUS(void *, uint32_t,  void *, uint32_t,  uint32_t *)' {aka 'long int(void *, unsigned int,  void *, unsigned int,  unsigned int *)'}
+ 1185 | NTSTATUS NtQueryInformationThread(
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1406:10: note: previous declaration of 'NtQueryInformationThread' with type 'NTSTATUS(void *, ULONG,  void *, ULONG,  ULONG *)' {aka 'long int(void *, long unsigned int,  void *, long unsigned int,  long unsigned int *)'}
+ 1406 | NTSTATUS NtQueryInformationThread(HANDLE ThreadHandle,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:1218:10: error: conflicting types for 'NtCreateFile'; have 'NTSTATUS(void **, uint32_t,  void *, void *, int64_t *, uint32_t,  uint32_t,  uint32_t,  uint32_t,  void *, uint32_t)' {aka 'long int(void **, unsigned int,  void *, void *, long long int *, unsigned int,  unsigned int,  unsigned int,  unsigned int,  void *, unsigned int)'}
+ 1218 | NTSTATUS NtCreateFile(
+      |          ^~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1320:10: note: previous declaration of 'NtCreateFile' with type 'NTSTATUS(void **, ACCESS_MASK,  struct _OBJECT_ATTRIBUTES *, struct _IO_STATUS_BLOCK *, LARGE_INTEGER *, ULONG,  ULONG,  ULONG,  ULONG,  void *, ULONG)' {aka 'long int(void **, unsigned int,  struct _OBJECT_ATTRIBUTES *, struct _IO_STATUS_BLOCK *, long long int *, long unsigned int,  long unsigned int,  long unsigned int,  long unsigned int,  void *, long unsigned int)'}
+ 1320 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |          ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:1253:10: error: conflicting types for 'NtReadFile'; have 'NTSTATUS(void *, void *, void *, void *, void *, void *, uint32_t,  int64_t *, uint32_t *)' {aka 'long int(void *, void *, void *, void *, void *, void *, unsigned int,  long long int *, unsigned int *)'}
+ 1253 | NTSTATUS NtReadFile(
+      |          ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1331:10: note: previous declaration of 'NtReadFile' with type 'NTSTATUS(void *, void *, void *, void *, struct _IO_STATUS_BLOCK *, void *, ULONG,  LARGE_INTEGER *, ULONG *)' {aka 'long int(void *, void *, void *, void *, struct _IO_STATUS_BLOCK *, void *, long unsigned int,  long long int *, long unsigned int *)'}
+ 1331 | NTSTATUS NtReadFile(HANDLE FileHandle, HANDLE Event, PVOID ApcRoutine,
+      |          ^~~~~~~~~~
+kernel/arch/x86_64/win32_process.c:1290:10: error: conflicting types for 'NtWriteFile'; have 'NTSTATUS(void *, void *, void *, void *, void *, const void *, uint32_t,  int64_t *, uint32_t *)' {aka 'long int(void *, void *, void *, void *, void *, const void *, unsigned int,  long long int *, unsigned int *)'}
+ 1290 | NTSTATUS NtWriteFile(
+      |          ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1335:10: note: previous declaration of 'NtWriteFile' with type 'NTSTATUS(void *, void *, void *, void *, struct _IO_STATUS_BLOCK *, const void *, ULONG,  LARGE_INTEGER *, ULONG *)' {aka 'long int(void *, void *, void *, void *, struct _IO_STATUS_BLOCK *, const void *, long unsigned int,  long long int *, long unsigned int *)'}
+ 1335 | NTSTATUS NtWriteFile(HANDLE FileHandle, HANDLE Event, PVOID ApcRoutine,
+      |          ^~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwClose':
+kernel/arch/x86_64/win32_process.c:1351:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1351 |     return NtClose(Handle);
+      |            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwAllocateVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1362:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1362 |     return NtAllocateVirtualMemory(ProcessHandle, BaseAddress, ZeroBits, RegionSize, AllocationType, Protect);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwFreeVirtualMemory':
+kernel/arch/x86_64/win32_process.c:1371:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1371 |     return NtFreeVirtualMemory(ProcessHandle, BaseAddress, RegionSize, FreeType);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationProcess':
+kernel/arch/x86_64/win32_process.c:1381:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1381 |     return NtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryInformationThread':
+kernel/arch/x86_64/win32_process.c:1391:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1391 |     return NtQueryInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwCreateFile':
+kernel/arch/x86_64/win32_process.c:1407:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1407 |     return NtCreateFile(FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock, AllocationSize, FileAttributes, ShareAccess, CreateDisposition, CreateOptions, EaBuffer, EaLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwReadFile':
+kernel/arch/x86_64/win32_process.c:1421:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1421 |     return NtReadFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwWriteFile':
+kernel/arch/x86_64/win32_process.c:1435:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1435 |     return NtWriteFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: In function 'ZwQueryAttributesFile':
+kernel/arch/x86_64/win32_process.c:1442:12: warning: conversion to 'uint32_t' {aka 'unsigned int'} from 'NTSTATUS' {aka 'long int'} may change the sign of the result [-Wsign-conversion]
+ 1442 |     return NtQueryAttributesFile(ObjectAttributes, FileInformation);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: At top level:
+kernel/arch/x86_64/win32_process.c:505:13: warning: 'process_slot_cleanup' defined but not used [-Wunused-function]
+  505 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+FAILED TASK run kernel: command failed with exit 1: D:\mingw64\bin\gcc.exe -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikal/include -MMD -MF build/obj/kernel/arch/x86_64/win32_process.c.o.d -c kernel/arch/x86_64/win32_process.c -o build/obj/kernel/arch/x86_64/win32_process.c.o
