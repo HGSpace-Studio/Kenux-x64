@@ -1,16 +1,16 @@
 #pragma once
 
-#define EPERM           1      /* Operation not permitted */
-#define ENOENT          2      /* No such file or directory */
-#define ESRCH           3      /* No such process */
-#define EINTR           4      /* Interrupted system call */
-#define EIO             5      /* I/O error */
-#define ENXIO           6      /* No such device or address */
-#define E2BIG           7      /* Arg list too long */
-#define ENOEXEC         8      /* Exec format error */
-#define EBADF           9      /* Bad file number */
-#define ECHILD          10     /* No child processes */
-#define EAGAIN          11     /* Try again */
+#define EPERM           1      
+#define ENOENT          2     
+#define ESRCH           3   
+#define EINTR           4  
+#define EIO             5    
+#define ENXIO           6    
+#define E2BIG           7      
+#define ENOEXEC         8    
+#define EBADF           9    
+#define ECHILD          10   
+#define EAGAIN          11    
 #define ENOMEM          12     /* Out of memory */
 #define EACCES          13     /* Permission denied */
 #define EFAULT          14     /* Bad address */

@@ -6,6 +6,12 @@
 #include "kapi_memory.h"
 #include "kapi_fs.h"
 #include "kapi_device.h"
+#include "kapi_epoll.h"
+#include "kapi_poll.h"
+#include "kapi_signalfd.h"
+#include "kapi_timerfd.h"
+#include "kapi_eventfd.h"
+#include "kapi_inotify.h"
 
 #include <arch/process.h>
 #include <arch/ipc.h>
@@ -1660,6 +1666,992 @@ static long sys_restart_syscall_impl(long a1, long a2, long a3, long a4, long a5
 {
     (void)a1; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
     return KENUX_ERR(KENUX_EINTR);
+}
+
+/* ===== epoll 系统调用 ===== */
+static long sys_epoll_create_impl(long size, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_epoll_create((int)size);
+    return ret < 0 ? KENUX_ERR(KENUX_ENOMEM) : ret;
+}
+
+static long sys_epoll_create1_impl(long flags, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_epoll_create1((int)flags);
+    return ret < 0 ? KENUX_ERR(KENUX_ENOMEM) : ret;
+}
+
+static long sys_epoll_ctl_impl(long epfd, long op, long fd, long event, long a5, long a6)
+{
+    (void)a5; (void)a6;
+    if (!event && op != KAPI_EPOLL_CTL_DEL) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_epoll_ctl((int)epfd, (int)op, (int)fd, (kapi_epoll_event_t*)event);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : 0;
+}
+
+static long sys_epoll_wait_impl(long epfd, long events, long maxevents, long timeout, long a5, long a6)
+{
+    (void)a5; (void)a6;
+    if (!events) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_epoll_wait((int)epfd, (kapi_epoll_event_t*)events, (int)maxevents, (int)timeout);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_epoll_pwait_impl(long epfd, long events, long maxevents, long timeout, long sigmask, long a6)
+{
+    (void)a6;
+    if (!events) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_epoll_pwait((int)epfd, (kapi_epoll_event_t*)events, (int)maxevents,
+                               (int)timeout, (const uint64_t*)sigmask);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+/* ===== poll / select / ppoll / pselect6 ===== */
+static long sys_poll_impl(long fds, long nfds, long timeout, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (!fds && nfds > 0) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_poll((kapi_pollfd_t*)fds, (uint32_t)nfds, (int)timeout);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_select_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long a6)
+{
+    (void)a6;
+    int ret = kapi_select((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+                          (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_ppoll_impl(long fds, long nfds, long timeout, long sigmask, long a5, long a6)
+{
+    (void)a5; (void)a6;
+    if (!fds && nfds > 0) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_pselect6_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long sigmask)
+{
+    int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+                            (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+/* ===== signalfd4 ===== */
+static long sys_signalfd4_impl(long fd, long mask, long masksize, long flags, long a5, long a6)
+{
+    (void)a5; (void)a6;
+    if (!mask) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_signalfd4((int)fd, (const uint64_t*)mask, (size_t)masksize, (int)flags);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_signalfd_impl(long fd, long mask, long masksize, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (!mask) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_signalfd((int)fd, (const uint64_t*)mask, (size_t)masksize, 0);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+/* ===== timerfd ===== */
+static long sys_timerfd_create_impl(long clockid, long flags, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_timerfd_create((int)clockid, (int)flags);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_timerfd_settime_impl(long fd, long flags, long new_value, long old_value, long a5, long a6)
+{
+    (void)a5; (void)a6;
+    if (!new_value) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_timerfd_settime((int)fd, (int)flags,
+                                   (const kapi_itimerspec_t*)new_value,
+                                   (kapi_itimerspec_t*)old_value);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : 0;
+}
+
+static long sys_timerfd_gettime_impl(long fd, long curr_value, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!curr_value) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_timerfd_gettime((int)fd, (kapi_itimerspec_t*)curr_value);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : 0;
+}
+
+/* ===== eventfd2 ===== */
+static long sys_eventfd2_impl(long initval, long flags, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_eventfd2((unsigned int)initval, (int)flags);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_eventfd_impl(long initval, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_eventfd((unsigned int)initval, 0);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+/* ===== inotify ===== */
+static long sys_inotify_init_impl(long a1, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a1; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_inotify_init();
+    return ret < 0 ? KENUX_ERR(KENUX_ENOMEM) : ret;
+}
+
+static long sys_inotify_init1_impl(long flags, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_inotify_init1((int)flags);
+    return ret < 0 ? KENUX_ERR(KENUX_ENOMEM) : ret;
+}
+
+static long sys_inotify_add_watch_impl(long fd, long pathname, long mask, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (!pathname) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_inotify_add_watch((int)fd, (const char*)pathname, (uint32_t)mask);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
+}
+
+static long sys_inotify_rm_watch_impl(long fd, long wd, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    int ret = kapi_inotify_rm_watch((int)fd, (int)wd);
+    return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : 0;
+}
+
+/* ===== readv / writev ===== */
+static long sys_readv_impl(long fd, long iov, long iovcnt, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (!iov) return KENUX_ERR(KENUX_EFAULT);
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+
+    kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
+    if (entry->type != KAPI_FD_FILE) return KENUX_ERR(KENUX_EBADF);
+
+    struct { void* iov_base; size_t iov_len; } *iovecs = (void*)iov;
+    long total = 0;
+    for (long i = 0; i < iovcnt; i++) {
+        if (!iovecs[i].iov_base || iovecs[i].iov_len == 0) continue;
+        int64_t r = kapi_read(entry->obj.file, iovecs[i].iov_base, iovecs[i].iov_len);
+        if (r < 0) return total > 0 ? total : KENUX_ERR(KENUX_EIO);
+        total += r;
+        if ((size_t)r < iovecs[i].iov_len) break;
+    }
+    return total;
+}
+
+static long sys_writev_impl(long fd, long iov, long iovcnt, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (!iov) return KENUX_ERR(KENUX_EFAULT);
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+
+    kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
+    if (entry->type != KAPI_FD_FILE) return KENUX_ERR(KENUX_EBADF);
+
+    struct { const void* iov_base; size_t iov_len; } *iovecs = (void*)iov;
+    long total = 0;
+    for (long i = 0; i < iovcnt; i++) {
+        if (!iovecs[i].iov_base || iovecs[i].iov_len == 0) continue;
+        int64_t r = kapi_write(entry->obj.file, iovecs[i].iov_base, iovecs[i].iov_len);
+        if (r < 0) return total > 0 ? total : KENUX_ERR(KENUX_EIO);
+        total += r;
+        if ((size_t)r < iovecs[i].iov_len) break;
+    }
+    return total;
+}
+
+/* ===== pipe2 ===== */
+static long sys_pipe2_impl(long pipefd, long flags, long a3, long a4, long a5, long a6)
+{
+    (void)flags; (void)a3; (void)a4; (void)a5; (void)a6;
+    return sys_pipe_impl(pipefd, 0, 0, 0, 0, 0);
+}
+
+/* ===== dup3 ===== */
+static long sys_dup3_impl(long oldfd, long newfd, long flags, long a4, long a5, long a6)
+{
+    (void)flags; (void)a4; (void)a5; (void)a6;
+    return sys_dup2_impl(oldfd, newfd, 0, 0, 0, 0);
+}
+
+/* ===== accept4 ===== */
+static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+{
+    (void)flags; (void)a5; (void)a6;
+    if (kapi_fd_check((int)current_process, sockfd) < 0) return KENUX_ERR(KENUX_EBADF);
+    kapi_fd_entry_t* entry = &proc_fd_table[current_process][sockfd];
+    if (entry->type != KAPI_FD_SOCKET) return KENUX_ERR(KENUX_ENOTSOCK);
+
+    int sfd = (int)(uintptr_t)entry->obj.socket;
+    sockaddr_in_t a;
+    uint32_t len = sizeof(a);
+    int fd = sys_accept(sfd, &a, &len);
+    if (fd < 0) return KENUX_ERR(KENUX_EINVAL);
+
+    int kfd = kapi_fd_alloc((int)current_process);
+    if (kfd < 0) {
+        sys_close_socket(fd);
+        return KENUX_ERR(KENUX_EMFILE);
+    }
+
+    proc_fd_table[current_process][kfd].type = KAPI_FD_SOCKET;
+    proc_fd_table[current_process][kfd].obj.socket = (void*)(uintptr_t)fd;
+    proc_fd_table[current_process][kfd].flags = 0;
+    proc_fd_table[current_process][kfd].cloexec = 0;
+    return kfd;
+}
+
+/* ===== waitid ===== */
+static long sys_waitid_impl(long idtype, long id, long infop, long options, long a5, long a6)
+{
+    (void)idtype; (void)options; (void)a5; (void)a6;
+    int status = 0;
+    int ret = kapi_proc_wait((int)id, &status);
+    if (infop) {
+        memset((void*)infop, 0, 32);
+        if (ret > 0) {
+            ((int*)infop)[0] = ret;
+            ((int*)infop)[1] = 4;
+            ((int*)infop)[2] = status;
+        }
+    }
+    return ret < 0 ? KENUX_ERR(KENUX_ECHILD) : 0;
+}
+
+/* ===== setrlimit ===== */
+static long sys_setrlimit_impl(long resource, long rlim, long a3, long a4, long a5, long a6)
+{
+    (void)resource; (void)rlim;
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== mount / umount2 ===== */
+static long sys_mount_impl(long dev_name, long dir_name, long type, long flags, long data, long a6)
+{
+    (void)data; (void)a6;
+    if (!dir_name || !type) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_mount((const char*)dev_name, (const char*)dir_name,
+                         (const char*)type, (uint64_t)flags);
+    return ret == KAPI_OK ? 0 : KENUX_ERR(KENUX_EINVAL);
+}
+
+static long sys_umount2_impl(long name, long flags, long a3, long a4, long a5, long a6)
+{
+    (void)flags; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!name) return KENUX_ERR(KENUX_EFAULT);
+    int ret = kapi_umount((const char*)name);
+    return ret == KAPI_OK ? 0 : KENUX_ERR(KENUX_EINVAL);
+}
+
+/* ===== mknod ===== */
+static long sys_mknod_impl(long pathname, long mode, long dev, long a4, long a5, long a6)
+{
+    (void)dev; (void)a4; (void)a5; (void)a6;
+    if (!pathname) return KENUX_ERR(KENUX_EFAULT);
+    uint32_t m = (uint32_t)mode;
+    if ((m & 0170000) == 0) m |= 0100000;
+    if ((m & 0170000) == 0100000) {
+        kapi_file_t f = kapi_open((const char*)pathname, KAPI_O_CREAT | KAPI_O_WRONLY | KAPI_O_TRUNC, (int)(m & 07777));
+        if (!f) return KENUX_ERR(KENUX_EACCES);
+        kapi_close(f);
+        return 0;
+    }
+    return 0;
+}
+
+/* ===== lstat ===== */
+static long sys_lstat_impl(long pathname, long statbuf, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    return sys_stat_impl(pathname, statbuf, 0, 0, 0, 0);
+}
+
+/* ===== getgroups / setgroups ===== */
+static long sys_getgroups_impl(long size, long list, long a3, long a4, long a5, long a6)
+{
+    (void)list; (void)a3; (void)a4; (void)a5; (void)a6;
+    return (size == 0) ? 1 : 1;
+}
+
+static long sys_setgroups_impl(long size, long list, long a3, long a4, long a5, long a6)
+{
+    (void)size; (void)list; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== setresuid / getresuid / setresgid / getresgid ===== */
+static long sys_setresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (ruid != -1) proc_uid[current_process] = (uid_t)ruid;
+    if (euid != -1) proc_euid[current_process] = (uid_t)euid;
+    return 0;
+}
+
+static long sys_getresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (ruid) *(uid_t*)ruid = proc_uid[current_process];
+    if (euid) *(uid_t*)euid = proc_euid[current_process];
+    if (suid) *(uid_t*)suid = proc_uid[current_process];
+    return 0;
+}
+
+static long sys_setresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (rgid != -1) proc_gid[current_process] = (uid_t)rgid;
+    if (egid != -1) proc_egid[current_process] = (uid_t)egid;
+    return 0;
+}
+
+static long sys_getresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+{
+    (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (rgid) *(uid_t*)rgid = proc_gid[current_process];
+    if (egid) *(uid_t*)egid = proc_egid[current_process];
+    if (sgid) *(uid_t*)sgid = proc_gid[current_process];
+    return 0;
+}
+
+/* ===== setfsuid / setfsgid ===== */
+static long sys_setfsuid_impl(long uid, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    uid_t old = proc_euid[current_process];
+    proc_euid[current_process] = (uid_t)uid;
+    return (long)old;
+}
+
+static long sys_setfsgid_impl(long gid, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    uid_t old = proc_egid[current_process];
+    proc_egid[current_process] = (uid_t)gid;
+    return (long)old;
+}
+
+/* ===== capget / capset ===== */
+static long sys_capget_impl(long header, long dataptr, long a3, long a4, long a5, long a6)
+{
+    (void)header; (void)dataptr; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+static long sys_capset_impl(long header, long data, long a3, long a4, long a5, long a6)
+{
+    (void)header; (void)data; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== rt_sigpending / rt_sigtimedwait / rt_sigqueueinfo / rt_sigsuspend ===== */
+static long sys_rt_sigpending_impl(long set, long sigsetsize, long a3, long a4, long a5, long a6)
+{
+    (void)sigsetsize; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!set) return KENUX_ERR(KENUX_EFAULT);
+    memset((void*)set, 0, 8);
+    return 0;
+}
+
+static long sys_rt_sigtimedwait_impl(long set, long info, long timeout, long sigsetsize, long a5, long a6)
+{
+    (void)set; (void)info; (void)timeout; (void)sigsetsize; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_EAGAIN);
+}
+
+static long sys_rt_sigqueueinfo_impl(long pid, long sig, long info, long a4, long a5, long a6)
+{
+    (void)info; (void)a4; (void)a5; (void)a6;
+    return sys_kill_impl(pid, sig, 0, 0, 0, 0);
+}
+
+static long sys_rt_sigsuspend_impl(long mask, long sigsetsize, long a3, long a4, long a5, long a6)
+{
+    (void)mask; (void)sigsetsize; (void)a3; (void)a4; (void)a5; (void)a6;
+    kapi_proc_yield();
+    return KENUX_ERR(KENUX_EINTR);
+}
+
+/* ===== sigaltstack ===== */
+static long sys_sigaltstack_impl(long ss, long oss, long a3, long a4, long a5, long a6)
+{
+    (void)ss; (void)oss; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== sched_setparam / sched_getparam / sched_setscheduler / sched_getscheduler ===== */
+static long sys_sched_setparam_impl(long pid, long param, long a3, long a4, long a5, long a6)
+{
+    (void)pid; (void)param; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+static long sys_sched_getparam_impl(long pid, long param, long a3, long a4, long a5, long a6)
+{
+    (void)pid; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!param) return KENUX_ERR(KENUX_EFAULT);
+    memset((void*)param, 0, 4);
+    return 0;
+}
+
+static long sys_sched_setscheduler_impl(long pid, long policy, long param, long a4, long a5, long a6)
+{
+    (void)pid; (void)policy; (void)param; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+static long sys_sched_getscheduler_impl(long pid, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)pid; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+static long sys_sched_get_priority_max_impl(long policy, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)policy; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 99;
+}
+
+static long sys_sched_get_priority_min_impl(long policy, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)policy; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 1;
+}
+
+static long sys_sched_rr_get_interval_impl(long pid, long interval, long a3, long a4, long a5, long a6)
+{
+    (void)pid; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!interval) return KENUX_ERR(KENUX_EFAULT);
+    struct { long tv_sec; long tv_nsec; } *t = (void*)interval;
+    t->tv_sec = 0;
+    t->tv_nsec = 10000000;
+    return 0;
+}
+
+/* ===== sched_setaffinity / sched_getaffinity ===== */
+static long sys_sched_setaffinity_impl(long pid, long len, long mask, long a4, long a5, long a6)
+{
+    (void)pid; (void)len; (void)mask; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+static long sys_sched_getaffinity_impl(long pid, long len, long mask, long a4, long a5, long a6)
+{
+    (void)pid; (void)a4; (void)a5; (void)a6;
+    if (!mask || len == 0) return KENUX_ERR(KENUX_EFAULT);
+    size_t sz = (size_t)len < 8 ? (size_t)len : 8;
+    memset((void*)mask, 0xff, sz);
+    return (long)sz;
+}
+
+/* ===== personality ===== */
+static long sys_personality_impl(long persona, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)persona; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== statfs / fstatfs ===== */
+static long sys_statfs_impl(long pathname, long buf, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!pathname || !buf) return KENUX_ERR(KENUX_EFAULT);
+    memset((void*)buf, 0, 64);
+    return 0;
+}
+
+static long sys_fstatfs_impl(long fd, long buf, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!buf) return KENUX_ERR(KENUX_EFAULT);
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+    memset((void*)buf, 0, 64);
+    return 0;
+}
+
+/* ===== settimeofday ===== */
+static long sys_settimeofday_impl(long tv, long tz, long a3, long a4, long a5, long a6)
+{
+    (void)tv; (void)tz; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== reboot ===== */
+static long sys_reboot_impl(long magic1, long magic2, long cmd, long arg, long a5, long a6)
+{
+    (void)magic1; (void)magic2; (void)cmd; (void)arg; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== swapon / swapoff ===== */
+static long sys_swapon_impl(long specialfile, long swapflags, long a3, long a4, long a5, long a6)
+{
+    (void)specialfile; (void)swapflags; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+static long sys_swapoff_impl(long specialfile, long swapflags, long a3, long a4, long a5, long a6)
+{
+    (void)specialfile; (void)swapflags; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== iopl / ioperm ===== */
+static long sys_iopl_impl(long level, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)level; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+static long sys_ioperm_impl(long from, long num, long on, long a4, long a5, long a6)
+{
+    (void)from; (void)num; (void)on; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== pivot_root ===== */
+static long sys_pivot_root_impl(long new_root, long put_old, long a3, long a4, long a5, long a6)
+{
+    (void)new_root; (void)put_old; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== syslog ===== */
+static long sys_syslog_impl(long type, long buf, long len, long a4, long a5, long a6)
+{
+    (void)type; (void)buf; (void)len; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== shmget / shmat / shmctl / shmdt ===== */
+static long sys_shmget_impl(long key, long size, long shmflg, long a4, long a5, long a6)
+{
+    (void)key; (void)size; (void)shmflg; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_shmat_impl(long shmid, long shmaddr, long shmflg, long a4, long a5, long a6)
+{
+    (void)shmid; (void)shmaddr; (void)shmflg; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_shmctl_impl(long shmid, long cmd, long buf, long a4, long a5, long a6)
+{
+    (void)shmid; (void)cmd; (void)buf; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_shmdt_impl(long shmaddr, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)shmaddr; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== semget / semop / semctl ===== */
+static long sys_semget_impl(long key, long nsems, long semflg, long a4, long a5, long a6)
+{
+    (void)key; (void)nsems; (void)semflg; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_semop_impl(long semid, long sops, long nsops, long a4, long a5, long a6)
+{
+    (void)semid; (void)sops; (void)nsops; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_semctl_impl(long semid, long semnum, long cmd, long arg, long a5, long a6)
+{
+    (void)semid; (void)semnum; (void)cmd; (void)arg; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== msgget / msgsnd / msgrcv / msgctl ===== */
+static long sys_msgget_impl(long key, long msgflg, long a3, long a4, long a5, long a6)
+{
+    (void)key; (void)msgflg; (void)a3; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_msgsnd_impl(long msqid, long msgp, long msgsz, long msgflg, long a5, long a6)
+{
+    (void)msqid; (void)msgp; (void)msgsz; (void)msgflg; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_msgrcv_impl(long msqid, long msgp, long msgsz, long msgtyp, long msgflg, long a6)
+{
+    (void)msqid; (void)msgp; (void)msgsz; (void)msgtyp; (void)msgflg; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_msgctl_impl(long msqid, long cmd, long buf, long a4, long a5, long a6)
+{
+    (void)msqid; (void)cmd; (void)buf; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== fallocate ===== */
+static long sys_fallocate_impl(long fd, long mode, long offset, long length, long a5, long a6)
+{
+    (void)mode; (void)offset; (void)length; (void)a5; (void)a6;
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+    return 0;
+}
+
+/* ===== memfd_create ===== */
+static long sys_memfd_create_impl(long name, long flags, long a3, long a4, long a5, long a6)
+{
+    (void)name; (void)flags; (void)a3; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== bpf ===== */
+static long sys_bpf_impl(long cmd, long attr, long size, long a4, long a5, long a6)
+{
+    (void)cmd; (void)attr; (void)size; (void)a4; (void)a5; (void)a6;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== seccomp ===== */
+static long sys_seccomp_impl(long operation, long flags, long args, long a4, long a5, long a6)
+{
+    (void)operation; (void)flags; (void)args; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== splice / tee / vmsplice ===== */
+static long sys_splice_impl(long fd_in, long off_in, long fd_out, long off_out, long len, long flags)
+{
+    (void)off_in; (void)off_out; (void)flags;
+    if (kapi_fd_check((int)current_process, fd_in) < 0) return KENUX_ERR(KENUX_EBADF);
+    if (kapi_fd_check((int)current_process, fd_out) < 0) return KENUX_ERR(KENUX_EBADF);
+    char buf[512];
+    long total = 0;
+    while (total < len) {
+        long n = len - total;
+        if (n > (long)sizeof(buf)) n = sizeof(buf);
+        long r = sys_read_impl(fd_in, (long)buf, n, 0, 0, 0);
+        if (r <= 0) break;
+        long w = sys_write_impl(fd_out, (long)buf, r, 0, 0, 0);
+        if (w <= 0) break;
+        total += w;
+    }
+    return total > 0 ? total : KENUX_ERR(KENUX_EIO);
+}
+
+static long sys_tee_impl(long fd_in, long fd_out, long len, long flags, long a5, long a6)
+{
+    (void)fd_in; (void)fd_out; (void)len; (void)flags; (void)a5; (void)a6;
+    return 0;
+}
+
+static long sys_vmsplice_impl(long fd, long iov, long nr_segs, long flags, long a5, long a6)
+{
+    (void)fd; (void)iov; (void)nr_segs; (void)flags; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== mkdirat / mknodat / fchownat / unlinkat (enhanced) / renameat / symlinkat / readlinkat / fchmodat / faccessat ===== */
+static long sys_mkdirat_impl(long dirfd, long pathname, long mode, long a4, long a5, long a6)
+{
+    (void)dirfd; (void)a4; (void)a5; (void)a6;
+    return sys_mkdir_impl(pathname, mode, 0, 0, 0, 0);
+}
+
+static long sys_mknodat_impl(long dirfd, long pathname, long mode, long dev, long a5, long a6)
+{
+    (void)dirfd; (void)a5; (void)a6;
+    return sys_mknod_impl(pathname, mode, dev, 0, 0, 0);
+}
+
+static long sys_fchownat_impl(long dirfd, long pathname, long owner, long group, long flags, long a6)
+{
+    (void)dirfd; (void)flags; (void)a6;
+    return sys_chown_impl(pathname, owner, group, 0, 0, 0);
+}
+
+static long sys_renameat_impl(long olddirfd, long oldpath, long newdirfd, long newpath, long a5, long a6)
+{
+    (void)olddirfd; (void)newdirfd; (void)a5; (void)a6;
+    return sys_rename_impl(oldpath, newpath, 0, 0, 0, 0);
+}
+
+static long sys_symlinkat_impl(long target, long newdirfd, long linkpath, long a4, long a5, long a6)
+{
+    (void)newdirfd; (void)a4; (void)a5; (void)a6;
+    return sys_symlink_impl(target, linkpath, 0, 0, 0, 0);
+}
+
+static long sys_readlinkat_impl(long dirfd, long pathname, long buf, long bufsiz, long a5, long a6)
+{
+    (void)dirfd; (void)a5; (void)a6;
+    return sys_readlink_impl(pathname, buf, bufsiz, 0, 0, 0);
+}
+
+static long sys_fchmodat_impl(long dirfd, long pathname, long mode, long flags, long a5, long a6)
+{
+    (void)dirfd; (void)flags; (void)a5; (void)a6;
+    return sys_chmod_impl(pathname, mode, 0, 0, 0, 0);
+}
+
+static long sys_faccessat_impl(long dirfd, long pathname, long mode, long flags, long a5, long a6)
+{
+    (void)dirfd; (void)mode; (void)flags; (void)a5; (void)a6;
+    return sys_access_impl(pathname, 0, 0, 0, 0, 0);
+}
+
+/* ===== fchdir ===== */
+static long sys_fchdir_impl(long fd, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+    return 0;
+}
+
+/* ===== fchmod ===== */
+static long sys_fchmod_impl(long fd, long mode, long a3, long a4, long a5, long a6)
+{
+    (void)mode; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+    return 0;
+}
+
+/* ===== fchown ===== */
+static long sys_fchown_impl(long fd, long owner, long group, long a4, long a5, long a6)
+{
+    (void)owner; (void)group; (void)a4; (void)a5; (void)a6;
+    if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
+    return 0;
+}
+
+/* ===== lchown ===== */
+static long sys_lchown_impl(long pathname, long owner, long group, long a4, long a5, long a6)
+{
+    return sys_chown_impl(pathname, owner, group, a4, a5, a6);
+}
+
+/* ===== getdents ===== */
+static long sys_getdents_impl(long fd, long dirp, long count, long a4, long a9, long a6)
+{
+    (void)a4; (void)a9; (void)a6;
+    return sys_getdents64_impl(fd, dirp, count, 0, 0, 0);
+}
+
+/* ===== adjtimex ===== */
+static long sys_adjtimex_impl(long buf, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)buf; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== acct ===== */
+static long sys_acct_impl(long filename, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)filename; (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+/* ===== setpgid / setsid / getpgid / getsid ===== */
+static long sys_setpgid_impl(long pid, long pgid, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    int p = (pid == 0) ? (int)current_process : (int)pid;
+    int g = (pgid == 0) ? p : (int)pgid;
+    if (p >= PROCESS_MAX) return KENUX_ERR(KENUX_ESRCH);
+    proc_pgid[p] = g;
+    return 0;
+}
+
+static long sys_getpgid_impl(long pid, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    int p = (pid == 0) ? (int)current_process : (int)pid;
+    if (p >= PROCESS_MAX) return KENUX_ERR(KENUX_ESRCH);
+    return (long)proc_pgid[p];
+}
+
+static long sys_getsid_impl(long pid, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    int p = (pid == 0) ? (int)current_process : (int)pid;
+    if (p >= PROCESS_MAX) return KENUX_ERR(KENUX_ESRCH);
+    return (long)proc_pgid[p];
+}
+
+/* ===== uname ===== */
+static long sys_uname_impl(long buf, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!buf) return KENUX_ERR(KENUX_EFAULT);
+    memset((void*)buf, 0, 390);
+    const char* sysname = "Kenux";
+    const char* release = "2.0.0";
+    const char* version = "#1 SMP";
+    const char* machine = "x86_64";
+    char* p = (char*)buf;
+    int i;
+    for (i = 0; sysname[i] && i < 64; i++) p[i] = sysname[i];
+    p += 65;
+    for (i = 0; release[i] && i < 64; i++) p[i] = release[i];
+    p += 65;
+    for (i = 0; version[i] && i < 64; i++) p[i] = version[i];
+    p += 65;
+    for (i = 0; machine[i] && i < 64; i++) p[i] = machine[i];
+    return 0;
+}
+
+/* ===== sysinfo ===== */
+static long sys_sysinfo_impl(long info, long a2, long a3, long a4, long a5, long a6)
+{
+    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!info) return KENUX_ERR(KENUX_EFAULT);
+    memset((void*)info, 0, 64);
+    return 0;
+}
+
+/* ===== prctl ===== */
+static long sys_prctl_impl(long option, long arg2, long arg3, long arg4, long arg5, long a6)
+{
+    (void)arg2; (void)arg3; (void)arg4; (void)arg5; (void)a6;
+    switch ((int)option) {
+        case 15: return 0;
+        case 23: return 0;
+        default: return 0;
+    }
+}
+
+/* ===== getrlimit ===== */
+static long sys_getrlimit_impl(long resource, long rlim, long a3, long a4, long a5, long a6)
+{
+    (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!rlim) return KENUX_ERR(KENUX_EFAULT);
+    uint64_t* r = (uint64_t*)rlim;
+    r[0] = (uint64_t)-1;
+    r[1] = (uint64_t)-1;
+    return 0;
+}
+
+/* ===== prlimit64 ===== */
+static long sys_prlimit64_impl(long pid, long resource, long new_limit, long old_limit, long a5, long a6)
+{
+    (void)pid; (void)new_limit; (void)a5; (void)a6;
+    if (old_limit) return sys_getrlimit_impl(resource, old_limit, 0, 0, 0, 0);
+    return 0;
+}
+
+/* ===== clock_getres / clock_settime / clock_gettime ===== */
+static long sys_clock_getres_impl(long clk_id, long res, long a3, long a4, long a5, long a6)
+{
+    (void)clk_id; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!res) return KENUX_ERR(KENUX_EFAULT);
+    struct { long tv_sec; long tv_nsec; } *r = (void*)res;
+    r->tv_sec = 0;
+    r->tv_nsec = 1;
+    return 0;
+}
+
+static long sys_clock_settime_impl(long clk_id, long tp, long a3, long a4, long a5, long a6)
+{
+    (void)clk_id; (void)tp; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
+    if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
+    return 0;
+}
+
+static long sys_clock_gettime_impl(long clk_id, long tp, long a3, long a4, long a5, long a6)
+{
+    (void)clk_id; (void)a3; (void)a4; (void)a5; (void)a6;
+    if (!tp) return KENUX_ERR(KENUX_EFAULT);
+    return sys_gettimeofday_impl(tp, 0, 0, 0, 0, 0);
+}
+
+/* ===== clock_nanosleep ===== */
+static long sys_clock_nanosleep_impl(long clk_id, long flags, long rqtp, long rmtp, long a5, long a6)
+{
+    (void)clk_id; (void)flags; (void)a5; (void)a6;
+    return sys_nanosleep_impl(rqtp, rmtp, 0, 0, 0, 0);
+}
+
+/* ===== mincore ===== */
+static long sys_mincore_impl(long start, long len, long vec, long a4, long a5, long a6)
+{
+    (void)start; (void)len; (void)vec; (void)a4; (void)a5; (void)a6;
+    return 0;
+}
+
+/* ===== madvise (already exists, just ensure) ===== */
+
+/* ===== process_vm_readv / process_vm_writev ===== */
+static long sys_process_vm_readv_impl(long pid, long lvec, long liovcnt, long rvec, long riovcnt, long flags)
+{
+    (void)pid; (void)lvec; (void)liovcnt; (void)rvec; (void)riovcnt; (void)flags;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+static long sys_process_vm_writev_impl(long pid, long lvec, long liovcnt, long rvec, long riovcnt, long flags)
+{
+    (void)pid; (void)lvec; (void)liovcnt; (void)rvec; (void)riovcnt; (void)flags;
+    return KENUX_ERR(KENUX_ENOSYS);
+}
+
+/* ===== kcmp ===== */
+static long sys_kcmp_impl(long pid1, long pid2, long type, long idx1, long idx2, long a6)
+{
+    (void)pid1; (void)pid2; (void)type; (void)idx1; (void)idx2; (void)a6;
+    return 0;
+}
+
+/* ===== getcpu ===== */
+static long sys_getcpu_impl(long cpu, long node, long tcache, long a4, long a5, long a6)
+{
+    (void)node; (void)tcache; (void)a4; (void)a5; (void)a6;
+    if (cpu) *(unsigned int*)cpu = 0;
+    return 0;
 }
 
 int kapi_syscall_register(int nr, kapi_syscall_fn_t fn)
