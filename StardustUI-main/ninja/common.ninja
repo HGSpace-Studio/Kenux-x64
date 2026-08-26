@@ -1,0 +1,64 @@
+cxx = $${CXX:-g++}
+ld = $${LD:-ld}
+ar = $${AR:-ar}
+make = $${MAKE:-make}
+
+abgr_wrapper_dir = $framework_dir/third_party/ab_glyph_rasterizer/wrapper
+abgr_lib = $abgr_wrapper_dir/target/release/libstardustui_ab_glyph_rasterizer_capi.a
+xapi_dir = $root_dir/user/xapi
+xapi_out_dir = $root_dir/out/xapi
+xapi_start_obj = $xapi_out_dir/start.cpp.o
+xapi_liballoc = $xapi_out_dir/liballoc-x86_64.a
+
+common_cppflags = -I$framework_dir -I$framework_dir/includes
+common_cxxflags = -O0 -Wall -g -std=gnu++17
+linux_cppflags = -DSTARDUSTUI_LINUX -DSTARDUSTUI_USE_AB_GLYPH_RASTERIZER $$(pkg-config --cflags sdl2 2>/dev/null)
+windows_cppflags = -DSTARDUSTUI_WINDOWS
+xj380_cppflags = -DXJ380
+xj380_cxxflags = -O2 -Wall -g -ffreestanding -fno-builtin -m64 -mstackrealign -std=gnu++17 -fno-stack-protector -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fshort-wchar -nostdinc -Wno-write-strings
+windows_ldflags = -static-libgcc -static-libstdc++
+windows_ldlibs = -luser32 -lgdi32 -lmsimg32 -lws2_32
+linux_ldlibs = $abgr_lib $$(pkg-config --libs sdl2 2>/dev/null) -ldl -lpthread -lm
+
+rule cxx_linux
+  command = mkdir -p $$(dirname $out) && $cxx $common_cppflags $linux_cppflags $common_cxxflags -MMD -MF $out.d -c $in -o $out
+  depfile = $out.d
+  deps = gcc
+  description = CXX-LINUX $in
+
+rule cxx_windows
+  command = mkdir -p $$(dirname $out) && $cxx $common_cppflags $windows_cppflags $common_cxxflags -MMD -MF $out.d -c $in -o $out
+  depfile = $out.d
+  deps = gcc
+  description = CXX-WINDOWS $in
+
+rule cxx_xj380
+  command = mkdir -p $$(dirname $out) && $cxx $common_cppflags $xj380_cppflags $xj380_cxxflags -MMD -MF $out.d -c $in -o $out
+  depfile = $out.d
+  deps = gcc
+  description = CXX-XJ380 $in
+
+rule archive
+  command = mkdir -p $$(dirname $out) && $ar rcs $out $in
+  description = AR $out
+
+rule cargo_abgr
+  command = cargo build --manifest-path $abgr_wrapper_dir/Cargo.toml --release
+  description = CARGO $abgr_wrapper_dir
+
+rule xapi_build
+  command = mkdir -p $$(dirname $out) && $make -C $xapi_dir build_all_api && touch $out
+  description = XAPI $xapi_dir
+  restat = 1
+
+rule link_cxx
+  command = mkdir -p $$(dirname $out) && $cxx $in $ldflags $ldlibs -o $out
+  description = LINK $out
+
+rule link_xj380
+  command = mkdir -p $$(dirname $out) && $ld $ldflags $xapi_start_obj $$(find $xapi_out_dir -maxdepth 1 -name '*.o' | grep -v 'constart.cpp.o' | grep -v 'start.cpp.o') $xapi_liballoc $in -o $out
+  description = LD $out
+
+rule copy_xj380
+  command = mkdir -p $$(dirname $app_out) && cp -a $in $app_out && if [ -d "$staging_apps_dir" ]; then cp -a $in $staging_elf; fi
+  description = COPY $app_out

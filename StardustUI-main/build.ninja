@@ -1,0 +1,185 @@
+framework_dir = .
+root_dir = ../..
+
+include ninja/common.ninja
+
+linux_objs = $
+  build/obj/linux/file.o $
+  build/obj/linux/network.o $
+  build/obj/linux/sytel.o $
+  build/obj/linux/text/font.o $
+  build/obj/linux/text/text_renderer.o $
+  build/obj/linux/text/rasterizer/rasterizer.o $
+  build/obj/linux/text/truetype/face.o $
+  build/obj/linux/window.o $
+  build/obj/linux/components/base.o $
+  build/obj/linux/components/lable.o $
+  build/obj/linux/components/button.o $
+  build/obj/linux/components/checkbox.o $
+  build/obj/linux/components/canvas.o $
+  build/obj/linux/components/radiobutton.o $
+  build/obj/linux/components/scrollbar.o $
+  build/obj/linux/components/textbox.o $
+  build/obj/linux/components/flex.o $
+  build/obj/linux/platforms/linux.o
+
+windows_objs = $
+  build/obj/windows/file.o $
+  build/obj/windows/network.o $
+  build/obj/windows/sytel.o $
+  build/obj/windows/text/font.o $
+  build/obj/windows/text/text_renderer.o $
+  build/obj/windows/text/rasterizer/rasterizer.o $
+  build/obj/windows/text/truetype/face.o $
+  build/obj/windows/window.o $
+  build/obj/windows/components/base.o $
+  build/obj/windows/components/lable.o $
+  build/obj/windows/components/button.o $
+  build/obj/windows/components/checkbox.o $
+  build/obj/windows/components/canvas.o $
+  build/obj/windows/components/radiobutton.o $
+  build/obj/windows/components/scrollbar.o $
+  build/obj/windows/components/textbox.o $
+  build/obj/windows/components/flex.o $
+  build/obj/windows/platforms/windows.o
+
+xj380_objs = $
+  build/obj/xj380/file.o $
+  build/obj/xj380/network.o $
+  build/obj/xj380/sytel.o $
+  build/obj/xj380/text/font.o $
+  build/obj/xj380/text/text_renderer.o $
+  build/obj/xj380/text/rasterizer/rasterizer.o $
+  build/obj/xj380/text/truetype/face.o $
+  build/obj/xj380/window.o $
+  build/obj/xj380/components/base.o $
+  build/obj/xj380/components/lable.o $
+  build/obj/xj380/components/button.o $
+  build/obj/xj380/components/checkbox.o $
+  build/obj/xj380/components/canvas.o $
+  build/obj/xj380/components/radiobutton.o $
+  build/obj/xj380/components/scrollbar.o $
+  build/obj/xj380/components/textbox.o $
+  build/obj/xj380/components/flex.o $
+  build/obj/xj380/platforms/xj380.o
+
+build build/obj/linux/file.o: cxx_linux src/file.cpp
+build build/obj/linux/network.o: cxx_linux src/network.cpp
+build build/obj/linux/sytel.o: cxx_linux src/sytel.cpp
+build build/obj/linux/text/font.o: cxx_linux src/text/font.cpp
+build build/obj/linux/text/text_renderer.o: cxx_linux src/text/text_renderer.cpp
+build build/obj/linux/text/rasterizer/rasterizer.o: cxx_linux src/text/rasterizer/rasterizer.cpp
+build build/obj/linux/text/truetype/face.o: cxx_linux src/text/truetype/face.cpp
+build build/obj/linux/window.o: cxx_linux src/window.cpp
+build build/obj/linux/components/base.o: cxx_linux src/components/base.cpp
+build build/obj/linux/components/lable.o: cxx_linux src/components/lable.cpp
+build build/obj/linux/components/button.o: cxx_linux src/components/button.cpp
+build build/obj/linux/components/checkbox.o: cxx_linux src/components/checkbox.cpp
+build build/obj/linux/components/canvas.o: cxx_linux src/components/canvas.cpp
+build build/obj/linux/components/radiobutton.o: cxx_linux src/components/radiobutton.cpp
+build build/obj/linux/components/scrollbar.o: cxx_linux src/components/scrollbar.cpp
+build build/obj/linux/components/textbox.o: cxx_linux src/components/textbox.cpp
+build build/obj/linux/components/flex.o: cxx_linux src/components/flex.cpp
+build build/obj/linux/platforms/linux.o: cxx_linux src/platforms/linux.cpp
+
+build build/obj/windows/file.o: cxx_windows src/file.cpp
+build build/obj/windows/network.o: cxx_windows src/network.cpp
+build build/obj/windows/sytel.o: cxx_windows src/sytel.cpp
+build build/obj/windows/text/font.o: cxx_windows src/text/font.cpp
+build build/obj/windows/text/text_renderer.o: cxx_windows src/text/text_renderer.cpp
+build build/obj/windows/text/rasterizer/rasterizer.o: cxx_windows src/text/rasterizer/rasterizer.cpp
+build build/obj/windows/text/truetype/face.o: cxx_windows src/text/truetype/face.cpp
+build build/obj/windows/window.o: cxx_windows src/window.cpp
+build build/obj/windows/components/base.o: cxx_windows src/components/base.cpp
+build build/obj/windows/components/lable.o: cxx_windows src/components/lable.cpp
+build build/obj/windows/components/button.o: cxx_windows src/components/button.cpp
+build build/obj/windows/components/checkbox.o: cxx_windows src/components/checkbox.cpp
+build build/obj/windows/components/canvas.o: cxx_windows src/components/canvas.cpp
+build build/obj/windows/components/radiobutton.o: cxx_windows src/components/radiobutton.cpp
+build build/obj/windows/components/scrollbar.o: cxx_windows src/components/scrollbar.cpp
+build build/obj/windows/components/textbox.o: cxx_windows src/components/textbox.cpp
+build build/obj/windows/components/flex.o: cxx_windows src/components/flex.cpp
+build build/obj/windows/platforms/windows.o: cxx_windows src/platforms/windows.cpp
+
+build build/obj/xj380/file.o: cxx_xj380 src/file.cpp
+build build/obj/xj380/network.o: cxx_xj380 src/network.cpp
+build build/obj/xj380/sytel.o: cxx_xj380 src/sytel.cpp
+build build/obj/xj380/text/font.o: cxx_xj380 src/text/font.cpp
+build build/obj/xj380/text/text_renderer.o: cxx_xj380 src/text/text_renderer.cpp
+build build/obj/xj380/text/rasterizer/rasterizer.o: cxx_xj380 src/text/rasterizer/rasterizer.cpp
+build build/obj/xj380/text/truetype/face.o: cxx_xj380 src/text/truetype/face.cpp
+build build/obj/xj380/window.o: cxx_xj380 src/window.cpp
+build build/obj/xj380/components/base.o: cxx_xj380 src/components/base.cpp
+build build/obj/xj380/components/lable.o: cxx_xj380 src/components/lable.cpp
+build build/obj/xj380/components/button.o: cxx_xj380 src/components/button.cpp
+build build/obj/xj380/components/checkbox.o: cxx_xj380 src/components/checkbox.cpp
+build build/obj/xj380/components/canvas.o: cxx_xj380 src/components/canvas.cpp
+build build/obj/xj380/components/radiobutton.o: cxx_xj380 src/components/radiobutton.cpp
+build build/obj/xj380/components/scrollbar.o: cxx_xj380 src/components/scrollbar.cpp
+build build/obj/xj380/components/textbox.o: cxx_xj380 src/components/textbox.cpp
+build build/obj/xj380/components/flex.o: cxx_xj380 src/components/flex.cpp
+build build/obj/xj380/platforms/xj380.o: cxx_xj380 src/platforms/xj380.cpp
+
+build build/libStardustUI-linux.a: archive $
+  build/obj/linux/file.o $
+  build/obj/linux/network.o $
+  build/obj/linux/sytel.o $
+  build/obj/linux/text/font.o $
+  build/obj/linux/text/text_renderer.o $
+  build/obj/linux/text/rasterizer/rasterizer.o $
+  build/obj/linux/text/truetype/face.o $
+  build/obj/linux/window.o $
+  build/obj/linux/components/base.o $
+  build/obj/linux/components/lable.o $
+  build/obj/linux/components/button.o $
+  build/obj/linux/components/checkbox.o $
+  build/obj/linux/components/canvas.o $
+  build/obj/linux/components/radiobutton.o $
+  build/obj/linux/components/scrollbar.o $
+  build/obj/linux/components/textbox.o $
+  build/obj/linux/components/flex.o $
+  build/obj/linux/platforms/linux.o
+build build/libStardustUI-windows.a: archive $
+  build/obj/windows/file.o $
+  build/obj/windows/network.o $
+  build/obj/windows/sytel.o $
+  build/obj/windows/text/font.o $
+  build/obj/windows/text/text_renderer.o $
+  build/obj/windows/text/rasterizer/rasterizer.o $
+  build/obj/windows/text/truetype/face.o $
+  build/obj/windows/window.o $
+  build/obj/windows/components/base.o $
+  build/obj/windows/components/lable.o $
+  build/obj/windows/components/button.o $
+  build/obj/windows/components/checkbox.o $
+  build/obj/windows/components/canvas.o $
+  build/obj/windows/components/radiobutton.o $
+  build/obj/windows/components/scrollbar.o $
+  build/obj/windows/components/textbox.o $
+  build/obj/windows/components/flex.o $
+  build/obj/windows/platforms/windows.o
+build build/libStardustUI-xj380.a: archive $
+  build/obj/xj380/file.o $
+  build/obj/xj380/network.o $
+  build/obj/xj380/sytel.o $
+  build/obj/xj380/text/font.o $
+  build/obj/xj380/text/text_renderer.o $
+  build/obj/xj380/text/rasterizer/rasterizer.o $
+  build/obj/xj380/text/truetype/face.o $
+  build/obj/xj380/window.o $
+  build/obj/xj380/components/base.o $
+  build/obj/xj380/components/lable.o $
+  build/obj/xj380/components/button.o $
+  build/obj/xj380/components/checkbox.o $
+  build/obj/xj380/components/canvas.o $
+  build/obj/xj380/components/radiobutton.o $
+  build/obj/xj380/components/scrollbar.o $
+  build/obj/xj380/components/textbox.o $
+  build/obj/xj380/components/flex.o $
+  build/obj/xj380/platforms/xj380.o
+
+build lib-linux: phony build/libStardustUI-linux.a
+build lib-windows: phony build/libStardustUI-windows.a
+build lib-xj380: phony build/libStardustUI-xj380.a
+
+default lib-linux
