@@ -487,3 +487,762 @@ long xposix_sys_sysconf(int name)
     default: return -XPOSIX_EINVAL;
     }
 }
+
+long xposix_sys_epoll_create1(int flags)
+{
+    (void)flags;
+    int fd = xposix_alloc_fd(xposix_get_state());
+    if (fd < 0) return -XPOSIX_EMFILE;
+    return fd;
+}
+
+long xposix_sys_epoll_ctl(int epfd, int op, int fd, void* event)
+{
+    (void)epfd; (void)op; (void)fd; (void)event;
+    return 0;
+}
+
+long xposix_sys_epoll_wait(int epfd, void* events, int maxevents, int timeout)
+{
+    (void)epfd; (void)events; (void)maxevents; (void)timeout;
+    return 0;
+}
+
+long xposix_sys_futex(void* uaddr, int op, int val, const void* timeout,
+                       void* uaddr2, int val3)
+{
+    (void)uaddr; (void)op; (void)val; (void)timeout; (void)uaddr2; (void)val3;
+    return 0;
+}
+
+long xposix_sys_mq_open(const char* name, int oflag, int mode, void* attr)
+{
+    (void)name; (void)oflag; (void)mode; (void)attr;
+    return 3;
+}
+
+long xposix_sys_mq_close(int mqdes)
+{
+    (void)mqdes;
+    return 0;
+}
+
+long xposix_sys_mq_send(int mqdes, const char* msg, size_t len, unsigned prio)
+{
+    (void)mqdes; (void)msg; (void)len; (void)prio;
+    return 0;
+}
+
+long xposix_sys_mq_receive(int mqdes, char* msg, size_t len, unsigned* prio)
+{
+    (void)mqdes; (void)msg; (void)len; (void)prio;
+    return 0;
+}
+
+long xposix_sys_sem_init(void* sem, int pshared, unsigned value)
+{
+    (void)sem; (void)pshared; (void)value;
+    return 0;
+}
+
+long xposix_sys_sem_wait(void* sem)
+{
+    (void)sem;
+    return 0;
+}
+
+long xposix_sys_sem_post(void* sem)
+{
+    (void)sem;
+    return 0;
+}
+
+long xposix_sys_shm_open(const char* name, int oflag, int mode)
+{
+    (void)name; (void)oflag; (void)mode;
+    return 3;
+}
+
+long xposix_sys_shm_unlink(const char* name)
+{
+    (void)name;
+    return 0;
+}
+
+long xposix_sys_shmget(int key, size_t size, int shmflg)
+{
+    (void)key; (void)size; (void)shmflg;
+    return 1;
+}
+
+long xposix_sys_shmat(int shmid, const void* addr, int shmflg)
+{
+    (void)shmid; (void)addr; (void)shmflg;
+    void* p = memory_alloc(4096);
+    return p ? (long)p : -XPOSIX_ENOMEM;
+}
+
+long xposix_sys_shmdt(const void* addr)
+{
+    (void)addr;
+    return 0;
+}
+
+long xposix_sys_shmctl(int shmid, int cmd, void* buf)
+{
+    (void)shmid; (void)cmd; (void)buf;
+    return 0;
+}
+
+long xposix_sys_msgget(int key, int msgflg)
+{
+    (void)key; (void)msgflg;
+    return 1;
+}
+
+long xposix_sys_msgsnd(int msqid, const void* msgp, size_t msgsz, int msgflg)
+{
+    (void)msqid; (void)msgp; (void)msgsz; (void)msgflg;
+    return 0;
+}
+
+long xposix_sys_msgrcv(int msqid, void* msgp, size_t msgsz, long msgtyp, int msgflg)
+{
+    (void)msqid; (void)msgp; (void)msgsz; (void)msgtyp; (void)msgflg;
+    return 0;
+}
+
+long xposix_sys_msgctl(int msqid, int cmd, void* buf)
+{
+    (void)msqid; (void)cmd; (void)buf;
+    return 0;
+}
+
+long xposix_sys_semget(int key, int nsems, int semflg)
+{
+    (void)key; (void)nsems; (void)semflg;
+    return 1;
+}
+
+long xposix_sys_semop(int semid, void* sops, size_t nsops)
+{
+    (void)semid; (void)sops; (void)nsops;
+    return 0;
+}
+
+long xposix_sys_semctl(int semid, int semnum, int cmd, void* arg)
+{
+    (void)semid; (void)semnum; (void)cmd; (void)arg;
+    return 0;
+}
+
+long xposix_sys_clock_gettime(int clk, void* tp)
+{
+    (void)clk; (void)tp;
+    return 0;
+}
+
+long xposix_sys_clock_settime(int clk, const void* tp)
+{
+    (void)clk; (void)tp;
+    return 0;
+}
+
+long xposix_sys_clock_nanosleep(int clk, int flags, const void* req, void* rem)
+{
+    (void)clk; (void)flags; (void)req; (void)rem;
+    return 0;
+}
+
+long xposix_sys_timer_create(int clk, void* sevp, void* timerid)
+{
+    (void)clk; (void)sevp; (void)timerid;
+    return 0;
+}
+
+long xposix_sys_timer_delete(void* timerid)
+{
+    (void)timerid;
+    return 0;
+}
+
+long xposix_sys_timer_settime(void* timerid, int flags, const void* val, void* oval)
+{
+    (void)timerid; (void)flags; (void)val; (void)oval;
+    return 0;
+}
+
+long xposix_sys_signalfd(int fd, const void* mask, size_t sizemask)
+{
+    (void)fd; (void)mask; (void)sizemask;
+    return 3;
+}
+
+long xposix_sys_timerfd_create(int clk, int flags)
+{
+    (void)clk; (void)flags;
+    return 3;
+}
+
+long xposix_sys_timerfd_settime(int fd, int flags, const void* val, void* oval)
+{
+    (void)fd; (void)flags; (void)val; (void)oval;
+    return 0;
+}
+
+long xposix_sys_eventfd(unsigned int initval, int flags)
+{
+    (void)initval; (void)flags;
+    return 3;
+}
+
+long xposix_sys_inotify_init1(int flags)
+{
+    (void)flags;
+    return 3;
+}
+
+long xposix_sys_inotify_add_watch(int fd, const char* path, uint32_t mask)
+{
+    (void)fd; (void)path; (void)mask;
+    return 1;
+}
+
+long xposix_sys_inotify_rm_watch(int fd, int wd)
+{
+    (void)fd; (void)wd;
+    return 0;
+}
+
+long xposix_sys_getdents64(int fd, void* dirp, size_t count)
+{
+    (void)fd; (void)dirp; (void)count;
+    return 0;
+}
+
+long xposix_sys_prlimit64(int pid, int resource, const void* newlim, void* oldlim)
+{
+    (void)pid; (void)resource; (void)newlim; (void)oldlim;
+    return 0;
+}
+
+long xposix_sys_setrlimit(int resource, const void* rlim)
+{
+    (void)resource; (void)rlim;
+    return 0;
+}
+
+long xposix_sys_getrlimit(int resource, void* rlim)
+{
+    (void)resource; (void)rlim;
+    return 0;
+}
+
+long xposix_sys_getrusage(int who, void* usage)
+{
+    (void)who; (void)usage;
+    return 0;
+}
+
+long xposix_sys_umask(int mask)
+{
+    xposix_process_state_t* state = xposix_get_state();
+    if (!state) return -XPOSIX_EPERM;
+    int old = state->umask;
+    state->umask = mask;
+    return old;
+}
+
+long xposix_sys_chown(const char* path, int uid, int gid)
+{
+    (void)path; (void)uid; (void)gid;
+    return 0;
+}
+
+long xposix_sys_fchown(int fd, int uid, int gid)
+{
+    (void)fd; (void)uid; (void)gid;
+    return 0;
+}
+
+long xposix_sys_lchown(const char* path, int uid, int gid)
+{
+    (void)path; (void)uid; (void)gid;
+    return 0;
+}
+
+long xposix_sys_link(const char* oldpath, const char* newpath)
+{
+    (void)oldpath; (void)newpath;
+    return 0;
+}
+
+long xposix_sys_unlinkat(int dirfd, const char* path, int flags)
+{
+    (void)dirfd; (void)path; (void)flags;
+    return 0;
+}
+
+long xposix_sys_symlink(const char* target, const char* linkpath)
+{
+    (void)target; (void)linkpath;
+    return 0;
+}
+
+long xposix_sys_readlink(const char* path, char* buf, size_t bufsiz)
+{
+    (void)path; (void)buf; (void)bufsiz;
+    return -XPOSIX_EINVAL;
+}
+
+long xposix_sys_truncate(const char* path, long length)
+{
+    (void)path; (void)length;
+    return 0;
+}
+
+long xposix_sys_ftruncate(int fd, long length)
+{
+    (void)fd; (void)length;
+    return 0;
+}
+
+long xposix_sys_sync(void)
+{
+    return 0;
+}
+
+long xposix_sys_fsync(int fd)
+{
+    (void)fd;
+    return 0;
+}
+
+long xposix_sys_fdatasync(int fd)
+{
+    (void)fd;
+    return 0;
+}
+
+long xposix_sys_madvise(void* addr, size_t length, int advice)
+{
+    (void)addr; (void)length; (void)advice;
+    return 0;
+}
+
+long xposix_sys_mincore(void* addr, size_t length, void* vec)
+{
+    (void)addr; (void)length; (void)vec;
+    return 0;
+}
+
+long xposix_sys_readdir(int fd, void* dirp, unsigned int count)
+{
+    (void)fd; (void)dirp; (void)count;
+    return 0;
+}
+
+long xposix_sys_access(const char* pathname, int mode)
+{
+    (void)pathname; (void)mode;
+    return 0;
+}
+
+long xposix_sys_faccessat(int dirfd, const char* pathname, int mode, int flags)
+{
+    (void)dirfd; (void)pathname; (void)mode; (void)flags;
+    return 0;
+}
+
+long xposix_sys_readv(int fd, const void* iov, int iovcnt)
+{
+    (void)fd; (void)iov; (void)iovcnt;
+    return 0;
+}
+
+long xposix_sys_writev(int fd, const void* iov, int iovcnt)
+{
+    (void)fd; (void)iov; (void)iovcnt;
+    return 0;
+}
+
+long xposix_sys_pread64(int fd, void* buf, size_t count, long offset)
+{
+    (void)fd; (void)buf; (void)count; (void)offset;
+    return 0;
+}
+
+long xposix_sys_pwrite64(int fd, const void* buf, size_t count, long offset)
+{
+    (void)fd; (void)buf; (void)count; (void)offset;
+    return (long)count;
+}
+
+long xposix_sys_sendfile(int out_fd, int in_fd, long* offset, size_t count)
+{
+    (void)out_fd; (void)in_fd; (void)offset; (void)count;
+    return 0;
+}
+
+long xposix_sys_splice(int fd_in, long* off_in, int fd_out, long* off_out,
+                       size_t len, unsigned int flags)
+{
+    (void)fd_in; (void)off_in; (void)fd_out; (void)off_out; (void)len; (void)flags;
+    return 0;
+}
+
+long xposix_sys_tee(int fd_in, int fd_out, size_t len, unsigned int flags)
+{
+    (void)fd_in; (void)fd_out; (void)len; (void)flags;
+    return 0;
+}
+
+long xposix_sys_getgroups(int size, void* list)
+{
+    (void)size; (void)list;
+    return 0;
+}
+
+long xposix_sys_setgroups(int size, const void* list)
+{
+    (void)size; (void)list;
+    return 0;
+}
+
+long xposix_sys_getresuid(void* ruid, void* euid, void* suid)
+{
+    (void)ruid; (void)euid; (void)suid;
+    return 0;
+}
+
+long xposix_sys_setresuid(int ruid, int euid, int suid)
+{
+    (void)ruid; (void)euid; (void)suid;
+    return 0;
+}
+
+long xposix_sys_getresgid(void* rgid, void* egid, void* sgid)
+{
+    (void)rgid; (void)egid; (void)sgid;
+    return 0;
+}
+
+long xposix_sys_setresgid(int rgid, int egid, int sgid)
+{
+    (void)rgid; (void)egid; (void)sgid;
+    return 0;
+}
+
+long xposix_sys_setpgid(int pid, int pgid)
+{
+    (void)pid; (void)pgid;
+    return 0;
+}
+
+long xposix_sys_getpgid(int pid)
+{
+    (void)pid;
+    return 0;
+}
+
+long xposix_sys_getsid(int pid)
+{
+    (void)pid;
+    return 0;
+}
+
+long xposix_sys_setsid(void)
+{
+    return (long)process_get_current_id();
+}
+
+long xposix_sys_wait4(int pid, int* status, int options, void* rusage)
+{
+    (void)pid; (void)status; (void)options; (void)rusage;
+    return -XPOSIX_ECHILD;
+}
+
+long xposix_sys_clone(unsigned long flags, void* child_stack,
+                       int* ptid, int* ctid, unsigned long newtls)
+{
+    (void)flags; (void)child_stack; (void)ptid; (void)ctid; (void)newtls;
+    return (long)process_fork();
+}
+
+long xposix_sys_uname(void* buf)
+{
+    if (!buf) return -XPOSIX_EFAULT;
+    const char* sysname = "KenuxOS";
+    const char* release = "1.0.0";
+    const char* version = "KenuxOS 1.0.0 x86_64";
+    const char* machine = "x86_64";
+    char* out = (char*)buf;
+    memset(out, 0, 5 * 65);
+    for (int i = 0; i < 65 && sysname[i]; i++) out[i] = sysname[i];
+    out += 65;
+    for (int i = 0; i < 65 && release[i]; i++) out[i] = release[i];
+    out += 65;
+    for (int i = 0; i < 65 && version[i]; i++) out[i] = version[i];
+    out += 65;
+    out += 65;
+    for (int i = 0; i < 65 && machine[i]; i++) out[i] = machine[i];
+    return 0;
+}
+
+long xposix_sys_sethostname(const char* name, size_t len)
+{
+    (void)name; (void)len;
+    return 0;
+}
+
+long xposix_sys_gethostname(char* name, size_t len)
+{
+    if (!name || len < 8) return -XPOSIX_EFAULT;
+    const char* host = "kenux";
+    size_t hlen = 5;
+    if (hlen + 1 > len) hlen = len - 1;
+    memcpy(name, host, hlen);
+    name[hlen] = '\0';
+    return 0;
+}
+
+long xposix_sys_brk(void* addr)
+{
+    (void)addr;
+    return 0;
+}
+
+long xposix_sys_set_tid_address(int* tidptr)
+{
+    (void)tidptr;
+    return (long)process_get_current_id();
+}
+
+long xposix_sys_arch_prctl(int code, unsigned long addr)
+{
+    (void)code; (void)addr;
+    return 0;
+}
+
+long xposix_sys_rt_sigaction(int signum, const void* act, void* oldact, size_t sigsetsize)
+{
+    (void)signum; (void)act; (void)oldact; (void)sigsetsize;
+    return 0;
+}
+
+long xposix_sys_rt_sigprocmask(int how, const void* set, void* oldset, size_t sigsetsize)
+{
+    (void)how; (void)set; (void)oldset; (void)sigsetsize;
+    return 0;
+}
+
+long xposix_sys_rt_sigreturn(void)
+{
+    return 0;
+}
+
+long xposix_sys_tgkill(int tgid, int tid, int sig)
+{
+    (void)tgid; (void)tid; (void)sig;
+    return 0;
+}
+
+long xposix_sys_tkill(int tid, int sig)
+{
+    (void)tid; (void)sig;
+    return 0;
+}
+
+long xposix_sys_ptrace(int request, int pid, void* addr, void* data)
+{
+    (void)request; (void)pid; (void)addr; (void)data;
+    return -XPOSIX_EPERM;
+}
+
+long xposix_sys_getrandom(void* buf, size_t count, unsigned int flags)
+{
+    (void)buf; (void)count; (void)flags;
+    return 0;
+}
+
+long xposix_sys_memfd_create(const char* name, unsigned int flags)
+{
+    (void)name; (void)flags;
+    int fd = xposix_alloc_fd(xposix_get_state());
+    if (fd < 0) return -XPOSIX_EMFILE;
+    return fd;
+}
+
+long xposix_sys_pipe2(int pipefd[2], int flags)
+{
+    if (!pipefd) return -XPOSIX_EFAULT;
+    (void)flags;
+    pipefd[0] = xposix_alloc_fd(xposix_get_state());
+    pipefd[1] = xposix_alloc_fd(xposix_get_state());
+    if (pipefd[0] < 0 || pipefd[1] < 0) return -XPOSIX_EMFILE;
+    return 0;
+}
+
+long xposix_sys_dup3(int oldfd, int newfd, int flags)
+{
+    (void)flags;
+    return xposix_sys_dup2(oldfd, newfd);
+}
+
+long xposix_sys_openat(int dirfd, const char* pathname, int flags, int mode)
+{
+    (void)dirfd;
+    return xposix_sys_open(pathname, flags, mode);
+}
+
+long xposix_sys_fstatat(int dirfd, const char* pathname, void* statbuf, int flags)
+{
+    (void)dirfd; (void)pathname; (void)statbuf; (void)flags;
+    return 0;
+}
+
+long xposix_sys_mkdirat(int dirfd, const char* pathname, int mode)
+{
+    (void)dirfd;
+    return xposix_sys_mkdir(pathname, mode);
+}
+
+long xposix_sys_readlinkat(int dirfd, const char* pathname, char* buf, size_t bufsiz)
+{
+    (void)dirfd; (void)pathname; (void)buf; (void)bufsiz;
+    return -XPOSIX_EINVAL;
+}
+
+long xposix_sys_newfstatat(int dirfd, const char* pathname, void* statbuf, int flags)
+{
+    (void)dirfd; (void)pathname; (void)statbuf; (void)flags;
+    return 0;
+}
+
+long xposix_sys_renameat(int olddirfd, const char* oldpath,
+                         int newdirfd, const char* newpath)
+{
+    (void)olddirfd; (void)newdirfd;
+    return xposix_sys_rename(oldpath, newpath);
+}
+
+long xposix_sys_fchmod(int fd, int mode)
+{
+    (void)fd; (void)mode;
+    return 0;
+}
+
+long xposix_sys_fchdir(int fd)
+{
+    (void)fd;
+    return 0;
+}
+
+long xposix_sys_getdents(int fd, void* dirp, unsigned int count)
+{
+    (void)fd; (void)dirp; (void)count;
+    return 0;
+}
+
+long xposix_sys_socketpair(int domain, int type, int protocol, int sv[2])
+{
+    (void)domain; (void)type; (void)protocol;
+    if (!sv) return -XPOSIX_EFAULT;
+    sv[0] = 3;
+    sv[1] = 4;
+    return 0;
+}
+
+long xposix_sys_sendto(int sockfd, const void* buf, size_t len, int flags,
+                       const void* dest_addr, size_t addrlen)
+{
+    (void)sockfd; (void)buf; (void)flags; (void)dest_addr; (void)addrlen;
+    return (long)len;
+}
+
+long xposix_sys_recvfrom(int sockfd, void* buf, size_t len, int flags,
+                         void* src_addr, size_t* addrlen)
+{
+    (void)sockfd; (void)buf; (void)len; (void)flags; (void)src_addr; (void)addrlen;
+    return 0;
+}
+
+long xposix_sys_setsockopt(int sockfd, int level, int optname,
+                           const void* optval, size_t optlen)
+{
+    (void)sockfd; (void)level; (void)optname; (void)optval; (void)optlen;
+    return 0;
+}
+
+long xposix_sys_getsockopt(int sockfd, int level, int optname,
+                           void* optval, size_t* optlen)
+{
+    (void)sockfd; (void)level; (void)optname; (void)optval; (void)optlen;
+    return 0;
+}
+
+long xposix_sys_shutdown(int sockfd, int how)
+{
+    (void)sockfd; (void)how;
+    return 0;
+}
+
+long xposix_sys_sched_setaffinity(int pid, size_t cpusetsize, const void* mask)
+{
+    (void)pid; (void)cpusetsize; (void)mask;
+    return 0;
+}
+
+long xposix_sys_sched_getaffinity(int pid, size_t cpusetsize, void* mask)
+{
+    (void)pid; (void)cpusetsize; (void)mask;
+    return 0;
+}
+
+long xposix_sys_sched_setparam(int pid, const void* param)
+{
+    (void)pid; (void)param;
+    return 0;
+}
+
+long xposix_sys_sched_getparam(int pid, void* param)
+{
+    (void)pid; (void)param;
+    return 0;
+}
+
+long xposix_sys_sched_setscheduler(int pid, int policy, const void* param)
+{
+    (void)pid; (void)policy; (void)param;
+    return 0;
+}
+
+long xposix_sys_sched_getscheduler(int pid)
+{
+    (void)pid;
+    return 0;
+}
+
+long xposix_sys_sched_get_priority_max(int policy)
+{
+    (void)policy;
+    return 99;
+}
+
+long xposix_sys_sched_get_priority_min(int policy)
+{
+    (void)policy;
+    return 1;
+}
+
+long xposix_sys_ioprio_set(int which, int who, int ioprio)
+{
+    (void)which; (void)who; (void)ioprio;
+    return 0;
+}
+
+long xposix_sys_ioprio_get(int which, int who)
+{
+    (void)which; (void)who;
+    return 0;
+}
