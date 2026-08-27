@@ -10,6 +10,7 @@
 #define KANVAS_START_ITEM_H         36
 #define KANVAS_START_ICON_SZ        24
 #define KANVAS_START_PAD            12
+#define KANVAS_START_RADIUS         16
 #define KANVAS_START_COL_APPS       0
 #define KANVAS_START_COL_SYSTEM     1
 #define KANVAS_START_COL_POWER      2

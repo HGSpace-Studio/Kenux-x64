@@ -58,12 +58,16 @@ static void paint_wallpaper(kanvas_desktop_t* desk, uint32_t* fb, int stride, in
 static void paint_desktop_icons(kanvas_desktop_t* desk, uint32_t* fb, int stride, int fw, int fh)
 {
     uint32_t fg = kui_col32_inline(desk->theme.desktop_fg);
+    uint32_t accent = kui_col32_inline(desk->theme.taskbar_accent);
     for (int i = 0; i < desk->icon_count; i++) {
         kanvas_desktop_icon_t* icon = &desk->icons[i];
         int ix = icon->x, iy = icon->y;
         int icon_sz = 48;
         int icon_cx = ix + icon_sz / 2;
         int icon_cy = iy + icon_sz / 2;
+        if (icon->selected) {
+            fill_rounded_rect(fb, stride, fw, fh, ix - 4, iy - 4, icon_sz + 8, icon_sz + 24, 8, accent);
+        }
         kui_draw_icon(fb, stride, fw, fh, icon_cx - 16, icon_cy - 16, icon->icon_id, 32, fg);
         int text_y = iy + icon_sz + 2;
         kui_draw_text(fb, stride, fw, fh, ix, text_y, icon->name, fg, 12, 0);
@@ -77,21 +81,29 @@ static void paint_taskbar(kanvas_desktop_t* desk, uint32_t* fb, int stride, int 
     uint32_t bg = kui_col32_inline(desk->theme.taskbar_bg);
     uint32_t fg = kui_col32_inline(desk->theme.taskbar_fg);
     uint32_t accent = kui_col32_inline(desk->theme.taskbar_accent);
-    int tb_y = fh - KANVAS_TASKBAR_HEIGHT;
-    fill_rect(fb, stride, fw, fh, 0, tb_y, fw, KANVAS_TASKBAR_HEIGHT, bg);
+    int tb_y = 0;
+    int tb_r = KANVAS_TASKBAR_RADIUS;
+    if (tb_r > 0) {
+        fill_rect(fb, stride, fw, fh, 0, tb_y, fw, KANVAS_TASKBAR_HEIGHT - tb_r, bg);
+        fill_rounded_rect(fb, stride, fw, fh, 0, tb_y, fw, KANVAS_TASKBAR_HEIGHT, tb_r, bg);
+    } else {
+        fill_rect(fb, stride, fw, fh, 0, tb_y, fw, KANVAS_TASKBAR_HEIGHT, bg);
+    }
     int start_x = KANVAS_TASKBAR_PADDING;
     int start_y = tb_y + (KANVAS_TASKBAR_HEIGHT - 36) / 2;
-    uint32_t start_col = tb->start_hovered ? accent : fg;
-    fill_rounded_rect(fb, stride, fw, fh, start_x, start_y, 36, 36, 8, start_col);
+    uint32_t start_col = tb->start_hovered ? accent : kui_col32_inline(desk->theme.taskbar_accent);
+    fill_rounded_rect(fb, stride, fw, fh, start_x, start_y, 36, 36, 10, start_col);
+    kui_draw_text(fb, stride, fw, fh, start_x + 10, start_y + 8, "K", kui_col32_inline(desk->theme.taskbar_fg), 18, 1);
     int item_x = start_x + 36 + KANVAS_TASKBAR_PADDING * 2;
     for (int i = 0; i < tb->item_count; i++) {
         kanvas_taskbar_item_t* item = &tb->items[i];
         int item_y = tb_y + (KANVAS_TASKBAR_HEIGHT - KANVAS_TASKBAR_ITEM_H) / 2;
-        uint32_t item_bg = item->hovered ? kui_col32_inline(desk->theme.taskbar_accent) : 0;
-        if (item_bg) fill_rounded_rect(fb, stride, fw, fh, item_x, item_y, KANVAS_TASKBAR_ITEM_W, KANVAS_TASKBAR_ITEM_H, 6, item_bg);
+        if (item->hovered) {
+            fill_rounded_rect(fb, stride, fw, fh, item_x, item_y, KANVAS_TASKBAR_ITEM_W, KANVAS_TASKBAR_ITEM_H, 8, kui_col32_inline(desk->theme.taskbar_accent));
+        }
         if (item->active) {
             int indicator_y = tb_y + KANVAS_TASKBAR_HEIGHT - 3;
-            fill_rect(fb, stride, fw, fh, item_x + 8, indicator_y, KANVAS_TASKBAR_ITEM_W - 16, 2, accent);
+            fill_rounded_rect(fb, stride, fw, fh, item_x + 8, indicator_y, KANVAS_TASKBAR_ITEM_W - 16, 2, 1, accent);
         }
         kui_draw_icon(fb, stride, fw, fh, item_x + (KANVAS_TASKBAR_ITEM_W - 24) / 2, item_y + (KANVAS_TASKBAR_ITEM_H - 24) / 2, item->icon_id, 24, fg);
         item_x += KANVAS_TASKBAR_ITEM_W + KANVAS_TASKBAR_PADDING;
@@ -103,7 +115,7 @@ static void paint_taskbar(kanvas_desktop_t* desk, uint32_t* fb, int stride, int 
         int tray_y = tb_y + (KANVAS_TASKBAR_HEIGHT - 24) / 2;
         kui_draw_icon(fb, stride, fw, fh, tray_x, tray_y, tray->icon_id, 20, fg);
         if (tray->has_notification) {
-            fill_rect(fb, stride, fw, fh, tray_x + 16, tray_y, 8, 8, 0xFF4444FF);
+            fill_rounded_rect(fb, stride, fw, fh, tray_x + 14, tray_y - 2, 8, 8, 4, 0xFF4444FF);
         }
         tray_x -= KANVAS_TASKBAR_PADDING;
     }
@@ -120,7 +132,7 @@ static void paint_context_menu(kanvas_desktop_t* desk, uint32_t* fb, int stride,
     uint32_t bg = kui_col32_inline(desk->theme.context_menu_bg);
     uint32_t fg = kui_col32_inline(desk->theme.context_menu_fg);
     uint32_t hover = kui_col32_inline(desk->theme.context_menu_hover);
-    int r = desk->theme.corner_radius;
+    int r = desk->theme.corner_radius + 4;
     fill_rounded_rect(fb, stride, fw, fh, cm->x, cm->y, cm->width, cm->height, r, bg);
     int y = cm->y + 4;
     for (int i = 0; i < cm->item_count; i++) {
@@ -132,7 +144,7 @@ static void paint_context_menu(kanvas_desktop_t* desk, uint32_t* fb, int stride,
             continue;
         }
         if (i == cm->hovered_index)
-            fill_rounded_rect(fb, stride, fw, fh, cm->x + 4, y, cm->width - 8, item_h, 4, hover);
+            fill_rounded_rect(fb, stride, fw, fh, cm->x + 4, y, cm->width - 8, item_h, 6, hover);
         if (item->enabled)
             kui_draw_text(fb, stride, fw, fh, cm->x + 12, y + (item_h - 14) / 2, item->label, fg, 14, 0);
         else
@@ -156,13 +168,13 @@ kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb
     desk->taskbar.visible = true;
     desk->taskbar.width = screen_w;
     desk->taskbar.x = 0;
-    desk->taskbar.y = screen_h - KANVAS_TASKBAR_HEIGHT;
+    desk->taskbar.y = 0;
     desk->taskbar.hovered_item = -1;
     desk->taskbar.hovered_tray = -1;
     desk->taskbar.start_hovered = false;
     desk->start_menu.visible = false;
     desk->start_menu.x = 0;
-    desk->start_menu.y = screen_h - KANVAS_TASKBAR_HEIGHT - KANVAS_START_H;
+    desk->start_menu.y = KANVAS_TASKBAR_HEIGHT;
     desk->context_menu.visible = false;
     desk->context_menu.hovered_index = -1;
     desk->drag_window_idx = -1;
@@ -233,8 +245,8 @@ void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left
             kanvas_desktop_close_context_menu(desk);
         }
     }
-    int tb_y = desk->screen_height - KANVAS_TASKBAR_HEIGHT;
-    if (y >= tb_y && desk->taskbar.visible) {
+    int tb_y = 0;
+    if (y >= tb_y && y < tb_y + KANVAS_TASKBAR_HEIGHT && desk->taskbar.visible) {
         if (x >= KANVAS_TASKBAR_PADDING && x < KANVAS_TASKBAR_PADDING + 36) {
             desk->taskbar.start_hovered = true;
             if (left) kanvas_desktop_toggle_start_menu(desk);
@@ -243,7 +255,7 @@ void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left
         }
         return;
     }
-    if (right && y < tb_y) {
+    if (right && y >= KANVAS_TASKBAR_HEIGHT) {
         kanvas_desktop_open_context_menu(desk, x, y);
         return;
     }
@@ -380,6 +392,7 @@ void kanvas_desktop_open_context_menu(kanvas_desktop_t* desk, int x, int y)
     if (cm->x + cm->width > desk->screen_width) cm->x = desk->screen_width - cm->width;
     if (cm->y + cm->height > desk->screen_height - KANVAS_TASKBAR_HEIGHT)
         cm->y = desk->screen_height - KANVAS_TASKBAR_HEIGHT - cm->height;
+    if (cm->y < KANVAS_TASKBAR_HEIGHT) cm->y = KANVAS_TASKBAR_HEIGHT;
     desk->state = KANVAS_DESKTOP_STATE_CONTEXT_MENU;
     desk->needs_repaint = true;
 }
@@ -476,7 +489,7 @@ void kanvas_desktop_apply_theme_md3_dark(kanvas_desktop_t* desk)
     t->danger = (kui_color_t){224, 64, 64, 255};
     t->success = (kui_color_t){64, 180, 64, 255};
     t->warning = (kui_color_t){255, 180, 0, 255};
-    t->corner_radius = 10;
+    t->corner_radius = 14;
     t->font_size = 14;
     t->font_size_small = 12;
     t->font_size_large = 18;
@@ -515,7 +528,7 @@ void kanvas_desktop_apply_theme_md3_light(kanvas_desktop_t* desk)
     t->danger = (kui_color_t){180, 40, 40, 255};
     t->success = (kui_color_t){40, 140, 40, 255};
     t->warning = (kui_color_t){200, 140, 0, 255};
-    t->corner_radius = 10;
+    t->corner_radius = 14;
     t->font_size = 14;
     t->font_size_small = 12;
     t->font_size_large = 18;

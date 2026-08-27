@@ -165,13 +165,13 @@ void kanvas_window_paint_titlebar(kanvas_window_t* win, uint32_t* fb, int stride
     int ctrl_x = win->x + win->width - 12;
     int ctrl_y = win->y + (tb_h - KANVAS_WIN_CTRL_SIZE) / 2;
     uint32_t close_col = win->hover_ctrl == KANVAS_WIN_CTRL_CLOSE ? 0xE04040FF : 0x808080FF;
-    fill_rect(fb, stride, fw, fh, ctrl_x - 1, ctrl_y - 1, KANVAS_WIN_CTRL_SIZE + 2, KANVAS_WIN_CTRL_SIZE + 2, close_col);
+    fill_rounded_rect(fb, stride, fw, fh, ctrl_x - 2, ctrl_y - 2, KANVAS_WIN_CTRL_SIZE + 4, KANVAS_WIN_CTRL_SIZE + 4, 4, close_col);
     ctrl_x -= KANVAS_WIN_CTRL_SIZE + KANVAS_WIN_CTRL_SPACING;
     uint32_t max_col = win->hover_ctrl == KANVAS_WIN_CTRL_MAXIMIZE ? 0x606060FF : 0x808080FF;
-    fill_rect(fb, stride, fw, fh, ctrl_x, ctrl_y, KANVAS_WIN_CTRL_SIZE, KANVAS_WIN_CTRL_SIZE, max_col);
+    fill_rounded_rect(fb, stride, fw, fh, ctrl_x, ctrl_y, KANVAS_WIN_CTRL_SIZE, KANVAS_WIN_CTRL_SIZE, 4, max_col);
     ctrl_x -= KANVAS_WIN_CTRL_SIZE + KANVAS_WIN_CTRL_SPACING;
     uint32_t min_col = win->hover_ctrl == KANVAS_WIN_CTRL_MINIMIZE ? 0x606060FF : 0x808080FF;
-    fill_rect(fb, stride, fw, fh, ctrl_x, ctrl_y, KANVAS_WIN_CTRL_SIZE, KANVAS_WIN_CTRL_SIZE, min_col);
+    fill_rounded_rect(fb, stride, fw, fh, ctrl_x, ctrl_y, KANVAS_WIN_CTRL_SIZE, KANVAS_WIN_CTRL_SIZE, 4, min_col);
 }
 
 void kanvas_window_paint_border(kanvas_window_t* win, uint32_t* fb, int stride, int fw, int fh)

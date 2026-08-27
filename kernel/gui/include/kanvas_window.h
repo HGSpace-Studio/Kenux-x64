@@ -7,9 +7,9 @@
 
 #define KANVAS_WIN_TITLEBAR_H     36
 #define KANVAS_WIN_BORDER_W       1
-#define KANVAS_WIN_RADIUS         10
-#define KANVAS_WIN_SHADOW_BLUR    16
-#define KANVAS_WIN_SHADOW_ALPHA   50
+#define KANVAS_WIN_RADIUS         12
+#define KANVAS_WIN_SHADOW_BLUR    20
+#define KANVAS_WIN_SHADOW_ALPHA   40
 #define KANVAS_WIN_CTRL_SIZE      14
 #define KANVAS_WIN_CTRL_SPACING   8
 #define KANVAS_WIN_MIN_W          200

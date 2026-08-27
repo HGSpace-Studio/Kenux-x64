@@ -64,11 +64,11 @@ void kanvas_start_menu_paint(kanvas_start_menu_t* sm, uint32_t* fb, int stride, 
     uint32_t search_bg = kui_col32_inline(sm->search_bg);
     uint32_t search_fg = kui_col32_inline(sm->search_fg);
     uint32_t divider = kui_col32_inline(sm->divider_color);
-    kui_draw_rounded_rect(fb, stride, fw, fh, sm->x, sm->y, KANVAS_START_W, KANVAS_START_H, 12, bg);
+    kui_draw_rounded_rect(fb, stride, fw, fh, sm->x, sm->y, KANVAS_START_W, KANVAS_START_H, KANVAS_START_RADIUS, bg);
     int search_x = sm->x + KANVAS_START_PAD;
     int search_y = sm->y + KANVAS_START_PAD;
     int search_w = KANVAS_START_W - KANVAS_START_PAD * 2;
-    kui_draw_rounded_rect(fb, stride, fw, fh, search_x, search_y, search_w, KANVAS_START_SEARCH_H, 8, search_bg);
+    kui_draw_rounded_rect(fb, stride, fw, fh, search_x, search_y, search_w, KANVAS_START_SEARCH_H, 12, search_bg);
     if (sm->search_text[0]) {
         kui_draw_text(fb, stride, fw, fh, search_x + 12, search_y + (KANVAS_START_SEARCH_H - 14) / 2, sm->search_text, search_fg, 14, 0);
     } else {
@@ -98,7 +98,7 @@ void kanvas_start_menu_paint(kanvas_start_menu_t* sm, uint32_t* fb, int stride, 
     uint32_t power_off = kui_col32_inline(sm->power_off_color);
     uint32_t power_restart = kui_col32_inline(sm->power_restart_color);
     uint32_t power_sleep = kui_col32_inline(sm->power_sleep_color);
-    int btn_w = 80, btn_h = 32, btn_r = 6;
+    int btn_w = 80, btn_h = 32, btn_r = 10;
     int btn_y = power_y + 4;
     int btn_x = sm->x + KANVAS_START_PAD;
     kui_draw_rounded_rect(fb, stride, fw, fh, btn_x, btn_y, btn_w, btn_h, btn_r, power_sleep);

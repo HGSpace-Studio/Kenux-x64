@@ -12,6 +12,9 @@
 #define KANVAS_TASKBAR_ITEM_H       40
 #define KANVAS_TASKBAR_MAX_ITEMS    24
 #define KANVAS_TASKBAR_MAX_TRAY     16
+#define KANVAS_TASKBAR_RADIUS       0
+#define KANVAS_TASKBAR_POSITION_TOP 1
+#define KANVAS_TASKBAR_BLUR_BEHIND  1
 
 typedef struct {
     char name[64];
