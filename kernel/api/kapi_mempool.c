@@ -67,8 +67,8 @@ kapi_mempool_t* kapi_mempool_create(size_t element_size, size_t min_nr,
     pool->element_size = element_size;
     pool->min_nr = min_nr;
     pool->max_nr = max_nr;
-    pool->alloc_fn = alloc ? alloc : memory_alloc;
-    pool->free_fn = free ? free : memory_free;
+    pool->alloc_fn = alloc ? alloc : (kapi_mempool_alloc_fn)memory_alloc;
+    pool->free_fn = free ? free : (kapi_mempool_free_fn)memory_free;
 
     for (size_t i = 0; i < min_nr; i++) {
         void* elem = pool->alloc_fn(element_size);

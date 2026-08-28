@@ -5,12 +5,6 @@
 #include <arch/fs.h>
 #include <process.h>
 
-static int sscanf(const char* str, const char* format, ...)
-{
-    (void)str; (void)format;
-    return 0;
-}
-
 #define TIMER_PERSIST_FILE "/run/systemd/timers/timer_state"
 
 typedef struct {

@@ -288,7 +288,7 @@ void kmem_cache_free(kmem_cache_t* cache, void* obj)
     spin_unlock(&cache->lock);
 }
 
-void* kmalloc(uint64_t size)
+void* kmalloc(size_t size)
 {
     if (size == 0) return NULL;
     if (size > (1ULL << KMALLOC_SHIFT_HIGH)) {
@@ -306,7 +306,7 @@ void* kmalloc(uint64_t size)
     return NULL;
 }
 
-void* kzalloc(uint64_t size)
+void* kzalloc(size_t size)
 {
     void* p = kmalloc(size);
     if (p) memset(p, 0, size);

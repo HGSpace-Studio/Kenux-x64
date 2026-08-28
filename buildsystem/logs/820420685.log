@@ -1,0 +1,159 @@
+-- Start building task run all -- (820420685)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder apps --
+<0> Building apps/fastfetch.c
+<3> Building apps/snake_game.c
+<2> Building apps/tetris.c
+-- Enter folder apps/container-os/src --
+<1> Building apps/container-os/src/manager.c
+In file included from include/vga.h:8,
+                 from apps/tetris.c:5:
+include/vga_impl.h: 在函数‘vga_print’中:
+In file included from include/vga.h:8,
+In file included from include/vga.h:8,
+include/vga_impl.h:97:28: warning: 未使用的参数‘str’ [-Wunused-parameter]
+   97 | void vga_print(const char* str) {}
+      |                ~~~~~~~~~~~~^~~
+include/vga_impl.h: 在函数‘vga_print_char’中:
+include/vga_impl.h:98:25: warning: 未使用的参数‘x’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                     ~~~~^
+include/vga_impl.h:98:32: warning: 未使用的参数‘y’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                            ~~~~^
+include/vga_impl.h:98:40: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                                   ~~~~~^
+include/vga_impl.h: 在函数‘vga_getc’中:
+include/vga_impl.h:99:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   99 | int vga_getc(char* c) { return -1; }
+      |              ~~~~~~^
+include/vga_impl.h: 在函数‘vga_putc’中:
+include/vga_impl.h:100:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+  100 | void vga_putc(char c) {}
+      |               ~~~~~^
+                 from apps/fastfetch.c:5:
+include/vga_impl.h: 在函数‘vga_print’中:
+apps/tetris.c: 在函数‘tetris_init’中:
+apps/tetris.c:55:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+   55 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/tetris.c: 在函数‘create_tetromino’中:
+apps/tetris.c:60:15: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   60 |     t.color = (shape % 7) + 1;
+      |               ^
+include/vga_impl.h:97:28: warning: 未使用的参数‘str’ [-Wunused-parameter]
+   97 | void vga_print(const char* str) {}
+      |                ~~~~~~~~~~~~^~~
+include/vga_impl.h: 在函数‘vga_print_char’中:
+include/vga_impl.h:98:25: warning: 未使用的参数‘x’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                     ~~~~^
+include/vga_impl.h:98:32: warning: 未使用的参数‘y’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                            ~~~~^
+include/vga_impl.h:98:40: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                                   ~~~~~^
+include/vga_impl.h: 在函数‘vga_getc’中:
+include/vga_impl.h:99:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   99 | int vga_getc(char* c) { return -1; }
+      |              ~~~~~~^
+include/vga_impl.h: 在函数‘vga_putc’中:
+include/vga_impl.h:100:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+  100 | void vga_putc(char c) {}
+      |               ~~~~~^
+                 from apps/snake_game.c:5:
+apps/fastfetch.c: 在函数‘draw_logo’中:
+apps/fastfetch.c:116:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long long unsigned int’ [-Wsign-compare]
+  116 |     for (int i = 0; i < sizeof(kenux_logo) / sizeof(kenux_logo[0]); i++) {
+      |                       ^
+include/vga_impl.h: 在函数‘vga_print’中:
+include/vga_impl.h:97:28: warning: 未使用的参数‘str’ [-Wunused-parameter]
+   97 | void vga_print(const char* str) {}
+      |                ~~~~~~~~~~~~^~~
+include/vga_impl.h: 在函数‘vga_print_char’中:
+include/vga_impl.h:98:25: warning: 未使用的参数‘x’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+apps/fastfetch.c: 在函数‘fastfetch_run’中:
+apps/fastfetch.c:163:23: warning: ‘int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  163 |         int padding = 14 - strlen(info_items[i].label);
+      |                       ^~
+      |                     ~~~~^
+include/vga_impl.h:98:32: warning: 未使用的参数‘y’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                            ~~~~^
+include/vga_impl.h:98:40: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                                   ~~~~~^
+include/vga_impl.h: 在函数‘vga_getc’中:
+include/vga_impl.h:99:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+apps/fastfetch.c: 在函数‘main’中:
+apps/fastfetch.c:182:9: warning: 变量‘format_ascii’被设定但未被使用 [-Wunused-but-set-variable=]
+  182 |     int format_ascii = 0;
+      |         ^~~~~~~~~~~~
+   99 | int vga_getc(char* c) { return -1; }
+      |              ~~~~~~^
+apps/tetris.c: 在函数‘main’中:
+include/vga_impl.h: 在函数‘vga_putc’中:
+include/vga_impl.h:100:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+  100 | void vga_putc(char c) {}
+      |               ~~~~~^
+apps/snake_game.c: 在函数‘snake_run’中:
+apps/snake_game.c:206:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  206 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/snake_game.c: 在函数‘main’中:
+apps/snake_game.c:232:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  232 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/snake_game.c:232:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  232 | int main(int argc, char** argv) {
+apps/tetris.c:366:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+      |                    ~~~~~~~^~~~
+  366 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/tetris.c:366:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  366 | int main(int argc, char** argv) {
+      |                    ~~~~~~~^~~~
+<1> Building apps/container-os/src/image.c
+<3> Building apps/container-os/src/container.c
+<0> Building apps/calculator.c
+In file included from include/vga.h:8,
+                 from apps/calculator.c:3:
+include/vga_impl.h: 在函数‘vga_print’中:
+include/vga_impl.h:97:28: warning: 未使用的参数‘str’ [-Wunused-parameter]
+   97 | void vga_print(const char* str) {}
+      |                ~~~~~~~~~~~~^~~
+include/vga_impl.h: 在函数‘vga_print_char’中:
+include/vga_impl.h:98:25: warning: 未使用的参数‘x’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                     ~~~~^
+include/vga_impl.h:98:32: warning: 未使用的参数‘y’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                            ~~~~^
+include/vga_impl.h:98:40: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   98 | void vga_print_char(int x, int y, char c) {}
+      |                                   ~~~~~^
+include/vga_impl.h: 在函数‘vga_getc’中:
+include/vga_impl.h:99:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+   99 | int vga_getc(char* c) { return -1; }
+      |              ~~~~~~^
+include/vga_impl.h: 在函数‘vga_putc’中:
+include/vga_impl.h:100:20: warning: 未使用的参数‘c’ [-Wunused-parameter]
+  100 | void vga_putc(char c) {}
+      |               ~~~~~^
+apps/calculator.c: 在函数‘main’中:
+apps/calculator.c:112:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  112 | int main(int argc, char** argv)
+      |          ~~~~^~~~
+apps/calculator.c:112:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  112 | int main(int argc, char** argv)
+      |                    ~~~~~~~^~~~
+-- Enter folder img/boot --
+<2> Building img/boot/kernel.elf.pe
+/usr/x86_64-w64-mingw32/bin/ld: build/obj/kernel/systemd/service.c.o:service.c:(.rdata$.refptr.strtoul[.refptr.strtoul]+0x0): undefined reference to `strtoul'
+/usr/x86_64-w64-mingw32/bin/ld: build/obj/kernel/systemd/service.c.o:service.c:(.rdata$.refptr.strtoull[.refptr.strtoull]+0x0): undefined reference to `strtoull'
+collect2: error: ld 返回 1
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -m64 -T kernel/arch/x86_64/boot/linker.ld -nostdlib -nodefaultlibs -nostartfiles -Wl,-e,_start -no-pie -Wl,--allow-multiple-definition -o img/boot/kernel.elf.pe build/obj/kernel/arch/x86_64/boot/start64.s.o build/obj/apps/calculator.c.o build/obj/apps/container-os/src/container.c.o build/obj/apps/container-os/src/image.c.o build/obj/apps/container-os/src/manager.c.o build/obj/apps/container-os/src/volume.c.o build/obj/apps/fastfetch.c.o build/obj/apps/snake_game.c.o build/obj/apps/tetris.c.o build/obj/kal/adapters/custom_adapter.c.o build/obj/kal/adapters/kal_builtins.c.o build/obj/kal/adapters/kenux_adapter.c.o build/obj/kal/adapters/linuxlike_adapter.c.o build/obj/kal/adapters/microkernel_adapter.c.o build/obj/kal/src/kal_capability.c.o build/obj/kal/src/kal_dispatcher.c.o build/obj/kal/src/kal_errno.c.o build/obj/kal/src/kal_governance.c.o build/obj/kal/src/kal_marshalling.c.o build/obj/kal/src/kal_registry.c.o build/obj/kal/src/kal_ssi.c.o build/obj/kernel/api/kapi_atomic.c.o build/obj/kernel/api/kapi_bitmap.c.o build/obj/kernel/api/kapi_blkdev.c.o build/obj/kernel/api/kapi_cdev.c.o build/obj/kernel/api/kapi_completion.c.o build/obj/kernel/api/kapi_container.c.o build/obj/kernel/api/kapi_cpufreq.c.o build/obj/kernel/api/kapi_cpumask.c.o build/obj/kernel/api/kapi_crc.c.o build/obj/kernel/api/kapi_crypto_fs.c.o build/obj/kernel/api/kapi_debugfs.c.o build/obj/kernel/api/kapi_device.c.o build/obj/kernel/api/kapi_dma.c.o build/obj/kernel/api/kapi_ebpf.c.o build/obj/kernel/api/kapi_epoll.c.o build/obj/kernel/api/kapi_eventfd.c.o build/obj/kernel/api/kapi_fs.c.o build/obj/kernel/api/kapi_ftrace.c.o build/obj/kernel/api/kapi_full_disk_encryption.c.o build/obj/kernel/api/kapi_hash.c.o build/obj/kernel/api/kapi_idr.c.o build/obj/kernel/api/kapi_init.c.o build/obj/kernel/api/kapi_inotify.c.o build/obj/kernel/api/kapi_io.c.o build/obj/kernel/api/kapi_iommu.c.o build/obj/kernel/api/kapi_irq.c.o build/obj/kernel/api/kapi_kfifo.c.o build/obj/kernel/api/kapi_kobject.c.o build/obj/kernel/api/kapi_kprobe.c.o build/obj/kernel/api/kapi_kthread.c.o build/obj/kernel/api/kapi_list.c.o build/obj/kernel/api/kapi_lseek.c.o build/obj/kernel/api/kapi_lvm.c.o build/obj/kernel/api/kapi_memory.c.o build/obj/kernel/api/kapi_mempool.c.o build/obj/kernel/api/kapi_module.c.o build/obj/kernel/api/kapi_mutex.c.o build/obj/kernel/api/kapi_namespace.c.o build/obj/kernel/api/kapi_netdevice.c.o build/obj/kernel/api/kapi_netlink.c.o build/obj/kernel/api/kapi_netstat.c.o build/obj/kernel/api/kapi_notifier.c.o build/obj/kernel/api/kapi_params.c.o build/obj/kernel/api/kapi_pci.c.o build/obj/kernel/api/kapi_poll.c.o build/obj/kernel/api/kapi_process.c.o build/obj/kernel/api/kapi_profiler.c.o build/obj/kernel/api/kapi_raid.c.o build/obj/kernel/api/kapi_random.c.o build/obj/kernel/api/kapi_rbtree.c.o build/obj/kernel/api/kapi_rcu.c.o build/obj/kernel/api/kapi_sched.c.o build/obj/kernel/api/kapi_security.c.o build/obj/kernel/api/kapi_seq_file.c.o build/obj/kernel/api/kapi_signalfd.c.o build/obj/kernel/api/kapi_skbuff.c.o build/obj/kernel/api/kapi_smp.c.o build/obj/kernel/api/kapi_socket.c.o build/obj/kernel/api/kapi_sort.c.o build/obj/kernel/api/kapi_string.c.o build/obj/kernel/api/kapi_syscall.c.o build/obj/kernel/api/kapi_time.c.o build/obj/kernel/api/kapi_timerfd.c.o build/obj/kernel/api/kapi_vfs.c.o build/obj/kernel/api/kapi_vpn.c.o build/obj/kernel/api/kapi_wait.c.o build/obj/kernel/api/kapi_window.c.o build/obj/kernel/api/kapi_wireless.c.o build/obj/kernel/arch/x86_64/ac97.c.o build/obj/kernel/arch/x86_64/acpi.c.o build/obj/kernel/arch/x86_64/acpi_madt.c.o build/obj/kernel/arch/x86_64/acpi_pm.c.o build/obj/kernel/arch/x86_64/ahci.c.o build/obj/kernel/arch/x86_64/apic.c.o build/obj/kernel/arch/x86_64/bpf.c.o build/obj/kernel/arch/x86_64/buddy.c.o build/obj/kernel/arch/x86_64/cfs.c.o build/obj/kernel/arch/x86_64/conntrack.c.o build/obj/kernel/arch/x86_64/cpufreq.c.o build/obj/kernel/arch/x86_64/cpuidle.c.o build/obj/kernel/arch/x86_64/dns.c.o build/obj/kernel/arch/x86_64/efi.c.o build/obj/kernel/arch/x86_64/efi_entry.c.o build/obj/kernel/arch/x86_64/efi_runtime.c.o build/obj/kernel/arch/x86_64/ehci.c.o build/obj/kernel/arch/x86_64/elf.c.o build/obj/kernel/arch/x86_64/ext2.c.o build/obj/kernel/arch/x86_64/ext3_stubs.c.o build/obj/kernel/arch/x86_64/ext4.c.o build/obj/kernel/arch/x86_64/framebuffer.c.o build/obj/kernel/arch/x86_64/gdt.c.o build/obj/kernel/arch/x86_64/hda.c.o build/obj/kernel/arch/x86_64/hpet.c.o build/obj/kernel/arch/x86_64/i2c.c.o build/obj/kernel/arch/x86_64/idt.c.o build/obj/kernel/arch/x86_64/ioapic.c.o build/obj/kernel/arch/x86_64/jbd2.c.o build/obj/kernel/arch/x86_64/keyboard.c.o build/obj/kernel/arch/x86_64/kvm.c.o build/obj/kernel/arch/x86_64/ldso.c.o build/obj/kernel/arch/x86_64/lsm.c.o build/obj/kernel/arch/x86_64/memory.c.o build/obj/kernel/arch/x86_64/mmap.c.o build/obj/kernel/arch/x86_64/mouse.c.o build/obj/kernel/arch/x86_64/net.c.o build/obj/kernel/arch/x86_64/netfilter.c.o build/obj/kernel/arch/x86_64/ntfs.c.o build/obj/kernel/arch/x86_64/nvme.c.o build/obj/kernel/arch/x86_64/pagecache.c.o build/obj/kernel/arch/x86_64/pagefault.c.o build/obj/kernel/arch/x86_64/pci.c.o build/obj/kernel/arch/x86_64/pe.c.o build/obj/kernel/arch/x86_64/pic.c.o build/obj/kernel/arch/x86_64/pit.c.o build/obj/kernel/arch/x86_64/pnp.c.o build/obj/kernel/arch/x86_64/procfs.c.o build/obj/kernel/arch/x86_64/registry.c.o build/obj/kernel/arch/x86_64/route.c.o build/obj/kernel/arch/x86_64/rtc.c.o build/obj/kernel/arch/x86_64/sata.c.o build/obj/kernel/arch/x86_64/scm.c.o build/obj/kernel/arch/x86_64/security.c.o build/obj/kernel/arch/x86_64/selinux.c.o build/obj/kernel/arch/x86_64/slab.c.o build/obj/kernel/arch/x86_64/smbios.c.o build/obj/kernel/arch/x86_64/smp.c.o build/obj/kernel/arch/x86_64/sound.c.o build/obj/kernel/arch/x86_64/sound_stubs.c.o build/obj/kernel/arch/x86_64/spi.c.o build/obj/kernel/arch/x86_64/swap.c.o build/obj/kernel/arch/x86_64/tcp_bbr.c.o build/obj/kernel/arch/x86_64/tcp_cong.c.o build/obj/kernel/arch/x86_64/thermal.c.o build/obj/kernel/arch/x86_64/tmpfs.c.o build/obj/kernel/arch/x86_64/uart.c.o build/obj/kernel/arch/x86_64/usb_hid.c.o build/obj/kernel/arch/x86_64/usermode.c.o build/obj/kernel/arch/x86_64/vga.c.o build/obj/kernel/arch/x86_64/virtio.c.o build/obj/kernel/arch/x86_64/vlan.c.o build/obj/kernel/arch/x86_64/watchdog.c.o build/obj/kernel/arch/x86_64/win32_advapi32.c.o build/obj/kernel/arch/x86_64/win32_gdi_and_msg.c.o build/obj/kernel/arch/x86_64/win32_kernel32.c.o build/obj/kernel/arch/x86_64/win32_msvcrt.c.o build/obj/kernel/arch/x86_64/win32_ntdll.c.o build/obj/kernel/arch/x86_64/win32_process.c.o build/obj/kernel/arch/x86_64/win32_security.c.o build/obj/kernel/arch/x86_64/win32_shell.c.o build/obj/kernel/arch/x86_64/win32_stubs.c.o build/obj/kernel/arch/x86_64/wmi.c.o build/obj/kernel/arch/x86_64/xhci.c.o build/obj/kernel/compat/leonos_compat.c.o build/obj/kernel/gui/src/browser.c.o build/obj/kernel/gui/src/cjk_font.c.o build/obj/kernel/gui/src/color.c.o build/obj/kernel/gui/src/compat_center.c.o build/obj/kernel/gui/src/cursor_data.c.o build/obj/kernel/gui/src/desktop.c.o build/obj/kernel/gui/src/emoji_font.c.o build/obj/kernel/gui/src/filemgr.c.o build/obj/kernel/gui/src/font.c.o build/obj/kernel/gui/src/font_data.c.o build/obj/kernel/gui/src/font_ttf.c.o build/obj/kernel/gui/src/font_ttf_data.c.o build/obj/kernel/gui/src/framebuffer.c.o build/obj/kernel/gui/src/graphics.c.o build/obj/kernel/gui/src/icon.c.o build/obj/kernel/gui/src/icon_data.c.o build/obj/kernel/gui/src/icon_registry.c.o build/obj/kernel/gui/src/kanvas_animator.c.o build/obj/kernel/gui/src/kanvas_boot_splash.c.o build/obj/kernel/gui/src/kanvas_desktop.c.o build/obj/kernel/gui/src/kanvas_file_manager.c.o build/obj/kernel/gui/src/kanvas_gui.c.o build/obj/kernel/gui/src/kanvas_kex_runner.c.o build/obj/kernel/gui/src/kanvas_start_menu.c.o build/obj/kernel/gui/src/kanvas_system_tray.c.o build/obj/kernel/gui/src/kanvas_task_manager.c.o build/obj/kernel/gui/src/kanvas_taskbar.c.o build/obj/kernel/gui/src/kanvas_terminal.c.o build/obj/kernel/gui/src/kanvas_window.c.o build/obj/kernel/gui/src/kapi_curvo_icons.c.o build/obj/kernel/gui/src/kenux_asset_file.c.o build/obj/kernel/gui/src/kenux_asset_folder.c.o build/obj/kernel/gui/src/kenux_render.c.o build/obj/kernel/gui/src/kenux_ui.c.o build/obj/kernel/gui/src/kui_draw.c.o build/obj/kernel/gui/src/logo_data.c.o build/obj/kernel/gui/src/main.c.o build/obj/kernel/gui/src/msf.c.o build/obj/kernel/gui/src/psf.c.o build/obj/kernel/gui/src/sysinfo.c.o build/obj/kernel/gui/src/taskmgr.c.o build/obj/kernel/gui/src/terminal.c.o build/obj/kernel/gui/src/textedit.c.o build/obj/kernel/gui/src/thispc.c.o build/obj/kernel/gui/src/wallpaper_data.c.o build/obj/kernel/gui/src/widget.c.o build/obj/kernel/gui/src/window.c.o build/obj/kernel/gui/src/window_manager.c.o build/obj/kernel/kernel/cgroup.c.o build/obj/kernel/kernel/devtmpfs.c.o build/obj/kernel/kernel/drivers.c.o build/obj/kernel/kernel/epoll.c.o build/obj/kernel/kernel/fifo.c.o build/obj/kernel/kernel/fs.c.o build/obj/kernel/kernel/gdb_stub.c.o build/obj/kernel/kernel/interrupt.c.o build/obj/kernel/kernel/ipc.c.o build/obj/kernel/kernel/kernel.c.o build/obj/kernel/kernel/kthread.c.o build/obj/kernel/kernel/module.c.o build/obj/kernel/kernel/printk.c.o build/obj/kernel/kernel/process.c.o build/obj/kernel/kernel/rcu.c.o build/obj/kernel/kernel/shell_enhanced.c.o build/obj/kernel/kernel/signal.c.o build/obj/kernel/kernel/stacktrace.c.o build/obj/kernel/kernel/sync.c.o build/obj/kernel/kernel/syscall.c.o build/obj/kernel/kernel/sysfs.c.o build/obj/kernel/kernel/system_init.c.o build/obj/kernel/kernel/timer.c.o build/obj/kernel/kernel/unixsock.c.o build/obj/kernel/kernel/wait.c.o build/obj/kernel/kernel/workqueue.c.o build/obj/kernel/lib/libc/errno.c.o build/obj/kernel/lib/libc/math.c.o build/obj/kernel/lib/libc/math_stubs.c.o build/obj/kernel/lib/libc/setjmp.c.o build/obj/kernel/lib/libc/signal.c.o build/obj/kernel/lib/libc/stdio.c.o build/obj/kernel/lib/libc/stdlib.c.o build/obj/kernel/lib/libc/string.c.o build/obj/kernel/lib/libc/time.c.o build/obj/kernel/lib/libc/unistd.c.o build/obj/kernel/lib/libc/vsprintf.c.o build/obj/kernel/systemd/automount.c.o build/obj/kernel/systemd/device.c.o build/obj/kernel/systemd/fstab.c.o build/obj/kernel/systemd/journal.c.o build/obj/kernel/systemd/journalctl.c.o build/obj/kernel/systemd/mount.c.o build/obj/kernel/systemd/path.c.o build/obj/kernel/systemd/service.c.o build/obj/kernel/systemd/slice.c.o build/obj/kernel/systemd/socket.c.o build/obj/kernel/systemd/swap.c.o build/obj/kernel/systemd/systemctl.c.o build/obj/kernel/systemd/systemd.c.o build/obj/kernel/systemd/target.c.o build/obj/kernel/systemd/timer.c.o build/obj/kernel/systemd/udev.c.o build/obj/kernel/systemd/util.c.o build/obj/kernel/arch/x86_64/interrupt.S.o build/obj/kernel/arch/x86_64/syscall_entry_trampoline.s.o -o img/boot/kernel.elf.pe

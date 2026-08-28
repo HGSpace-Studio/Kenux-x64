@@ -1,0 +1,27 @@
+-- Start building task run all -- (343034687)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<1> Building kernel/kernel/shell_enhanced.c
+kernel/kernel/shell_enhanced.c: 在函数‘shell_find_elf’中:
+kernel/kernel/shell_enhanced.c:330:32: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  330 |         strncpy(out, cmd, size - 1);
+      |                           ~~~~~^~~
+kernel/kernel/shell_enhanced.c:335:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  335 |         snprintf(out, size, "%s%s", roots[i], cmd);
+      |                       ^~~~
+kernel/kernel/shell_enhanced.c: 在函数‘shell_builtin_kill’中:
+kernel/kernel/shell_enhanced.c:678:15: error: 隐式声明函数‘atoi’ [-Wimplicit-function-declaration]
+  678 |     int pid = atoi(argv[1]);
+      |               ^~~~
+kernel/kernel/shell_enhanced.c: 在文件作用域：
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/kernel/shell_enhanced.c.o.d -c kernel/kernel/shell_enhanced.c -o build/obj/kernel/kernel/shell_enhanced.c.o

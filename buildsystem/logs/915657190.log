@@ -1,0 +1,851 @@
+-- Start building task run all -- (915657190)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/systemd --
+<1> Building kernel/systemd/automount.c
+<2> Building kernel/systemd/service.c
+-- Enter folder kernel/lib/libc --
+<3> Building kernel/lib/libc/vsprintf.c
+<0> Building kernel/lib/libc/unistd.c
+kernel/lib/libc/vsprintf.c: 在函数‘vsprintf’中:
+kernel/lib/libc/vsprintf.c:27:35: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+   27 |                     buffer[i++] = '0' + (n % 10);
+      |                                   ^~~
+kernel/lib/libc/vsprintf.c:40:29: warning: ‘i’上的运算结果可能是未定义的 [-Wsequence-point]
+   40 |                     buffer[i++] = (digit < 10) ? ('0' + digit) : ((format[i] == 'X') ? ('A' + digit - 10) : ('a' + digit - 10));
+      |                            ~^~
+kernel/lib/libc/unistd.c: 在函数‘execve’中:
+kernel/lib/libc/unistd.c:415:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  415 |     return (int)syscall3(SYS_execve, (long)filename, (long)argv, (long)envp);
+      |                                      ^
+kernel/lib/libc/unistd.c:415:54: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  415 |     return (int)syscall3(SYS_execve, (long)filename, (long)argv, (long)envp);
+      |                                                      ^
+kernel/lib/libc/unistd.c:415:66: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  415 |     return (int)syscall3(SYS_execve, (long)filename, (long)argv, (long)envp);
+      |                                                                  ^
+kernel/lib/libc/unistd.c: 在函数‘wait’中:
+kernel/lib/libc/unistd.c:430:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  430 |     return (int)syscall4(SYS_wait4, -1, (long)status, 0, 0);
+      |                                         ^
+kernel/lib/libc/unistd.c: 在函数‘waitpid’中:
+kernel/lib/libc/unistd.c:435:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  435 |     return (int)syscall4(SYS_wait4, pid, (long)status, options, 0);
+      |                                          ^
+kernel/lib/libc/unistd.c: 在函数‘pipe’中:
+kernel/lib/libc/unistd.c:440:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  440 |     return (int)syscall1(SYS_pipe, (long)pipefd);
+      |                                    ^
+kernel/lib/libc/unistd.c: 在函数‘chdir’中:
+kernel/lib/libc/unistd.c:455:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  455 |     return (int)syscall1(SYS_chdir, (long)path);
+      |                                     ^
+kernel/lib/libc/unistd.c: 在函数‘getcwd’中:
+kernel/lib/libc/unistd.c:460:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  460 |     long ret = syscall2(SYS_getcwd, (long)buf, size);
+      |                                     ^
+kernel/lib/libc/unistd.c:460:48: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  460 |     long ret = syscall2(SYS_getcwd, (long)buf, size);
+      |                                                ^~~~
+kernel/lib/libc/unistd.c: 在函数‘read’中:
+kernel/lib/libc/unistd.c:472:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  472 |     return (int)syscall3(SYS_read, fd, (long)buf, count);
+      |                                        ^
+kernel/lib/libc/unistd.c:472:51: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  472 |     return (int)syscall3(SYS_read, fd, (long)buf, count);
+      |                                                   ^~~~~
+kernel/lib/libc/unistd.c: 在函数‘write’中:
+kernel/lib/libc/unistd.c:477:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  477 |     return (int)syscall3(SYS_write, fd, (long)buf, count);
+      |                                         ^
+kernel/lib/libc/unistd.c:477:52: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  477 |     return (int)syscall3(SYS_write, fd, (long)buf, count);
+      |                                                    ^~~~~
+kernel/lib/libc/unistd.c: 在函数‘open’中:
+kernel/lib/libc/unistd.c:488:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  488 |     return (int)syscall3(SYS_open, (long)pathname, flags, mode);
+      |                                    ^
+kernel/lib/libc/unistd.c:488:59: warning: conversion from ‘mode_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  488 |     return (int)syscall3(SYS_open, (long)pathname, flags, mode);
+      |                                                           ^~~~
+kernel/lib/libc/unistd.c: 在函数‘creat’中:
+kernel/lib/libc/unistd.c:493:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  493 |     return (int)syscall2(SYS_creat, (long)pathname, mode);
+      |                                     ^
+kernel/lib/libc/unistd.c:493:53: warning: conversion from ‘mode_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  493 |     return (int)syscall2(SYS_creat, (long)pathname, mode);
+      |                                                     ^~~~
+kernel/lib/libc/unistd.c: 在函数‘lseek’中:
+kernel/lib/libc/unistd.c:498:36: warning: conversion from ‘off_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  498 |     return syscall3(SYS_lseek, fd, offset, whence);
+      |                                    ^~~~~~
+kernel/lib/libc/unistd.c: 在函数‘sleep’中:
+kernel/lib/libc/unistd.c:507:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  507 |     while (syscall2(SYS_nanosleep, (long)&req, (long)&rem) < 0) {
+      |                                    ^
+kernel/lib/libc/unistd.c:507:48: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  507 |     while (syscall2(SYS_nanosleep, (long)&req, (long)&rem) < 0) {
+      |                                                ^
+kernel/lib/libc/unistd.c: 在函数‘unlink’中:
+kernel/lib/libc/unistd.c:517:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  517 |     return (int)syscall1(SYS_unlink, (long)pathname);
+      |                                      ^
+kernel/lib/libc/unistd.c: 在函数‘rename’中:
+kernel/lib/libc/unistd.c:522:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  522 |     return (int)syscall2(SYS_rename, (long)oldpath, (long)newpath);
+      |                                      ^
+kernel/lib/libc/unistd.c:522:53: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  522 |     return (int)syscall2(SYS_rename, (long)oldpath, (long)newpath);
+      |                                                     ^
+kernel/lib/libc/unistd.c: 在函数‘mkdir’中:
+kernel/lib/libc/unistd.c:527:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 |     return (int)syscall2(SYS_mkdir, (long)pathname, mode);
+      |                                     ^
+kernel/lib/libc/unistd.c:527:53: warning: conversion from ‘mode_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  527 |     return (int)syscall2(SYS_mkdir, (long)pathname, mode);
+      |                                                     ^~~~
+kernel/lib/libc/unistd.c: 在函数‘rmdir’中:
+kernel/lib/libc/unistd.c:532:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  532 |     return (int)syscall1(SYS_rmdir, (long)pathname);
+      |                                     ^
+kernel/lib/libc/unistd.c: 在函数‘chmod’中:
+kernel/lib/libc/unistd.c:537:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  537 |     return (int)syscall2(SYS_chmod, (long)pathname, mode);
+      |                                     ^
+kernel/lib/libc/unistd.c:537:53: warning: conversion from ‘mode_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  537 |     return (int)syscall2(SYS_chmod, (long)pathname, mode);
+      |                                                     ^~~~
+kernel/lib/libc/unistd.c: 在函数‘chown’中:
+kernel/lib/libc/unistd.c:542:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  542 |     return (int)syscall3(SYS_chown, (long)pathname, owner, group);
+      |                                     ^
+kernel/systemd/automount.c:7:25: warning: ‘parse_automount_type’ 在此处定义 [-Wunused-function]
+    7 | static automount_type_t parse_automount_type(const char* type)
+      |                         ^~~~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘parse_env_vars’中:
+kernel/systemd/service.c:78:15: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+   78 |     int len = eq - line;
+      |               ^~
+kernel/systemd/service.c:83:58: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   83 |     strncpy(service->env[service->env_count].name, line, len);
+      |                                                          ^~~
+kernel/systemd/service.c: 在函数‘parse_install_section’中:
+kernel/systemd/service.c:157:70: warning: 未使用的参数‘value’ [-Wunused-parameter]
+  157 | int parse_install_section(unit_t* unit, const char* key, const char* value)
+      |                                                          ~~~~~~~~~~~~^~~~~
+kernel/systemd/service.c: 在函数‘parse_service_section’中:
+kernel/systemd/service.c:184:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  184 |         service->uid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:187:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  187 |         service->gid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:191:32: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  191 |         service->restart_sec = atoi(value);
+      |                                ^~~~
+kernel/systemd/service.c:193:41: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  193 |         service->start_limit_interval = atoi(value);
+      |                                         ^~~~
+kernel/systemd/service.c:195:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  195 |         service->start_limit_burst = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:224:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  224 |         service->timeout_start_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:226:37: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  226 |         service->timeout_stop_sec = atoi(value);
+      |                                     ^~~~
+kernel/systemd/service.c:228:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  228 |         service->timeout_abort_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:246:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  246 |         service->cpu_shares = atoi(value);
+      |                               ^~~~
+kernel/systemd/service.c: 在函数‘service_build_envp’中:
+kernel/systemd/service.c:316:50: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  316 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                                  ^
+kernel/systemd/service.c:316:50: warning: conversion from ‘long long unsigned int’ to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  316 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                  ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_create_dynamic_user’中:
+kernel/systemd/service.c:392:20: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  392 |     service->uid = 1000 + systemd.service_count;
+      |                    ^~~~
+In file included from kernel/systemd/service.c:1:
+kernel/systemd/service.c: 在函数‘service_setup_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:476:35: note: in expansion of macro ‘time_get_timestamp’
+  476 |     service->watchdog_last_ping = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_monitor_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:490:43: note: in expansion of macro ‘time_get_timestamp’
+  490 |             service->watchdog_last_ping = time_get_timestamp();
+      |                                           ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_start_limit’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:500:18: note: in expansion of macro ‘time_get_timestamp’
+  500 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:503:44: warning: comparison of integer expressions of different signedness: ‘time_t’ {或称 ‘long long int’} and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  503 |         if (now - service->last_start_time < service->start_limit_interval) {
+      |                                            ^
+kernel/systemd/service.c: 在函数‘service_run_command’中:
+kernel/systemd/service.c:520:58: warning: 未使用的参数‘working_dir’ [-Wunused-parameter]
+  520 | int service_run_command(exec_command_t* cmd, const char* working_dir)
+      |                                              ~~~~~~~~~~~~^~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_start’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:670:32: note: in expansion of macro ‘time_get_timestamp’
+  670 |     service->last_start_time = time_get_timestamp();
+      |                                ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:722:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  722 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:737:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  737 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:750:39: note: in expansion of macro ‘time_get_timestamp’
+  750 |             service->last_exit_time = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:781:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  781 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:792:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  792 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:838:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  838 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:853:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  853 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:872:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  872 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:887:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  887 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:905:39: note: in expansion of macro ‘time_get_timestamp’
+  905 |         service->watchdog_last_ping = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_stop’中:
+kernel/systemd/service.c:949:57: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  949 |         if (service->main_pid != 0 && service->main_pid != service->pid) {
+      |                                                         ^~
+kernel/systemd/service.c:950:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  950 |             process_kill(service->main_pid, service->kill_signal);
+      |                          ~~~~~~~^~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:994:31: note: in expansion of macro ‘time_get_timestamp’
+  994 |     service->last_exit_time = time_get_timestamp();
+      |                               ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1072:18: note: in expansion of macro ‘time_get_timestamp’
+ 1072 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1073:27: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1073 |     uint64_t elapsed_ms = (now - service->watchdog_last_ping) * 1000;
+      |                           ^
+kernel/systemd/service.c: 在函数‘service_monitor’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1094:35: note: in expansion of macro ‘time_get_timestamp’
+ 1094 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1111:35: note: in expansion of macro ‘time_get_timestamp’
+ 1111 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+<3> Building kernel/lib/libc/time.c
+<1> Building kernel/lib/libc/string.c
+kernel/lib/libc/time.c: 在函数‘bcd_to_bin’中:
+kernel/lib/libc/time.c:34:30: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   34 |     return ((bcd >> 4) * 10) + (bcd & 0x0F);
+      |            ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+kernel/lib/libc/time.c: 在函数‘rtc_to_tm’中:
+kernel/lib/libc/time.c:107:16: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  107 |         hour = ((hour & 0x7F) % 12) + 12;
+      |                ^
+kernel/lib/libc/time.c: 在函数‘asctime’中:
+kernel/lib/libc/time.c:229:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  229 |     p[8]  = '0' + (tm->tm_mday / 10);
+      |             ^~~
+kernel/lib/libc/time.c:230:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  230 |     p[9]  = '0' + (tm->tm_mday % 10);
+      |             ^~~
+kernel/lib/libc/time.c:232:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  232 |     p[11] = '0' + (tm->tm_hour / 10);
+      |             ^~~
+kernel/lib/libc/time.c:233:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  233 |     p[12] = '0' + (tm->tm_hour % 10);
+      |             ^~~
+kernel/lib/libc/time.c:235:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  235 |     p[14] = '0' + (tm->tm_min / 10);
+      |             ^~~
+kernel/lib/libc/time.c:236:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  236 |     p[15] = '0' + (tm->tm_min % 10);
+      |             ^~~
+kernel/lib/libc/time.c:238:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  238 |     p[17] = '0' + (tm->tm_sec / 10);
+      |             ^~~
+kernel/lib/libc/time.c:239:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  239 |     p[18] = '0' + (tm->tm_sec % 10);
+      |             ^~~
+kernel/lib/libc/time.c:242:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  242 |     p[20] = '0' + (yr / 1000);
+      |             ^~~
+kernel/lib/libc/time.c:243:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  243 |     p[21] = '0' + ((yr / 100) % 10);
+      |             ^~~
+kernel/lib/libc/time.c:244:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  244 |     p[22] = '0' + ((yr / 10) % 10);
+      |             ^~~
+kernel/lib/libc/time.c:245:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  245 |     p[23] = '0' + (yr % 10);
+      |             ^~~
+kernel/lib/libc/time.c: 在函数‘strftime’中:
+kernel/lib/libc/time.c:296:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  296 |                 tmp[0] = '0' + (tm->tm_mday / 10);
+      |                          ^~~
+kernel/lib/libc/time.c:297:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  297 |                 tmp[1] = '0' + (tm->tm_mday % 10);
+      |                          ^~~
+kernel/lib/libc/time.c:301:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  301 |                 tmp[0] = '0' + (tm->tm_hour / 10);
+      |                          ^~~
+kernel/lib/libc/time.c:302:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  302 |                 tmp[1] = '0' + (tm->tm_hour % 10);
+      |                          ^~~
+kernel/lib/libc/time.c:306:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  306 |                 tmp[0] = '0' + (tm->tm_min / 10);
+      |                          ^~~
+kernel/lib/libc/time.c:307:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  307 |                 tmp[1] = '0' + (tm->tm_min % 10);
+      |                          ^~~
+kernel/lib/libc/time.c:311:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  311 |                 tmp[0] = '0' + ((tm->tm_mon + 1) / 10);
+      |                          ^~~
+kernel/lib/libc/time.c:312:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  312 |                 tmp[1] = '0' + ((tm->tm_mon + 1) % 10);
+      |                          ^~~
+kernel/lib/libc/time.c:316:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  316 |                 tmp[0] = '0' + (tm->tm_sec / 10);
+      |                          ^~~
+kernel/lib/libc/time.c:317:26: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  317 |                 tmp[1] = '0' + (tm->tm_sec % 10);
+      |                          ^~~
+kernel/lib/libc/time.c:323:30: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  323 |                     tmp[0] = '0' + (yr / 1000);
+      |                              ^~~
+kernel/lib/libc/time.c:324:30: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  324 |                     tmp[1] = '0' + ((yr / 100) % 10);
+      |                              ^~~
+kernel/lib/libc/time.c:325:30: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  325 |                     tmp[2] = '0' + ((yr / 10) % 10);
+      |                              ^~~
+kernel/lib/libc/time.c:326:30: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  326 |                     tmp[3] = '0' + (yr % 10);
+      |                              ^~~
+<0> Building kernel/lib/libc/stdlib.c
+In file included from kernel/lib/libc/stdlib.c:3:
+include/kapi_syscall.h: 在函数‘sys_read’中:
+include/kapi_syscall.h:494:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                      ^
+include/kapi_syscall.h:494:49: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                                 ^~~~~
+include/kapi_syscall.h: 在函数‘sys_write’中:
+include/kapi_syscall.h:497:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                       ^
+include/kapi_syscall.h:497:50: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                                  ^~~~~
+include/kapi_syscall.h: 在函数‘sys_open’中:
+include/kapi_syscall.h:500:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  500 | { return kapi_syscall3(SYS_open, (long)pathname, flags, mode); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_mmap’中:
+include/kapi_syscall.h:509:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                  ^
+include/kapi_syscall.h:509:46: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                              ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_munmap’中:
+include/kapi_syscall.h:512:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                    ^
+include/kapi_syscall.h:512:48: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                                ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_mprotect’中:
+include/kapi_syscall.h:515:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                      ^
+include/kapi_syscall.h:515:50: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                                  ^~~
+include/kapi_syscall.h: 在函数‘sys_brk’中:
+include/kapi_syscall.h:518:33: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  518 | { return kapi_syscall1(SYS_brk, (long)addr); }
+      |                                 ^
+include/kapi_syscall.h: 在函数‘sys_clone’中:
+include/kapi_syscall.h:527:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                          ^
+include/kapi_syscall.h:527:55: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                       ^
+include/kapi_syscall.h:527:67: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                   ^
+include/kapi_syscall.h:527:35: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                   ^~~~~
+include/kapi_syscall.h:527:79: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                               ^~~
+include/kapi_syscall.h: 在函数‘sys_execve’中:
+include/kapi_syscall.h:530:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                    ^
+include/kapi_syscall.h:530:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                    ^
+include/kapi_syscall.h:530:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_wait4’中:
+include/kapi_syscall.h:539:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                        ^
+include/kapi_syscall.h:539:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_stat’中:
+include/kapi_syscall.h:554:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                  ^
+include/kapi_syscall.h:554:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_fstat’中:
+include/kapi_syscall.h:557:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  557 | { return kapi_syscall2(SYS_fstat, fd, (long)statbuf); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_lstat’中:
+include/kapi_syscall.h:560:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                   ^
+include/kapi_syscall.h:560:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_access’中:
+include/kapi_syscall.h:563:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  563 | { return kapi_syscall2(SYS_access, (long)pathname, mode); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_chdir’中:
+include/kapi_syscall.h:566:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  566 | { return kapi_syscall1(SYS_chdir, (long)path); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_getcwd’中:
+include/kapi_syscall.h:569:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                    ^
+include/kapi_syscall.h:569:47: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                               ^~~~
+include/kapi_syscall.h: 在函数‘sys_mkdir’中:
+include/kapi_syscall.h:572:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  572 | { return kapi_syscall2(SYS_mkdir, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_rmdir’中:
+include/kapi_syscall.h:575:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  575 | { return kapi_syscall1(SYS_rmdir, (long)pathname); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_unlink’中:
+include/kapi_syscall.h:578:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  578 | { return kapi_syscall1(SYS_unlink, (long)pathname); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_rename’中:
+include/kapi_syscall.h:581:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                    ^
+include/kapi_syscall.h:581:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_creat’中:
+include/kapi_syscall.h:584:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  584 | { return kapi_syscall2(SYS_creat, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_link’中:
+include/kapi_syscall.h:587:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                  ^
+include/kapi_syscall.h:587:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_symlink’中:
+include/kapi_syscall.h:590:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                     ^
+include/kapi_syscall.h:590:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_readlink’中:
+include/kapi_syscall.h:593:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                      ^
+include/kapi_syscall.h:593:54: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                      ^
+include/kapi_syscall.h:593:65: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                                 ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_chmod’中:
+include/kapi_syscall.h:596:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  596 | { return kapi_syscall2(SYS_chmod, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_chown’中:
+include/kapi_syscall.h:599:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  599 | { return kapi_syscall3(SYS_chown, (long)pathname, owner, group); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_truncate’中:
+include/kapi_syscall.h:602:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  602 | { return kapi_syscall2(SYS_truncate, (long)path, length); }
+      |                                      ^
+include/kapi_syscall.h: 在函数‘sys_pipe’中:
+include/kapi_syscall.h:626:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  626 | { return kapi_syscall1(SYS_pipe, (long)pipefd); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_pipe2’中:
+include/kapi_syscall.h:629:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  629 | { return kapi_syscall2(SYS_pipe2, (long)pipefd, flags); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_mount’中:
+include/kapi_syscall.h:634:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                   ^
+include/kapi_syscall.h:634:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                 ^
+include/kapi_syscall.h:634:63: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                               ^
+include/kapi_syscall.h:634:97: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                                 ^
+include/kapi_syscall.h:634:85: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                     ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_umount2’中:
+include/kapi_syscall.h:637:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  637 | { return kapi_syscall2(SYS_umount2, (long)target, flags); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_swapon’中:
+include/kapi_syscall.h:640:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  640 | { return kapi_syscall2(SYS_swapon, (long)path, swapflags); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_swapoff’中:
+include/kapi_syscall.h:643:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  643 | { return kapi_syscall1(SYS_swapoff, (long)path); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_nanosleep’中:
+include/kapi_syscall.h:646:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                       ^
+include/kapi_syscall.h:646:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_gettimeofday’中:
+include/kapi_syscall.h:649:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:649:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_settimeofday’中:
+include/kapi_syscall.h:652:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:652:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_time’中:
+include/kapi_syscall.h:655:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  655 | { return kapi_syscall1(SYS_time, (long)tloc); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_clock_gettime’中:
+include/kapi_syscall.h:658:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  658 | { return kapi_syscall2(SYS_clock_gettime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_settime’中:
+include/kapi_syscall.h:661:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  661 | { return kapi_syscall2(SYS_clock_settime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_nanosleep’中:
+include/kapi_syscall.h:664:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                            ^
+include/kapi_syscall.h:664:71: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                                       ^
+include/kapi_syscall.h: 在函数‘sys_rt_sigaction’中:
+include/kapi_syscall.h:667:47: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                               ^
+include/kapi_syscall.h:667:58: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                          ^
+include/kapi_syscall.h:667:70: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                                      ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_rt_sigprocmask’中:
+include/kapi_syscall.h:670:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                 ^
+include/kapi_syscall.h:670:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                            ^
+include/kapi_syscall.h:670:74: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                                          ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_ioctl’中:
+include/kapi_syscall.h:679:39: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  679 | { return kapi_syscall3(SYS_ioctl, fd, request, arg); }
+      |                                       ^~~~~~~
+include/kapi_syscall.h: 在函数‘sys_pread64’中:
+include/kapi_syscall.h:682:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                         ^
+include/kapi_syscall.h:682:52: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                                    ^~~~~
+include/kapi_syscall.h: 在函数‘sys_pwrite64’中:
+include/kapi_syscall.h:685:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                          ^
+include/kapi_syscall.h:685:53: warning: ‘long int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                                     ^~~~~
+include/kapi_syscall.h: 在函数‘sys_readv’中:
+include/kapi_syscall.h:688:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  688 | { return kapi_syscall3(SYS_readv, fd, (long)iov, iovcnt); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_writev’中:
+include/kapi_syscall.h:691:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  691 | { return kapi_syscall3(SYS_writev, fd, (long)iov, iovcnt); }
+      |                                        ^
+include/kapi_syscall.h: 在函数‘sys_getdents’中:
+include/kapi_syscall.h:694:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                          ^
+include/kapi_syscall.h:694:54: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                                      ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getdents64’中:
+include/kapi_syscall.h:697:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                            ^
+include/kapi_syscall.h:697:56: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                                        ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getgroups’中:
+include/kapi_syscall.h:718:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  718 | { return kapi_syscall2(SYS_getgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_setgroups’中:
+include/kapi_syscall.h:721:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  721 | { return kapi_syscall2(SYS_setgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_uname’中:
+include/kapi_syscall.h:724:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  724 | { return kapi_syscall1(SYS_uname, (long)buf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_sysinfo’中:
+include/kapi_syscall.h:727:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  727 | { return kapi_syscall1(SYS_sysinfo, (long)info); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_getrlimit’中:
+include/kapi_syscall.h:730:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  730 | { return kapi_syscall2(SYS_getrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_setrlimit’中:
+include/kapi_syscall.h:733:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  733 | { return kapi_syscall2(SYS_setrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_getrusage’中:
+include/kapi_syscall.h:736:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  736 | { return kapi_syscall2(SYS_getrusage, who, (long)usage); }
+      |                                            ^
+include/kapi_syscall.h: 在函数‘sys_times’中:
+include/kapi_syscall.h:739:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  739 | { return kapi_syscall1(SYS_times, (long)tbuf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_reboot’中:
+include/kapi_syscall.h:754:57: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  754 | { return kapi_syscall4(SYS_reboot, magic1, magic2, cmd, (long)arg); }
+      |                                                         ^
+include/kapi_syscall.h: 在函数‘sys_chroot’中:
+include/kapi_syscall.h:757:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  757 | { return kapi_syscall1(SYS_chroot, (long)path); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_sethostname’中:
+include/kapi_syscall.h:760:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  760 | { return kapi_syscall2(SYS_sethostname, (long)name, len); }
+      |                                         ^
+include/kapi_syscall.h: 在函数‘sys_setdomainname’中:
+include/kapi_syscall.h:763:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  763 | { return kapi_syscall2(SYS_setdomainname, (long)name, len); }
+      |                                           ^
+include/kapi_syscall.h: 在函数‘sys_init_module’中:
+include/kapi_syscall.h:766:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                         ^
+include/kapi_syscall.h:766:66: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                                  ^
+include/kapi_syscall.h:766:61: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                             ^~~
+include/kapi_syscall.h: 在函数‘sys_delete_module’中:
+include/kapi_syscall.h:769:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                           ^
+include/kapi_syscall.h:769:55: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                                       ^~~~~
+include/kapi_syscall.h: 在函数‘sys_finit_module’中:
+include/kapi_syscall.h:772:46: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  772 | { return kapi_syscall3(SYS_finit_module, fd, (long)param_values, flags); }
+      |                                              ^
+<1> Building kernel/lib/libc/stdio.c
+<3> Building kernel/lib/libc/signal.c
+<1> Building kernel/lib/libc/setjmp.c
+kernel/lib/libc/signal.c: 在函数‘signal’中:
+kernel/lib/libc/signal.c:66:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+   66 |     long ret = syscall4(SYS_rt_sigaction, signum, (long)&act, (long)&oldact, SIGSET_SIZE);
+      |                                                   ^
+kernel/lib/libc/signal.c:66:63: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+   66 |     long ret = syscall4(SYS_rt_sigaction, signum, (long)&act, (long)&oldact, SIGSET_SIZE);
+      |                                                               ^
+kernel/lib/libc/setjmp.c: 在函数‘setjmp’中:
+kernel/lib/libc/setjmp.c:3:20: warning: 未使用的参数‘env’ [-Wunused-parameter]
+    3 | int setjmp(jmp_buf env)
+      |            ~~~~~~~~^~~
+kernel/lib/libc/setjmp.c: 在函数‘longjmp’中:
+kernel/lib/libc/setjmp.c:8:22: warning: 未使用的参数‘env’ [-Wunused-parameter]
+    8 | void longjmp(jmp_buf env, int val)
+      |              ~~~~~~~~^~~
+kernel/lib/libc/setjmp.c:8:31: warning: 未使用的参数‘val’ [-Wunused-parameter]
+    8 | void longjmp(jmp_buf env, int val)
+      |                           ~~~~^~~
+<0> Building kernel/lib/libc/math_stubs.c
+<3> Building kernel/lib/libc/math.c
+<1> Building kernel/lib/libc/errno.c
+kernel/lib/libc/math_stubs.c: 在函数‘cosf’中:
+kernel/lib/libc/math_stubs.c:3:18: warning: 未使用的参数‘x’ [-Wunused-parameter]
+    3 | float cosf(float x)
+      |            ~~~~~~^
+kernel/lib/libc/math_stubs.c: 在函数‘sinf’中:
+kernel/lib/libc/math_stubs.c:8:18: warning: 未使用的参数‘x’ [-Wunused-parameter]
+    8 | float sinf(float x)
+      |            ~~~~~~^
+kernel/lib/libc/math_stubs.c: 在函数‘sqrtf’中:
+kernel/lib/libc/math_stubs.c:13:19: warning: 未使用的参数‘x’ [-Wunused-parameter]
+   13 | float sqrtf(float x)
+      |             ~~~~~~^
+kernel/lib/libc/math.c: 在函数‘exp’中:
+kernel/lib/libc/math.c:174:22: warning: conversion from ‘long long int’ to ‘double’ may change value [-Wconversion]
+  174 |     double r = x - k * 0.69314718055994530942;
+      |                      ^
+kernel/lib/libc/math.c: 在函数‘log’中:
+kernel/lib/libc/math.c:210:18: warning: conversion from ‘long long int’ to ‘double’ may change value [-Wconversion]
+  210 |     return y + k * 0.69314718055994530942;
+      |                  ^
+kernel/lib/libc/math.c: 在文件作用域：
+kernel/lib/libc/math.c:8:21: warning: ‘E’ 在此处定义 [-Wunused-const-variable=]
+    8 | static const double E       = 2.71828182845904523536;
+      |                     ^
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/workqueue.c
+<1> Building kernel/kernel/wait.c
+kernel/kernel/workqueue.c: 在函数‘__tasklet_add’中:
+kernel/kernel/workqueue.c:216:22: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  216 |         for (int i = tasklet_count; i > 0; i--) {
+      |                      ^~~~~~~~~~~~~
+<1> Building kernel/kernel/unixsock.c
+kernel/kernel/unixsock.c:10:14: error: conflicting types for ‘kmalloc’; have ‘void *(size_t)’ {或称 ‘void *(long unsigned int)’}
+   10 | extern void* kmalloc(size_t size);
+      |              ^~~~~~~
+In file included from kernel/include/slab.h:4,
+                 from kernel/kernel/unixsock.c:8:
+kernel/arch/x86_64/include/arch/slab.h:55:7: note: previous declaration of ‘kmalloc’ with type ‘void *(uint64_t)’ {或称 ‘void *(long long unsigned int)’}
+   55 | void* kmalloc(uint64_t size);
+      |       ^~~~~~~
+kernel/kernel/unixsock.c: 在函数‘ring_write’中:
+kernel/kernel/unixsock.c:62:21: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   62 |     uint32_t space, to_copy, contiguous, first_chunk;
+      |                     ^~~~~~~
+kernel/kernel/unixsock.c:59:38: warning: 未使用的参数‘rpos’ [-Wunused-parameter]
+   59 |                            uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                            ~~~~~~~~~~^~~~
+kernel/kernel/unixsock.c: 在函数‘ring_read’中:
+kernel/kernel/unixsock.c:89:14: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   89 |     uint32_t to_copy, contiguous, first_chunk;
+      |              ^~~~~~~
+kernel/kernel/unixsock.c:86:53: warning: 未使用的参数‘wpos’ [-Wunused-parameter]
+   86 |                           uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                                           ~~~~~~~~~~^~~~
+<1> Building kernel/kernel/timer.c
+In file included from kernel/kernel/timer.c:3:
+kernel/kernel/timer.c: 在函数‘__calc_index’中:
+kernel/kernel/timer.h:29:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 | #define TIMER_WHEEL_BITS      8
+      |                               ^
+kernel/kernel/timer.c:63:22: note: in expansion of macro ‘TIMER_WHEEL_BITS’
+   63 |     uint64_t shift = TIMER_WHEEL_BITS * (*level);
+      |                      ^~~~~~~~~~~~~~~~
+kernel/kernel/timer.c: 在文件作用域：
+kernel/kernel/timer.c:274:13: warning: ‘__msleep_wakeup’ 在此处定义 [-Wunused-function]
+  274 | static void __msleep_wakeup(void* arg)
+      |             ^~~~~~~~~~~~~~~
+FAILED TASK run all: 

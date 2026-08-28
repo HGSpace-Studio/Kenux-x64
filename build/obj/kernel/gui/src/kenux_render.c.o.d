@@ -1,6 +1,6 @@
 build/obj/kernel/gui/src/kenux_render.c.o: kernel/gui/src/kenux_render.c \
  kernel/gui/include/kenux_render.h kernel/gui/include/types.h \
- kernel/lib/libc/include/stddef.h kernel/lib/libc/include/stdbool.h \
+ include/stddef.h kernel/lib/libc/include/stdbool.h \
  kernel/gui/include/window.h kernel/gui/include/widget.h \
  kernel/gui/include/icon.h kernel/gui/include/color.h \
  include/kapi_netdevice.h kernel/gui/include/framebuffer.h \
@@ -18,4 +18,4 @@ build/obj/kernel/gui/src/kenux_render.c.o: kernel/gui/src/kenux_render.c \
  kernel/arch/x86_64/include/arch/vlan.h \
  kernel/arch/x86_64/include/arch/net.h \
  kernel/arch/x86_64/include/arch/fs.h kernel/kernel/timer.h \
- kernel/lib/libc/include/string.h include/kapi_blkdev.h
+ include/string.h include/kapi_blkdev.h

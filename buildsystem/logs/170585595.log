@@ -1,0 +1,253 @@
+-- Start building task run all -- (170585595)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/systemd --
+<3> Building kernel/systemd/util.c
+<0> Building kernel/systemd/timer.c
+<2> Building kernel/systemd/udev.c
+<1> Building kernel/systemd/target.c
+kernel/systemd/util.c: 在函数‘fs_read_file_content’中:
+kernel/systemd/util.c:16:48: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   16 |     int bytes_read = vfs_read(fd, buffer, size - 1);
+      |                                           ~~~~~^~~
+kernel/systemd/util.c: 在函数‘fs_list_dir’中:
+kernel/systemd/util.c:43:19: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+   43 |         int len = strlen(name);
+      |                   ^~~~~~
+kernel/systemd/util.c: 在函数‘parse_ini_section’中:
+kernel/systemd/util.c:82:15: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+   82 |     int len = end - line - 1;
+      |               ^~~
+kernel/systemd/util.c:86:32: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   86 |     strncpy(section, line + 1, len);
+      |                                ^~~
+kernel/systemd/util.c: 在函数‘parse_ini_keyvalue’中:
+kernel/systemd/util.c:100:19: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+  100 |     int key_len = eq - line;
+      |                   ^~
+kernel/systemd/util.c:104:24: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  104 |     strncpy(key, line, key_len);
+      |                        ^~~~~~~
+kernel/systemd/util.c:109:21: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  109 |     int value_len = strlen(value_start);
+      |                     ^~~~~~
+kernel/systemd/util.c:112:33: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  112 |     strncpy(value, value_start, value_len);
+      |                                 ^~~~~~~~~
+kernel/systemd/timer.c:9:1: error: 对‘sscanf’的静态声明出现在非静态声明之后
+    9 | {
+      | ^
+In file included from kernel/systemd/timer.c:3:
+include/stdio.h:13:5: note: previous declaration of ‘sscanf’ with type ‘int(const char *, const char *, ...)’
+   13 | int sscanf(const char* str, const char* format, ...);
+      |     ^~~~~~
+kernel/systemd/timer.c: 在函数‘timer_read_persist’中:
+kernel/systemd/timer.c:131:44: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  131 |                     timer->accuracy_usec = accuracy_usec;
+      |                                            ^~~~~~~~~~~~~
+kernel/systemd/timer.c: 在函数‘timer_calculate_calendar_next’中:
+kernel/systemd/timer.c:419:22: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  419 |     time_t current = now;
+      |                      ^~~
+kernel/systemd/timer.c:420:16: warning: conversion from ‘time_t’ {或称 ‘long long int’} to ‘int’ may change value [-Wconversion]
+  420 |     int year = 1970 + current / (365 * 24 * 3600);
+      |                ^~~~
+kernel/systemd/timer.c:421:21: warning: conversion from ‘time_t’ {或称 ‘long long int’} to ‘int’ may change value [-Wconversion]
+  421 |     int remaining = current % (365 * 24 * 3600);
+      |                     ^~~~~~~
+kernel/systemd/timer.c:485:59: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  485 |                                 timer->next_elapse_time = seconds;
+      |                                                           ^~~~~~~
+kernel/systemd/timer.c:498:43: warning: ‘long long unsigned int’转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  498 |         timer->next_elapse_time = current + timer->interval_sec;
+      |                                           ^
+kernel/systemd/timer.c: 在函数‘timer_calculate_next_elapse’中:
+kernel/systemd/timer.c:510:9: warning: the comparison will always evaluate as ‘true’ for the address of ‘calendar’ will never be NULL [-Waddress]
+  510 |     if (timer->calendar && strlen(timer->calendar) > 0) {
+      |         ^~~~~
+In file included from kernel/systemd/timer.c:1:
+kernel/systemd/include/systemd.h:407:10: note: ‘calendar’在此声明
+  407 |     char calendar[SYSTEMD_MAX_PATH_LEN];
+      |          ^~~~~~~~
+kernel/systemd/timer.c:529:40: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  529 |         uint64_t rand_offset = (rand() % timer->accuracy_usec) / 1000000;
+      |                                        ^
+kernel/systemd/timer.c: 在函数‘timer_trigger’中:
+kernel/systemd/timer.c:551:9: warning: the comparison will always evaluate as ‘true’ for the address of ‘unit’ will never be NULL [-Waddress]
+  551 |     if (timer->unit) {
+      |         ^~~~~
+kernel/systemd/include/systemd.h:409:10: note: ‘unit’在此声明
+  409 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/timer.c: 在函数‘timer_load’中:
+kernel/systemd/timer.c:628:43: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  628 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:630:43: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  630 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:632:43: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  632 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:634:43: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  634 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c:636:43: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  636 |                     timer->interval_sec = atoi(value);
+      |                                           ^~~~
+kernel/systemd/timer.c: 在函数‘timer_start’中:
+kernel/systemd/timer.c:695:26: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  695 |     thread_create((void*)(unsigned long)timer_monitor_thread, timer);
+      |                          ^
+kernel/systemd/timer.c: 在函数‘timer_find_next_activation’中:
+kernel/systemd/timer.c:746:9: warning: the comparison will always evaluate as ‘true’ for the address of ‘calendar’ will never be NULL [-Waddress]
+  746 |     if (timer->calendar && strlen(timer->calendar) > 0) {
+      |         ^~~~~
+kernel/systemd/include/systemd.h:407:10: note: ‘calendar’在此声明
+  407 |     char calendar[SYSTEMD_MAX_PATH_LEN];
+      |          ^~~~~~~~
+In file included from /usr/x86_64-w64-mingw32/include/corecrt_wctype.h:9,
+                 from /usr/x86_64-w64-mingw32/include/ctype.h:9,
+                 from kernel/systemd/udev.c:7:
+/usr/x86_64-w64-mingw32/include/corecrt.h:35:44: error: conflicting types for ‘size_t’; have ‘long long unsigned int’
+   35 | __MINGW_EXTENSION typedef unsigned __int64 size_t;
+      |                                            ^~~~~~
+In file included from kernel/systemd/udev.c:4:
+include/stdlib.h:4:23: note: previous declaration of ‘size_t’ with type ‘size_t’ {或称 ‘long unsigned int’}
+    4 | typedef unsigned long size_t;
+      |                       ^~~~~~
+/usr/x86_64-w64-mingw32/include/corecrt.h:45:35: error: conflicting types for ‘ssize_t’; have ‘long long int’
+   45 | __MINGW_EXTENSION typedef __int64 ssize_t;
+      |                                   ^~~~~~~
+include/stdlib.h:5:21: note: previous declaration of ‘ssize_t’ with type ‘ssize_t’ {或称 ‘long int’}
+    5 | typedef signed long ssize_t;
+      |                     ^~~~~~~
+/usr/x86_64-w64-mingw32/include/corecrt.h:88:35: error: conflicting types for ‘ptrdiff_t’; have ‘long long int’
+   88 | __MINGW_EXTENSION typedef __int64 ptrdiff_t;
+      |                                   ^~~~~~~~~
+include/stdlib.h:6:13: note: previous declaration of ‘ptrdiff_t’ with type ‘ptrdiff_t’ {或称 ‘int’}
+    6 | typedef int ptrdiff_t;
+      |             ^~~~~~~~~
+/usr/x86_64-w64-mingw32/include/corecrt.h:98:24: error: conflicting types for ‘wchar_t’; have ‘short unsigned int’
+   98 | typedef unsigned short wchar_t;
+      |                        ^~~~~~~
+include/stdlib.h:7:14: note: previous declaration of ‘wchar_t’ with type ‘wchar_t’ {或称 ‘long int’}
+    7 | typedef long wchar_t;
+      |              ^~~~~~~
+kernel/systemd/udev.c:15:1: error: 对‘strtol’的静态声明出现在非静态声明之后
+   15 | {
+      | ^
+include/stdlib.h:35:6: note: previous declaration of ‘strtol’ with type ‘long int(const char *, char **, int)’
+   35 | long strtol(const char* str, char** endptr, int base);
+      |      ^~~~~~
+kernel/systemd/udev.c: 在函数‘parse_udev_rule’中:
+kernel/systemd/udev.c:127:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  127 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:128:68: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  128 |             if (len > 12) strncpy(rule->subsystem, token + 11, len - 13);
+      |                                                                ~~~~^~~~
+kernel/systemd/udev.c:130:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  130 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:131:68: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  131 |             if (len > 13) strncpy(rule->subsystem, token + 12, len - 14);
+      |                                                                ~~~~^~~~
+kernel/systemd/udev.c:133:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  133 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:134:65: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  134 |             if (len > 13) strncpy(rule->vendor, token + 12, len - 14);
+      |                                                             ~~~~^~~~
+kernel/systemd/udev.c:136:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  136 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:137:65: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  137 |             if (len > 13) strncpy(rule->device, token + 12, len - 14);
+      |                                                             ~~~~^~~~
+kernel/systemd/udev.c:139:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  139 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:140:63: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  140 |             if (len > 9) strncpy(rule->action, token + 8, len - 10);
+      |                                                           ~~~~^~~~
+kernel/systemd/udev.c:142:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  142 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:143:64: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  143 |             if (len > 6) strncpy(rule->program, token + 5, len - 7);
+      |                                                            ~~~~^~~
+kernel/systemd/udev.c:145:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  145 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:146:61: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  146 |             if (len > 6) strncpy(rule->name, token + 5, len - 7);
+      |                                                         ~~~~^~~
+kernel/systemd/timer.c: 在文件作用域：
+kernel/systemd/udev.c:148:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  148 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:149:66: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  149 |             if (len > 11) strncpy(rule->symlink, token + 10, len - 12);
+      |                                                              ~~~~^~~~
+kernel/systemd/udev.c:151:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  151 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:152:64: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  152 |             if (len > 10) strncpy(rule->driver, token + 9, len - 11);
+      |                                                            ~~~~^~~~
+kernel/systemd/timer.c:742:12: warning: ‘timer_find_next_activation’ 在此处定义 [-Wunused-function]
+kernel/systemd/udev.c:154:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  154 |             int len = strlen(token);
+      |                       ^~~~~~
+kernel/systemd/udev.c:155:62: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  155 |             if (len > 8) strncpy(rule->group, token + 7, len - 9);
+      |                                                          ~~~~^~~
+kernel/systemd/udev.c:157:23: warning: ‘int’转换自‘size_t’ {或称 ‘long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  157 |             int len = strlen(token);
+      |                       ^~~~~~
+  742 | static int timer_find_next_activation(timer_t* timer, uint64_t now)
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/udev.c: 在函数‘udev_create_device_node’中:
+kernel/systemd/udev.c:205:52: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  205 |     udev_vfs_mknod(devpath, FS_TYPE_CHARDEV, device->major, device->minor);
+      |                                              ~~~~~~^~~~~~~
+kernel/systemd/udev.c:205:67: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  205 |     udev_vfs_mknod(devpath, FS_TYPE_CHARDEV, device->major, device->minor);
+      |                                                             ~~~~~~^~~~~~~
+kernel/systemd/udev.c: 在函数‘pci_class_to_subsystem’中:
+kernel/systemd/udev.c:283:66: warning: 未使用的参数‘subclass’ [-Wunused-parameter]
+  283 | static const char* pci_class_to_subsystem(uint8_t class, uint8_t subclass)
+      |                                                          ~~~~~~~~^~~~~~~~
+kernel/systemd/udev.c: 在函数‘udev_scan_pci_devices’中:
+kernel/systemd/udev.c:327:64: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  327 |                 uint32_t vendor_device = pci_read_config_dword(bus, slot, func, 0);
+      |                                                                ^~~
+kernel/systemd/udev.c:327:69: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  327 |                 uint32_t vendor_device = pci_read_config_dword(bus, slot, func, 0);
+      |                                                                     ^~~~
+kernel/systemd/udev.c:327:75: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  327 |                 uint32_t vendor_device = pci_read_config_dword(bus, slot, func, 0);
+      |                                                                           ^~~~
+kernel/systemd/udev.c:332:38: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  332 |                 uint16_t device_id = (vendor_device >> 16) & 0xFFFF;
+      |                                      ^
+kernel/systemd/udev.c:336:60: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  336 |                 uint32_t class_rev = pci_read_config_dword(bus, slot, func, 8);
+      |                                                            ^~~
+kernel/systemd/udev.c:336:65: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  336 |                 uint32_t class_rev = pci_read_config_dword(bus, slot, func, 8);
+      |                                                                 ^~~~
+kernel/systemd/udev.c:336:71: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  336 |                 uint32_t class_rev = pci_read_config_dword(bus, slot, func, 8);
+      |                                                                       ^~~~
+kernel/systemd/udev.c:337:33: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  337 |                 uint8_t class = (class_rev >> 24) & 0xFF;
+      |                                 ^
+<0> Building kernel/systemd/systemd.c
+kernel/systemd/udev.c: 在文件作用域：
+kernel/systemd/udev.c:109:20: warning: ‘udev_subsystems’ 在此处定义 [-Wunused-variable]
+  109 | static const char* udev_subsystems[UDEV_MAX_SUBSYSTEMS] = {
+      |                    ^~~~~~~~~~~~~~~
+kernel/systemd/systemd.c: 在函数‘systemd_topological_sort’中:
+FAILED TASK run all: 

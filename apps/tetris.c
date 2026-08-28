@@ -329,10 +329,7 @@ void tetris_run(void) {
                 case 'w': case 'W':
                     rotate_piece();
                     break;
-                case 80:
-                    move_piece(0, 1);
-                    score += 1;
-                    break;
+                /* case 80: handled by 'p'/'P' above */
                 case 72:
                     rotate_piece();
                     break;

@@ -1,5 +1,5 @@
 build/obj/kernel/api/kapi_syscall.c.o: kernel/api/kapi_syscall.c \
- include/kapi_syscall.h kernel/lib/libc/include/stddef.h include/kapi.h \
+ include/kapi_syscall.h include/stddef.h include/kapi.h \
  include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
  include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
  include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \
@@ -44,7 +44,6 @@ build/obj/kernel/api/kapi_syscall.c.o: kernel/api/kapi_syscall.c \
  kernel/arch/x86_64/include/arch/elf.h \
  kernel/arch/x86_64/include/arch/mmap.h \
  kernel/arch/x86_64/include/arch/net.h \
- kernel/arch/x86_64/include/arch/pagecache.h \
- kernel/lib/libc/include/string.h kernel/kernel/fifo.h \
- kernel/kernel/wait.h kernel/kernel/signal.h kernel/kernel/module.h \
- kernel/kernel/unixsock.h kernel/kernel/ipc.h
+ kernel/arch/x86_64/include/arch/pagecache.h include/string.h \
+ kernel/kernel/fifo.h kernel/kernel/wait.h kernel/kernel/signal.h \
+ kernel/kernel/module.h kernel/kernel/unixsock.h kernel/kernel/ipc.h

@@ -5,49 +5,10 @@
 #include <arch/fs.h>
 #include <arch/pci.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #define UDEV_MAX_RULES 128
 #define UDEV_MAX_DEVICES 256
 #define UDEV_MAX_SUBSYSTEMS 16
-
-static long strtol(const char* str, char** endptr, int base)
-{
-    (void)endptr;
-    long result = 0;
-    int sign = 1;
-    
-    while (*str == ' ' || *str == '\t') str++;
-    
-    if (*str == '-') {
-        sign = -1;
-        str++;
-    } else if (*str == '+') {
-        str++;
-    }
-    
-    while (*str) {
-        char c = *str;
-        int digit;
-        
-        if (c >= '0' && c <= '9') {
-            digit = c - '0';
-        } else if (base == 16 && c >= 'a' && c <= 'f') {
-            digit = 10 + c - 'a';
-        } else if (base == 16 && c >= 'A' && c <= 'F') {
-            digit = 10 + c - 'A';
-        } else {
-            break;
-        }
-        
-        if (digit >= base) break;
-        
-        result = result * base + digit;
-        str++;
-    }
-    
-    return sign * result;
-}
 
 static int udev_vfs_mknod(const char* path, int type, uint64_t major, uint64_t minor)
 {

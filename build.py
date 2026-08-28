@@ -112,7 +112,7 @@ CFLAGS_KERNEL = [
     "-m64", "-mcmodel=large", "-ffreestanding", "-fno-pic",
     "-nostdlib", "-nostartfiles", "-nodefaultlibs",
     "-mno-stack-arg-probe", "-fno-asynchronous-unwind-tables", "-fno-unwind-tables",
-    "-DKAL_KERNEL",
+    "-DKAL_KERNEL", "-DVGA_NATIVE",
 ]
 INCLUDES = [
     "-Iinclude", "-Ikernel", "-Ikernel/include", "-Ikernel/kernel",
@@ -209,6 +209,10 @@ def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
         "kal/src/*.c",
         "kal/adapters/*.c",
         "apps/container-os/src/*.c",
+        "apps/fastfetch.c",
+        "apps/calculator.c",
+        "apps/snake_game.c",
+        "apps/tetris.c",
     ))
     c_sources = sorted(set(c_sources))
 

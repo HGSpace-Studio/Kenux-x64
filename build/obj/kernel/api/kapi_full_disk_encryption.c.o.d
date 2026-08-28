@@ -1,6 +1,6 @@
 build/obj/kernel/api/kapi_full_disk_encryption.c.o: \
  kernel/api/kapi_full_disk_encryption.c \
- include/kapi_full_disk_encryption.h kernel/lib/libc/include/stddef.h \
+ include/kapi_full_disk_encryption.h include/stddef.h \
  include/kapi_blkdev.h include/kapi.h include/kapi_list.h \
  include/kapi_atomic.h include/kapi_bitmap.h include/kapi_kfifo.h \
  include/kapi_idr.h include/kapi_rbtree.h include/kapi_hash.h \
@@ -33,5 +33,4 @@ build/obj/kernel/api/kapi_full_disk_encryption.c.o: \
  include/kapi_device_ext.h include/kapi_sync_ext.h include/kapi_sysinfo.h \
  include/kapi_security_ext.h include/kapi_virt_ext.h include/kapi_epoll.h \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
- include/kapi_eventfd.h include/kapi_inotify.h \
- kernel/lib/libc/include/string.h
+ include/kapi_eventfd.h include/kapi_inotify.h include/string.h

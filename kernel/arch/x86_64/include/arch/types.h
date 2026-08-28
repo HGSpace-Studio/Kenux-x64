@@ -24,7 +24,11 @@ typedef uint64_t dev_t;
 typedef uint64_t ino_t;
 typedef uint64_t nlink_t;
 typedef uint64_t useconds_t;
+
+#ifndef _TIME_T_DEFINED
 typedef int64_t time_t;
+#define _TIME_T_DEFINED
+#endif
 
 struct stat {
     dev_t st_dev;

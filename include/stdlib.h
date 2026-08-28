@@ -1,15 +1,47 @@
 #ifndef STDLIB_H
 #define STDLIB_H
 
+#include <stddef.h>
+
+#ifndef _SIZE_T_DEFINED
 typedef unsigned long size_t;
+#define _SIZE_T_DEFINED
+#endif
+
+#ifndef _SSIZE_T_DEFINED
 typedef signed long ssize_t;
+#define _SSIZE_T_DEFINED
+#endif
+
+#ifndef _PTRDIFF_T_DEFINED
 typedef int ptrdiff_t;
+#define _PTRDIFF_T_DEFINED
+#endif
+
+#ifndef _WCHAR_T_DEFINED
 typedef long wchar_t;
+#define _WCHAR_T_DEFINED
+#endif
 
 #define NULL ((void*)0)
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 #define RAND_MAX 2147483647
+
+typedef struct {
+    int quot;
+    int rem;
+} div_t;
+
+typedef struct {
+    long quot;
+    long rem;
+} ldiv_t;
+
+typedef struct {
+    long long quot;
+    long long rem;
+} lldiv_t;
 
 double atof(const char* str);
 int atoi(const char* str);

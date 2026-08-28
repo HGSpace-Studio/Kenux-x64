@@ -1195,7 +1195,7 @@ char* GetCommandLineA(void) {
 }
 
 WCHAR* GetCommandLineW(void) {
-    static WCHAR cmdline[] = L"";
+    static WCHAR cmdline[] = {0};
     return cmdline;
 }
 

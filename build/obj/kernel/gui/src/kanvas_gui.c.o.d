@@ -1,9 +1,9 @@
 build/obj/kernel/gui/src/kanvas_gui.c.o: kernel/gui/src/kanvas_gui.c \
  kernel/gui/include/kanvas_desktop.h include/kapi_kanvasui.h \
- kernel/lib/libc/include/stddef.h kernel/lib/libc/include/stdbool.h \
- include/kapi_window.h include/kapi_graphics2d.h include/kapi_input.h \
- include/kapi_window.h include/kapi_graphics2d.h \
- kernel/gui/include/kanvas_window.h kernel/gui/include/kanvas_taskbar.h \
+ include/stddef.h kernel/lib/libc/include/stdbool.h include/kapi_window.h \
+ include/kapi_graphics2d.h include/kapi_input.h include/kapi_window.h \
+ include/kapi_graphics2d.h kernel/gui/include/kanvas_window.h \
+ kernel/gui/include/kanvas_taskbar.h \
  kernel/gui/include/kanvas_start_menu.h \
  kernel/gui/include/kanvas_animator.h \
  kernel/gui/include/kanvas_boot_splash.h \
@@ -42,4 +42,4 @@ build/obj/kernel/gui/src/kanvas_gui.c.o: kernel/gui/src/kanvas_gui.c \
  include/kapi_security_ext.h include/kapi_virt_ext.h include/kapi_epoll.h \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
  include/kapi_eventfd.h include/kapi_inotify.h include/kapi_curvo_icons.h \
- kernel/lib/libc/include/string.h
+ include/string.h

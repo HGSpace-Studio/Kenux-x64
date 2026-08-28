@@ -12,6 +12,13 @@ typedef struct {
     int x, y;
 } Position;
 
+typedef enum {
+    DIR_UP,
+    DIR_DOWN,
+    DIR_LEFT,
+    DIR_RIGHT
+} Direction;
+
 typedef struct {
     Position body[MAX_SNAKE_LENGTH];
     int length;
@@ -25,14 +32,9 @@ typedef struct {
     int total_eaten;
 } SnakeGame;
 
-typedef enum {
-    DIR_UP,
-    DIR_DOWN,
-    DIR_LEFT,
-    DIR_RIGHT
-} Direction;
-
 static SnakeGame game;
+
+static void snake_spawn_food(void);
 
 static void snake_init(void) {
     game.length = 3;

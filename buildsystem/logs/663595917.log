@@ -1,0 +1,294 @@
+-- Start building task run all -- (663595917)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/systemd --
+<3> Building kernel/systemd/service.c
+<0> Building kernel/systemd/journalctl.c
+<2> Building kernel/systemd/journal.c
+<1> Building kernel/systemd/fstab.c
+kernel/systemd/fstab.c: 在函数‘parse_fstab_line’中:
+kernel/systemd/journal.c: 在函数‘journal_update_header’中:
+kernel/systemd/journalctl.c: 在函数‘journalctl_print_entry’中:
+kernel/systemd/journalctl.c:53:52: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+   53 |     const char* prio_str = priority_to_string(entry->priority);
+      |                                               ~~~~~^~~~~~~~~~
+kernel/systemd/journal.c:148:24: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+kernel/systemd/fstab.c:39:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   39 |     entry->dump_freq = atoi(token);
+      |                        ^~~~
+kernel/systemd/fstab.c:43:23: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   43 |     entry->pass_num = atoi(token);
+      |                       ^~~~
+kernel/systemd/journalctl.c: 在函数‘journalctl_main’中:
+kernel/systemd/journalctl.c:104:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  104 |                 query.since = parse_time(argv[++i]);
+      |                               ^~~~~~~~~~
+kernel/systemd/journalctl.c:108:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  108 |                 query.until = parse_time(argv[++i]);
+      |                               ^~~~~~~~~~
+  148 |         .entry_count = journal_index.count,
+      |                        ^~~~~~~~~~~~~
+kernel/systemd/journal.c: 在函数‘journal_write_binary’中:
+kernel/systemd/journal.c:191:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  191 |             journal_file_size = vfs_lseek(journal_fd, 0, SEEK_END);
+      |                                 ^~~~~~~~~
+kernel/systemd/journalctl.c:151:42: warning: comparison of integer expressions of different signedness: ‘time_t’ {或称 ‘long long int’} and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  151 |                 if (entries[i].timestamp > last_timestamp) {
+      |                                          ^
+kernel/systemd/journalctl.c:152:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  152 |                     last_timestamp = entries[i].timestamp;
+      |                                      ^~~~~~~
+kernel/systemd/journal.c:205:23: warning: conversion from ‘long long unsigned int’ to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  205 |     size_t data_len = sizeof(uint64_t) + sizeof(uint32_t) * 4 + sizeof(uint64_t) +
+      |                       ^~~~~~
+kernel/systemd/journal.c:215:23: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+kernel/systemd/service.c:12:1: error: 对‘strtoul’的静态声明出现在非静态声明之后
+   12 | {
+  215 |     *(uint64_t*)ptr = entry->timestamp; ptr += sizeof(uint64_t);
+      | ^
+In file included from kernel/systemd/service.c:4:
+include/stdlib.h:53:15: note: previous declaration of ‘strtoul’ with type ‘long unsigned int(const char *, char **, int)’
+   53 | unsigned long strtoul(const char* str, char** endptr, int base);
+      |               ^~~~~~~
+      |                       ^~~~~
+kernel/systemd/service.c: 在函数‘strtoul’中:
+kernel/systemd/service.c:34:25: warning: ‘long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:34:32: warning: ‘long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: 在文件作用域：
+kernel/systemd/journal.c:225:27: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+kernel/systemd/service.c:42:1: error: 对‘strtoull’的静态声明出现在非静态声明之后
+   42 | {
+      | ^
+include/stdlib.h:55:20: note: previous declaration of ‘strtoull’ with type ‘long long unsigned int(const char *, char **, int)’
+   55 | unsigned long long strtoull(const char* str, char** endptr, int base);
+  225 |     vfs_lseek(journal_fd, offset, SEEK_SET);
+      |                           ^~~~~~
+kernel/systemd/journal.c:232:64: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  232 |         journal_index.entries[journal_index.count].timestamp = entry->timestamp;
+      |                                                                ^~~~~
+kernel/systemd/journal.c:236:40: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  236 |         journal_index.last_timestamp = entry->timestamp;
+      |                                        ^~~~~
+kernel/systemd/journal.c: 在函数‘journal_read_binary’中:
+kernel/systemd/journal.c:254:27: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+      |                    ^~~~~~~~
+  254 |     vfs_lseek(journal_fd, offset, SEEK_SET);
+kernel/systemd/service.c: 在函数‘strtoull’中:
+      |                           ^~~~~~
+In file included from kernel/systemd/journal.c:1:
+kernel/systemd/service.c:64:25: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:64:32: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: 在函数‘parse_env_vars’中:
+kernel/systemd/service.c:138:15: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+kernel/systemd/journal.c: 在函数‘journal_log’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  138 |     int len = eq - line;
+      |               ^~
+kernel/systemd/service.c:143:58: warning: ‘size_t’ {或称 ‘long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+  143 |     strncpy(service->env[service->env_count].name, line, len);
+      |                                                          ^~~
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/journal.c:279:23: note: in expansion of macro ‘time_get_timestamp’
+  279 |     entry.timestamp = time_get_timestamp();
+      |                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/journal.c:280:22: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  280 |     entry.priority = priority;
+      |                      ^~~~~~~~
+kernel/systemd/journal.c: 在函数‘journal_query’中:
+kernel/systemd/journal.c:366:57: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {或称 ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  366 |         if (query->priority >= 0 && idx_entry->priority > query->priority) {
+      |                                                         ^
+kernel/systemd/journal.c:370:13: warning: the comparison will always evaluate as ‘true’ for the address of ‘unit’ will never be NULL [-Waddress]
+  370 |         if (query->unit && strlen(query->unit) > 0) {
+      |             ^~~~~
+kernel/systemd/include/systemd.h:551:10: note: ‘unit’在此声明
+  551 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/journal.c: 在函数‘journal_count’中:
+kernel/systemd/journal.c:410:57: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {或称 ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  410 |         if (query->priority >= 0 && idx_entry->priority > query->priority) {
+      |                                                         ^
+kernel/systemd/journal.c:414:13: warning: the comparison will always evaluate as ‘true’ for the address of ‘unit’ will never be NULL [-Waddress]
+  414 |         if (query->unit && strlen(query->unit) > 0) {
+      |             ^~~~~
+kernel/systemd/include/systemd.h:551:10: note: ‘unit’在此声明
+kernel/systemd/service.c: 在函数‘parse_install_section’中:
+  551 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/service.c:217:70: warning: 未使用的参数‘value’ [-Wunused-parameter]
+  217 | int parse_install_section(unit_t* unit, const char* key, const char* value)
+      |                                                          ~~~~~~~~~~~~^~~~~
+kernel/systemd/service.c: 在函数‘parse_service_section’中:
+kernel/systemd/service.c:244:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  244 |         service->uid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:247:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  247 |         service->gid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:251:32: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  251 |         service->restart_sec = atoi(value);
+      |                                ^~~~
+kernel/systemd/service.c:253:41: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  253 |         service->start_limit_interval = atoi(value);
+      |                                         ^~~~
+kernel/systemd/service.c:255:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  255 |         service->start_limit_burst = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:284:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  284 |         service->timeout_start_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:286:37: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  286 |         service->timeout_stop_sec = atoi(value);
+      |                                     ^~~~
+kernel/systemd/service.c:288:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  288 |         service->timeout_abort_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:306:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  306 |         service->cpu_shares = atoi(value);
+      |                               ^~~~
+kernel/systemd/service.c: 在函数‘service_build_envp’中:
+kernel/systemd/service.c:376:50: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  376 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                                  ^
+kernel/systemd/service.c:376:50: warning: conversion from ‘long long unsigned int’ to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  376 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                  ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+kernel/systemd/journal.c: 在文件作用域：
+kernel/systemd/journal.c:88:13: warning: ‘journal_current_file’ 在此处定义 [-Wunused-variable]
+   88 | static char journal_current_file[SYSTEMD_MAX_PATH_LEN];
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_create_dynamic_user’中:
+kernel/systemd/service.c:452:20: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  452 |     service->uid = 1000 + systemd.service_count;
+      |                    ^~~~
+In file included from kernel/systemd/service.c:1:
+kernel/systemd/service.c: 在函数‘service_setup_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:536:35: note: in expansion of macro ‘time_get_timestamp’
+  536 |     service->watchdog_last_ping = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_monitor_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:550:43: note: in expansion of macro ‘time_get_timestamp’
+  550 |             service->watchdog_last_ping = time_get_timestamp();
+      |                                           ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_start_limit’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:560:18: note: in expansion of macro ‘time_get_timestamp’
+  560 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:563:44: warning: comparison of integer expressions of different signedness: ‘time_t’ {或称 ‘long long int’} and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  563 |         if (now - service->last_start_time < service->start_limit_interval) {
+      |                                            ^
+kernel/systemd/service.c: 在函数‘service_run_command’中:
+kernel/systemd/service.c:580:58: warning: 未使用的参数‘working_dir’ [-Wunused-parameter]
+  580 | int service_run_command(exec_command_t* cmd, const char* working_dir)
+      |                                              ~~~~~~~~~~~~^~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_start’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:730:32: note: in expansion of macro ‘time_get_timestamp’
+  730 |     service->last_start_time = time_get_timestamp();
+      |                                ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:782:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  782 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:797:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  797 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:810:39: note: in expansion of macro ‘time_get_timestamp’
+  810 |             service->last_exit_time = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:841:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  841 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:852:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  852 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:898:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  898 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:913:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  913 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:932:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  932 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:947:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  947 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:965:39: note: in expansion of macro ‘time_get_timestamp’
+  965 |         service->watchdog_last_ping = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_stop’中:
+kernel/systemd/service.c:1009:57: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+ 1009 |         if (service->main_pid != 0 && service->main_pid != service->pid) {
+      |                                                         ^~
+kernel/systemd/service.c:1010:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+ 1010 |             process_kill(service->main_pid, service->kill_signal);
+      |                          ~~~~~~~^~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1054:31: note: in expansion of macro ‘time_get_timestamp’
+ 1054 |     service->last_exit_time = time_get_timestamp();
+      |                               ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1132:18: note: in expansion of macro ‘time_get_timestamp’
+ 1132 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1133:27: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1133 |     uint64_t elapsed_ms = (now - service->watchdog_last_ping) * 1000;
+      |                           ^
+kernel/systemd/service.c: 在函数‘service_monitor’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1154:35: note: in expansion of macro ‘time_get_timestamp’
+ 1154 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1171:35: note: in expansion of macro ‘time_get_timestamp’
+ 1171 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+<3> Building kernel/systemd/device.c
+FAILED TASK run all: 

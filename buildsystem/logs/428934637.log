@@ -1,0 +1,85 @@
+-- Start building task run all -- (428934637)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<1> Building kernel/kernel/shell_enhanced.c
+kernel/kernel/shell_enhanced.c: 在函数‘shell_find_elf’中:
+kernel/kernel/shell_enhanced.c:331:32: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  331 |         strncpy(out, cmd, size - 1);
+      |                           ~~~~~^~~
+kernel/kernel/shell_enhanced.c:336:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  336 |         snprintf(out, size, "%s%s", roots[i], cmd);
+      |                       ^~~~
+kernel/kernel/shell_enhanced.c: 在文件作用域：
+kernel/kernel/shell_enhanced.c:239:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  239 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:140:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  140 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:85:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+-- Enter folder apps --
+<3> Building apps/tetris.c
+<0> Building apps/snake_game.c
+<2> Building apps/fastfetch.c
+   85 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+apps/snake_game.c:18:5: error: 未知的类型名‘Direction’
+   18 |     Direction direction;
+apps/tetris.c: 在函数‘tetris_init’中:
+      |     ^~~~~~~~~
+apps/tetris.c:55:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+   55 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/tetris.c: 在函数‘create_tetromino’中:
+apps/tetris.c:60:15: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+apps/snake_game.c:19:5: error: 未知的类型名‘Direction’
+   60 |     t.color = (shape % 7) + 1;
+apps/fastfetch.c: 在函数‘draw_logo’中:
+apps/fastfetch.c:116:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long long unsigned int’ [-Wsign-compare]
+      |               ^
+   19 |     Direction next_direction;
+      |     ^~~~~~~~~
+  116 |     for (int i = 0; i < sizeof(kenux_logo) / sizeof(kenux_logo[0]); i++) {
+apps/snake_game.c: 在函数‘snake_init’中:
+      |                       ^
+apps/snake_game.c:52:5: error: 隐式声明函数‘snake_spawn_food’ [-Wimplicit-function-declaration]
+   52 |     snake_spawn_food();
+      |     ^~~~~~~~~~~~~~~~
+apps/snake_game.c: 在文件作用域：
+apps/snake_game.c:55:13: warning: conflicting types for ‘snake_spawn_food’; have ‘void(void)’
+   55 | static void snake_spawn_food(void) {
+      |             ^~~~~~~~~~~~~~~~
+apps/snake_game.c:55:1: error: 对‘snake_spawn_food’的静态声明出现在非静态声明之后
+   55 | static void snake_spawn_food(void) {
+      | ^~~~~~
+apps/fastfetch.c: 在函数‘fastfetch_run’中:
+apps/snake_game.c:52:5: note: previous implicit declaration of ‘snake_spawn_food’ with type ‘void(void)’
+   52 |     snake_spawn_food();
+      |     ^~~~~~~~~~~~~~~~
+apps/fastfetch.c:163:23: warning: ‘int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  163 |         int padding = 14 - strlen(info_items[i].label);
+      |                       ^~
+apps/fastfetch.c: 在函数‘main’中:
+apps/fastfetch.c:182:9: warning: 变量‘format_ascii’被设定但未被使用 [-Wunused-but-set-variable=]
+  182 |     int format_ascii = 0;
+      |         ^~~~~~~~~~~~
+apps/tetris.c: 在函数‘main’中:
+apps/tetris.c:366:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  366 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/tetris.c:366:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  366 | int main(int argc, char** argv) {
+      |                    ~~~~~~~^~~~
+apps/snake_game.c: 在函数‘snake_run’中:
+apps/snake_game.c:204:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  204 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/snake_game.c: 在函数‘main’中:
+apps/snake_game.c:230:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  230 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/snake_game.c:230:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  230 | int main(int argc, char** argv) {
+      |                    ~~~~~~~^~~~
+FAILED TASK run all: 

@@ -1,8 +1,8 @@
 build/obj/kernel/gui/src/kanvas_kex_runner.c.o: \
  kernel/gui/src/kanvas_kex_runner.c \
  kernel/gui/include/kanvas_kex_runner.h include/kapi_kanvasui.h \
- kernel/lib/libc/include/stddef.h kernel/lib/libc/include/stdbool.h \
- include/kapi_window.h include/kapi_graphics2d.h include/kapi_input.h \
+ include/stddef.h kernel/lib/libc/include/stdbool.h include/kapi_window.h \
+ include/kapi_graphics2d.h include/kapi_input.h \
  kernel/gui/include/kanvas_animator.h include/kapi.h include/kapi_list.h \
  include/kapi_atomic.h include/kapi_bitmap.h include/kapi_kfifo.h \
  include/kapi_idr.h include/kapi_rbtree.h include/kapi_hash.h \
@@ -33,5 +33,4 @@ build/obj/kernel/gui/src/kanvas_kex_runner.c.o: \
  include/kapi_device_ext.h include/kapi_sync_ext.h include/kapi_sysinfo.h \
  include/kapi_security_ext.h include/kapi_virt_ext.h include/kapi_epoll.h \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
- include/kapi_eventfd.h include/kapi_inotify.h \
- kernel/lib/libc/include/string.h
+ include/kapi_eventfd.h include/kapi_inotify.h include/string.h

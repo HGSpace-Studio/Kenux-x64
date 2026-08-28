@@ -1,5 +1,5 @@
 build/obj/kernel/api/kapi_kthread.c.o: kernel/api/kapi_kthread.c \
- include/kapi_kthread.h kernel/lib/libc/include/stddef.h include/kapi.h \
+ include/kapi_kthread.h include/stddef.h include/kapi.h \
  include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
  include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
  include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \
@@ -35,5 +35,4 @@ build/obj/kernel/api/kapi_kthread.c.o: kernel/api/kapi_kthread.c \
  include/kapi_eventfd.h include/kapi_inotify.h kernel/kernel/kthread.h \
  kernel/arch/x86_64/include/arch/process.h \
  kernel/arch/x86_64/include/arch/cfs.h kernel/include/spinlock.h \
- kernel/arch/x86_64/include/arch/memory.h \
- kernel/lib/libc/include/string.h
+ kernel/arch/x86_64/include/arch/memory.h include/string.h

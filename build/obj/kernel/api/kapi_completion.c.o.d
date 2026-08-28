@@ -1,10 +1,10 @@
 build/obj/kernel/api/kapi_completion.c.o: kernel/api/kapi_completion.c \
- include/kapi_completion.h kernel/lib/libc/include/stddef.h \
- include/kapi.h include/kapi_list.h include/kapi_atomic.h \
- include/kapi_bitmap.h include/kapi_kfifo.h include/kapi_idr.h \
- include/kapi_rbtree.h include/kapi_hash.h include/kapi_sort.h \
- include/kapi_crc.h include/kapi_mutex.h include/kapi_completion.h \
- include/kapi_wait.h include/kapi_rcu.h include/kapi_string.h \
+ include/kapi_completion.h include/stddef.h include/kapi.h \
+ include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
+ include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
+ include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \
+ include/kapi_mutex.h include/kapi_completion.h include/kapi_wait.h \
+ include/kapi_rcu.h include/kapi_string.h \
  kernel/lib/libc/include/stdarg.h include/kapi_time.h \
  include/kapi_random.h include/kapi_irq.h include/kapi_kthread.h \
  include/kapi_notifier.h include/kapi_sched.h include/kapi_smp.h \
@@ -35,5 +35,4 @@ build/obj/kernel/api/kapi_completion.c.o: kernel/api/kapi_completion.c \
  include/kapi_eventfd.h include/kapi_inotify.h kernel/kernel/sync.h \
  kernel/kernel/wait.h kernel/arch/x86_64/include/arch/process.h \
  kernel/arch/x86_64/include/arch/cfs.h \
- kernel/arch/x86_64/include/arch/memory.h \
- kernel/lib/libc/include/string.h
+ kernel/arch/x86_64/include/arch/memory.h include/string.h

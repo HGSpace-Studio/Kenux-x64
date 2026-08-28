@@ -189,7 +189,7 @@ NTSTATUS RtlIntegerToUnicodeString(ULONG val, ULONG base, PUNICODE_STRING s) {
     ULONG i = 0;
     ULONG len;
     ULONG remainder;
-    WCHAR digits[] = L"0123456789ABCDEF";
+    WCHAR digits[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F',0};
 
     if (s == NULL) {
         return STATUS_INVALID_PARAMETER;

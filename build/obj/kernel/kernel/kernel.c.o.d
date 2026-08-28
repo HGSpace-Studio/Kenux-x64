@@ -1,6 +1,6 @@
 build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  kernel/arch/x86_64/include/arch/vga.h \
- kernel/arch/x86_64/include/arch/types.h kernel/lib/libc/include/stddef.h \
+ kernel/arch/x86_64/include/arch/types.h include/stddef.h \
  kernel/lib/libc/include/stdbool.h \
  kernel/arch/x86_64/include/arch/drivers.h kernel/include/fs.h \
  kernel/arch/x86_64/include/arch/ipc.h \
@@ -63,8 +63,8 @@ build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  kernel/kernel/timer.h kernel/arch/x86_64/include/arch/ntfs.h \
  kernel/arch/x86_64/include/arch/registry.h \
  kernel/arch/x86_64/include/arch/win32.h kernel/lib/libc/include/stdarg.h \
- kernel/arch/x86_64/include/arch/pe.h kernel/lib/libc/include/string.h \
- kernel/kernel/memory.h kernel/lib/libc/include/stdio.h include/kapi.h \
+ kernel/arch/x86_64/include/arch/pe.h include/string.h \
+ kernel/kernel/memory.h include/stdio.h include/kapi.h \
  include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
  include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
  include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \

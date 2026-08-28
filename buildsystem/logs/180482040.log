@@ -1,0 +1,30 @@
+-- Start building task run all -- (180482040)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder apps --
+<0> Building apps/snake_game.c
+<2> Building apps/calculator.c
+apps/calculator.c: 在函数‘calculator_run’中:
+apps/calculator.c:15:9: error: implicit declaration of function ‘vga_gets’; did you mean ‘vga_getc’? [-Wimplicit-function-declaration]
+   15 |         vga_gets(line, sizeof(line));
+      |         ^~~~~~~~
+      |         vga_getc
+apps/calculator.c: 在函数‘main’中:
+apps/calculator.c:96:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+   96 | int main(int argc, char** argv)
+      |          ~~~~^~~~
+apps/calculator.c:96:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+   96 | int main(int argc, char** argv)
+      |                    ~~~~~~~^~~~
+apps/snake_game.c: 在函数‘snake_run’中:
+apps/snake_game.c:206:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  206 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/snake_game.c: 在函数‘main’中:
+apps/snake_game.c:232:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  232 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/snake_game.c:232:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  232 | int main(int argc, char** argv) {
+      |                    ~~~~~~~^~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/apps/calculator.c.o.d -c apps/calculator.c -o build/obj/apps/calculator.c.o

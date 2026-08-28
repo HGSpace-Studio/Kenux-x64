@@ -1,5 +1,5 @@
 build/obj/kernel/api/kapi_random.c.o: kernel/api/kapi_random.c \
- include/kapi_random.h kernel/lib/libc/include/stddef.h include/kapi.h \
+ include/kapi_random.h include/stddef.h include/kapi.h \
  include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
  include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
  include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \

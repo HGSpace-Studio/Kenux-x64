@@ -1,0 +1,54 @@
+-- Start building task run all -- (654989555)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/epoll.c
+<1> Building kernel/kernel/drivers.c
+<0> Building kernel/kernel/kernel.c
+<3> Building kernel/kernel/devtmpfs.c
+kernel/kernel/drivers.c: 在函数‘drivers_register’中:
+kernel/kernel/drivers.c:39:34: warning: ISO C 不允许将一个对象指针转换为一个函数指针 [-Wpedantic]
+   39 |     drivers[driver_count].init = (int (*)(void))init_func;
+      |                                  ^
+In file included from kernel/arch/x86_64/include/arch/registry.h:5,
+                 from kernel/kernel/kernel.c:56:
+kernel/arch/x86_64/include/arch/win32.h:1374:22: error: expected ‘)’ before ‘*’ token
+ 1374 | #define stdin  ((FILE*)(uintptr_t)0)
+      |                      ^
+include/stdio.h:45:14: note: in expansion of macro ‘stdin’
+   45 | extern FILE* stdin;
+      |              ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1374:24: error: expected ‘)’ before ‘(’ token
+ 1374 | #define stdin  ((FILE*)(uintptr_t)0)
+      |                        ^
+include/stdio.h:45:14: note: in expansion of macro ‘stdin’
+   45 | extern FILE* stdin;
+      |              ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1375:22: error: expected ‘)’ before ‘*’ token
+ 1375 | #define stdout ((FILE*)(uintptr_t)1)
+      |                      ^
+include/stdio.h:46:14: note: in expansion of macro ‘stdout’
+   46 | extern FILE* stdout;
+      |              ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1375:24: error: expected ‘)’ before ‘(’ token
+ 1375 | #define stdout ((FILE*)(uintptr_t)1)
+      |                        ^
+include/stdio.h:46:14: note: in expansion of macro ‘stdout’
+   46 | extern FILE* stdout;
+      |              ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:22: error: expected ‘)’ before ‘*’ token
+ 1376 | #define stderr ((FILE*)(uintptr_t)2)
+      |                      ^
+include/stdio.h:47:14: note: in expansion of macro ‘stderr’
+   47 | extern FILE* stderr;
+      |              ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:24: error: expected ‘)’ before ‘(’ token
+ 1376 | #define stderr ((FILE*)(uintptr_t)2)
+      |                        ^
+include/stdio.h:47:14: note: in expansion of macro ‘stderr’
+   47 | extern FILE* stderr;
+      |              ^~~~~~
+<1> Building kernel/kernel/cgroup.c
+-- Enter folder kernel/gui/src --
+<0> Building kernel/gui/src/window_manager.c
+FAILED TASK run all: 

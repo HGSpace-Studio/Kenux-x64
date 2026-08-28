@@ -1,5 +1,5 @@
 build/obj/kernel/api/kapi_process.c.o: kernel/api/kapi_process.c \
- include/kapi_process.h kernel/lib/libc/include/stddef.h \
+ include/kapi_process.h include/stddef.h \
  kernel/lib/libc/include/stdbool.h include/kapi.h include/kapi_list.h \
  include/kapi_atomic.h include/kapi_bitmap.h include/kapi_kfifo.h \
  include/kapi_idr.h include/kapi_rbtree.h include/kapi_hash.h \
@@ -36,4 +36,4 @@ build/obj/kernel/api/kapi_process.c.o: kernel/api/kapi_process.c \
  kernel/arch/x86_64/include/arch/cfs.h \
  kernel/arch/x86_64/include/arch/ipc.h \
  kernel/arch/x86_64/include/arch/memory.h kernel/kernel/timer.h \
- kernel/lib/libc/include/string.h
+ include/string.h

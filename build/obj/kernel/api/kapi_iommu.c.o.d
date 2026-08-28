@@ -1,10 +1,10 @@
 build/obj/kernel/api/kapi_iommu.c.o: kernel/api/kapi_iommu.c \
- include/kapi_iommu.h kernel/lib/libc/include/stddef.h include/kapi_pci.h \
- include/kapi.h include/kapi_list.h include/kapi_atomic.h \
- include/kapi_bitmap.h include/kapi_kfifo.h include/kapi_idr.h \
- include/kapi_rbtree.h include/kapi_hash.h include/kapi_sort.h \
- include/kapi_crc.h include/kapi_mutex.h include/kapi_completion.h \
- include/kapi_wait.h include/kapi_rcu.h include/kapi_string.h \
+ include/kapi_iommu.h include/stddef.h include/kapi_pci.h include/kapi.h \
+ include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
+ include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
+ include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \
+ include/kapi_mutex.h include/kapi_completion.h include/kapi_wait.h \
+ include/kapi_rcu.h include/kapi_string.h \
  kernel/lib/libc/include/stdarg.h include/kapi_time.h \
  include/kapi_random.h include/kapi_irq.h include/kapi_kthread.h \
  include/kapi_notifier.h include/kapi_sched.h include/kapi_smp.h \
@@ -31,5 +31,4 @@ build/obj/kernel/api/kapi_iommu.c.o: kernel/api/kapi_iommu.c \
  include/kapi_device_ext.h include/kapi_sync_ext.h include/kapi_sysinfo.h \
  include/kapi_security_ext.h include/kapi_virt_ext.h include/kapi_epoll.h \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
- include/kapi_eventfd.h include/kapi_inotify.h \
- kernel/lib/libc/include/string.h
+ include/kapi_eventfd.h include/kapi_inotify.h include/string.h

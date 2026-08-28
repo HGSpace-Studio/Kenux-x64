@@ -1,0 +1,152 @@
+-- Start building task run all -- (289068536)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder apps --
+<1> Building apps/task_manager.c
+<0> Building apps/terminal.c
+<3> Building apps/tetris.c
+<2> Building apps/text_editor.c
+In file included from apps/task_manager.c:1:
+In file included from apps/tetris.c:1:
+include/stdio.h:10:25: error: 未知的类型名‘size_t’
+include/stdio.h:10:25: error: 未知的类型名‘size_t’
+   10 | int snprintf(char* str, size_t size, const char* format, ...);
+      |                         ^~~~~~
+include/stdio.h:5:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+   10 | int snprintf(char* str, size_t size, const char* format, ...);
+      |                         ^~~~~~
+    4 | #include <stdarg.h>
+include/stdio.h:5:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+  +++ |+#include <stddef.h>
+    5 | 
+include/stdio.h:16:1: error: 未知的类型名‘size_t’
+    4 | #include <stdarg.h>
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+  +++ |+#include <stddef.h>
+      | ^~~~~~
+include/stdio.h:16:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:16:25: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |                         ^~~~~~
+include/stdio.h:16:25: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:16:38: error: 未知的类型名‘size_t’
+    5 | 
+include/stdio.h:16:1: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      | ^~~~~~
+include/stdio.h:16:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |                                      ^~~~~~
+include/stdio.h:16:38: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:1: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+include/stdio.h:16:25: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |                         ^~~~~~
+apps/terminal.c:1:10: fatal error: arch/desktop.h：没有那个文件或目录
+    1 | #include <arch/desktop.h>
+      |          ^~~~~~~~~~~~~~~~
+apps/text_editor.c:1:10: fatal error: text_editor.h：没有那个文件或目录
+    1 | #include <text_editor.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+      | ^~~~~~
+include/stdio.h:16:25: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:16:38: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |                                      ^~~~~~
+include/stdio.h:16:38: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:1: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      | ^~~~~~
+include/stdio.h:17:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:32: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |                                ^~~~~~
+include/stdio.h:17:32: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:45: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |                                             ^~~~~~
+include/stdio.h:17:45: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+compilation terminated.
+include/stdio.h:17:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:32: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |                                ^~~~~~
+include/stdio.h:17:32: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:45: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |                                             ^~~~~~
+include/stdio.h:17:45: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+<0> Building apps/system_tools.c
+apps/tetris.c: 在函数‘tetris_init’中:
+apps/tetris.c:55:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+   55 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/tetris.c: 在函数‘create_tetromino’中:
+apps/tetris.c:60:15: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   60 |     t.color = (shape % 7) + 1;
+      |               ^
+apps/tetris.c: 在函数‘tetris_run’中:
+apps/tetris.c:342:27: error: 重复的 case 常量
+apps/task_manager.c: 在函数‘task_manager_run’中:
+  342 |                 case 'p': case 'P':
+      |                           ^~~~
+apps/tetris.c:332:17: note: 已在这里使用过
+  332 |                 case 80:
+      |                 ^~~~
+apps/task_manager.c:194:11: warning: ‘unsigned int’转换自‘time_t’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  194 |     srand(time(NULL));
+      |           ^~~~~~~~~~
+apps/tetris.c: 在函数‘main’中:
+apps/tetris.c:369:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  369 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/tetris.c:369:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  369 | int main(int argc, char** argv) {
+      |                    ~~~~~~~^~~~
+apps/task_manager.c: 在函数‘main’中:
+apps/task_manager.c:272:14: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+  272 | int main(int argc, char** argv) {
+      |          ~~~~^~~~
+apps/task_manager.c:272:27: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+  272 | int main(int argc, char** argv) {
+      |                    ~~~~~~~^~~~
+In file included from apps/system_tools.c:1:
+include/stdio.h:10:25: error: 未知的类型名‘size_t’
+   10 | int snprintf(char* str, size_t size, const char* format, ...);
+      |                         ^~~~~~
+include/stdio.h:5:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+    4 | #include <stdarg.h>
+  +++ |+#include <stddef.h>
+    5 | 
+include/stdio.h:16:1: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      | ^~~~~~
+include/stdio.h:16:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:16:25: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |                         ^~~~~~
+include/stdio.h:16:25: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:16:38: error: 未知的类型名‘size_t’
+   16 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |                                      ^~~~~~
+include/stdio.h:16:38: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:1: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      | ^~~~~~
+include/stdio.h:17:1: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:32: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |                                ^~~~~~
+include/stdio.h:17:32: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+include/stdio.h:17:45: error: 未知的类型名‘size_t’
+   17 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |                                             ^~~~~~
+include/stdio.h:17:45: note: ‘size_t’ is defined in header ‘<stddef.h>’; this is probably fixable by adding ‘#include <stddef.h>’
+apps/system_tools.c: 在函数‘cmd_sysinfo’中:
+apps/system_tools.c:7:22: warning: 未使用的参数‘argc’ [-Wunused-parameter]
+    7 | void cmd_sysinfo(int argc, char** argv)
+      |                  ~~~~^~~~
+apps/system_tools.c:7:35: warning: 未使用的参数‘argv’ [-Wunused-parameter]
+FAILED TASK run all: [Errno 32] Broken pipe

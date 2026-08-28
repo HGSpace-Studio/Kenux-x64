@@ -10,6 +10,7 @@
 #include <arch/usermode.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <kapi.h>
 #include <slab.h>
 #include <gui.h>

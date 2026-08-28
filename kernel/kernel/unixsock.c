@@ -7,7 +7,6 @@
 #include <string.h>
 #include <slab.h>
 
-extern void* kmalloc(size_t size);
 extern void  kfree(void* ptr);
 extern void  process_yield(void);
 

@@ -1,6 +1,5 @@
 build/obj/kernel/api/kapi_fs.c.o: kernel/api/kapi_fs.c \
- include/kapi_fs_ext.h kernel/lib/libc/include/stddef.h \
- kernel/lib/libc/include/stdbool.h \
+ include/kapi_fs_ext.h include/stddef.h kernel/lib/libc/include/stdbool.h \
  kernel/arch/x86_64/include/arch/types.h include/kapi.h \
  include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
  include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
@@ -34,5 +33,4 @@ build/obj/kernel/api/kapi_fs.c.o: kernel/api/kapi_fs.c \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
  include/kapi_eventfd.h include/kapi_inotify.h \
  kernel/arch/x86_64/include/arch/fs.h kernel/include/fs.h \
- kernel/arch/x86_64/include/arch/memory.h \
- kernel/lib/libc/include/string.h
+ kernel/arch/x86_64/include/arch/memory.h include/string.h

@@ -1,5 +1,5 @@
 build/obj/kernel/api/kapi_debugfs.c.o: kernel/api/kapi_debugfs.c \
- include/kapi_debugfs.h kernel/lib/libc/include/stddef.h include/kapi.h \
+ include/kapi_debugfs.h include/stddef.h include/kapi.h \
  include/kapi_list.h include/kapi_atomic.h include/kapi_bitmap.h \
  include/kapi_kfifo.h include/kapi_idr.h include/kapi_rbtree.h \
  include/kapi_hash.h include/kapi_sort.h include/kapi_crc.h \
@@ -34,5 +34,5 @@ build/obj/kernel/api/kapi_debugfs.c.o: kernel/api/kapi_debugfs.c \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
  include/kapi_eventfd.h include/kapi_inotify.h \
  kernel/arch/x86_64/include/arch/fs.h kernel/include/fs.h \
- kernel/arch/x86_64/include/arch/memory.h \
- kernel/lib/libc/include/string.h kernel/lib/libc/include/stdio.h
+ kernel/arch/x86_64/include/arch/memory.h include/string.h \
+ include/stdio.h

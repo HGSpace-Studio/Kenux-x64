@@ -1,0 +1,36 @@
+-- Start building task run all -- (840193584)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/shell_enhanced.c
+In file included from kernel/kernel/shell_enhanced.c:13:
+include/stdlib.h:45:1: error: unknown type name ‘div_t’; did you mean ‘dev_t’?
+   45 | div_t div(int numer, int denom);
+      | ^~~~~
+      | dev_t
+include/stdlib.h:46:1: error: unknown type name ‘ldiv_t’; did you mean ‘dev_t’?
+   46 | ldiv_t ldiv(long numer, long denom);
+      | ^~~~~~
+      | dev_t
+include/stdlib.h:47:1: error: unknown type name ‘lldiv_t’; did you mean ‘dev_t’?
+   47 | lldiv_t lldiv(long long numer, long long denom);
+      | ^~~~~~~
+      | dev_t
+kernel/kernel/shell_enhanced.c: 在函数‘shell_find_elf’中:
+kernel/kernel/shell_enhanced.c:331:32: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  331 |         strncpy(out, cmd, size - 1);
+      |                           ~~~~~^~~
+kernel/kernel/shell_enhanced.c:336:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  336 |         snprintf(out, size, "%s%s", roots[i], cmd);
+      |                       ^~~~
+kernel/kernel/shell_enhanced.c: 在文件作用域：
+kernel/kernel/shell_enhanced.c:239:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  239 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:140:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  140 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:85:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   85 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/kernel/shell_enhanced.c.o.d -c kernel/kernel/shell_enhanced.c -o build/obj/kernel/kernel/shell_enhanced.c.o

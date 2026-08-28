@@ -1,0 +1,21 @@
+-- Start building task run all -- (881803571)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/api --
+<0> Building kernel/api/kapi_mempool.c
+<2> Building kernel/api/kapi_list.c
+<1> Building kernel/api/kapi_kthread.c
+<3> Building kernel/api/kapi_kprobe.c
+kernel/api/kapi_mempool.c: 在函数‘kapi_mempool_create’中:
+kernel/api/kapi_mempool.c:70:38: warning: cast between incompatible function types from ‘void * (*)(uint64_t)’ {或称 ‘void * (*)(long long unsigned int)’} to ‘void * (*)(size_t)’ {或称 ‘void * (*)(long unsigned int)’} [-Wcast-function-type]
+   70 |     pool->alloc_fn = alloc ? alloc : (kapi_mempool_alloc_fn)memory_alloc;
+      |                                      ^
+<2> Building kernel/api/kapi_kobject.c
+<1> Building kernel/api/kapi_kfifo.c
+kernel/api/kapi_kobject.c: 在函数‘kapi_kobject_add’中:
+kernel/api/kapi_kobject.c:100:9: error: implicit declaration of function ‘vsnprintf’; did you mean ‘vsprintf’? [-Wimplicit-function-declaration]
+  100 |         vsnprintf(kobj->name, KAPI_KOBJECT_NAME_LEN, fmt, args);
+      |         ^~~~~~~~~
+      |         vsprintf
+<2> Building kernel/api/kapi_irq.c
+FAILED TASK run all: 

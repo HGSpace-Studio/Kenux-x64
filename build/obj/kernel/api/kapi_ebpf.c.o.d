@@ -1,5 +1,5 @@
 build/obj/kernel/api/kapi_ebpf.c.o: kernel/api/kapi_ebpf.c \
- include/kapi_ebpf.h kernel/lib/libc/include/stddef.h \
+ include/kapi_ebpf.h include/stddef.h \
  kernel/arch/x86_64/include/arch/bpf.h \
  kernel/arch/x86_64/include/arch/types.h \
  kernel/lib/libc/include/stdbool.h \
@@ -32,6 +32,5 @@ build/obj/kernel/api/kapi_ebpf.c.o: kernel/api/kapi_ebpf.c \
  include/kapi_device_ext.h include/kapi_sync_ext.h include/kapi_sysinfo.h \
  include/kapi_security_ext.h include/kapi_virt_ext.h include/kapi_epoll.h \
  include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
- include/kapi_eventfd.h include/kapi_inotify.h \
- kernel/lib/libc/include/string.h kernel/include/slab.h \
- kernel/arch/x86_64/include/arch/slab.h
+ include/kapi_eventfd.h include/kapi_inotify.h include/string.h \
+ kernel/include/slab.h kernel/arch/x86_64/include/arch/slab.h

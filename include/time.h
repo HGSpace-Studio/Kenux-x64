@@ -4,7 +4,11 @@
 #define CLOCKS_PER_SEC 1000000L
 
 typedef long clock_t;
+
+#ifndef _TIME_T_DEFINED
 typedef long time_t;
+#define _TIME_T_DEFINED
+#endif
 
 struct tm {
     int tm_sec;

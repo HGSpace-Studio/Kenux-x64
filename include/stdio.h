@@ -2,12 +2,20 @@
 #define STDIO_H
 
 #include <stdarg.h>
+#include <stddef.h>
 
+#ifdef KAL_KERNEL
+
+#if !defined(_FILE_DEFINED) && !defined(_MSVCRT_TYPES)
 typedef long FILE;
+#define _FILE_DEFINED
+#endif
 
 int printf(const char* format, ...);
 int sprintf(char* str, const char* format, ...);
 int snprintf(char* str, size_t size, const char* format, ...);
+int vsprintf(char* str, const char* format, va_list ap);
+int vsnprintf(char* str, size_t size, const char* format, va_list ap);
 int scanf(const char* format, ...);
 int sscanf(const char* str, const char* format, ...);
 
@@ -36,8 +44,12 @@ void perror(const char* s);
 int remove(const char* path);
 int rename(const char* oldpath, const char* newpath);
 
-FILE* stdin;
-FILE* stdout;
-FILE* stderr;
+#ifndef _MSVCRT_TYPES
+extern FILE* stdin;
+extern FILE* stdout;
+extern FILE* stderr;
+#endif
+
+#endif
 
 #endif
