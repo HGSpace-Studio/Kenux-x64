@@ -50,7 +50,7 @@ typedef void                    VOID;
 
 #define EFI_ERROR(a)            (((INTN)(a)) < 0)
 
-typedef UINT16                  CHAR16;
+typedef __WCHAR_TYPE__          CHAR16;
 typedef unsigned char           BOOLEAN;
 
 #define TRUE                    1
@@ -171,7 +171,7 @@ typedef struct {
     UINT64 LastAccessTime;
     UINT64 ModificationTime;
     UINT64 Attribute;
-    CHAR16 FileName[256];
+    CHAR16 FileName[1];
 } EFI_FILE_INFO;
 
 struct EFI_FILE_PROTOCOL {

@@ -58,6 +58,9 @@ else:
     AS = os.environ.get("AS", "nasm")
     QEMU = os.environ.get("QEMU", "qemu-system-x86_64")
 
+EFI_CC = os.environ.get("EFI_CC", CC if IS_WINDOWS else "x86_64-w64-mingw32-gcc")
+EFI_OBJCOPY = os.environ.get("EFI_OBJCOPY", OBJCOPY)
+
 # OVMF 固件
 OVMF_CODE = ROOT / "resources" / "firmware" / "OVMF_CODE.fd"
 if not OVMF_CODE.exists():
@@ -305,10 +308,13 @@ def add_link(
     )
 
 
-def ensure_tools(*, require_kernel: bool = False, require_qemu: bool = False) -> None:
+def ensure_tools(*, require_kernel: bool = False, require_bootloader: bool = False,
+                 require_qemu: bool = False) -> None:
     required = [("gcc", CC)]
     if require_kernel:
         required.extend((("objcopy", OBJCOPY), ("nasm", AS)))
+    if require_bootloader:
+        required.append(("EFI gcc", EFI_CC))
     if require_qemu:
         required.append(("qemu-system-x86_64", QEMU))
     missing = []
@@ -343,17 +349,26 @@ def validate_sources(
         raise BuildFailure("缺少构建输入，拒绝继续: " + ", ".join(sorted(set(missing))))
 
 
-def qemu_command(*, debug: bool = False) -> tuple[str, ...]:
+def qemu_command(*, debug: bool = False, vars_path: Path | None = None) -> tuple[str, ...]:
     """生成 QEMU 启动命令（UEFI 模式，VVFAT 挂载 esp 目录）"""
     command = [QEMU, "-m", "256M"]
-    if OVMF_CODE.exists():
-        command += ["-pflash", str(OVMF_CODE)]
+    firmware_code = OVMF_CODE
+    system_code = Path("/usr/share/edk2/x64/OVMF_CODE.4m.fd")
+    if not IS_WINDOWS and system_code.exists():
+        firmware_code = system_code
+    if firmware_code.exists() and vars_path is not None:
+        command += [
+            "-drive", f"if=pflash,format=raw,readonly=on,file={firmware_code}",
+            "-drive", f"if=pflash,format=raw,file={vars_path}",
+        ]
+    elif firmware_code.exists():
+        command += ["-drive", f"if=pflash,format=raw,readonly=on,file={firmware_code}"]
     # VVFAT 模式直接挂载 esp 目录，并把 Kenux EFI 盘设为固件第一启动项。
     command += ["-drive", f"if=none,id=kenuxesp,file=fat:rw:{ESP_DIR},format=raw"]
-    command += ["-device", "ahci,id=ahci"]
-    command += ["-device", "ide-hd,bus=ahci.0,drive=kenuxesp,bootindex=0"]
+    command += ["-device", "ide-hd,drive=kenuxesp,bootindex=0"]
     command += ["-boot", "menu=off,strict=on"]
     command += ["-serial", f"file:{SERIAL_LOG}"]
+    command += ["-debugcon", "file:/tmp/kenux-debugcon.log", "-global", "isa-debugcon.iobase=0xe9"]
     command += ["-display", "none" if debug else "gtk"]
     command += ["-no-reboot"]
     return tuple(command)
@@ -437,17 +452,17 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
     graph.add(Target(name="kernel", depends_on=("kernel-bin",), group=True, kind="aggregate"))
 
     # ===== 4. 更新 ESP 目录中的内核文件 =====
-    esp_kernel = ESP_DIR / "KENUXK.BIN"
+    esp_kernel = ESP_DIR / "kernel.elf"
 
     def copy_kernel(context: ActionContext) -> None:
         ESP_DIR.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(KERNEL_BIN, esp_kernel)
+        shutil.copyfile(KERNEL_ELF, esp_kernel)
 
     graph.add(
-        Target(
-            name="esp-update",
-            outputs=(esp_kernel,),
-            inputs=(KERNEL_BIN,),
+            Target(
+                name="esp-update",
+                outputs=(esp_kernel,),
+                inputs=(KERNEL_ELF, KERNEL_BIN),
             kind="generate",
             action=copy_kernel,
             action_key="copy-kernel-v1",
@@ -457,20 +472,28 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
     # ===== 5. 构建 bootloader (bootx64.efi) =====
     bootloader_source = ROOT / "bootloader" / "bootx64.c"
     bootloader_efi = ESP_DIR / "EFI" / "BOOT" / "BOOTX64.EFI"
+    bootloader_pe = ROOT / "build" / "bootloader" / "BOOTX64.EFI.pe"
 
     if bootloader_source.exists():
         efi_flags = [
-            CC, "-ffreestanding",
-            "-fno-stack-protector", "-fno-short-enums",
-            "-Wall", "-Wextra", "-O2", "-Wl,--subsystem,10",
-            "-Wl,-e,efi_main", "-nostdlib", "-nostartfiles",
+            EFI_CC, "-m64", "-ffreestanding", "-fno-builtin", "-mno-red-zone",
+            "-fno-stack-protector", "-fno-short-enums", "-fshort-wchar",
+            "-fno-asynchronous-unwind-tables", "-fno-unwind-tables",
+            "-Wall", "-Wextra", "-O2",
+            "-Wl,-e,efi_main", "-Wl,--subsystem,10", "-Wl,--image-base=0x0",
+            "-nostdlib", "-nostartfiles",
             "-I", relative(ROOT / "bootloader"),
         ]
-
         def build_bootloader(context: ActionContext) -> None:
             bootloader_efi.parent.mkdir(parents=True, exist_ok=True)
+            bootloader_pe.parent.mkdir(parents=True, exist_ok=True)
             context.run(
-                tuple(efi_flags + ["-o", relative(bootloader_efi), relative(bootloader_source)]),
+                tuple(efi_flags + ["-o", relative(bootloader_pe), relative(bootloader_source)]),
+                announce=True,
+            )
+            context.run(
+                (EFI_OBJCOPY, "-j", ".text", "-j", ".rdata", "-j", ".data", "-j", ".reloc",
+                 "--target=efi-app-x86_64", relative(bootloader_pe), relative(bootloader_efi)),
                 announce=True,
             )
 
@@ -479,9 +502,11 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
                 name="bootloader",
                 outputs=(bootloader_efi,),
                 inputs=(bootloader_source,),
+                implicit_inputs=(ROOT / "bootloader" / "include" / "efi.h",
+                                 ROOT / "bootloader" / "include" / "fbc.h"),
                 kind="generate",
                 action=build_bootloader,
-                action_key="bootloader-v1",
+                action_key="bootloader-v4",
             )
         )
     else:
@@ -627,6 +652,14 @@ def complete_simple(store: TaskStore, task_id: str, command: str, text: str, suc
 
 
 def run_foreground(paths: BuildPaths, graph: BuildGraph, task_id: str, target: Target, label: str) -> int:
+    if target.name in {"run", "run-debug"}:
+        vars_template = ROOT / "OVMF_VARS_4M.fd"
+        system_vars = Path("/usr/share/edk2/x64/OVMF_VARS.4m.fd")
+        if not IS_WINDOWS and system_vars.exists():
+            vars_template = system_vars
+        vars_path = Path("/tmp") / f"kenux-ovmf-vars-{os.getpid()}.fd"
+        shutil.copyfile(vars_template, vars_path)
+        target.command = qemu_command(debug=target.name == "run-debug", vars_path=vars_path)
     runner = create_runner(paths, graph, task_id)
     runner.run(build_roots(graph, target), label)
     return 0
@@ -828,6 +861,7 @@ def main(argv: list[str] | None = None) -> int:
             require_bootloader = requested_task in {"all", "bootloader", "run", "run-debug", "rebuild"}
             ensure_tools(
                 require_kernel=require_kernel,
+                require_bootloader=require_bootloader,
                 require_qemu=arguments.command == "run" and requested_task in {"run", "run-debug"},
             )
             validate_sources(

@@ -5,20 +5,17 @@ global _start
 extern kernel_main
 
 _start:
-    ; bootloader (UEFI ms_abi) passes args in RCX, RDX
-    ; Save them to memory first
-    mov [fb_config], rcx
-    mov [mem_map], rdx
+    ; bootx64.c calls the kernel entry with the SysV ABI (RDI, RSI).
+    ; Save the handoff pointers before replacing the kernel stack.
+    mov [fb_config], rdi
+    mov [mem_map], rsi
 
     ; Set up kernel stack
     mov rsp, stack_top
 
-    ; Reload args and set up for BOTH ABIs so it works regardless of
-    ; whether kernel_main was compiled with SysV (RDI/RSI) or ms_abi (RCX/RDX)
+    ; Reload the handoff pointers for kernel_main's SysV ABI.
     mov rdi, [fb_config]    ; SysV ABI: 1st arg in RDI
     mov rsi, [mem_map]      ; SysV ABI: 2nd arg in RSI
-    mov rcx, [fb_config]    ; ms_abi:   1st arg in RCX
-    mov rdx, [mem_map]      ; ms_abi:   2nd arg in RDX
     call kernel_main
 
     cli
