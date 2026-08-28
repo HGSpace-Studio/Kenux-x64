@@ -29,6 +29,7 @@ typedef PVOID LPVOID;
 typedef const void* LPCVOID;
 typedef DWORD* PDWORD;
 typedef unsigned char UCHAR;
+typedef short SHORT;
 typedef unsigned short USHORT;
 typedef unsigned int UINT;
 typedef unsigned long ULONG;
@@ -123,6 +124,10 @@ typedef DWORDLONG* PDWORDLONG;
 typedef DWORD_PTR* PDWORD_PTR;
 typedef intptr_t (*FARPROC)();
 typedef unsigned short ATOM;
+
+#ifndef NTAPI
+#define NTAPI __attribute__((stdcall))
+#endif
 
 #ifndef FALSE
 #define FALSE 0
@@ -465,6 +470,25 @@ typedef struct tagWINDOWINFO {
 #define FILE_ATTRIBUTE_TEMPORARY    0x00000100
 
 #define INVALID_HANDLE_VALUE ((HANDLE)(LONG_PTR)-1)
+#define INVALID_FILE_SIZE   ((DWORD)0xFFFFFFFF)
+
+#define FILE_TYPE_UNKNOWN   0x0000
+#define FILE_TYPE_DISK      0x0001
+#define FILE_TYPE_CHAR      0x0002
+#define FILE_TYPE_PIPE      0x0003
+#define FILE_TYPE_REMOTE    0x8000
+
+#define STD_INPUT_HANDLE    ((DWORD)-10)
+#define STD_OUTPUT_HANDLE   ((DWORD)-11)
+#define STD_ERROR_HANDLE    ((DWORD)-12)
+
+#define THREAD_PRIORITY_LOWEST          (-2)
+#define THREAD_PRIORITY_BELOW_NORMAL    (-1)
+#define THREAD_PRIORITY_NORMAL          0
+#define THREAD_PRIORITY_ABOVE_NORMAL    1
+#define THREAD_PRIORITY_HIGHEST         2
+#define THREAD_PRIORITY_IDLE            (-15)
+#define THREAD_PRIORITY_TIME_CRITICAL   15
 
 #define BEGIN_OF_FILE        0
 #define CURRENT_FILE_POINT   1
@@ -492,6 +516,10 @@ typedef struct tagWINDOWINFO {
 #define MEM_RELEASE         0x00008000
 #define MEM_RESET           0x00080000
 #define MEM_LARGE_PAGES     0x20000000
+#define MEM_FREE            0x00010000
+#define MEM_PRIVATE         0x00020000
+#define MEM_MAPPED          0x00040000
+#define MEM_IMAGE           0x01000000
 
 #define PAGE_NOACCESS       0x01
 #define PAGE_READONLY       0x02
@@ -867,6 +895,9 @@ typedef struct tagWINDOWINFO {
 #define ERROR_ENVVAR_NOT_FOUND      203L
 #define ERROR_BUFFER_OVERFLOW       111L
 #define ERROR_NEGATIVE_SEEK         131L
+#define ERROR_NOT_SUPPORTED         50L
+#define ERROR_INVALID_ADDRESS       487L
+#define ERROR_PIPE_NOT_CONNECTED    233L
 
 #define DRIVE_UNKNOWN     0
 #define DRIVE_NO_ROOT_DIR 1
@@ -923,9 +954,12 @@ typedef BOOL (*LOCALE_ENUMPROC)(LPSTR);
 #define C1_CNTRL          0x0020
 #define C1_ALPHA          0x0080
 
-#define COORD struct { SHORT X; SHORT Y; }
-#define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
-#define CHAR_INFO union { CHAR UnicodeChar; CHAR AsciiChar; WORD Attributes; }
+typedef struct { SHORT X; SHORT Y; } COORD;
+typedef struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; } SMALL_RECT;
+typedef union _CHAR_INFO {
+    struct { CHAR AsciiChar; WORD Attributes; };
+    struct { WCHAR UnicodeChar; WORD Attributes; } DUMMYSTRUCTNAME;
+} CHAR_INFO, *PCHAR_INFO;
 
 BOOL LockFile(HANDLE hFile, uint32_t dwFileOffsetLow,
               uint32_t dwFileOffsetHigh, uint32_t nNumberOfBytesToLockLow,
@@ -1508,12 +1542,36 @@ typedef struct _OBJECT_ATTRIBUTES {
 
 /* IO_STATUS_BLOCK */
 typedef struct _IO_STATUS_BLOCK {
-    union {
-        NTSTATUS Status;
-        PVOID    Pointer;
-    } DUMMYUNIONNAME;
+    NTSTATUS Status;
     ULONG_PTR Information;
 } IO_STATUS_BLOCK, *PIO_STATUS_BLOCK;
+
+typedef VOID (NTAPI *PTIMER_APC_ROUTINE)(PVOID TimerContext, PVOID TimerArgument, ULONG ResumeCount);
+
+typedef enum _KEY_VALUE_INFORMATION_CLASS {
+    KeyValueBasicInformation,
+    KeyValueFullInformation,
+    KeyValuePartialInformation,
+    KeyValueFullInformationAlign64,
+    KeyValuePartialInformationAlign64
+} KEY_VALUE_INFORMATION_CLASS;
+
+typedef enum _KEY_INFORMATION_CLASS {
+    KeyBasicInformation,
+    KeyNodeInformation,
+    KeyFullInformation,
+    KeyNameInformation,
+    KeyCachedInformation,
+    KeyFlagsInformation
+} KEY_INFORMATION_CLASS;
+
+typedef enum _OBJECT_INFORMATION_CLASS {
+    ObjectBasicInformation,
+    ObjectNameInformation,
+    ObjectTypeInformation,
+    ObjectAllTypesInformation,
+    ObjectHandleInformation
+} OBJECT_INFORMATION_CLASS;
 
 /* RtlXXX - Runtime Library */
 void RtlInitUnicodeString(PUNICODE_STRING s, PCWSTR p);

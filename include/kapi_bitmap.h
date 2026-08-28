@@ -30,7 +30,7 @@ static inline int kapi_bitmap_test(const unsigned long* bitmap, unsigned int bit
 
 static inline void kapi_bitmap_set_all(unsigned long* bitmap, unsigned int nbits)
 {
-    unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+    unsigned int longs = (unsigned int)((nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG);
     for (unsigned int i = 0; i < longs; i++) {
         bitmap[i] = ~0UL;
     }
@@ -38,7 +38,7 @@ static inline void kapi_bitmap_set_all(unsigned long* bitmap, unsigned int nbits
 
 static inline void kapi_bitmap_clear_all(unsigned long* bitmap, unsigned int nbits)
 {
-    unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+    unsigned int longs = (unsigned int)((nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG);
     for (unsigned int i = 0; i < longs; i++) {
         bitmap[i] = 0;
     }
@@ -46,14 +46,14 @@ static inline void kapi_bitmap_clear_all(unsigned long* bitmap, unsigned int nbi
 
 static inline int kapi_bitmap_find_first(const unsigned long* bitmap, unsigned int nbits)
 {
-    unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+    unsigned int longs = (unsigned int)((nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG);
     for (unsigned int i = 0; i < longs; i++) {
         if (bitmap[i] != 0) {
             unsigned int offset = i * KAPI_BITS_PER_LONG;
             unsigned long val = bitmap[i];
             for (unsigned int j = 0; j < KAPI_BITS_PER_LONG && (offset + j) < nbits; j++) {
                 if (val & (1UL << j)) {
-                    return offset + j;
+                    return (int)(offset + j);
                 }
             }
         }
@@ -63,14 +63,14 @@ static inline int kapi_bitmap_find_first(const unsigned long* bitmap, unsigned i
 
 static inline int kapi_bitmap_find_first_zero(const unsigned long* bitmap, unsigned int nbits)
 {
-    unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+    unsigned int longs = (unsigned int)((nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG);
     for (unsigned int i = 0; i < longs; i++) {
         if (bitmap[i] != ~0UL) {
             unsigned int offset = i * KAPI_BITS_PER_LONG;
             unsigned long val = bitmap[i];
             for (unsigned int j = 0; j < KAPI_BITS_PER_LONG && (offset + j) < nbits; j++) {
                 if (!(val & (1UL << j))) {
-                    return offset + j;
+                    return (int)(offset + j);
                 }
             }
         }
@@ -81,7 +81,7 @@ static inline int kapi_bitmap_find_first_zero(const unsigned long* bitmap, unsig
 static inline unsigned int kapi_bitmap_count(const unsigned long* bitmap, unsigned int nbits)
 {
     unsigned int count = 0;
-    unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+    unsigned int longs = (unsigned int)((nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG);
     for (unsigned int i = 0; i < longs; i++) {
         unsigned long val = bitmap[i];
         while (val) {

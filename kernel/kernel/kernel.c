@@ -84,6 +84,8 @@ int  advapi32_init(void);
 int  shell32_init(void);
 int  cmd_init_global(void);
 
+extern void perf_init(void);
+
 extern void init_main(void);
 
 static inline void serial_putc(char c)
@@ -104,6 +106,7 @@ uint64_t kenux_uptime(void)
 
 void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
 {
+    (void)mmi;
     serial_putc('V');
     framebuffer_init(fbc);
 

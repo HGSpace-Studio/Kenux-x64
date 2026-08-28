@@ -12,7 +12,23 @@ void calculator_run(void)
     while (1) {
         char line[128];
         vga_print("calc> ");
-        vga_gets(line, sizeof(line));
+        int pos = 0;
+        char c;
+        while (pos < 127 && vga_getc(&c) == 1 && c != '\n' && c != '\r') {
+            if (c == '\b') {
+                if (pos > 0) {
+                    pos--;
+                    vga_putc('\b');
+                    vga_putc(' ');
+                    vga_putc('\b');
+                }
+                continue;
+            }
+            line[pos++] = c;
+            vga_putc(c);
+        }
+        line[pos] = '\0';
+        vga_putc('\n');
         
         if (strcmp(line, "exit") == 0 || strcmp(line, "quit") == 0) {
             break;

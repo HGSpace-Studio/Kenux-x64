@@ -9,6 +9,7 @@
 #include "kapi.h"
 
 #include <string.h>
+#include <stdio.h>
 
 static kapi_raid_array_t kapi_raid_table[KAPI_RAID_MAX_ARRAYS];
 static int kapi_raid_initialized = 0;

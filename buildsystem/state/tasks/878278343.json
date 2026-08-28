@@ -1,0 +1,13 @@
+{
+  "command": [
+    "run",
+    "all"
+  ],
+  "created_at": "2026-08-28T07:22:29+00:00",
+  "id": "878278343",
+  "log": "buildsystem/logs/878278343.log",
+  "started_at": "2026-08-28T07:22:29+00:00",
+  "status": "running",
+  "task": "run all",
+  "total_targets": 264
+}

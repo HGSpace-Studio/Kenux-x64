@@ -31,6 +31,7 @@ extern "C" {
 #define KAPI_MEM_TYPE_MMIO        2
 #define KAPI_MEM_TYPE_DEVICE      3
 
+#ifndef KAPI_DEV_TYPE_PCI
 #define KAPI_DEV_TYPE_PCI         0
 #define KAPI_DEV_TYPE_USB         1
 #define KAPI_DEV_TYPE_SERIAL      2
@@ -38,9 +39,16 @@ extern "C" {
 #define KAPI_DEV_TYPE_NETWORK     4
 #define KAPI_DEV_TYPE_STORAGE     5
 #define KAPI_DEV_TYPE_DISPLAY     6
+#endif
+#ifndef KAPI_DEV_TYPE_INPUT
 #define KAPI_DEV_TYPE_INPUT       7
+#endif
+#ifndef KAPI_DEV_TYPE_AUDIO
 #define KAPI_DEV_TYPE_AUDIO       8
+#endif
+#ifndef KAPI_DEV_TYPE_WATCHDOG
 #define KAPI_DEV_TYPE_WATCHDOG    9
+#endif
 #define KAPI_DEV_TYPE_RNG         10
 #define KAPI_DEV_TYPE_BALLOON     11
 #define KAPI_DEV_TYPE_9P          12
@@ -102,7 +110,7 @@ typedef struct {
     bool is_executable;
     bool is_cached;
     void* host_addr;
-} kapi_mem_region_t;
+} kapi_virt_mem_region_t;
 
 typedef struct {
     int type;
@@ -350,6 +358,7 @@ int kapi_msi_route(kapi_vm_id_t vm, int gsi, int virq);
 
 int kapi_msi_dequeue(kapi_vm_id_t vm, int gsi);
 
+#ifndef KAPI_CONTAINER_H
 int kapi_container_create(const char* name, const char* config);
 
 int kapi_container_start(const char* name);
@@ -367,6 +376,7 @@ int kapi_container_list(char** names, int max_names);
 bool kapi_is_in_container(void);
 
 const char* kapi_get_container_name(void);
+#endif
 
 #ifdef __cplusplus
 }

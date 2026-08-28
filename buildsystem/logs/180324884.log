@@ -1,0 +1,26 @@
+-- Start building task run all -- (180324884)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/api --
+<2> Building kernel/api/kapi_profiler.c
+<3> Building kernel/api/kapi_epoll.c
+<1> Building kernel/api/kapi_eventfd.c
+-- Enter folder img/boot --
+<2> Building img/boot/kernel.elf.pe
+/usr/x86_64-w64-mingw32/bin/ld: img/boot/kernel.elf.pe:.text: section below image base
+/usr/x86_64-w64-mingw32/bin/ld: img/boot/kernel.elf.pe:.rodata: section below image base
+/usr/x86_64-w64-mingw32/bin/ld: img/boot/kernel.elf.pe:.data: section below image base
+/usr/x86_64-w64-mingw32/bin/ld: img/boot/kernel.elf.pe:.ctors: section below image base
+/usr/x86_64-w64-mingw32/bin/ld: img/boot/kernel.elf.pe:.bss: section below image base
+<0> Generating img/boot/kernel.bin
+-- Enter folder esp --
+<3> Generating esp/KENUXK.BIN
+DONE TASK run all IN 0.4s.
+Result:
+Started 3 tasks
+Entered 3 folders
+Built 4 files
+Generated 2 files
+Ran 0 commands
+Downloaded 0 files
+0 errors

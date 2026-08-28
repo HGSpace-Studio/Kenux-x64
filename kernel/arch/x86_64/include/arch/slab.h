@@ -49,8 +49,11 @@ void kmem_cache_destroy(kmem_cache_t* cache);
 void* kmem_cache_alloc(kmem_cache_t* cache);
 void kmem_cache_free(kmem_cache_t* cache, void* obj);
 
-void* kmalloc(uint64_t size);
-void* kzalloc(uint64_t size);
+void* slab_alloc(uint64_t size);
+void slab_free(void* ptr);
+
+void* kmalloc(size_t size);
+void* kzalloc(size_t size);
 void  kfree(void* ptr);
 uint64_t ksize(void* ptr);
 

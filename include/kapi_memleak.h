@@ -3,7 +3,12 @@
 
 #include <stdint.h>
 #include <stddef.h>
+
+#ifdef KAL_KERNEL
+#include <arch/types.h>
+#else
 #include <time.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {

@@ -1,0 +1,1202 @@
+-- Start building task run all -- (896577840)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/kernel.c
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/wmi.c
+<2> Building kernel/arch/x86_64/win32_security.c
+<1> Building kernel/arch/x86_64/win32_shell.c
+kernel/arch/x86_64/win32_shell.c: 在函数‘ShellExecuteA’中:
+kernel/arch/x86_64/win32_shell.c:207:30: warning: 未使用的变量‘tmp’ [-Wunused-variable]
+  207 |                         char tmp[512];
+      |                              ^~~
+kernel/arch/x86_64/wmi.c: 在函数‘wmi_exec_query’中:
+kernel/arch/x86_64/wmi.c:498:21: warning: 多字节字符常量 [-Wmultichar]
+  498 |     en->signature = 'ENUM';
+      |                     ^~~~~~
+kernel/arch/x86_64/win32_security.c: 在函数‘CreateWellKnownSid’中:
+kernel/arch/x86_64/win32_security.c:8:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:397:43: note: in expansion of macro ‘SECURITY_WORLD_SID_AUTHORITY’
+  397 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:9:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+    9 | #define SECURITY_LOCAL_SID_AUTHORITY      {0,0,0,0,0,2}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:398:43: note: in expansion of macro ‘SECURITY_LOCAL_SID_AUTHORITY’
+  398 |     SID_IDENTIFIER_AUTHORITY local_auth = SECURITY_LOCAL_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:10:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+   10 | #define SECURITY_CREATOR_SID_AUTHORITY    {0,0,0,0,0,3}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:399:45: note: in expansion of macro ‘SECURITY_CREATOR_SID_AUTHORITY’
+  399 |     SID_IDENTIFIER_AUTHORITY creator_auth = SECURITY_CREATOR_SID_AUTHORITY;
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:400:40: note: in expansion of macro ‘SECURITY_NT_AUTHORITY’
+  400 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: 在函数‘sid_is_world_or_auth’中:
+kernel/arch/x86_64/win32_security.c:8:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:591:43: note: in expansion of macro ‘SECURITY_WORLD_SID_AUTHORITY’
+  591 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:12:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:592:40: note: in expansion of macro ‘SECURITY_NT_AUTHORITY’
+  592 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/wmi.c: 在函数‘wmi_enum_get’中:
+kernel/arch/x86_64/wmi.c:531:36: warning: 多字节字符常量 [-Wmultichar]
+  531 |     if (en->signature != (uint32_t)'ENUM') return WBEM_E_INVALID_PARAMETER;
+      |                                    ^~~~~~
+kernel/arch/x86_64/win32_security.c: 在函数‘create_system_token’中:
+kernel/arch/x86_64/win32_security.c:12:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:662:40: note: in expansion of macro ‘SECURITY_NT_AUTHORITY’
+  662 |     SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c:8:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+    8 | #define SECURITY_WORLD_SID_AUTHORITY      {0,0,0,0,0,1}
+kernel/arch/x86_64/win32_shell.c: 在函数‘PathCanonicalizeA’中:
+      |                                           ^
+kernel/arch/x86_64/win32_shell.c:728:34: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+kernel/arch/x86_64/win32_security.c:663:43: note: in expansion of macro ‘SECURITY_WORLD_SID_AUTHORITY’
+  728 |             memcpy(tmp + ti, sp, ci);
+      |                                  ^~
+  663 |     SID_IDENTIFIER_AUTHORITY world_auth = SECURITY_WORLD_SID_AUTHORITY;
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: 在函数‘LookupAccountNameA’中:
+kernel/arch/x86_64/win32_security.c:12:43: warning: 初始值设定周围缺少花括号 [-Wmissing-braces]
+   12 | #define SECURITY_NT_AUTHORITY             {0,0,0,0,0,5}
+      |                                           ^
+kernel/arch/x86_64/win32_security.c:886:44: note: in expansion of macro ‘SECURITY_NT_AUTHORITY’
+  886 |         SID_IDENTIFIER_AUTHORITY nt_auth = SECURITY_NT_AUTHORITY;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_security.c: 在文件作用域：
+kernel/arch/x86_64/win32_security.c:175:13: warning: ‘set_last_error’ 在此处定义 [-Wunused-function]
+  175 | static void set_last_error(uint32_t err) {
+      |             ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: 在函数‘cmd_builtin_dir’中:
+kernel/arch/x86_64/win32_shell.c:1598:9: warning: 变量‘found’被设定但未被使用 [-Wunused-but-set-variable=]
+ 1598 |     int found;
+      |         ^~~~~
+kernel/arch/x86_64/win32_shell.c: 在函数‘cmd_builtin_set’中:
+kernel/arch/x86_64/win32_shell.c:1795:9: warning: 变量‘expr_mode’被设定但未被使用 [-Wunused-but-set-variable=]
+ 1795 |     int expr_mode = 0;
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: 在函数‘cmd_builtin_sort’中:
+kernel/arch/x86_64/win32_shell.c:2065:22: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+ 2065 |         qsort(lines, count, sizeof(char*), strcmp_void);
+      |                      ^~~~~
+kernel/arch/x86_64/win32_shell.c: 在函数‘cmd_builtin_help’中:
+kernel/arch/x86_64/win32_shell.c:2116:42: warning: 未使用的参数‘cmd’ [-Wunused-parameter]
+ 2116 | static int cmd_builtin_help(cmd_state_t* cmd, int argc, char** argv) {
+      |                             ~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/win32_shell.c: 在函数‘cmd_resolve_and_run’中:
+kernel/arch/x86_64/win32_shell.c:2224:23: warning: 比较指针和整数
+ 2224 |         if (fn && *fn != cmdname) {
+      |                       ^~
+kernel/arch/x86_64/win32_shell.c: 在函数‘cmd_execute_line’中:
+kernel/arch/x86_64/win32_shell.c:2373:13: warning: 变量‘match_idx’被设定但未被使用 [-Wunused-but-set-variable=]
+ 2373 |         int match_idx;
+      |             ^~~~~~~~~
+<0> Building kernel/arch/x86_64/win32_process.c
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwClose’中:
+kernel/arch/x86_64/win32_process.c:1137:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1137 |     return NtClose(Handle);
+      |            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwAllocateVirtualMemory’中:
+kernel/arch/x86_64/win32_process.c:1148:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1148 |     return NtAllocateVirtualMemory(ProcessHandle, BaseAddress, ZeroBits, RegionSize, AllocationType, Protect);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwFreeVirtualMemory’中:
+kernel/arch/x86_64/win32_process.c:1157:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1157 |     return NtFreeVirtualMemory(ProcessHandle, BaseAddress, RegionSize, FreeType);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwQueryInformationProcess’中:
+kernel/arch/x86_64/win32_process.c:1167:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1167 |     return NtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwQueryInformationThread’中:
+kernel/arch/x86_64/win32_process.c:1177:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1177 |     return NtQueryInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwCreateFile’中:
+kernel/arch/x86_64/win32_process.c:1193:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1193 |     return NtCreateFile(FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock, AllocationSize, FileAttributes, ShareAccess, CreateDisposition, CreateOptions, EaBuffer, EaLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwReadFile’中:
+kernel/arch/x86_64/win32_process.c:1207:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1207 |     return NtReadFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwWriteFile’中:
+kernel/arch/x86_64/win32_process.c:1221:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1221 |     return NtWriteFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwQueryAttributesFile’中:
+kernel/arch/x86_64/win32_process.c:1228:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1228 |     return NtQueryAttributesFile(ObjectAttributes, FileInformation);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在文件作用域：
+kernel/arch/x86_64/win32_process.c:291:13: warning: ‘process_slot_cleanup’ 在此处定义 [-Wunused-function]
+  291 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+<2> Building kernel/arch/x86_64/win32_ntdll.c
+kernel/arch/x86_64/win32_ntdll.c: 在函数‘NtCreateFile’中:
+kernel/arch/x86_64/win32_ntdll.c:391:55: warning: 未使用的参数‘DesiredAccess’ [-Wunused-parameter]
+  391 | NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
+      |                                           ~~~~~~~~~~~~^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_shell.c: 在函数‘PathCanonicalizeA.part.0’中:
+kernel/arch/x86_64/win32_shell.c:724:40: warning: array subscript 128 is above array bounds of ‘char *[64]’ [-Warray-bounds=]
+  724 |             ci = (int)((uintptr_t)comps[i + 128]);
+      |                                   ~~~~~^~~~~~~~~
+kernel/arch/x86_64/win32_shell.c:650:11: note: while referencing ‘comps’
+  650 |     char* comps[64];
+      |           ^~~~~
+kernel/arch/x86_64/win32_ntdll.c: 在函数‘NtQueryDirectoryObject’中:
+kernel/arch/x86_64/win32_ntdll.c:1325:54: warning: 未使用的参数‘BufferLength’ [-Wunused-parameter]
+ 1325 |                                  PVOID Buffer, ULONG BufferLength,
+      |                                                ~~~~~~^~~~~~~~~~~~
+<3> Building kernel/arch/x86_64/win32_msvcrt.c
+kernel/arch/x86_64/win32_msvcrt.c: 在函数‘output_char’中:
+kernel/arch/x86_64/win32_msvcrt.c:47:9: warning: ‘vga_putc’的地址总是等价为‘true’ [-Waddress]
+   47 |     if (vga_putc) vga_putc(c);
+      |         ^~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: 在函数‘output_string’中:
+kernel/arch/x86_64/win32_msvcrt.c:55:9: warning: ‘vga_print’的地址总是等价为‘true’ [-Waddress]
+   55 |     if (vga_print) vga_print(s);
+      |         ^~~~~~~~~
+kernel/arch/x86_64/win32_msvcrt.c: 在函数‘fputs’中:
+kernel/arch/x86_64/win32_msvcrt.c:739:12: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  739 |     return strlen(s);
+      |            ^~~~~~~~~
+<0> Building kernel/arch/x86_64/win32_kernel32.c
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘SetFilePointer’中:
+kernel/arch/x86_64/win32_kernel32.c:668:48: warning: ‘long long unsigned int’转换自‘long long int’时可能会改变结果的符号 [-Wsign-conversion]
+  668 |         offset = (int64_t)((uint64_t)hi << 32) | (uint64_t)(uint32_t)lDistanceToMove;
+      |                                                ^
+kernel/arch/x86_64/win32_kernel32.c:668:18: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘long long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  668 |         offset = (int64_t)((uint64_t)hi << 32) | (uint64_t)(uint32_t)lDistanceToMove;
+      |                  ^
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘SetEndOfFile’中:
+kernel/arch/x86_64/win32_kernel32.c:704:9: warning: 变量‘fd’被设定但未被使用 [-Wunused-but-set-variable=]
+  704 |     int fd;
+      |         ^~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetFileSize’中:
+kernel/arch/x86_64/win32_kernel32.c:770:16: error: ‘INVALID_FILE_SIZE’未声明(在此函数内第一次使用)
+  770 |         return INVALID_FILE_SIZE;
+      |                ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:770:16: note: 每个未声明的标识符在其出现的函数内只报告一次
+kernel/arch/x86_64/win32_kernel32.c:765:9: warning: 变量‘fd’被设定但未被使用 [-Wunused-but-set-variable=]
+  765 |     int fd;
+      |         ^~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetEnvironmentVariableA’中:
+kernel/arch/x86_64/win32_kernel32.c:881:14: warning: 未使用的变量‘i’ [-Wunused-variable]
+  881 |     uint32_t i;
+      |              ^
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:943:8: error: ‘GetCurrentProcess’重定义
+  943 | HANDLE GetCurrentProcess(void) {
+      |        ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:361:8: note: previous definition of ‘GetCurrentProcess’ with type ‘void *(void)’
+  361 | HANDLE GetCurrentProcess(void) {
+      |        ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:947:8: error: ‘GetCurrentThread’重定义
+  947 | HANDLE GetCurrentThread(void) {
+      |        ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:365:8: note: previous definition of ‘GetCurrentThread’ with type ‘void *(void)’
+  365 | HANDLE GetCurrentThread(void) {
+      |        ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:951:7: error: ‘GetCurrentProcessId’重定义
+  951 | DWORD GetCurrentProcessId(void) {
+      |       ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:353:10: note: previous definition of ‘GetCurrentProcessId’ with type ‘uint32_t(void)’ {或称 ‘unsigned int(void)’}
+  353 | uint32_t GetCurrentProcessId(void) {
+      |          ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:955:7: error: ‘GetCurrentThreadId’重定义
+  955 | DWORD GetCurrentThreadId(void) {
+      |       ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:357:10: note: previous definition of ‘GetCurrentThreadId’ with type ‘uint32_t(void)’ {或称 ‘unsigned int(void)’}
+  357 | uint32_t GetCurrentThreadId(void) {
+      |          ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetThreadPriority’中:
+kernel/arch/x86_64/win32_kernel32.c:969:12: error: ‘THREAD_PRIORITY_NORMAL’未声明(在此函数内第一次使用)
+  969 |     return THREAD_PRIORITY_NORMAL;
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:1024:7: error: ‘WaitForSingleObject’重定义
+ 1024 | DWORD WaitForSingleObject(HANDLE hHandle, DWORD dwMilliseconds) {
+      |       ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:344:10: note: previous definition of ‘WaitForSingleObject’ with type ‘uint32_t(void *, uint32_t)’ {或称 ‘unsigned int(void *, unsigned int)’}
+  344 | uint32_t WaitForSingleObject(HANDLE hHandle, uint32_t dwMilliseconds) {
+      |          ^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetFileType’中:
+kernel/arch/x86_64/win32_kernel32.c:1191:16: error: ‘FILE_TYPE_UNKNOWN’未声明(在此函数内第一次使用)
+ 1191 |         return FILE_TYPE_UNKNOWN;
+      |                ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1205:12: error: ‘FILE_TYPE_DISK’未声明(在此函数内第一次使用)
+ 1205 |     return FILE_TYPE_DISK;
+      |            ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetFileInformationByHandle’中:
+kernel/arch/x86_64/win32_kernel32.c:1211:18: error: ‘ERROR_NOT_SUPPORTED’ undeclared (first use in this function); did you mean ‘ERROR_NOT_FOUND’?
+ 1211 |     SetLastError(ERROR_NOT_SUPPORTED);
+      |                  ^~~~~~~~~~~~~~~~~~~
+      |                  ERROR_NOT_FOUND
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:1286:6: error: conflicting types for ‘GetFileTime’; have ‘BOOL(void *, uint64_t *, uint64_t *, uint64_t *)’ {或称 ‘int(void *, long long unsigned int *, long long unsigned int *, long long unsigned int *)’}
+ 1286 | BOOL GetFileTime(HANDLE hFile, uint64_t* lpCreationTime,
+      |      ^~~~~~~~~~~
+In file included from kernel/arch/x86_64/win32_kernel32.c:1:
+kernel/arch/x86_64/include/arch/win32.h:956:6: note: previous declaration of ‘GetFileTime’ with type ‘BOOL(void *, int64_t *, int64_t *, int64_t *)’ {或称 ‘int(void *, long long int *, long long int *, long long int *)’}
+  956 | BOOL GetFileTime(HANDLE hFile, int64_t* lpCreationTime,
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1313:6: error: conflicting types for ‘SetFileTime’; have ‘BOOL(void *, const uint64_t *, const uint64_t *, const uint64_t *)’ {或称 ‘int(void *, const long long unsigned int *, const long long unsigned int *, const long long unsigned int *)’}
+ 1313 | BOOL SetFileTime(HANDLE hFile, const uint64_t* lpCreationTime,
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:958:6: note: previous declaration of ‘SetFileTime’ with type ‘BOOL(void *, const int64_t *, const int64_t *, const int64_t *)’ {或称 ‘int(void *, const long long int *, const long long int *, const long long int *)’}
+  958 | BOOL SetFileTime(HANDLE hFile, const int64_t* lpCreationTime,
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘LockFileEx’中:
+kernel/arch/x86_64/win32_kernel32.c:1398:23: warning: 未使用的参数‘lpOverlapped’ [-Wunused-parameter]
+ 1398 |                 void* lpOverlapped) {
+      |                 ~~~~~~^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘VirtualFree’中:
+kernel/arch/x86_64/win32_kernel32.c:1475:22: error: ‘ERROR_INVALID_ADDRESS’ undeclared (first use in this function); did you mean ‘ERROR_INVALID_HANDLE’?
+ 1475 |         SetLastError(ERROR_INVALID_ADDRESS);
+      |                      ^~~~~~~~~~~~~~~~~~~~~
+      |                      ERROR_INVALID_HANDLE
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:1499:8: error: conflicting types for ‘VirtualQuery’; have ‘SIZE_T(void *, void *, SIZE_T)’ {或称 ‘long long unsigned int(void *, void *, long long unsigned int)’}
+ 1499 | SIZE_T VirtualQuery(void* lpAddress, void* lpBuffer, SIZE_T dwLength) {
+      |        ^~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1298:6: note: previous declaration of ‘VirtualQuery’ with type ‘BOOL(const void *, void *, uint64_t)’ {或称 ‘int(const void *, void *, long long unsigned int)’}
+ 1298 | BOOL VirtualQuery(LPCVOID lpAddress, void* lpBuffer, uint64_t dwLength);
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1505:6: error: conflicting types for ‘VirtualQueryEx’; have ‘BOOL(void *, void *, void *, SIZE_T)’ {或称 ‘int(void *, void *, void *, long long unsigned int)’}
+ 1505 | BOOL VirtualQueryEx(HANDLE hProcess, void* lpAddress,
+      |      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1013:8: note: previous declaration of ‘VirtualQueryEx’ with type ‘SIZE_T(void *, const void *, void *, SIZE_T)’ {或称 ‘long long unsigned int(void *, const void *, void *, long long unsigned int)’}
+ 1013 | SIZE_T VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress,
+      |        ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘VirtualQueryEx’中:
+kernel/arch/x86_64/win32_kernel32.c:1508:12: warning: conversion from ‘SIZE_T’ {或称 ‘long long unsigned int’} to ‘BOOL’ {或称 ‘int’} may change value [-Wconversion]
+ 1508 |     return VirtualQuery(lpAddress, lpBuffer, dwLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:1573:7: error: ‘GetTickCount’重定义
+ 1573 | DWORD GetTickCount(void) {
+      |       ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:208:10: note: previous definition of ‘GetTickCount’ with type ‘uint32_t(void)’ {或称 ‘unsigned int(void)’}
+  208 | uint32_t GetTickCount(void) {
+      |          ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1587:11: error: ‘GetTickCount64’重定义
+ 1587 | ULONGLONG GetTickCount64(void) {
+      |           ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:222:10: note: previous definition of ‘GetTickCount64’ with type ‘uint64_t(void)’ {或称 ‘long long unsigned int(void)’}
+  222 | uint64_t GetTickCount64(void) {
+      |          ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1596:6: error: ‘Sleep’重定义
+ 1596 | void Sleep(DWORD dwMilliseconds) {
+      |      ^~~~~
+kernel/arch/x86_64/win32_kernel32.c:231:6: note: previous definition of ‘Sleep’ with type ‘void(uint32_t)’ {或称 ‘void(unsigned int)’}
+  231 | void Sleep(uint32_t dwMilliseconds) {
+      |      ^~~~~
+kernel/arch/x86_64/win32_kernel32.c:1644:6: error: ‘GetSystemTimeAsFileTime’重定义
+ 1644 | BOOL GetSystemTimeAsFileTime(uint64_t* lpSystemTimeAsFileTime) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:249:6: note: previous definition of ‘GetSystemTimeAsFileTime’ with type ‘BOOL(uint64_t *)’ {或称 ‘int(long long unsigned int *)’}
+  249 | BOOL GetSystemTimeAsFileTime(uint64_t* lpSystemTimeAsFileTime) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘FileTimeToDosDateTime’中:
+kernel/arch/x86_64/win32_kernel32.c:1659:44: warning: 未使用的参数‘lpFileTime’ [-Wunused-parameter]
+ 1659 | BOOL FileTimeToDosDateTime(const uint64_t* lpFileTime, WORD* lpFatDate, WORD* lpFatTime) {
+      |                            ~~~~~~~~~~~~~~~~^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘DosDateTimeToFileTime’中:
+kernel/arch/x86_64/win32_kernel32.c:1665:33: warning: 未使用的参数‘wFatDate’ [-Wunused-parameter]
+ 1665 | BOOL DosDateTimeToFileTime(WORD wFatDate, WORD wFatTime, uint64_t* lpFileTime) {
+      |                            ~~~~~^~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1665:48: warning: 未使用的参数‘wFatTime’ [-Wunused-parameter]
+ 1665 | BOOL DosDateTimeToFileTime(WORD wFatDate, WORD wFatTime, uint64_t* lpFileTime) {
+      |                                           ~~~~~^~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘ConnectNamedPipe’中:
+kernel/arch/x86_64/win32_kernel32.c:1709:18: error: ‘ERROR_PIPE_NOT_CONNECTED’ undeclared (first use in this function); did you mean ‘ERROR_FILE_NOT_FOUND’?
+ 1709 |     SetLastError(ERROR_PIPE_NOT_CONNECTED);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                  ERROR_FILE_NOT_FOUND
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetStdHandle’中:
+kernel/arch/x86_64/win32_kernel32.c:1721:14: error: ‘STD_INPUT_HANDLE’未声明(在此函数内第一次使用)
+ 1721 |         case STD_INPUT_HANDLE:
+      |              ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1723:14: error: ‘STD_OUTPUT_HANDLE’未声明(在此函数内第一次使用)
+ 1723 |         case STD_OUTPUT_HANDLE:
+      |              ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1725:14: error: ‘STD_ERROR_HANDLE’未声明(在此函数内第一次使用)
+ 1725 |         case STD_ERROR_HANDLE:
+      |              ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:1784:7: error: conflicting types for ‘GetFullPathNameA’; have ‘DWORD(const char *, DWORD,  char *, char **)’ {或称 ‘unsigned int(const char *, unsigned int,  char *, char **)’}
+ 1784 | DWORD GetFullPathNameA(const char* lpFileName, DWORD nBufferLength,
+      |       ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:964:6: note: previous declaration of ‘GetFullPathNameA’ with type ‘BOOL(const char *, uint32_t,  char *, char **)’ {或称 ‘int(const char *, unsigned int,  char *, char **)’}
+  964 | BOOL GetFullPathNameA(const char* lpFileName, uint32_t nBufferLength,
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:852:37: error: expected declaration specifiers or ‘...’ before numeric constant
+  852 | #define ERROR_SUCCESS               0L
+      |                                     ^~
+kernel/arch/x86_64/win32_kernel32.c:1897:18: note: in expansion of macro ‘ERROR_SUCCESS’
+ 1897 |     SetLastError(ERROR_SUCCESS);
+      |                  ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1898:5: error: expected identifier or ‘(’ before ‘return’
+ 1898 |     return TRUE;
+      |     ^~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1899:1: error: expected identifier or ‘(’ before ‘}’ token
+ 1899 | }
+      | ^
+kernel/arch/x86_64/win32_kernel32.c:1901:6: error: ‘FlushFileBuffers’重定义
+ 1901 | BOOL FlushFileBuffers(HANDLE hFile) {
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1157:6: note: previous definition of ‘FlushFileBuffers’ with type ‘BOOL(void *)’ {或称 ‘int(void *)’}
+ 1157 | BOOL FlushFileBuffers(HANDLE hFile) {
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2045:6: error: ‘CreateDirectoryA’重定义
+ 2045 | BOOL CreateDirectoryA(const char* lpPathName, void* lpSecurityAttributes) {
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:835:6: note: previous definition of ‘CreateDirectoryA’ with type ‘BOOL(const char *, void *)’ {或称 ‘int(const char *, void *)’}
+  835 | BOOL CreateDirectoryA(const char* lpPathName, void* lpSecurityAttributes) {
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2066:6: error: ‘RemoveDirectoryA’重定义
+ 2066 | BOOL RemoveDirectoryA(const char* lpPathName) {
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:858:6: note: previous definition of ‘RemoveDirectoryA’ with type ‘BOOL(const char *)’ {或称 ‘int(const char *)’}
+  858 | BOOL RemoveDirectoryA(const char* lpPathName) {
+      |      ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2085:6: error: ‘DeleteFileA’重定义
+ 2085 | BOOL DeleteFileA(const char* lpFileName) {
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:791:6: note: previous definition of ‘DeleteFileA’ with type ‘BOOL(const char *)’ {或称 ‘int(const char *)’}
+  791 | BOOL DeleteFileA(const char* lpFileName) {
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2104:6: error: ‘MoveFileA’重定义
+ 2104 | BOOL MoveFileA(const char* lpExistingFileName, const char* lpNewFileName) {
+      |      ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:812:6: note: previous definition of ‘MoveFileA’ with type ‘BOOL(const char *, const char *)’ {或称 ‘int(const char *, const char *)’}
+  812 | BOOL MoveFileA(const char* lpExistingFileName, const char* lpNewFileName) {
+      |      ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2119:10: error: ‘GetFileAttributesA’重定义
+ 2119 | uint32_t GetFileAttributesA(const char* lpFileName) {
+      |          ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1280:7: note: previous definition of ‘GetFileAttributesA’ with type ‘DWORD(const char *)’ {或称 ‘unsigned int(const char *)’}
+ 1280 | DWORD GetFileAttributesA(const char* lpFileName) {
+      |       ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2146:6: error: ‘GetFileSizeEx’重定义
+ 2146 | BOOL GetFileSizeEx(HANDLE hFile, int64_t* lpFileSize) {
+      |      ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:734:6: note: previous definition of ‘GetFileSizeEx’ with type ‘BOOL(void *, int64_t *)’ {或称 ‘int(void *, long long int *)’}
+  734 | BOOL GetFileSizeEx(HANDLE hFile, int64_t* lpFileSize) {
+      |      ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2183:10: error: ‘GetLastError’重定义
+ 2183 | uint32_t GetLastError(void) {
+      |          ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1079:7: note: previous definition of ‘GetLastError’ with type ‘DWORD(void)’ {或称 ‘unsigned int(void)’}
+ 1079 | DWORD GetLastError(void) {
+      |       ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2187:6: error: ‘SetLastError’重定义
+ 2187 | void SetLastError(uint32_t dwErrCode) {
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1083:6: note: previous definition of ‘SetLastError’ with type ‘void(unsigned int)’
+ 1083 | void SetLastError(DWORD dwErrCode) {
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2214:23: warning: cast between incompatible function types from ‘DWORD (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2214 |     { "GetTickCount", (FARPROC)GetTickCount },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2216:16: warning: cast between incompatible function types from ‘void (*)(DWORD)’ {或称 ‘void (*)(unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2216 |     { "Sleep", (FARPROC)Sleep },
+      |                ^
+kernel/arch/x86_64/win32_kernel32.c:2217:23: warning: cast between incompatible function types from ‘void * (*)(void *, uint64_t,  uint32_t (*)(void *), void *, uint32_t,  uint32_t *)’ {或称 ‘void * (*)(void *, long long unsigned int,  unsigned int (*)(void *), void *, unsigned int,  unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2217 |     { "CreateThread", (FARPROC)CreateThread },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2218:26: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint32_t)’ {或称 ‘int (*)(void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2218 |     { "TerminateThread", (FARPROC)TerminateThread },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:2219:22: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2219 |     { "CloseHandle", (FARPROC)CloseHandle },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2220:30: warning: cast between incompatible function types from ‘DWORD (*)(void *, DWORD)’ {或称 ‘unsigned int (*)(void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2220 |     { "WaitForSingleObject", (FARPROC)WaitForSingleObject },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:2221:23: warning: cast between incompatible function types from ‘uint32_t (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2221 |     { "GetLastError", (FARPROC)GetLastError },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2222:23: warning: cast between incompatible function types from ‘void (*)(uint32_t)’ {或称 ‘void (*)(unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2222 |     { "SetLastError", (FARPROC)SetLastError },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2223:30: warning: cast between incompatible function types from ‘DWORD (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2223 |     { "GetCurrentProcessId", (FARPROC)GetCurrentProcessId },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:2224:29: warning: cast between incompatible function types from ‘DWORD (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2224 |     { "GetCurrentThreadId", (FARPROC)GetCurrentThreadId },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2225:28: warning: cast between incompatible function types from ‘void * (*)(void)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2225 |     { "GetCurrentProcess", (FARPROC)GetCurrentProcess },
+      |                            ^
+kernel/arch/x86_64/win32_kernel32.c:2226:27: warning: cast between incompatible function types from ‘void * (*)(void)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2226 |     { "GetCurrentThread", (FARPROC)GetCurrentThread },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2227:34: warning: cast between incompatible function types from ‘BOOL (*)(void *, BOOL)’ {或称 ‘int (*)(void *, int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2227 |     { "SetProcessPriorityBoost", (FARPROC)SetProcessPriorityBoost },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2228:29: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint32_t *)’ {或称 ‘int (*)(void *, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2228 |     { "GetExitCodeProcess", (FARPROC)GetExitCodeProcess },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2229:19: warning: cast between incompatible function types from ‘BOOL (*)(void *, void *, uint32_t,  uint32_t *, void *)’ {或称 ‘int (*)(void *, void *, unsigned int,  unsigned int *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2229 |     { "ReadFile", (FARPROC)ReadFile },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2230:20: warning: cast between incompatible function types from ‘BOOL (*)(void *, const void *, uint32_t,  uint32_t *, void *)’ {或称 ‘int (*)(void *, const void *, unsigned int,  unsigned int *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2230 |     { "WriteFile", (FARPROC)WriteFile },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2231:22: warning: cast between incompatible function types from ‘void * (*)(const char *, uint32_t,  uint32_t,  void *, uint32_t,  uint32_t,  void *)’ {或称 ‘void * (*)(const char *, unsigned int,  unsigned int,  void *, unsigned int,  unsigned int,  void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2231 |     { "CreateFileA", (FARPROC)CreateFileA },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2232:25: warning: cast between incompatible function types from ‘BOOL (*)(void *, int32_t,  int32_t *, uint32_t)’ {或称 ‘int (*)(void *, int,  int *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2232 |     { "SetFilePointer", (FARPROC)SetFilePointer },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2233:23: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2233 |     { "SetEndOfFile", (FARPROC)SetEndOfFile },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2234:27: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2234 |     { "FlushFileBuffers", (FARPROC)FlushFileBuffers },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2235:25: warning: cast between incompatible function types from ‘void * (*)(const char *, void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2235 |     { "FindFirstFileA", (FARPROC)FindFirstFileA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2236:24: warning: cast between incompatible function types from ‘BOOL (*)(void *, void *)’ {或称 ‘int (*)(void *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2236 |     { "FindNextFileA", (FARPROC)FindNextFileA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2237:20: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2237 |     { "FindClose", (FARPROC)FindClose },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2238:27: warning: cast between incompatible function types from ‘BOOL (*)(const char *, void *)’ {或称 ‘int (*)(const char *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2238 |     { "CreateDirectoryA", (FARPROC)CreateDirectoryA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2239:27: warning: cast between incompatible function types from ‘BOOL (*)(const char *)’ {或称 ‘int (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2239 |     { "RemoveDirectoryA", (FARPROC)RemoveDirectoryA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2240:22: warning: cast between incompatible function types from ‘BOOL (*)(const char *)’ {或称 ‘int (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2240 |     { "DeleteFileA", (FARPROC)DeleteFileA },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2241:20: warning: cast between incompatible function types from ‘BOOL (*)(const char *, const char *)’ {或称 ‘int (*)(const char *, const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2241 |     { "MoveFileA", (FARPROC)MoveFileA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2242:20: warning: cast between incompatible function types from ‘BOOL (*)(const char *, const char *, BOOL)’ {或称 ‘int (*)(const char *, const char *, int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2242 |     { "CopyFileA", (FARPROC)CopyFileA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2243:29: warning: cast between incompatible function types from ‘uint32_t (*)(const char *)’ {或称 ‘unsigned int (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2243 |     { "GetFileAttributesA", (FARPROC)GetFileAttributesA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2244:24: warning: cast between incompatible function types from ‘BOOL (*)(void *, int64_t *)’ {或称 ‘int (*)(void *, long long int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2244 |     { "GetFileSizeEx", (FARPROC)GetFileSizeEx },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2245:29: warning: cast between incompatible function types from ‘uint32_t (*)(void *, char *, unsigned int)’ {或称 ‘unsigned int (*)(void *, char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2245 |     { "GetModuleFileNameA", (FARPROC)GetModuleFileNameA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2246:27: warning: cast between incompatible function types from ‘void * (*)(const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2246 |     { "GetModuleHandleA", (FARPROC)GetModuleHandleA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2247:25: warning: cast between incompatible function types from ‘intptr_t (* (*)(void *, const char *))()’ {或称 ‘long long int (* (*)(void *, const char *))()’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2247 |     { "GetProcAddress", (FARPROC)GetProcAddress },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2248:23: warning: cast between incompatible function types from ‘void * (*)(const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2248 |     { "LoadLibraryA", (FARPROC)LoadLibraryA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2249:22: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2249 |     { "FreeLibrary", (FARPROC)FreeLibrary },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2250:22: warning: cast between incompatible function types from ‘void * (*)(unsigned int,  long long unsigned int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2250 |     { "GlobalAlloc", (FARPROC)GlobalAlloc },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2251:21: warning: cast between incompatible function types from ‘void * (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2251 |     { "GlobalFree", (FARPROC)GlobalFree },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2252:21: warning: cast between incompatible function types from ‘void * (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2252 |     { "GlobalLock", (FARPROC)GlobalLock },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2253:23: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2253 |     { "GlobalUnlock", (FARPROC)GlobalUnlock },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2255:21: warning: cast between incompatible function types from ‘void * (*)(unsigned int,  long long unsigned int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2255 |     { "LocalAlloc", (FARPROC)LocalAlloc },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2256:20: warning: cast between incompatible function types from ‘void * (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2256 |     { "LocalFree", (FARPROC)LocalFree },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2257:20: warning: cast between incompatible function types from ‘void * (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2257 |     { "LocalLock", (FARPROC)LocalLock },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2258:22: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2258 |     { "LocalUnlock", (FARPROC)LocalUnlock },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2260:23: warning: cast between incompatible function types from ‘void * (*)(void *, long long unsigned int,  unsigned int,  unsigned int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2260 |     { "VirtualAlloc", (FARPROC)VirtualAlloc },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2261:22: warning: cast between incompatible function types from ‘BOOL (*)(void *, long long unsigned int,  unsigned int)’ {或称 ‘int (*)(void *, long long unsigned int,  unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2261 |     { "VirtualFree", (FARPROC)VirtualFree },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2262:25: warning: cast between incompatible function types from ‘BOOL (*)(void *, long long unsigned int,  unsigned int,  DWORD *)’ {或称 ‘int (*)(void *, long long unsigned int,  unsigned int,  unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2262 |     { "VirtualProtect", (FARPROC)VirtualProtect },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2264:21: warning: cast between incompatible function types from ‘void * (*)(DWORD,  uint64_t,  uint64_t)’ {或称 ‘void * (*)(unsigned int,  long long unsigned int,  long long unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2264 |     { "HeapCreate", (FARPROC)HeapCreate },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2265:22: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2265 |     { "HeapDestroy", (FARPROC)HeapDestroy },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2266:20: warning: cast between incompatible function types from ‘void * (*)(void *, DWORD,  uint64_t)’ {或称 ‘void * (*)(void *, unsigned int,  long long unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2266 |     { "HeapAlloc", (FARPROC)HeapAlloc },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2267:19: warning: cast between incompatible function types from ‘BOOL (*)(void *, DWORD,  void *)’ {或称 ‘int (*)(void *, unsigned int,  void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2267 |     { "HeapFree", (FARPROC)HeapFree },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2268:25: warning: cast between incompatible function types from ‘void * (*)(void)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2268 |     { "GetProcessHeap", (FARPROC)GetProcessHeap },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2269:24: warning: cast between incompatible function types from ‘void (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2269 |     { "GetSystemInfo", (FARPROC)GetSystemInfo },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2270:21: warning: cast between incompatible function types from ‘DWORD (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2270 |     { "GetVersion", (FARPROC)GetVersion },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2271:24: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2271 |     { "GetVersionExA", (FARPROC)GetVersionExA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2272:30: warning: cast between incompatible function types from ‘UINT (*)(char *, UINT)’ {或称 ‘unsigned int (*)(char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2272 |     { "GetSystemDirectoryA", (FARPROC)GetSystemDirectoryA },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:2273:31: warning: cast between incompatible function types from ‘UINT (*)(char *, UINT)’ {或称 ‘unsigned int (*)(char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2273 |     { "GetWindowsDirectoryA", (FARPROC)GetWindowsDirectoryA },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2274:23: warning: cast between incompatible function types from ‘UINT (*)(uint32_t,  char *)’ {或称 ‘unsigned int (*)(unsigned int,  char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2274 |     { "GetTempPathA", (FARPROC)GetTempPathA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2275:34: warning: cast between incompatible function types from ‘DWORD (*)(const char *, char *, DWORD)’ {或称 ‘unsigned int (*)(const char *, char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2275 |     { "GetEnvironmentVariableA", (FARPROC)GetEnvironmentVariableA },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2276:34: warning: cast between incompatible function types from ‘BOOL (*)(const char *, const char *)’ {或称 ‘int (*)(const char *, const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2276 |     { "SetEnvironmentVariableA", (FARPROC)SetEnvironmentVariableA },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2277:36: warning: cast between incompatible function types from ‘DWORD (*)(const char *, char *, DWORD)’ {或称 ‘unsigned int (*)(const char *, char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2277 |     { "ExpandEnvironmentStringsA", (FARPROC)ExpandEnvironmentStringsA },
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:2278:27: warning: cast between incompatible function types from ‘BOOL (*)(char *, uint32_t *)’ {或称 ‘int (*)(char *, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2278 |     { "GetComputerNameA", (FARPROC)GetComputerNameA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2279:23: warning: cast between incompatible function types from ‘BOOL (*)(char *, uint32_t *)’ {或称 ‘int (*)(char *, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2279 |     { "GetUserNameA", (FARPROC)GetUserNameA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2280:19: warning: cast between incompatible function types from ‘int (*)(const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2280 |     { "lstrlenA", (FARPROC)lstrlenA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2281:19: warning: cast between incompatible function types from ‘char * (*)(char *, const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2281 |     { "lstrcpyA", (FARPROC)lstrcpyA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2282:20: warning: cast between incompatible function types from ‘char * (*)(char *, const char *, int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2282 |     { "lstrcpynA", (FARPROC)lstrcpynA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2283:19: warning: cast between incompatible function types from ‘int (*)(const char *, const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2283 |     { "lstrcmpA", (FARPROC)lstrcmpA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2284:20: warning: cast between incompatible function types from ‘int (*)(const char *, const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2284 |     { "lstrcmpiA", (FARPROC)lstrcmpiA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2285:19: warning: cast between incompatible function types from ‘char * (*)(char *, const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2285 |     { "lstrcatA", (FARPROC)lstrcatA },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2286:20: warning: cast between incompatible function types from ‘CHAR * (*)(const CHAR *)’ {或称 ‘char * (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2286 |     { "CharNextA", (FARPROC)CharNextA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2287:20: warning: cast between incompatible function types from ‘CHAR * (*)(const CHAR *, const CHAR *)’ {或称 ‘char * (*)(const char *, const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2287 |     { "CharPrevA", (FARPROC)CharPrevA },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2288:23: warning: cast between incompatible function types from ‘BOOL (*)(CHAR)’ {或称 ‘int (*)(char)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2288 |     { "IsCharAlphaA", (FARPROC)IsCharAlphaA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2289:30: warning: cast between incompatible function types from ‘BOOL (*)(CHAR)’ {或称 ‘int (*)(char)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2289 |     { "IsCharAlphaNumericA", (FARPROC)IsCharAlphaNumericA },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:2290:23: warning: cast between incompatible function types from ‘BOOL (*)(CHAR)’ {或称 ‘int (*)(char)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2290 |     { "IsCharUpperA", (FARPROC)IsCharUpperA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2291:23: warning: cast between incompatible function types from ‘BOOL (*)(CHAR)’ {或称 ‘int (*)(char)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2291 |     { "IsCharLowerA", (FARPROC)IsCharLowerA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2292:21: warning: cast between incompatible function types from ‘CHAR (*)(CHAR)’ {或称 ‘char (*)(char)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2292 |     { "CharUpperA", (FARPROC)CharUpperA },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2293:21: warning: cast between incompatible function types from ‘CHAR (*)(CHAR)’ {或称 ‘char (*)(char)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2293 |     { "CharLowerA", (FARPROC)CharLowerA },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2294:21: warning: cast between incompatible function types from ‘int (*)(char *, const char *, void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2294 |     { "wvsprintfA", (FARPROC)wvsprintfA },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2295:24: warning: cast between incompatible function types from ‘int (*)(void *, const char *, unsigned int,  unsigned int,  void **)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2295 |     { "RegOpenKeyExA", (FARPROC)RegOpenKeyExA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2296:26: warning: cast between incompatible function types from ‘int (*)(void *, const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, void **, DWORD *)’ {或称 ‘int (*)(void *, const char *, unsigned int,  char *, unsigned int,  unsigned int,  void *, void **, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2296 |     { "RegCreateKeyExA", (FARPROC)RegCreateKeyExA },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:2297:22: warning: cast between incompatible function types from ‘int (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2297 |     { "RegCloseKey", (FARPROC)RegCloseKey },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2298:27: warning: cast between incompatible function types from ‘int (*)(void *, const char *, DWORD *, DWORD *, BYTE *, DWORD *)’ {或称 ‘int (*)(void *, const char *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2298 |     { "RegQueryValueExA", (FARPROC)RegQueryValueExA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2299:25: warning: cast between incompatible function types from ‘int (*)(void *, const char *, unsigned int,  unsigned int,  const BYTE *, unsigned int)’ {或称 ‘int (*)(void *, const char *, unsigned int,  unsigned int,  const unsigned char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2299 |     { "RegSetValueExA", (FARPROC)RegSetValueExA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2300:24: warning: cast between incompatible function types from ‘int (*)(void *, unsigned int,  char *, DWORD *, DWORD *, char *, DWORD *, uint64_t *)’ {或称 ‘int (*)(void *, unsigned int,  char *, unsigned int *, unsigned int *, char *, unsigned int *, long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2300 |     { "RegEnumKeyExA", (FARPROC)RegEnumKeyExA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2301:24: warning: cast between incompatible function types from ‘int (*)(void *, unsigned int,  char *, DWORD *, DWORD *, DWORD *, BYTE *, DWORD *)’ {或称 ‘int (*)(void *, unsigned int,  char *, unsigned int *, unsigned int *, unsigned int *, unsigned char *, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2301 |     { "RegEnumValueA", (FARPROC)RegEnumValueA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2302:24: warning: cast between incompatible function types from ‘int (*)(void *, const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2302 |     { "RegDeleteKeyA", (FARPROC)RegDeleteKeyA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2303:26: warning: cast between incompatible function types from ‘int (*)(void *, const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2303 |     { "RegDeleteValueA", (FARPROC)RegDeleteValueA },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:2304:22: warning: cast between incompatible function types from ‘int (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2304 |     { "RegFlushKey", (FARPROC)RegFlushKey },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2305:19: warning: cast between incompatible function types from ‘BOOL (*)(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’ {或称 ‘int (*)(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2305 |     { "LockFile", (FARPROC)LockFile },
+      |                   ^
+kernel/arch/x86_64/win32_kernel32.c:2306:21: warning: cast between incompatible function types from ‘BOOL (*)(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’ {或称 ‘int (*)(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2306 |     { "UnlockFile", (FARPROC)UnlockFile },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2307:21: warning: cast between incompatible function types from ‘BOOL (*)(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int,  void *)’ {或称 ‘int (*)(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int,  void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2307 |     { "LockFileEx", (FARPROC)LockFileEx },
+      |                     ^
+kernel/arch/x86_64/win32_kernel32.c:2308:23: warning: cast between incompatible function types from ‘BOOL (*)(void *, unsigned int,  unsigned int,  unsigned int,  void *)’ {或称 ‘int (*)(void *, unsigned int,  unsigned int,  unsigned int,  void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2308 |     { "UnlockFileEx", (FARPROC)UnlockFileEx },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2309:35: error: ‘SetVolumeLabelA’未声明(不在函数内)
+ 2309 |     { "SetVolumeLabelA", (FARPROC)SetVolumeLabelA },
+      |                                   ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2309:5: warning: missing initializer for field ‘addr’ of ‘proc_entry_t’ [-Wmissing-field-initializers]
+ 2309 |     { "SetVolumeLabelA", (FARPROC)SetVolumeLabelA },
+      |     ^
+kernel/arch/x86_64/win32_kernel32.c:2208:13: note: ‘addr’在此声明
+ 2208 |     FARPROC addr;
+      |             ^~~~
+kernel/arch/x86_64/win32_kernel32.c:2310:34: warning: cast between incompatible function types from ‘DWORD (*)(uint32_t,  char *)’ {或称 ‘unsigned int (*)(unsigned int,  char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2310 |     { "GetLogicalDriveStringsA", (FARPROC)GetLogicalDriveStringsA },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2311:24: warning: cast between incompatible function types from ‘UINT (*)(const char *)’ {或称 ‘unsigned int (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2311 |     { "GetDriveTypeA", (FARPROC)GetDriveTypeA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2312:28: warning: cast between incompatible function types from ‘BOOL (*)(const char *, uint32_t *, uint32_t *, uint32_t *, uint32_t *)’ {或称 ‘int (*)(const char *, unsigned int *, unsigned int *, unsigned int *, unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2312 |     { "GetDiskFreeSpaceA", (FARPROC)GetDiskFreeSpaceA },
+      |                            ^
+kernel/arch/x86_64/win32_kernel32.c:2313:30: warning: cast between incompatible function types from ‘BOOL (*)(const char *, uint64_t *, uint64_t *, uint64_t *)’ {或称 ‘int (*)(const char *, long long unsigned int *, long long unsigned int *, long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2313 |     { "GetDiskFreeSpaceExA", (FARPROC)GetDiskFreeSpaceExA },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:2314:22: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint64_t *, uint64_t *, uint64_t *)’ {或称 ‘int (*)(void *, long long unsigned int *, long long unsigned int *, long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2314 |     { "GetFileTime", (FARPROC)GetFileTime },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2315:22: warning: cast between incompatible function types from ‘BOOL (*)(void *, const uint64_t *, const uint64_t *, const uint64_t *)’ {或称 ‘int (*)(void *, const long long unsigned int *, const long long unsigned int *, const long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2315 |     { "SetFileTime", (FARPROC)SetFileTime },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2316:31: warning: cast between incompatible function types from ‘BOOL (*)(const char *, uint32_t,  void *)’ {或称 ‘int (*)(const char *, unsigned int,  void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2316 |     { "GetFileAttributesExA", (FARPROC)GetFileAttributesExA },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2317:29: warning: cast between incompatible function types from ‘BOOL (*)(const char *, unsigned int)’ {或称 ‘int (*)(const char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2317 |     { "SetFileAttributesA", (FARPROC)SetFileAttributesA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2318:27: warning: cast between incompatible function types from ‘DWORD (*)(const char *, DWORD,  char *, char **)’ {或称 ‘unsigned int (*)(const char *, unsigned int,  char *, char **)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2318 |     { "GetFullPathNameA", (FARPROC)GetFullPathNameA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2319:28: warning: cast between incompatible function types from ‘BOOL (*)(const char *, char *, uint32_t)’ {或称 ‘int (*)(const char *, char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2319 |     { "GetShortPathNameA", (FARPROC)GetShortPathNameA },
+      |                            ^
+kernel/arch/x86_64/win32_kernel32.c:2320:27: warning: cast between incompatible function types from ‘BOOL (*)(const char *, char *, uint32_t)’ {或称 ‘int (*)(const char *, char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2320 |     { "GetLongPathNameA", (FARPROC)GetLongPathNameA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2321:22: warning: cast between incompatible function types from ‘DWORD (*)(const char *, const char *, const char *, uint32_t,  char *, char **)’ {或称 ‘unsigned int (*)(const char *, const char *, const char *, unsigned int,  char *, char **)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2321 |     { "SearchPathA", (FARPROC)SearchPathA },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2322:29: warning: cast between incompatible function types from ‘void * (*)(void *, void *, unsigned int,  unsigned int,  unsigned int,  const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2322 |     { "CreateFileMappingA", (FARPROC)CreateFileMappingA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2323:24: warning: cast between incompatible function types from ‘void * (*)(void *, unsigned int,  unsigned int,  unsigned int,  long long unsigned int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2323 |     { "MapViewOfFile", (FARPROC)MapViewOfFile },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2324:26: warning: cast between incompatible function types from ‘BOOL (*)(const void *)’ {或称 ‘int (*)(const void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2324 |     { "UnmapViewOfFile", (FARPROC)UnmapViewOfFile },
+      |                          ^
+kernel/arch/x86_64/win32_kernel32.c:2325:34: warning: cast between incompatible function types from ‘BOOL (*)(int64_t *)’ {或称 ‘int (*)(long long int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2325 |     { "QueryPerformanceCounter", (FARPROC)QueryPerformanceCounter },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2326:36: warning: cast between incompatible function types from ‘BOOL (*)(int64_t *)’ {或称 ‘int (*)(long long int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2326 |     { "QueryPerformanceFrequency", (FARPROC)QueryPerformanceFrequency },
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:2327:18: warning: cast between incompatible function types from ‘void (*)(unsigned int,  int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2327 |     { "SleepEx", (FARPROC)SleepEx },
+      |                  ^
+kernel/arch/x86_64/win32_kernel32.c:2328:36: warning: cast between incompatible function types from ‘BOOL (*)(uint32_t)’ {或称 ‘int (*)(unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2328 |     { "IsProcessorFeaturePresent", (FARPROC)IsProcessorFeaturePresent },
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:2329:31: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2329 |     { "GetSystemPowerStatus", (FARPROC)GetSystemPowerStatus },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2330:27: warning: cast between incompatible function types from ‘int (*)(int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2330 |     { "GetSystemMetrics", (FARPROC)GetSystemMetrics },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2331:33: warning: cast between incompatible function types from ‘int (*)(void)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2331 |     { "GetSystemDefaultLangID", (FARPROC)GetSystemDefaultLangID },
+      |                                 ^
+kernel/arch/x86_64/win32_kernel32.c:2332:31: warning: cast between incompatible function types from ‘int (*)(void)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2332 |     { "GetUserDefaultLangID", (FARPROC)GetUserDefaultLangID },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2333:31: warning: cast between incompatible function types from ‘LCID (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2333 |     { "GetSystemDefaultLCID", (FARPROC)GetSystemDefaultLCID },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2334:29: warning: cast between incompatible function types from ‘LCID (*)(void)’ {或称 ‘unsigned int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2334 |     { "GetUserDefaultLCID", (FARPROC)GetUserDefaultLCID },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2335:24: warning: cast between incompatible function types from ‘BOOL (*)(uint32_t,  uint32_t)’ {或称 ‘int (*)(unsigned int,  unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2335 |     { "IsValidLocale", (FARPROC)IsValidLocale },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2336:29: warning: cast between incompatible function types from ‘BOOL (*)(BOOL (*)(CHAR *), uint32_t)’ {或称 ‘int (*)(int (*)(char *), unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2336 |     { "EnumSystemLocalesA", (FARPROC)EnumSystemLocalesA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2337:25: warning: cast between incompatible function types from ‘int (*)(uint32_t,  uint32_t,  const char *, int,  const char *, int)’ {或称 ‘int (*)(unsigned int,  unsigned int,  const char *, int,  const char *, int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2337 |     { "CompareStringA", (FARPROC)CompareStringA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2338:23: warning: cast between incompatible function types from ‘int (*)(uint32_t,  uint32_t,  const char *, int,  char *, int)’ {或称 ‘int (*)(unsigned int,  unsigned int,  const char *, int,  char *, int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2338 |     { "LCMapStringA", (FARPROC)LCMapStringA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2339:25: warning: cast between incompatible function types from ‘int (*)(uint32_t,  uint32_t,  const char *, int,  uint16_t *)’ {或称 ‘int (*)(unsigned int,  unsigned int,  const char *, int,  short unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2339 |     { "GetStringTypeA", (FARPROC)GetStringTypeA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2340:28: warning: cast between incompatible function types from ‘BOOL (*)(void *, const void *, void *, SIZE_T,  SIZE_T *)’ {或称 ‘int (*)(void *, const void *, void *, long long unsigned int,  long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2340 |     { "ReadProcessMemory", (FARPROC)ReadProcessMemory },
+      |                            ^
+kernel/arch/x86_64/win32_kernel32.c:2341:29: warning: cast between incompatible function types from ‘BOOL (*)(void *, void *, const void *, SIZE_T,  SIZE_T *)’ {或称 ‘int (*)(void *, void *, const void *, long long unsigned int,  long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2341 |     { "WriteProcessMemory", (FARPROC)WriteProcessMemory },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2342:27: warning: cast between incompatible function types from ‘void * (*)(const wchar_t *)’ {或称 ‘void * (*)(const short unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2342 |     { "GetModuleHandleW", (FARPROC)GetModuleHandleW },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2343:29: warning: cast between incompatible function types from ‘DWORD (*)(void *, wchar_t *, DWORD)’ {或称 ‘unsigned int (*)(void *, short unsigned int *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2343 |     { "GetModuleFileNameW", (FARPROC)GetModuleFileNameW },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2344:23: warning: cast between incompatible function types from ‘void * (*)(const wchar_t *)’ {或称 ‘void * (*)(const short unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2344 |     { "LoadLibraryW", (FARPROC)LoadLibraryW },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2345:25: warning: cast between incompatible function types from ‘void * (*)(const char *, void *, uint32_t)’ {或称 ‘void * (*)(const char *, void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2345 |     { "LoadLibraryExA", (FARPROC)LoadLibraryExA },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2346:25: warning: cast between incompatible function types from ‘void * (*)(const wchar_t *, void *, uint32_t)’ {或称 ‘void * (*)(const short unsigned int *, void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2346 |     { "LoadLibraryExW", (FARPROC)LoadLibraryExW },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2347:35: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint32_t)’ {或称 ‘int (*)(void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2347 |     { "FreeLibraryAndExitThread", (FARPROC)FreeLibraryAndExitThread },
+      |                                   ^
+kernel/arch/x86_64/win32_kernel32.c:2348:27: warning: cast between incompatible function types from ‘DWORD (*)(uint32_t,  char *)’ {或称 ‘unsigned int (*)(unsigned int,  char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2348 |     { "GetDllDirectoryA", (FARPROC)GetDllDirectoryA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2349:27: warning: cast between incompatible function types from ‘BOOL (*)(const char *)’ {或称 ‘int (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2349 |     { "SetDllDirectoryA", (FARPROC)SetDllDirectoryA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2350:25: warning: cast between incompatible function types from ‘BOOL (*)(void *, void *, void *, SIZE_T)’ {或称 ‘int (*)(void *, void *, void *, long long unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2350 |     { "VirtualQueryEx", (FARPROC)VirtualQueryEx },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2351:22: warning: cast between incompatible function types from ‘void * (*)(void *, DWORD,  void *, uint64_t)’ {或称 ‘void * (*)(void *, unsigned int,  void *, long long unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2351 |     { "HeapReAlloc", (FARPROC)HeapReAlloc },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2353:23: warning: cast between incompatible function types from ‘BOOL (*)(void *, DWORD,  const void *)’ {或称 ‘int (*)(void *, unsigned int,  const void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2353 |     { "HeapValidate", (FARPROC)HeapValidate },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2354:22: warning: cast between incompatible function types from ‘uint32_t (*)(void *, uint32_t)’ {或称 ‘unsigned int (*)(void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2354 |     { "HeapCompact", (FARPROC)HeapCompact },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2355:29: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint32_t,  void *, SIZE_T)’ {或称 ‘int (*)(void *, unsigned int,  void *, long long unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2355 |     { "HeapSetInformation", (FARPROC)HeapSetInformation },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2356:31: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint32_t,  void *, SIZE_T,  SIZE_T *)’ {或称 ‘int (*)(void *, unsigned int,  void *, long long unsigned int,  long long unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2356 |     { "HeapQueryInformation", (FARPROC)HeapQueryInformation },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2357:36: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2357 |     { "InitializeCriticalSection", (FARPROC)InitializeCriticalSection },
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:2358:31: warning: cast between incompatible function types from ‘void (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2358 |     { "EnterCriticalSection", (FARPROC)EnterCriticalSection },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2359:34: warning: cast between incompatible function types from ‘BOOL (*)(void *)’ {或称 ‘int (*)(void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2359 |     { "TryEnterCriticalSection", (FARPROC)TryEnterCriticalSection },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2360:31: warning: cast between incompatible function types from ‘void (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2360 |     { "LeaveCriticalSection", (FARPROC)LeaveCriticalSection },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2361:32: warning: cast between incompatible function types from ‘void (*)(void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2361 |     { "DeleteCriticalSection", (FARPROC)DeleteCriticalSection },
+      |                                ^
+kernel/arch/x86_64/win32_kernel32.c:2362:48: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint32_t)’ {或称 ‘int (*)(void *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2362 |     { "InitializeCriticalSectionAndSpinCount", (FARPROC)InitializeCriticalSectionAndSpinCount },
+      |                                                ^
+kernel/arch/x86_64/win32_kernel32.c:2363:37: warning: cast between incompatible function types from ‘BOOL (*)(volatile LONG *, LONG,  LONG)’ {或称 ‘int (*)(volatile long int *, long int,  long int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2363 |     { "InterlockedCompareExchange", (FARPROC)InterlockedCompareExchange },
+      |                                     ^
+kernel/arch/x86_64/win32_kernel32.c:2364:31: warning: cast between incompatible function types from ‘LONG (*)(volatile LONG *)’ {或称 ‘long int (*)(volatile long int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2364 |     { "InterlockedIncrement", (FARPROC)InterlockedIncrement },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2365:31: warning: cast between incompatible function types from ‘LONG (*)(volatile LONG *)’ {或称 ‘long int (*)(volatile long int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2365 |     { "InterlockedDecrement", (FARPROC)InterlockedDecrement },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2366:30: warning: cast between incompatible function types from ‘LONG (*)(volatile LONG *, LONG)’ {或称 ‘long int (*)(volatile long int *, long int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2366 |     { "InterlockedExchange", (FARPROC)InterlockedExchange },
+      |                              ^
+kernel/arch/x86_64/win32_kernel32.c:2367:33: warning: cast between incompatible function types from ‘LONG (*)(volatile LONG *, LONG)’ {或称 ‘long int (*)(volatile long int *, long int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2367 |     { "InterlockedExchangeAdd", (FARPROC)InterlockedExchangeAdd },
+      |                                 ^
+kernel/arch/x86_64/win32_kernel32.c:2368:44: warning: cast between incompatible function types from ‘void * (*)(void * volatile*, void *, void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2368 |     { "InterlockedCompareExchangePointer", (FARPROC)InterlockedCompareExchangePointer },
+      |                                            ^
+kernel/arch/x86_64/win32_kernel32.c:2369:37: warning: cast between incompatible function types from ‘void * (*)(void * volatile*, void *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2369 |     { "InterlockedExchangePointer", (FARPROC)InterlockedExchangePointer },
+      |                                     ^
+kernel/arch/x86_64/win32_kernel32.c:2370:29: warning: cast between incompatible function types from ‘void (*)(const char *)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2370 |     { "OutputDebugStringA", (FARPROC)OutputDebugStringA },
+      |                             ^
+kernel/arch/x86_64/win32_kernel32.c:2372:28: warning: cast between incompatible function types from ‘BOOL (*)(void)’ {或称 ‘int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2372 |     { "IsDebuggerPresent", (FARPROC)IsDebuggerPresent },
+      |                            ^
+kernel/arch/x86_64/win32_kernel32.c:2373:20: warning: cast between incompatible function types from ‘void (*)(int)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2373 |     { "FatalExit", (FARPROC)FatalExit },
+      |                    ^
+kernel/arch/x86_64/win32_kernel32.c:2374:25: warning: cast between incompatible function types from ‘void (*)(uint32_t,  uint32_t,  uint32_t,  const uint32_t *)’ {或称 ‘void (*)(unsigned int,  unsigned int,  unsigned int,  const unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2374 |     { "RaiseException", (FARPROC)RaiseException },
+      |                         ^
+kernel/arch/x86_64/win32_kernel32.c:2375:23: warning: cast between incompatible function types from ‘uint32_t (*)(uint32_t)’ {或称 ‘unsigned int (*)(unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2375 |     { "SetErrorMode", (FARPROC)SetErrorMode },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2376:15: warning: cast between incompatible function types from ‘BOOL (*)(uint32_t,  uint32_t)’ {或称 ‘int (*)(unsigned int,  unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2376 |     { "Beep", (FARPROC)Beep },
+      |               ^
+kernel/arch/x86_64/win32_kernel32.c:2377:35: warning: cast between incompatible function types from ‘BOOL (*)(uint32_t,  uint32_t)’ {或称 ‘int (*)(unsigned int,  unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2377 |     { "GenerateConsoleCtrlEvent", (FARPROC)GenerateConsoleCtrlEvent },
+      |                                   ^
+kernel/arch/x86_64/win32_kernel32.c:2378:23: warning: cast between incompatible function types from ‘BOOL (*)(void)’ {或称 ‘int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2378 |     { "AllocConsole", (FARPROC)AllocConsole },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2379:22: warning: cast between incompatible function types from ‘BOOL (*)(void)’ {或称 ‘int (*)(void)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2379 |     { "FreeConsole", (FARPROC)FreeConsole },
+      |                      ^
+kernel/arch/x86_64/win32_kernel32.c:2380:27: warning: cast between incompatible function types from ‘void * (*)(void)’ to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2380 |     { "GetConsoleWindow", (FARPROC)GetConsoleWindow },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2381:27: warning: cast between incompatible function types from ‘BOOL (*)(const char *)’ {或称 ‘int (*)(const char *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2381 |     { "SetConsoleTitleA", (FARPROC)SetConsoleTitleA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2382:27: warning: cast between incompatible function types from ‘DWORD (*)(char *, uint32_t)’ {或称 ‘unsigned int (*)(char *, unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2382 |     { "GetConsoleTitleA", (FARPROC)GetConsoleTitleA },
+      |                           ^
+kernel/arch/x86_64/win32_kernel32.c:2383:34: warning: cast between incompatible function types from ‘BOOL (*)(void *, uint16_t)’ {或称 ‘int (*)(void *, short unsigned int)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2383 |     { "SetConsoleTextAttribute", (FARPROC)SetConsoleTextAttribute },
+      |                                  ^
+kernel/arch/x86_64/win32_kernel32.c:2384:37: warning: cast between incompatible function types from ‘BOOL (*)(void *, void *)’ {或称 ‘int (*)(void *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2384 |     { "GetConsoleScreenBufferInfo", (FARPROC)GetConsoleScreenBufferInfo },
+      |                                     ^
+kernel/arch/x86_64/win32_kernel32.c:2385:35: warning: cast between incompatible function types from ‘BOOL (*)(void *, COORD)’ {或称 ‘int (*)(void *, COORD)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2385 |     { "SetConsoleCursorPosition", (FARPROC)SetConsoleCursorPosition },
+      |                                   ^
+kernel/arch/x86_64/win32_kernel32.c:2386:31: warning: cast between incompatible function types from ‘BOOL (*)(void *, const void *)’ {或称 ‘int (*)(void *, const void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2386 |     { "SetConsoleCursorInfo", (FARPROC)SetConsoleCursorInfo },
+      |                               ^
+kernel/arch/x86_64/win32_kernel32.c:2387:38: warning: cast between incompatible function types from ‘BOOL (*)(void *, CHAR,  DWORD,  COORD,  DWORD *)’ {或称 ‘int (*)(void *, char,  unsigned int,  COORD,  unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2387 |     { "FillConsoleOutputCharacterA", (FARPROC)FillConsoleOutputCharacterA },
+      |                                      ^
+kernel/arch/x86_64/win32_kernel32.c:2388:37: warning: cast between incompatible function types from ‘BOOL (*)(void *, WORD,  DWORD,  COORD,  DWORD *)’ {或称 ‘int (*)(void *, short unsigned int,  unsigned int,  COORD,  unsigned int *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2388 |     { "FillConsoleOutputAttribute", (FARPROC)FillConsoleOutputAttribute },
+      |                                     ^
+kernel/arch/x86_64/win32_kernel32.c:2389:37: warning: cast between incompatible function types from ‘BOOL (*)(void *, const SMALL_RECT *, const SMALL_RECT *, COORD,  const union <匿名> *)’ {或称 ‘int (*)(void *, const SMALL_RECT *, const SMALL_RECT *, COORD,  const union <匿名> *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2389 |     { "ScrollConsoleScreenBufferA", (FARPROC)ScrollConsoleScreenBufferA },
+      |                                     ^
+kernel/arch/x86_64/win32_kernel32.c:2390:24: warning: cast between incompatible function types from ‘BOOL (*)(void *, const void *, DWORD,  DWORD *, void *)’ {或称 ‘int (*)(void *, const void *, unsigned int,  unsigned int *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2390 |     { "WriteConsoleA", (FARPROC)WriteConsoleA },
+      |                        ^
+kernel/arch/x86_64/win32_kernel32.c:2391:23: warning: cast between incompatible function types from ‘BOOL (*)(void *, void *, DWORD,  DWORD *, void *)’ {或称 ‘int (*)(void *, void *, unsigned int,  unsigned int *, void *)’} to ‘intptr_t (*)()’ {或称 ‘long long int (*)()’} [-Wcast-function-type]
+ 2391 |     { "ReadConsoleA", (FARPROC)ReadConsoleA },
+      |                       ^
+kernel/arch/x86_64/win32_kernel32.c:2395:9: error: ‘GetModuleHandleA’重定义
+ 2395 | HMODULE GetModuleHandleA(const char* lpModuleName) {
+      |         ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1135:9: note: previous definition of ‘GetModuleHandleA’ with type ‘void *(const char *)’
+ 1135 | HMODULE GetModuleHandleA(const char* lpModuleName) {
+      |         ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘LoadLibraryA’中:
+kernel/arch/x86_64/win32_kernel32.c:2469:40: warning: ‘long long unsigned int’转换自‘off_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 2469 |     file_buf = memory_alloc(st.st_size + 16ULL);
+      |                                        ^
+kernel/arch/x86_64/win32_kernel32.c:2475:36: warning: ‘long long unsigned int’转换自‘off_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 2475 |     memset(file_buf, 0, st.st_size + 16ULL);
+      |                                    ^
+kernel/arch/x86_64/win32_kernel32.c:2477:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘off_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 2477 |     res = vfs_read(fd, file_buf, st.st_size);
+      |                                  ~~^~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:2535:9: error: ‘GetProcAddress’重定义
+ 2535 | FARPROC GetProcAddress(HMODULE hModule, const char* lpProcName) {
+      |         ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1151:9: note: previous definition of ‘GetProcAddress’ with type ‘intptr_t (*(void *, const char *))()’ {或称 ‘long long int (*(void *, const char *))()’}
+ 1151 | FARPROC GetProcAddress(HMODULE hModule, const char* lpProcName) {
+      |         ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2559:10: error: ‘GetModuleFileNameA’重定义
+ 2559 | uint32_t GetModuleFileNameA(HMODULE hModule, char* lpFilename, uint32_t nSize) {
+      |          ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1140:7: note: previous definition of ‘GetModuleFileNameA’ with type ‘uint32_t(void *, char *, unsigned int)’ {或称 ‘unsigned int(void *, char *, unsigned int)’}
+ 1140 | DWORD GetModuleFileNameA(HMODULE hModule, char* lpFilename, DWORD nSize) {
+      |       ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2752:7: error: ‘GetEnvironmentVariableA’重定义
+ 2752 | DWORD GetEnvironmentVariableA(const char* lpName, char* lpBuffer, DWORD nSize) {
+      |       ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:879:7: note: previous definition of ‘GetEnvironmentVariableA’ with type ‘DWORD(const char *, char *, DWORD)’ {或称 ‘unsigned int(const char *, char *, unsigned int)’}
+  879 | DWORD GetEnvironmentVariableA(const char* lpName, char* lpBuffer, DWORD nSize) {
+      |       ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2785:6: error: ‘SetEnvironmentVariableA’重定义
+ 2785 | BOOL SetEnvironmentVariableA(const char* lpName, const char* lpValue) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:910:6: note: previous definition of ‘SetEnvironmentVariableA’ with type ‘BOOL(const char *, const char *)’ {或称 ‘int(const char *, const char *)’}
+  910 | BOOL SetEnvironmentVariableA(const char* lpName, const char* lpValue) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2944:8: error: ‘GlobalAlloc’重定义
+ 2944 | HANDLE GlobalAlloc(UINT uFlags, uint64_t dwBytes) {
+      |        ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1511:9: note: previous definition of ‘GlobalAlloc’ with type ‘void *(unsigned int,  long long unsigned int)’
+ 1511 | HGLOBAL GlobalAlloc(UINT uFlags, SIZE_T dwBytes) {
+      |         ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2973:9: error: ‘GlobalFree’重定义
+ 2973 | HGLOBAL GlobalFree(HGLOBAL hMem) {
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1530:9: note: previous definition of ‘GlobalFree’ with type ‘void *(void *)’
+ 1530 | HGLOBAL GlobalFree(HGLOBAL hMem) {
+      |         ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:2993:8: error: ‘GlobalLock’重定义
+ 2993 | LPVOID GlobalLock(HGLOBAL hMem) {
+      |        ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1538:7: note: previous definition of ‘GlobalLock’ with type ‘void *(void *)’
+ 1538 | void* GlobalLock(HGLOBAL hMem) {
+      |       ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3002:6: error: ‘GlobalUnlock’重定义
+ 3002 | BOOL GlobalUnlock(HGLOBAL hMem) {
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1543:6: note: previous definition of ‘GlobalUnlock’ with type ‘BOOL(void *)’ {或称 ‘int(void *)’}
+ 1543 | BOOL GlobalUnlock(HGLOBAL hMem) {
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3011:10: error: ‘GlobalSize’重定义
+ 3011 | uint64_t GlobalSize(HGLOBAL hMem) {
+      |          ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1548:8: note: previous definition of ‘GlobalSize’ with type ‘SIZE_T(void *)’ {或称 ‘long long unsigned int(void *)’}
+ 1548 | SIZE_T GlobalSize(HGLOBAL hMem) {
+      |        ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3038:8: error: ‘LocalAlloc’重定义
+ 3038 | HANDLE LocalAlloc(UINT uFlags, uint64_t uBytes) {
+      |        ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1553:8: note: previous definition of ‘LocalAlloc’ with type ‘void *(unsigned int,  long long unsigned int)’
+ 1553 | HLOCAL LocalAlloc(UINT uFlags, SIZE_T dwBytes) {
+      |        ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3042:8: error: ‘LocalFree’重定义
+ 3042 | HLOCAL LocalFree(HLOCAL hMem) {
+      |        ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1557:8: note: previous definition of ‘LocalFree’ with type ‘void *(void *)’
+ 1557 | HLOCAL LocalFree(HLOCAL hMem) {
+      |        ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3046:8: error: ‘LocalLock’重定义
+ 3046 | LPVOID LocalLock(HLOCAL hMem) {
+      |        ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1561:7: note: previous definition of ‘LocalLock’ with type ‘void *(void *)’
+ 1561 | void* LocalLock(HLOCAL hMem) {
+      |       ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3050:6: error: ‘LocalUnlock’重定义
+ 3050 | BOOL LocalUnlock(HLOCAL hMem) {
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1565:6: note: previous definition of ‘LocalUnlock’ with type ‘BOOL(void *)’ {或称 ‘int(void *)’}
+ 1565 | BOOL LocalUnlock(HLOCAL hMem) {
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3054:10: error: ‘LocalSize’重定义
+ 3054 | uint64_t LocalSize(HLOCAL hMem) {
+      |          ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1569:8: note: previous definition of ‘LocalSize’ with type ‘SIZE_T(void *)’ {或称 ‘long long unsigned int(void *)’}
+ 1569 | SIZE_T LocalSize(HLOCAL hMem) {
+      |        ^~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3058:8: error: ‘VirtualAlloc’重定义
+ 3058 | LPVOID VirtualAlloc(LPVOID lpAddress, uint64_t dwSize, DWORD flAllocationType, DWORD flProtect) {
+      |        ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1455:7: note: previous definition of ‘VirtualAlloc’ with type ‘void *(void *, long long unsigned int,  unsigned int,  unsigned int)’
+ 1455 | void* VirtualAlloc(void* lpAddress, SIZE_T dwSize, DWORD flAllocationType,
+      |       ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3080:6: error: ‘VirtualFree’重定义
+ 3080 | BOOL VirtualFree(LPVOID lpAddress, uint64_t dwSize, DWORD dwFreeType) {
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1471:6: note: previous definition of ‘VirtualFree’ with type ‘BOOL(void *, long long unsigned int,  unsigned int)’ {或称 ‘int(void *, long long unsigned int,  unsigned int)’}
+ 1471 | BOOL VirtualFree(void* lpAddress, SIZE_T dwSize, DWORD dwFreeType) {
+      |      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3093:6: error: ‘VirtualProtect’重定义
+ 3093 | BOOL VirtualProtect(LPVOID lpAddress, uint64_t dwSize, DWORD flNewProtect, PDWORD lpflOldProtect) {
+      |      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1487:6: note: previous definition of ‘VirtualProtect’ with type ‘BOOL(void *, long long unsigned int,  unsigned int,  DWORD *)’ {或称 ‘int(void *, long long unsigned int,  unsigned int,  unsigned int *)’}
+ 1487 | BOOL VirtualProtect(void* lpAddress, SIZE_T dwSize, DWORD flNewProtect,
+      |      ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3469:6: error: ‘LockFile’重定义
+ 3469 | BOOL LockFile(HANDLE hFile, uint32_t dwFileOffsetLow,
+      |      ^~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1340:6: note: previous definition of ‘LockFile’ with type ‘BOOL(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’ {或称 ‘int(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’}
+ 1340 | BOOL LockFile(HANDLE hFile, DWORD dwFileOffsetLow, DWORD dwFileOffsetHigh,
+      |      ^~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3481:6: error: ‘UnlockFile’重定义
+ 3481 | BOOL UnlockFile(HANDLE hFile, uint32_t dwFileOffsetLow,
+      |      ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1368:6: note: previous definition of ‘UnlockFile’ with type ‘BOOL(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’ {或称 ‘int(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int)’}
+ 1368 | BOOL UnlockFile(HANDLE hFile, DWORD dwFileOffsetLow, DWORD dwFileOffsetHigh,
+      |      ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3493:6: error: ‘LockFileEx’重定义
+ 3493 | BOOL LockFileEx(HANDLE hFile, DWORD dwFlags, uint32_t dwReserved,
+      |      ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1396:6: note: previous definition of ‘LockFileEx’ with type ‘BOOL(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int,  void *)’ {或称 ‘int(void *, unsigned int,  unsigned int,  unsigned int,  unsigned int,  void *)’}
+ 1396 | BOOL LockFileEx(HANDLE hFile, DWORD dwFlags, DWORD dwReserved,
+      |      ^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3506:6: error: ‘UnlockFileEx’重定义
+ 3506 | BOOL UnlockFileEx(HANDLE hFile, DWORD dwReserved,
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1404:6: note: previous definition of ‘UnlockFileEx’ with type ‘BOOL(void *, unsigned int,  unsigned int,  unsigned int,  void *)’ {或称 ‘int(void *, unsigned int,  unsigned int,  unsigned int,  void *)’}
+ 1404 | BOOL UnlockFileEx(HANDLE hFile, DWORD dwReserved,
+      |      ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetFileAttributesExA’中:
+kernel/arch/x86_64/win32_kernel32.c:3643:60: warning: 未使用的参数‘fInfoLevelId’ [-Wunused-parameter]
+ 3643 | BOOL GetFileAttributesExA(const char* lpFileName, uint32_t fInfoLevelId,
+      |                                                   ~~~~~~~~~^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:3681:6: error: ‘SetFileAttributesA’重定义
+ 3681 | BOOL SetFileAttributesA(const char* lpFileName, uint32_t dwFileAttributes) {
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1273:6: note: previous definition of ‘SetFileAttributesA’ with type ‘BOOL(const char *, unsigned int)’ {或称 ‘int(const char *, unsigned int)’}
+ 1273 | BOOL SetFileAttributesA(const char* lpFileName, DWORD dwFileAttributes) {
+      |      ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetFullPathNameA’中:
+kernel/arch/x86_64/win32_kernel32.c:3707:28: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘BOOL’ {或称 ‘int’} may change value [-Wconversion]
+ 3707 |             return dir_len + 1;
+      |                    ~~~~~~~~^~~
+kernel/arch/x86_64/win32_kernel32.c:3714:16: warning: ‘BOOL’ {或称 ‘int’}转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+ 3714 |         return (uint32_t)(dir_len + strlen(last_sep + 1));
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3719:24: warning: ‘BOOL’ {或称 ‘int’}转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 3719 |             return len + 1;
+      |                    ~~~~^~~
+kernel/arch/x86_64/win32_kernel32.c:3725:16: warning: ‘BOOL’ {或称 ‘int’}转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 3725 |         return len;
+      |                ^~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetShortPathNameA’中:
+kernel/arch/x86_64/win32_kernel32.c:3752:12: warning: ‘BOOL’ {或称 ‘int’}转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 3752 |     return j;
+      |            ^
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetLongPathNameA’中:
+kernel/arch/x86_64/win32_kernel32.c:3767:20: warning: ‘BOOL’ {或称 ‘int’}转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 3767 |         return len + 1;
+      |                ~~~~^~~
+kernel/arch/x86_64/win32_kernel32.c:3771:12: warning: ‘BOOL’ {或称 ‘int’}转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 3771 |     return len;
+      |            ^~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:3821:8: error: ‘CreateFileMappingA’重定义
+ 3821 | HANDLE CreateFileMappingA(HANDLE hFile, void* lpFileMappingAttributes,
+      |        ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1424:8: note: previous definition of ‘CreateFileMappingA’ with type ‘void *(void *, void *, unsigned int,  unsigned int,  unsigned int,  const char *)’
+ 1424 | HANDLE CreateFileMappingA(HANDLE hFile, void* lpAttributes,
+      |        ^~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3873:8: error: ‘MapViewOfFile’重定义
+ 3873 | LPVOID MapViewOfFile(HANDLE hFileMappingObject, uint32_t dwDesiredAccess,
+      |        ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1437:7: note: previous definition of ‘MapViewOfFile’ with type ‘void *(void *, unsigned int,  unsigned int,  unsigned int,  long long unsigned int)’
+ 1437 | void* MapViewOfFile(HANDLE hFileMappingObject, DWORD dwDesiredAccess,
+      |       ^~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3909:6: error: ‘UnmapViewOfFile’重定义
+ 3909 | BOOL UnmapViewOfFile(LPCVOID lpBaseAddress) {
+      |      ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1449:6: note: previous definition of ‘UnmapViewOfFile’ with type ‘BOOL(const void *)’ {或称 ‘int(const void *)’}
+ 1449 | BOOL UnmapViewOfFile(const void* lpBaseAddress) {
+      |      ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3915:6: error: conflicting types for ‘FlushViewOfFile’; have ‘BOOL(const void *, uint64_t)’ {或称 ‘int(const void *, long long unsigned int)’}
+ 3915 | BOOL FlushViewOfFile(const void* lpBaseAddress, uint64_t dwNumberOfBytesToFlush) {
+      |      ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1179:6: note: previous definition of ‘FlushViewOfFile’ with type ‘BOOL(const void *, DWORD)’ {或称 ‘int(const void *, unsigned int)’}
+ 1179 | BOOL FlushViewOfFile(const void* lpBaseAddress, DWORD dwNumberOfBytesToFlush) {
+      |      ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3922:6: error: ‘QueryPerformanceCounter’重定义
+ 3922 | BOOL QueryPerformanceCounter(int64_t* lpPerformanceCount) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1623:6: note: previous definition of ‘QueryPerformanceCounter’ with type ‘BOOL(int64_t *)’ {或称 ‘int(long long int *)’}
+ 1623 | BOOL QueryPerformanceCounter(int64_t* lpPerformanceCount) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3943:6: error: ‘QueryPerformanceFrequency’重定义
+ 3943 | BOOL QueryPerformanceFrequency(int64_t* lpFrequency) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1636:6: note: previous definition of ‘QueryPerformanceFrequency’ with type ‘BOOL(int64_t *)’ {或称 ‘int(long long int *)’}
+ 1636 | BOOL QueryPerformanceFrequency(int64_t* lpFrequency) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3954:10: error: ‘GetTickCount’重定义
+ 3954 | uint32_t GetTickCount(void) {
+      |          ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:208:10: note: previous definition of ‘GetTickCount’ with type ‘uint32_t(void)’ {或称 ‘unsigned int(void)’}
+  208 | uint32_t GetTickCount(void) {
+      |          ^~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3959:10: error: ‘GetTickCount64’重定义
+ 3959 | uint64_t GetTickCount64(void) {
+      |          ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:222:10: note: previous definition of ‘GetTickCount64’ with type ‘uint64_t(void)’ {或称 ‘long long unsigned int(void)’}
+  222 | uint64_t GetTickCount64(void) {
+      |          ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:3964:6: error: ‘Sleep’重定义
+ 3964 | void Sleep(uint32_t dwMilliseconds) {
+      |      ^~~~~
+kernel/arch/x86_64/win32_kernel32.c:231:6: note: previous definition of ‘Sleep’ with type ‘void(uint32_t)’ {或称 ‘void(unsigned int)’}
+  231 | void Sleep(uint32_t dwMilliseconds) {
+      |      ^~~~~
+kernel/arch/x86_64/win32_kernel32.c:3969:6: error: ‘SleepEx’重定义
+ 3969 | void SleepEx(uint32_t dwMilliseconds, BOOL bAlertable) {
+      |      ^~~~~~~
+kernel/arch/x86_64/win32_kernel32.c:1618:6: note: previous definition of ‘SleepEx’ with type ‘void(unsigned int,  int)’
+ 1618 | void SleepEx(DWORD dwMilliseconds, BOOL bAlertable) {
+      |      ^~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘GetStringTypeA’中:
+kernel/arch/x86_64/win32_kernel32.c:4087:46: warning: 未使用的参数‘dwInfoType’ [-Wunused-parameter]
+ 4087 | int GetStringTypeA(uint32_t Locale, uint32_t dwInfoType,
+      |                                     ~~~~~~~~~^~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:4238:8: error: conflicting types for ‘VirtualQueryEx’; have ‘SIZE_T(void *, const void *, MEMORY_BASIC_INFORMATION *, SIZE_T)’ {或称 ‘long long unsigned int(void *, const void *, struct _MEMORY_BASIC_INFORMATION *, long long unsigned int)’}
+ 4238 | SIZE_T VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress,
+      |        ^~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1013:8: note: previous declaration of ‘VirtualQueryEx’ with type ‘SIZE_T(void *, const void *, void *, SIZE_T)’ {或称 ‘long long unsigned int(void *, const void *, void *, long long unsigned int)’}
+ 1013 | SIZE_T VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress,
+      |        ^~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在函数‘VirtualQueryEx’中:
+kernel/arch/x86_64/win32_kernel32.c:4252:22: error: ‘MEM_PRIVATE’未声明(在此函数内第一次使用)
+ 4252 |     lpBuffer->Type = MEM_PRIVATE;
+      |                      ^~~~~~~~~~~
+kernel/arch/x86_64/win32_kernel32.c: 在文件作用域：
+kernel/arch/x86_64/win32_kernel32.c:4541:6: error: conflicting types for ‘ScrollConsoleScreenBufferA’; have ‘BOOL(void *, const SMALL_RECT *, const SMALL_RECT *, COORD,  const union <匿名> *)’ {或称 ‘int(void *, const SMALL_RECT *, const SMALL_RECT *, COORD,  const union <匿名> *)’}
+ 4541 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1062:6: note: previous declaration of ‘ScrollConsoleScreenBufferA’ with type ‘BOOL(void *, const SMALL_RECT *, const SMALL_RECT *, COORD,  const union <匿名> *)’ {或称 ‘int(void *, const SMALL_RECT *, const SMALL_RECT *, COORD,  const union <匿名> *)’}
+ 1062 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+<0> Building kernel/arch/x86_64/win32_gdi_and_msg.c
+FAILED TASK run all: 

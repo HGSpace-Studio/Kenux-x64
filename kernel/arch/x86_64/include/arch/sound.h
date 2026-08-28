@@ -16,6 +16,7 @@ typedef struct {
     uint16_t vendor_id;
     uint16_t device_id;
     uint8_t type;
+    void* hda_dev;
 } sound_device_t;
 
 void sound_init(void);

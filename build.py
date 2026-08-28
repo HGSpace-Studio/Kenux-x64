@@ -112,10 +112,10 @@ CFLAGS_KERNEL = [
     "-m64", "-mcmodel=large", "-ffreestanding", "-fno-pic",
     "-nostdlib", "-nostartfiles", "-nodefaultlibs",
     "-mno-stack-arg-probe", "-fno-asynchronous-unwind-tables", "-fno-unwind-tables",
-    "-DKAL_KERNEL",
+    "-DKAL_KERNEL", "-DVGA_NATIVE",
 ]
 INCLUDES = [
-    "-Iinclude", "-Ikernel/include", "-Ikernel/kernel",
+    "-Iinclude", "-Ikernel", "-Ikernel/include", "-Ikernel/kernel",
     "-Ikernel/arch/x86_64/include", "-Ikernel/lib/libc/include",
     "-Ikernel/systemd/include", "-Iapps/container-os/include",
     "-Ikernel/gui/include", "-Ikernel/compat", "-Ikal/include",
@@ -209,6 +209,10 @@ def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
         "kal/src/*.c",
         "kal/adapters/*.c",
         "apps/container-os/src/*.c",
+        "apps/fastfetch.c",
+        "apps/calculator.c",
+        "apps/snake_game.c",
+        "apps/tetris.c",
     ))
     c_sources = sorted(set(c_sources))
 
@@ -381,6 +385,7 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
         CC, "-m64", "-T", relative(LINKER_SCRIPT),
         "-nostdlib", "-nodefaultlibs", "-nostartfiles",
         "-Wl,-e,_start", "-no-pie",
+        "-Wl,--allow-multiple-definition",
     ]
     if sys.platform.startswith('win'):
         link_command.append("-Wl,--image-base=0x0")

@@ -25,7 +25,7 @@ void memory_init(void)
     initialized = 1;
 }
 
-void* kmalloc(uint64_t size)
+void* kmalloc(size_t size)
 {
     if (!initialized || size == 0) return NULL;
 
@@ -35,7 +35,7 @@ void* kmalloc(uint64_t size)
     }
 
     uint32_t order = 0;
-    uint64_t aligned = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+    size_t aligned = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
     while ((PAGE_SIZE << order) < aligned && order < BUDDY_MAX_ORDER) {
         order++;
     }
@@ -58,7 +58,7 @@ void kfree(void* ptr)
     }
 }
 
-void* kzalloc(uint64_t size)
+void* kzalloc(size_t size)
 {
     void* ptr = kmalloc(size);
     if (ptr) memset(ptr, 0, size);

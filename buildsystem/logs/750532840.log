@@ -1,0 +1,225 @@
+-- Start building task run all -- (750532840)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/shell_enhanced.c
+-- Enter folder kernel/gui/src --
+<3> Building kernel/gui/src/kanvas_window.c
+<1> Building kernel/gui/src/kanvas_terminal.c
+<0> Building kernel/kernel/kernel.c
+In file included from kernel/gui/include/kanvas_window.h:4,
+In file included from kernel/gui/include/kanvas_terminal.h:4,
+                 from kernel/gui/src/kanvas_terminal.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+                 from kernel/gui/src/kanvas_window.c:1:
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from include/kapi.h:64,
+                 from kernel/gui/src/kanvas_terminal.c:2:
+include/kapi_kobject.h:8:17: error: conflicting types for ‘int64_t’; have ‘long int’
+    8 | #define ssize_t int64_t
+      |                 ^~~~~~~
+include/kapi_fs_ext.h:10:18: note: in expansion of macro ‘ssize_t’
+   10 | typedef long int ssize_t;
+      |                  ^~~~~~~
+In file included from /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h:14,
+                 from include/kapi_kanvasui.h:4:
+/usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint-gcc.h:43:24: note: previous declaration of ‘int64_t’ with type ‘int64_t’ {或称 ‘long long int’}
+   43 | typedef __INT64_TYPE__ int64_t;
+      |                        ^~~~~~~
+In file included from include/kapi.h:64,
+                 from kernel/kernel/shell_enhanced.c:13:
+include/kapi_kobject.h:8:17: error: conflicting types for ‘int64_t’; have ‘long int’
+    8 | #define ssize_t int64_t
+      |                 ^~~~~~~
+include/kapi_fs_ext.h:10:18: note: in expansion of macro ‘ssize_t’
+   10 | typedef long int ssize_t;
+      |                  ^~~~~~~
+In file included from /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h:14,
+                 from kernel/arch/x86_64/include/arch/types.h:4,
+                 from kernel/kernel/shell_enhanced.c:3:
+/usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint-gcc.h:43:24: note: previous declaration of ‘int64_t’ with type ‘int64_t’ {或称 ‘long long int’}
+In file included from include/kapi.h:64,
+                 from kernel/gui/src/kanvas_window.c:2:
+include/kapi_kobject.h:8:17: error: conflicting types for ‘int64_t’; have ‘long int’
+   43 | typedef __INT64_TYPE__ int64_t;
+      |                        ^~~~~~~
+    8 | #define ssize_t int64_t
+      |                 ^~~~~~~
+include/kapi_fs_ext.h:10:18: note: in expansion of macro ‘ssize_t’
+   10 | typedef long int ssize_t;
+      |                  ^~~~~~~
+In file included from /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h:14,
+                 from include/kapi_kanvasui.h:4:
+/usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint-gcc.h:43:24: note: previous declaration of ‘int64_t’ with type ‘int64_t’ {或称 ‘long long int’}
+   43 | typedef __INT64_TYPE__ int64_t;
+      |                        ^~~~~~~
+kernel/gui/src/kanvas_terminal.c: 在函数‘t_fill_rect’中:
+kernel/gui/src/kanvas_terminal.c:10:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |     ^~
+kernel/gui/src/kanvas_terminal.c:10:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |                                 ^~
+kernel/gui/src/kanvas_terminal.c: 在函数‘kanvas_terminal_paint’中:
+kernel/gui/src/kanvas_terminal.c:100:75: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  100 |             int thumb_h = (int)((float)max_lines / (float)tab->line_count * (term->h - KTERM_TAB_BAR_H));
+      |                                                                           ^
+kernel/gui/src/kanvas_terminal.c:101:110: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  101 |             int thumb_y = content_y + (int)((float)tab->scroll_offset / (float)(tab->line_count - max_lines) * (term->h - KTERM_TAB_BAR_H - thumb_h));
+      |                                                                                                              ^
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_create’中:
+kernel/gui/src/kanvas_window.c:60:31: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   60 |     size_t buf_sz = (size_t)w * h * 4;
+      |                               ^
+kernel/gui/src/kanvas_window.c: 在函数‘blend_pixel’中:
+kernel/gui/src/kanvas_window.c:126:24: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                        ^
+kernel/gui/src/kanvas_window.c:126:65: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                 ^
+kernel/gui/src/kanvas_window.c:126:105: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                                                         ^
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_paint_shadow’中:
+kernel/gui/src/kanvas_window.c:136:63: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  136 |         uint8_t a = (uint8_t)((float)alpha * (1.0f - (float)i / blur));
+      |                                                               ^
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+<1> Building kernel/gui/src/kanvas_taskbar.c
+In file included from include/kapi.h:64,
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+                 from kernel/kernel/kernel.c:63:
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+include/kapi_kobject.h:8:17: error: conflicting types for ‘int64_t’; have ‘long int’
+    8 | #define ssize_t int64_t
+      |                 ^~~~~~~
+include/kapi_fs_ext.h:10:18: note: in expansion of macro ‘ssize_t’
+   10 | typedef long int ssize_t;
+      |                  ^~~~~~~
+In file included from /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h:14,
+                 from kernel/arch/x86_64/include/arch/types.h:4,
+                 from kernel/arch/x86_64/include/arch/vga.h:4,
+                 from kernel/kernel/kernel.c:1:
+/usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint-gcc.h:43:24: note: previous declaration of ‘int64_t’ with type ‘int64_t’ {或称 ‘long long int’}
+   43 | typedef __INT64_TYPE__ int64_t;
+      |                        ^~~~~~~
+In file included from kernel/gui/include/kanvas_taskbar.h:4,
+                 from kernel/gui/src/kanvas_taskbar.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from include/kapi.h:64,
+                 from kernel/gui/src/kanvas_taskbar.c:2:
+include/kapi_kobject.h:8:17: error: conflicting types for ‘int64_t’; have ‘long int’
+    8 | #define ssize_t int64_t
+      |                 ^~~~~~~
+include/kapi_fs_ext.h:10:18: note: in expansion of macro ‘ssize_t’
+   10 | typedef long int ssize_t;
+      |                  ^~~~~~~
+In file included from /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h:14,
+                 from include/kapi_kanvasui.h:4:
+/usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint-gcc.h:43:24: note: previous declaration of ‘int64_t’ with type ‘int64_t’ {或称 ‘long long int’}
+   43 | typedef __INT64_TYPE__ int64_t;
+      |                        ^~~~~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/gui/src/kanvas_taskbar.c.o.d -c kernel/gui/src/kanvas_taskbar.c -o build/obj/kernel/gui/src/kanvas_taskbar.c.o

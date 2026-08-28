@@ -72,7 +72,7 @@ static inline int kapi_nlmsg_ok(const kapi_nlmsghdr_t* nlh, int remaining)
 
 static inline kapi_nlmsghdr_t* kapi_nlmsg_next(const kapi_nlmsghdr_t* nlh, int* remaining)
 {
-    int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+    int totlen = (int)(KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO));
     *remaining -= totlen;
     return (kapi_nlmsghdr_t*)((uint8_t*)nlh + totlen);
 }

@@ -1,0 +1,28 @@
+-- Start building task run all -- (254798449)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/syscall_entry_trampoline.s
+-- Enter folder kernel/gui/src --
+<2> Building kernel/gui/src/kui_draw.c
+<3> Building kernel/gui/src/font_ttf_data.c
+<1> Building kernel/arch/x86_64/sound_stubs.c
+<0> Building kernel/arch/x86_64/ext3_stubs.c
+-- Enter folder kernel/api --
+<3> Building kernel/api/kapi_wireless.c
+<2> Building kernel/api/kapi_window.c
+<1> Building kernel/api/kapi_timerfd.c
+<0> Building kernel/api/kapi_signalfd.c
+<3> Building kernel/api/kapi_profiler.c
+<0> Building kernel/api/kapi_poll.c
+kernel/api/kapi_profiler.c:20:5: error: conflicting types for ‘kapi_trace_init’; have ‘int(void)’
+   20 | int kapi_trace_init(void)
+      |     ^~~~~~~~~~~~~~~
+In file included from include/kapi.h:75,
+                 from kernel/api/kapi_profiler.c:1:
+include/kapi_trace.h:84:5: note: previous declaration of ‘kapi_trace_init’ with type ‘int(uint32_t,  uint32_t)’ {或称 ‘int(unsigned int,  unsigned int)’}
+   84 | int kapi_trace_init(uint32_t buffer_size, uint32_t enabled_categories);
+<2> Building kernel/api/kapi_lseek.c
+      |     ^~~~~~~~~~~~~~~
+<1> Building kernel/api/kapi_inotify.c
+FAILED TASK run all: 

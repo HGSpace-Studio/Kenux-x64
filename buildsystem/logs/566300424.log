@@ -1,0 +1,224 @@
+-- Start building task run all -- (566300424)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/ehci.c
+<1> Building kernel/arch/x86_64/ext4.c
+<2> Building kernel/arch/x86_64/efi_runtime.c
+<0> Building kernel/arch/x86_64/efi_entry.c
+kernel/arch/x86_64/ehci.c: 在函数‘ehci_init’中:
+kernel/arch/x86_64/ehci.c:17:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   17 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/ehci.c:17:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   17 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/ehci.c:17:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   17 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/ehci.c:21:38: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   21 |                 uint8_t class_code = (class_code_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/ehci.c:27:37: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   27 |                         ctrl->bus = b;
+      |                                     ^
+kernel/arch/x86_64/ehci.c:28:40: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   28 |                         ctrl->device = d;
+      |                                        ^
+kernel/arch/x86_64/ehci.c:29:42: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   29 |                         ctrl->function = f;
+      |                                          ^
+kernel/arch/x86_64/ehci.c:30:54: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   30 |                         ctrl->base = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                      ^
+kernel/arch/x86_64/ehci.c:30:57: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   30 |                         ctrl->base = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                         ^
+kernel/arch/x86_64/ehci.c:30:60: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   30 |                         ctrl->base = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                            ^
+kernel/arch/x86_64/efi_entry.c: 在函数‘efi_print_dec’中:
+kernel/arch/x86_64/efi_entry.c:47:24: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘char’ may change value [-Wconversion]
+   47 |             buf[i--] = '0' + (value % 10);
+      |                        ^~~
+<3> Building kernel/arch/x86_64/efi.c
+<0> Building kernel/arch/x86_64/dns.c
+<2> Building kernel/arch/x86_64/cpuidle.c
+kernel/arch/x86_64/dns.c:42:17: warning: ‘dns_ntohl’ 在此处定义 [-Wunused-function]
+   42 | static uint32_t dns_ntohl(uint32_t v) { return dns_htonl(v); }
+      |                 ^~~~~~~~~
+<3> Building kernel/arch/x86_64/cpufreq.c
+<1> Building kernel/arch/x86_64/conntrack.c
+kernel/arch/x86_64/cpufreq.c:111:12: warning: ‘conservative_sampling_rate’ 在此处定义 [-Wunused-variable]
+  111 | static u32 conservative_sampling_rate = 200;
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:110:12: warning: ‘conservative_step’ 在此处定义 [-Wunused-variable]
+  110 | static int conservative_step = 5;
+      |            ^~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:109:12: warning: ‘conservative_down_threshold’ 在此处定义 [-Wunused-variable]
+  109 | static int conservative_down_threshold = 20;
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:108:12: warning: ‘conservative_up_threshold’ 在此处定义 [-Wunused-variable]
+  108 | static int conservative_up_threshold = 80;
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:89:12: warning: ‘ondemand_sampling_down_factor’ 在此处定义 [-Wunused-variable]
+   89 | static u32 ondemand_sampling_down_factor = ONDEMAND_SAMPLING_DOWN_FACTOR;
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:88:12: warning: ‘ondemand_sampling_rate’ 在此处定义 [-Wunused-variable]
+   88 | static u32 ondemand_sampling_rate = ONDEMAND_SAMPLING_RATE_MS;
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:87:12: warning: ‘ondemand_up_threshold’ 在此处定义 [-Wunused-variable]
+   87 | static u32 ondemand_up_threshold = ONDEMAND_UP_THRESHOLD;
+      |            ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/cpufreq.c:22:13: warning: ‘wrmsr’ 在此处定义 [-Wunused-function]
+   22 | static void wrmsr(u32 msr, u64 val)
+      |             ^~~~~
+kernel/arch/x86_64/conntrack.c:6:17: warning: ‘conntrack_jiffies_base’ 在此处定义 [-Wunused-variable]
+    6 | static uint64_t conntrack_jiffies_base = 0;
+      |                 ^~~~~~~~~~~~~~~~~~~~~~
+<2> Building kernel/arch/x86_64/cfs.c
+kernel/arch/x86_64/cfs.c: 在函数‘rbtree_init’中:
+kernel/arch/x86_64/cfs.c:40:17: error: 将‘rb_node_t *’ {或称 ‘struct rb_node *’}赋值给‘rb_node_t’ {或称 ‘struct rb_node’}时类型不兼容
+   40 |     tree->nil = &sentinel;
+      |                 ^
+kernel/arch/x86_64/cfs.c:41:18: error: 将‘rb_node_t’ {或称 ‘struct rb_node’}赋值给‘rb_node_t *’ {或称 ‘struct rb_node *’}时类型不兼容
+   41 |     tree->root = tree->nil;
+      |                  ^~~~
+kernel/arch/x86_64/cfs.c: 在函数‘__rotate_left’中:
+kernel/arch/x86_64/cfs.c:48:17: error: invalid operands to binary != (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+   48 |     if (y->left != tree->nil) y->left->parent = x;
+      |         ~~~~~~~ ^~ ~~~~~~~~~
+      |          |             |
+      |          |             rb_node_t {或称 struct rb_node}
+      |          struct rb_node *
+kernel/arch/x86_64/cfs.c:50:19: error: invalid operands to binary == (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+   50 |     if (x->parent == tree->nil) tree->root = y;
+      |         ~~~~~~~~~ ^~ ~~~~~~~~~
+      |          |               |
+      |          |               rb_node_t {或称 struct rb_node}
+      |          struct rb_node *
+kernel/arch/x86_64/cfs.c: 在函数‘__rotate_right’中:
+kernel/arch/x86_64/cfs.c:61:18: error: invalid operands to binary != (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+   61 |     if (x->right != tree->nil) x->right->parent = y;
+      |         ~~~~~~~~ ^~ ~~~~~~~~~
+      |          |              |
+      |          |              rb_node_t {或称 struct rb_node}
+      |          struct rb_node *
+kernel/arch/x86_64/cfs.c:63:19: error: invalid operands to binary == (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+   63 |     if (y->parent == tree->nil) tree->root = x;
+      |         ~~~~~~~~~ ^~ ~~~~~~~~~
+      |          |               |
+      |          |               rb_node_t {或称 struct rb_node}
+      |          struct rb_node *
+kernel/arch/x86_64/cfs.c: 在函数‘rbtree_insert’中:
+kernel/arch/x86_64/cfs.c:119:20: error: 用‘rb_node_t’ {或称 ‘struct rb_node’}初始化‘rb_node_t *’ {或称 ‘struct rb_node *’}时类型不兼容
+  119 |     rb_node_t* y = tree->nil;
+      |                    ^~~~
+kernel/arch/x86_64/cfs.c:122:32: error: 将‘rb_node_t’ {或称 ‘struct rb_node’}赋值给‘struct rb_node *’时类型不兼容
+  122 |     node->left = node->right = tree->nil;
+      |                                ^~~~
+kernel/arch/x86_64/cfs.c:125:14: error: invalid operands to binary != (have ‘rb_node_t *’ {或称 ‘struct rb_node *’} and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  125 |     while (x != tree->nil) {
+      |              ^~ ~~~~~~~~~
+      |                     |
+      |                     rb_node_t {或称 struct rb_node}
+kernel/arch/x86_64/cfs.c:134:11: error: invalid operands to binary == (have ‘rb_node_t *’ {或称 ‘struct rb_node *’} and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  134 |     if (y == tree->nil) {
+      |           ^~ ~~~~~~~~~
+      |                  |
+      |                  rb_node_t {或称 struct rb_node}
+kernel/arch/x86_64/cfs.c: 在函数‘__transplant’中:
+kernel/arch/x86_64/cfs.c:147:19: error: invalid operands to binary == (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  147 |     if (u->parent == tree->nil) tree->root = v;
+      |         ~~~~~~~~~ ^~ ~~~~~~~~~
+      |          |               |
+      |          |               rb_node_t {或称 struct rb_node}
+      |          struct rb_node *
+kernel/arch/x86_64/cfs.c: 在函数‘__tree_min’中:
+kernel/arch/x86_64/cfs.c:211:20: error: invalid operands to binary != (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  211 |     while (x->left != tree->nil) x = x->left;
+      |            ~~~~~~~ ^~ ~~~~~~~~~
+      |             |             |
+      |             |             rb_node_t {或称 struct rb_node}
+      |             struct rb_node *
+kernel/arch/x86_64/cfs.c: 在函数‘rbtree_delete’中:
+kernel/arch/x86_64/cfs.c:221:17: error: invalid operands to binary == (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  221 |     if (z->left == tree->nil) {
+      |         ~~~~~~~ ^~ ~~~~~~~~~
+      |          |             |
+      |          |             rb_node_t {或称 struct rb_node}
+      |          struct rb_node *
+kernel/arch/x86_64/cfs.c:224:25: error: invalid operands to binary == (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  224 |     } else if (z->right == tree->nil) {
+      |                ~~~~~~~~ ^~ ~~~~~~~~~
+      |                 |              |
+      |                 |              rb_node_t {或称 struct rb_node}
+      |                 struct rb_node *
+kernel/arch/x86_64/cfs.c: 在函数‘rbtree_min’中:
+kernel/arch/x86_64/cfs.c:252:11: error: invalid operands to binary == (have ‘rb_node_t *’ {或称 ‘struct rb_node *’} and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  252 |     if (x == tree->nil) return NULL;
+      |           ^~ ~~~~~~~~~
+      |                  |
+      |                  rb_node_t {或称 struct rb_node}
+kernel/arch/x86_64/cfs.c:253:20: error: invalid operands to binary != (have ‘struct rb_node *’ and ‘rb_node_t’ {或称 ‘struct rb_node’})
+  253 |     while (x->left != tree->nil) x = x->left;
+      |            ~~~~~~~ ^~ ~~~~~~~~~
+      |             |             |
+      |             |             rb_node_t {或称 struct rb_node}
+      |             struct rb_node *
+kernel/arch/x86_64/cfs.c: 在函数‘cfs_init’中:
+kernel/arch/x86_64/cfs.c:262:28: error: ‘cfs_rq_t’ {或称 ‘struct cfs_rq’} has no member named ‘tasks’; did you mean ‘nr_tasks’?
+  262 |     rbtree_init(&global_rq.tasks);
+      |                            ^~~~~
+      |                            nr_tasks
+kernel/arch/x86_64/cfs.c: 在函数‘cfs_rq_init’中:
+kernel/arch/x86_64/cfs.c:274:22: error: ‘cfs_rq_t’ {或称 ‘struct cfs_rq’} has no member named ‘tasks’; did you mean ‘nr_tasks’?
+  274 |     rbtree_init(&rq->tasks);
+      |                      ^~~~~
+      |                      nr_tasks
+kernel/arch/x86_64/cfs.c: 在函数‘cfs_enqueue_task’中:
+kernel/arch/x86_64/cfs.c:306:24: error: ‘cfs_rq_t’ {或称 ‘struct cfs_rq’} has no member named ‘tasks’; did you mean ‘nr_tasks’?
+  306 |     rbtree_insert(&rq->tasks, &task->rb_node, task->vruntime);
+      |                        ^~~~~
+      |                        nr_tasks
+kernel/arch/x86_64/cfs.c: 在函数‘cfs_dequeue_task’中:
+kernel/arch/x86_64/cfs.c:323:24: error: ‘cfs_rq_t’ {或称 ‘struct cfs_rq’} has no member named ‘tasks’; did you mean ‘nr_tasks’?
+  323 |     rbtree_delete(&rq->tasks, &task->rb_node);
+      |                        ^~~~~
+      |                        nr_tasks
+kernel/arch/x86_64/cfs.c: 在函数‘cfs_pick_next_task’中:
+kernel/arch/x86_64/cfs.c:340:39: error: ‘cfs_rq_t’ {或称 ‘struct cfs_rq’} has no member named ‘tasks’; did you mean ‘nr_tasks’?
+  340 |     rb_node_t* node = rbtree_min(&rq->tasks);
+      |                                       ^~~~~
+      |                                       nr_tasks
+kernel/arch/x86_64/cfs.c: 在函数‘cfs_update_min_vruntime’中:
+kernel/arch/x86_64/cfs.c:367:39: error: ‘cfs_rq_t’ {或称 ‘struct cfs_rq’} has no member named ‘tasks’; did you mean ‘nr_tasks’?
+  367 |     rb_node_t* node = rbtree_min(&rq->tasks);
+      |                                       ^~~~~
+      |                                       nr_tasks
+<2> Building kernel/arch/x86_64/buddy.c
+kernel/arch/x86_64/buddy.c: 在函数‘buddy_free_pages’中:
+kernel/arch/x86_64/buddy.c:239:17: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-2’ to ‘4294967294’ [-Wsign-conversion]
+  239 |     page->flags &= ~PAGE_FLAG_USED;
+      |                 ^~
+kernel/arch/x86_64/buddy.c: 在函数‘buddy_defragment’中:
+kernel/arch/x86_64/buddy.c:425:58: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  425 |             uint64_t buddy_pfn_val = __buddy_pfn(p->pfn, order);
+      |                                                          ^~~~~
+kernel/arch/x86_64/buddy.c:429:30: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {或称 ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  429 |                 buddy->order == order && __in_freelist(zone, order, buddy)) {
+      |                              ^~
+kernel/arch/x86_64/buddy.c:429:62: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  429 |                 buddy->order == order && __in_freelist(zone, order, buddy)) {
+      |                                                              ^~~~~
+kernel/arch/x86_64/buddy.c:435:38: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  435 |                 merged_page->order = order + 1;
+      |                                      ^~~~~
+kernel/arch/x86_64/buddy.c:436:40: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  436 |                 __list_add(zone, order + 1, merged_page);
+      |                                  ~~~~~~^~~
+kernel/arch/x86_64/buddy.c: 在文件作用域：
+kernel/arch/x86_64/buddy.c:59:12: warning: ‘__phys_to_zone_type’ 在此处定义 [-Wunused-function]
+   59 | static int __phys_to_zone_type(uint64_t phys)
+      |            ^~~~~~~~~~~~~~~~~~~
+FAILED TASK run all: 

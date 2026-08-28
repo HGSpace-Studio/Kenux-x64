@@ -419,7 +419,7 @@ void wm_paint() {
         w = w->next;
     }
     
-    for (int32_t i = count - 1; i >= 0; i--) {
+    for (int32_t i = (int32_t)count - 1; i >= 0; i--) {
         window_paint(win_list[i]);
         wm_paint_app_content(win_list[i]);
     }
@@ -486,7 +486,7 @@ void wm_flush_dirty(void) {
 
         desktop_paint_region(dirty.x, dirty.y, dirty.w, dirty.h);
 
-        for (int32_t i = count - 1; i >= 0; i--) {
+        for (int32_t i = (int32_t)count - 1; i >= 0; i--) {
             if (painted[i]) continue;
             if (!win_list[i]->visible || win_list[i]->state.minimized) continue;
             wm_rect_t wr = {win_list[i]->x, win_list[i]->y,
@@ -652,8 +652,8 @@ void wm_handle_mouse_move(uint32_t x, uint32_t y) {
     wm.mouse_y = y;
     
     if (wm.dragging && wm.drag_window) {
-        wm.drag_window->x = x - wm.drag_offset_x;
-        wm.drag_window->y = y - wm.drag_offset_y;
+        wm.drag_window->x = (uint32_t)((int32_t)x - wm.drag_offset_x);
+        wm.drag_window->y = (uint32_t)((int32_t)y - wm.drag_offset_y);
         if (had_drag_rect) {
             wm_rect_t new_drag_rect = wm_window_bounds(wm.drag_window);
             wm_rect_t dirty = wm_rect_union(old_drag_rect, new_drag_rect);
@@ -724,8 +724,8 @@ void wm_handle_mouse_down(uint8_t button, uint32_t x, uint32_t y) {
         if (button == 0 && window_titlebar_point_inside(win, x, y) && win->movable) {
             wm.dragging = true;
             wm.drag_window = win;
-            wm.drag_offset_x = x - win->x;
-            wm.drag_offset_y = y - win->y;
+            wm.drag_offset_x = (int32_t)x - (int32_t)win->x;
+            wm.drag_offset_y = (int32_t)y - (int32_t)win->y;
         } else {
             widget_t* wgt = get_widget_at_screen(win, x, y);
             if (wgt && wgt->enabled) {

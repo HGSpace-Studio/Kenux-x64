@@ -5,61 +5,22 @@
 #include <arch/fs.h>
 #include <arch/pci.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #define UDEV_MAX_RULES 128
 #define UDEV_MAX_DEVICES 256
 #define UDEV_MAX_SUBSYSTEMS 16
 
-static long strtol(const char* str, char** endptr, int base)
-{
-    (void)endptr;
-    long result = 0;
-    int sign = 1;
-    
-    while (*str == ' ' || *str == '\t') str++;
-    
-    if (*str == '-') {
-        sign = -1;
-        str++;
-    } else if (*str == '+') {
-        str++;
-    }
-    
-    while (*str) {
-        char c = *str;
-        int digit;
-        
-        if (c >= '0' && c <= '9') {
-            digit = c - '0';
-        } else if (base == 16 && c >= 'a' && c <= 'f') {
-            digit = 10 + c - 'a';
-        } else if (base == 16 && c >= 'A' && c <= 'F') {
-            digit = 10 + c - 'A';
-        } else {
-            break;
-        }
-        
-        if (digit >= base) break;
-        
-        result = result * base + digit;
-        str++;
-    }
-    
-    return sign * result;
-}
-
-static int vfs_mknod(const char* path, int type, uint64_t major, uint64_t minor)
+static int udev_vfs_mknod(const char* path, int type, uint64_t major, uint64_t minor)
 {
     (void)path; (void)type; (void)major; (void)minor;
-    journal_log("udev", "vfs_mknod not implemented", LOG_WARNING);
+    journal_log("udev", "udev_vfs_mknod not implemented", LOG_WARNING);
     return -1;
 }
 
-static int vfs_symlink(const char* target, const char* linkpath)
+static int udev_vfs_symlink(const char* target, const char* linkpath)
 {
     (void)target; (void)linkpath;
-    journal_log("udev", "vfs_symlink not implemented", LOG_WARNING);
+    journal_log("udev", "udev_vfs_symlink not implemented", LOG_WARNING);
     return -1;
 }
 
@@ -202,7 +163,7 @@ static int udev_create_device_node(udev_device_t* device, const char* name)
     sprintf(msg, "Creating device node %s", devpath);
     journal_log("udev", msg, LOG_INFO);
     
-    vfs_mknod(devpath, FS_TYPE_CHARDEV, device->major, device->minor);
+    udev_vfs_mknod(devpath, FS_TYPE_CHARDEV, device->major, device->minor);
     
     return 0;
 }
@@ -215,7 +176,7 @@ static int udev_create_symlink(udev_device_t* device, const char* symlink)
     char linkpath[SYSTEMD_MAX_PATH];
     sprintf(linkpath, "/dev/%s", symlink);
     
-    vfs_symlink(target, linkpath);
+    udev_vfs_symlink(target, linkpath);
     
     char msg[256];
     sprintf(msg, "Creating symlink %s -> %s", linkpath, target);
@@ -376,28 +337,28 @@ static void udev_create_default_devices(void)
 {
     journal_log("udev", "Creating default devices", LOG_INFO);
     
-    vfs_mknod("/dev/null", FS_TYPE_CHARDEV, 1, 3);
-    vfs_mknod("/dev/zero", FS_TYPE_CHARDEV, 1, 5);
-    vfs_mknod("/dev/tty", FS_TYPE_CHARDEV, 5, 0);
-    vfs_mknod("/dev/console", FS_TYPE_CHARDEV, 5, 1);
-    vfs_mknod("/dev/random", FS_TYPE_CHARDEV, 1, 8);
-    vfs_mknod("/dev/urandom", FS_TYPE_CHARDEV, 1, 9);
+    udev_vfs_mknod("/dev/null", FS_TYPE_CHARDEV, 1, 3);
+    udev_vfs_mknod("/dev/zero", FS_TYPE_CHARDEV, 1, 5);
+    udev_vfs_mknod("/dev/tty", FS_TYPE_CHARDEV, 5, 0);
+    udev_vfs_mknod("/dev/console", FS_TYPE_CHARDEV, 5, 1);
+    udev_vfs_mknod("/dev/random", FS_TYPE_CHARDEV, 1, 8);
+    udev_vfs_mknod("/dev/urandom", FS_TYPE_CHARDEV, 1, 9);
     
-    vfs_mknod("/dev/fb0", FS_TYPE_CHARDEV, 29, 0);
-    vfs_mknod("/dev/tty0", FS_TYPE_CHARDEV, 4, 0);
-    vfs_mknod("/dev/tty1", FS_TYPE_CHARDEV, 4, 1);
-    vfs_mknod("/dev/tty2", FS_TYPE_CHARDEV, 4, 2);
-    vfs_mknod("/dev/tty3", FS_TYPE_CHARDEV, 4, 3);
+    udev_vfs_mknod("/dev/fb0", FS_TYPE_CHARDEV, 29, 0);
+    udev_vfs_mknod("/dev/tty0", FS_TYPE_CHARDEV, 4, 0);
+    udev_vfs_mknod("/dev/tty1", FS_TYPE_CHARDEV, 4, 1);
+    udev_vfs_mknod("/dev/tty2", FS_TYPE_CHARDEV, 4, 2);
+    udev_vfs_mknod("/dev/tty3", FS_TYPE_CHARDEV, 4, 3);
     
-    vfs_mknod("/dev/sda", FS_TYPE_BLOCKDEV, 8, 0);
-    vfs_mknod("/dev/sda1", FS_TYPE_BLOCKDEV, 8, 1);
-    vfs_mknod("/dev/sda2", FS_TYPE_BLOCKDEV, 8, 2);
-    vfs_mknod("/dev/sdb", FS_TYPE_BLOCKDEV, 8, 16);
+    udev_vfs_mknod("/dev/sda", FS_TYPE_BLOCKDEV, 8, 0);
+    udev_vfs_mknod("/dev/sda1", FS_TYPE_BLOCKDEV, 8, 1);
+    udev_vfs_mknod("/dev/sda2", FS_TYPE_BLOCKDEV, 8, 2);
+    udev_vfs_mknod("/dev/sdb", FS_TYPE_BLOCKDEV, 8, 16);
     
-    vfs_mknod("/dev/hda", FS_TYPE_BLOCKDEV, 3, 0);
-    vfs_mknod("/dev/hda1", FS_TYPE_BLOCKDEV, 3, 1);
+    udev_vfs_mknod("/dev/hda", FS_TYPE_BLOCKDEV, 3, 0);
+    udev_vfs_mknod("/dev/hda1", FS_TYPE_BLOCKDEV, 3, 1);
     
-    vfs_symlink("/dev/tty0", "/dev/tty");
+    udev_vfs_symlink("/dev/tty0", "/dev/tty");
     
     journal_log("udev", "Default devices created", LOG_INFO);
 }

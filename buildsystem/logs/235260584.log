@@ -1,0 +1,434 @@
+-- Start building task run all -- (235260584)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<1> Building kernel/kernel/wait.c
+<3> Building kernel/kernel/workqueue.c
+<2> Building kernel/kernel/unixsock.c
+<0> Building kernel/kernel/timer.c
+In file included from kernel/kernel/timer.c:3:
+kernel/kernel/unixsock.c: 在函数‘ring_write’中:
+kernel/kernel/unixsock.c:61:21: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   61 |     uint32_t space, to_copy, contiguous, first_chunk;
+      |                     ^~~~~~~
+kernel/kernel/unixsock.c:58:38: warning: 未使用的参数‘rpos’ [-Wunused-parameter]
+   58 |                            uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                            ~~~~~~~~~~^~~~
+kernel/kernel/unixsock.c: 在函数‘ring_read’中:
+kernel/kernel/unixsock.c:88:14: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   88 |     uint32_t to_copy, contiguous, first_chunk;
+      |              ^~~~~~~
+kernel/kernel/timer.c: 在函数‘__calc_index’中:
+kernel/kernel/timer.h:29:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 | #define TIMER_WHEEL_BITS      8
+      |                               ^
+kernel/kernel/timer.c:63:22: note: in expansion of macro ‘TIMER_WHEEL_BITS’
+   63 |     uint64_t shift = TIMER_WHEEL_BITS * (*level);
+      |                      ^~~~~~~~~~~~~~~~
+kernel/kernel/unixsock.c:85:53: warning: 未使用的参数‘wpos’ [-Wunused-parameter]
+   85 |                           uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                                           ~~~~~~~~~~^~~~
+kernel/kernel/workqueue.c: 在函数‘__tasklet_add’中:
+kernel/kernel/workqueue.c:216:22: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  216 |         for (int i = tasklet_count; i > 0; i--) {
+      |                      ^~~~~~~~~~~~~
+kernel/kernel/timer.c: 在文件作用域：
+kernel/kernel/timer.c:274:13: warning: ‘__msleep_wakeup’ 在此处定义 [-Wunused-function]
+  274 | static void __msleep_wakeup(void* arg)
+      |             ^~~~~~~~~~~~~~~
+<1> Building kernel/kernel/sysfs.c
+kernel/kernel/sysfs.c: 在函数‘sysfs_vfs_read’中:
+kernel/kernel/sysfs.c:87:57: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   87 |             len = attr->show(temp + total, sizeof(temp) - total);
+      |                                                         ^
+kernel/kernel/sysfs.c:89:55: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   89 |             len = snprintf(temp + total, sizeof(temp) - total, "%s\n", attr->value);
+      |                                                       ^
+kernel/kernel/sysfs.c:89:55: warning: conversion from ‘long long unsigned int’ to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   89 |             len = snprintf(temp + total, sizeof(temp) - total, "%s\n", attr->value);
+      |                                          ~~~~~~~~~~~~~^~~~~~~
+kernel/kernel/sysfs.c:96:32: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   96 |     memcpy(buf, temp + offset, size);
+      |                                ^~~~
+kernel/kernel/sysfs.c: 在函数‘sysfs_vfs_readdir’中:
+kernel/kernel/sysfs.c:111:52: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  111 |             memcpy(name, snode->children[i]->name, len);
+      |                                                    ^~~
+kernel/kernel/sysfs.c:123:48: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  123 |             memcpy(name, snode->attrs[i].name, len);
+      |                                                ^~~
+<3> Building kernel/kernel/sync.c
+<0> Building kernel/kernel/signal.c
+kernel/kernel/sync.c: 在函数‘mutex_is_locked’中:
+kernel/kernel/sync.c:249:15: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  249 |     return mtx->locked;
+      |            ~~~^~~~~~~~
+kernel/kernel/signal.c: 在函数‘signal_send_info’中:
+kernel/kernel/signal.c:184:19: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  184 |     info.si_pid = current_process;
+      |                   ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c: 在函数‘__signal_setup_frame’中:
+kernel/kernel/signal.c:222:27: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  222 |     siginfo_ptr->si_pid = current_process;
+      |                           ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c: 在函数‘signal_do_pending’中:
+kernel/kernel/signal.c:251:29: warning: ISO C 不允许在‘void *’和函数指针间比较 [-Wpedantic]
+  251 |         if (act->sa_handler == (void*)1) {
+      |                             ^~
+kernel/kernel/signal.c:280:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  280 |         info.si_pid = current_process;
+      |                       ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c:289:20: warning: 未使用的变量‘old_blocked’ [-Wunused-variable]
+  289 |         k_sigset_t old_blocked = sig_data->blocked;
+      |                    ^~~~~~~~~~~
+<1> Building kernel/kernel/shell_enhanced.c
+<2> Building kernel/kernel/rcu.c
+kernel/kernel/shell_enhanced.c: 在函数‘shell_find_elf’中:
+kernel/kernel/shell_enhanced.c:331:32: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  331 |         strncpy(out, cmd, size - 1);
+      |                           ~~~~~^~~
+kernel/kernel/shell_enhanced.c:336:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  336 |         snprintf(out, size, "%s%s", roots[i], cmd);
+      |                       ^~~~
+kernel/kernel/shell_enhanced.c: 在文件作用域：
+kernel/kernel/shell_enhanced.c:239:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  239 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:140:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  140 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:85:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   85 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+<0> Building kernel/kernel/process.c
+kernel/kernel/process.c: 在函数‘__process_trampoline’中:
+kernel/kernel/process.c:23:29: warning: ISO C 不允许将一个对象指针转换为一个函数指针 [-Wpedantic]
+   23 |         void (*fn)(void*) = (void (*)(void*))p->entry;
+      |                             ^
+kernel/kernel/process.c: 在函数‘process_switch’中:
+kernel/kernel/process.c:133:63: warning: 未使用的参数‘old’ [-Wunused-parameter]
+  133 | __attribute__((naked)) void process_switch(process_context_t* old, process_context_t* new)
+      |                                            ~~~~~~~~~~~~~~~~~~~^~~
+kernel/kernel/process.c:133:87: warning: 未使用的参数‘new’ [-Wunused-parameter]
+  133 | __attribute__((naked)) void process_switch(process_context_t* old, process_context_t* new)
+      |                                                                    ~~~~~~~~~~~~~~~~~~~^~~
+kernel/kernel/process.c: 在函数‘process_fork’中:
+kernel/kernel/process.c:556:15: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  556 |         parent->flags,
+      |         ~~~~~~^~~~~~~
+<2> Building kernel/kernel/module.c
+<3> Building kernel/kernel/kthread.c
+kernel/kernel/module.c: 在函数‘__apply_relocations’中:
+kernel/kernel/module.c:147:47: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  147 |         void* target_base = section_base(mod, target_idx, shdrs, shstr, data);
+      |                                               ^~~~~~~~~~
+kernel/kernel/module.c:153:21: warning: 未使用的变量‘strtab’ [-Wunused-variable]
+  153 |         const char* strtab = (const char*)mod->strtab;
+      |                     ^~~~~~
+kernel/kernel/module.c: 在函数‘module_load’中:
+kernel/kernel/module.c:275:56: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  275 |     const Elf64_Shdr* shdrs = (const Elf64_Shdr*)(data + ehdr->e_shoff);
+      |                                                        ^
+kernel/kernel/module.c:277:44: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  277 |     const char* shstr = (const char*)(data + shstrtab->sh_offset);
+      |                                            ^
+kernel/kernel/module.c:288:57: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  288 |                     mod->text_section = kzalloc(shdrs[i].sh_size);
+      |                                                 ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:290:52: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  290 |                     memcpy(mod->text_section, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                    ^
+kernel/kernel/module.c:290:82: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  290 |                     memcpy(mod->text_section, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                                          ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:295:57: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  295 |                     mod->data_section = kzalloc(shdrs[i].sh_size);
+      |                                                 ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:297:52: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  297 |                     memcpy(mod->data_section, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                    ^
+kernel/kernel/module.c:297:82: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  297 |                     memcpy(mod->data_section, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                                          ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:302:59: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  302 |                     mod->rodata_section = kzalloc(shdrs[i].sh_size);
+      |                                                   ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:304:54: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  304 |                     memcpy(mod->rodata_section, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                      ^
+kernel/kernel/kthread.c: 在函数‘kthread_entry’中:
+kernel/kernel/module.c:304:84: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+kernel/kernel/kthread.c:29:18: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 |     kt->result = ret;
+      |                  ^~~
+kernel/kernel/kthread.c: 在函数‘kthread_create’中:
+kernel/kernel/kthread.c:50:44: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+   50 |     uint64_t pid = process_create_ex(name, (void*)kthread_entry, NULL,
+      |                                            ^
+  304 |                     memcpy(mod->rodata_section, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                                            ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:310:52: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  310 |                 mod->bss_section = kzalloc(shdrs[i].sh_size);
+      |                                            ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:314:43: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  314 |             mod->symtab = kzalloc(shdrs[i].sh_size);
+      |                                   ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:315:55: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  315 |             if (mod->symtab) memcpy(mod->symtab, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                       ^
+kernel/kernel/module.c:315:85: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  315 |             if (mod->symtab) memcpy(mod->symtab, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                                             ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:320:47: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  320 |                 mod->strtab = kzalloc(shdrs[i].sh_size);
+      |                                       ~~~~~~~~^~~~~~~~
+kernel/kernel/module.c:321:59: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  321 |                 if (mod->strtab) memcpy(mod->strtab, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                           ^
+kernel/kernel/module.c:321:89: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  321 |                 if (mod->strtab) memcpy(mod->strtab, data + shdrs[i].sh_offset, shdrs[i].sh_size);
+      |                                                                                 ~~~~~~~~^~~~~~~~
+kernel/kernel/kthread.c: 在文件作用域：
+kernel/kernel/kthread.c:14:13: warning: ‘__kthread_wrapper’声明为‘static’却从未定义过 [-Wunused-function]
+   14 | static void __kthread_wrapper(void);
+      |             ^~~~~~~~~~~~~~~~~
+kernel/kernel/module.c: 在函数‘module_get_next’中:
+kernel/kernel/module.c:472:20: warning: conversion from ‘long long int’ to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  472 |     uint32_t idx = mod - module_table;
+      |                    ^~~
+<3> Building kernel/kernel/kernel.c
+In file included from kernel/kernel/kernel.c:61:
+include/stdio.h:7:14: error: conflicting types for ‘FILE’; have ‘long int’
+    7 | typedef long FILE;
+      |              ^~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5,
+                 from kernel/kernel/kernel.c:56:
+kernel/arch/x86_64/include/arch/win32.h:1373:3: note: previous declaration of ‘FILE’ with type ‘FILE’ {或称 ‘struct _FILE’}
+ 1373 | } FILE;
+      |   ^~~~
+include/stdio.h:15:7: error: conflicting types for ‘fopen’; have ‘int *(const char *, const char *)’
+   15 | FILE* fopen(const char* path, const char* mode);
+      |       ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1437:7: note: previous declaration of ‘fopen’ with type ‘FILE *(const char *, const char *)’ {或称 ‘struct _FILE *(const char *, const char *)’}
+ 1437 | FILE* fopen(const char* path, const char* mode);
+      |       ^~~~~
+include/stdio.h:16:5: error: conflicting types for ‘fclose’; have ‘int(int *)’
+   16 | int fclose(FILE* stream);
+      |     ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1438:7: note: previous declaration of ‘fclose’ with type ‘int(FILE *)’ {或称 ‘int(struct _FILE *)’}
+ 1438 | int   fclose(FILE* f);
+      |       ^~~~~~
+include/stdio.h:17:8: error: conflicting types for ‘fread’; have ‘size_t(void *, size_t,  size_t,  int *)’ {或称 ‘long unsigned int(void *, long unsigned int,  long unsigned int,  int *)’}
+   17 | size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+      |        ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1439:8: note: previous declaration of ‘fread’ with type ‘size_t(void *, size_t,  size_t,  FILE *)’ {或称 ‘long unsigned int(void *, long unsigned int,  long unsigned int,  struct _FILE *)’}
+ 1439 | size_t fread(void* buf, size_t sz, size_t n, FILE* f);
+      |        ^~~~~
+include/stdio.h:18:8: error: conflicting types for ‘fwrite’; have ‘size_t(const void *, size_t,  size_t,  int *)’ {或称 ‘long unsigned int(const void *, long unsigned int,  long unsigned int,  int *)’}
+   18 | size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+      |        ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1440:8: note: previous declaration of ‘fwrite’ with type ‘size_t(const void *, size_t,  size_t,  FILE *)’ {或称 ‘long unsigned int(const void *, long unsigned int,  long unsigned int,  struct _FILE *)’}
+ 1440 | size_t fwrite(const void* buf, size_t sz, size_t n, FILE* f);
+      |        ^~~~~~
+include/stdio.h:19:5: error: conflicting types for ‘fgetc’; have ‘int(int *)’
+   19 | int fgetc(FILE* stream);
+      |     ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1433:5: note: previous declaration of ‘fgetc’ with type ‘int(FILE *)’ {或称 ‘int(struct _FILE *)’}
+ 1433 | int fgetc(FILE* f);
+      |     ^~~~~
+include/stdio.h:20:5: error: conflicting types for ‘fputc’; have ‘int(int,  int *)’
+   20 | int fputc(int c, FILE* stream);
+      |     ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1431:5: note: previous declaration of ‘fputc’ with type ‘int(int,  FILE *)’ {或称 ‘int(int,  struct _FILE *)’}
+ 1431 | int fputc(int c, FILE* f);
+      |     ^~~~~
+include/stdio.h:21:7: error: conflicting types for ‘fgets’; have ‘char *(char *, int,  int *)’
+   21 | char* fgets(char* s, int size, FILE* stream);
+      |       ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1435:7: note: previous declaration of ‘fgets’ with type ‘char *(char *, int,  FILE *)’ {或称 ‘char *(char *, int,  struct _FILE *)’}
+ 1435 | char* fgets(char* s, int n, FILE* f);
+      |       ^~~~~
+include/stdio.h:22:5: error: conflicting types for ‘fputs’; have ‘int(const char *, int *)’
+   22 | int fputs(const char* s, FILE* stream);
+      |     ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1430:5: note: previous declaration of ‘fputs’ with type ‘int(const char *, FILE *)’ {或称 ‘int(const char *, struct _FILE *)’}
+ 1430 | int fputs(const char* s, FILE* f);
+      |     ^~~~~
+include/stdio.h:23:5: error: conflicting types for ‘fprintf’; have ‘int(int *, const char *, ...)’
+   23 | int fprintf(FILE* stream, const char* format, ...);
+      |     ^~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1423:5: note: previous declaration of ‘fprintf’ with type ‘int(FILE *, const char *, ...)’ {或称 ‘int(struct _FILE *, const char *, ...)’}
+ 1423 | int fprintf(FILE* f, const char* fmt, ...);
+      |     ^~~~~~~
+include/stdio.h:24:5: error: conflicting types for ‘fseek’; have ‘int(int *, long int,  int)’
+   24 | int fseek(FILE* stream, long offset, int whence);
+      |     ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1441:7: note: previous declaration of ‘fseek’ with type ‘int(FILE *, long int,  int)’ {或称 ‘int(struct _FILE *, long int,  int)’}
+ 1441 | int   fseek(FILE* f, long offset, int origin);
+      |       ^~~~~
+include/stdio.h:25:6: error: conflicting types for ‘ftell’; have ‘long int(int *)’
+   25 | long ftell(FILE* stream);
+      |      ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1442:7: note: previous declaration of ‘ftell’ with type ‘long int(FILE *)’ {或称 ‘long int(struct _FILE *)’}
+ 1442 | long  ftell(FILE* f);
+      |       ^~~~~
+include/stdio.h:26:6: error: conflicting types for ‘rewind’; have ‘void(int *)’
+   26 | void rewind(FILE* stream);
+      |      ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1443:7: note: previous declaration of ‘rewind’ with type ‘void(FILE *)’ {或称 ‘void(struct _FILE *)’}
+ 1443 | void  rewind(FILE* f);
+      |       ^~~~~~
+include/stdio.h:27:5: error: conflicting types for ‘feof’; have ‘int(int *)’
+   27 | int feof(FILE* stream);
+      |     ^~~~
+kernel/arch/x86_64/include/arch/win32.h:1444:7: note: previous declaration of ‘feof’ with type ‘int(FILE *)’ {或称 ‘int(struct _FILE *)’}
+ 1444 | int   feof(FILE* f);
+      |       ^~~~
+include/stdio.h:28:5: error: conflicting types for ‘ferror’; have ‘int(int *)’
+   28 | int ferror(FILE* stream);
+      |     ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1445:7: note: previous declaration of ‘ferror’ with type ‘int(FILE *)’ {或称 ‘int(struct _FILE *)’}
+ 1445 | int   ferror(FILE* f);
+      |       ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1374:22: error: expected ‘)’ before ‘*’ token
+ 1374 | #define stdin  ((FILE*)(uintptr_t)0)
+      |                      ^
+include/stdio.h:40:7: note: in expansion of macro ‘stdin’
+   40 | FILE* stdin;
+      |       ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1374:24: error: expected ‘)’ before ‘(’ token
+ 1374 | #define stdin  ((FILE*)(uintptr_t)0)
+      |                        ^
+include/stdio.h:40:7: note: in expansion of macro ‘stdin’
+   40 | FILE* stdin;
+      |       ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1375:22: error: expected ‘)’ before ‘*’ token
+ 1375 | #define stdout ((FILE*)(uintptr_t)1)
+      |                      ^
+include/stdio.h:41:7: note: in expansion of macro ‘stdout’
+   41 | FILE* stdout;
+      |       ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1375:24: error: expected ‘)’ before ‘(’ token
+ 1375 | #define stdout ((FILE*)(uintptr_t)1)
+      |                        ^
+include/stdio.h:41:7: note: in expansion of macro ‘stdout’
+   41 | FILE* stdout;
+      |       ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:22: error: expected ‘)’ before ‘*’ token
+ 1376 | #define stderr ((FILE*)(uintptr_t)2)
+      |                      ^
+include/stdio.h:42:7: note: in expansion of macro ‘stderr’
+   42 | FILE* stderr;
+      |       ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1376:24: error: expected ‘)’ before ‘(’ token
+ 1376 | #define stderr ((FILE*)(uintptr_t)2)
+      |                        ^
+include/stdio.h:42:7: note: in expansion of macro ‘stderr’
+   42 | FILE* stderr;
+      |       ^~~~~~
+<3> Building kernel/kernel/ipc.c
+kernel/kernel/ipc.c: 在函数‘shm_get’中:
+kernel/kernel/ipc.c:73:40: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   73 |     seg->size = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                        ^
+kernel/kernel/ipc.c:74:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   74 |     seg->phys_addr = kzalloc(seg->size);
+      |                              ~~~^~~~~~
+kernel/kernel/ipc.c:81:24: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+   81 |     seg->creator_pid = current_process;
+      |                        ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘shm_at’中:
+kernel/kernel/ipc.c:111:14: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-3’ to ‘4294967293’ [-Wsign-conversion]
+  111 |         prot &= ~PROT_WRITE;
+      |              ^~
+kernel/kernel/ipc.c: 在函数‘msg_get’中:
+kernel/kernel/ipc.c:245:34: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  245 |     msg_queues[id].creator_pid = current_process;
+      |                                  ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘msg_send’中:
+kernel/kernel/ipc.c:282:63: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  282 |     memcpy(entry->mtext, (const uint8_t*)msgp + sizeof(long), size);
+      |                                                               ^~~~
+kernel/kernel/ipc.c: 在函数‘msg_recv’中:
+kernel/kernel/ipc.c:333:57: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  333 |     memcpy((uint8_t*)msgp + sizeof(long), entry->mtext, copy_size);
+      |                                                         ^~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘sem_get’中:
+kernel/kernel/ipc.c:410:17: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  410 |     ss->nsems = nsems;
+      |                 ^~~~~
+kernel/kernel/ipc.c:412:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  412 |     ss->creator_pid = current_process;
+      |                       ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘sem_op’中:
+kernel/kernel/ipc.c:452:27: warning: conversion from ‘int’ to ‘int16_t’ {或称 ‘short int’} may change value [-Wconversion]
+  452 |         ss->values[num] = val;
+      |                           ^~~
+kernel/kernel/ipc.c: 在函数‘sem_ctl’中:
+kernel/kernel/ipc.c:472:38: warning: conversion from ‘int’ to ‘int16_t’ {或称 ‘short int’} may change value [-Wconversion]
+  472 |                 ss->values[semnum] = *(int*)arg;
+      |                                      ^
+kernel/kernel/ipc.c: 在函数‘futex_wait’中:
+kernel/kernel/ipc.c:503:52: warning: 未使用的参数‘timeout_ms’ [-Wunused-parameter]
+  503 | int futex_wait(void* uaddr, uint32_t val, uint64_t timeout_ms)
+      |                                           ~~~~~~~~~^~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘futex_wake’中:
+kernel/kernel/ipc.c:573:12: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  573 |     return woken;
+      |            ^~~~~
+kernel/kernel/ipc.c: 在函数‘futex_requeue’中:
+kernel/kernel/ipc.c:600:12: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  600 |     return moved;
+      |            ^~~~~
+kernel/kernel/ipc.c: 在函数‘ipc_syscall’中:
+kernel/kernel/ipc.c:626:53: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  626 |                 void* ret = shm_at((uint32_t)first, (void*)second, (int)third);
+      |                                                     ^
+kernel/kernel/ipc.c:627:30: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  627 |                 return ret ? (long)ret : -1;
+      |                              ^
+kernel/kernel/ipc.c:630:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  630 |             return shm_dt((void*)first);
+      |                           ^
+kernel/kernel/ipc.c:632:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  632 |             return shm_ctl((uint32_t)first, (int)second, (void*)third);
+      |                                                          ^
+kernel/kernel/ipc.c:641:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  641 |             return msg_send((uint32_t)first, (void*)second, (uint64_t)third, (int)fourth);
+      |                                              ^
+kernel/kernel/ipc.c:643:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  643 |             return msg_recv((uint32_t)first, (void*)second, (uint64_t)third, (long)fourth, (int)fifth);
+      |                                              ^
+kernel/kernel/ipc.c:645:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  645 |             return msg_ctl((uint32_t)first, (int)second, (void*)third);
+      |                                                          ^
+kernel/kernel/ipc.c:654:44: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  654 |             return sem_op((uint32_t)first, (struct sembuf*)second, (uint32_t)third);
+      |                                            ^
+kernel/kernel/ipc.c:656:70: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  656 |             return sem_ctl((uint32_t)first, (int)second, (int)third, (void*)fifth);
+      |                                                                      ^
+kernel/kernel/ipc.c: 在函数‘ipc_send’中:
+kernel/kernel/ipc.c:697:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  697 |         memcpy(msg->data, data, size);
+      |                                 ^~~~
+kernel/kernel/ipc.c: 在函数‘ipc_receive’中:
+kernel/kernel/ipc.c:722:45: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  722 |                     memcpy(data, msg->data, copy_size);
+      |                                             ^~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘ipc_channel_send’中:
+kernel/kernel/ipc.c:828:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  828 |         memcpy(msg->data, data, size);
+      |                                 ^~~~
+kernel/kernel/ipc.c: 在函数‘ipc_channel_recv’中:
+kernel/kernel/ipc.c:855:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  855 |         memcpy(data, msg->data, copy_size);
+      |                                 ^~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘ipc_shm_create’中:
+kernel/kernel/ipc.c:917:52: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  917 |     uint64_t aligned_size = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                                    ^
+kernel/kernel/ipc.c:918:25: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  918 |     shm->addr = kzalloc(aligned_size);
+      |                         ^~~~~~~~~~~~
+FAILED TASK run all: 

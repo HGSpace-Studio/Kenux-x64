@@ -1,0 +1,235 @@
+-- Start building task run all -- (148189406)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/hda.c
+<2> Building kernel/arch/x86_64/ext4.c
+<0> Building kernel/arch/x86_64/ext2.c
+<3> Building kernel/arch/x86_64/framebuffer.c
+kernel/arch/x86_64/ext2.c: 在函数‘ext2_block_to_lba’中:
+kernel/arch/x86_64/ext2.c:11:46: warning: 未使用的参数‘fs’ [-Wunused-parameter]
+   11 | static uint32_t ext2_block_to_lba(ext2_fs_t* fs, uint32_t block)
+      |                                   ~~~~~~~~~~~^~
+kernel/arch/x86_64/ext2.c: 在函数‘ext2_read_file’中:
+kernel/arch/x86_64/ext2.c:120:30: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  120 |         uint32_t block_num = current_offset / EXT2_BLOCK_SIZE;
+      |                              ^~~~~~~~~~~~~~
+kernel/arch/x86_64/ext2.c:125:25: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  125 |             read_size = size - bytes_read;
+      |                         ^~~~
+kernel/arch/x86_64/ext2.c:144:12: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  144 |     return bytes_read;
+      |            ^~~~~~~~~~
+kernel/arch/x86_64/hda.c: 在函数‘hda_reset’中:
+kernel/arch/x86_64/hda.c:66:37: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-2’ to ‘4294967294’ [-Wsign-conversion]
+   66 |         hda_write32(dev, 0x08, gctl & ~0x01);
+      |                                     ^
+kernel/arch/x86_64/ext2.c: 在函数‘ext2_read’中:
+kernel/arch/x86_64/ext2.c:306:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  306 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/arch/x86_64/framebuffer.c: 在函数‘fb_init_from_gop’中:
+kernel/arch/x86_64/framebuffer.c:335:63: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  335 |     fb_info.total_size = (fb_info.total_size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                                               ^
+kernel/arch/x86_64/hda.c: 在函数‘hda_init’中:
+kernel/arch/x86_64/hda.c:189:47: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  189 |                 uint32_t id = pci_read_config(b, d, f, 0x00);
+      |                                               ^
+kernel/arch/x86_64/hda.c:189:50: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  189 |                 uint32_t id = pci_read_config(b, d, f, 0x00);
+      |                                                  ^
+kernel/arch/x86_64/hda.c:189:53: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  189 |                 uint32_t id = pci_read_config(b, d, f, 0x00);
+      |                                                     ^
+kernel/arch/x86_64/hda.c:191:35: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  191 |                 uint16_t device = (id >> 16) & 0xFFFF;
+      |                                   ^
+kernel/arch/x86_64/hda.c:202:44: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  202 |                 dev->irq = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                            ^
+kernel/arch/x86_64/hda.c:202:47: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  202 |                 dev->irq = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                               ^
+kernel/arch/x86_64/hda.c:202:50: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  202 |                 dev->irq = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                  ^
+kernel/arch/x86_64/hda.c:205:48: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  205 |                 uint32_t bar = pci_read_config(b, d, f, 0x10);
+      |                                                ^
+kernel/arch/x86_64/hda.c:205:51: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  205 |                 uint32_t bar = pci_read_config(b, d, f, 0x10);
+      |                                                   ^
+kernel/arch/x86_64/hda.c:205:54: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  205 |                 uint32_t bar = pci_read_config(b, d, f, 0x10);
+      |                                                      ^
+kernel/arch/x86_64/hda.c:207:51: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  207 |                 uint32_t bar_hi = pci_read_config(b, d, f, 0x14);
+      |                                                   ^
+kernel/arch/x86_64/hda.c:207:54: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  207 |                 uint32_t bar_hi = pci_read_config(b, d, f, 0x14);
+      |                                                      ^
+kernel/arch/x86_64/hda.c:207:57: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  207 |                 uint32_t bar_hi = pci_read_config(b, d, f, 0x14);
+      |                                                         ^
+kernel/arch/x86_64/framebuffer.c: 在函数‘fb_puts’中:
+kernel/arch/x86_64/framebuffer.c:548:49: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-64’ to ‘4294967232’ [-Wsign-conversion]
+  548 |             cur_x = (cur_x + FB_CHAR_WIDTH * 8) & ~(FB_CHAR_WIDTH * 8 - 1);
+      |                                                 ^
+kernel/arch/x86_64/framebuffer.c: 在函数‘fb_resolution_set’中:
+kernel/arch/x86_64/framebuffer.c:580:63: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  580 |     fb_info.total_size = (fb_info.total_size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                                               ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_mount’中:
+kernel/arch/x86_64/ext4.c:59:5: error: implicit declaration of function ‘ext2_read_superblock’; did you mean ‘ext3_read_block’? [-Wimplicit-function-declaration]
+   59 |     ext2_read_superblock(device, sb_buf);
+      |     ^~~~~~~~~~~~~~~~~~~~
+      |     ext3_read_block
+kernel/arch/x86_64/ext2.c: 在文件作用域：
+kernel/arch/x86_64/ext2.c:22:12: warning: ‘ext2_write_block’ 在此处定义 [-Wunused-function]
+   22 | static int ext2_write_block(ext2_fs_t* fs, uint32_t block, const void* buffer)
+      |            ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_read_inode’中:
+kernel/arch/x86_64/ext4.c:104:12: error: implicit declaration of function ‘ext2_read_inode’; did you mean ‘ext4_read_inode’? [-Wimplicit-function-declaration]
+  104 |     return ext2_read_inode(&fs->base.base, ino, buf);
+      |            ^~~~~~~~~~~~~~~
+      |            ext4_read_inode
+kernel/arch/x86_64/ext4.c:104:37: error: ‘ext3_fs_t’没有名为‘base’的成员
+  104 |     return ext2_read_inode(&fs->base.base, ino, buf);
+      |                                     ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_write_inode’中:
+kernel/arch/x86_64/ext4.c:110:12: error: implicit declaration of function ‘ext2_write_inode’; did you mean ‘ext4_write_inode’? [-Wimplicit-function-declaration]
+  110 |     return ext2_write_inode(&fs->base.base, ino, buf);
+      |            ^~~~~~~~~~~~~~~~
+      |            ext4_write_inode
+kernel/arch/x86_64/ext4.c:110:38: error: ‘ext3_fs_t’没有名为‘base’的成员
+  110 |     return ext2_write_inode(&fs->base.base, ino, buf);
+      |                                      ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_extent_map’中:
+kernel/arch/x86_64/ext4.c:155:17: error: implicit declaration of function ‘ext2_read_block’; did you mean ‘ext3_read_block’? [-Wimplicit-function-declaration]
+  155 |                 ext2_read_block(&fs->base.base, (uint32_t)child_block, block_buf);
+      |                 ^~~~~~~~~~~~~~~
+      |                 ext3_read_block
+kernel/arch/x86_64/ext4.c:155:42: error: ‘ext3_fs_t’没有名为‘base’的成员
+  155 |                 ext2_read_block(&fs->base.base, (uint32_t)child_block, block_buf);
+      |                                          ^
+kernel/arch/x86_64/ext4.c:177:38: error: ‘ext3_fs_t’没有名为‘base’的成员
+  177 |             ext2_read_block(&fs->base.base, (uint32_t)child_block, block_buf);
+      |                                      ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_read_file’中:
+kernel/arch/x86_64/ext4.c:203:39: error: ‘ext3_fs_t’没有名为‘base’的成员
+  203 |         uint32_t block_size = fs->base.base.block_size;
+      |                                       ^
+kernel/arch/x86_64/ext4.c:218:38: error: ‘ext3_fs_t’没有名为‘base’的成员
+  218 |             ext2_read_block(&fs->base.base, (uint32_t)physical_block, block_buf);
+      |                                      ^
+kernel/arch/x86_64/ext4.c:232:12: error: implicit declaration of function ‘ext2_read_file’; did you mean ‘ext4_read_file’? [-Wimplicit-function-declaration]
+  232 |     return ext2_read_file(&fs->base.base, ino, buf, offset, size);
+      |            ^~~~~~~~~~~~~~
+      |            ext4_read_file
+kernel/arch/x86_64/ext4.c:232:36: error: ‘ext3_fs_t’没有名为‘base’的成员
+  232 |     return ext2_read_file(&fs->base.base, ino, buf, offset, size);
+      |                                    ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_write_file’中:
+kernel/arch/x86_64/ext4.c:238:12: error: implicit declaration of function ‘ext2_write_file’; did you mean ‘ext4_write_file’? [-Wimplicit-function-declaration]
+  238 |     return ext2_write_file(&fs->base.base, ino, buf, offset, size);
+      |            ^~~~~~~~~~~~~~~
+      |            ext4_write_file
+kernel/arch/x86_64/ext4.c:238:37: error: ‘ext3_fs_t’没有名为‘base’的成员
+  238 |     return ext2_write_file(&fs->base.base, ino, buf, offset, size);
+      |                                     ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_lookup’中:
+kernel/arch/x86_64/ext4.c:251:12: error: implicit declaration of function ‘ext2_lookup’; did you mean ‘ext4_lookup’? [-Wimplicit-function-declaration]
+  251 |     return ext2_lookup(&fs->base.base, dir_ino, name, out_ino);
+      |            ^~~~~~~~~~~
+      |            ext4_lookup
+kernel/arch/x86_64/ext4.c:251:33: error: ‘ext3_fs_t’没有名为‘base’的成员
+  251 |     return ext2_lookup(&fs->base.base, dir_ino, name, out_ino);
+      |                                 ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_create’中:
+kernel/arch/x86_64/ext4.c:257:12: error: implicit declaration of function ‘ext2_create’; did you mean ‘ext4_create’? [-Wimplicit-function-declaration]
+  257 |     return ext2_create(&fs->base.base, dir_ino, name, mode, out_ino);
+      |            ^~~~~~~~~~~
+      |            ext4_create
+kernel/arch/x86_64/ext4.c:257:33: error: ‘ext3_fs_t’没有名为‘base’的成员
+  257 |     return ext2_create(&fs->base.base, dir_ino, name, mode, out_ino);
+      |                                 ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_mkdir’中:
+kernel/arch/x86_64/ext4.c:263:32: error: ‘ext3_fs_t’没有名为‘base’的成员
+  263 |     return ext2_mkdir(&fs->base.base, dir_ino, name, mode);
+      |                                ^
+kernel/arch/x86_64/ext4.c:263:12: error: too many arguments to function ‘ext2_mkdir’; expected 1, have 4
+  263 |     return ext2_mkdir(&fs->base.base, dir_ino, name, mode);
+      |            ^~~~~~~~~~                 ~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/ext3.h:5,
+                 from kernel/arch/x86_64/include/arch/ext4.h:5,
+                 from kernel/arch/x86_64/ext4.c:1:
+kernel/arch/x86_64/include/arch/ext2.h:112:5: note: 在此声明
+  112 | int ext2_mkdir(const char* path);
+      |     ^~~~~~~~~~
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_unlink’中:
+kernel/arch/x86_64/ext4.c:269:33: error: ‘ext3_fs_t’没有名为‘base’的成员
+  269 |     return ext2_unlink(&fs->base.base, dir_ino, name);
+      |                                 ^
+kernel/arch/x86_64/ext4.c:269:12: error: too many arguments to function ‘ext2_unlink’; expected 1, have 3
+  269 |     return ext2_unlink(&fs->base.base, dir_ino, name);
+      |            ^~~~~~~~~~~                 ~~~~~~~
+kernel/arch/x86_64/include/arch/ext2.h:114:5: note: 在此声明
+  114 | int ext2_unlink(const char* path);
+      |     ^~~~~~~~~~~
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_rename’中:
+kernel/arch/x86_64/ext4.c:283:12: error: implicit declaration of function ‘ext2_rename’; did you mean ‘ext4_rename’? [-Wimplicit-function-declaration]
+  283 |     return ext2_rename(&fs->base.base, old_dir, old_name, new_dir, new_name);
+      |            ^~~~~~~~~~~
+      |            ext4_rename
+kernel/arch/x86_64/ext4.c:283:33: error: ‘ext3_fs_t’没有名为‘base’的成员
+  283 |     return ext2_rename(&fs->base.base, old_dir, old_name, new_dir, new_name);
+      |                                 ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_alloc_inode’中:
+kernel/arch/x86_64/ext4.c:289:12: error: implicit declaration of function ‘ext2_alloc_inode’; did you mean ‘ext4_alloc_inode’? [-Wimplicit-function-declaration]
+  289 |     return ext2_alloc_inode(&fs->base.base, is_dir);
+      |            ^~~~~~~~~~~~~~~~
+      |            ext4_alloc_inode
+kernel/arch/x86_64/ext4.c:289:38: error: ‘ext3_fs_t’没有名为‘base’的成员
+  289 |     return ext2_alloc_inode(&fs->base.base, is_dir);
+      |                                      ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_free_inode’中:
+kernel/arch/x86_64/ext4.c:295:5: error: implicit declaration of function ‘ext2_free_inode’; did you mean ‘ext4_free_inode’? [-Wimplicit-function-declaration]
+  295 |     ext2_free_inode(&fs->base.base, ino);
+      |     ^~~~~~~~~~~~~~~
+      |     ext4_free_inode
+kernel/arch/x86_64/ext4.c:295:30: error: ‘ext3_fs_t’没有名为‘base’的成员
+  295 |     ext2_free_inode(&fs->base.base, ino);
+      |                              ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_alloc_block’中:
+kernel/arch/x86_64/ext4.c:301:22: error: implicit declaration of function ‘ext2_alloc_block’; did you mean ‘ext4_alloc_block’? [-Wimplicit-function-declaration]
+  301 |     return (uint64_t)ext2_alloc_block(&fs->base.base);
+      |                      ^~~~~~~~~~~~~~~~
+      |                      ext4_alloc_block
+kernel/arch/x86_64/ext4.c:301:48: error: ‘ext3_fs_t’没有名为‘base’的成员
+  301 |     return (uint64_t)ext2_alloc_block(&fs->base.base);
+      |                                                ^
+kernel/arch/x86_64/ext4.c: 在函数‘ext4_free_block’中:
+kernel/arch/x86_64/ext4.c:307:5: error: implicit declaration of function ‘ext2_free_block’; did you mean ‘ext4_free_block’? [-Wimplicit-function-declaration]
+  307 |     ext2_free_block(&fs->base.base, (uint32_t)block);
+      |     ^~~~~~~~~~~~~~~
+      |     ext4_free_block
+kernel/arch/x86_64/ext4.c:307:30: error: ‘ext3_fs_t’没有名为‘base’的成员
+  307 |     ext2_free_block(&fs->base.base, (uint32_t)block);
+      |                              ^
+<2> Building kernel/arch/x86_64/elf.c
+kernel/arch/x86_64/elf.c: 在函数‘elf_load_from_memory’中:
+kernel/arch/x86_64/elf.c:91:38: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   91 |         uint64_t vaddr = ph->p_vaddr & ~(PAGE_SIZE - 1);
+      |                                      ^
+kernel/arch/x86_64/elf.c:92:40: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   92 |         uint64_t offset = ph->p_offset & ~(PAGE_SIZE - 1);
+      |                                        ^
+kernel/arch/x86_64/elf.c:95:55: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   95 |         uint64_t page_end = (mem_end + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                                       ^
+kernel/arch/x86_64/elf.c: 在函数‘elf_load_from_file’中:
+kernel/arch/x86_64/elf.c:158:41: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  158 |     int ret = elf_load_from_memory(buf, total, info);
+      |                                         ^~~~~
+FAILED TASK run all: 

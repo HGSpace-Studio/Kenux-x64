@@ -47,7 +47,7 @@ process_t* kthread_create(const char* name, kthread_fn_t fn, void* arg)
     kt->result = 0;
     spin_init(&kt->lock);
 
-    uint64_t pid = process_create_ex(name, kthread_entry, NULL,
+    uint64_t pid = process_create_ex(name, (void*)kthread_entry, NULL,
                                       PRIORITY_NORMAL,
                                       PROCESS_FLAG_KTHREAD | PROCESS_FLAG_FIXED, 0);
     if (pid == (uint64_t)-1) {

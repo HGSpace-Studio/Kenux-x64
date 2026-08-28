@@ -1,11 +1,11 @@
 build/obj/kernel/arch/x86_64/pagefault.c.o: \
  kernel/arch/x86_64/pagefault.c \
  kernel/arch/x86_64/include/arch/pagefault.h \
- kernel/arch/x86_64/include/arch/types.h kernel/lib/libc/include/stddef.h \
+ kernel/arch/x86_64/include/arch/types.h include/stddef.h \
  kernel/lib/libc/include/stdbool.h \
  kernel/arch/x86_64/include/arch/memory.h \
  kernel/arch/x86_64/include/arch/buddy.h \
  kernel/arch/x86_64/include/arch/spinlock.h \
  kernel/arch/x86_64/include/arch/process.h \
  kernel/arch/x86_64/include/arch/cfs.h \
- kernel/arch/x86_64/include/arch/smp.h kernel/lib/libc/include/string.h
+ kernel/arch/x86_64/include/arch/smp.h include/string.h

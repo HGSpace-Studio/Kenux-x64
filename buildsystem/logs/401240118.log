@@ -1,0 +1,708 @@
+-- Start building task run all -- (401240118)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/slab.c
+<1> Building kernel/arch/x86_64/sata.c
+<3> Building kernel/arch/x86_64/rtc.c
+<0> Building kernel/arch/x86_64/route.c
+kernel/arch/x86_64/slab.c: 在函数‘__slab_order’中:
+kernel/arch/x86_64/slab.c:18:33: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint32_t’ {或称 ‘unsigned int’} [-Wsign-compare]
+   18 |     while ((PAGE_SIZE << order) < need && order < BUDDY_MAX_ORDER) {
+      |                                 ^
+kernel/arch/x86_64/slab.c: 在函数‘__slab_destroy’中:
+kernel/arch/x86_64/slab.c:85:22: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-5’ to ‘4294967291’ [-Wsign-conversion]
+   85 |             p->flags &= ~PAGE_FLAG_SLAB;
+      |                      ^~
+kernel/arch/x86_64/slab.c: 在函数‘slab_init’中:
+kernel/arch/x86_64/slab.c:152:27: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘char’ may change value [-Wconversion]
+  152 |             buf[bpos++] = '0' + (n % 10);
+      |                           ^~~
+kernel/arch/x86_64/slab.c: 在函数‘kmalloc’中:
+kernel/arch/x86_64/slab.c:297:37: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {或称 ‘long unsigned int’} [-Wsign-compare]
+  297 |         while ((PAGE_SIZE << order) < size && order < BUDDY_MAX_ORDER) order++;
+      |                                     ^
+kernel/arch/x86_64/slab.c: 在函数‘slab_alloc’中:
+kernel/arch/x86_64/slab.c:356:20: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  356 |     return kmalloc(size);
+      |                    ^~~~
+kernel/arch/x86_64/rtc.c: 在函数‘bcd_to_binary’中:
+kernel/arch/x86_64/rtc.c:29:32: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   29 |     return ((value >> 4) * 10) + (value & 0x0F);
+      |            ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/rtc.c: 在函数‘rtc_get_time’中:
+kernel/arch/x86_64/rtc.c:54:40: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   54 |         time->year = bcd_to_binary(time->year);
+      |                                    ~~~~^~~~~~
+kernel/arch/x86_64/rtc.c:60:27: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   60 |             time->hours = ((time->hours & 0x7F) + 12) % 24;
+      |                           ^
+kernel/arch/x86_64/rtc.c:64:19: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+   64 |     time->year += time->century * 100;
+      |                   ^~~~
+kernel/arch/x86_64/rtc.c: 在函数‘rtc_set_time’中:
+kernel/arch/x86_64/rtc.c:82:36: warning: conversion from ‘uint16_t’ {或称 ‘short unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   82 |     rtc_set_register(RTC_YEAR, time->year);
+      |                                ~~~~^~~~~~
+kernel/arch/x86_64/sata.c: 在函数‘sata_read’中:
+kernel/arch/x86_64/sata.c:40:82: warning: 未使用的参数‘sectors’ [-Wunused-parameter]
+   40 | int sata_read(uint8_t port, uint8_t device, uint64_t lba, void* buffer, uint32_t sectors)
+      |                                                                         ~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/sata.c: 在函数‘sata_write’中:
+kernel/arch/x86_64/sata.c:50:89: warning: 未使用的参数‘sectors’ [-Wunused-parameter]
+   50 | int sata_write(uint8_t port, uint8_t device, uint64_t lba, const void* buffer, uint32_t sectors)
+      |                                                                                ~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/rtc.c: 在文件作用域：
+kernel/arch/x86_64/rtc.c:18:16: warning: ‘rtc_last_seconds’ 在此处定义 [-Wunused-variable]
+   18 | static uint8_t rtc_last_seconds = 0;
+      |                ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/route.c: 在函数‘route_table_get’中:
+kernel/arch/x86_64/route.c:42:68: warning: comparison of unsigned expression in ‘>= 0’ is always true [-Wtype-limits]
+   42 |         if (fib.tables[i].tb_id == table_id && fib.tables[i].count >= 0) {
+      |                                                                    ^~
+<3> Building kernel/arch/x86_64/registry.c
+<1> Building kernel/arch/x86_64/procfs.c
+kernel/arch/x86_64/registry.c: 在函数‘registry_init’中:
+kernel/arch/x86_64/registry.c:344:14: warning: 未使用的变量‘dword_zero’ [-Wunused-variable]
+  344 |     uint32_t dword_zero = 0;
+      |              ^~~~~~~~~~
+kernel/arch/x86_64/registry.c: 在文件作用域：
+kernel/arch/x86_64/registry.c:294:13: warning: ‘seed_value_dword’ 在此处定义 [-Wunused-function]
+  294 | static void seed_value_dword(reg_key_t* key, const char* name, uint32_t val)
+      |             ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_cpuinfo_read’中:
+kernel/arch/x86_64/procfs.c:29:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c:29:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   29 |     n += snprintf(buf + n, max_len - n,
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_meminfo_read’中:
+kernel/arch/x86_64/procfs.c:65:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   65 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c:65:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   65 |     n += snprintf(buf + n, max_len - n,
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_uptime_read’中:
+kernel/arch/x86_64/procfs.c:93:26: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   93 |     return snprintf(buf, max_len, "%lu.%02lu %lu.%02lu\n",
+      |                          ^~~~~~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_version_read’中:
+kernel/arch/x86_64/procfs.c:100:26: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  100 |     return snprintf(buf, max_len,
+      |                          ^~~~~~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_stat_read’中:
+kernel/arch/x86_64/procfs.c:123:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  123 |     n += snprintf(buf + n, max_len - n, "cpu  %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:123:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  123 |     n += snprintf(buf + n, max_len - n, "cpu  %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:128:44: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  128 |             n += snprintf(buf + n, max_len - n, "cpu%u %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                            ^
+kernel/arch/x86_64/procfs.c:128:44: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  128 |             n += snprintf(buf + n, max_len - n, "cpu%u %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                    ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:132:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  132 |     n += snprintf(buf + n, max_len - n, "intr %lu\n", irq_total);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:132:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  132 |     n += snprintf(buf + n, max_len - n, "intr %lu\n", irq_total);
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:134:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  134 |     n += snprintf(buf + n, max_len - n, "ctxt %lu\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:134:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  134 |     n += snprintf(buf + n, max_len - n, "ctxt %lu\n",
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:136:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  136 |     n += snprintf(buf + n, max_len - n, "btime %lu\n", __uptime_cached / 1000);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:136:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  136 |     n += snprintf(buf + n, max_len - n, "btime %lu\n", __uptime_cached / 1000);
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:147:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  147 |     n += snprintf(buf + n, max_len - n, "processes %lu\n", proc_count);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:147:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  147 |     n += snprintf(buf + n, max_len - n, "processes %lu\n", proc_count);
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:148:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  148 |     n += snprintf(buf + n, max_len - n, "procs_running %lu\n", running ? running : 1);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:148:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  148 |     n += snprintf(buf + n, max_len - n, "procs_running %lu\n", running ? running : 1);
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c:149:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  149 |     n += snprintf(buf + n, max_len - n, "procs_blocked %lu\n", blocked);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:149:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  149 |     n += snprintf(buf + n, max_len - n, "procs_blocked %lu\n", blocked);
+      |                            ~~~~~~~~^~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_pid_status_read’中:
+kernel/arch/x86_64/procfs.c:167:26: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  167 |     return snprintf(buf, max_len,
+      |                          ^~~~~~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_pid_cmdline_read’中:
+kernel/arch/x86_64/procfs.c:189:29: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  189 |     memcpy(buf, proc->name, len);
+      |                             ^~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_read’中:
+kernel/arch/x86_64/procfs.c:216:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  216 |     memcpy(buf, temp_buf + offset, size);
+      |                                    ^~~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_readdir’中:
+kernel/arch/x86_64/procfs.c:231:40: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  231 |         memcpy(name, sys_files[index], len);
+      |                                        ^~~
+kernel/arch/x86_64/procfs.c:240:32: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  240 |                 snprintf(name, max_len, "%lu", processes[i].id);
+      |                                ^~~~~~~
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_finddir’中:
+kernel/arch/x86_64/procfs.c:272:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  272 |         pid = pid * 10 + (*p - '0');
+      |                        ^
+<0> Building kernel/arch/x86_64/pnp.c
+<2> Building kernel/arch/x86_64/pit.c
+kernel/arch/x86_64/pnp.c: 在函数‘add_pnp_root’中:
+kernel/arch/x86_64/pnp.c:219:23: warning: 多字节字符常量 [-Wmultichar]
+  219 |     node->signature = 'PnPD';
+      |                       ^~~~~~
+kernel/arch/x86_64/pnp.c: 在函数‘pnp_init’中:
+kernel/arch/x86_64/pnp.c:325:39: warning: 多字节字符常量 [-Wmultichar]
+  325 |                 dev_node->signature = 'PnPD';
+      |                                       ^~~~~~
+kernel/arch/x86_64/pnp.c: 在文件作用域：
+kernel/arch/x86_64/pnp.c:706:14: warning: ‘find_hdevinfo’ 在此处定义 [-Wunused-function]
+  706 | static void* find_hdevinfo(void* h) {
+      |              ^~~~~~~~~~~~~
+<2> Building kernel/arch/x86_64/pic.c
+kernel/arch/x86_64/pic.c: 在函数‘pic_enable’中:
+kernel/arch/x86_64/pic.c:38:16: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   38 |         mask = inb(PIC1_DATA) & ~(1 << irq);
+      |                ^~~
+kernel/arch/x86_64/pic.c:41:16: warning: unsigned conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} changes the value of ‘-5’ [-Wsign-conversion]
+   41 |         mask = inb(PIC1_DATA) & ~(1 << 2);
+      |                ^~~
+kernel/arch/x86_64/pic.c:43:16: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   43 |         mask = inb(PIC2_DATA) & ~(1 << (irq - 8));
+      |                ^~~
+<1> Building kernel/arch/x86_64/pe.c
+<2> Building kernel/arch/x86_64/pci.c
+kernel/arch/x86_64/pci.c: 在函数‘pci_read_config’中:
+kernel/arch/x86_64/pci.c:28:34: warning: unsigned conversion from ‘int’ to ‘unsigned int’ changes value from ‘-2147483648’ to ‘2147483648’ [-Wsign-conversion]
+   28 |     uint32_t address = (1 << 31) |
+      |                                  ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_write_config’中:
+kernel/arch/x86_64/pci.c:47:34: warning: unsigned conversion from ‘int’ to ‘unsigned int’ changes value from ‘-2147483648’ to ‘2147483648’ [-Wsign-conversion]
+   47 |     uint32_t address = (1 << 31) |
+      |                                  ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_write_config_byte’中:
+kernel/arch/x86_64/pci.c:82:21: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   82 |     uint32_t mask = ~(0xFF << shift);
+      |                     ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_write_config_word’中:
+kernel/arch/x86_64/pci.c:91:21: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   91 |     uint32_t mask = ~(0xFFFF << shift);
+      |                     ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_find_class’中:
+kernel/arch/x86_64/pci.c:107:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  107 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/pci.c:107:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  107 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/pci.c:107:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  107 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/pci.c:111:46: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  111 |                 uint8_t class_code_current = (class_code_reg >> 24) & 0xFF;
+      |                                              ^
+kernel/arch/x86_64/pci.c:114:37: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  114 |                     if (bus) *bus = b;
+      |                                     ^
+kernel/arch/x86_64/pci.c:115:43: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  115 |                     if (device) *device = d;
+      |                                           ^
+kernel/arch/x86_64/pci.c:116:47: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  116 |                     if (function) *function = f;
+      |                                               ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_find_device’中:
+kernel/arch/x86_64/pci.c:130:51: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  130 |                 uint32_t id_reg = pci_read_config(b, d, f, 0x00);
+      |                                                   ^
+kernel/arch/x86_64/pci.c:130:54: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  130 |                 uint32_t id_reg = pci_read_config(b, d, f, 0x00);
+      |                                                      ^
+kernel/arch/x86_64/pci.c:130:57: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  130 |                 uint32_t id_reg = pci_read_config(b, d, f, 0x00);
+      |                                                         ^
+kernel/arch/x86_64/pci.c:135:32: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  135 |                 uint16_t did = (id_reg >> 16) & 0xFFFF;
+      |                                ^
+kernel/arch/x86_64/pci.c:137:37: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  137 |                     if (bus) *bus = b;
+      |                                     ^
+kernel/arch/x86_64/pci.c:138:43: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  138 |                     if (device) *device = d;
+      |                                           ^
+kernel/arch/x86_64/pci.c:139:47: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  139 |                     if (function) *function = f;
+      |                                               ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_find_ext_capability’中:
+kernel/arch/x86_64/pci.c:201:65: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  201 |         uint32_t header = pci_read_config_dword(bus, dev, func, ecap_offset);
+      |                                                                 ^~~~~~~~~~~
+kernel/arch/x86_64/pci.c:203:25: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  203 |         uint16_t next = (header >> 20) & 0xFFF;
+      |                         ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_enable_msix’中:
+kernel/arch/x86_64/pci.c:263:67: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  263 |     uint32_t bar_val = pci_read_config_dword(bus, dev, func, 0x10 + table_bir * 4);
+      |                                                              ~~~~~^~~~~~~~~~~~~~~
+kernel/arch/x86_64/pci.c:264:51: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-16’ to ‘4294967280’ [-Wsign-conversion]
+  264 |     void* table_base = (void*)(uintptr_t)(bar_val & ~0xF) + table_offset;
+      |                                                   ^
+kernel/arch/x86_64/pci.c:264:59: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  264 |     void* table_base = (void*)(uintptr_t)(bar_val & ~0xF) + table_offset;
+      |                                                           ^
+kernel/arch/x86_64/pci.c:275:18: warning: unsigned conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} changes the value of ‘-16385’ [-Wsign-conversion]
+  275 |     msix_ctrl &= ~PCI_MSIX_CTRL_MASKALL;
+      |                  ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_disable_msix’中:
+kernel/arch/x86_64/pci.c:292:18: warning: unsigned conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} changes the value of ‘-32769’ [-Wsign-conversion]
+  292 |     msix_ctrl &= ~PCI_MSIX_CTRL_ENABLE;
+      |                  ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_set_bus_master’中:
+kernel/arch/x86_64/pci.c:304:16: warning: unsigned conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} changes the value of ‘-5’ [-Wsign-conversion]
+  304 |         cmd &= ~PCI_COMMAND_BUS_MASTER;
+      |                ^
+kernel/arch/x86_64/pci.c: 在函数‘pci_request_irq’中:
+kernel/arch/x86_64/pci.c:316:13: warning: 未使用的变量‘slot’ [-Wunused-variable]
+  316 |     uint8_t slot = dev;
+      |             ^~~~
+kernel/arch/x86_64/pci.c: 在函数‘pci_read_bar’中:
+kernel/arch/x86_64/pci.c:346:55: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  346 |     return pci_read_config_dword(bus, dev, func, 0x10 + bar_num * 4);
+      |                                                  ~~~~~^~~~~~~~~~~~~
+kernel/arch/x86_64/pci.c: 在函数‘pci_get_bar_size’中:
+kernel/arch/x86_64/pci.c:354:63: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  354 |     uint32_t orig_val = pci_read_config_dword(bus, dev, func, bar_offset);
+      |                                                               ^~~~~~~~~~
+kernel/arch/x86_64/pci.c:355:44: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  355 |     pci_write_config_dword(bus, dev, func, bar_offset, 0xFFFFFFFF);
+      |                                            ^~~~~~~~~~
+kernel/arch/x86_64/pci.c:356:63: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  356 |     uint32_t size_val = pci_read_config_dword(bus, dev, func, bar_offset);
+      |                                                               ^~~~~~~~~~
+kernel/arch/x86_64/pci.c:357:44: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  357 |     pci_write_config_dword(bus, dev, func, bar_offset, orig_val);
+      |                                            ^~~~~~~~~~
+<3> Building kernel/arch/x86_64/pagefault.c
+<1> Building kernel/arch/x86_64/pagecache.c
+kernel/arch/x86_64/pagefault.c: 在函数‘stack_expand’中:
+kernel/arch/x86_64/pagefault.c:157:37: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  157 |     uint64_t page_addr = fault_addr & ~(PAGE_SIZE - 1);
+      |                                     ^
+kernel/arch/x86_64/pagefault.c: 在函数‘pagefault_handler’中:
+kernel/arch/x86_64/pagefault.c:230:48: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  230 |                 if (demand_page_alloc(cr3, cr2 & ~(PAGE_SIZE - 1),
+      |                                                ^
+kernel/arch/x86_64/pagefault.c:243:56: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  243 |                         proc->stack_base = (void*)(cr2 & ~(PAGE_SIZE - 1));
+      |                                                        ^
+kernel/arch/x86_64/pagefault.c: 在文件作用域：
+kernel/arch/x86_64/pagefault.c:27:13: warning: ‘pf_log_buf’ 在此处定义 [-Wunused-variable]
+   27 | static char pf_log_buf[PF_LOG_BUF_SIZE];
+      |             ^~~~~~~~~~
+kernel/arch/x86_64/pagecache.c: 在函数‘pagecache_clear_dirty’中:
+kernel/arch/x86_64/pagecache.c:133:22: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-3’ to ‘4294967293’ [-Wsign-conversion]
+  133 |         entry->flags &= ~PCACHE_DIRTY;
+      |                      ^~
+kernel/arch/x86_64/pagecache.c: 在函数‘pagecache_read’中:
+kernel/arch/x86_64/pagecache.c:145:57: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  145 |     memcpy(buf, (uint8_t*)entry->page + offset_in_page, len);
+      |                                                         ^~~
+kernel/arch/x86_64/pagecache.c: 在函数‘pagecache_write’中:
+kernel/arch/x86_64/pagecache.c:155:57: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+  155 |     memcpy((uint8_t*)entry->page + offset_in_page, buf, len);
+      |                                                         ^~~
+kernel/arch/x86_64/pagecache.c: 在函数‘pagecache_sync_node’中:
+kernel/arch/x86_64/pagecache.c:178:30: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-11’ to ‘4294967285’ [-Wsign-conversion]
+  178 |                 entry->flags &= ~(PCACHE_DIRTY | PCACHE_WRITEBACK);
+      |                              ^~
+kernel/arch/x86_64/pagecache.c: 在函数‘pagecache_sync_all’中:
+kernel/arch/x86_64/pagecache.c:206:30: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-11’ to ‘4294967285’ [-Wsign-conversion]
+  206 |                 entry->flags &= ~(PCACHE_DIRTY | PCACHE_WRITEBACK);
+      |                              ^~
+<3> Building kernel/arch/x86_64/nvme.c
+kernel/arch/x86_64/nvme.c: 在函数‘nvme_submit_cmd’中:
+kernel/arch/x86_64/nvme.c:106:26: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  106 |     uint16_t next_tail = (sq->tail + 1) % sq->depth;
+      |                          ^
+kernel/arch/x86_64/nvme.c: 在函数‘nvme_poll_cq’中:
+kernel/arch/x86_64/nvme.c:143:16: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  143 |     cq->head = (cq->head + 1) % cq->depth;
+      |                ^
+kernel/arch/x86_64/nvme.c: 在函数‘nvme_probe’中:
+kernel/arch/x86_64/nvme.c:210:58: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  210 |                 uint32_t vendor_device = pci_read_config(b, d, f, 0x00);
+      |                                                          ^
+kernel/arch/x86_64/nvme.c:210:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  210 |                 uint32_t vendor_device = pci_read_config(b, d, f, 0x00);
+      |                                                             ^
+kernel/arch/x86_64/nvme.c:210:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  210 |                 uint32_t vendor_device = pci_read_config(b, d, f, 0x00);
+      |                                                                ^
+kernel/arch/x86_64/nvme.c:216:54: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  216 |                 uint32_t class_reg = pci_read_config(b, d, f, 0x08);
+      |                                                      ^
+kernel/arch/x86_64/nvme.c:216:57: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  216 |                 uint32_t class_reg = pci_read_config(b, d, f, 0x08);
+      |                                                         ^
+kernel/arch/x86_64/nvme.c:216:60: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  216 |                 uint32_t class_reg = pci_read_config(b, d, f, 0x08);
+      |                                                            ^
+kernel/arch/x86_64/nvme.c:217:38: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  217 |                 uint8_t class_code = (class_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/nvme.c:225:37: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  225 |                     nvme_ctrl.bus = b;
+      |                                     ^
+kernel/arch/x86_64/nvme.c:226:40: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  226 |                     nvme_ctrl.device = d;
+      |                                        ^
+kernel/arch/x86_64/nvme.c:227:42: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  227 |                     nvme_ctrl.function = f;
+      |                                          ^
+kernel/arch/x86_64/nvme.c:229:43: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  229 |                     nvme_ctrl.device_id = (vendor_device >> 16) & 0xFFFF;
+      |                                           ^
+kernel/arch/x86_64/nvme.c:231:56: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  231 |                     uint32_t bar0_lo = pci_read_config(b, d, f, NVME_PCI_BAR0_OFFSET);
+      |                                                        ^
+kernel/arch/x86_64/nvme.c:231:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  231 |                     uint32_t bar0_lo = pci_read_config(b, d, f, NVME_PCI_BAR0_OFFSET);
+      |                                                           ^
+kernel/arch/x86_64/nvme.c:231:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  231 |                     uint32_t bar0_lo = pci_read_config(b, d, f, NVME_PCI_BAR0_OFFSET);
+      |                                                              ^
+kernel/arch/x86_64/nvme.c:232:56: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  232 |                     uint32_t bar0_hi = pci_read_config(b, d, f, NVME_PCI_BAR1_OFFSET);
+      |                                                        ^
+kernel/arch/x86_64/nvme.c:232:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  232 |                     uint32_t bar0_hi = pci_read_config(b, d, f, NVME_PCI_BAR1_OFFSET);
+      |                                                           ^
+kernel/arch/x86_64/nvme.c:232:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  232 |                     uint32_t bar0_hi = pci_read_config(b, d, f, NVME_PCI_BAR1_OFFSET);
+      |                                                              ^
+kernel/arch/x86_64/nvme.c:248:56: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+      |                                                        ^
+kernel/arch/x86_64/nvme.c:248:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+      |                                                           ^
+kernel/arch/x86_64/nvme.c:248:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+      |                                                              ^
+kernel/arch/x86_64/nvme.c:248:40: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  248 |                     uint16_t cmd_reg = pci_read_config(b, d, f, NVME_PCI_COMMAND_OFFSET);
+      |                                        ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/nvme.c:250:38: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  250 |                     pci_write_config(b, d, f, NVME_PCI_COMMAND_OFFSET, cmd_reg);
+      |                                      ^
+kernel/arch/x86_64/nvme.c:250:41: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  250 |                     pci_write_config(b, d, f, NVME_PCI_COMMAND_OFFSET, cmd_reg);
+      |                                         ^
+kernel/arch/x86_64/nvme.c:250:44: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  250 |                     pci_write_config(b, d, f, NVME_PCI_COMMAND_OFFSET, cmd_reg);
+      |                                            ^
+kernel/arch/x86_64/nvme.c: 在函数‘nvme_get_info’中:
+kernel/arch/x86_64/nvme.c:791:22: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  791 |     uint16_t major = (vs >> 16) & 0xFFFF;
+      |                      ^
+kernel/arch/x86_64/nvme.c: 在文件作用域：
+kernel/arch/x86_64/nvme.c:185:12: warning: ‘nvme_poll_admin_cq’ 在此处定义 [-Wunused-function]
+  185 | static int nvme_poll_admin_cq(nvme_controller_t *ctrl, nvme_cqe_t *cqe)
+      |            ^~~~~~~~~~~~~~~~~~
+<2> Building kernel/arch/x86_64/ntfs.c
+<1> Building kernel/arch/x86_64/netfilter.c
+kernel/arch/x86_64/ntfs.c: 在函数‘write_attr_filename’中:
+kernel/arch/x86_64/ntfs.c:181:28: warning: taking address of packed member of ‘struct <匿名>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  181 |     ascii_to_utf16(name, fn->file_name, NTFS_MAX_FILENAME_LEN);
+      |                          ~~^~~~~~~~~~~
+In file included from kernel/arch/x86_64/include/arch/types.h:5,
+                 from kernel/arch/x86_64/include/arch/ntfs.h:4,
+                 from kernel/arch/x86_64/ntfs.c:1:
+include/stddef.h:10:33: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+   10 | #define offsetof(type, member) ((size_t)&((type*)0)->member)
+      |                                 ^
+kernel/arch/x86_64/ntfs.c:16:35: note: in expansion of macro ‘offsetof’
+   16 | #define ATTR_FILENAME_BASE_SIZE   offsetof(NTFS_FILE_NAME, file_name)
+      |                                   ^~~~~~~~
+kernel/arch/x86_64/ntfs.c:185:25: note: in expansion of macro ‘ATTR_FILENAME_BASE_SIZE’
+  185 |     uint32_t val_size = ATTR_FILENAME_BASE_SIZE + (uint32_t)sizeof(uint16_t) * name_len;
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c: 在函数‘get_filename_attr’中:
+include/stddef.h:10:33: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+   10 | #define offsetof(type, member) ((size_t)&((type*)0)->member)
+      |                                 ^
+kernel/arch/x86_64/ntfs.c:16:35: note: in expansion of macro ‘offsetof’
+   16 | #define ATTR_FILENAME_BASE_SIZE   offsetof(NTFS_FILE_NAME, file_name)
+      |                                   ^~~~~~~~
+kernel/arch/x86_64/ntfs.c:599:34: note: in expansion of macro ‘ATTR_FILENAME_BASE_SIZE’
+  599 |     if (val == NULL || val_len < ATTR_FILENAME_BASE_SIZE) {
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~
+<1> Building kernel/arch/x86_64/net.c
+<0> Building kernel/arch/x86_64/mouse.c
+在函数‘write_attr_data_resident’中,
+    内联自‘create_file’于 kernel/arch/x86_64/ntfs.c:470:15:
+kernel/arch/x86_64/ntfs.c:199:22: warning: potential null pointer dereference [-Wnull-dereference]
+  199 |     ah->attribute_id = (uint16_t)attr_id;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:198:22: warning: potential null pointer dereference [-Wnull-dereference]
+  198 |     ah->non_resident = 0;
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:197:14: warning: potential null pointer dereference [-Wnull-dereference]
+  197 |     ah->type = NTFS_ATTRIBUTE_DATA;
+在函数‘write_attr_data_nonresident’中,
+    内联自‘create_file’于 kernel/arch/x86_64/ntfs.c:485:15:
+kernel/arch/x86_64/ntfs.c:223:42: warning: potential null pointer dereference [-Wnull-dereference]
+  223 |     ah->data.non_resident.allocated_size = alloc_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:226:43: warning: potential null pointer dereference [-Wnull-dereference]
+  226 |     ah->data.non_resident.compressed_size = alloc_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:219:22: warning: potential null pointer dereference [-Wnull-dereference]
+  219 |     ah->attribute_id = (uint16_t)attr_id;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:227:16: warning: potential null pointer dereference [-Wnull-dereference]
+  227 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:225:44: warning: potential null pointer dereference [-Wnull-dereference]
+  225 |     ah->data.non_resident.initialized_size = data_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:224:37: warning: potential null pointer dereference [-Wnull-dereference]
+  224 |     ah->data.non_resident.data_size = data_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:222:43: warning: potential null pointer dereference [-Wnull-dereference]
+  222 |     ah->data.non_resident.data_run_offset = (uint16_t)(sizeof(NTFS_ATTRIBUTE_HEADER));
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:221:36: warning: potential null pointer dereference [-Wnull-dereference]
+  221 |     ah->data.non_resident.high_vcn = 0;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:220:35: warning: potential null pointer dereference [-Wnull-dereference]
+  220 |     ah->data.non_resident.low_vcn = 0;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:218:22: warning: potential null pointer dereference [-Wnull-dereference]
+  218 |     ah->non_resident = 1;
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:217:14: warning: potential null pointer dereference [-Wnull-dereference]
+  217 |     ah->type = NTFS_ATTRIBUTE_DATA;
+在函数‘write_attr_end’中,
+    内联自‘create_file’于 kernel/arch/x86_64/ntfs.c:491:11:
+kernel/arch/x86_64/ntfs.c:270:16: warning: potential null pointer dereference [-Wnull-dereference]
+  270 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:269:14: warning: potential null pointer dereference [-Wnull-dereference]
+  269 |     ah->type = NTFS_ATTRIBUTE_END;
+kernel/arch/x86_64/net.c: 在函数‘parse_ip_addr’中:
+kernel/arch/x86_64/net.c:86:16: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   86 |             ip |= (octet << shift);
+      |                ^~
+kernel/arch/x86_64/net.c:94:8: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   94 |     ip |= (octet << shift);
+      |        ^~
+kernel/arch/x86_64/net.c: 在函数‘parse_mac_addr’中:
+kernel/arch/x86_64/net.c:105:56: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  105 |             if (c >= '0' && c <= '9') byte = byte * 16 + (c - '0');
+      |                                                        ^
+kernel/arch/x86_64/net.c:106:61: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  106 |             else if (c >= 'a' && c <= 'f') byte = byte * 16 + (c - 'a' + 10);
+      |                                                             ^
+kernel/arch/x86_64/net.c:107:61: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  107 |             else if (c >= 'A' && c <= 'F') byte = byte * 16 + (c - 'A' + 10);
+      |                                                             ^
+kernel/arch/x86_64/net.c: 在函数‘dhcp_parse_response’中:
+kernel/arch/x86_64/net.c:243:24: warning: conversion from ‘long long unsigned int’ to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  243 |     uint32_t opt_len = len - (sizeof(dhcp_packet_t) - 312);
+      |                        ^~~
+kernel/arch/x86_64/net.c: 在函数‘ip_handle_packet’中:
+kernel/arch/x86_64/net.c:479:28: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  479 |     uint16_t payload_len = total_len - ((ip->version_ihl & 0x0F) * 4);
+      |                            ^~~~~~~~~
+kernel/arch/x86_64/net.c: 在函数‘tcp_find_socket’中:
+kernel/arch/x86_64/net.c:543:47: warning: ‘local_ip’的声明隐藏了一个全局声明 [-Wshadow]
+  543 | static tcp_socket_t* tcp_find_socket(uint32_t local_ip, uint16_t local_port,
+      |                                      ~~~~~~~~~^~~~~~~~
+kernel/arch/x86_64/net.c:10:17: note: 被隐藏的声明在这里
+   10 | static uint32_t local_ip  = 0;
+      |                 ^~~~~~~~
+kernel/arch/x86_64/net.c:543:47: warning: 未使用的参数‘local_ip’ [-Wunused-parameter]
+  543 | static tcp_socket_t* tcp_find_socket(uint32_t local_ip, uint16_t local_port,
+      |                                      ~~~~~~~~~^~~~~~~~
+kernel/arch/x86_64/net.c: 在函数‘udp_handle_packet’中:
+kernel/arch/x86_64/net.c:905:25: warning: conversion from ‘long long unsigned int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  905 |     uint16_t data_len = ntohs(udp->len) - sizeof(udp_header_t);
+      |                         ^~~~~
+kernel/arch/x86_64/mouse.c: 在函数‘mouse_process_packet’中:
+kernel/arch/x86_64/mouse.c:131:39: warning: ‘unsigned int’转换自‘int32_t’ {或称 ‘int’}时可能会改变结果的符号 [-Wsign-conversion]
+  131 |     if (flags & 0x10) pkt.dx = pkt.dx | 0xFFFFFF00;
+      |                                       ^
+kernel/arch/x86_64/mouse.c:131:32: warning: ‘int32_t’ {或称 ‘int’}转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  131 |     if (flags & 0x10) pkt.dx = pkt.dx | 0xFFFFFF00;
+      |                                ^~~
+kernel/arch/x86_64/mouse.c:132:39: warning: ‘unsigned int’转换自‘int32_t’ {或称 ‘int’}时可能会改变结果的符号 [-Wsign-conversion]
+  132 |     if (flags & 0x20) pkt.dy = pkt.dy | 0xFFFFFF00;
+      |                                       ^
+kernel/arch/x86_64/mouse.c:132:32: warning: ‘int32_t’ {或称 ‘int’}转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  132 |     if (flags & 0x20) pkt.dy = pkt.dy | 0xFFFFFF00;
+      |                                ^~~
+kernel/arch/x86_64/mouse.c: 在文件作用域：
+kernel/arch/x86_64/mouse.c:58:12: warning: ‘mouse_send_command’ 在此处定义 [-Wunused-function]
+   58 | static int mouse_send_command(uint8_t cmd)
+      |            ^~~~~~~~~~~~~~~~~~
+在函数‘write_attr_index_root’中,
+    内联自‘create_standard_metadata_file.isra’于 kernel/arch/x86_64/ntfs.c:394:15:
+kernel/arch/x86_64/ntfs.c:261:16: warning: potential null pointer dereference [-Wnull-dereference]
+  261 |     ah->length = (uint32_t)(sizeof(NTFS_ATTRIBUTE_HEADER) + total);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:259:36: warning: potential null pointer dereference [-Wnull-dereference]
+  259 |     ah->data.resident.value_length = total;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/ntfs.c:238:22: warning: potential null pointer dereference [-Wnull-dereference]
+  238 |     ah->attribute_id = (uint16_t)attr_id;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:260:36: warning: potential null pointer dereference [-Wnull-dereference]
+  260 |     ah->data.resident.value_offset = (uint16_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:256:19: warning: potential null pointer dereference [-Wnull-dereference]
+  256 |     ih->leaf_flag = leaf_flag;
+      |     ~~~~~~~~~~~~~~^~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:255:24: warning: potential null pointer dereference [-Wnull-dereference]
+  255 |     ih->allocated_size = NTFS_INDEX_ROOT_SIZE - (uint32_t)sizeof(NTFS_INDEX_HEADER) - 16U;
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:254:28: warning: potential null pointer dereference [-Wnull-dereference]
+  254 |     ih->index_entries_size = entries_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:253:24: warning: potential null pointer dereference [-Wnull-dereference]
+  253 |     ih->entries_offset = (uint32_t)sizeof(NTFS_INDEX_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:250:23: warning: potential null pointer dereference [-Wnull-dereference]
+  250 |     *clusters_per_rec = 1;
+      |     ~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:247:21: warning: potential null pointer dereference [-Wnull-dereference]
+  247 |     *idx_block_size = 4096;
+      |     ~~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/ntfs.c:244:15: warning: potential null pointer dereference [-Wnull-dereference]
+  244 |     *idx_type = NTFS_ATTRIBUTE_FILE_NAME;
+kernel/arch/x86_64/ntfs.c:237:22: warning: potential null pointer dereference [-Wnull-dereference]
+  237 |     ah->non_resident = 0;
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:236:14: warning: potential null pointer dereference [-Wnull-dereference]
+  236 |     ah->type = NTFS_ATTRIBUTE_INDEX_ROOT;
+在函数‘write_attr_end’中,
+    内联自‘create_standard_metadata_file.isra’于 kernel/arch/x86_64/ntfs.c:399:11:
+kernel/arch/x86_64/ntfs.c:270:16: warning: potential null pointer dereference [-Wnull-dereference]
+  270 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:269:14: warning: potential null pointer dereference [-Wnull-dereference]
+  269 |     ah->type = NTFS_ATTRIBUTE_END;
+在函数‘write_attr_index_root’中,
+    内联自‘create_directory’于 kernel/arch/x86_64/ntfs.c:433:11:
+kernel/arch/x86_64/ntfs.c:261:16: warning: potential null pointer dereference [-Wnull-dereference]
+  261 |     ah->length = (uint32_t)(sizeof(NTFS_ATTRIBUTE_HEADER) + total);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:259:36: warning: potential null pointer dereference [-Wnull-dereference]
+  259 |     ah->data.resident.value_length = total;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/ntfs.c:238:22: warning: potential null pointer dereference [-Wnull-dereference]
+  238 |     ah->attribute_id = (uint16_t)attr_id;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:260:36: warning: potential null pointer dereference [-Wnull-dereference]
+  260 |     ah->data.resident.value_offset = (uint16_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:256:19: warning: potential null pointer dereference [-Wnull-dereference]
+  256 |     ih->leaf_flag = leaf_flag;
+      |     ~~~~~~~~~~~~~~^~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:255:24: warning: potential null pointer dereference [-Wnull-dereference]
+  255 |     ih->allocated_size = NTFS_INDEX_ROOT_SIZE - (uint32_t)sizeof(NTFS_INDEX_HEADER) - 16U;
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:254:28: warning: potential null pointer dereference [-Wnull-dereference]
+  254 |     ih->index_entries_size = entries_size;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:253:24: warning: potential null pointer dereference [-Wnull-dereference]
+  253 |     ih->entries_offset = (uint32_t)sizeof(NTFS_INDEX_HEADER);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:250:23: warning: potential null pointer dereference [-Wnull-dereference]
+  250 |     *clusters_per_rec = 1;
+      |     ~~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:247:21: warning: potential null pointer dereference [-Wnull-dereference]
+  247 |     *idx_block_size = 4096;
+      |     ~~~~~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/ntfs.c:244:15: warning: potential null pointer dereference [-Wnull-dereference]
+  244 |     *idx_type = NTFS_ATTRIBUTE_FILE_NAME;
+kernel/arch/x86_64/ntfs.c:237:22: warning: potential null pointer dereference [-Wnull-dereference]
+  237 |     ah->non_resident = 0;
+      |     ~~~~~~~~~~~~~~~~~^~~
+kernel/arch/x86_64/ntfs.c:236:14: warning: potential null pointer dereference [-Wnull-dereference]
+  236 |     ah->type = NTFS_ATTRIBUTE_INDEX_ROOT;
+在函数‘write_attr_end’中,
+    内联自‘create_directory’于 kernel/arch/x86_64/ntfs.c:437:11:
+kernel/arch/x86_64/ntfs.c:270:16: warning: potential null pointer dereference [-Wnull-dereference]
+  270 |     ah->length = (uint32_t)sizeof(NTFS_ATTRIBUTE_HEADER);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/ntfs.c:269:14: warning: potential null pointer dereference [-Wnull-dereference]
+  269 |     ah->type = NTFS_ATTRIBUTE_END;
+<0> Building kernel/arch/x86_64/mmap.c
+kernel/arch/x86_64/mmap.c: 在函数‘mmap_context_destroy’中:
+kernel/arch/x86_64/mmap.c:111:26: warning: 未使用的变量‘vaddr’ [-Wunused-variable]
+  111 |                 uint64_t vaddr = area->start + j * PAGE_SIZE;
+      |                          ^~~~~
+kernel/arch/x86_64/mmap.c: 在函数‘mmap_do_mmap’中:
+kernel/arch/x86_64/mmap.c:383:18: warning: 变量‘cow_pte_flags’被设定但未被使用 [-Wunused-but-set-variable=]
+  383 |         uint64_t cow_pte_flags = pte_flags & ~(uint64_t)PAGE_WRITABLE;
+      |                  ^~~~~~~~~~~~~
+<3> Building kernel/arch/x86_64/memory.c
+kernel/arch/x86_64/memory.c: 在函数‘memory_init’中:
+kernel/arch/x86_64/memory.c:17:41: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   17 |     heap_start = (kend + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                         ^
+kernel/arch/x86_64/memory.c: 在文件作用域：
+kernel/arch/x86_64/memory.c:28:7: error: conflicting types for ‘kmalloc’; have ‘void *(uint64_t)’ {或称 ‘void *(long long unsigned int)’}
+   28 | void* kmalloc(uint64_t size)
+      |       ^~~~~~~
+In file included from kernel/arch/x86_64/memory.c:3:
+kernel/arch/x86_64/include/arch/slab.h:55:7: note: previous declaration of ‘kmalloc’ with type ‘void *(size_t)’ {或称 ‘void *(long unsigned int)’}
+   55 | void* kmalloc(size_t size);
+      |       ^~~~~~~
+kernel/arch/x86_64/memory.c: 在函数‘kmalloc’中:
+kernel/arch/x86_64/memory.c:38:47: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   38 |     uint64_t aligned = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                               ^
+kernel/arch/x86_64/memory.c:39:33: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+   39 |     while ((PAGE_SIZE << order) < aligned && order < BUDDY_MAX_ORDER) {
+      |                                 ^
+kernel/arch/x86_64/memory.c: 在文件作用域：
+kernel/arch/x86_64/memory.c:61:7: error: conflicting types for ‘kzalloc’; have ‘void *(uint64_t)’ {或称 ‘void *(long long unsigned int)’}
+   61 | void* kzalloc(uint64_t size)
+      |       ^~~~~~~
+kernel/arch/x86_64/include/arch/slab.h:56:7: note: previous declaration of ‘kzalloc’ with type ‘void *(size_t)’ {或称 ‘void *(long unsigned int)’}
+   56 | void* kzalloc(size_t size);
+      |       ^~~~~~~
+kernel/arch/x86_64/memory.c: 在函数‘kzalloc’中:
+kernel/arch/x86_64/memory.c:64:29: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   64 |     if (ptr) memset(ptr, 0, size);
+      |                             ^~~~
+kernel/arch/x86_64/memory.c: 在函数‘krealloc’中:
+kernel/arch/x86_64/memory.c:75:30: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘size_t’ {或称 ‘long unsigned int’} may change value [-Wconversion]
+   75 |         memcpy(new_ptr, ptr, new_size);
+      |                              ^~~~~~~~
+kernel/arch/x86_64/memory.c: 在函数‘memory_alloc_physical’中:
+kernel/arch/x86_64/memory.c:81:41: warning: 未使用的参数‘count’ [-Wunused-parameter]
+   81 | uint64_t memory_alloc_physical(uint64_t count)
+      |                                ~~~~~~~~~^~~~~
+<3> Building kernel/arch/x86_64/lsm.c
+FAILED TASK run all: 

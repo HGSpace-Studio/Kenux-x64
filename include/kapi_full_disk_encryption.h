@@ -33,7 +33,8 @@ typedef enum {
     KAPI_FDE_EEXIST        = -4,
     KAPI_FDE_EKEY          = -5,
     KAPI_FDE_EIO           = -6,
-    KAPI_FDE_EAUTH         = -7
+    KAPI_FDE_EAUTH         = -7,
+    KAPI_FDE_EBUSY         = -8
 } kapi_fde_err_t;
 
 typedef enum {

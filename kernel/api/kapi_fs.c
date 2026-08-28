@@ -1,6 +1,6 @@
 
 
-#include "kapi_fs.h"
+#include "kapi_fs_ext.h"
 #include "kapi.h"
 
 #include <arch/fs.h>
@@ -58,53 +58,8 @@ static int split_path(const char* path, char* parent, char* name, size_t max_len
     return 0;
 }
 
-/* 在 VFS 树中查找指定路径的节点 */
-static vfs_node_t* vfs_find_path(const char* path)
-{
-    if (!path || !vfs_root) {
-        return NULL;
-    }
-    if (path[0] != '/') {
-        return NULL;
-    }
-
-    if (strcmp(path, "/") == 0) {
-        return vfs_root;
-    }
-
-    char temp[256];
-    strncpy(temp, path, sizeof(temp) - 1);
-    temp[sizeof(temp) - 1] = '\0';
-
-    vfs_node_t* node = vfs_root;
-    char* p = temp + 1;  /* 跳过开头的 '/' */
-
-    while (*p) {
-        char* token = p;
-        while (*p && *p != '/') {
-            p++;
-        }
-        if (*p == '/') {
-            *p = '\0';
-            p++;
-        }
-
-        if (node->finddir) {
-            node = node->finddir(node, token);
-            if (!node) {
-                return NULL;
-            }
-        } else {
-            return NULL;
-        }
-
-        while (*p == '/') {
-            p++;
-        }
-    }
-
-    return node;
-}
+/* 外部声明的 VFS 函数 */
+extern vfs_node_t* vfs_find_path(const char* path);
 
 int kapi_fs_init(void)
 {
@@ -119,10 +74,10 @@ int kapi_fs_init(void)
     return KAPI_OK;
 }
 
-kapi_file_t kapi_open(const char* path, int flags, int mode)
+int kapi_open(const char* path, int flags)
 {
     if (!path) {
-        return NULL;
+        return -1;
     }
 
     int slot = -1;
@@ -134,60 +89,59 @@ kapi_file_t kapi_open(const char* path, int flags, int mode)
     }
 
     if (slot < 0) {
-        return NULL;
+        return -1;
     }
 
     int fd = fs_open(path);
     if (fd < 0) {
-        return NULL;
+        return -1;
     }
 
     kapi_file_table[slot].fd = fd;
     kapi_file_table[slot].valid = 1;
-    return &kapi_file_table[slot];
+    return slot;
 }
 
-int kapi_close(kapi_file_t file)
+int kapi_close(int fd)
 {
-    if (!file || !file->valid) {
+    if (fd < 0 || fd >= KAPI_MAX_OPEN_FILES || !kapi_file_table[fd].valid) {
         return KAPI_EINVAL;
     }
 
-    int ret = fs_close(file->fd);
-    file->valid = 0;
-    file->fd = -1;
+    int ret = fs_close(kapi_file_table[fd].fd);
+    kapi_file_table[fd].valid = 0;
+    kapi_file_table[fd].fd = -1;
 
     return ret == 0 ? KAPI_OK : KAPI_ERROR;
 }
 
-int64_t kapi_read(kapi_file_t file, void* buf, size_t count)
+int kapi_creat(const char* pathname, mode_t mode)
 {
-    if (!file || !file->valid || !buf) {
+    if (!pathname) {
+        return -1;
+    }
+    return kapi_open(pathname, KAPI_FS_CREAT | KAPI_FS_WRONLY | KAPI_FS_TRUNC);
+}
+
+ssize_t kapi_read(int fd, void* buf, size_t count)
+{
+    if (fd < 0 || fd >= KAPI_MAX_OPEN_FILES || !kapi_file_table[fd].valid || !buf) {
         return KAPI_EINVAL;
     }
 
-    return (int64_t)fs_read(file->fd, buf, count);
+    return (ssize_t)fs_read(kapi_file_table[fd].fd, buf, count);
 }
 
-int64_t kapi_write(kapi_file_t file, const void* buf, size_t count)
+ssize_t kapi_write(int fd, const void* buf, size_t count)
 {
-    if (!file || !file->valid || !buf) {
+    if (fd < 0 || fd >= KAPI_MAX_OPEN_FILES || !kapi_file_table[fd].valid || !buf) {
         return KAPI_EINVAL;
     }
 
-    return (int64_t)fs_write(file->fd, buf, count);
+    return (ssize_t)fs_write(kapi_file_table[fd].fd, buf, count);
 }
 
-int64_t kapi_seek(kapi_file_t file, int64_t offset, int whence)
-{
-    if (!file || !file->valid) {
-        return KAPI_EINVAL;
-    }
-
-    return (int64_t)fs_seek(file->fd, (uint64_t)offset);
-}
-
-int kapi_stat(const char* path, kapi_file_stat_t* stat)
+int kapi_stat(const char* path, kapi_stat_t* stat)
 {
     if (!path || !stat) {
         return KAPI_EINVAL;
@@ -199,13 +153,13 @@ int kapi_stat(const char* path, kapi_file_stat_t* stat)
     }
 
     memset(stat, 0, sizeof(*stat));
-    stat->mode = (uint32_t)node->mode;
-    stat->size = node->size;
-    stat->atime = node->atime;
-    stat->mtime = node->mtime;
-    stat->ctime = node->ctime;
-    stat->blocks = node->blocks;
-    stat->blksize = (uint32_t)node->blksize;
+    stat->st_mode = (uint32_t)node->mode;
+    stat->st_size = node->size;
+    stat->st_atime = node->atime;
+    stat->st_mtime = node->mtime;
+    stat->st_ctime = node->ctime;
+    stat->st_blocks = node->blocks;
+    stat->st_blksize = (int64_t)node->blksize;
     return KAPI_OK;
 }
 
@@ -248,7 +202,7 @@ int kapi_rename(const char* oldpath, const char* newpath)
     return KAPI_ENOSYS;
 }
 
-int kapi_mkdir(const char* path, int mode)
+int kapi_mkdir(const char* path, mode_t mode)
 {
     if (!path) {
         return KAPI_EINVAL;
@@ -322,33 +276,41 @@ kapi_dir_t kapi_opendir(const char* path)
     kapi_dir_table[slot].valid = 1;
     kapi_dir_table[slot].index = 0;
 
-    return &kapi_dir_table[slot];
+    return (kapi_dir_t)(uintptr_t)slot;
 }
 
-int kapi_readdir(kapi_dir_t dir, kapi_dirent_t* entry)
+kapi_dirent_t* kapi_readdir(kapi_dir_t dirp)
 {
-    if (!dir || !dir->valid || !entry) {
-        return KAPI_EINVAL;
+    if (dirp == NULL) {
+        return NULL;
     }
+
+    int slot = (int)(uintptr_t)dirp;
+    if (slot < 0 || slot >= KAPI_MAX_OPEN_FILES || !kapi_dir_table[slot].valid) {
+        return NULL;
+    }
+
+    struct kapi_dir* dir = &kapi_dir_table[slot];
 
     vfs_node_t* node = vfs_find_path(dir->path);
     if (!node) {
-        return KAPI_ERROR;
+        return NULL;
     }
 
     if (!node->readdir) {
-        return KAPI_ERROR;
+        return NULL;
     }
 
+    static kapi_dirent_t entry;
     char name_buf[256];
     int ret = node->readdir(node, dir->index, name_buf, sizeof(name_buf));
     if (ret != 0) {
-        return KAPI_ERROR;
+        return NULL;
     }
 
-    memset(entry, 0, sizeof(*entry));
-    strncpy(entry->name, name_buf, sizeof(entry->name) - 1);
-    entry->name[sizeof(entry->name) - 1] = '\0';
+    memset(&entry, 0, sizeof(entry));
+    strncpy(entry.d_name, name_buf, sizeof(entry.d_name) - 1);
+    entry.d_name[sizeof(entry.d_name) - 1] = '\0';
 
     /* 尝试查找子节点以获取类型和大小 */
     vfs_node_t* child = NULL;
@@ -356,24 +318,29 @@ int kapi_readdir(kapi_dir_t dir, kapi_dirent_t* entry)
         child = node->finddir(node, name_buf);
     }
     if (child) {
-        entry->type = (int)child->type;
-        entry->size = child->size;
+        entry.d_type_custom = (int)child->type;
+        entry.d_size = child->size;
     } else {
-        entry->type = KAPI_FT_UNKNOWN;
-        entry->size = 0;
+        entry.d_type_custom = 0;
+        entry.d_size = 0;
     }
 
     dir->index++;
-    return KAPI_OK;
+    return &entry;
 }
 
-int kapi_closedir(kapi_dir_t dir)
+int kapi_closedir(kapi_dir_t dirp)
 {
-    if (!dir || !dir->valid) {
+    if (dirp == NULL) {
         return KAPI_EINVAL;
     }
 
-    dir->valid = 0;
+    int slot = (int)(uintptr_t)dirp;
+    if (slot < 0 || slot >= KAPI_MAX_OPEN_FILES || !kapi_dir_table[slot].valid) {
+        return KAPI_EINVAL;
+    }
+
+    kapi_dir_table[slot].valid = 0;
     return KAPI_OK;
 }
 
@@ -410,13 +377,13 @@ int kapi_chdir(const char* path)
     return KAPI_OK;
 }
 
-int kapi_mount(const char* source, const char* target, const char* fstype, uint64_t flags)
+int kapi_mount(const char* source, const char* target, const char* filesystemtype, unsigned long mountflags, const void* data)
 {
-    if (!source || !target || !fstype) {
+    if (!source || !target || !filesystemtype) {
         return KAPI_EINVAL;
     }
 
-    const char* name = fstype;
+    const char* name = filesystemtype;
     if (strcmp(name, "ext") == 0) {
         name = "ext4";
     }
@@ -437,7 +404,8 @@ int kapi_mount(const char* source, const char* target, const char* fstype, uint6
         return KAPI_OK;
     }
 
-    (void)flags;
+    (void)mountflags;
+    (void)data;
     return KAPI_ERROR;
 }
 

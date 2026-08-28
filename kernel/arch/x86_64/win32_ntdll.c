@@ -189,7 +189,7 @@ NTSTATUS RtlIntegerToUnicodeString(ULONG val, ULONG base, PUNICODE_STRING s) {
     ULONG i = 0;
     ULONG len;
     ULONG remainder;
-    WCHAR digits[] = L"0123456789ABCDEF";
+    WCHAR digits[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F',0};
 
     if (s == NULL) {
         return STATUS_INVALID_PARAMETER;
@@ -434,18 +434,21 @@ NTSTATUS NtReadFile(HANDLE FileHandle, HANDLE Event, PVOID ApcRoutine,
     (void)Event;
     (void)ApcRoutine;
     (void)ApcContext;
-    (void)IoStatusBlock;
     (void)ByteOffset;
     (void)Key;
 
     if (FileHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
+        return STATUS_INVALID_HANDLE;
     }
     if (win32_handle_to_object(FileHandle, 0) == NULL) {
         return STATUS_INVALID_HANDLE;
     }
     if (Buffer != NULL && Length > 0) {
         memset(Buffer, 0, Length);
+    }
+    if (IoStatusBlock != NULL) {
+        IoStatusBlock->Status = STATUS_SUCCESS;
+        IoStatusBlock->Information = 0;
     }
     return STATUS_SUCCESS;
 }
@@ -457,17 +460,20 @@ NTSTATUS NtWriteFile(HANDLE FileHandle, HANDLE Event, PVOID ApcRoutine,
     (void)Event;
     (void)ApcRoutine;
     (void)ApcContext;
-    (void)IoStatusBlock;
     (void)Buffer;
     (void)Length;
     (void)ByteOffset;
     (void)Key;
 
     if (FileHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
+        return STATUS_INVALID_HANDLE;
     }
     if (win32_handle_to_object(FileHandle, 0) == NULL) {
         return STATUS_INVALID_HANDLE;
+    }
+    if (IoStatusBlock != NULL) {
+        IoStatusBlock->Status = STATUS_SUCCESS;
+        IoStatusBlock->Information = 0;
     }
     return STATUS_SUCCESS;
 }
@@ -487,13 +493,16 @@ NTSTATUS NtQueryInformationFile(HANDLE FileHandle,
                                 PVOID FileInformation,
                                 ULONG Length, ULONG FileInformationClass) {
     (void)FileInformationClass;
-    (void)IoStatusBlock;
 
     if (FileHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
+        return STATUS_INVALID_HANDLE;
     }
     if (win32_handle_to_object(FileHandle, 0) == NULL) {
         return STATUS_INVALID_HANDLE;
+    }
+    if (IoStatusBlock != NULL) {
+        IoStatusBlock->Status = STATUS_SUCCESS;
+        IoStatusBlock->Information = 0;
     }
     if (FileInformation == NULL) {
         return STATUS_INFO_LENGTH_MISMATCH;
@@ -507,15 +516,18 @@ NTSTATUS NtSetInformationFile(HANDLE FileHandle,
                               PVOID FileInformation,
                               ULONG Length, ULONG FileInformationClass) {
     (void)FileInformationClass;
-    (void)IoStatusBlock;
     (void)FileInformation;
     (void)Length;
 
     if (FileHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
+        return STATUS_INVALID_HANDLE;
     }
     if (win32_handle_to_object(FileHandle, 0) == NULL) {
         return STATUS_INVALID_HANDLE;
+    }
+    if (IoStatusBlock != NULL) {
+        IoStatusBlock->Status = STATUS_SUCCESS;
+        IoStatusBlock->Information = 0;
     }
     return STATUS_NOT_IMPLEMENTED;
 }
@@ -1324,433 +1336,6 @@ NTSTATUS NtQueryDirectoryObject(HANDLE DirectoryHandle,
         *Result = 0;
     }
     return STATUS_SUCCESS;
-}
-
-NTSTATUS NtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
-                      POBJECT_ATTRIBUTES ObjectAttributes,
-                      PIO_STATUS_BLOCK IoStatusBlock,
-                      PLARGE_INTEGER AllocationSize,
-                      ULONG FileAttributes, ULONG ShareAccess,
-                      ULONG CreateDisposition, ULONG CreateOptions,
-                      PVOID EaBuffer, ULONG EaLength) {
-    (void)ObjectAttributes;
-    (void)AllocationSize;
-    (void)FileAttributes;
-    (void)ShareAccess;
-    (void)CreateDisposition;
-    (void)CreateOptions;
-    (void)EaBuffer;
-    (void)EaLength;
-
-    if (FileHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess,
-                    POBJECT_ATTRIBUTES ObjectAttributes,
-                    PIO_STATUS_BLOCK IoStatusBlock,
-                    ULONG ShareAccess, ULONG OpenOptions) {
-    (void)ObjectAttributes;
-    (void)ShareAccess;
-    (void)OpenOptions;
-    (void)DesiredAccess;
-
-    if (FileHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtReadFile(HANDLE FileHandle, HANDLE Event, PVOID ApcRoutine,
-                    PVOID ApcContext, PIO_STATUS_BLOCK IoStatusBlock,
-                    PVOID Buffer, ULONG Length,
-                    PLARGE_INTEGER ByteOffset, PULONG Key) {
-    (void)Event;
-    (void)ApcRoutine;
-    (void)ApcContext;
-    (void)ByteOffset;
-    (void)Key;
-
-    if (FileHandle == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (win32_handle_to_object(FileHandle, 0) == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (Buffer != NULL && Length > 0) {
-        memset(Buffer, 0, Length);
-    }
-    if (IoStatusBlock != NULL) {
-        IoStatusBlock->Status = STATUS_SUCCESS;
-        IoStatusBlock->Information = 0;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtWriteFile(HANDLE FileHandle, HANDLE Event, PVOID ApcRoutine,
-                     PVOID ApcContext, PIO_STATUS_BLOCK IoStatusBlock,
-                     const VOID* Buffer, ULONG Length,
-                     PLARGE_INTEGER ByteOffset, PULONG Key) {
-    (void)Event;
-    (void)ApcRoutine;
-    (void)ApcContext;
-    (void)Buffer;
-    (void)Length;
-    (void)ByteOffset;
-    (void)Key;
-
-    if (FileHandle == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (win32_handle_to_object(FileHandle, 0) == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (IoStatusBlock != NULL) {
-        IoStatusBlock->Status = STATUS_SUCCESS;
-        IoStatusBlock->Information = 0;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtClose(HANDLE Handle) {
-    if (Handle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (!win32_handle_close(Handle)) {
-        return STATUS_INVALID_HANDLE;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtQueryInformationFile(HANDLE FileHandle,
-                                PIO_STATUS_BLOCK IoStatusBlock,
-                                PVOID FileInformation,
-                                ULONG Length, ULONG FileInformationClass) {
-    (void)FileInformationClass;
-
-    if (FileHandle == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (win32_handle_to_object(FileHandle, 0) == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (IoStatusBlock != NULL) {
-        IoStatusBlock->Status = STATUS_SUCCESS;
-        IoStatusBlock->Information = 0;
-    }
-    if (FileInformation == NULL) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    memset(FileInformation, 0, Length);
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtSetInformationFile(HANDLE FileHandle,
-                              PIO_STATUS_BLOCK IoStatusBlock,
-                              PVOID FileInformation,
-                              ULONG Length, ULONG FileInformationClass) {
-    (void)FileInformationClass;
-    (void)FileInformation;
-    (void)Length;
-
-    if (FileHandle == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (win32_handle_to_object(FileHandle, 0) == NULL) {
-        return STATUS_INVALID_HANDLE;
-    }
-    if (IoStatusBlock != NULL) {
-        IoStatusBlock->Status = STATUS_SUCCESS;
-        IoStatusBlock->Information = 0;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtCreateSection(PHANDLE SectionHandle, ACCESS_MASK DesiredAccess,
-                         POBJECT_ATTRIBUTES ObjectAttributes,
-                         PLARGE_INTEGER MaximumSize,
-                         ULONG SectionPageProtection,
-                         ULONG AllocationAttributes,
-                         HANDLE FileHandle) {
-    (void)DesiredAccess;
-    (void)ObjectAttributes;
-    (void)MaximumSize;
-    (void)SectionPageProtection;
-    (void)AllocationAttributes;
-    (void)FileHandle;
-
-    if (SectionHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtMapViewOfSection(HANDLE SectionHandle, HANDLE ProcessHandle,
-                            PVOID* BaseAddress,
-                            ULONG_PTR ZeroBits,
-                            SIZE_T CommitSize,
-                            PLARGE_INTEGER SectionOffset,
-                            PSIZE_T ViewSize,
-                            ULONG InheritDisposition,
-                            ULONG AllocationType,
-                            ULONG Win32Protect) {
-    (void)SectionHandle;
-    (void)ProcessHandle;
-    (void)ZeroBits;
-    (void)CommitSize;
-    (void)SectionOffset;
-    (void)InheritDisposition;
-    (void)AllocationType;
-    (void)Win32Protect;
-
-    if (BaseAddress == NULL || ViewSize == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (*BaseAddress == NULL) {
-        *BaseAddress = memory_alloc(*ViewSize);
-        if (*BaseAddress == NULL) {
-            return STATUS_NO_MEMORY;
-        }
-        memset(*BaseAddress, 0, *ViewSize);
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtUnmapViewOfSection(HANDLE ProcessHandle, PVOID BaseAddress) {
-    (void)ProcessHandle;
-
-    if (BaseAddress == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    memory_free(BaseAddress);
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtAllocateVirtualMemory(HANDLE ProcessHandle, PVOID* BaseAddress,
-                                 ULONG_PTR ZeroBits, PSIZE_T RegionSize,
-                                 ULONG AllocationType, ULONG Protect) {
-    (void)ProcessHandle;
-    (void)ZeroBits;
-    (void)AllocationType;
-    (void)Protect;
-
-    if (BaseAddress == NULL || RegionSize == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-
-    if (*BaseAddress == NULL) {
-        *BaseAddress = memory_alloc(*RegionSize);
-        if (*BaseAddress == NULL) {
-            return STATUS_NO_MEMORY;
-        }
-        memset(*BaseAddress, 0, *RegionSize);
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtFreeVirtualMemory(HANDLE ProcessHandle, PVOID* BaseAddress,
-                             PSIZE_T RegionSize, ULONG FreeType) {
-    (void)ProcessHandle;
-    (void)FreeType;
-    (void)RegionSize;
-
-    if (BaseAddress == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (*BaseAddress != NULL) {
-        memory_free(*BaseAddress);
-        *BaseAddress = NULL;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtProtectVirtualMemory(HANDLE ProcessHandle, PVOID* BaseAddress,
-                                PSIZE_T RegionSize, ULONG NewProtect,
-                                PULONG OldProtect) {
-    (void)ProcessHandle;
-    (void)BaseAddress;
-    (void)RegionSize;
-    (void)NewProtect;
-
-    if (BaseAddress == NULL || RegionSize == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (OldProtect != NULL) {
-        *OldProtect = PAGE_READWRITE;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtQueryVirtualMemory(HANDLE ProcessHandle, LPCVOID Address,
-                              ULONG MemoryInformationClass,
-                              PVOID Buffer, SIZE_T Length, PSIZE_T Result) {
-    (void)ProcessHandle;
-    (void)Address;
-    (void)MemoryInformationClass;
-
-    if (Buffer == NULL) {
-        if (Result != NULL) {
-            *Result = 0;
-        }
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    if (Length == 0) {
-        if (Result != NULL) {
-            *Result = 0;
-        }
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    memset(Buffer, 0, Length);
-    if (Result != NULL) {
-        *Result = Length;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtCreateProcess(PHANDLE ProcessHandle, ACCESS_MASK DesiredAccess,
-                         POBJECT_ATTRIBUTES ObjectAttributes,
-                         HANDLE ParentProcess,
-                         BOOLEAN InheritObjectTable,
-                         HANDLE SectionHandle,
-                         HANDLE DebugPort, HANDLE ExceptionPort) {
-    (void)DesiredAccess;
-    (void)ObjectAttributes;
-    (void)ParentProcess;
-    (void)InheritObjectTable;
-    (void)SectionHandle;
-    (void)DebugPort;
-    (void)ExceptionPort;
-
-    if (ProcessHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtQuerySystemInformation(ULONG SystemInformationClass,
-                                   PVOID SystemInformation,
-                                   ULONG SystemInformationLength,
-                                   PULONG ReturnLength) {
-    (void)SystemInformationClass;
-
-    if (ReturnLength != NULL) {
-        *ReturnLength = 0;
-    }
-    if (SystemInformation == NULL) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    if (SystemInformationLength == 0) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    memset(SystemInformation, 0, SystemInformationLength);
-    if (ReturnLength != NULL) {
-        *ReturnLength = SystemInformationLength;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtSetSystemInformation(ULONG SystemInformationClass,
-                                 PVOID SystemInformation,
-                                 ULONG SystemInformationLength) {
-    (void)SystemInformationClass;
-    (void)SystemInformation;
-    (void)SystemInformationLength;
-
-    if (SystemInformation == NULL && SystemInformationLength > 0) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtQueryInformationProcess(HANDLE ProcessHandle,
-                                   ULONG ProcessInformationClass,
-                                   PVOID ProcessInformation,
-                                   ULONG ProcessInformationLength,
-                                   PULONG ReturnLength) {
-    (void)ProcessHandle;
-    (void)ProcessInformationClass;
-
-    if (ReturnLength != NULL) {
-        *ReturnLength = 0;
-    }
-    if (ProcessInformation == NULL) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    if (ProcessInformationLength < 4) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    memset(ProcessInformation, 0, ProcessInformationLength);
-    if (ReturnLength != NULL) {
-        *ReturnLength = ProcessInformationLength;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtQueryInformationThread(HANDLE ThreadHandle,
-                                  ULONG ThreadInformationClass,
-                                  PVOID ThreadInformation,
-                                  ULONG ThreadInformationLength,
-                                  PULONG ReturnLength) {
-    (void)ThreadHandle;
-    (void)ThreadInformationClass;
-
-    if (ReturnLength != NULL) {
-        *ReturnLength = 0;
-    }
-    if (ThreadInformation == NULL) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    if (ThreadInformationLength < 4) {
-        return STATUS_INFO_LENGTH_MISMATCH;
-    }
-    memset(ThreadInformation, 0, ThreadInformationLength);
-    if (ReturnLength != NULL) {
-        *ReturnLength = ThreadInformationLength;
-    }
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtDuplicateObject(HANDLE SourceProcessHandle, HANDLE SourceHandle,
-                           HANDLE TargetProcessHandle, PHANDLE TargetHandle,
-                           ACCESS_MASK DesiredAccess, ULONG HandleAttributes,
-                           ULONG Options) {
-    (void)SourceProcessHandle;
-    (void)SourceHandle;
-    (void)TargetProcessHandle;
-    (void)DesiredAccess;
-    (void)HandleAttributes;
-    (void)Options;
-
-    if (TargetHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (SourceHandle == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    *TargetHandle = SourceHandle;
-    return STATUS_SUCCESS;
-}
-
-NTSTATUS NtLoadDriver(PUNICODE_STRING DriverServiceName) {
-    if (DriverServiceName == NULL || DriverServiceName->Buffer == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (DriverServiceName->Length == 0) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
-}
-
-NTSTATUS NtUnloadDriver(PUNICODE_STRING DriverServiceName) {
-    if (DriverServiceName == NULL || DriverServiceName->Buffer == NULL) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    if (DriverServiceName->Length == 0) {
-        return STATUS_INVALID_PARAMETER;
-    }
-    return STATUS_NOT_IMPLEMENTED;
 }
 
 /* ================================================================

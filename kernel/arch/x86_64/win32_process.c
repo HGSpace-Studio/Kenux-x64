@@ -87,7 +87,7 @@ static void unicode_string_init(PUNICODE_STRING us, const char* ansi_str) {
 
     us->Length = (uint16_t)(len * sizeof(uint16_t));
     us->MaximumLength = (uint16_t)((len + 1) * sizeof(uint16_t));
-    us->Buffer = buf;
+    us->Buffer = (PWSTR)buf;
 }
 
 static PRTL_USER_PROCESS_PARAMETERS create_process_parameters(

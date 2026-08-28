@@ -1,0 +1,84 @@
+-- Start building task run all -- (169015204)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<1> Building kernel/kernel/kernel.c
+<0> Building kernel/kernel/shell_enhanced.c
+<2> Building kernel/kernel/fs.c
+-- Enter folder kernel/gui/src --
+In file included from kernel/kernel/kernel.c:33:
+<3> Building kernel/gui/src/sysinfo.c
+kernel/arch/x86_64/include/arch/netfilter.h: 在函数‘nf_hook_slow_eval’中:
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+kernel/kernel/fs.c:12:12: error: conflicting types for ‘ext4_mount’; have ‘int(const char *, vfs_node_t **)’ {或称 ‘int(const char *, struct vfs_node **)’}
+   12 | extern int ext4_mount(const char* device, vfs_node_t** root_out);
+      |            ^~~~~~~~~~
+In file included from kernel/kernel/fs.c:3:
+kernel/arch/x86_64/include/arch/ext4.h:89:6: note: previous declaration of ‘ext4_mount’ with type ‘int(vfs_node_t *, void *)’ {或称 ‘int(struct vfs_node *, void *)’}
+   89 | int  ext4_mount(vfs_node_t* mount_point, void* device);
+      |      ^~~~~~~~~~
+kernel/kernel/fs.c: 在函数‘vfs_read’中:
+kernel/kernel/fs.c:199:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  199 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/kernel/fs.c: 在函数‘vfs_write’中:
+kernel/kernel/fs.c:209:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  209 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/kernel/fs.c: 在函数‘get_parent_and_name’中:
+kernel/kernel/fs.c:326:15: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  326 |     int len = strlen(path);
+      |               ^~~~~~
+kernel/kernel/fs.c:345:22: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+  345 |     int parent_len = last_slash - path;
+      |                      ^~~~~~~~~~
+kernel/kernel/fs.c:350:36: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  350 |         strncpy(parent_path, path, parent_len);
+      |                                    ^~~~~~~~~~
+kernel/kernel/fs.c:354:43: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  354 |     strncpy(name, last_slash + 1, max_len - 1);
+      |                                   ~~~~~~~~^~~
+<2> Building kernel/gui/src/psf.c
+In file included from include/kapi.h:100,
+                 from kernel/kernel/shell_enhanced.c:13:
+include/kapi_net_ext.h:47:8: error: ‘struct kapi_timeval’重定义
+   47 | struct kapi_timeval {
+      |        ^~~~~~~~~~~~
+In file included from include/kapi.h:99:
+include/kapi_fs_ext.h:25:8: note: 原先在这里定义
+   25 | struct kapi_timeval {
+      |        ^~~~~~~~~~~~
+include/kapi_net_ext.h:52:8: error: ‘struct kapi_timespec’重定义
+   52 | struct kapi_timespec {
+      |        ^~~~~~~~~~~~~
+include/kapi_fs_ext.h:30:8: note: 原先在这里定义
+   30 | struct kapi_timespec {
+      |        ^~~~~~~~~~~~~
+In file included from include/kapi.h:100,
+                 from kernel/kernel/kernel.c:63:
+include/kapi_net_ext.h: 在文件作用域：
+include/kapi_net_ext.h:47:8: error: ‘struct kapi_timeval’重定义
+   47 | struct kapi_timeval {
+      |        ^~~~~~~~~~~~
+In file included from include/kapi.h:99:
+include/kapi_fs_ext.h:25:8: note: 原先在这里定义
+   25 | struct kapi_timeval {
+      |        ^~~~~~~~~~~~
+include/kapi_net_ext.h:52:8: error: ‘struct kapi_timespec’重定义
+   52 | struct kapi_timespec {
+      |        ^~~~~~~~~~~~~
+include/kapi_fs_ext.h:30:8: note: 原先在这里定义
+   30 | struct kapi_timespec {
+      |        ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+FAILED TASK run all: 

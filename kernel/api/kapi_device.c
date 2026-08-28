@@ -1,6 +1,7 @@
 
 
 #include "kapi_device.h"
+#include "kapi_device_manager.h"
 #include "kapi.h"
 
 #include <arch/drivers.h>
@@ -14,12 +15,6 @@
 #include <timer.h>
 #include <stdio.h>
 #include <string.h>
-
-struct kapi_device {
-    char name[64];
-    int type;
-    int valid;
-};
 
 #define KAPI_MAX_IRQ 256
 static struct {
@@ -145,23 +140,23 @@ kapi_dev_t kapi_dev_open(const char* name, int mode)
     memset(dev, 0, sizeof(*dev));
     strncpy(dev->name, name, sizeof(dev->name) - 1);
     dev->name[sizeof(dev->name) - 1] = '\0';
-    dev->valid = 1;
+    dev->ref_count = 1;
     kapi_active_dev_count++;
 
     if (strstr(name, "/dev/sd") || strstr(name, "/dev/hd")) {
-        dev->type = KAPI_DEV_BLOCK;
+        dev->device_type = KAPI_DEVICE_TYPE_STORAGE;
     } else if (strstr(name, "/dev/tty") || strstr(name, "/dev/com")) {
-        dev->type = KAPI_DEV_CHAR;
+        dev->device_type = KAPI_DEVICE_TYPE_SERIAL;
     } else if (strstr(name, "/dev/eth") || strstr(name, "/dev/wlan")) {
-        dev->type = KAPI_DEV_NET;
+        dev->device_type = KAPI_DEVICE_TYPE_NETWORK;
     } else if (strstr(name, "/dev/audio") || strstr(name, "/dev/dsp")) {
-        dev->type = KAPI_DEV_SOUND;
+        dev->device_type = KAPI_DEVICE_TYPE_AUDIO;
     } else if (strstr(name, "/dev/fb") || strstr(name, "/dev/video")) {
-        dev->type = KAPI_DEV_VIDEO;
+        dev->device_type = KAPI_DEVICE_TYPE_GPU;
     } else if (strstr(name, "/dev/input") || strstr(name, "/dev/mouse")) {
-        dev->type = KAPI_DEV_INPUT;
+        dev->device_type = KAPI_DEVICE_TYPE_INPUT;
     } else {
-        dev->type = KAPI_DEV_UNKNOWN;
+        dev->device_type = KAPI_DEVICE_TYPE_UNKNOWN;
     }
 
     return dev;
@@ -173,8 +168,8 @@ int kapi_dev_close(kapi_dev_t dev)
         return KAPI_EINVAL;
     }
 
-    if (dev->valid) {
-        dev->valid = 0;
+    if (dev->ref_count > 0) {
+        dev->ref_count = 0;
         kapi_active_dev_count--;
     }
     memory_free(dev);
@@ -183,7 +178,7 @@ int kapi_dev_close(kapi_dev_t dev)
 
 int64_t kapi_dev_read(kapi_dev_t dev, void* buf, size_t count)
 {
-    if (!dev || !dev->valid || !buf) {
+    if (!dev || dev->ref_count == 0 || !buf) {
         return KAPI_EINVAL;
     }
 
@@ -191,7 +186,7 @@ int64_t kapi_dev_read(kapi_dev_t dev, void* buf, size_t count)
         return 0;
     }
 
-    switch (dev->type) {
+    switch (dev->device_type) {
         case KAPI_DEV_BLOCK: {
             /* 先尝试 NVMe，如不可用则 fallback 到 AHCI */
             if (nvme_probe() && nvme_ctrl.state == NVME_CTRL_STATE_READY) {
@@ -211,7 +206,7 @@ int64_t kapi_dev_read(kapi_dev_t dev, void* buf, size_t count)
             return KAPI_ERROR;
         }
 
-        case KAPI_DEV_CHAR: {
+        case KAPI_DEVICE_TYPE_SERIAL: {
             uint8_t* p = (uint8_t*)buf;
             size_t i;
             for (i = 0; i < count; i++) {
@@ -220,7 +215,7 @@ int64_t kapi_dev_read(kapi_dev_t dev, void* buf, size_t count)
             return (int64_t)i;
         }
 
-        case KAPI_DEV_INPUT: {
+        case KAPI_DEVICE_TYPE_INPUT: {
             key_event_t ev = keyboard_read();
             if (count >= sizeof(key_event_t)) {
                 memcpy(buf, &ev, sizeof(key_event_t));
@@ -238,7 +233,7 @@ int64_t kapi_dev_read(kapi_dev_t dev, void* buf, size_t count)
 
 int64_t kapi_dev_write(kapi_dev_t dev, const void* buf, size_t count)
 {
-    if (!dev || !dev->valid || !buf) {
+    if (!dev || dev->ref_count == 0 || !buf) {
         return KAPI_EINVAL;
     }
 
@@ -246,7 +241,7 @@ int64_t kapi_dev_write(kapi_dev_t dev, const void* buf, size_t count)
         return 0;
     }
 
-    switch (dev->type) {
+    switch (dev->device_type) {
         case KAPI_DEV_BLOCK: {
             /* 先尝试 NVMe，如不可用则 fallback 到 AHCI */
             if (nvme_probe() && nvme_ctrl.state == NVME_CTRL_STATE_READY) {
@@ -265,7 +260,7 @@ int64_t kapi_dev_write(kapi_dev_t dev, const void* buf, size_t count)
             return KAPI_ERROR;
         }
 
-        case KAPI_DEV_CHAR: {
+        case KAPI_DEVICE_TYPE_SERIAL: {
             const uint8_t* p = (const uint8_t*)buf;
             size_t i;
             for (i = 0; i < count; i++) {
@@ -281,7 +276,7 @@ int64_t kapi_dev_write(kapi_dev_t dev, const void* buf, size_t count)
 
 int kapi_dev_ioctl(kapi_dev_t dev, uint32_t cmd, void* arg)
 {
-    if (!dev || !dev->valid) {
+    if (!dev || dev->ref_count == 0) {
         return KAPI_EINVAL;
     }
 
@@ -290,15 +285,15 @@ int kapi_dev_ioctl(kapi_dev_t dev, uint32_t cmd, void* arg)
 
 int kapi_dev_get_info(kapi_dev_t dev, kapi_dev_info_t* info)
 {
-    if (!dev || !dev->valid || !info) {
+    if (!dev || dev->ref_count == 0 || !info) {
         return KAPI_EINVAL;
     }
 
     memset(info, 0, sizeof(*info));
     strncpy(info->name, dev->name, sizeof(info->name) - 1);
     info->name[sizeof(info->name) - 1] = '\0';
-    info->type = dev->type;
-    info->status = dev->valid ? 1 : 0;
+    info->type = (int)dev->device_type;
+    info->status = dev->ref_count > 0 ? 1 : 0;
 
     return KAPI_OK;
 }

@@ -8,66 +8,6 @@
 #include <cgroup.h>
 #include <unixsock.h>
 
-static unsigned long strtoul(const char* str, char** endptr, int base)
-{
-    (void)endptr;
-    unsigned long result = 0;
-    
-    while (*str == ' ' || *str == '\t') str++;
-    
-    while (*str) {
-        char c = *str;
-        int digit;
-        
-        if (c >= '0' && c <= '9') {
-            digit = c - '0';
-        } else if (base == 16 && c >= 'a' && c <= 'f') {
-            digit = 10 + c - 'a';
-        } else if (base == 16 && c >= 'A' && c <= 'F') {
-            digit = 10 + c - 'A';
-        } else {
-            break;
-        }
-        
-        if (digit >= base) break;
-        
-        result = result * base + digit;
-        str++;
-    }
-    
-    return result;
-}
-
-static unsigned long long strtoull(const char* str, char** endptr, int base)
-{
-    (void)endptr;
-    unsigned long long result = 0;
-    
-    while (*str == ' ' || *str == '\t') str++;
-    
-    while (*str) {
-        char c = *str;
-        int digit;
-        
-        if (c >= '0' && c <= '9') {
-            digit = c - '0';
-        } else if (base == 16 && c >= 'a' && c <= 'f') {
-            digit = 10 + c - 'a';
-        } else if (base == 16 && c >= 'A' && c <= 'F') {
-            digit = 10 + c - 'A';
-        } else {
-            break;
-        }
-        
-        if (digit >= base) break;
-        
-        result = result * base + digit;
-        str++;
-    }
-    
-    return result;
-}
-
 #define WEXITSTATUS(status) ((status) >> 8)
 
 static bool process_is_running(uint64_t pid)

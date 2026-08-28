@@ -29,10 +29,13 @@ extern int kapi_kprobe_init(void);
 /* System utilities */
 extern int kapi_device_manager_init(void);
 extern int kapi_memory_ext_init(void);
-extern int kapi_trace_init(void);
-extern int kapi_logging_init(void);
+extern int kapi_trace_init(uint32_t buffer_size, uint32_t enabled_categories);
+struct kapi_logger_config;
+extern int kapi_logging_init(const kapi_logger_config_t* config);
 extern int kapi_memleak_init(void);
-extern int kapi_profiler_init(void);
+struct kapi_profiler;
+extern int kapi_profiler_init(struct kapi_profiler** profiler);
+extern int kapi_wireless_init(void);
 extern int kapi_graphics2d_init(void);
 extern int kapi_input_init(void);
 extern int kapi_window_init(void);
@@ -49,6 +52,14 @@ extern int kapi_ns_init(void);
 extern int kapi_container_init(void);
 extern int kapi_fde_init(void);
 extern int kapi_iommu_init(void);
+
+/* POSIX I/O multiplexing and event mechanisms */
+extern int kapi_epoll_init(void);
+extern int kapi_poll_init(void);
+extern int kapi_signalfd_init(void);
+extern int kapi_timerfd_init(void);
+extern int kapi_eventfd_init(void);
+extern int kapi_inotify_init_module(void);
 
 int kapi_init(void)
 {
@@ -132,17 +143,16 @@ int kapi_init(void)
     ret = kapi_memory_ext_init();
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('P');
-    ret = kapi_trace_init();
+    ret = kapi_trace_init(0, 0);
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('Q');
-    ret = kapi_logging_init();
+    ret = kapi_logging_init(NULL);
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('R');
     ret = kapi_memleak_init();
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('S');
-    ret = kapi_profiler_init();
-    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    (void)kapi_profiler_init(NULL);
     SERIAL_DBG('T');
     ret = kapi_graphics2d_init();
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
@@ -176,6 +186,26 @@ int kapi_init(void)
     (void)kapi_fde_init();
     SERIAL_DBG('k');
     (void)kapi_iommu_init();
+
+    /* POSIX I/O multiplexing and event mechanisms */
+    SERIAL_DBG('l');
+    ret = kapi_epoll_init();
+    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    SERIAL_DBG('m');
+    ret = kapi_poll_init();
+    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    SERIAL_DBG('n');
+    ret = kapi_signalfd_init();
+    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    SERIAL_DBG('o');
+    ret = kapi_timerfd_init();
+    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    SERIAL_DBG('p');
+    ret = kapi_eventfd_init();
+    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    SERIAL_DBG('q');
+    ret = kapi_inotify_init_module();
+    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
 
     SERIAL_DBG('Z');
     return KAPI_OK;

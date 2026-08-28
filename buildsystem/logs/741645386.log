@@ -1,0 +1,40 @@
+-- Start building task run all -- (741645386)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/fs.c
+-- Enter folder kernel/gui/src --
+<3> Building kernel/gui/src/logo_data.c
+<0> Building kernel/gui/src/kenux_ui.c
+<1> Building kernel/gui/src/kenux_render.c
+kernel/kernel/fs.c: 在函数‘fs_ext4_mount_adapter’中:
+kernel/kernel/fs.c:47:26: error: 传递‘ext4_mount’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   47 |     int ret = ext4_mount(device, &root);
+      |                          ^~~~~~
+      |                          |
+      |                          const char *
+In file included from kernel/kernel/fs.c:3:
+kernel/arch/x86_64/include/arch/ext4.h:89:29: note: expected ‘vfs_node_t *’ {或称 ‘struct vfs_node *’} but argument is of type ‘const char *’
+   89 | int  ext4_mount(vfs_node_t* mount_point, void* device);
+      |                 ~~~~~~~~~~~~^~~~~~~~~~~
+kernel/gui/src/kenux_render.c: 在函数‘KENUX_Render_DrawDashboardCard’中:
+kernel/gui/src/kenux_render.c:363:36: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘char’ may change value [-Wconversion]
+  363 |         while (v > 0) { tmp[i++] = '0' + (v % 10); v /= 10; }
+      |                                    ^~~
+kernel/gui/src/kenux_render.c: 在函数‘KAPI_Process_GetCount’中:
+kernel/gui/src/kenux_render.c:599:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  599 |     for (int i = 0; i < process_count; i++) {
+      |                       ^
+kernel/gui/src/kenux_render.c: 在函数‘KAPI_Process_GetList’中:
+kernel/gui/src/kenux_render.c:612:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  612 |     for (int i = 0; i < process_count; i++) {
+      |                       ^
+kernel/gui/src/kenux_render.c:620:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  620 |     for (int i = 0; i < process_count && out < max_count; i++) {
+      |                       ^
+<2> Building kernel/gui/src/kenux_asset_folder.c
+kernel/gui/src/kenux_ui.c: 在函数‘kenux_ui_md3_card’中:
+kernel/gui/src/kenux_ui.c:1320:37: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+ 1320 |                       RGB(0, 0, 0), shadow_alpha);
+      |                                     ^~~~~~~~~~~~
+FAILED TASK run all: 

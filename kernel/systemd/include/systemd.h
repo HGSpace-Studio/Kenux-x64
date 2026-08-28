@@ -722,7 +722,9 @@ void parse_exec_command(const char* cmdline, exec_command_t* exec);
 #define LOG_DEBUG    7
 
 #define CPU_SHARES_DEFAULT 1024
+#ifndef MEM_LIMIT_MAX
 #define MEM_LIMIT_MAX ((uint64_t)-1)
+#endif
 
 extern int thread_create(void* entry, void* arg);
 

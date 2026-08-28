@@ -31,7 +31,7 @@ static void tm_int_to_str(uint32_t val, char* buf) {
     if (val == 0) { buf[0] = '0'; buf[1] = '\0'; return; }
     char tmp[16];
     int32_t i = 0;
-    while (val > 0) { tmp[i++] = '0' + (val % 10); val /= 10; }
+    while (val > 0) { tmp[i++] = '0' + (char)(val % 10); val /= 10; }
     int32_t j = 0;
     while (i > 0) buf[j++] = tmp[--i];
     buf[j] = '\0';
@@ -131,7 +131,7 @@ static void tm_draw_content(void) {
     int32_t proc_count = KAPI_Process_GetList(tm_processes, PROCESS_MAX);
     if (proc_count > 0) {
         for (int32_t i = 0; i < proc_count; i++) {
-            uint32_t row_y = list_y + 16 + i * 14;
+            uint32_t row_y = list_y + 16 + (uint32_t)i * 14;
             if (row_y + 14 > cy + ch) break;
 
             /* Row background (alternating) */
@@ -198,7 +198,7 @@ static void tm_draw_content(void) {
 
 /* Content click handler — click on process list to select */
 static void tm_content_click(window_t* win, uint32_t x, uint32_t y, void* user_data) {
-    (void)win; (void)user_data;
+    (void)win; (void)x; (void)user_data;
     if (!taskmgr_win || !taskmgr_win->visible) return;
 
     /* Process list starts after dashboard cards (52px) + curve (48px) + header (16px) */

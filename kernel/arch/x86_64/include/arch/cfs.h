@@ -27,7 +27,7 @@ typedef struct rb_node {
 
 typedef struct {
     rb_node_t* root;
-    rb_node_t  nil;
+    rb_node_t* nil;
 } rb_tree_t;
 
 typedef struct cfs_rq cfs_rq_t;

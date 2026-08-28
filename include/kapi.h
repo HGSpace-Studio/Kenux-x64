@@ -104,6 +104,14 @@
 #include "kapi_security_ext.h"
 #include "kapi_virt_ext.h"
 
+/* POSIX I/O multiplexing and event mechanisms */
+#include "kapi_epoll.h"
+#include "kapi_poll.h"
+#include "kapi_signalfd.h"
+#include "kapi_timerfd.h"
+#include "kapi_eventfd.h"
+#include "kapi_inotify.h"
+
 static inline void kapi_get_version(int* major, int* minor, int* patch)
 {
     if (major) *major = KAPI_VERSION_MAJOR;

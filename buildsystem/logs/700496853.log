@@ -1,0 +1,1589 @@
+-- Start building task run all -- (700496853)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/systemd --
+<3> Building kernel/systemd/systemd.c
+<2> Building kernel/systemd/systemctl.c
+<1> Building kernel/systemd/socket.c
+<0> Building kernel/systemd/swap.c
+kernel/systemd/socket.c: 在函数‘parse_socket_config’中:
+kernel/systemd/socket.c:63:32: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   63 |                 socket->port = atoi(value);
+      |                                ^~~~
+kernel/systemd/socket.c: 在函数‘socket_accept_thread’中:
+kernel/systemd/socket.c:107:14: warning: ‘msg’的声明隐藏了先前的一个局部变量 [-Wshadow]
+  107 |         char msg[256];
+      |              ^~~
+kernel/systemd/socket.c:96:10: note: 被隐藏的声明在这里
+   96 |     char msg[256];
+      |          ^~~
+kernel/systemd/systemctl.c: 在函数‘systemctl_list_units’中:
+kernel/systemd/systemctl.c:73:21: warning: 变量‘sub_state’被设定但未被使用 [-Wunused-but-set-variable=]
+   73 |         const char* sub_state = "-";
+      |                     ^~~~~~~~~
+kernel/systemd/socket.c: 在函数‘socket_start’中:
+kernel/systemd/socket.c:173:44: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  173 |     socket->unix_sock = unix_socket_create(unix_type);
+      |                                            ^~~~~~~~~
+kernel/systemd/socket.c:223:57: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  223 |         socket->accept_thread_id = thread_create((void*)(unsigned long)socket_accept_thread, socket);
+      |                                                         ^
+kernel/systemd/socket.c:225:18: warning: ‘msg’的声明隐藏了先前的一个局部变量 [-Wshadow]
+  225 |             char msg[256];
+      |                  ^~~
+kernel/systemd/socket.c:219:14: note: 被隐藏的声明在这里
+  219 |         char msg[256];
+      |              ^~~
+kernel/systemd/systemd.c: 在函数‘systemd_topological_sort’中:
+kernel/systemd/systemd.c:598:41: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  598 |     int* in_degree = (int*)malloc(count * sizeof(int));
+      |                                         ^
+kernel/systemd/systemd.c:601:32: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  601 |     memset(in_degree, 0, count * sizeof(int));
+      |                                ^
+kernel/systemd/systemd.c:615:37: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  615 |     int* queue = (int*)malloc(count * sizeof(int));
+      |                                     ^
+kernel/systemd/systemd.c: 在函数‘systemd_list_services’中:
+kernel/systemd/systemd.c:986:9: warning: switch 没有处理枚举值‘UNIT_STATE_CONFIRMED’ [-Wswitch]
+  986 |         switch (service->base.state) {
+      |         ^~~~~~
+kernel/systemd/systemd.c:986:9: warning: switch 没有处理枚举值‘UNIT_STATE_AWAITING’ [-Wswitch]
+kernel/systemd/systemd.c:1000:19: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+ 1000 |         int len = strlen(line);
+      |                   ^~~~~~
+kernel/systemd/systemd.c: 在函数‘systemd_get_service_status’中:
+kernel/systemd/systemd.c:1017:5: warning: switch 没有处理枚举值‘UNIT_STATE_CONFIRMED’ [-Wswitch]
+ 1017 |     switch (service->base.state) {
+      |     ^~~~~~
+kernel/systemd/systemd.c:1017:5: warning: switch 没有处理枚举值‘UNIT_STATE_AWAITING’ [-Wswitch]
+kernel/systemd/systemd.c: 在函数‘systemd_list_units’中:
+kernel/systemd/systemd.c:1207:19: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+ 1207 |         int len = strlen(line);
+      |                   ^~~~~~
+kernel/systemd/systemd.c: 在函数‘systemd_list_units_by_type’中:
+kernel/systemd/systemd.c:1245:19: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+ 1245 |         int len = strlen(line);
+      |                   ^~~~~~
+kernel/systemd/systemd.c: 在文件作用域：
+kernel/systemd/systemd.c:527:13: warning: ‘systemd_detect_cycle’ 在此处定义 [-Wunused-function]
+  527 | static bool systemd_detect_cycle(unit_t* unit, unit_t** visited, int visited_count)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/systemd/systemd.c:110:16: warning: ‘find_swap’ 在此处定义 [-Wunused-function]
+  110 | static swap_t* find_swap(const char* name)
+      |                ^~~~~~~~~
+kernel/systemd/systemd.c:100:24: warning: ‘find_path’ 在此处定义 [-Wunused-function]
+  100 | static systemd_path_t* find_path(const char* name)
+      |                        ^~~~~~~~~
+kernel/systemd/systemd.c:90:21: warning: ‘find_automount’ 在此处定义 [-Wunused-function]
+   90 | static automount_t* find_automount(const char* name)
+      |                     ^~~~~~~~~~~~~~
+kernel/systemd/systemd.c:80:18: warning: ‘find_device’ 在此处定义 [-Wunused-function]
+   80 | static device_t* find_device(const char* name)
+      |                  ^~~~~~~~~~~
+kernel/systemd/systemd.c:70:17: warning: ‘find_slice’ 在此处定义 [-Wunused-function]
+   70 | static slice_t* find_slice(const char* name)
+      |                 ^~~~~~~~~~
+kernel/systemd/systemd.c:60:17: warning: ‘find_mount’ 在此处定义 [-Wunused-function]
+   60 | static mount_t* find_mount(const char* name)
+      |                 ^~~~~~~~~~
+kernel/systemd/systemd.c:50:17: warning: ‘find_timer’ 在此处定义 [-Wunused-function]
+   50 | static timer_t* find_timer(const char* name)
+      |                 ^~~~~~~~~~
+kernel/systemd/systemd.c:40:26: warning: ‘find_socket’ 在此处定义 [-Wunused-function]
+   40 | static systemd_socket_t* find_socket(const char* name)
+      |                          ^~~~~~~~~~~
+<0> Building kernel/systemd/slice.c
+kernel/systemd/slice.c: 在函数‘parse_slice_config’中:
+kernel/systemd/slice.c:45:37: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   45 |                 slice->cpu_weight = atoi(value);
+      |                                     ^~~~
+kernel/systemd/slice.c:47:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |                 slice->io_weight = atoi(value);
+      |                                    ^~~~
+kernel/systemd/slice.c:49:40: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   49 |                 slice->memory_weight = atoi(value);
+      |                                        ^~~~
+kernel/systemd/slice.c:51:34: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   51 |                 slice->cpu_max = atoi(value);
+      |                                  ^~~~
+kernel/systemd/slice.c:53:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   53 |                 slice->io_max = atoi(value);
+      |                                 ^~~~
+kernel/systemd/slice.c:55:37: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   55 |                 slice->memory_max = atoi(value);
+      |                                     ^~~~
+<2> Building kernel/systemd/service.c
+kernel/systemd/service.c: 在函数‘strtoul’中:
+kernel/systemd/service.c:34:25: warning: ‘long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:34:32: warning: ‘long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: 在函数‘strtoull’中:
+kernel/systemd/service.c:64:25: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:64:32: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: 在函数‘parse_env_vars’中:
+kernel/systemd/service.c:138:15: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+  138 |     int len = eq - line;
+      |               ^~
+kernel/systemd/service.c:143:58: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  143 |     strncpy(service->env[service->env_count].name, line, len);
+      |                                                          ^~~
+kernel/systemd/service.c: 在函数‘parse_install_section’中:
+kernel/systemd/service.c:217:70: warning: 未使用的参数‘value’ [-Wunused-parameter]
+  217 | int parse_install_section(unit_t* unit, const char* key, const char* value)
+      |                                                          ~~~~~~~~~~~~^~~~~
+kernel/systemd/service.c: 在函数‘parse_service_section’中:
+kernel/systemd/service.c:244:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  244 |         service->uid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:247:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  247 |         service->gid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:251:32: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  251 |         service->restart_sec = atoi(value);
+      |                                ^~~~
+kernel/systemd/service.c:253:41: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  253 |         service->start_limit_interval = atoi(value);
+      |                                         ^~~~
+kernel/systemd/service.c:255:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  255 |         service->start_limit_burst = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:284:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  284 |         service->timeout_start_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:286:37: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  286 |         service->timeout_stop_sec = atoi(value);
+      |                                     ^~~~
+kernel/systemd/service.c:288:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  288 |         service->timeout_abort_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:306:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  306 |         service->cpu_shares = atoi(value);
+      |                               ^~~~
+kernel/systemd/service.c: 在函数‘service_build_envp’中:
+kernel/systemd/service.c:376:50: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  376 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                                  ^
+kernel/systemd/service.c: 在函数‘service_create_dynamic_user’中:
+kernel/systemd/service.c:452:20: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  452 |     service->uid = 1000 + systemd.service_count;
+      |                    ^~~~
+In file included from kernel/systemd/service.c:1:
+kernel/systemd/service.c: 在函数‘service_setup_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:536:35: note: in expansion of macro ‘time_get_timestamp’
+  536 |     service->watchdog_last_ping = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_monitor_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:550:43: note: in expansion of macro ‘time_get_timestamp’
+  550 |             service->watchdog_last_ping = time_get_timestamp();
+      |                                           ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_start_limit’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:560:18: note: in expansion of macro ‘time_get_timestamp’
+  560 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:563:44: warning: comparison of integer expressions of different signedness: ‘time_t’ {或称 ‘long long int’} and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  563 |         if (now - service->last_start_time < service->start_limit_interval) {
+      |                                            ^
+kernel/systemd/service.c: 在函数‘service_run_command’中:
+kernel/systemd/service.c:580:58: warning: 未使用的参数‘working_dir’ [-Wunused-parameter]
+  580 | int service_run_command(exec_command_t* cmd, const char* working_dir)
+      |                                              ~~~~~~~~~~~~^~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_start’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:730:32: note: in expansion of macro ‘time_get_timestamp’
+  730 |     service->last_start_time = time_get_timestamp();
+      |                                ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:782:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  782 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:797:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  797 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:810:39: note: in expansion of macro ‘time_get_timestamp’
+  810 |             service->last_exit_time = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:841:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  841 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:852:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  852 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:898:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  898 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:913:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  913 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:932:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  932 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:947:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  947 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:965:39: note: in expansion of macro ‘time_get_timestamp’
+  965 |         service->watchdog_last_ping = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_stop’中:
+kernel/systemd/service.c:1009:57: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+ 1009 |         if (service->main_pid != 0 && service->main_pid != service->pid) {
+      |                                                         ^~
+kernel/systemd/service.c:1010:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+ 1010 |             process_kill(service->main_pid, service->kill_signal);
+      |                          ~~~~~~~^~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1054:31: note: in expansion of macro ‘time_get_timestamp’
+ 1054 |     service->last_exit_time = time_get_timestamp();
+      |                               ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1132:18: note: in expansion of macro ‘time_get_timestamp’
+ 1132 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1133:27: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1133 |     uint64_t elapsed_ms = (now - service->watchdog_last_ping) * 1000;
+      |                           ^
+kernel/systemd/service.c: 在函数‘service_monitor’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1154:35: note: in expansion of macro ‘time_get_timestamp’
+ 1154 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1171:35: note: in expansion of macro ‘time_get_timestamp’
+ 1171 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+<1> Building kernel/systemd/path.c
+<0> Building kernel/systemd/mount.c
+kernel/systemd/mount.c: 在函数‘parse_mount_config’中:
+kernel/systemd/mount.c:66:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   66 |                 mount->dump_freq = atoi(value);
+      |                                    ^~~~
+kernel/systemd/mount.c:68:35: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   68 |                 mount->pass_num = atoi(value);
+      |                                   ^~~~
+<1> Building kernel/systemd/journalctl.c
+kernel/systemd/journalctl.c: 在函数‘journalctl_print_entry’中:
+kernel/systemd/journalctl.c:53:52: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+   53 |     const char* prio_str = priority_to_string(entry->priority);
+      |                                               ~~~~~^~~~~~~~~~
+kernel/systemd/journalctl.c: 在函数‘journalctl_main’中:
+kernel/systemd/journalctl.c:104:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  104 |                 query.since = parse_time(argv[++i]);
+      |                               ^~~~~~~~~~
+kernel/systemd/journalctl.c:108:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  108 |                 query.until = parse_time(argv[++i]);
+      |                               ^~~~~~~~~~
+kernel/systemd/journalctl.c:151:42: warning: comparison of integer expressions of different signedness: ‘time_t’ {或称 ‘long long int’} and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  151 |                 if (entries[i].timestamp > last_timestamp) {
+      |                                          ^
+kernel/systemd/journalctl.c:152:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  152 |                     last_timestamp = entries[i].timestamp;
+      |                                      ^~~~~~~
+<0> Building kernel/systemd/journal.c
+kernel/systemd/journal.c: 在函数‘journal_crc32’中:
+kernel/systemd/journal.c:99:24: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+   99 |     return crc32(data, len);
+      |                        ^~~
+kernel/systemd/journal.c: 在函数‘journal_update_header’中:
+kernel/systemd/journal.c:148:24: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  148 |         .entry_count = journal_index.count,
+      |                        ^~~~~~~~~~~~~
+kernel/systemd/journal.c: 在函数‘journal_write_binary’中:
+kernel/systemd/journal.c:191:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  191 |             journal_file_size = vfs_lseek(journal_fd, 0, SEEK_END);
+      |                                 ^~~~~~~~~
+kernel/systemd/journal.c:201:25: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  201 |     uint32_t unit_len = strlen(entry->unit);
+      |                         ^~~~~~
+kernel/systemd/journal.c:202:24: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  202 |     uint32_t msg_len = strlen(entry->message);
+      |                        ^~~~~~
+kernel/systemd/journal.c:203:25: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  203 |     uint32_t comm_len = strlen(entry->comm);
+      |                         ^~~~~~
+kernel/systemd/journal.c:215:23: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  215 |     *(uint64_t*)ptr = entry->timestamp; ptr += sizeof(uint64_t);
+      |                       ^~~~~
+kernel/systemd/journal.c:225:27: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  225 |     vfs_lseek(journal_fd, offset, SEEK_SET);
+      |                           ^~~~~~
+kernel/systemd/journal.c:232:64: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  232 |         journal_index.entries[journal_index.count].timestamp = entry->timestamp;
+      |                                                                ^~~~~
+kernel/systemd/journal.c:236:40: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+  236 |         journal_index.last_timestamp = entry->timestamp;
+      |                                        ^~~~~
+kernel/systemd/journal.c: 在函数‘journal_read_binary’中:
+kernel/systemd/journal.c:254:27: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  254 |     vfs_lseek(journal_fd, offset, SEEK_SET);
+      |                           ^~~~~~
+In file included from kernel/systemd/journal.c:1:
+kernel/systemd/journal.c: 在函数‘journal_log’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/journal.c:279:23: note: in expansion of macro ‘time_get_timestamp’
+  279 |     entry.timestamp = time_get_timestamp();
+      |                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/journal.c:280:22: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  280 |     entry.priority = priority;
+      |                      ^~~~~~~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:310:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  310 |         if (*end == 'M') service->memory_limit *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:308:15: note: ‘end’在此声明
+  308 |         char* end;
+      |               ^~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:315:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  315 |         if (*end == 'M') service->memory_max *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:313:15: note: ‘end’在此声明
+  313 |         char* end;
+      |               ^~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:320:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  320 |         if (*end == 'M') service->memory_high *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:318:15: note: ‘end’在此声明
+  318 |         char* end;
+      |               ^~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:325:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  325 |         if (*end == 'M') service->memory_low *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:323:15: note: ‘end’在此声明
+  323 |         char* end;
+      |               ^~~
+kernel/systemd/journal.c: 在函数‘journal_query’中:
+kernel/systemd/journal.c:366:57: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {或称 ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  366 |         if (query->priority >= 0 && idx_entry->priority > query->priority) {
+      |                                                         ^
+kernel/systemd/journal.c:370:13: warning: the comparison will always evaluate as ‘true’ for the address of ‘unit’ will never be NULL [-Waddress]
+  370 |         if (query->unit && strlen(query->unit) > 0) {
+      |             ^~~~~
+kernel/systemd/include/systemd.h:551:10: note: ‘unit’在此声明
+  551 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/journal.c: 在函数‘journal_count’中:
+kernel/systemd/journal.c:410:57: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {或称 ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  410 |         if (query->priority >= 0 && idx_entry->priority > query->priority) {
+      |                                                         ^
+kernel/systemd/journal.c:414:13: warning: the comparison will always evaluate as ‘true’ for the address of ‘unit’ will never be NULL [-Waddress]
+  414 |         if (query->unit && strlen(query->unit) > 0) {
+      |             ^~~~~
+kernel/systemd/include/systemd.h:551:10: note: ‘unit’在此声明
+  551 |     char unit[SYSTEMD_MAX_NAME];
+      |          ^~~~
+kernel/systemd/journal.c: 在文件作用域：
+kernel/systemd/journal.c:88:13: warning: ‘journal_current_file’ 在此处定义 [-Wunused-variable]
+   88 | static char journal_current_file[SYSTEMD_MAX_PATH_LEN];
+      |             ^~~~~~~~~~~~~~~~~~~~
+<1> Building kernel/systemd/fstab.c
+kernel/systemd/fstab.c: 在函数‘parse_fstab_line’中:
+kernel/systemd/fstab.c:39:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   39 |     entry->dump_freq = atoi(token);
+      |                        ^~~~
+kernel/systemd/fstab.c:43:23: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   43 |     entry->pass_num = atoi(token);
+      |                       ^~~~
+<1> Building kernel/systemd/device.c
+<0> Building kernel/systemd/automount.c
+kernel/systemd/automount.c:7:25: warning: ‘parse_automount_type’ 在此处定义 [-Wunused-function]
+    7 | static automount_type_t parse_automount_type(const char* type)
+      |                         ^~~~~~~~~~~~~~~~~~~~
+-- Enter folder kernel/lib/libc --
+<1> Building kernel/lib/libc/stdlib.c
+In file included from kernel/lib/libc/stdlib.c:3:
+include/kapi_syscall.h: 在函数‘sys_read’中:
+include/kapi_syscall.h:494:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                      ^
+include/kapi_syscall.h:494:49: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                                 ^~~~~
+include/kapi_syscall.h: 在函数‘sys_write’中:
+include/kapi_syscall.h:497:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                       ^
+include/kapi_syscall.h:497:50: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                                  ^~~~~
+include/kapi_syscall.h: 在函数‘sys_open’中:
+include/kapi_syscall.h:500:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  500 | { return kapi_syscall3(SYS_open, (long)pathname, flags, mode); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_mmap’中:
+include/kapi_syscall.h:509:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                  ^
+include/kapi_syscall.h:509:46: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                              ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_munmap’中:
+include/kapi_syscall.h:512:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                    ^
+include/kapi_syscall.h:512:48: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                                ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_mprotect’中:
+include/kapi_syscall.h:515:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                      ^
+include/kapi_syscall.h:515:50: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                                  ^~~
+include/kapi_syscall.h: 在函数‘sys_brk’中:
+include/kapi_syscall.h:518:33: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  518 | { return kapi_syscall1(SYS_brk, (long)addr); }
+      |                                 ^
+include/kapi_syscall.h: 在函数‘sys_clone’中:
+include/kapi_syscall.h:527:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                          ^
+include/kapi_syscall.h:527:55: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                       ^
+include/kapi_syscall.h:527:67: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                   ^
+include/kapi_syscall.h:527:35: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                   ^~~~~
+include/kapi_syscall.h:527:79: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                               ^~~
+include/kapi_syscall.h: 在函数‘sys_execve’中:
+include/kapi_syscall.h:530:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                    ^
+include/kapi_syscall.h:530:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                    ^
+include/kapi_syscall.h:530:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_wait4’中:
+include/kapi_syscall.h:539:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                        ^
+include/kapi_syscall.h:539:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_stat’中:
+include/kapi_syscall.h:554:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                  ^
+include/kapi_syscall.h:554:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_fstat’中:
+include/kapi_syscall.h:557:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  557 | { return kapi_syscall2(SYS_fstat, fd, (long)statbuf); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_lstat’中:
+include/kapi_syscall.h:560:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                   ^
+include/kapi_syscall.h:560:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_access’中:
+include/kapi_syscall.h:563:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  563 | { return kapi_syscall2(SYS_access, (long)pathname, mode); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_chdir’中:
+include/kapi_syscall.h:566:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  566 | { return kapi_syscall1(SYS_chdir, (long)path); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_getcwd’中:
+include/kapi_syscall.h:569:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                    ^
+include/kapi_syscall.h:569:47: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                               ^~~~
+include/kapi_syscall.h: 在函数‘sys_mkdir’中:
+include/kapi_syscall.h:572:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  572 | { return kapi_syscall2(SYS_mkdir, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_rmdir’中:
+include/kapi_syscall.h:575:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  575 | { return kapi_syscall1(SYS_rmdir, (long)pathname); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_unlink’中:
+include/kapi_syscall.h:578:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  578 | { return kapi_syscall1(SYS_unlink, (long)pathname); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_rename’中:
+include/kapi_syscall.h:581:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                    ^
+include/kapi_syscall.h:581:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_creat’中:
+include/kapi_syscall.h:584:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  584 | { return kapi_syscall2(SYS_creat, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_link’中:
+include/kapi_syscall.h:587:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                  ^
+include/kapi_syscall.h:587:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_symlink’中:
+include/kapi_syscall.h:590:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                     ^
+include/kapi_syscall.h:590:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_readlink’中:
+include/kapi_syscall.h:593:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                      ^
+include/kapi_syscall.h:593:54: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                      ^
+include/kapi_syscall.h:593:65: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                                 ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_chmod’中:
+include/kapi_syscall.h:596:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  596 | { return kapi_syscall2(SYS_chmod, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_chown’中:
+include/kapi_syscall.h:599:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  599 | { return kapi_syscall3(SYS_chown, (long)pathname, owner, group); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_truncate’中:
+include/kapi_syscall.h:602:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  602 | { return kapi_syscall2(SYS_truncate, (long)path, length); }
+      |                                      ^
+include/kapi_syscall.h: 在函数‘sys_pipe’中:
+include/kapi_syscall.h:626:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  626 | { return kapi_syscall1(SYS_pipe, (long)pipefd); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_pipe2’中:
+include/kapi_syscall.h:629:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  629 | { return kapi_syscall2(SYS_pipe2, (long)pipefd, flags); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_mount’中:
+include/kapi_syscall.h:634:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                   ^
+include/kapi_syscall.h:634:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                 ^
+include/kapi_syscall.h:634:63: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                               ^
+include/kapi_syscall.h:634:97: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                                 ^
+include/kapi_syscall.h:634:85: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                     ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_umount2’中:
+include/kapi_syscall.h:637:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  637 | { return kapi_syscall2(SYS_umount2, (long)target, flags); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_swapon’中:
+include/kapi_syscall.h:640:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  640 | { return kapi_syscall2(SYS_swapon, (long)path, swapflags); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_swapoff’中:
+include/kapi_syscall.h:643:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  643 | { return kapi_syscall1(SYS_swapoff, (long)path); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_nanosleep’中:
+include/kapi_syscall.h:646:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                       ^
+include/kapi_syscall.h:646:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_gettimeofday’中:
+include/kapi_syscall.h:649:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:649:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_settimeofday’中:
+include/kapi_syscall.h:652:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:652:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_time’中:
+include/kapi_syscall.h:655:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  655 | { return kapi_syscall1(SYS_time, (long)tloc); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_clock_gettime’中:
+include/kapi_syscall.h:658:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  658 | { return kapi_syscall2(SYS_clock_gettime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_settime’中:
+include/kapi_syscall.h:661:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  661 | { return kapi_syscall2(SYS_clock_settime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_nanosleep’中:
+include/kapi_syscall.h:664:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                            ^
+include/kapi_syscall.h:664:71: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                                       ^
+include/kapi_syscall.h: 在函数‘sys_rt_sigaction’中:
+include/kapi_syscall.h:667:47: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                               ^
+include/kapi_syscall.h:667:58: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                          ^
+include/kapi_syscall.h:667:70: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                                      ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_rt_sigprocmask’中:
+include/kapi_syscall.h:670:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                 ^
+include/kapi_syscall.h:670:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                            ^
+include/kapi_syscall.h:670:74: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                                          ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_ioctl’中:
+include/kapi_syscall.h:679:39: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  679 | { return kapi_syscall3(SYS_ioctl, fd, request, arg); }
+      |                                       ^~~~~~~
+include/kapi_syscall.h: 在函数‘sys_pread64’中:
+include/kapi_syscall.h:682:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                         ^
+include/kapi_syscall.h:682:52: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                                    ^~~~~
+include/kapi_syscall.h: 在函数‘sys_pwrite64’中:
+include/kapi_syscall.h:685:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                          ^
+include/kapi_syscall.h:685:53: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                                     ^~~~~
+include/kapi_syscall.h: 在函数‘sys_readv’中:
+include/kapi_syscall.h:688:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  688 | { return kapi_syscall3(SYS_readv, fd, (long)iov, iovcnt); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_writev’中:
+include/kapi_syscall.h:691:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  691 | { return kapi_syscall3(SYS_writev, fd, (long)iov, iovcnt); }
+      |                                        ^
+include/kapi_syscall.h: 在函数‘sys_getdents’中:
+include/kapi_syscall.h:694:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                          ^
+include/kapi_syscall.h:694:54: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                                      ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getdents64’中:
+include/kapi_syscall.h:697:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                            ^
+include/kapi_syscall.h:697:56: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                                        ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getgroups’中:
+include/kapi_syscall.h:718:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  718 | { return kapi_syscall2(SYS_getgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_setgroups’中:
+include/kapi_syscall.h:721:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  721 | { return kapi_syscall2(SYS_setgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_uname’中:
+include/kapi_syscall.h:724:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  724 | { return kapi_syscall1(SYS_uname, (long)buf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_sysinfo’中:
+include/kapi_syscall.h:727:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  727 | { return kapi_syscall1(SYS_sysinfo, (long)info); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_getrlimit’中:
+include/kapi_syscall.h:730:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  730 | { return kapi_syscall2(SYS_getrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_setrlimit’中:
+include/kapi_syscall.h:733:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  733 | { return kapi_syscall2(SYS_setrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_getrusage’中:
+include/kapi_syscall.h:736:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  736 | { return kapi_syscall2(SYS_getrusage, who, (long)usage); }
+      |                                            ^
+include/kapi_syscall.h: 在函数‘sys_times’中:
+include/kapi_syscall.h:739:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  739 | { return kapi_syscall1(SYS_times, (long)tbuf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_reboot’中:
+include/kapi_syscall.h:754:57: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  754 | { return kapi_syscall4(SYS_reboot, magic1, magic2, cmd, (long)arg); }
+      |                                                         ^
+include/kapi_syscall.h: 在函数‘sys_chroot’中:
+include/kapi_syscall.h:757:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  757 | { return kapi_syscall1(SYS_chroot, (long)path); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_sethostname’中:
+include/kapi_syscall.h:760:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  760 | { return kapi_syscall2(SYS_sethostname, (long)name, len); }
+      |                                         ^
+include/kapi_syscall.h: 在函数‘sys_setdomainname’中:
+include/kapi_syscall.h:763:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  763 | { return kapi_syscall2(SYS_setdomainname, (long)name, len); }
+      |                                           ^
+include/kapi_syscall.h: 在函数‘sys_init_module’中:
+include/kapi_syscall.h:766:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                         ^
+include/kapi_syscall.h:766:66: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                                  ^
+include/kapi_syscall.h:766:61: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                             ^~~
+include/kapi_syscall.h: 在函数‘sys_delete_module’中:
+include/kapi_syscall.h:769:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                           ^
+include/kapi_syscall.h:769:55: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                                       ^~~~~
+include/kapi_syscall.h: 在函数‘sys_finit_module’中:
+include/kapi_syscall.h:772:46: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  772 | { return kapi_syscall3(SYS_finit_module, fd, (long)param_values, flags); }
+      |                                              ^
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/workqueue.c
+kernel/kernel/workqueue.c: 在函数‘__tasklet_add’中:
+kernel/kernel/workqueue.c:216:22: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  216 |         for (int i = tasklet_count; i > 0; i--) {
+      |                      ^~~~~~~~~~~~~
+<1> Building kernel/kernel/wait.c
+<3> Building kernel/kernel/unixsock.c
+<2> Building kernel/kernel/timer.c
+kernel/kernel/unixsock.c: 在函数‘ring_write’中:
+kernel/kernel/unixsock.c:62:21: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   62 |     uint32_t space, to_copy, contiguous, first_chunk;
+      |                     ^~~~~~~
+kernel/kernel/unixsock.c:59:38: warning: 未使用的参数‘rpos’ [-Wunused-parameter]
+   59 |                            uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                            ~~~~~~~~~~^~~~
+kernel/kernel/unixsock.c: 在函数‘ring_read’中:
+kernel/kernel/unixsock.c:89:14: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   89 |     uint32_t to_copy, contiguous, first_chunk;
+      |              ^~~~~~~
+kernel/kernel/unixsock.c:86:53: warning: 未使用的参数‘wpos’ [-Wunused-parameter]
+   86 |                           uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                                           ~~~~~~~~~~^~~~
+In file included from kernel/kernel/timer.c:3:
+kernel/kernel/timer.c: 在函数‘__calc_index’中:
+kernel/kernel/timer.h:29:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 | #define TIMER_WHEEL_BITS      8
+      |                               ^
+kernel/kernel/timer.c:63:22: note: in expansion of macro ‘TIMER_WHEEL_BITS’
+   63 |     uint64_t shift = TIMER_WHEEL_BITS * (*level);
+      |                      ^~~~~~~~~~~~~~~~
+kernel/kernel/timer.c: 在文件作用域：
+kernel/kernel/timer.c:274:13: warning: ‘__msleep_wakeup’ 在此处定义 [-Wunused-function]
+<0> Building kernel/kernel/sysfs.c
+  274 | static void __msleep_wakeup(void* arg)
+      |             ^~~~~~~~~~~~~~~
+kernel/kernel/sysfs.c: 在函数‘sysfs_vfs_read’中:
+kernel/kernel/sysfs.c:87:57: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   87 |             len = attr->show(temp + total, sizeof(temp) - total);
+      |                                                         ^
+kernel/kernel/sysfs.c:89:55: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   89 |             len = snprintf(temp + total, sizeof(temp) - total, "%s\n", attr->value);
+      |                                                       ^
+<1> Building kernel/kernel/sync.c
+kernel/kernel/sync.c: 在函数‘mutex_is_locked’中:
+kernel/kernel/sync.c:249:15: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  249 |     return mtx->locked;
+      |            ~~~^~~~~~~~
+<0> Building kernel/kernel/signal.c
+kernel/kernel/signal.c: 在函数‘signal_send_info’中:
+kernel/kernel/signal.c:184:19: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  184 |     info.si_pid = current_process;
+      |                   ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c: 在函数‘__signal_setup_frame’中:
+kernel/kernel/signal.c:222:27: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  222 |     siginfo_ptr->si_pid = current_process;
+      |                           ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c: 在函数‘signal_do_pending’中:
+kernel/kernel/signal.c:251:29: warning: ISO C 不允许在‘void *’和函数指针间比较 [-Wpedantic]
+  251 |         if (act->sa_handler == (void*)1) {
+      |                             ^~
+kernel/kernel/signal.c:280:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  280 |         info.si_pid = current_process;
+      |                       ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c:289:20: warning: 未使用的变量‘old_blocked’ [-Wunused-variable]
+  289 |         k_sigset_t old_blocked = sig_data->blocked;
+      |                    ^~~~~~~~~~~
+<2> Building kernel/kernel/shell_enhanced.c
+In file included from include/kapi.h:23,
+                 from kernel/kernel/shell_enhanced.c:13:
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_set_all’中:
+include/kapi_bitmap.h:33:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_clear_all’中:
+include/kapi_bitmap.h:41:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_find_first’中:
+include/kapi_bitmap.h:49:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_find_first_zero’中:
+include/kapi_bitmap.h:66:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_count’中:
+include/kapi_bitmap.h:84:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: 在函数‘kapi_nlmsg_next’中:
+include/kapi_netlink.h:19:37: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro ‘KAPI_NLMSG_ALIGNTO’
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi_memory_ext.h:6,
+                 from include/kapi.h:74:
+include/kapi_memory.h: 在文件作用域：
+include/kapi_memory.h:201:21: error: 字段‘shm_perm’的类型不完全
+  201 |     struct ipc_perm shm_perm;
+      |                     ^~~~~~~~
+In file included from /usr/x86_64-w64-mingw32/include/pthread_time.h:27,
+                 from /usr/x86_64-w64-mingw32/include/time.h:329,
+                 from include/kapi_memleak.h:6,
+                 from include/kapi.h:77:
+/usr/x86_64-w64-mingw32/include/pthread_compat.h:94:24: error: conflicting types for ‘mode_t’; have ‘short unsigned int’
+   94 | typedef unsigned short mode_t;
+      |                        ^~~~~~
+In file included from kernel/kernel/shell_enhanced.c:3:
+kernel/arch/x86_64/include/arch/types.h:22:18: note: previous declaration of ‘mode_t’ with type ‘mode_t’ {或称 ‘long long unsigned int’}
+   22 | typedef uint64_t mode_t;
+      |                  ^~~~~~
+In file included from include/kapi.h:99:
+include/kapi_fs_ext.h:244:51: warning: ‘struct utimbuf’ declared inside parameter list will not be visible outside of this definition or declaration
+  244 | int kapi_utime(const char* filename, const struct utimbuf* times);
+      |                                                   ^~~~~~~
+In file included from include/kapi.h:100:
+include/kapi_net_ext.h:137:20: error: 字段‘sin_addr’的类型不完全
+  137 |     struct in_addr sin_addr;
+      |                    ^~~~~~~~
+include/kapi_net_ext.h:145:21: error: 字段‘sin6_addr’的类型不完全
+  145 |     struct in6_addr sin6_addr;
+      |                     ^~~~~~~~~
+include/kapi_net_ext.h:195:21: error: 字段‘ipv6_addr’的类型不完全
+  195 |     struct in6_addr ipv6_addr;
+      |                     ^~~~~~~~~
+include/kapi_net_ext.h:244:56: error: 未知的类型名‘socklen_t’
+  244 | int kapi_bind(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                        ^~~~~~~~~
+include/kapi_net_ext.h:248:52: error: 未知的类型名‘socklen_t’
+  248 | int kapi_accept(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                    ^~~~~~~~~
+include/kapi_net_ext.h:250:53: error: 未知的类型名‘socklen_t’
+  250 | int kapi_accept4(int sockfd, struct sockaddr* addr, socklen_t* addrlen, int flags);
+      |                                                     ^~~~~~~~~
+include/kapi_net_ext.h:252:59: error: 未知的类型名‘socklen_t’
+  252 | int kapi_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                           ^~~~~~~~~
+include/kapi_net_ext.h:259:55: error: 未知的类型名‘socklen_t’
+  259 |                     const struct sockaddr* dest_addr, socklen_t addrlen);
+      |                                                       ^~~~~~~~~
+include/kapi_net_ext.h:262:50: error: 未知的类型名‘socklen_t’
+  262 |                       struct sockaddr* src_addr, socklen_t* addrlen);
+      |                                                  ^~~~~~~~~
+include/kapi_net_ext.h:264:47: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  264 | ssize_t kapi_sendmsg(int sockfd, const struct msghdr* msg, int flags);
+      |                                               ^~~~~~
+include/kapi_net_ext.h:266:41: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  266 | ssize_t kapi_recvmsg(int sockfd, struct msghdr* msg, int flags);
+      |                                         ^~~~~~
+include/kapi_net_ext.h:268:71: error: 未知的类型名‘socklen_t’
+  268 | int kapi_getsockopt(int sockfd, int level, int optname, void* optval, socklen_t* optlen);
+      |                                                                       ^~~~~~~~~
+include/kapi_net_ext.h:270:77: error: 未知的类型名‘socklen_t’
+  270 | int kapi_setsockopt(int sockfd, int level, int optname, const void* optval, socklen_t optlen);
+      |                                                                             ^~~~~~~~~
+include/kapi_net_ext.h:272:57: error: 未知的类型名‘socklen_t’
+  272 | int kapi_getsockname(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                         ^~~~~~~~~
+include/kapi_net_ext.h:274:57: error: 未知的类型名‘socklen_t’
+  274 | int kapi_getpeername(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                         ^~~~~~~~~
+include/kapi_net_ext.h:290:64: error: 未知的类型名‘socklen_t’
+  290 | const char* kapi_inet_ntop(int af, const void* src, char* dst, socklen_t size);
+      |                                                                ^~~~~~~~~
+include/kapi_net_ext.h:302:27: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                           ^~~~~~
+include/kapi_net_ext.h:302:44: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                            ^~~~~~
+include/kapi_net_ext.h:302:62: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                                              ^~~~~~
+include/kapi_net_ext.h:305:28: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                            ^~~~~~
+include/kapi_net_ext.h:305:45: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                             ^~~~~~
+include/kapi_net_ext.h:305:63: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                                               ^~~~~~
+include/kapi_net_ext.h:306:56: error: unknown type name ‘sigset_t’; did you mean ‘size_t’?
+  306 |                  const struct timespec* timeout, const sigset_t* sigmask);
+      |                                                        ^~~~~~~~
+      |                                                        size_t
+include/kapi_net_ext.h:308:35: error: 未知的类型名‘nfds_t’
+  308 | int kapi_poll(struct pollfd* fds, nfds_t nfds, int timeout);
+      |                                   ^~~~~~
+include/kapi_net_ext.h:310:36: error: 未知的类型名‘nfds_t’
+  310 | int kapi_ppoll(struct pollfd* fds, nfds_t nfds, const struct timespec* tmo_p,
+      |                                    ^~~~~~
+include/kapi_net_ext.h:311:22: error: unknown type name ‘sigset_t’; did you mean ‘size_t’?
+  311 |                const sigset_t* sigmask);
+      |                      ^~~~~~~~
+      |                      size_t
+include/kapi_net_ext.h:315:53: warning: ‘struct epoll_event’ declared inside parameter list will not be visible outside of this definition or declaration
+  315 | int kapi_epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);
+      |                                                     ^~~~~~~~~~~
+include/kapi_net_ext.h:317:38: warning: ‘struct epoll_event’ declared inside parameter list will not be visible outside of this definition or declaration
+  317 | int kapi_epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);
+      |                                      ^~~~~~~~~~~
+include/kapi_net_ext.h:320:28: error: unknown type name ‘sigset_t’; did you mean ‘size_t’?
+  320 |                      const sigset_t* sigmask);
+      |                            ^~~~~~~~
+      |                            size_t
+include/kapi_net_ext.h:319:39: warning: ‘struct epoll_event’ declared inside parameter list will not be visible outside of this definition or declaration
+  319 | int kapi_epoll_pwait(int epfd, struct epoll_event* events, int maxevents, int timeout,
+      |                                       ^~~~~~~~~~~
+include/kapi_net_ext.h:324:5: error: conflicting types for ‘kapi_set_nonblocking’; have ‘int(int,  _Bool)’
+  324 | int kapi_set_nonblocking(int sockfd, bool nonblocking);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_fs_ext.h:380:5: note: previous declaration of ‘kapi_set_nonblocking’ with type ‘int(int)’
+  380 | int kapi_set_nonblocking(int fd);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_net_ext.h:356:63: error: 未知的类型名‘socklen_t’
+  356 | int kapi_udp_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                               ^~~~~~~~~
+In file included from include/kapi.h:101:
+include/kapi_device_ext.h:88:3: error: conflicting types for ‘kapi_device_info_t’; have ‘struct <匿名>’
+   88 | } kapi_device_info_t;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:73:
+include/kapi_device_manager.h:56:3: note: previous declaration of ‘kapi_device_info_t’ with type ‘kapi_device_info_t’
+   56 | } kapi_device_info_t;
+      |   ^~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:113:13: error: 重复的成员‘interrupt_line’
+  113 |     uint8_t interrupt_line;
+      |             ^~~~~~~~~~~~~~
+include/kapi_device_ext.h:203:17: error: ‘ABS_CNT’未声明(不在函数内)
+  203 |     int abs_min[ABS_CNT];
+      |                 ^~~~~~~
+include/kapi_device_ext.h:235:3: error: conflicting types for ‘kapi_device_ops_t’; have ‘struct <匿名>’
+  235 | } kapi_device_ops_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:75:3: note: previous declaration of ‘kapi_device_ops_t’ with type ‘kapi_device_ops_t’
+   75 | } kapi_device_ops_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:237:5: error: conflicting types for ‘kapi_device_register’; have ‘int(const char *, int,  const kapi_device_ops_t *, void *)’
+  237 | int kapi_device_register(const char* name, int type, const kapi_device_ops_t* ops, void* priv);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:96:5: note: previous declaration of ‘kapi_device_register’ with type ‘int(kapi_device_t *)’ {或称 ‘int(struct kapi_device *)’}
+   96 | int kapi_device_register(kapi_device_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:239:5: error: conflicting types for ‘kapi_device_unregister’; have ‘int(kapi_dev_id_t)’ {或称 ‘int(unsigned int)’}
+  239 | int kapi_device_unregister(kapi_dev_id_t dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:97:5: note: previous declaration of ‘kapi_device_unregister’ with type ‘int(kapi_device_t *)’ {或称 ‘int(struct kapi_device *)’}
+   97 | int kapi_device_unregister(kapi_device_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:302:5: error: conflicting types for ‘kapi_pci_find_device’; have ‘int(uint16_t,  uint16_t,  kapi_pci_info_t *)’ {或称 ‘int(short unsigned int,  short unsigned int,  kapi_pci_info_t *)’}
+  302 | int kapi_pci_find_device(uint16_t vendor, uint16_t device, kapi_pci_info_t* info);
+      |     ^~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:50:
+include/kapi_pci.h:71:5: note: previous declaration of ‘kapi_pci_find_device’ with type ‘int(uint16_t,  uint16_t,  uint8_t *, uint8_t *, uint8_t *)’ {或称 ‘int(short unsigned int,  short unsigned int,  unsigned char *, unsigned char *, unsigned char *)’}
+   71 | int kapi_pci_find_device(uint16_t vendor_id, uint16_t device_id, uint8_t* bus, uint8_t* dev, uint8_t* func);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:304:5: error: conflicting types for ‘kapi_pci_find_class’; have ‘int(uint32_t,  kapi_pci_info_t *)’ {或称 ‘int(unsigned int,  kapi_pci_info_t *)’}
+  304 | int kapi_pci_find_class(uint32_t class_code, kapi_pci_info_t* info);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:72:5: note: previous declaration of ‘kapi_pci_find_class’ with type ‘int(uint8_t,  uint8_t,  uint8_t *, uint8_t *, uint8_t *)’ {或称 ‘int(unsigned char,  unsigned char,  unsigned char *, unsigned char *, unsigned char *)’}
+   72 | int kapi_pci_find_class(uint8_t class_code, uint8_t subclass, uint8_t* bus, uint8_t* dev, uint8_t* func);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:306:5: error: conflicting types for ‘kapi_pci_enable_device’; have ‘int(kapi_pci_info_t *)’
+  306 | int kapi_pci_enable_device(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:74:5: note: previous declaration of ‘kapi_pci_enable_device’ with type ‘int(kapi_pci_dev_t *)’
+   74 | int kapi_pci_enable_device(kapi_pci_dev_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:308:5: error: conflicting types for ‘kapi_pci_disable_device’; have ‘int(kapi_pci_info_t *)’
+  308 | int kapi_pci_disable_device(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:75:5: note: previous declaration of ‘kapi_pci_disable_device’ with type ‘int(kapi_pci_dev_t *)’
+   75 | int kapi_pci_disable_device(kapi_pci_dev_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:310:5: error: conflicting types for ‘kapi_pci_set_master’; have ‘int(kapi_pci_info_t *)’
+  310 | int kapi_pci_set_master(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:76:5: note: previous declaration of ‘kapi_pci_set_master’ with type ‘int(kapi_pci_dev_t *, int)’
+   76 | int kapi_pci_set_master(kapi_pci_dev_t* dev, int enable);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:314:10: error: conflicting types for ‘kapi_pci_read_config_byte’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  314 | uint32_t kapi_pci_read_config_byte(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:62:10: note: previous declaration of ‘kapi_pci_read_config_byte’ with type ‘uint8_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘unsigned char(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   62 | uint8_t  kapi_pci_read_config_byte(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:316:10: error: conflicting types for ‘kapi_pci_read_config_word’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  316 | uint32_t kapi_pci_read_config_word(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:63:10: note: previous declaration of ‘kapi_pci_read_config_word’ with type ‘uint16_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘short unsigned int(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   63 | uint16_t kapi_pci_read_config_word(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:318:10: error: conflicting types for ‘kapi_pci_read_config_dword’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  318 | uint32_t kapi_pci_read_config_dword(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:64:10: note: previous declaration of ‘kapi_pci_read_config_dword’ with type ‘uint32_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘unsigned int(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   64 | uint32_t kapi_pci_read_config_dword(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:320:6: error: conflicting types for ‘kapi_pci_write_config_byte’; have ‘void(kapi_pci_info_t *, int,  uint8_t)’ {或称 ‘void(kapi_pci_info_t *, int,  unsigned char)’}
+  320 | void kapi_pci_write_config_byte(kapi_pci_info_t* pci, int offset, uint8_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:67:6: note: previous declaration of ‘kapi_pci_write_config_byte’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   67 | void kapi_pci_write_config_byte(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint8_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:322:6: error: conflicting types for ‘kapi_pci_write_config_word’; have ‘void(kapi_pci_info_t *, int,  uint16_t)’ {或称 ‘void(kapi_pci_info_t *, int,  short unsigned int)’}
+  322 | void kapi_pci_write_config_word(kapi_pci_info_t* pci, int offset, uint16_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:68:6: note: previous declaration of ‘kapi_pci_write_config_word’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint16_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  short unsigned int)’}
+   68 | void kapi_pci_write_config_word(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint16_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:324:6: error: conflicting types for ‘kapi_pci_write_config_dword’; have ‘void(kapi_pci_info_t *, int,  uint32_t)’ {或称 ‘void(kapi_pci_info_t *, int,  unsigned int)’}
+  324 | void kapi_pci_write_config_dword(kapi_pci_info_t* pci, int offset, uint32_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:69:6: note: previous declaration of ‘kapi_pci_write_config_dword’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint32_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  unsigned int)’}
+   69 | void kapi_pci_write_config_dword(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint32_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:336:66: error: 未知的类型名‘dma_addr_t’
+  336 | int kapi_pci_alloc_consistent(kapi_pci_info_t* pci, size_t size, dma_addr_t* dma_handle);
+      |                                                                  ^~~~~~~~~~
+include/kapi_device_ext.h:338:82: error: 未知的类型名‘dma_addr_t’
+  338 | void kapi_pci_free_consistent(kapi_pci_info_t* pci, size_t size, void* cpu_addr, dma_addr_t dma_handle);
+      |                                                                                  ^~~~~~~~~~
+include/kapi_device_ext.h:360:45: error: unknown type name ‘kapi_fb_cursor_t’; did you mean ‘kapi_fb_info_t’?
+  360 | int kapi_fb_cursor(kapi_dev_id_t dev, const kapi_fb_cursor_t* cursor);
+      |                                             ^~~~~~~~~~~~~~~~
+      |                                             kapi_fb_info_t
+include/kapi_device_ext.h:370:57: warning: ‘struct input_event’ declared inside parameter list will not be visible outside of this definition or declaration
+  370 | ssize_t kapi_input_event_read(kapi_dev_id_t dev, struct input_event* events, size_t count);
+      |                                                         ^~~~~~~~~~~
+In file included from include/kapi.h:102:
+include/kapi_sync_ext.h:106:14: error: conflicting types for ‘kapi_mutex_create’; have ‘struct kapi_mutex *(int)’
+  106 | kapi_mutex_t kapi_mutex_create(int type);
+      |              ^~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:31:
+include/kapi_mutex.h:15:14: note: previous declaration of ‘kapi_mutex_create’ with type ‘struct kapi_mutex *(void)’
+   15 | kapi_mutex_t kapi_mutex_create(void);
+      |              ^~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:108:5: error: conflicting types for ‘kapi_mutex_destroy’; have ‘int(struct kapi_mutex *)’
+  108 | int kapi_mutex_destroy(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~~~~
+include/kapi_mutex.h:17:6: note: previous declaration of ‘kapi_mutex_destroy’ with type ‘void(struct kapi_mutex *)’
+   17 | void kapi_mutex_destroy(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:110:5: error: conflicting types for ‘kapi_mutex_lock’; have ‘int(struct kapi_mutex *)’
+  110 | int kapi_mutex_lock(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_mutex.h:19:6: note: previous declaration of ‘kapi_mutex_lock’ with type ‘void(struct kapi_mutex *)’
+   19 | void kapi_mutex_lock(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:116:5: error: conflicting types for ‘kapi_mutex_unlock’; have ‘int(struct kapi_mutex *)’
+  116 | int kapi_mutex_unlock(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~~~
+include/kapi_mutex.h:23:6: note: previous declaration of ‘kapi_mutex_unlock’ with type ‘void(struct kapi_mutex *)’
+   23 | void kapi_mutex_unlock(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:229:5: error: conflicting types for ‘kapi_atomic_inc’; have ‘int(volatile int *)’
+  229 | int kapi_atomic_inc(volatile int* addr);
+      |     ^~~~~~~~~~~~~~~
+In file included from include/kapi.h:22:
+include/kapi_atomic.h:29:20: note: previous definition of ‘kapi_atomic_inc’ with type ‘void(kapi_atomic_t *)’
+   29 | static inline void kapi_atomic_inc(kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:231:5: error: conflicting types for ‘kapi_atomic_dec’; have ‘int(volatile int *)’
+  231 | int kapi_atomic_dec(volatile int* addr);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:39:20: note: previous definition of ‘kapi_atomic_dec’ with type ‘void(kapi_atomic_t *)’
+   39 | static inline void kapi_atomic_dec(kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:233:5: error: conflicting types for ‘kapi_atomic_add’; have ‘int(volatile int *, int)’
+  233 | int kapi_atomic_add(volatile int* addr, int val);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:73:20: note: previous definition of ‘kapi_atomic_add’ with type ‘void(int,  kapi_atomic_t *)’
+   73 | static inline void kapi_atomic_add(int i, kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:235:5: error: conflicting types for ‘kapi_atomic_sub’; have ‘int(volatile int *, int)’
+  235 | int kapi_atomic_sub(volatile int* addr, int val);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:83:20: note: previous definition of ‘kapi_atomic_sub’ with type ‘void(int,  kapi_atomic_t *)’
+   83 | static inline void kapi_atomic_sub(int i, kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:237:5: error: conflicting types for ‘kapi_atomic_xchg’; have ‘int(volatile int *, int)’
+  237 | int kapi_atomic_xchg(volatile int* addr, int newval);
+      |     ^~~~~~~~~~~~~~~~
+include/kapi_atomic.h:117:19: note: previous definition of ‘kapi_atomic_xchg’ with type ‘int(kapi_atomic_t *, int)’
+  117 | static inline int kapi_atomic_xchg(kapi_atomic_t* v, int new_val)
+      |                   ^~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:239:5: error: conflicting types for ‘kapi_atomic_cmpxchg’; have ‘int(volatile int *, int,  int)’
+  239 | int kapi_atomic_cmpxchg(volatile int* addr, int oldval, int newval);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_atomic.h:105:19: note: previous definition of ‘kapi_atomic_cmpxchg’ with type ‘int(kapi_atomic_t *, int,  int)’
+  105 | static inline int kapi_atomic_cmpxchg(kapi_atomic_t* v, int old, int new_val)
+      |                   ^~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:261:5: error: conflicting types for ‘kapi_rcu_read_lock’; have ‘int(void)’
+  261 | int kapi_rcu_read_lock(void);
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:34:
+include/kapi_rcu.h:25:6: note: previous declaration of ‘kapi_rcu_read_lock’ with type ‘void(void)’
+   25 | void kapi_rcu_read_lock(void);
+      |      ^~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:263:5: error: conflicting types for ‘kapi_rcu_read_unlock’; have ‘int(void)’
+  263 | int kapi_rcu_read_unlock(void);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_rcu.h:27:6: note: previous declaration of ‘kapi_rcu_read_unlock’ with type ‘void(void)’
+   27 | void kapi_rcu_read_unlock(void);
+      |      ^~~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:267:27: warning: ‘struct rcu_head’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+      |                           ^~~~~~~~
+include/kapi_sync_ext.h:267:6: error: conflicting types for ‘kapi_call_rcu’; have ‘void(struct rcu_head *, void (*)(struct rcu_head *))’
+  267 | void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+      |      ^~~~~~~~~~~~~
+include/kapi_rcu.h:29:6: note: previous declaration of ‘kapi_call_rcu’ with type ‘void(kapi_rcu_head_t *, void (*)(void *), void *)’ {或称 ‘void(struct kapi_rcu_head *, void (*)(void *), void *)’}
+   29 | void kapi_call_rcu(kapi_rcu_head_t* head, void (*func)(void*), void* arg);
+      |      ^~~~~~~~~~~~~
+include/kapi_sync_ext.h:271:6: error: conflicting types for ‘kapi_completion_wait’; have ‘void(struct kapi_completion **)’
+  271 | void kapi_completion_wait(kapi_completion_t* comp);
+      |      ^~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:32:
+include/kapi_completion.h:19:6: note: previous declaration of ‘kapi_completion_wait’ with type ‘void(struct kapi_completion *)’
+   19 | void kapi_completion_wait(kapi_completion_t c);
+      |      ^~~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:277:6: error: conflicting types for ‘kapi_completion_complete’; have ‘void(struct kapi_completion **)’
+  277 | void kapi_completion_complete(kapi_completion_t* comp);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_completion.h:21:6: note: previous declaration of ‘kapi_completion_complete’ with type ‘void(struct kapi_completion *)’
+   21 | void kapi_completion_complete(kapi_completion_t c);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:103:
+include/kapi_sysinfo.h:40:10: warning: ISO C 不允许大小为 0 的数组‘_f’ [-Wpedantic]
+   40 |     char _f[20-2*sizeof(uint64_t)-sizeof(uint32_t)];
+      |          ^~
+include/kapi_sysinfo.h:214:18: error: expected ‘:’, ‘,’, ‘;’, ‘}’ or ‘__attribute__’ before ‘migrations’
+  214 |     uint64_t cpu migrations;
+      |                  ^~~~~~~~~~
+include/kapi_sysinfo.h:327:23: warning: ISO C 不允许‘enum’类型的前向引用 [-Wpedantic]
+  327 | int kapi_suspend(enum suspend_state state);
+      |                       ^~~~~~~~~~~~~
+include/kapi_sysinfo.h:327:23: warning: ‘enum suspend_state’ declared inside parameter list will not be visible outside of this definition or declaration
+In file included from include/kapi.h:104:
+include/kapi_security_ext.h:59:9: warning: ‘KAPI_SECCLASS_CHR’ 重定义
+   59 | #define KAPI_SECCLASS_CHR         3
+      |         ^~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:54:
+include/kapi_security.h:25:9: note: 这是先前定义的位置
+   25 | #define KAPI_SECCLASS_CHR            4
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:60:9: warning: ‘KAPI_SECCLASS_BLK’ 重定义
+   60 | #define KAPI_SECCLASS_BLK         4
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security.h:26:9: note: 这是先前定义的位置
+   26 | #define KAPI_SECCLASS_BLK            5
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:61:9: warning: ‘KAPI_SECCLASS_FIFO’ 重定义
+   61 | #define KAPI_SECCLASS_FIFO        5
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security.h:24:9: note: 这是先前定义的位置
+   24 | #define KAPI_SECCLASS_FIFO           3
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:63:9: warning: ‘KAPI_SECCLASS_IPC’ 重定义
+   63 | #define KAPI_SECCLASS_IPC         7
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security.h:41:9: note: 这是先前定义的位置
+   41 | #define KAPI_SECCLASS_IPC            20
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:65:9: warning: ‘KAPI_SECCLASS_PROCESS’ 重定义
+   65 | #define KAPI_SECCLASS_PROCESS     9
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_security.h:31:9: note: 这是先前定义的位置
+   31 | #define KAPI_SECCLASS_PROCESS        10
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:66:9: warning: ‘KAPI_SECCLASS_SYSTEM’ 重定义
+   66 | #define KAPI_SECCLASS_SYSTEM      10
+      |         ^~~~~~~~~~~~~~~~~~~~
+include/kapi_security.h:32:9: note: 这是先前定义的位置
+   32 | #define KAPI_SECCLASS_SYSTEM         11
+      |         ^~~~~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:72:9: warning: ‘KAPI_SECCLASS_SHM’ 重定义
+   72 | #define KAPI_SECCLASS_SHM         16
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security.h:44:9: note: 这是先前定义的位置
+   44 | #define KAPI_SECCLASS_SHM            23
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:74:9: warning: ‘KAPI_SECCLASS_MSGQ’ 重定义
+   74 | #define KAPI_SECCLASS_MSGQ        18
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security.h:43:9: note: 这是先前定义的位置
+   43 | #define KAPI_SECCLASS_MSGQ           22
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:75:9: warning: ‘KAPI_SECCLASS_MSG’ 重定义
+   75 | #define KAPI_SECCLASS_MSG         19
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security.h:42:9: note: 这是先前定义的位置
+   42 | #define KAPI_SECCLASS_MSG            21
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:77:9: warning: ‘KAPI_SECCLASS_PORT’ 重定义
+   77 | #define KAPI_SECCLASS_PORT        21
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security.h:35:9: note: 这是先前定义的位置
+   35 | #define KAPI_SECCLASS_PORT           14
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:79:9: warning: ‘KAPI_SECCLASS_NODE’ 重定义
+   79 | #define KAPI_SECCLASS_NODE        23
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security.h:36:9: note: 这是先前定义的位置
+   36 | #define KAPI_SECCLASS_NODE           15
+      |         ^~~~~~~~~~~~~~~~~~
+include/kapi_security_ext.h:132:18: error: ‘NGROUPS_MAX’未声明(不在函数内)
+  132 |     gid_t groups[NGROUPS_MAX];
+      |                  ^~~~~~~~~~~
+include/kapi_security_ext.h:248:55: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  248 | int kapi_security_chmod(struct dentry *dentry, struct vfsmnt *mnt, mode_t mode);
+      |                                                       ^~~~~~
+include/kapi_security_ext.h:248:32: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  248 | int kapi_security_chmod(struct dentry *dentry, struct vfsmnt *mnt, mode_t mode);
+      |                                ^~~~~~
+include/kapi_security_ext.h:250:55: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  250 | int kapi_security_chown(struct dentry *dentry, struct vfsmnt *mnt,
+      |                                                       ^~~~~~
+include/kapi_security_ext.h:250:32: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  250 | int kapi_security_chown(struct dentry *dentry, struct vfsmnt *mnt,
+      |                                ^~~~~~
+include/kapi_security_ext.h:253:51: error: unknown type name ‘loff_t’; did you mean ‘off_t’?
+  253 | int kapi_security_truncate(struct dentry *dentry, loff_t length);
+      |                                                   ^~~~~~
+      |                                                   off_t
+include/kapi_security_ext.h:255:54: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  255 | int kapi_security_getattr(struct vfsmnt *mnt, struct dentry *dentry);
+      |                                                      ^~~~~~
+include/kapi_security_ext.h:255:34: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  255 | int kapi_security_getattr(struct vfsmnt *mnt, struct dentry *dentry);
+      |                                  ^~~~~~
+include/kapi_security_ext.h:257:57: warning: ‘struct iattr’ declared inside parameter list will not be visible outside of this definition or declaration
+  257 | int kapi_security_setattr(struct dentry *dentry, struct iattr *iattr);
+      |                                                         ^~~~~
+include/kapi_security_ext.h:257:34: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  257 | int kapi_security_setattr(struct dentry *dentry, struct iattr *iattr);
+      |                                  ^~~~~~
+include/kapi_security_ext.h:259:35: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  259 | int kapi_security_setxattr(struct dentry *dentry, const char *name,
+      |                                   ^~~~~~
+include/kapi_security_ext.h:262:38: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  262 | int kapi_security_removexattr(struct dentry *dentry, const char *name);
+      |                                      ^~~~~~
+include/kapi_security_ext.h:264:35: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  264 | int kapi_security_getxattr(struct dentry *dentry, const char *name,
+      |                                   ^~~~~~
+include/kapi_security_ext.h:267:36: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | int kapi_security_listxattr(struct dentry *dentry, char *list, size_t list_size);
+      |                                    ^~~~~~
+include/kapi_security_ext.h:271:45: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  271 | int kapi_security_socket_post_create(struct socket *sock, int family,
+      |                                             ^~~~~~
+include/kapi_security_ext.h:275:37: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  275 |                              struct sockaddr *address, int addrlen);
+      |                                     ^~~~~~~~
+include/kapi_security_ext.h:274:38: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  274 | int kapi_security_socket_bind(struct socket *sock,
+      |                                      ^~~~~~
+include/kapi_security_ext.h:278:39: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  278 |                                struct sockaddr *address, int addrlen);
+      |                                       ^~~~~~~~
+include/kapi_security_ext.h:277:41: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  277 | int kapi_security_socket_connect(struct socket *sock,
+      |                                         ^~~~~~
+include/kapi_security_ext.h:280:40: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  280 | int kapi_security_socket_listen(struct socket *sock, int backlog);
+      |                                        ^~~~~~
+include/kapi_security_ext.h:282:40: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  282 | int kapi_security_socket_accept(struct socket *sock, struct socket *newsock);
+      |                                        ^~~~~~
+include/kapi_security_ext.h:284:62: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  284 | int kapi_security_socket_sendmsg(struct socket *sock, struct msghdr *msg,
+      |                                                              ^~~~~~
+include/kapi_security_ext.h:284:41: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  284 | int kapi_security_socket_sendmsg(struct socket *sock, struct msghdr *msg,
+      |                                         ^~~~~~
+include/kapi_security_ext.h:287:62: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  287 | int kapi_security_socket_recvmsg(struct socket *sock, struct msghdr *msg,
+      |                                                              ^~~~~~
+include/kapi_security_ext.h:287:41: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  287 | int kapi_security_socket_recvmsg(struct socket *sock, struct msghdr *msg,
+      |                                         ^~~~~~
+include/kapi_security_ext.h:290:45: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  290 | int kapi_security_socket_getsockname(struct socket *sock);
+      |                                             ^~~~~~
+include/kapi_security_ext.h:292:45: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  292 | int kapi_security_socket_getpeername(struct socket *sock);
+      |                                             ^~~~~~
+include/kapi_security_ext.h:294:44: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  294 | int kapi_security_socket_setsockopt(struct socket *sock, int level,
+      |                                            ^~~~~~
+include/kapi_security_ext.h:297:44: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  297 | int kapi_security_socket_getsockopt(struct socket *sock, int level,
+      |                                            ^~~~~~
+include/kapi_security_ext.h:300:42: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  300 | int kapi_security_socket_shutdown(struct socket *sock, int how);
+      |                                          ^~~~~~
+include/kapi_security_ext.h:304:37: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  304 | int kapi_task_alloc_security(struct task_struct *p);
+      |                                     ^~~~~~~~~~~
+include/kapi_security_ext.h:306:37: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  306 | void kapi_task_free_security(struct task_struct *p);
+      |                                     ^~~~~~~~~~~
+include/kapi_security_ext.h:309:28: warning: ‘struct cred’ declared inside parameter list will not be visible outside of this definition or declaration
+  309 |                     struct cred *new);
+      |                            ^~~~
+include/kapi_security_ext.h:312:28: warning: ‘struct cred’ declared inside parameter list will not be visible outside of this definition or declaration
+  312 |                     struct cred *new);
+      |                            ^~~~
+include/kapi_security_ext.h:314:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  314 | int kapi_task_setpgid(struct task_struct *p, pid_t pgid);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:316:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  316 | int kapi_task_getpgid(struct task_struct *p);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:318:29: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  318 | int kapi_task_getsid(struct task_struct *p);
+      |                             ^~~~~~~~~~~
+include/kapi_security_ext.h:320:32: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  320 | void kapi_task_getsecid(struct task_struct *p, u32 *secid);
+      |                                ^~~~~~~~~~~
+include/kapi_security_ext.h:322:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  322 | int kapi_task_setnice(struct task_struct *p, int nice);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:325:33: warning: ‘struct sched_param’ declared inside parameter list will not be visible outside of this definition or declaration
+  325 |                          struct sched_param *lp);
+      |                                 ^~~~~~~~~~~
+include/kapi_security_ext.h:324:35: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  324 | int kapi_task_setscheduler(struct task_struct *p, int policy,
+      |                                   ^~~~~~~~~~~
+include/kapi_security_ext.h:327:35: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  327 | int kapi_task_getscheduler(struct task_struct *p);
+      |                                   ^~~~~~~~~~~
+include/kapi_security_ext.h:329:33: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  329 | int kapi_task_movememory(struct task_struct *p);
+      |                                 ^~~~~~~~~~~
+include/kapi_security_ext.h:331:50: warning: ‘struct siginfo’ declared inside parameter list will not be visible outside of this definition or declaration
+  331 | int kapi_task_kill(struct task_struct *p, struct siginfo *info,
+      |                                                  ^~~~~~~
+include/kapi_security_ext.h:331:27: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  331 | int kapi_task_kill(struct task_struct *p, struct siginfo *info,
+      |                           ^~~~~~~~~~~
+include/kapi_security_ext.h:334:27: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  334 | int kapi_task_wait(struct task_struct *p);
+      |                           ^~~~~~~~~~~
+In file included from include/kapi.h:105:
+include/kapi_virt_ext.h:34:9: warning: ‘KAPI_DEV_TYPE_PCI’ 重定义
+   34 | #define KAPI_DEV_TYPE_PCI         0
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:24:9: note: 这是先前定义的位置
+   24 | #define KAPI_DEV_TYPE_PCI         5
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:35:9: warning: ‘KAPI_DEV_TYPE_USB’ 重定义
+   35 | #define KAPI_DEV_TYPE_USB         1
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:23:9: note: 这是先前定义的位置
+   23 | #define KAPI_DEV_TYPE_USB         4
+      |         ^~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:38:9: warning: ‘KAPI_DEV_TYPE_NETWORK’ 重定义
+   38 | #define KAPI_DEV_TYPE_NETWORK     4
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:22:9: note: 这是先前定义的位置
+   22 | #define KAPI_DEV_TYPE_NETWORK     3
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:39:9: warning: ‘KAPI_DEV_TYPE_STORAGE’ 重定义
+   39 | #define KAPI_DEV_TYPE_STORAGE     5
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:38:9: note: 这是先前定义的位置
+   38 | #define KAPI_DEV_TYPE_STORAGE     19
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:41:9: warning: ‘KAPI_DEV_TYPE_INPUT’ 重定义
+   41 | #define KAPI_DEV_TYPE_INPUT       7
+      |         ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:35:9: note: 这是先前定义的位置
+   35 | #define KAPI_DEV_TYPE_INPUT       16
+      |         ^~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:42:9: warning: ‘KAPI_DEV_TYPE_AUDIO’ 重定义
+   42 | #define KAPI_DEV_TYPE_AUDIO       8
+      |         ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:36:9: note: 这是先前定义的位置
+   36 | #define KAPI_DEV_TYPE_AUDIO       17
+      |         ^~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:43:9: warning: ‘KAPI_DEV_TYPE_WATCHDOG’ 重定义
+   43 | #define KAPI_DEV_TYPE_WATCHDOG    9
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:33:9: note: 这是先前定义的位置
+   33 | #define KAPI_DEV_TYPE_WATCHDOG    14
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:105:3: error: conflicting types for ‘kapi_mem_region_t’; have ‘struct <匿名>’
+  105 | } kapi_mem_region_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_memory_ext.h:82:3: note: previous declaration of ‘kapi_mem_region_t’ with type ‘kapi_mem_region_t’
+   82 | } kapi_mem_region_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:353:5: error: conflicting types for ‘kapi_container_create’; have ‘int(const char *, const char *)’
+  353 | int kapi_container_create(const char* name, const char* config);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:92:
+include/kapi_container.h:72:5: note: previous declaration of ‘kapi_container_create’ with type ‘int(const char *, const kapi_container_config_t *)’
+   72 | int kapi_container_create(const char *name,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:357:5: error: conflicting types for ‘kapi_container_stop’; have ‘int(const char *)’
+  357 | int kapi_container_stop(const char* name);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_container.h:75:5: note: previous declaration of ‘kapi_container_stop’ with type ‘int(const char *, int)’
+   75 | int kapi_container_stop(const char *name, int force);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_virt_ext.h:365:5: error: conflicting types for ‘kapi_container_list’; have ‘int(char **, int)’
+  365 | int kapi_container_list(char** names, int max_names);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_container.h:82:5: note: previous declaration of ‘kapi_container_list’ with type ‘int(char *, size_t)’ {或称 ‘int(char *, long long unsigned int)’}
+   82 | int kapi_container_list(char *out, size_t len);
+      |     ^~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:108:
+include/kapi_epoll.h:48:6: error: conflicting types for ‘kapi_epoll_ctl’; have ‘int(int,  int,  int,  kapi_epoll_event_t *)’
+   48 | int  kapi_epoll_ctl(int epfd, int op, int fd, kapi_epoll_event_t* event);
+      |      ^~~~~~~~~~~~~~
+include/kapi_net_ext.h:315:5: note: previous declaration of ‘kapi_epoll_ctl’ with type ‘int(int,  int,  int,  struct epoll_event *)’
+  315 | int kapi_epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);
+      |     ^~~~~~~~~~~~~~
+include/kapi_epoll.h:49:6: error: conflicting types for ‘kapi_epoll_wait’; have ‘int(int,  kapi_epoll_event_t *, int,  int)’
+   49 | int  kapi_epoll_wait(int epfd, kapi_epoll_event_t* events, int maxevents, int timeout);
+      |      ^~~~~~~~~~~~~~~
+include/kapi_net_ext.h:317:5: note: previous declaration of ‘kapi_epoll_wait’ with type ‘int(int,  struct epoll_event *, int,  int)’
+  317 | int kapi_epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_epoll.h:50:6: error: conflicting types for ‘kapi_epoll_pwait’; have ‘int(int,  kapi_epoll_event_t *, int,  int,  const uint64_t *)’ {或称 ‘int(int,  kapi_epoll_event_t *, int,  int,  const long long unsigned int *)’}
+   50 | int  kapi_epoll_pwait(int epfd, kapi_epoll_event_t* events, int maxevents, int timeout, const uint64_t* sigmask);
+      |      ^~~~~~~~~~~~~~~~
+include/kapi_net_ext.h:319:5: note: previous declaration of ‘kapi_epoll_pwait’ with type ‘int(int,  struct epoll_event *, int,  int,  const int *)’
+  319 | int kapi_epoll_pwait(int epfd, struct epoll_event* events, int maxevents, int timeout,
+      |     ^~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c: 在函数‘shell_parse_line’中:
+kernel/kernel/shell_enhanced.c:206:41: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  206 |     memset(cmds, 0, sizeof(shell_cmd_t) * max_cmds);
+      |                                         ^
+kernel/kernel/shell_enhanced.c: 在函数‘shell_run_elf’中:
+kernel/kernel/shell_enhanced.c:313:44: warning: ISO C 不允许将‘process_create_ex’的第 2 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  313 |     uint64_t pid = process_create_ex(path, shell_elf_entry, task,
+      |                                            ^~~~~~~~~~~~~~~
+In file included from kernel/kernel/shell_enhanced.c:9:
+kernel/arch/x86_64/include/arch/process.h:117:52: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  117 | uint64_t process_create_ex(const char* name, void* entry, void* arg,
+      |                                              ~~~~~~^~~~~
+kernel/kernel/shell_enhanced.c: 在文件作用域：
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+<2> Building kernel/kernel/rcu.c
+FAILED TASK run all: 

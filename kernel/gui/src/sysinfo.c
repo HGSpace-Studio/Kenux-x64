@@ -33,7 +33,7 @@ static void si_int_to_str(uint32_t val, char* buf) {
     if (val == 0) { buf[0] = '0'; buf[1] = '\0'; return; }
     char tmp[16];
     int32_t i = 0;
-    while (val > 0) { tmp[i++] = '0' + (val % 10); val /= 10; }
+    while (val > 0) { tmp[i++] = '0' + (char)(val % 10); val /= 10; }
     int32_t j = 0;
     while (i > 0) buf[j++] = tmp[--i];
     buf[j] = '\0';

@@ -4,11 +4,12 @@
 #include <memory.h>
 #include <string.h>
 #include <slab.h>
+#include <stdio.h>
 
 extern int ext2_mount(const char* device, const char* mount_point);
 extern int ext2_unmount(const char* mount_point);
 extern void ext2_init(void);
-extern int ext4_mount(const char* device, vfs_node_t** root_out);
+extern int ext4_mount(vfs_node_t* mount_point, void* device);
 extern int ext4_unmount(ext4_fs_t* fs);
 extern void ext4_init(void);
 
@@ -42,18 +43,14 @@ static int fs_ext3_unmount_adapter(const char* mount_point)
 
 static int fs_ext4_mount_adapter(const char* device, const char* mount_point)
 {
-    vfs_node_t* root = NULL;
-    int ret = ext4_mount(device, &root);
-    if (ret == 0 && root) {
+    vfs_node_t* mp = NULL;
+    if (mount_point) {
+        mp = vfs_find_path(mount_point);
+    }
+    int ret = ext4_mount(mp, (void*)device);
+    if (ret == 0 && mp) {
         if (!vfs_root) {
-            vfs_root = root;
-        }
-        if (mount_point) {
-            vfs_node_t* mount_node = vfs_create_node(mount_point, FS_TYPE_DIRECTORY);
-            if (mount_node) {
-                mount_node->children = root;
-                root->parent = mount_node;
-            }
+            vfs_root = mp;
         }
     }
     return ret;
@@ -195,7 +192,7 @@ int vfs_read(int fd, void* buf, uint64_t count)
     open_file_t* f = &open_files[fd];
     if (!f->node || !f->node->read) return -1;
     int ret = f->node->read(f->node, f->offset, buf, count);
-    if (ret > 0) f->offset += ret;
+    if (ret > 0) f->offset += (uint64_t)ret;
     return ret;
 }
 
@@ -205,7 +202,7 @@ int vfs_write(int fd, const void* buf, uint64_t count)
     open_file_t* f = &open_files[fd];
     if (!f->node || !f->node->write) return -1;
     int ret = f->node->write(f->node, f->offset, buf, count);
-    if (ret > 0) f->offset += ret;
+    if (ret > 0) f->offset += (uint64_t)ret;
     return ret;
 }
 
@@ -322,7 +319,7 @@ static int get_parent_and_name(const char* path, char* parent_path, char* name, 
 {
     if (!path || !parent_path || !name) return -1;
     
-    int len = strlen(path);
+    int len = (int)strlen(path);
     if (len == 0 || path[0] != '/') return -1;
     
     if (strcmp(path, "/") == 0) {
@@ -341,16 +338,16 @@ static int get_parent_and_name(const char* path, char* parent_path, char* name, 
     
     if (!last_slash) return -1;
     
-    int parent_len = last_slash - path;
+    int parent_len = (int)(last_slash - path);
     if (parent_len == 0) {
         strcpy(parent_path, "/");
     } else {
         if (parent_len >= max_len) return -1;
-        strncpy(parent_path, path, parent_len);
+        strncpy(parent_path, path, (size_t)parent_len);
         parent_path[parent_len] = '\0';
     }
     
-    strncpy(name, last_slash + 1, max_len - 1);
+    strncpy(name, last_slash + 1, (size_t)(max_len - 1));
     name[max_len - 1] = '\0';
     
     return 0;
@@ -377,12 +374,12 @@ int vfs_mkdir(const char* path, int mode)
     }
     
     if (parent->mkdir) {
-        return parent->mkdir(parent, name, mode);
+        return parent->mkdir(parent, name, (uint64_t)mode);
     }
     
     vfs_node_t* node = vfs_create_node(name, FS_TYPE_DIRECTORY);
     if (!node) return -1;
-    node->mode = mode;
+    node->mode = (uint64_t)mode;
     vfs_add_child(parent, node);
     
     return 0;

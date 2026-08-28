@@ -4,10 +4,47 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+
+#ifndef SSIZE_T_DEFINED
+#define SSIZE_T_DEFINED
+typedef long int ssize_t;
+#endif
+
+/* Kernel mode: use kernel's own types; Userspace: rely on system headers */
+#ifdef KAL_KERNEL
+#include <arch/types.h>
+#else
 #include <sys/types.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#ifdef KAL_KERNEL
+struct kapi_utimbuf {
+    time_t actime;
+    time_t modtime;
+};
+
+#ifndef KAPI_TIMEVAL_DEFINED
+#define KAPI_TIMEVAL_DEFINED
+struct kapi_timeval {
+    int64_t tv_sec;
+    int64_t tv_usec;
+};
+#endif
+
+#ifndef KAPI_TIMESPEC_DEFINED
+#define KAPI_TIMESPEC_DEFINED
+struct kapi_timespec {
+    int64_t tv_sec;
+    int64_t tv_nsec;
+};
+#endif
+#else
+struct kapi_timeval;
+struct kapi_timespec;
 #endif
 
 #define KAPI_FS_MAX_PATH       4096
@@ -69,10 +106,14 @@ extern "C" {
 
 typedef uint64_t kapi_ino_t;
 typedef int64_t kapi_off_t;
+#ifndef KAPI_DEV_T_DEFINED
+#define KAPI_DEV_T_DEFINED
 typedef uint64_t kapi_dev_t;
+#endif
 typedef uint32_t kapi_mode_t;
 typedef uint32_t kapi_uid_t;
 typedef uint32_t kapi_gid_t;
+typedef uint32_t kapi_nlink_t;
 
 typedef struct {
     kapi_ino_t   st_ino;
@@ -128,12 +169,14 @@ typedef struct {
     uint64_t f_mount_id;
 } kapi_fd_stats_t;
 
-typedef struct dirent {
+typedef struct kapi_dirent {
     kapi_ino_t d_ino;
     off_t d_off;
     unsigned short d_reclen;
     unsigned char d_type;
     char d_name[KAPI_FS_MAX_NAME];
+    int d_type_custom;
+    kapi_off_t d_size;
 } kapi_dirent_t;
 
 typedef struct {
@@ -234,13 +277,13 @@ int kapi_fchown(int fd, uid_t owner, gid_t group);
 
 int kapi_fchownat(int dirfd, const char* pathname, uid_t owner, gid_t group, int flags);
 
-int kapi_utime(const char* filename, const struct utimbuf* times);
+int kapi_utime(const char* filename, const struct kapi_utimbuf* times);
 
-int kapi_utimes(const char* filename, const struct timeval times[2]);
+int kapi_utimes(const char* filename, const struct kapi_timeval times[2]);
 
-int kapi_futimens(int fd, const struct timespec times[2]);
+int kapi_futimens(int fd, const struct kapi_timespec times[2]);
 
-int kapi_utimensat(int dirfd, const char* pathname, const struct timespec times[2], int flags);
+int kapi_utimensat(int dirfd, const char* pathname, const struct kapi_timespec times[2], int flags);
 
 int kapi_mkdir(const char* pathname, mode_t mode);
 
@@ -288,7 +331,7 @@ void kapi_seekdir(kapi_dir_t dirp, long loc);
 
 long kapi_telldir(kapi_dir_t dirp);
 
-void kapi rewinddir(kapi_dir_t dirp);
+void kapi_rewinddir(kapi_dir_t dirp);
 
 int kapi_dirfd(kapi_dir_t dirp);
 

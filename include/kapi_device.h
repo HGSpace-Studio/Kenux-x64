@@ -10,7 +10,10 @@
 extern "C" {
 #endif
 
+#ifndef KAPI_DEV_T_DEFINED
+#define KAPI_DEV_T_DEFINED
 typedef struct kapi_device* kapi_dev_t;
+#endif
 
 #define KAPI_DEV_UNKNOWN     0
 #define KAPI_DEV_BLOCK       1
