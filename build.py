@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import sys
 import time
+import tempfile
 from pathlib import Path
 from typing import Callable, Iterable
 
@@ -150,6 +151,12 @@ BOOT_COMPILE_SOURCES = {"kernel/kernel/kernel.c", "kernel/kernel/syscall.c"}
 EXCLUDED_SOURCES = {
     "kernel/arch/x86_64/boot/boot.S",
 }
+WINDOWS_COMPAT_SOURCES = {
+    "kernel/arch/x86_64/compat_main.c",
+    "kernel/arch/x86_64/compat_ntvdm.c",
+    "kernel/arch/x86_64/compat_sdb.c",
+    "kernel/arch/x86_64/powershell.c",
+}
 
 # 构建 OVMF 时需要的 ESP 目录
 ESP_DIR = ROOT / "esp"
@@ -214,6 +221,11 @@ def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
         "apps/tetris.c",
     ))
     c_sources = sorted(set(c_sources))
+    if not IS_WINDOWS:
+        c_sources = [
+            source for source in c_sources
+            if relative(source) not in WINDOWS_COMPAT_SOURCES
+        ]
 
     # Windows 大小写不敏感去重
     seen: set[Path] = set()
@@ -657,11 +669,19 @@ def run_foreground(paths: BuildPaths, graph: BuildGraph, task_id: str, target: T
         system_vars = Path("/usr/share/edk2/x64/OVMF_VARS.4m.fd")
         if not IS_WINDOWS and system_vars.exists():
             vars_template = system_vars
-        vars_path = Path("/tmp") / f"kenux-ovmf-vars-{os.getpid()}.fd"
-        shutil.copyfile(vars_template, vars_path)
+        vars_fd, vars_name = tempfile.mkstemp(prefix="kenux-ovmf-vars-", suffix=".fd")
+        vars_path = Path(vars_name)
+        with os.fdopen(vars_fd, "wb") as vars_file, vars_template.open("rb") as template_file:
+            shutil.copyfileobj(template_file, vars_file)
         target.command = qemu_command(debug=target.name == "run-debug", vars_path=vars_path)
+    else:
+        vars_path = None
     runner = create_runner(paths, graph, task_id)
-    runner.run(build_roots(graph, target), label)
+    try:
+        runner.run(build_roots(graph, target), label)
+    finally:
+        if vars_path is not None:
+            vars_path.unlink(missing_ok=True)
     return 0
 
 

@@ -47,7 +47,7 @@ Kenux OS 是一个现代化的高性能操作系统，从零开始构建，专�
 
 ```bash
 # 构建依赖
-sudo apt-get install build-essential ninja-build gcc make nasm qemu-system-x86
+sudo apt-get install build-essential ninja-build gcc make nasm qemu-system-x86 mingw-w64
 
 # 可选: 交叉编译工具链
 sudo apt-get install gcc-x86_64-linux-gnu binutils-x86_64-linux-gnu
@@ -82,6 +82,12 @@ python3 build.py run run-debug
 ```
 
 运行目标需要本机安装 QEMU；启动前会检查 gcc、objcopy、NASM、QEMU 和必要源码，任一项失败都会返回非零状态。
+
+host 测试门禁：
+
+```bash
+node tests/host/test-runner-exit.js
+```
 
 ## 应用套件
 

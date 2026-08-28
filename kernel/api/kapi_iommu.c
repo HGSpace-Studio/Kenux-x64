@@ -57,6 +57,9 @@ int kapi_iommu_group_add_device(kapi_iommu_group_t *group,
     if (!group || !dev) {
         return KAPI_IOMMU_EINVAL;
     }
+    if (!kapi_iommu_initialized) {
+        return KAPI_IOMMU_ENOTSUP;
+    }
     if (group->num_devices >= KAPI_IOMMU_MAX_DEVICES) {
         return KAPI_IOMMU_ENOSPC;
     }

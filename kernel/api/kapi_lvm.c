@@ -133,6 +133,9 @@ int kapi_lvm_vg_extend(const char *vg_name, const char *pv_name)
 
 int kapi_lvm_vg_reduce(const char *vg_name, const char *pv_name)
 {
+    if (!vg_name || !pv_name) {
+        return KAPI_LVM_EINVAL;
+    }
     kapi_vg_t *vg = kapi_lvm_vg_find(vg_name);
     if (!vg) {
         return KAPI_LVM_ENOENT;

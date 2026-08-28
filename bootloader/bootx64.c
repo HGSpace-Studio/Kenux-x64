@@ -544,6 +544,7 @@ static UINT64 load_elf64_exec(void *buf, UINTN len, struct EFI_SYSTEM_TABLE *ST)
     ELF64_EHDR *eh = (ELF64_EHDR *)buf;
     UINT64 low = UINT64_MAX_VALUE;
     UINT64 high = 0;
+    int entry_in_segment = 0;
 
     if (len < sizeof(ELF64_EHDR) ||
         eh->e_ident[0] != ELF_MAGIC0 || eh->e_ident[1] != ELF_MAGIC1 ||
@@ -578,9 +579,12 @@ static UINT64 load_elf64_exec(void *buf, UINTN len, struct EFI_SYSTEM_TABLE *ST)
         }
         if (seg_start < low) low = seg_start;
         if (seg_end > high) high = seg_end;
+        if (eh->e_entry >= ph->p_paddr && eh->e_entry < segment_end) {
+            entry_in_segment = 1;
+        }
     }
 
-    if (low == UINT64_MAX_VALUE || high <= low || eh->e_entry < low || eh->e_entry >= high) {
+    if (low == UINT64_MAX_VALUE || high <= low || !entry_in_segment) {
         print(ST, L"ELF64 has no loadable segments\n");
         return 0;
     }

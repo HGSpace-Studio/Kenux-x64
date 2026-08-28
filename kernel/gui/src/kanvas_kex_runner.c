@@ -190,7 +190,7 @@ kex_format_t kanvas_kex_detect_format(const char* path)
         const char* ext = path + len - 4;
         if (ext[0] == '.' && ext[1] == 'k' && ext[2] == 'e' && ext[3] == 'x') return KEX_FORMAT_KEX;
         if (ext[0] == '.' && ext[1] == 'k' && ext[2] == 'x' && ext[3] == 'p') return KEX_FORMAT_KXP;
-        if (ext[0] == '.' && ext[1] == 'e' && ext[2] == 'l' && ext[3] == 'fB') return KEX_FORMAT_ELF;
+        if (ext[0] == '.' && ext[1] == 'e' && ext[2] == 'l' && ext[3] == 'f') return KEX_FORMAT_ELF;
     }
     return KEX_FORMAT_UNKNOWN;
 }
