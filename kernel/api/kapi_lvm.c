@@ -15,16 +15,6 @@ static kapi_pv_t kapi_lvm_pv_table[KAPI_LVM_MAX_PVS];
 static kapi_vg_t kapi_lvm_vg_table[KAPI_LVM_MAX_VGS];
 static int       kapi_lvm_initialized = 0;
 
-static kapi_pv_t *pv_slot_alloc(void)
-{
-    for (int i = 0; i < KAPI_LVM_MAX_PVS; i++) {
-        if (!kapi_lvm_pv_table[i].registered) {
-            return &kapi_lvm_pv_table[i];
-        }
-    }
-    return NULL;
-}
-
 int kapi_lvm_init(void)
 {
     if (kapi_lvm_initialized) {
@@ -51,15 +41,7 @@ int kapi_lvm_pv_create(kapi_blkdev_t dev, const char *name)
     if (kapi_lvm_pv_find(name)) {
         return KAPI_LVM_EEXIST;
     }
-    kapi_pv_t *pv = pv_slot_alloc();
-    if (!pv) {
-        return KAPI_LVM_ENOMEM;
-    }
-    strncpy(pv->name, name, KAPI_LVM_NAME_MAX - 1);
-    pv->dev = dev;
-    /* TODO: read capacity + write PV header at LBA0 */
-    pv->registered = 1;
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_pv_remove(const char *name)
@@ -77,8 +59,7 @@ int kapi_lvm_pv_remove(const char *name)
 
 int kapi_lvm_pv_scan(void)
 {
-    /* TODO: enumerate blkdevs and detect PV labels */
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 kapi_pv_t *kapi_lvm_pv_find(const char *name)
@@ -196,45 +177,32 @@ int kapi_lvm_lv_create(const char *vg_name, const char *lv_name,
     if (vg->lv_count >= KAPI_LVM_MAX_LVS_PER_VG) {
         return KAPI_LVM_ENOMEM;
     }
-    /* TODO: allocate extents; allocate persistent lv struct */
-    kapi_lv_t lv;
-    memset(&lv, 0, sizeof(lv));
-    strncpy(lv.name, lv_name, KAPI_LVM_NAME_MAX - 1);
-    strncpy(lv.vg_name, vg_name, KAPI_LVM_NAME_MAX - 1);
-    lv.size_sectors = size_sectors;
-    lv.state = KAPI_LVM_LV_INACTIVE;
-    lv.vg = vg;
-    /* NOTE: a real impl would persist this in the LV metadata area. */
-    vg->free_sectors -= size_sectors;
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_lv_remove(const char *vg_name, const char *lv_name)
 {
     (void)vg_name; (void)lv_name;
-    /* TODO: locate LV, free extents, invalidate */
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_lv_resize(const char *vg_name, const char *lv_name,
                        uint64_t new_size_sectors, int online)
 {
     (void)vg_name; (void)lv_name; (void)new_size_sectors; (void)online;
-    /* TODO: extend/reduce extent map; handle online flag */
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_lv_activate(const char *vg_name, const char *lv_name)
 {
     (void)vg_name; (void)lv_name;
-    /* TODO: register a blkdev front-end for the LV */
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_lv_deactivate(const char *vg_name, const char *lv_name)
 {
     (void)vg_name; (void)lv_name;
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 kapi_lv_t *kapi_lvm_lv_find(const char *vg_name, const char *lv_name)
@@ -256,19 +224,17 @@ int kapi_lvm_snapshot_create(const char *vg_name, const char *origin,
                              const char *snap_name, uint64_t size_sectors)
 {
     (void)vg_name; (void)origin; (void)snap_name; (void)size_sectors;
-    /* TODO: allocate COW device + exception table */
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_snapshot_remove(const char *vg_name, const char *snap_name)
 {
     (void)vg_name; (void)snap_name;
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }
 
 int kapi_lvm_snapshot_merge(const char *vg_name, const char *snap_name)
 {
     (void)vg_name; (void)snap_name;
-    /* TODO: merge COW exceptions back into origin */
-    return KAPI_LVM_OK;
+    return KAPI_LVM_ENOTSUP;
 }

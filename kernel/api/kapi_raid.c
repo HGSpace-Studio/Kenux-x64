@@ -14,16 +14,6 @@
 static kapi_raid_array_t kapi_raid_table[KAPI_RAID_MAX_ARRAYS];
 static int kapi_raid_initialized = 0;
 
-static kapi_raid_array_t *raid_slot_alloc(void)
-{
-    for (int i = 0; i < KAPI_RAID_MAX_ARRAYS; i++) {
-        if (!kapi_raid_table[i].active) {
-            return &kapi_raid_table[i];
-        }
-    }
-    return NULL;
-}
-
 int kapi_raid_init(void)
 {
     if (kapi_raid_initialized) {
@@ -44,6 +34,7 @@ int kapi_raid_create(const char *name, kapi_raid_level_t level,
                      uint32_t chunk_size, const kapi_blkdev_t *disks,
                      uint32_t nr_disks)
 {
+    (void)chunk_size;
     if (!name || !disks || nr_disks == 0) {
         return KAPI_RAID_EINVAL;
     }
@@ -65,23 +56,7 @@ int kapi_raid_create(const char *name, kapi_raid_level_t level,
     if (nr_disks > KAPI_RAID_MAX_DISKS) {
         return KAPI_RAID_ENOSPC;
     }
-    kapi_raid_array_t *a = raid_slot_alloc();
-    if (!a) {
-        return KAPI_RAID_ENOMEM;
-    }
-    memset(a, 0, sizeof(*a));
-    strncpy(a->name, name, KAPI_RAID_NAME_MAX - 1);
-    a->level = level;
-    a->chunk_size = chunk_size ? chunk_size : KAPI_RAID_CHUNK_SIZE;
-    a->nr_disks = nr_disks;
-    for (uint32_t i = 0; i < nr_disks; i++) {
-        a->disks[i].dev = disks[i];
-        a->disks[i].index = (int)i;
-        a->disks[i].state = KAPI_RAID_DISK_OK;
-    }
-    /* TODO: compute capacity per level */
-    a->active = 1;
-    return KAPI_RAID_OK;
+    return KAPI_RAID_ENOTSUP;
 }
 
 int kapi_raid_destroy(const char *name)
@@ -176,8 +151,7 @@ int kapi_raid_rebuild(const char *name)
     if (!a) {
         return KAPI_RAID_ENOENT;
     }
-    /* TODO: find faulty+spare pair and resync */
-    return KAPI_RAID_OK;
+    return KAPI_RAID_ENOTSUP;
 }
 
 int kapi_raid_read(kapi_raid_array_t *array, uint64_t sector,
@@ -186,9 +160,8 @@ int kapi_raid_read(kapi_raid_array_t *array, uint64_t sector,
     if (!array || !buf) {
         return KAPI_RAID_EINVAL;
     }
-    /* TODO: stripe/mirror/parity dispatch by array->level */
     (void)sector; (void)count;
-    return KAPI_RAID_OK;
+    return KAPI_RAID_ENOTSUP;
 }
 
 int kapi_raid_write(kapi_raid_array_t *array, uint64_t sector,
@@ -197,9 +170,8 @@ int kapi_raid_write(kapi_raid_array_t *array, uint64_t sector,
     if (!array || !buf) {
         return KAPI_RAID_EINVAL;
     }
-    /* TODO: stripe/mirror/parity dispatch by array->level */
     (void)sector; (void)count;
-    return KAPI_RAID_OK;
+    return KAPI_RAID_ENOTSUP;
 }
 
 int kapi_raid_get_status(const char *name, char *buf, size_t len)

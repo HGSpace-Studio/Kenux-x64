@@ -29,7 +29,8 @@ typedef enum {
     KAPI_CONTAINER_ENOENT        = -3,
     KAPI_CONTAINER_EEXIST        = -4,
     KAPI_CONTAINER_EBUSY         = -5,
-    KAPI_CONTAINER_ESTATE        = -6
+    KAPI_CONTAINER_ESTATE        = -6,
+    KAPI_CONTAINER_ENOTSUP       = -7
 } kapi_container_err_t;
 
 typedef enum {
