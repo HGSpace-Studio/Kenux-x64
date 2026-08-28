@@ -60,34 +60,28 @@ sudo apt-get install gcc-x86_64-linux-gnu binutils-x86_64-linux-gnu
 git clone https://github.com/kenux-os/Kenux-x64.git
 cd Kenux-x64
 
-# 同步头文件并构建全部内容
-./build_all.sh all
+# 唯一构建入口
+python3 build.py run all
 
-# 或单独构建组件:
-./build_all.sh sync    # 同步头文件到 kexC
-./build_all.sh kex     # 重新构建 kex 编译器
-./build_all.sh apps    # 仅构建应用程序
-./build_all.sh kernel  # 使用 ninja 构建内核
+# 或单独构建目标:
+python3 build.py run kernel       # 内核、flat binary 和 ESP 内核文件
+python3 build.py run bootloader   # UEFI bootloader
+python3 build.py run components   # 用户态组件
 ```
+
+兼容脚本 `build_all.sh`、`build_native.sh` 和 `build_components.sh` 只转发到 `build.py`；它们不再生成占位应用或安装文件到宿主机目录。旧的 `sync`、`kex` 和 demo 入口会明确返回错误。
 
 ### 在 QEMU 中运行
 
 ```bash
-# 创建磁盘镜像
-qemu-img create -f qcow2 kenux-disk.qcow2 16G
+# 图形窗口启动
+python3 build.py run run
 
-# 启动系统
-qemu-system-x86_64 \
-  -m 4G \
-  -smp 4 \
-  -drive file=kenux-disk.qcow2,format=qcow2 \
-  -boot d \
-  -kernel bin/kernel.bin \
-  -append "root=/dev/sda2 console=ttyS0" \
-  -enable-kvm \
-  -cpu host \
-  -display gtk
+# 仅串口日志启动
+python3 build.py run run-debug
 ```
+
+运行目标需要本机安装 QEMU；启动前会检查 gcc、objcopy、NASM、QEMU 和必要源码，任一项失败都会返回非零状态。
 
 ## 应用套件
 

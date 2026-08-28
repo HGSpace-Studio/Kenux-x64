@@ -53,8 +53,8 @@ if IS_WINDOWS:
     AS = os.environ.get("AS", os.path.join(NASM_PATH, "nasm.exe"))
     QEMU = os.environ.get("QEMU", os.path.join(QEMU_PATH, "qemu-system-x86_64.exe"))
 else:
-    CC = os.environ.get("CC", "x86_64-w64-mingw32-gcc")
-    OBJCOPY = os.environ.get("OBJCOPY", "x86_64-w64-mingw32-objcopy")
+    CC = os.environ.get("CC", "gcc")
+    OBJCOPY = os.environ.get("OBJCOPY", "objcopy")
     AS = os.environ.get("AS", "nasm")
     QEMU = os.environ.get("QEMU", "qemu-system-x86_64")
 
@@ -111,6 +111,7 @@ CFLAGS_BASE = [
 CFLAGS_KERNEL = [
     "-m64", "-mcmodel=large", "-ffreestanding", "-fno-pic",
     "-nostdlib", "-nostartfiles", "-nodefaultlibs",
+    "-fno-stack-protector",
     "-mno-stack-arg-probe", "-fno-asynchronous-unwind-tables", "-fno-unwind-tables",
     "-DKAL_KERNEL", "-DVGA_NATIVE",
 ]
@@ -165,8 +166,6 @@ def relative(path: Path) -> str:
 
 
 def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
-    """从 kernelbuild.ninja 解析源文件列表，确保与原构建系统一致。
-    如果 ninja 文件不存在，则自动扫描。"""
     ninja_file = ROOT / "kernelbuild.ninja"
     c_sources: list[Path] = []
     asm_sources: list[Path] = []
@@ -180,23 +179,20 @@ def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
     if ninja_file.exists():
         import re
         content = ninja_file.read_text(encoding="utf-8")
-        # 匹配: build $builddir/xxx.o: cc kernel/path/file.c
         for match in re.finditer(r'build\s+\$builddir/\S+\.o:\s+\w+\s+(\S+)', content):
             src_path = match.group(1)
             if src_path.startswith("$"):
-                continue  # 跳过 $builddir/.dir 等
-            # 应用排除列表（按相对路径匹配）
+                continue
             if src_path.replace("\\", "/") in EXCLUDED_SOURCES:
                 continue
             full_path = ROOT / src_path
-            if full_path.suffix.lower() in (".c",):
+            if full_path.suffix.lower() == ".c":
                 c_sources.append(full_path)
-            elif full_path.suffix.lower() in (".s",):
+            elif full_path.suffix.lower() == ".s":
                 asm_sources.append(full_path)
         c_sources = sorted(set(c_sources))
         asm_sources = sorted(set(asm_sources))
     else:
-        # 自动扫描（fallback）
         c_sources = collect_paths("kernel/kernel/*.c", "kernel/arch/x86_64/*.c",
                                   "kernel/api/*.c", "kernel/lib/libc/*.c")
         asm_sources = collect_paths("kernel/arch/x86_64/*.S", "kernel/arch/x86_64/*.s")
@@ -309,18 +305,42 @@ def add_link(
     )
 
 
-def ensure_tools() -> None:
-    """检查必需的工具链"""
+def ensure_tools(*, require_kernel: bool = False, require_qemu: bool = False) -> None:
+    required = [("gcc", CC)]
+    if require_kernel:
+        required.extend((("objcopy", OBJCOPY), ("nasm", AS)))
+    if require_qemu:
+        required.append(("qemu-system-x86_64", QEMU))
     missing = []
-    for name, path in [("gcc", CC), ("objcopy", OBJCOPY), ("nasm", AS)]:
-        if not Path(path).exists():
-            # 尝试从 PATH 查找
-            found = shutil.which(Path(path).name)
-            if not found:
-                missing.append(f"{name} ({path})")
+    for name, configured in required:
+        if shutil.which(configured) is None and not Path(configured).is_file():
+            missing.append(f"{name} ({configured})")
     if missing:
-        raise BuildFailure("缺少工具链: " + ", ".join(missing) +
-                          "\n请确保 MinGW, NASM 已安装并配置正确的路径。")
+        raise BuildFailure(
+            "缺少工具链: " + ", ".join(missing) +
+            "\n请安装目标平台所需的 gcc、objcopy、NASM；运行任务还需要 QEMU。"
+        )
+
+
+def validate_sources(
+    *, require_kernel: bool = False, require_components: bool = False,
+    require_bootloader: bool = False,
+) -> None:
+    missing: list[str] = []
+    if require_components:
+        for source in (ROOT / path for _, sources, _ in COMPONENT_SOURCES for path in sources):
+            if not source.is_file():
+                missing.append(relative(source))
+    if require_kernel:
+        for source in (ROOT / path for path in BOOT_COMPILE_SOURCES):
+            if not source.is_file():
+                missing.append(relative(source))
+        if not LINKER_SCRIPT.is_file():
+            missing.append(relative(LINKER_SCRIPT))
+    if require_bootloader and not (ROOT / "bootloader" / "bootx64.c").is_file():
+        missing.append("bootloader/bootx64.c")
+    if missing:
+        raise BuildFailure("缺少构建输入，拒绝继续: " + ", ".join(sorted(set(missing))))
 
 
 def qemu_command(*, debug: bool = False) -> tuple[str, ...]:
@@ -498,8 +518,6 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
     # ===== 10. 用户态组件构建 =====
     # 16 个组件: bash, fastfetch, git, make, gcc, clang, ld, mkfs, dd,
     # xorriso, qemu, wayland/xorg, kde, gnome, firefox, systemd
-    COMPONENTS_BIN.mkdir(parents=True, exist_ok=True)
-    COMPONENTS_BUILD.mkdir(parents=True, exist_ok=True)
     component_exes: list[Path] = []
     exe_suffix = ".exe" if IS_WINDOWS else ""
 
@@ -507,8 +525,8 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
         comp_sources_full: list[Path] = []
         for sf in src_files:
             src_path = ROOT / sf
-            if not src_path.exists():
-                continue
+            if not src_path.is_file():
+                raise BuildFailure(f"组件 {comp_name} 缺少源文件: {relative(src_path)}")
             comp_sources_full.append(src_path)
 
         if not comp_sources_full:
@@ -611,10 +629,6 @@ def complete_simple(store: TaskStore, task_id: str, command: str, text: str, suc
 def run_foreground(paths: BuildPaths, graph: BuildGraph, task_id: str, target: Target, label: str) -> int:
     runner = create_runner(paths, graph, task_id)
     runner.run(build_roots(graph, target), label)
-    # 如果是 run/run-debug 任务，执行 QEMU 命令
-    if target.kind == "command" and target.command:
-        print(f"\n启动: {' '.join(target.command)}")
-        subprocess.run(list(target.command))
     return 0
 
 
@@ -746,7 +760,7 @@ def affected_targets(paths: BuildPaths, graph: BuildGraph, subject: str) -> dict
 
 
 def parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(add_help=False, prog="build.py")
+    p = argparse.ArgumentParser(prog="build.py")
     p.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     p.add_argument("--task-id", help=argparse.SUPPRESS)
     p.add_argument("--json", dest="json_output", action="store_true", help="输出 JSON 格式")
@@ -806,6 +820,21 @@ def main(argv: list[str] | None = None) -> int:
             edit_settings(paths)
             complete_simple(store, task_id, "settings", "settings closed")
             return 0
+        needs_build = arguments.command in {"run", "profile"}
+        if needs_build:
+            requested_task = arguments.task
+            require_kernel = requested_task in {"all", "kernel", "run", "run-debug", "rebuild"}
+            require_components = requested_task == "components"
+            require_bootloader = requested_task in {"all", "bootloader", "run", "run-debug", "rebuild"}
+            ensure_tools(
+                require_kernel=require_kernel,
+                require_qemu=arguments.command == "run" and requested_task in {"run", "run-debug"},
+            )
+            validate_sources(
+                require_kernel=require_kernel,
+                require_components=require_components,
+                require_bootloader=require_bootloader,
+            )
         graph_started = time.perf_counter()
         graph = build_graph(paths)
         graph_seconds = time.perf_counter() - graph_started
