@@ -2,6 +2,7 @@
 #include "kanvas_window.h"
 #include "kanvas_taskbar.h"
 #include "kanvas_start_menu.h"
+#include "kanvas_system_tray.h"
 #include "kapi.h"
 #include <string.h>
 
@@ -30,7 +31,7 @@ static void fill_rounded_rect(uint32_t* fb, int stride, int fw, int fh, int x, i
     fill_rect(fb, stride, fw, fh, x, y + r, r, h - 2 * r, color);
     fill_rect(fb, stride, fw, fh, x + w - r, y + r, r, h - 2 * r, color);
     for (int dy = 0; dy < r; dy++) {
-        int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+        int dx = (int)__builtin_sqrtf((float)(r * r - dy * dy));
         int cx1 = x + r - dx, cx2 = x + w - r + dx;
         int ry1 = y + r - dy - 1, ry2 = y - r + h + dy;
         fill_rect(fb, stride, fw, fh, cx1, ry1, cx2 - cx1, 1, color);
@@ -76,7 +77,7 @@ static void paint_desktop_icons(kanvas_desktop_t* desk, uint32_t* fb, int stride
 
 static void paint_taskbar(kanvas_desktop_t* desk, uint32_t* fb, int stride, int fw, int fh)
 {
-    kanvas_taskbar_t* tb = &desk->taskbar;
+    kanvas_taskbar_t* tb = desk->taskbar;
     if (!tb->visible) return;
     uint32_t bg = kui_col32_inline(desk->theme.taskbar_bg);
     uint32_t fg = kui_col32_inline(desk->theme.taskbar_fg);
@@ -120,7 +121,7 @@ static void paint_taskbar(kanvas_desktop_t* desk, uint32_t* fb, int stride, int 
         tray_x -= KANVAS_TASKBAR_PADDING;
     }
     if (tb->clock_text[0]) {
-        int clock_w = (int)(kapi_strlen(tb->clock_text) * 8);
+        int clock_w = (int)(strlen(tb->clock_text) * 8);
         kui_draw_text(fb, stride, fw, fh, fw - clock_w - 16, tb_y + (KANVAS_TASKBAR_HEIGHT - 14) / 2, tb->clock_text, fg, 13, 0);
     }
 }
@@ -155,7 +156,7 @@ static void paint_context_menu(kanvas_desktop_t* desk, uint32_t* fb, int stride,
 
 kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb, int stride)
 {
-    kanvas_desktop_t* desk = (kanvas_desktop_t*)kapi_kmalloc(sizeof(kanvas_desktop_t));
+    kanvas_desktop_t* desk = (kanvas_desktop_t*)kapi_malloc(sizeof(kanvas_desktop_t));
     if (!desk) return NULL;
     memset(desk, 0, sizeof(kanvas_desktop_t));
     desk->ui = NULL;
@@ -165,16 +166,9 @@ kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb
     desk->wallpaper_color = 0x1A1A2EFF;
     desk->wallpaper_data = NULL;
     desk->needs_repaint = true;
-    desk->taskbar.visible = true;
-    desk->taskbar.width = screen_w;
-    desk->taskbar.x = 0;
-    desk->taskbar.y = 0;
-    desk->taskbar.hovered_item = -1;
-    desk->taskbar.hovered_tray = -1;
-    desk->taskbar.start_hovered = false;
-    desk->start_menu.visible = false;
-    desk->start_menu.x = 0;
-    desk->start_menu.y = KANVAS_TASKBAR_HEIGHT;
+    desk->taskbar = kanvas_taskbar_create(0, 0, screen_w);
+    desk->start_menu = kanvas_start_menu_create(0, KANVAS_TASKBAR_HEIGHT);
+    desk->tray = kanvas_system_tray_create();
     desk->context_menu.visible = false;
     desk->context_menu.hovered_index = -1;
     desk->drag_window_idx = -1;
@@ -189,8 +183,11 @@ void kanvas_desktop_destroy(kanvas_desktop_t* desk)
     for (int i = 0; i < desk->window_count; i++) {
         kanvas_window_destroy((kanvas_window_t*)desk->windows[i]);
     }
-    if (desk->wallpaper_data) kapi_kfree(desk->wallpaper_data);
-    kapi_kfree(desk);
+    if (desk->taskbar) kanvas_taskbar_destroy(desk->taskbar);
+    if (desk->start_menu) kanvas_start_menu_destroy(desk->start_menu);
+    if (desk->tray) kanvas_system_tray_destroy(desk->tray);
+    if (desk->wallpaper_data) kapi_free(desk->wallpaper_data);
+    kapi_free(desk);
 }
 
 void kanvas_desktop_paint(kanvas_desktop_t* desk)
@@ -208,8 +205,8 @@ void kanvas_desktop_paint(kanvas_desktop_t* desk)
             kanvas_window_paint(win, fb, stride, fw, fh);
     }
     paint_taskbar(desk, fb, stride, fw, fh);
-    if (desk->start_menu.visible) {
-        kanvas_start_menu_paint(&desk->start_menu, fb, stride, fw, fh);
+    if (desk->start_menu->visible) {
+        kanvas_start_menu_paint(desk->start_menu, fb, stride, fw, fh);
     }
     paint_context_menu(desk, fb, stride, fw, fh);
     desk->needs_repaint = false;
@@ -219,10 +216,10 @@ void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left
 {
     if (!desk) return;
     desk->mouse_x = x; desk->mouse_y = y;
-    if (desk->start_menu.visible) {
-        if (x >= desk->start_menu.x && x < desk->start_menu.x + KANVAS_START_W &&
-            y >= desk->start_menu.y && y < desk->start_menu.y + KANVAS_START_H) {
-            kanvas_start_menu_handle_mouse(&desk->start_menu, x, y, left, false);
+    if (desk->start_menu->visible) {
+        if (x >= desk->start_menu->x && x < desk->start_menu->x + KANVAS_START_W &&
+            y >= desk->start_menu->y && y < desk->start_menu->y + KANVAS_START_H) {
+            kanvas_start_menu_handle_mouse(desk->start_menu, x, y, left, false);
             return;
         } else if (left) {
             kanvas_desktop_close_start_menu(desk);
@@ -246,12 +243,12 @@ void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left
         }
     }
     int tb_y = 0;
-    if (y >= tb_y && y < tb_y + KANVAS_TASKBAR_HEIGHT && desk->taskbar.visible) {
+    if (y >= tb_y && y < tb_y + KANVAS_TASKBAR_HEIGHT && desk->taskbar->visible) {
         if (x >= KANVAS_TASKBAR_PADDING && x < KANVAS_TASKBAR_PADDING + 36) {
-            desk->taskbar.start_hovered = true;
+            desk->taskbar->start_hovered = true;
             if (left) kanvas_desktop_toggle_start_menu(desk);
         } else {
-            desk->taskbar.start_hovered = false;
+            desk->taskbar->start_hovered = false;
         }
         return;
     }
@@ -302,8 +299,8 @@ void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left
 void kanvas_desktop_handle_key(kanvas_desktop_t* desk, int key, bool down, uint32_t mods)
 {
     if (!desk) return;
-    if (desk->start_menu.visible && desk->start_menu.search_focused) {
-        kanvas_start_menu_handle_key(&desk->start_menu, key, down, mods);
+    if (desk->start_menu->visible && desk->start_menu->search_focused) {
+        kanvas_start_menu_handle_key(desk->start_menu, key, down, mods);
         desk->needs_repaint = true;
         return;
     }
@@ -325,7 +322,7 @@ void kanvas_desktop_add_icon(kanvas_desktop_t* desk, const char* name, int icon_
     kanvas_desktop_icon_t* icon = &desk->icons[desk->icon_count++];
     memset(icon, 0, sizeof(kanvas_desktop_icon_t));
     if (name) {
-        size_t len = kapi_strlen(name);
+        size_t len = strlen(name);
         if (len >= 64) len = 63;
         memcpy(icon->name, name, len);
     }
@@ -344,12 +341,12 @@ void kanvas_desktop_remove_icon(kanvas_desktop_t* desk, int index)
 void kanvas_desktop_open_start_menu(kanvas_desktop_t* desk)
 {
     if (!desk) return;
-    desk->start_menu.visible = true;
-    desk->start_menu.search_focused = true;
-    desk->start_menu.search_text[0] = '\0';
-    desk->start_menu.cursor_pos = 0;
-    desk->start_menu.selected_index = 0;
-    kanvas_start_menu_filter(&desk->start_menu);
+    desk->start_menu->visible = true;
+    desk->start_menu->search_focused = true;
+    desk->start_menu->search_text[0] = '\0';
+    desk->start_menu->cursor_pos = 0;
+    desk->start_menu->selected_index = 0;
+    kanvas_start_menu_filter(desk->start_menu);
     desk->state = KANVAS_DESKTOP_STATE_START_OPEN;
     desk->needs_repaint = true;
 }
@@ -357,8 +354,8 @@ void kanvas_desktop_open_start_menu(kanvas_desktop_t* desk)
 void kanvas_desktop_close_start_menu(kanvas_desktop_t* desk)
 {
     if (!desk) return;
-    desk->start_menu.visible = false;
-    desk->start_menu.search_focused = false;
+    desk->start_menu->visible = false;
+    desk->start_menu->search_focused = false;
     if (desk->state == KANVAS_DESKTOP_STATE_START_OPEN)
         desk->state = KANVAS_DESKTOP_STATE_NORMAL;
     desk->needs_repaint = true;
@@ -367,7 +364,7 @@ void kanvas_desktop_close_start_menu(kanvas_desktop_t* desk)
 void kanvas_desktop_toggle_start_menu(kanvas_desktop_t* desk)
 {
     if (!desk) return;
-    if (desk->start_menu.visible) kanvas_desktop_close_start_menu(desk);
+    if (desk->start_menu->visible) kanvas_desktop_close_start_menu(desk);
     else kanvas_desktop_open_start_menu(desk);
 }
 
@@ -442,16 +439,16 @@ void kanvas_desktop_set_wallpaper_color(kanvas_desktop_t* desk, uint32_t color)
 {
     if (!desk) return;
     desk->wallpaper_color = color;
-    if (desk->wallpaper_data) { kapi_kfree(desk->wallpaper_data); desk->wallpaper_data = NULL; }
+    if (desk->wallpaper_data) { kapi_free(desk->wallpaper_data); desk->wallpaper_data = NULL; }
     desk->needs_repaint = true;
 }
 
 void kanvas_desktop_set_wallpaper_image(kanvas_desktop_t* desk, uint32_t* data, int w, int h)
 {
     if (!desk || !data) return;
-    if (desk->wallpaper_data) kapi_kfree(desk->wallpaper_data);
+    if (desk->wallpaper_data) kapi_free(desk->wallpaper_data);
     size_t sz = (size_t)w * h * 4;
-    desk->wallpaper_data = (uint32_t*)kapi_kmalloc(sz);
+    desk->wallpaper_data = (uint32_t*)kapi_malloc(sz);
     if (desk->wallpaper_data) {
         memcpy(desk->wallpaper_data, data, sz);
         desk->wallpaper_w = w; desk->wallpaper_h = h;
@@ -578,11 +575,11 @@ void kanvas_desktop_apply_theme_classic(kanvas_desktop_t* desk)
 
 void kanvas_desktop_tray_add(kanvas_desktop_t* desk, const char* name, void (*on_click)(void))
 {
-    if (!desk || desk->taskbar.tray_count >= KANVAS_TASKBAR_MAX_TRAY) return;
-    kanvas_tray_icon_t* tray = &desk->taskbar.tray[desk->taskbar.tray_count++];
+    if (!desk || desk->taskbar->tray_count >= KANVAS_TASKBAR_MAX_TRAY) return;
+    kanvas_tray_icon_t* tray = &desk->taskbar->tray[desk->taskbar->tray_count++];
     memset(tray, 0, sizeof(kanvas_tray_icon_t));
     if (name) {
-        size_t len = kapi_strlen(name);
+        size_t len = strlen(name);
         if (len >= 32) len = 31;
         memcpy(tray->name, name, len);
     }
@@ -592,15 +589,15 @@ void kanvas_desktop_tray_add(kanvas_desktop_t* desk, const char* name, void (*on
 
 void kanvas_desktop_tray_remove(kanvas_desktop_t* desk, int index)
 {
-    if (!desk || index < 0 || index >= desk->taskbar.tray_count) return;
-    desk->taskbar.tray[index] = desk->taskbar.tray[--desk->taskbar.tray_count];
+    if (!desk || index < 0 || index >= desk->taskbar->tray_count) return;
+    desk->taskbar->tray[index] = desk->taskbar->tray[--desk->taskbar->tray_count];
     desk->needs_repaint = true;
 }
 
 void kanvas_desktop_update(kanvas_desktop_t* desk, uint64_t now_ms)
 {
     if (!desk) return;
-    kanvas_taskbar_update_clock(&desk->taskbar, now_ms);
+    kanvas_taskbar_update_clock(desk->taskbar, now_ms);
     if (desk->state == KANVAS_DESKTOP_STATE_DRAGGING && desk->drag_window_idx >= 0) {
         kanvas_window_t* win = (kanvas_window_t*)desk->windows[desk->drag_window_idx];
         if (win) {

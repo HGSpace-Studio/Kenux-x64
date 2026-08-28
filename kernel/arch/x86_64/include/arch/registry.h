@@ -4,6 +4,9 @@
 #include <arch/types.h>
 #include <arch/win32.h>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+
 #ifndef HKEY_DEFINED
 #define HKEY_DEFINED
 #endif

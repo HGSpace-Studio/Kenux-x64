@@ -49,7 +49,7 @@ extern "C" {
 #define KAPI_LOG_MAIL      2   /* Mail system */
 #define KAPI_LOG_DAEMON    3   /* System daemons */
 #define KAPI_LOG_AUTH      4   /* Security/authentication */
-#define KAPI_LOG_SYSLOG    5   /* Syslog messages */
+#define KAPI_LOG_SYSLOG_FAC   5   /* Syslog messages */
 #define KAPI_LOG_LPR       6   /* Line printer */
 #define KAPI_LOG_NEWS      7   /* News system */
 #define KAPI_LOG_UUCP      8   /* UUCP system */

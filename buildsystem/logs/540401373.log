@@ -1,0 +1,1911 @@
+-- Start building task run all -- (540401373)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/gui/src --
+<0> Building kernel/gui/src/kanvas_terminal.c
+<2> Building kernel/gui/src/kanvas_window.c
+-- Enter folder kernel/kernel --
+<3> Building kernel/kernel/shell_enhanced.c
+<1> Building kernel/kernel/kernel.c
+In file included from kernel/gui/include/kanvas_window.h:4,
+                 from kernel/gui/src/kanvas_window.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from kernel/gui/include/kanvas_terminal.h:4,
+                 from kernel/gui/src/kanvas_terminal.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_create’中:
+kernel/gui/src/kanvas_window.c:60:31: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   60 |     size_t buf_sz = (size_t)w * h * 4;
+      |                               ^
+kernel/gui/src/kanvas_window.c: 在函数‘blend_pixel’中:
+kernel/gui/src/kanvas_window.c:126:24: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                        ^
+kernel/gui/src/kanvas_window.c:126:65: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                 ^
+kernel/gui/src/kanvas_window.c:126:105: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                                                         ^
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_paint_shadow’中:
+kernel/gui/src/kanvas_window.c:136:63: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  136 |         uint8_t a = (uint8_t)((float)alpha * (1.0f - (float)i / blur));
+      |                                                               ^
+kernel/gui/src/kanvas_terminal.c: 在函数‘t_fill_rect’中:
+kernel/gui/src/kanvas_terminal.c:10:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |     ^~
+kernel/gui/src/kanvas_terminal.c:10:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |                                 ^~
+kernel/gui/src/kanvas_terminal.c: 在函数‘kanvas_terminal_paint’中:
+kernel/gui/src/kanvas_terminal.c:100:75: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  100 |             int thumb_h = (int)((float)max_lines / (float)tab->line_count * (term->h - KTERM_TAB_BAR_H));
+      |                                                                           ^
+kernel/gui/src/kanvas_terminal.c:101:110: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  101 |             int thumb_y = content_y + (int)((float)tab->scroll_offset / (float)(tab->line_count - max_lines) * (term->h - KTERM_TAB_BAR_H - thumb_h));
+      |                                                                                                              ^
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+<1> Building kernel/gui/src/kanvas_taskbar.c
+In file included from kernel/gui/include/kanvas_taskbar.h:4,
+                 from kernel/gui/src/kanvas_taskbar.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+<0> Building kernel/gui/src/kanvas_task_manager.c
+In file included from kernel/gui/include/kanvas_task_manager.h:4,
+                 from kernel/gui/src/kanvas_task_manager.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_task_manager.c: 在函数‘tm_fill_rect’中:
+kernel/gui/src/kanvas_task_manager.c:10:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |     ^~
+kernel/gui/src/kanvas_task_manager.c:10:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |                                 ^~
+kernel/gui/src/kanvas_task_manager.c: 在函数‘kanvas_task_manager_paint’中:
+kernel/gui/src/kanvas_task_manager.c:72:77: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+   72 |                 else { char tmp[8]; int ti = 0; while (v > 0) { tmp[ti++] = '0' + (v % 10); v /= 10; } while (ti > 0) pid_s[pos++] = tmp[--ti]; }
+      |                                                                             ^~~
+kernel/gui/src/kanvas_task_manager.c:77:126: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+   77 |                 { int ci = 0; if (cpu == 0) cpu_s[ci++] = '0'; else { char tmp[8]; int ti = 0; while (cpu > 0) { tmp[ti++] = '0' + (cpu % 10); cpu /= 10; } while (ti > 0) cpu_s[ci++] = tmp[--ti]; } cpu_s[ci++] = '%'; cpu_s[ci] = '\0'; }
+      |                                                                                                                              ^~~
+kernel/gui/src/kanvas_task_manager.c:90:131: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+   90 |                 int y1 = graph_y + graph_h - (int)((float)tm->perf_history[idx].cpu_user / (float)tm->perf_history[idx].cpu_total * graph_h);
+      |                                                                                                                                   ^
+kernel/gui/src/kanvas_task_manager.c:91:133: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+   91 |                 int y2 = graph_y + graph_h - (int)((float)tm->perf_history[next].cpu_user / (float)tm->perf_history[next].cpu_total * graph_h);
+      |                                                                                                                                     ^
+kernel/gui/src/kanvas_task_manager.c:58:5: warning: switch 没有处理枚举值‘KTM_TAB_COUNT’ [-Wswitch]
+   58 |     switch (tm->active_tab) {
+      |     ^~~~~~
+<2> Building kernel/gui/src/kanvas_system_tray.c
+<1> Building kernel/gui/src/kanvas_start_menu.c
+<3> Building kernel/gui/src/kanvas_kex_runner.c
+In file included from kernel/gui/include/kanvas_system_tray.h:4,
+                 from kernel/gui/src/kanvas_system_tray.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from kernel/gui/include/kanvas_start_menu.h:4,
+                 from kernel/gui/src/kanvas_start_menu.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from kernel/gui/include/kanvas_kex_runner.h:4,
+                 from kernel/gui/src/kanvas_kex_runner.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_system_tray.c: 在函数‘draw_icon_glyph’中:
+kernel/gui/src/kanvas_system_tray.c:52:43: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+   52 |                     int px = cx + (int)(r * __builtin_sinf(rad));
+      |                                           ^
+kernel/gui/src/kanvas_system_tray.c:53:46: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+   53 |                     int py = arc_y + (int)(r * __builtin_cosf(rad));
+      |                                              ^
+kernel/gui/src/kanvas_system_tray.c:86:49: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+   86 |                 float angle = (float)i * 360.0f / rays * 3.14159265f / 180.0f;
+      |                                                 ^
+kernel/gui/src/kanvas_system_tray.c: 在函数‘kanvas_system_tray_paint_popup’中:
+kernel/gui/src/kanvas_system_tray.c:216:79: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  216 |                 else { char tmp[8]; int ti = 0; while (sig > 0) { tmp[ti++] = '0' + (sig % 10); sig /= 10; } while (ti > 0) sig_text[pos++] = tmp[--ti]; }
+      |                                                                               ^~~
+kernel/gui/src/kanvas_system_tray.c:254:73: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  254 |             else { char tmp[8]; int ti = 0; while (v > 0) { tmp[ti++] = '0' + (v % 10); v /= 10; } while (ti > 0) vol_text[pos++] = tmp[--ti]; }
+      |                                                                         ^~~
+kernel/gui/src/kanvas_system_tray.c:290:73: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  290 |             else { char tmp[8]; int ti = 0; while (v > 0) { tmp[ti++] = '0' + (v % 10); v /= 10; } while (ti > 0) pct_text[pos++] = tmp[--ti]; }
+      |                                                                         ^~~
+kernel/gui/src/kanvas_kex_runner.c: 在函数‘kanvas_kex_runner_paint’中:
+kernel/gui/src/kanvas_kex_runner.c:118:47: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  118 |                 while (pid > 0) { tmp[ti++] = '0' + (pid % 10); pid /= 10; }
+      |                                               ^~~
+kernel/gui/src/kanvas_kex_runner.c:133:73: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  133 |                             memcpy(buf, &runner->current.output[start], len);
+      |                                                                         ^~~
+kernel/gui/src/kanvas_kex_runner.c: 在函数‘kanvas_kex_detect_format’中:
+kernel/gui/src/kanvas_kex_runner.c:193:74: warning: 多字节字符常量 [-Wmultichar]
+  193 |         if (ext[0] == '.' && ext[1] == 'e' && ext[2] == 'l' && ext[3] == 'fB') return KEX_FORMAT_ELF;
+      |                                                                          ^~~~
+kernel/gui/src/kanvas_kex_runner.c:193:71: warning: 由于数据类型范围限制，比较结果永远为假 [-Wtype-limits]
+  193 |         if (ext[0] == '.' && ext[1] == 'e' && ext[2] == 'l' && ext[3] == 'fB') return KEX_FORMAT_ELF;
+      |                                                                       ^~
+kernel/gui/src/kanvas_kex_runner.c: 在函数‘kanvas_kex_run’中:
+kernel/gui/src/kanvas_kex_runner.c:232:27: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  232 |     runner->current.pid = (uint32_t)(runner + 1);
+      |                           ^
+<0> Building kernel/gui/src/kanvas_gui.c
+In file included from kernel/gui/include/kanvas_desktop.h:4,
+                 from kernel/gui/src/kanvas_gui.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from kernel/gui/src/kanvas_gui.c:3:
+kernel/gui/include/kanvas_taskbar.h:15:9: warning: ‘KANVAS_TASKBAR_RADIUS’ 重定义
+   15 | #define KANVAS_TASKBAR_RADIUS       0
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/gui/include/kanvas_desktop.h:16:9: note: 这是先前定义的位置
+   16 | #define KANVAS_TASKBAR_RADIUS       12
+      |         ^~~~~~~~~~~~~~~~~~~~~
+<1> Building kernel/gui/src/kanvas_file_manager.c
+<3> Building kernel/gui/src/kanvas_desktop.c
+In file included from kernel/gui/include/kanvas_file_manager.h:4,
+                 from kernel/gui/src/kanvas_file_manager.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+<0> Building kernel/gui/src/kanvas_boot_splash.c
+In file included from kernel/gui/include/kanvas_desktop.h:4,
+                 from kernel/gui/src/kanvas_desktop.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from kernel/gui/src/kanvas_desktop.c:3:
+kernel/gui/include/kanvas_taskbar.h:15:9: warning: ‘KANVAS_TASKBAR_RADIUS’ 重定义
+   15 | #define KANVAS_TASKBAR_RADIUS       0
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/gui/include/kanvas_desktop.h:16:9: note: 这是先前定义的位置
+   16 | #define KANVAS_TASKBAR_RADIUS       12
+      |         ^~~~~~~~~~~~~~~~~~~~~
+kernel/gui/src/kanvas_file_manager.c: 在函数‘fm_fill_rect’中:
+kernel/gui/src/kanvas_file_manager.c:10:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |     ^~
+kernel/gui/src/kanvas_file_manager.c:10:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |                                 ^~
+In file included from kernel/gui/include/kanvas_boot_splash.h:4,
+                 from kernel/gui/src/kanvas_boot_splash.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_create’中:
+kernel/gui/src/kanvas_desktop.c:157:79: warning: 未使用的参数‘fb’ [-Wunused-parameter]
+  157 | kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb, int stride)
+      |                                                                     ~~~~~~~~~~^~
+kernel/gui/src/kanvas_desktop.c:157:87: warning: 未使用的参数‘stride’ [-Wunused-parameter]
+  157 | kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb, int stride)
+      |                                                                                   ~~~~^~~~~~
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_handle_mouse’中:
+kernel/gui/src/kanvas_desktop.c:215:100: warning: 未使用的参数‘mid’ [-Wunused-parameter]
+  215 | void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left, bool right, bool mid)
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_set_wallpaper_image’中:
+kernel/gui/src/kanvas_desktop.c:450:27: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  450 |     size_t sz = (size_t)w * h * 4;
+      |                           ^
+kernel/gui/src/kanvas_boot_splash.c: 在函数‘blend_pixel’中:
+kernel/gui/src/kanvas_boot_splash.c:47:24: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                        ^
+kernel/gui/src/kanvas_boot_splash.c:47:65: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                 ^
+kernel/gui/src/kanvas_boot_splash.c:47:105: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                                                         ^
+kernel/gui/src/kanvas_boot_splash.c: 在函数‘kanvas_boot_splash_paint’中:
+kernel/gui/src/kanvas_boot_splash.c:100:40: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  100 |             int px = cx + (int)(ring_r * __builtin_cosf(rad));
+      |                                        ^
+kernel/gui/src/kanvas_boot_splash.c:101:40: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  101 |             int py = cy + (int)(ring_r * __builtin_sinf(rad));
+      |                                        ^
+kernel/gui/src/kanvas_boot_splash.c:94:13: warning: 未使用的变量‘ly’ [-Wunused-variable]
+   94 |         int ly = cy - logo_sz / 2;
+      |             ^~
+kernel/gui/src/kanvas_boot_splash.c:93:13: warning: 未使用的变量‘lx’ [-Wunused-variable]
+   93 |         int lx = cx - logo_sz / 2;
+      |             ^~
+kernel/gui/src/kanvas_boot_splash.c:150:29: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  150 |                 uint8_t a = (c >> 24) & 0xFF;
+      |                             ^
+-- Enter folder kernel/arch/x86_64 --
+<2> Building kernel/arch/x86_64/procfs.c
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_cpuinfo_read’中:
+kernel/arch/x86_64/procfs.c:29:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_meminfo_read’中:
+kernel/arch/x86_64/procfs.c:65:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   65 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_stat_read’中:
+kernel/arch/x86_64/procfs.c:123:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  123 |     n += snprintf(buf + n, max_len - n, "cpu  %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:128:44: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  128 |             n += snprintf(buf + n, max_len - n, "cpu%u %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                            ^
+kernel/arch/x86_64/procfs.c:132:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  132 |     n += snprintf(buf + n, max_len - n, "intr %lu\n", irq_total);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:134:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  134 |     n += snprintf(buf + n, max_len - n, "ctxt %lu\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:136:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  136 |     n += snprintf(buf + n, max_len - n, "btime %lu\n", __uptime_cached / 1000);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:147:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  147 |     n += snprintf(buf + n, max_len - n, "processes %lu\n", proc_count);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:148:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  148 |     n += snprintf(buf + n, max_len - n, "procs_running %lu\n", running ? running : 1);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:149:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  149 |     n += snprintf(buf + n, max_len - n, "procs_blocked %lu\n", blocked);
+      |                                    ^
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_finddir’中:
+kernel/arch/x86_64/procfs.c:272:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  272 |         pid = pid * 10 + (*p - '0');
+      |                        ^
+-- Enter folder kernel/api --
+<1> Building kernel/api/kapi_wireless.c
+kernel/api/kapi_wireless.c: 在函数‘kapi_wifi_get_scan_results’中:
+kernel/api/kapi_wireless.c:89:63: warning: 未使用的参数‘max’ [-Wunused-parameter]
+   89 |                                kapi_wifi_net_t *out, uint32_t max,
+      |                                                      ~~~~~~~~~^~~
+<0> Building kernel/api/kapi_wait.c
+<2> Building kernel/api/kapi_vpn.c
+<1> Building kernel/api/kapi_vfs.c
+<3> Building kernel/api/kapi_time.c
+<0> Building kernel/api/kapi_syscall.c
+In file included from kernel/api/kapi_syscall.c:3:
+include/kapi_syscall.h: 在函数‘sys_read’中:
+include/kapi_syscall.h:494:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                      ^
+include/kapi_syscall.h:494:49: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                                 ^~~~~
+include/kapi_syscall.h: 在函数‘sys_write’中:
+include/kapi_syscall.h:497:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                       ^
+include/kapi_syscall.h:497:50: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                                  ^~~~~
+include/kapi_syscall.h: 在函数‘sys_open’中:
+include/kapi_syscall.h:500:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  500 | { return kapi_syscall3(SYS_open, (long)pathname, flags, mode); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_mmap’中:
+include/kapi_syscall.h:509:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                  ^
+include/kapi_syscall.h:509:46: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                              ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_munmap’中:
+include/kapi_syscall.h:512:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                    ^
+include/kapi_syscall.h:512:48: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                                ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_mprotect’中:
+include/kapi_syscall.h:515:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                      ^
+include/kapi_syscall.h:515:50: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                                  ^~~
+include/kapi_syscall.h: 在函数‘sys_brk’中:
+include/kapi_syscall.h:518:33: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  518 | { return kapi_syscall1(SYS_brk, (long)addr); }
+      |                                 ^
+include/kapi_syscall.h: 在函数‘sys_clone’中:
+include/kapi_syscall.h:527:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                          ^
+include/kapi_syscall.h:527:55: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                       ^
+include/kapi_syscall.h:527:67: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                   ^
+include/kapi_syscall.h:527:35: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                   ^~~~~
+include/kapi_syscall.h:527:79: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                               ^~~
+include/kapi_syscall.h: 在函数‘sys_execve’中:
+include/kapi_syscall.h:530:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                    ^
+include/kapi_syscall.h:530:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                    ^
+include/kapi_syscall.h:530:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_wait4’中:
+include/kapi_syscall.h:539:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                        ^
+include/kapi_syscall.h:539:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_stat’中:
+include/kapi_syscall.h:554:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                  ^
+include/kapi_syscall.h:554:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_fstat’中:
+include/kapi_syscall.h:557:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  557 | { return kapi_syscall2(SYS_fstat, fd, (long)statbuf); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_lstat’中:
+include/kapi_syscall.h:560:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                   ^
+include/kapi_syscall.h:560:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_access’中:
+include/kapi_syscall.h:563:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  563 | { return kapi_syscall2(SYS_access, (long)pathname, mode); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_chdir’中:
+include/kapi_syscall.h:566:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  566 | { return kapi_syscall1(SYS_chdir, (long)path); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_getcwd’中:
+include/kapi_syscall.h:569:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                    ^
+include/kapi_syscall.h:569:47: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                               ^~~~
+include/kapi_syscall.h: 在函数‘sys_mkdir’中:
+include/kapi_syscall.h:572:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  572 | { return kapi_syscall2(SYS_mkdir, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_rmdir’中:
+include/kapi_syscall.h:575:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  575 | { return kapi_syscall1(SYS_rmdir, (long)pathname); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_unlink’中:
+include/kapi_syscall.h:578:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  578 | { return kapi_syscall1(SYS_unlink, (long)pathname); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_rename’中:
+include/kapi_syscall.h:581:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                    ^
+include/kapi_syscall.h:581:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_creat’中:
+include/kapi_syscall.h:584:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  584 | { return kapi_syscall2(SYS_creat, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_link’中:
+include/kapi_syscall.h:587:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                  ^
+include/kapi_syscall.h:587:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_symlink’中:
+include/kapi_syscall.h:590:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                     ^
+include/kapi_syscall.h:590:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_readlink’中:
+include/kapi_syscall.h:593:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                      ^
+include/kapi_syscall.h:593:54: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                      ^
+include/kapi_syscall.h:593:65: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                                 ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_chmod’中:
+include/kapi_syscall.h:596:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  596 | { return kapi_syscall2(SYS_chmod, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_chown’中:
+include/kapi_syscall.h:599:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  599 | { return kapi_syscall3(SYS_chown, (long)pathname, owner, group); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_truncate’中:
+include/kapi_syscall.h:602:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  602 | { return kapi_syscall2(SYS_truncate, (long)path, length); }
+      |                                      ^
+include/kapi_syscall.h: 在函数‘sys_pipe’中:
+include/kapi_syscall.h:626:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  626 | { return kapi_syscall1(SYS_pipe, (long)pipefd); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_pipe2’中:
+include/kapi_syscall.h:629:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  629 | { return kapi_syscall2(SYS_pipe2, (long)pipefd, flags); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_mount’中:
+include/kapi_syscall.h:634:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                   ^
+include/kapi_syscall.h:634:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                 ^
+include/kapi_syscall.h:634:63: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                               ^
+include/kapi_syscall.h:634:97: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                                 ^
+include/kapi_syscall.h:634:85: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                     ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_umount2’中:
+include/kapi_syscall.h:637:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  637 | { return kapi_syscall2(SYS_umount2, (long)target, flags); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_swapon’中:
+include/kapi_syscall.h:640:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  640 | { return kapi_syscall2(SYS_swapon, (long)path, swapflags); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_swapoff’中:
+include/kapi_syscall.h:643:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  643 | { return kapi_syscall1(SYS_swapoff, (long)path); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_nanosleep’中:
+include/kapi_syscall.h:646:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                       ^
+include/kapi_syscall.h:646:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_gettimeofday’中:
+include/kapi_syscall.h:649:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:649:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_settimeofday’中:
+include/kapi_syscall.h:652:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:652:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_time’中:
+include/kapi_syscall.h:655:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  655 | { return kapi_syscall1(SYS_time, (long)tloc); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_clock_gettime’中:
+include/kapi_syscall.h:658:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  658 | { return kapi_syscall2(SYS_clock_gettime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_settime’中:
+include/kapi_syscall.h:661:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  661 | { return kapi_syscall2(SYS_clock_settime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_nanosleep’中:
+include/kapi_syscall.h:664:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                            ^
+include/kapi_syscall.h:664:71: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                                       ^
+include/kapi_syscall.h: 在函数‘sys_rt_sigaction’中:
+include/kapi_syscall.h:667:47: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                               ^
+include/kapi_syscall.h:667:58: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                          ^
+include/kapi_syscall.h:667:70: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                                      ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_rt_sigprocmask’中:
+include/kapi_syscall.h:670:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                 ^
+include/kapi_syscall.h:670:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                            ^
+include/kapi_syscall.h:670:74: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                                          ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_ioctl’中:
+include/kapi_syscall.h:679:39: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  679 | { return kapi_syscall3(SYS_ioctl, fd, request, arg); }
+      |                                       ^~~~~~~
+include/kapi_syscall.h: 在函数‘sys_pread64’中:
+include/kapi_syscall.h:682:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                         ^
+include/kapi_syscall.h:682:52: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                                    ^~~~~
+include/kapi_syscall.h: 在函数‘sys_pwrite64’中:
+include/kapi_syscall.h:685:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                          ^
+include/kapi_syscall.h:685:53: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                                     ^~~~~
+include/kapi_syscall.h: 在函数‘sys_readv’中:
+include/kapi_syscall.h:688:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  688 | { return kapi_syscall3(SYS_readv, fd, (long)iov, iovcnt); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_writev’中:
+include/kapi_syscall.h:691:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  691 | { return kapi_syscall3(SYS_writev, fd, (long)iov, iovcnt); }
+      |                                        ^
+include/kapi_syscall.h: 在函数‘sys_getdents’中:
+include/kapi_syscall.h:694:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                          ^
+include/kapi_syscall.h:694:54: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                                      ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getdents64’中:
+include/kapi_syscall.h:697:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                            ^
+include/kapi_syscall.h:697:56: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                                        ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getgroups’中:
+include/kapi_syscall.h:718:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  718 | { return kapi_syscall2(SYS_getgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_setgroups’中:
+include/kapi_syscall.h:721:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  721 | { return kapi_syscall2(SYS_setgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_uname’中:
+include/kapi_syscall.h:724:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  724 | { return kapi_syscall1(SYS_uname, (long)buf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_sysinfo’中:
+include/kapi_syscall.h:727:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  727 | { return kapi_syscall1(SYS_sysinfo, (long)info); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_getrlimit’中:
+include/kapi_syscall.h:730:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  730 | { return kapi_syscall2(SYS_getrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_setrlimit’中:
+include/kapi_syscall.h:733:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  733 | { return kapi_syscall2(SYS_setrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_getrusage’中:
+include/kapi_syscall.h:736:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  736 | { return kapi_syscall2(SYS_getrusage, who, (long)usage); }
+      |                                            ^
+include/kapi_syscall.h: 在函数‘sys_times’中:
+include/kapi_syscall.h:739:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  739 | { return kapi_syscall1(SYS_times, (long)tbuf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_reboot’中:
+include/kapi_syscall.h:754:57: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  754 | { return kapi_syscall4(SYS_reboot, magic1, magic2, cmd, (long)arg); }
+      |                                                         ^
+include/kapi_syscall.h: 在函数‘sys_chroot’中:
+include/kapi_syscall.h:757:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  757 | { return kapi_syscall1(SYS_chroot, (long)path); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_sethostname’中:
+include/kapi_syscall.h:760:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  760 | { return kapi_syscall2(SYS_sethostname, (long)name, len); }
+      |                                         ^
+include/kapi_syscall.h: 在函数‘sys_setdomainname’中:
+include/kapi_syscall.h:763:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  763 | { return kapi_syscall2(SYS_setdomainname, (long)name, len); }
+      |                                           ^
+include/kapi_syscall.h: 在函数‘sys_init_module’中:
+include/kapi_syscall.h:766:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                         ^
+include/kapi_syscall.h:766:66: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                                  ^
+include/kapi_syscall.h:766:61: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                             ^~~
+include/kapi_syscall.h: 在函数‘sys_delete_module’中:
+include/kapi_syscall.h:769:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                           ^
+include/kapi_syscall.h:769:55: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                                       ^~~~~
+include/kapi_syscall.h: 在函数‘sys_finit_module’中:
+include/kapi_syscall.h:772:46: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  772 | { return kapi_syscall3(SYS_finit_module, fd, (long)param_values, flags); }
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_read_impl’中:
+kernel/api/kapi_syscall.c:208:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  208 |             ret = kapi_read(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                 ^
+kernel/api/kapi_syscall.c:214:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  214 |             ret = fifo_read(entry->obj.pipe, (void*)buf, (uint64_t)count);
+      |                                              ^
+kernel/api/kapi_syscall.c:222:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  222 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_write_impl’中:
+kernel/api/kapi_syscall.c:234:21: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  234 |         memcpy(tmp, (void*)buf, to_write);
+      |                     ^
+kernel/api/kapi_syscall.c:249:50: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  249 |             ret = kapi_write(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                  ^
+kernel/api/kapi_syscall.c:255:47: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  255 |             ret = fifo_write(entry->obj.pipe, (void*)buf, (uint64_t)count);
+      |                                               ^
+kernel/api/kapi_syscall.c:263:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  263 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_open_impl’中:
+kernel/api/kapi_syscall.c:281:37: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  281 |         kapi_dir_t d = kapi_opendir((const char*)pathname);
+      |                                     ^
+kernel/api/kapi_syscall.c:295:23: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  295 |     int f = kapi_open((const char*)pathname, kflags);
+      |                       ^
+kernel/api/kapi_syscall.c:297:24: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  297 |         f = kapi_creat((const char*)pathname, (mode_t)(mode & 07777));
+      |                        ^
+kernel/api/kapi_syscall.c: 在函数‘sys_stat_impl’中:
+kernel/api/kapi_syscall.c:362:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  362 |     int ret = kapi_stat((const char*)pathname, &kst);
+      |                         ^
+kernel/api/kapi_syscall.c:365:65: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  365 |     struct { uint64_t st_dev, st_ino; uint32_t st_mode; } *st = (void*)statbuf;
+      |                                                                 ^
+kernel/api/kapi_syscall.c: 在函数‘sys_fstat_impl’中:
+kernel/api/kapi_syscall.c:380:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  380 |     memset((void*)statbuf, 0, 128);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_lseek_impl’中:
+kernel/api/kapi_syscall.c:394:45: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  394 |     return ret < 0 ? KENUX_ERR(KENUX_EBADF) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_rt_sigaction_impl’中:
+kernel/api/kapi_syscall.c:471:42: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  471 |     int ret = signal_sigaction((int)sig, (const k_sigaction_t*)act, (k_sigaction_t*)oact);
+      |                                          ^
+kernel/api/kapi_syscall.c:471:69: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  471 |     int ret = signal_sigaction((int)sig, (const k_sigaction_t*)act, (k_sigaction_t*)oact);
+      |                                                                     ^
+kernel/api/kapi_syscall.c: 在函数‘sys_rt_sigprocmask_impl’中:
+kernel/api/kapi_syscall.c:482:44: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  482 |     int ret = signal_sigprocmask((int)how, (const k_sigset_t*)set, (k_sigset_t*)oset);
+      |                                            ^
+kernel/api/kapi_syscall.c:482:68: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  482 |     int ret = signal_sigprocmask((int)how, (const k_sigset_t*)set, (k_sigset_t*)oset);
+      |                                                                    ^
+kernel/api/kapi_syscall.c: 在函数‘sys_access_impl’中:
+kernel/api/kapi_syscall.c:508:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  508 |     int ret = kapi_stat((const char*)pathname, &st);
+      |                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_pipe_impl’中:
+kernel/api/kapi_syscall.c:542:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  542 |     int* fds = (int*)pipefd;
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_nanosleep_impl’中:
+kernel/api/kapi_syscall.c:588:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  588 |     struct { long tv_sec; long tv_nsec; } *ts = (void*)req;
+      |                                                 ^
+kernel/api/kapi_syscall.c: 在函数‘sys_execve_impl’中:
+kernel/api/kapi_syscall.c:722:34: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  722 |     int ret = elf_load_from_file((const char*)filename, &info);
+      |                                  ^
+kernel/api/kapi_syscall.c:727:39: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  727 |         const char* dummy_argv[2] = { (const char*)filename, NULL };
+      |                                       ^
+kernel/api/kapi_syscall.c: 在函数‘sys_wait4_impl’中:
+kernel/api/kapi_syscall.c:752:10: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  752 |         *(int*)wstatus = status;
+      |          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_uname_impl’中:
+kernel/api/kapi_syscall.c:783:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  783 |     } *u = (void*)buf;
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getcwd_impl’中:
+kernel/api/kapi_syscall.c:825:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  825 |     char* ret = kapi_getcwd((char*)buf, (size_t)size);
+      |                             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chdir_impl’中:
+kernel/api/kapi_syscall.c:833:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  833 |     int ret = kapi_chdir((const char*)path);
+      |                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_rename_impl’中:
+kernel/api/kapi_syscall.c:841:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  841 |     int ret = kapi_rename((const char*)oldpath, (const char*)newpath);
+      |                           ^
+kernel/api/kapi_syscall.c:841:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  841 |     int ret = kapi_rename((const char*)oldpath, (const char*)newpath);
+      |                                                 ^
+kernel/api/kapi_syscall.c: 在函数‘sys_mkdir_impl’中:
+kernel/api/kapi_syscall.c:849:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  849 |     int ret = kapi_mkdir((const char*)pathname, (int)mode);
+      |                          ^
+kernel/api/kapi_syscall.c:849:49: warning: ‘mode_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  849 |     int ret = kapi_mkdir((const char*)pathname, (int)mode);
+      |                                                 ^~~~~~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_rmdir_impl’中:
+kernel/api/kapi_syscall.c:857:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  857 |     int ret = kapi_rmdir((const char*)pathname);
+      |                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_unlink_impl’中:
+kernel/api/kapi_syscall.c:878:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  878 |     int ret = kapi_unlink((const char*)pathname);
+      |                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chmod_impl’中:
+kernel/api/kapi_syscall.c:901:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  901 |     vfs_node_t* node = syscall_vfs_find_path((const char*)pathname);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chown_impl’中:
+kernel/api/kapi_syscall.c:912:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  912 |     vfs_node_t* node = syscall_vfs_find_path((const char*)pathname);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_gettimeofday_impl’中:
+kernel/api/kapi_syscall.c:935:52: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  935 |         struct { long tv_sec; long tv_usec; } *t = (void*)tv;
+      |                                                    ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getrlimit_impl’中:
+kernel/api/kapi_syscall.c:948:51: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  948 |     struct { long rlim_cur; long rlim_max; } *r = (void*)rlim;
+      |                                                   ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getrusage_impl’中:
+kernel/api/kapi_syscall.c:958:23: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  958 |     if (usage) memset((void*)usage, 0, 144);
+      |                       ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sysinfo_impl’中:
+kernel/api/kapi_syscall.c:981:13: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  981 |     } *si = (void*)info;
+      |             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_times_impl’中:
+kernel/api/kapi_syscall.c:997:22: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  997 |     if (tbuf) memset((void*)tbuf, 0, 32);
+      |                      ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getdents64_impl’中:
+kernel/api/kapi_syscall.c:1102:32: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1102 |     struct linux_dirent64* d = (struct linux_dirent64*)dirp;
+      |                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_clock_gettime_impl’中:
+kernel/api/kapi_syscall.c:1120:48: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1120 |     struct { long tv_sec; long tv_nsec; } *t = (void*)tp;
+      |                                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chroot_impl’中:
+kernel/api/kapi_syscall.c:1171:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1171 |     vfs_node_t* node = syscall_vfs_find_path((const char*)path);
+      |                                              ^
+kernel/api/kapi_syscall.c:1175:41: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1175 |     strncpy(proc_root[current_process], (const char*)path, sizeof(proc_root[0]) - 1);
+      |                                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sethostname_impl’中:
+kernel/api/kapi_syscall.c:1188:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1188 |     memcpy(kenux_hostname, (const void*)name, (size_t)len);
+      |                            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_init_module_impl’中:
+kernel/api/kapi_syscall.c:1200:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1200 |     int ret = module_load((const void*)module_image, (uint64_t)len, "unknown");
+      |                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_delete_module_impl’中:
+kernel/api/kapi_syscall.c:1211:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1211 |     int ret = module_unload((const char*)name);
+      |                             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getrandom_impl’中:
+kernel/api/kapi_syscall.c:1247:18: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1247 |     uint8_t* p = (uint8_t*)buf;
+      |                  ^
+kernel/api/kapi_syscall.c: 在函数‘sys_kenux_info_impl’中:
+kernel/api/kapi_syscall.c:1269:15: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1269 |     } *info = (void*)buf;
+      |               ^
+kernel/api/kapi_syscall.c: 在函数‘sys_kenux_get_loadavg_impl’中:
+kernel/api/kapi_syscall.c:1305:15: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1305 |     long* l = (long*)loads;
+      |               ^
+kernel/api/kapi_syscall.c: 在函数‘sys_futex_impl’中:
+kernel/api/kapi_syscall.c:1321:53: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1321 |         struct { long tv_sec; long tv_nsec; } *ts = (void*)timeout;
+      |                                                     ^
+kernel/api/kapi_syscall.c:1329:34: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1329 |             int ret = futex_wait((void*)uaddr, (uint32_t)val, timeout_ms);
+      |                                  ^
+kernel/api/kapi_syscall.c:1333:34: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1333 |             int ret = futex_wake((void*)uaddr, (uint32_t)val);
+      |                                  ^
+kernel/api/kapi_syscall.c:1339:37: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1339 |             int ret = futex_requeue((void*)uaddr, (void*)uaddr2, (uint32_t)val);
+      |                                     ^
+kernel/api/kapi_syscall.c:1339:51: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1339 |             int ret = futex_requeue((void*)uaddr, (void*)uaddr2, (uint32_t)val);
+      |                                                   ^
+kernel/api/kapi_syscall.c:1314:47: warning: 未使用的参数‘val3’ [-Wunused-parameter]
+ 1314 |                             long uaddr2, long val3)
+      |                                          ~~~~~^~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_prctl_impl’中:
+kernel/api/kapi_syscall.c:1355:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1355 |                 strncpy((char*)arg2, processes[current_process].name, 15);
+      |                         ^
+kernel/api/kapi_syscall.c:1356:18: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1356 |                 ((char*)arg2)[15] = '\0';
+      |                  ^
+kernel/api/kapi_syscall.c:1362:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1362 |                 strncpy(processes[current_process].name, (const char*)arg2,
+      |                                                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_arch_prctl_impl’中:
+kernel/api/kapi_syscall.c:1399:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1399 |             *(uint64_t*)addr = current_process < PROCESS_MAX ?
+      |              ^
+kernel/api/kapi_syscall.c:1404:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1404 |             *(uint64_t*)addr = current_process < PROCESS_MAX ?
+      |              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_truncate_impl’中:
+kernel/api/kapi_syscall.c:1526:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1526 |     vfs_node_t* node = syscall_vfs_find_path((const char*)path);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_pread64_impl’中:
+kernel/api/kapi_syscall.c:1596:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1596 |     int64_t ret = kapi_read(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                 ^
+kernel/api/kapi_syscall.c:1598:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1598 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_pwrite64_impl’中:
+kernel/api/kapi_syscall.c:1610:50: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1610 |     int64_t ret = kapi_write(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                  ^
+kernel/api/kapi_syscall.c:1612:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1612 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_sendfile_impl’中:
+kernel/api/kapi_syscall.c:1628:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 1628 |         long r = sys_read_impl(in_fd, (long)buf, n, 0, 0, 0);
+      |                                       ^
+kernel/api/kapi_syscall.c:1630:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 1630 |         long w = sys_write_impl(out_fd, (long)buf, r, 0, 0, 0);
+      |                                         ^
+kernel/api/kapi_syscall.c:1633:22: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1633 |         if (offset) *(long*)offset += w;
+      |                      ^
+kernel/api/kapi_syscall.c: 在函数‘sys_time_impl’中:
+kernel/api/kapi_syscall.c:1643:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1643 |     if (tloc) *(long*)tloc = t;
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_set_tid_address_impl’中:
+kernel/api/kapi_syscall.c:1664:51: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1664 |         processes[current_process].kthread_data = (void*)tidptr;
+      |                                                   ^
+kernel/api/kapi_syscall.c: 在函数‘sys_epoll_ctl_impl’中:
+kernel/api/kapi_syscall.c:1694:59: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1694 |     int ret = kapi_epoll_ctl((int)epfd, (int)op, (int)fd, (kapi_epoll_event_t*)event);
+      |                                                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_epoll_wait_impl’中:
+kernel/api/kapi_syscall.c:1702:42: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1702 |     int ret = kapi_epoll_wait((int)epfd, (kapi_epoll_event_t*)events, (int)maxevents, (int)timeout);
+      |                                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_epoll_pwait_impl’中:
+kernel/api/kapi_syscall.c:1710:43: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1710 |     int ret = kapi_epoll_pwait((int)epfd, (kapi_epoll_event_t*)events, (int)maxevents,
+      |                                           ^
+kernel/api/kapi_syscall.c:1711:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1711 |                                (int)timeout, (const uint64_t*)sigmask);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_poll_impl’中:
+kernel/api/kapi_syscall.c:1720:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1720 |     int ret = kapi_poll((kapi_pollfd_t*)fds, (uint32_t)nfds, (int)timeout);
+      |                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_select_impl’中:
+kernel/api/kapi_syscall.c:1727:40: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1727 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                        ^
+kernel/api/kapi_syscall.c:1727:65: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1727 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                                                 ^
+kernel/api/kapi_syscall.c:1728:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1728 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, NULL);
+      |                             ^
+kernel/api/kapi_syscall.c:1728:56: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1728 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, NULL);
+      |                                                        ^
+kernel/api/kapi_syscall.c: 在函数‘sys_ppoll_impl’中:
+kernel/api/kapi_syscall.c:1736:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1736 |     int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                          ^
+kernel/api/kapi_syscall.c:1736:63: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1736 |     int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                               ^
+kernel/api/kapi_syscall.c:1736:83: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1736 |     int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                                                   ^
+kernel/api/kapi_syscall.c: 在函数‘sys_pselect6_impl’中:
+kernel/api/kapi_syscall.c:1742:40: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1742 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                        ^
+kernel/api/kapi_syscall.c:1742:65: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1742 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                                                 ^
+kernel/api/kapi_syscall.c:1743:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1743 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                             ^
+kernel/api/kapi_syscall.c:1743:56: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1743 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                        ^
+kernel/api/kapi_syscall.c:1743:76: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1743 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                                            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_signalfd4_impl’中:
+kernel/api/kapi_syscall.c:1752:39: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1752 |     int ret = kapi_signalfd4((int)fd, (const uint64_t*)mask, (size_t)masksize, (int)flags);
+      |                                       ^
+kernel/api/kapi_syscall.c: 在函数‘sys_signalfd_impl’中:
+kernel/api/kapi_syscall.c:1760:38: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1760 |     int ret = kapi_signalfd((int)fd, (const uint64_t*)mask, (size_t)masksize, 0);
+      |                                      ^
+kernel/api/kapi_syscall.c: 在函数‘sys_timerfd_settime_impl’中:
+kernel/api/kapi_syscall.c:1777:36: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1777 |                                    (const kapi_itimerspec_t*)new_value,
+      |                                    ^
+kernel/api/kapi_syscall.c:1778:36: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1778 |                                    (kapi_itimerspec_t*)old_value);
+      |                                    ^
+kernel/api/kapi_syscall.c: 在函数‘sys_timerfd_gettime_impl’中:
+kernel/api/kapi_syscall.c:1786:45: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1786 |     int ret = kapi_timerfd_gettime((int)fd, (kapi_itimerspec_t*)curr_value);
+      |                                             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_inotify_add_watch_impl’中:
+kernel/api/kapi_syscall.c:1824:47: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1824 |     int ret = kapi_inotify_add_watch((int)fd, (const char*)pathname, (uint32_t)mask);
+      |                                               ^
+kernel/api/kapi_syscall.c: 在函数‘sys_readv_impl’中:
+kernel/api/kapi_syscall.c:1845:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1845 |     struct { void* iov_base; size_t iov_len; } *iovecs = (void*)iov;
+      |                                                          ^
+kernel/api/kapi_syscall.c:1851:18: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1851 |         total += r;
+      |                  ^
+kernel/api/kapi_syscall.c: 在函数‘sys_writev_impl’中:
+kernel/api/kapi_syscall.c:1866:64: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1866 |     struct { const void* iov_base; size_t iov_len; } *iovecs = (void*)iov;
+      |                                                                ^
+kernel/api/kapi_syscall.c:1872:18: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1872 |         total += r;
+      |                  ^
+kernel/api/kapi_syscall.c: 在函数‘sys_accept4_impl’中:
+kernel/api/kapi_syscall.c:1893:48: warning: 未使用的参数‘addr’ [-Wunused-parameter]
+ 1893 | static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+      |                                           ~~~~~^~~~
+kernel/api/kapi_syscall.c:1893:59: warning: 未使用的参数‘addrlen’ [-Wunused-parameter]
+ 1893 | static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+      |                                                      ~~~~~^~~~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_waitid_impl’中:
+kernel/api/kapi_syscall.c:1926:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1926 |         memset((void*)infop, 0, 32);
+      |                ^
+kernel/api/kapi_syscall.c:1928:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1928 |             ((int*)infop)[0] = ret;
+      |              ^
+kernel/api/kapi_syscall.c:1929:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1929 |             ((int*)infop)[1] = 4;
+      |              ^
+kernel/api/kapi_syscall.c:1930:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1930 |             ((int*)infop)[2] = status;
+      |              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_mount_impl’中:
+kernel/api/kapi_syscall.c:1949:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1949 |     int ret = kapi_mount((const char*)dev_name, (const char*)dir_name,
+      |                          ^
+kernel/api/kapi_syscall.c:1949:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1949 |     int ret = kapi_mount((const char*)dev_name, (const char*)dir_name,
+      |                                                 ^
+kernel/api/kapi_syscall.c:1950:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1950 |                          (const char*)type, (unsigned long)flags, NULL);
+      |                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_umount2_impl’中:
+kernel/api/kapi_syscall.c:1958:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1958 |     int ret = kapi_umount((const char*)name);
+      |                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_mknod_impl’中:
+kernel/api/kapi_syscall.c:1970:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1970 |         int f = kapi_creat((const char*)pathname, (mode_t)(m & 07777));
+      |                            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_setresuid_impl’中:
+kernel/api/kapi_syscall.c:2001:59: warning: 未使用的参数‘suid’ [-Wunused-parameter]
+ 2001 | static long sys_setresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+      |                                                      ~~~~~^~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_getresuid_impl’中:
+kernel/api/kapi_syscall.c:2014:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2014 |     if (ruid) *(uid_t*)ruid = proc_uid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2015:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2015 |     if (euid) *(uid_t*)euid = proc_euid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2016:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2016 |     if (suid) *(uid_t*)suid = proc_uid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_setresgid_impl’中:
+kernel/api/kapi_syscall.c:2020:59: warning: 未使用的参数‘sgid’ [-Wunused-parameter]
+ 2020 | static long sys_setresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+      |                                                      ~~~~~^~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_getresgid_impl’中:
+kernel/api/kapi_syscall.c:2033:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2033 |     if (rgid) *(uid_t*)rgid = proc_gid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2034:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2034 |     if (egid) *(uid_t*)egid = proc_egid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2035:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2035 |     if (sgid) *(uid_t*)sgid = proc_gid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_rt_sigpending_impl’中:
+kernel/api/kapi_syscall.c:2078:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2078 |     memset((void*)set, 0, 8);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sched_getparam_impl’中:
+kernel/api/kapi_syscall.c:2119:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2119 |     memset((void*)param, 0, 4);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sched_rr_get_interval_impl’中:
+kernel/api/kapi_syscall.c:2151:48: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2151 |     struct { long tv_sec; long tv_nsec; } *t = (void*)interval;
+      |                                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sched_getaffinity_impl’中:
+kernel/api/kapi_syscall.c:2169:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2169 |     memset((void*)mask, 0xff, sz);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_statfs_impl’中:
+kernel/api/kapi_syscall.c:2185:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+<2> Building kernel/api/kapi_string.c
+ 2185 |     memset((void*)buf, 0, 64);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_fstatfs_impl’中:
+kernel/api/kapi_syscall.c:2194:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2194 |     memset((void*)buf, 0, 64);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_splice_impl’中:
+kernel/api/kapi_syscall.c:2375:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 2375 |         long r = sys_read_impl(fd_in, (long)buf, n, 0, 0, 0);
+      |                                       ^
+kernel/api/kapi_syscall.c:2377:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 2377 |         long w = sys_write_impl(fd_out, (long)buf, r, 0, 0, 0);
+      |                                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_clock_getres_impl’中:
+kernel/api/kapi_syscall.c:2515:48: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2515 |     struct { long tv_sec; long tv_nsec; } *r = (void*)res;
+      |                                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getcpu_impl’中:
+kernel/api/kapi_syscall.c:2569:15: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2569 |     if (cpu) *(unsigned int*)cpu = 0;
+      |               ^
+kernel/api/kapi_syscall.c: 在文件作用域：
+kernel/api/kapi_syscall.c:2566:13: warning: ‘sys_getcpu_impl’ 在此处定义 [-Wunused-function]
+ 2566 | static long sys_getcpu_impl(long cpu, long node, long tcache, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2559:13: warning: ‘sys_kcmp_impl’ 在此处定义 [-Wunused-function]
+ 2559 | static long sys_kcmp_impl(long pid1, long pid2, long type, long idx1, long idx2, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2552:13: warning: ‘sys_process_vm_writev_impl’ 在此处定义 [-Wunused-function]
+ 2552 | static long sys_process_vm_writev_impl(long pid, long lvec, long liovcnt, long rvec, long riovcnt, long flags)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2546:13: warning: ‘sys_process_vm_readv_impl’ 在此处定义 [-Wunused-function]
+ 2546 | static long sys_process_vm_readv_impl(long pid, long lvec, long liovcnt, long rvec, long riovcnt, long flags)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2537:13: warning: ‘sys_mincore_impl’ 在此处定义 [-Wunused-function]
+ 2537 | static long sys_mincore_impl(long start, long len, long vec, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2530:13: warning: ‘sys_clock_nanosleep_impl’ 在此处定义 [-Wunused-function]
+ 2530 | static long sys_clock_nanosleep_impl(long clk_id, long flags, long rqtp, long rmtp, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2521:13: warning: ‘sys_clock_settime_impl’ 在此处定义 [-Wunused-function]
+ 2521 | static long sys_clock_settime_impl(long clk_id, long tp, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2511:13: warning: ‘sys_clock_getres_impl’ 在此处定义 [-Wunused-function]
+ 2511 | static long sys_clock_getres_impl(long clk_id, long res, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2503:13: warning: ‘sys_prlimit64_impl’ 在此处定义 [-Wunused-function]
+ 2503 | static long sys_prlimit64_impl(long pid, long resource, long new_limit, long old_limit, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2492:13: warning: ‘sys_acct_impl’ 在此处定义 [-Wunused-function]
+ 2492 | static long sys_acct_impl(long filename, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2483:13: warning: ‘sys_adjtimex_impl’ 在此处定义 [-Wunused-function]
+ 2483 | static long sys_adjtimex_impl(long buf, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2476:13: warning: ‘sys_getdents_impl’ 在此处定义 [-Wunused-function]
+ 2476 | static long sys_getdents_impl(long fd, long dirp, long count, long a4, long a9, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2470:13: warning: ‘sys_lchown_impl’ 在此处定义 [-Wunused-function]
+ 2470 | static long sys_lchown_impl(long pathname, long owner, long group, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2462:13: warning: ‘sys_fchown_impl’ 在此处定义 [-Wunused-function]
+ 2462 | static long sys_fchown_impl(long fd, long owner, long group, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2454:13: warning: ‘sys_fchmod_impl’ 在此处定义 [-Wunused-function]
+ 2454 | static long sys_fchmod_impl(long fd, long mode, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2446:13: warning: ‘sys_fchdir_impl’ 在此处定义 [-Wunused-function]
+ 2446 | static long sys_fchdir_impl(long fd, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2439:13: warning: ‘sys_faccessat_impl’ 在此处定义 [-Wunused-function]
+ 2439 | static long sys_faccessat_impl(long dirfd, long pathname, long mode, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2433:13: warning: ‘sys_fchmodat_impl’ 在此处定义 [-Wunused-function]
+ 2433 | static long sys_fchmodat_impl(long dirfd, long pathname, long mode, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2427:13: warning: ‘sys_readlinkat_impl’ 在此处定义 [-Wunused-function]
+ 2427 | static long sys_readlinkat_impl(long dirfd, long pathname, long buf, long bufsiz, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2421:13: warning: ‘sys_symlinkat_impl’ 在此处定义 [-Wunused-function]
+ 2421 | static long sys_symlinkat_impl(long target, long newdirfd, long linkpath, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2415:13: warning: ‘sys_renameat_impl’ 在此处定义 [-Wunused-function]
+ 2415 | static long sys_renameat_impl(long olddirfd, long oldpath, long newdirfd, long newpath, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2409:13: warning: ‘sys_fchownat_impl’ 在此处定义 [-Wunused-function]
+ 2409 | static long sys_fchownat_impl(long dirfd, long pathname, long owner, long group, long flags, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2403:13: warning: ‘sys_mknodat_impl’ 在此处定义 [-Wunused-function]
+ 2403 | static long sys_mknodat_impl(long dirfd, long pathname, long mode, long dev, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2397:13: warning: ‘sys_mkdirat_impl’ 在此处定义 [-Wunused-function]
+ 2397 | static long sys_mkdirat_impl(long dirfd, long pathname, long mode, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2390:13: warning: ‘sys_vmsplice_impl’ 在此处定义 [-Wunused-function]
+ 2390 | static long sys_vmsplice_impl(long fd, long iov, long nr_segs, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2384:13: warning: ‘sys_tee_impl’ 在此处定义 [-Wunused-function]
+ 2384 | static long sys_tee_impl(long fd_in, long fd_out, long len, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2365:13: warning: ‘sys_splice_impl’ 在此处定义 [-Wunused-function]
+ 2365 | static long sys_splice_impl(long fd_in, long off_in, long fd_out, long off_out, long len, long flags)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2358:13: warning: ‘sys_seccomp_impl’ 在此处定义 [-Wunused-function]
+ 2358 | static long sys_seccomp_impl(long operation, long flags, long args, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2351:13: warning: ‘sys_bpf_impl’ 在此处定义 [-Wunused-function]
+ 2351 | static long sys_bpf_impl(long cmd, long attr, long size, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2344:13: warning: ‘sys_memfd_create_impl’ 在此处定义 [-Wunused-function]
+ 2344 | static long sys_memfd_create_impl(long name, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2336:13: warning: ‘sys_fallocate_impl’ 在此处定义 [-Wunused-function]
+ 2336 | static long sys_fallocate_impl(long fd, long mode, long offset, long length, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2329:13: warning: ‘sys_msgctl_impl’ 在此处定义 [-Wunused-function]
+ 2329 | static long sys_msgctl_impl(long msqid, long cmd, long buf, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2323:13: warning: ‘sys_msgrcv_impl’ 在此处定义 [-Wunused-function]
+ 2323 | static long sys_msgrcv_impl(long msqid, long msgp, long msgsz, long msgtyp, long msgflg, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2317:13: warning: ‘sys_msgsnd_impl’ 在此处定义 [-Wunused-function]
+ 2317 | static long sys_msgsnd_impl(long msqid, long msgp, long msgsz, long msgflg, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2311:13: warning: ‘sys_msgget_impl’ 在此处定义 [-Wunused-function]
+ 2311 | static long sys_msgget_impl(long key, long msgflg, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2304:13: warning: ‘sys_semctl_impl’ 在此处定义 [-Wunused-function]
+ 2304 | static long sys_semctl_impl(long semid, long semnum, long cmd, long arg, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2298:13: warning: ‘sys_semop_impl’ 在此处定义 [-Wunused-function]
+ 2298 | static long sys_semop_impl(long semid, long sops, long nsops, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2292:13: warning: ‘sys_semget_impl’ 在此处定义 [-Wunused-function]
+ 2292 | static long sys_semget_impl(long key, long nsems, long semflg, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2285:13: warning: ‘sys_shmdt_impl’ 在此处定义 [-Wunused-function]
+ 2285 | static long sys_shmdt_impl(long shmaddr, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2279:13: warning: ‘sys_shmctl_impl’ 在此处定义 [-Wunused-function]
+ 2279 | static long sys_shmctl_impl(long shmid, long cmd, long buf, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2273:13: warning: ‘sys_shmat_impl’ 在此处定义 [-Wunused-function]
+ 2273 | static long sys_shmat_impl(long shmid, long shmaddr, long shmflg, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2267:13: warning: ‘sys_shmget_impl’ 在此处定义 [-Wunused-function]
+ 2267 | static long sys_shmget_impl(long key, long size, long shmflg, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2260:13: warning: ‘sys_syslog_impl’ 在此处定义 [-Wunused-function]
+ 2260 | static long sys_syslog_impl(long type, long buf, long len, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2251:13: warning: ‘sys_pivot_root_impl’ 在此处定义 [-Wunused-function]
+ 2251 | static long sys_pivot_root_impl(long new_root, long put_old, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2242:13: warning: ‘sys_ioperm_impl’ 在此处定义 [-Wunused-function]
+ 2242 | static long sys_ioperm_impl(long from, long num, long on, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2234:13: warning: ‘sys_iopl_impl’ 在此处定义 [-Wunused-function]
+ 2234 | static long sys_iopl_impl(long level, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2225:13: warning: ‘sys_swapoff_impl’ 在此处定义 [-Wunused-function]
+ 2225 | static long sys_swapoff_impl(long specialfile, long swapflags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2217:13: warning: ‘sys_swapon_impl’ 在此处定义 [-Wunused-function]
+ 2217 | static long sys_swapon_impl(long specialfile, long swapflags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2208:13: warning: ‘sys_reboot_impl’ 在此处定义 [-Wunused-function]
+ 2208 | static long sys_reboot_impl(long magic1, long magic2, long cmd, long arg, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2199:13: warning: ‘sys_settimeofday_impl’ 在此处定义 [-Wunused-function]
+ 2199 | static long sys_settimeofday_impl(long tv, long tz, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2189:13: warning: ‘sys_fstatfs_impl’ 在此处定义 [-Wunused-function]
+ 2189 | static long sys_fstatfs_impl(long fd, long buf, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2181:13: warning: ‘sys_statfs_impl’ 在此处定义 [-Wunused-function]
+ 2181 | static long sys_statfs_impl(long pathname, long buf, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2174:13: warning: ‘sys_personality_impl’ 在此处定义 [-Wunused-function]
+ 2174 | static long sys_personality_impl(long persona, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2164:13: warning: ‘sys_sched_getaffinity_impl’ 在此处定义 [-Wunused-function]
+ 2164 | static long sys_sched_getaffinity_impl(long pid, long len, long mask, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2158:13: warning: ‘sys_sched_setaffinity_impl’ 在此处定义 [-Wunused-function]
+ 2158 | static long sys_sched_setaffinity_impl(long pid, long len, long mask, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2147:13: warning: ‘sys_sched_rr_get_interval_impl’ 在此处定义 [-Wunused-function]
+ 2147 | static long sys_sched_rr_get_interval_impl(long pid, long interval, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2141:13: warning: ‘sys_sched_get_priority_min_impl’ 在此处定义 [-Wunused-function]
+ 2141 | static long sys_sched_get_priority_min_impl(long policy, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2135:13: warning: ‘sys_sched_get_priority_max_impl’ 在此处定义 [-Wunused-function]
+ 2135 | static long sys_sched_get_priority_max_impl(long policy, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2129:13: warning: ‘sys_sched_getscheduler_impl’ 在此处定义 [-Wunused-function]
+ 2129 | static long sys_sched_getscheduler_impl(long pid, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2123:13: warning: ‘sys_sched_setscheduler_impl’ 在此处定义 [-Wunused-function]
+ 2123 | static long sys_sched_setscheduler_impl(long pid, long policy, long param, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2115:13: warning: ‘sys_sched_getparam_impl’ 在此处定义 [-Wunused-function]
+ 2115 | static long sys_sched_getparam_impl(long pid, long param, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2109:13: warning: ‘sys_sched_setparam_impl’ 在此处定义 [-Wunused-function]
+ 2109 | static long sys_sched_setparam_impl(long pid, long param, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2102:13: warning: ‘sys_sigaltstack_impl’ 在此处定义 [-Wunused-function]
+ 2102 | static long sys_sigaltstack_impl(long ss, long oss, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2094:13: warning: ‘sys_rt_sigsuspend_impl’ 在此处定义 [-Wunused-function]
+ 2094 | static long sys_rt_sigsuspend_impl(long mask, long sigsetsize, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2088:13: warning: ‘sys_rt_sigqueueinfo_impl’ 在此处定义 [-Wunused-function]
+ 2088 | static long sys_rt_sigqueueinfo_impl(long pid, long sig, long info, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2082:13: warning: ‘sys_rt_sigtimedwait_impl’ 在此处定义 [-Wunused-function]
+ 2082 | static long sys_rt_sigtimedwait_impl(long set, long info, long timeout, long sigsetsize, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2074:13: warning: ‘sys_rt_sigpending_impl’ 在此处定义 [-Wunused-function]
+ 2074 | static long sys_rt_sigpending_impl(long set, long sigsetsize, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2065:13: warning: ‘sys_capset_impl’ 在此处定义 [-Wunused-function]
+ 2065 | static long sys_capset_impl(long header, long data, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2059:13: warning: ‘sys_capget_impl’ 在此处定义 [-Wunused-function]
+ 2059 | static long sys_capget_impl(long header, long dataptr, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2049:13: warning: ‘sys_setfsgid_impl’ 在此处定义 [-Wunused-function]
+ 2049 | static long sys_setfsgid_impl(long gid, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2040:13: warning: ‘sys_setfsuid_impl’ 在此处定义 [-Wunused-function]
+ 2040 | static long sys_setfsuid_impl(long uid, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2029:13: warning: ‘sys_getresgid_impl’ 在此处定义 [-Wunused-function]
+ 2029 | static long sys_getresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2020:13: warning: ‘sys_setresgid_impl’ 在此处定义 [-Wunused-function]
+ 2020 | static long sys_setresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2010:13: warning: ‘sys_getresuid_impl’ 在此处定义 [-Wunused-function]
+ 2010 | static long sys_getresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2001:13: warning: ‘sys_setresuid_impl’ 在此处定义 [-Wunused-function]
+ 2001 | static long sys_setresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1992:13: warning: ‘sys_setgroups_impl’ 在此处定义 [-Wunused-function]
+ 1992 | static long sys_setgroups_impl(long size, long list, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1986:13: warning: ‘sys_getgroups_impl’ 在此处定义 [-Wunused-function]
+ 1986 | static long sys_getgroups_impl(long size, long list, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1979:13: warning: ‘sys_lstat_impl’ 在此处定义 [-Wunused-function]
+ 1979 | static long sys_lstat_impl(long pathname, long statbuf, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1954:13: warning: ‘sys_umount2_impl’ 在此处定义 [-Wunused-function]
+ 1954 | static long sys_umount2_impl(long name, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1945:13: warning: ‘sys_mount_impl’ 在此处定义 [-Wunused-function]
+ 1945 | static long sys_mount_impl(long dev_name, long dir_name, long type, long flags, long data, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1937:13: warning: ‘sys_setrlimit_impl’ 在此处定义 [-Wunused-function]
+ 1937 | static long sys_setrlimit_impl(long resource, long rlim, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1920:13: warning: ‘sys_waitid_impl’ 在此处定义 [-Wunused-function]
+ 1920 | static long sys_waitid_impl(long idtype, long id, long infop, long options, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1893:13: warning: ‘sys_accept4_impl’ 在此处定义 [-Wunused-function]
+ 1893 | static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1886:13: warning: ‘sys_dup3_impl’ 在此处定义 [-Wunused-function]
+ 1886 | static long sys_dup3_impl(long oldfd, long newfd, long flags, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1879:13: warning: ‘sys_pipe2_impl’ 在此处定义 [-Wunused-function]
+ 1879 | static long sys_pipe2_impl(long pipefd, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1857:13: warning: ‘sys_writev_impl’ 在此处定义 [-Wunused-function]
+ 1857 | static long sys_writev_impl(long fd, long iov, long iovcnt, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1836:13: warning: ‘sys_readv_impl’ 在此处定义 [-Wunused-function]
+ 1836 | static long sys_readv_impl(long fd, long iov, long iovcnt, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1828:13: warning: ‘sys_inotify_rm_watch_impl’ 在此处定义 [-Wunused-function]
+ 1828 | static long sys_inotify_rm_watch_impl(long fd, long wd, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1820:13: warning: ‘sys_inotify_add_watch_impl’ 在此处定义 [-Wunused-function]
+ 1820 | static long sys_inotify_add_watch_impl(long fd, long pathname, long mask, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1813:13: warning: ‘sys_inotify_init1_impl’ 在此处定义 [-Wunused-function]
+ 1813 | static long sys_inotify_init1_impl(long flags, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1806:13: warning: ‘sys_inotify_init_impl’ 在此处定义 [-Wunused-function]
+ 1806 | static long sys_inotify_init_impl(long a1, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1798:13: warning: ‘sys_eventfd_impl’ 在此处定义 [-Wunused-function]
+ 1798 | static long sys_eventfd_impl(long initval, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1791:13: warning: ‘sys_eventfd2_impl’ 在此处定义 [-Wunused-function]
+ 1791 | static long sys_eventfd2_impl(long initval, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1782:13: warning: ‘sys_timerfd_gettime_impl’ 在此处定义 [-Wunused-function]
+ 1782 | static long sys_timerfd_gettime_impl(long fd, long curr_value, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1772:13: warning: ‘sys_timerfd_settime_impl’ 在此处定义 [-Wunused-function]
+ 1772 | static long sys_timerfd_settime_impl(long fd, long flags, long new_value, long old_value, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1765:13: warning: ‘sys_timerfd_create_impl’ 在此处定义 [-Wunused-function]
+ 1765 | static long sys_timerfd_create_impl(long clockid, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1756:13: warning: ‘sys_signalfd_impl’ 在此处定义 [-Wunused-function]
+ 1756 | static long sys_signalfd_impl(long fd, long mask, long masksize, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1748:13: warning: ‘sys_signalfd4_impl’ 在此处定义 [-Wunused-function]
+ 1748 | static long sys_signalfd4_impl(long fd, long mask, long masksize, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1740:13: warning: ‘sys_pselect6_impl’ 在此处定义 [-Wunused-function]
+ 1740 | static long sys_pselect6_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long sigmask)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1732:13: warning: ‘sys_ppoll_impl’ 在此处定义 [-Wunused-function]
+ 1732 | static long sys_ppoll_impl(long fds, long nfds, long timeout, long sigmask, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1724:13: warning: ‘sys_select_impl’ 在此处定义 [-Wunused-function]
+ 1724 | static long sys_select_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1716:13: warning: ‘sys_poll_impl’ 在此处定义 [-Wunused-function]
+ 1716 | static long sys_poll_impl(long fds, long nfds, long timeout, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1706:13: warning: ‘sys_epoll_pwait_impl’ 在此处定义 [-Wunused-function]
+ 1706 | static long sys_epoll_pwait_impl(long epfd, long events, long maxevents, long timeout, long sigmask, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1698:13: warning: ‘sys_epoll_wait_impl’ 在此处定义 [-Wunused-function]
+ 1698 | static long sys_epoll_wait_impl(long epfd, long events, long maxevents, long timeout, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1690:13: warning: ‘sys_epoll_ctl_impl’ 在此处定义 [-Wunused-function]
+ 1690 | static long sys_epoll_ctl_impl(long epfd, long op, long fd, long event, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1683:13: warning: ‘sys_epoll_create1_impl’ 在此处定义 [-Wunused-function]
+ 1683 | static long sys_epoll_create1_impl(long flags, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1676:13: warning: ‘sys_epoll_create_impl’ 在此处定义 [-Wunused-function]
+ 1676 | static long sys_epoll_create_impl(long size, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:181:13: warning: ‘sys_nosys’ 在此处定义 [-Wunused-function]
+  181 | static long sys_nosys(long a1, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~
+<3> Building kernel/api/kapi_sort.c
+kernel/api/kapi_string.c: 在函数‘kapi_vsnprintf’中:
+kernel/api/kapi_string.c:78:35: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+   78 |                     buffer[i++] = '0' + (n % 10);
+      |                                   ^~~
+kernel/api/kapi_sort.c: 在函数‘kapi_list_sort’中:
+kernel/api/kapi_sort.c:116:27: warning: 未使用的参数‘priv’ [-Wunused-parameter]
+  116 | void kapi_list_sort(void* priv, void* head, int (*cmp)(void* priv, void* a, void* b))
+      |                     ~~~~~~^~~~
+<2> Building kernel/api/kapi_socket.c
+<1> Building kernel/api/kapi_smp.c
+<3> Building kernel/api/kapi_skbuff.c
+<1> Building kernel/api/kapi_seq_file.c
+<3> Building kernel/api/kapi_security.c
+<1> Building kernel/api/kapi_sched.c
+<2> Building kernel/api/kapi_rcu.c
+<1> Building kernel/api/kapi_rbtree.c
+<2> Building kernel/api/kapi_random.c
+<1> Building kernel/api/kapi_raid.c
+<2> Building kernel/api/kapi_process.c
+kernel/api/kapi_process.c: 在函数‘kapi_proc_create’中:
+kernel/api/kapi_process.c:58:26: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+   58 |     process_create(name, (void*)entry, kernel_prio);
+      |                          ^
+kernel/api/kapi_process.c:43:76: warning: 未使用的参数‘arg’ [-Wunused-parameter]
+   43 | kapi_proc_t kapi_proc_create(const char* name, void (*entry)(void*), void* arg, int prio)
+      |                                                                      ~~~~~~^~~
+kernel/api/kapi_process.c: 在函数‘kapi_proc_kill’中:
+kernel/api/kapi_process.c:77:42: warning: 未使用的参数‘force’ [-Wunused-parameter]
+   77 | int kapi_proc_kill(kapi_proc_t proc, int force)
+      |                                      ~~~~^~~~~
+kernel/api/kapi_process.c: 在函数‘kapi_proc_kill_by_pid’中:
+kernel/api/kapi_process.c:92:40: warning: 未使用的参数‘force’ [-Wunused-parameter]
+   92 | int kapi_proc_kill_by_pid(int pid, int force)
+      |                                    ~~~~^~~~~
+kernel/api/kapi_process.c: 在函数‘kapi_thread_create’中:
+kernel/api/kapi_process.c:214:29: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+  214 |     int tid = thread_create((void*)entry, arg);
+      |                             ^
+kernel/api/kapi_process.c: 在函数‘kapi_ipc_recv’中:
+kernel/api/kapi_process.c:249:52: warning: 未使用的参数‘timeout_ms’ [-Wunused-parameter]
+  249 | int kapi_ipc_recv(void* msg, size_t size, uint64_t timeout_ms)
+      |                                           ~~~~~~~~~^~~~~~~~~~
+<0> Building kernel/api/kapi_pci.c
+<3> Building kernel/api/kapi_params.c
+kernel/api/kapi_pci.c: 在函数‘kapi_pci_disable_device’中:
+kernel/api/kapi_pci.c:104:12: warning: unsigned conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} changes the value of ‘-8’ [-Wsign-conversion]
+  104 |     cmd &= ~(KAPI_PCI_COMMAND_IO | KAPI_PCI_COMMAND_MEMORY | KAPI_PCI_COMMAND_MASTER);
+      |            ^
+kernel/api/kapi_pci.c: 在函数‘kapi_pci_get_device_info’中:
+kernel/api/kapi_pci.c:182:13: warning: 由于数据类型范围限制，比较结果永远为假 [-Wtype-limits]
+  182 |     if (bus >= KAPI_PCI_MAX_BUSES || dev >= KAPI_PCI_MAX_DEVICES || func >= KAPI_PCI_MAX_FUNCTIONS) {
+      |             ^~
+<2> Building kernel/api/kapi_notifier.c
+<1> Building kernel/api/kapi_netstat.c
+<0> Building kernel/api/kapi_netlink.c
+kernel/api/kapi_netstat.c: 在函数‘kapi_netstat_list_ifaces’中:
+kernel/api/kapi_netstat.c:59:66: warning: 未使用的参数‘max’ [-Wunused-parameter]
+   59 | int kapi_netstat_list_ifaces(kapi_netstat_iface_t *out, uint32_t max,
+      |                                                         ~~~~~~~~~^~~
+kernel/api/kapi_netstat.c: 在文件作用域：
+kernel/api/kapi_netstat.c:20:30: warning: ‘netstat_find_iface’ 在此处定义 [-Wunused-function]
+   20 | static kapi_netstat_iface_t *netstat_find_iface(const char *name)
+      |                              ^~~~~~~~~~~~~~~~~~
+<2> Building kernel/api/kapi_netdevice.c
+kernel/api/kapi_netlink.c: 在函数‘nl_align’中:
+kernel/api/kapi_netlink.c:29:45: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-4’ to ‘4294967292’ [-Wsign-conversion]
+   29 |     return (value + KAPI_NLMSG_ALIGNTO - 1) & ~(KAPI_NLMSG_ALIGNTO - 1);
+      |                                             ^
+<1> Building kernel/api/kapi_namespace.c
+kernel/api/kapi_netdevice.c: 在函数‘kapi_netdev_down’中:
+kernel/api/kapi_netdevice.c:134:16: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-2’ to ‘4294967294’ [-Wsign-conversion]
+  134 |     dev->flags &= ~KAPI_NETDEV_UP;
+      |                ^~
+kernel/api/kapi_netdevice.c: 在函数‘kapi_netdev_set_promiscuous’中:
+kernel/api/kapi_netdevice.c:185:21: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-33’ to ‘4294967263’ [-Wsign-conversion]
+  185 |     else dev->flags &= ~KAPI_NETDEV_PROMISC;
+      |                     ^~
+<3> Building kernel/api/kapi_mutex.c
+<0> Building kernel/api/kapi_module.c
+<3> Building kernel/api/kapi_mempool.c
+<1> Building kernel/api/kapi_memory.c
+<0> Building kernel/api/kapi_lvm.c
+<2> Building kernel/api/kapi_list.c
+<2> Building kernel/api/kapi_kthread.c
+<3> Building kernel/api/kapi_kprobe.c
+<1> Building kernel/api/kapi_kobject.c
+<2> Building kernel/api/kapi_kfifo.c
+<0> Building kernel/api/kapi_irq.c
+<1> Building kernel/api/kapi_iommu.c
+<3> Building kernel/api/kapi_io.c
+<0> Building kernel/api/kapi_init.c
+<2> Building kernel/api/kapi_idr.c
+kernel/api/kapi_iommu.c: 在函数‘kapi_iommu_group_remove_device’中:
+kernel/api/kapi_iommu.c:86:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint32_t’ {或称 ‘unsigned int’} [-Wsign-compare]
+   86 |     for (int i = 0; i < group->num_devices; i++) {
+      |                       ^
+kernel/api/kapi_init.c:34:12: error: conflicting types for ‘kapi_logging_init’; have ‘int(const struct kapi_logger_config *)’
+   34 | extern int kapi_logging_init(const struct kapi_logger_config* config);
+      |            ^~~~~~~~~~~~~~~~~
+In file included from include/kapi_trace.h:6,
+                 from include/kapi.h:75,
+                 from kernel/api/kapi_init.c:1:
+include/kapi_logging.h:92:5: note: previous declaration of ‘kapi_logging_init’ with type ‘int(const kapi_logger_config_t *)’
+   92 | int kapi_logging_init(const kapi_logger_config_t* config);
+      |     ^~~~~~~~~~~~~~~~~
+<0> Building kernel/api/kapi_hash.c
+kernel/api/kapi_idr.c: 在函数‘kapi_idr_alloc’中:
+kernel/api/kapi_idr.c:41:28: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   41 |             idr->bitmap[id / (sizeof(unsigned long) * 8)] |= (1UL << (id % (sizeof(unsigned long) * 8)));
+      |                            ^
+kernel/api/kapi_idr.c:41:74: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   41 |             idr->bitmap[id / (sizeof(unsigned long) * 8)] |= (1UL << (id % (sizeof(unsigned long) * 8)));
+      |                                                                          ^
+kernel/api/kapi_idr.c: 在函数‘kapi_idr_free’中:
+kernel/api/kapi_idr.c:57:20: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   57 |     idr->bitmap[id / (sizeof(unsigned long) * 8)] &= ~(1UL << (id % (sizeof(unsigned long) * 8)));
+      |                    ^
+kernel/api/kapi_idr.c:57:67: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   57 |     idr->bitmap[id / (sizeof(unsigned long) * 8)] &= ~(1UL << (id % (sizeof(unsigned long) * 8)));
+      |                                                                   ^
+kernel/api/kapi_idr.c: 在函数‘kapi_idr_alloc_fixed’中:
+kernel/api/kapi_idr.c:80:20: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   80 |     idr->bitmap[id / (sizeof(unsigned long) * 8)] |= (1UL << (id % (sizeof(unsigned long) * 8)));
+      |                    ^
+kernel/api/kapi_idr.c:80:66: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   80 |     idr->bitmap[id / (sizeof(unsigned long) * 8)] |= (1UL << (id % (sizeof(unsigned long) * 8)));
+      |                                                                  ^
+In file included from kernel/api/kapi_hash.c:1:
+kernel/api/kapi_hash.c: 在函数‘kapi_hash_resize’中:
+include/kapi_hash.h:107:38: warning: ISO C 不允许在表达式中使用花括号组 [-Wpedantic]
+  107 |     for (pos = (head)->first; pos && ({ n = pos->next; 1; }); pos = n)
+      |                                      ^
+kernel/api/kapi_hash.c:185:9: note: in expansion of macro ‘kapi_hlist_for_each_safe’
+  185 |         kapi_hlist_for_each_safe(pos, n, &ht->buckets[i]) {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+FAILED TASK run all: 

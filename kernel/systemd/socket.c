@@ -220,7 +220,7 @@ int socket_start(systemd_socket_t* socket)
         sprintf(msg, "Listening on socket %s", socket->socket_path);
         journal_log(socket->base.name, msg, LOG_INFO);
         
-        socket->accept_thread_id = thread_create(socket_accept_thread, socket);
+        socket->accept_thread_id = thread_create((void*)(unsigned long)socket_accept_thread, socket);
         if (socket->accept_thread_id < 0) {
             char msg[256];
             sprintf(msg, "Failed to create accept thread for %s", socket->base.name);

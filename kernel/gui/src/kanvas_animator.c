@@ -27,7 +27,7 @@ float kanvas_ease_linear(float t)
 float kanvas_ease_spring(float t)
 {
     float c = 2.5f;
-    return 1.0f - kapi_cosf(c * t * 3.14159265f) * (1.0f - t);
+    return 1.0f - __builtin_cosf(c * t * 3.14159265f) * (1.0f - t);
 }
 
 float kanvas_ease_bounce(float t)

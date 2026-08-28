@@ -1,0 +1,24 @@
+-- Start building task run all -- (142227253)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<1> Building kernel/arch/x86_64/syscall_entry_trampoline.s
+kernel/arch/x86_64/syscall_entry_trampoline.s:1: error: instruction expected, found `.section .text'
+-- Enter folder kernel/lib/libc --
+kernel/arch/x86_64/syscall_entry_trampoline.s:2: error: instruction expected, found `.global syscall_entry_trampoline'
+<0> Building kernel/lib/libc/math_stubs.c
+-- Enter folder kernel/kernel --
+<3> Building kernel/kernel/system_init.c
+kernel/lib/libc/math_stubs.c: 在函数‘cosf’中:
+kernel/lib/libc/math_stubs.c:3:18: warning: 未使用的参数‘x’ [-Wunused-parameter]
+    3 | float cosf(float x)
+      |            ~~~~~~^
+kernel/lib/libc/math_stubs.c: 在函数‘sinf’中:
+kernel/lib/libc/math_stubs.c:8:18: warning: 未使用的参数‘x’ [-Wunused-parameter]
+    8 | float sinf(float x)
+      |            ~~~~~~^
+kernel/lib/libc/math_stubs.c: 在函数‘sqrtf’中:
+kernel/lib/libc/math_stubs.c:13:19: warning: 未使用的参数‘x’ [-Wunused-parameter]
+   13 | float sqrtf(float x)
+      |             ~~~~~~^
+FAILED TASK run all: 

@@ -12,12 +12,12 @@ static uint32_t kui_col32_inline(kui_color_t c)
 kanvas_window_t* kanvas_window_create(const char* title, int x, int y, int w, int h,
                                        bool resizable, bool decorated)
 {
-    kanvas_window_t* win = (kanvas_window_t*)kapi_kmalloc(sizeof(kanvas_window_t));
+    kanvas_window_t* win = (kanvas_window_t*)kapi_malloc(sizeof(kanvas_window_t));
     if (!win) return NULL;
     memset(win, 0, sizeof(kanvas_window_t));
     win->id = next_win_id++;
     if (title) {
-        size_t len = kapi_strlen(title);
+        size_t len = strlen(title);
         if (len >= 256) len = 255;
         memcpy(win->title, title, len);
         win->title[len] = '\0';
@@ -58,12 +58,12 @@ kanvas_window_t* kanvas_window_create(const char* title, int x, int y, int w, in
     win->prev = NULL;
     win->parent = NULL;
     size_t buf_sz = (size_t)w * h * 4;
-    win->back_buffer = (uint32_t*)kapi_kmalloc(buf_sz);
-    win->front_buffer = (uint32_t*)kapi_kmalloc(buf_sz);
+    win->back_buffer = (uint32_t*)kapi_malloc(buf_sz);
+    win->front_buffer = (uint32_t*)kapi_malloc(buf_sz);
     if (!win->back_buffer || !win->front_buffer) {
-        if (win->back_buffer) kapi_kfree(win->back_buffer);
-        if (win->front_buffer) kapi_kfree(win->front_buffer);
-        kapi_kfree(win);
+        if (win->back_buffer) kapi_free(win->back_buffer);
+        if (win->front_buffer) kapi_free(win->front_buffer);
+        kapi_free(win);
         return NULL;
     }
     memset(win->back_buffer, 0, buf_sz);
@@ -74,9 +74,9 @@ kanvas_window_t* kanvas_window_create(const char* title, int x, int y, int w, in
 void kanvas_window_destroy(kanvas_window_t* win)
 {
     if (!win) return;
-    if (win->back_buffer) kapi_kfree(win->back_buffer);
-    if (win->front_buffer) kapi_kfree(win->front_buffer);
-    kapi_kfree(win);
+    if (win->back_buffer) kapi_free(win->back_buffer);
+    if (win->front_buffer) kapi_free(win->front_buffer);
+    kapi_free(win);
 }
 
 static void fill_rect(uint32_t* fb, int stride, int fw, int fh, int x, int y, int w, int h, uint32_t color)
@@ -107,7 +107,7 @@ static void fill_rounded_rect(uint32_t* fb, int stride, int fw, int fh, int x, i
     fill_rect(fb, stride, fw, fh, x, y + r, r, h - 2 * r, color);
     fill_rect(fb, stride, fw, fh, x + w - r, y + r, r, h - 2 * r, color);
     for (int dy = 0; dy < r; dy++) {
-        int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+        int dx = (int)__builtin_sqrtf((float)(r * r - dy * dy));
         int cx1 = x + r - dx, cx2 = x + w - r + dx;
         int ry1 = y + r - dy - 1, ry2 = y - r + h + dy;
         fill_rect(fb, stride, fw, fh, cx1, ry1, cx2 - cx1, 1, color);
@@ -288,7 +288,7 @@ void kanvas_window_close(kanvas_window_t* win)
 void kanvas_window_set_title(kanvas_window_t* win, const char* title)
 {
     if (!win || !title) return;
-    size_t len = kapi_strlen(title);
+    size_t len = strlen(title);
     if (len >= 256) len = 255;
     memcpy(win->title, title, len);
     win->title[len] = '\0';

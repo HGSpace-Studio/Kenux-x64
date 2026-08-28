@@ -115,7 +115,7 @@ CFLAGS_KERNEL = [
     "-DKAL_KERNEL",
 ]
 INCLUDES = [
-    "-Iinclude", "-Ikernel/include", "-Ikernel/kernel",
+    "-Iinclude", "-Ikernel", "-Ikernel/include", "-Ikernel/kernel",
     "-Ikernel/arch/x86_64/include", "-Ikernel/lib/libc/include",
     "-Ikernel/systemd/include", "-Iapps/container-os/include",
     "-Ikernel/gui/include", "-Ikernel/compat", "-Ikal/include",
@@ -381,6 +381,7 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
         CC, "-m64", "-T", relative(LINKER_SCRIPT),
         "-nostdlib", "-nodefaultlibs", "-nostartfiles",
         "-Wl,-e,_start", "-no-pie",
+        "-Wl,--allow-multiple-definition",
     ]
     if sys.platform.startswith('win'):
         link_command.append("-Wl,--image-base=0x0")

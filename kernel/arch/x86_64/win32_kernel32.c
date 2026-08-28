@@ -205,55 +205,9 @@ static int env_find(const char* name) {
     return -1;
 }
 
-uint32_t GetTickCount(void) {
-    uint64_t jiffies;
-    uint64_t result;
-    jiffies = timer_get_jiffies();
-    if (jiffies == 0) {
-        return 0;
-    }
-    result = (jiffies / (uint64_t)HZ) * 1000ULL;
-    if (result > 0xFFFFFFFFULL) {
-        return 0xFFFFFFFFU;
-    }
-    return (uint32_t)result;
-}
 
-uint64_t GetTickCount64(void) {
-    uint64_t jiffies;
-    jiffies = timer_get_jiffies();
-    if (jiffies == 0) {
-        return 0;
-    }
-    return (jiffies / (uint64_t)HZ) * 1000ULL;
-}
 
-void Sleep(uint32_t dwMilliseconds) {
-    uint64_t total_ticks;
-    uint64_t start;
-    uint64_t current;
-    uint32_t lo;
-    uint32_t hi;
 
-    total_ticks = (uint64_t)dwMilliseconds * 2000000ULL;
-
-    __asm__ volatile("lfence;rdtsc":"=a"(lo),"=d"(hi)::"memory");
-    start = ((uint64_t)hi << 32) | (uint64_t)lo;
-
-    do {
-        __asm__ volatile("lfence;rdtsc":"=a"(lo),"=d"(hi)::"memory");
-        current = ((uint64_t)hi << 32) | (uint64_t)lo;
-    } while ((current - start) < total_ticks);
-}
-
-BOOL GetSystemTimeAsFileTime(uint64_t* lpSystemTimeAsFileTime) {
-    if (lpSystemTimeAsFileTime == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
-    *lpSystemTimeAsFileTime = 0ULL;
-    return TRUE;
-}
 
 HANDLE CreateThread(void* lpThreadAttributes, uint64_t dwStackSize,
                     uint32_t (*lpStartAddress)(void*), void* lpParameter,
@@ -341,14 +295,6 @@ BOOL CloseHandle(HANDLE hObject) {
     return TRUE;
 }
 
-uint32_t WaitForSingleObject(HANDLE hHandle, uint32_t dwMilliseconds) {
-    (void)dwMilliseconds;
-    if (hHandle == NULL || hHandle == INVALID_HANDLE_VALUE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return WAIT_FAILED;
-    }
-    return WAIT_OBJECT_0;
-}
 
 uint32_t GetCurrentProcessId(void) {
     return 1;
@@ -731,35 +677,6 @@ BOOL SetEndOfFile(HANDLE hFile) {
     return TRUE;
 }
 
-BOOL GetFileSizeEx(HANDLE hFile, int64_t* lpFileSize) {
-    uint32_t idx;
-    win32_file_t* f;
-
-    if (hFile == INVALID_HANDLE_VALUE || lpFileSize == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
-
-    idx = handle_to_idx(hFile);
-    if (idx == WIN32_INVALID_HANDLE_IDX) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    if (g_handle_table[idx].type != HANDLE_TYPE_FILE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    f = (win32_file_t*)g_handle_table[idx].data;
-
-    if (f == NULL || f->node == NULL) {
-        *lpFileSize = 0;
-    } else {
-        *lpFileSize = (int64_t)f->node->size;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
 DWORD GetFileSize(HANDLE hFile, DWORD* lpFileSizeHigh) {
     int fd;
@@ -788,173 +705,11 @@ DWORD GetFileSize(HANDLE hFile, DWORD* lpFileSizeHigh) {
     return 0;
 }
 
-BOOL DeleteFileA(const char* lpFileName) {
-    char unix_path[FS_MAX_NAME];
-    int result;
 
-    if (lpFileName == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
 
-    win32_path_to_unix(lpFileName, unix_path, sizeof(unix_path));
 
-    result = vfs_unlink(unix_path);
-    if (result != 0) {
-        SetLastError(ERROR_FILE_NOT_FOUND);
-        return FALSE;
-    }
 
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
-BOOL MoveFileA(const char* lpExistingFileName, const char* lpNewFileName) {
-    char unix_src[FS_MAX_NAME];
-    char unix_dst[FS_MAX_NAME];
-    int result;
-
-    if (lpExistingFileName == NULL || lpNewFileName == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
-
-    win32_path_to_unix(lpExistingFileName, unix_src, sizeof(unix_src));
-    win32_path_to_unix(lpNewFileName, unix_dst, sizeof(unix_dst));
-
-    result = vfs_rename(unix_src, unix_dst);
-    if (result != 0) {
-        SetLastError(ERROR_FILE_NOT_FOUND);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-BOOL CreateDirectoryA(const char* lpPathName, void* lpSecurityAttributes) {
-    char unix_path[FS_MAX_NAME];
-    int result;
-
-    (void)lpSecurityAttributes;
-
-    if (lpPathName == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
-
-    win32_path_to_unix(lpPathName, unix_path, sizeof(unix_path));
-
-    result = vfs_mkdir(unix_path, 0755);
-    if (result != 0) {
-        SetLastError(ERROR_ACCESS_DENIED);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-BOOL RemoveDirectoryA(const char* lpPathName) {
-    char unix_path[FS_MAX_NAME];
-    int result;
-
-    if (lpPathName == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
-
-    win32_path_to_unix(lpPathName, unix_path, sizeof(unix_path));
-
-    result = vfs_rmdir(unix_path);
-    if (result != 0) {
-        SetLastError(ERROR_PATH_NOT_FOUND);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-DWORD GetEnvironmentVariableA(const char* lpName, char* lpBuffer, DWORD nSize) {
-    int idx;
-    uint32_t i;
-    env_init_defaults();
-
-    if (lpName == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return 0;
-    }
-
-    idx = env_find(lpName);
-    if (idx < 0) {
-        SetLastError(ERROR_ENVVAR_NOT_FOUND);
-        return 0;
-    }
-
-    if (lpBuffer == NULL || nSize == 0) {
-        return (DWORD)strlen(g_env_table[idx].value);
-    }
-
-    if (nSize <= (DWORD)strlen(g_env_table[idx].value)) {
-        SetLastError(ERROR_BUFFER_OVERFLOW);
-        return 0;
-    }
-
-    strncpy(lpBuffer, g_env_table[idx].value, nSize - 1);
-    lpBuffer[nSize - 1] = '\0';
-    SetLastError(ERROR_SUCCESS);
-    return (DWORD)strlen(lpBuffer);
-}
-
-BOOL SetEnvironmentVariableA(const char* lpName, const char* lpValue) {
-    int idx;
-
-    if (lpName == NULL) {
-        SetLastError(ERROR_INVALID_PARAMETER);
-        return FALSE;
-    }
-
-    idx = env_find(lpName);
-    if (idx >= 0) {
-        if (lpValue != NULL) {
-            strncpy(g_env_table[idx].value, lpValue, sizeof(g_env_table[idx].value) - 1);
-            g_env_table[idx].value[sizeof(g_env_table[idx].value) - 1] = '\0';
-        }
-    } else {
-        if (g_env_count >= ENV_MAX_ENTRIES) {
-            SetLastError(ERROR_ENVVAR_NOT_FOUND);
-            return FALSE;
-        }
-        if (lpValue == NULL) {
-            return TRUE;
-        }
-        strncpy(g_env_table[g_env_count].name, lpName, sizeof(g_env_table[g_env_count].name) - 1);
-        g_env_table[g_env_count].name[sizeof(g_env_table[g_env_count].name) - 1] = '\0';
-        strncpy(g_env_table[g_env_count].value, lpValue, sizeof(g_env_table[g_env_count].value) - 1);
-        g_env_table[g_env_count].value[sizeof(g_env_table[g_env_count].value) - 1] = '\0';
-        g_env_count++;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-HANDLE GetCurrentProcess(void) {
-    return (HANDLE)(uintptr_t)0xFFFFFFFFFFFFFFFFULL;
-}
-
-HANDLE GetCurrentThread(void) {
-    return (HANDLE)(uintptr_t)0xFFFFFFFFFFFFFFFEULL;
-}
-
-DWORD GetCurrentProcessId(void) {
-    return (DWORD)1;
-}
-
-DWORD GetCurrentThreadId(void) {
-    return (DWORD)1;
-}
 
 BOOL SetThreadPriorityBoost(HANDLE hThread, BOOL bDisablePriorityBoost) {
     (void)hThread;
@@ -1076,13 +831,7 @@ BOOL ResetEvent(HANDLE hEvent) {
     return TRUE;
 }
 
-DWORD GetLastError(void) {
-    return g_last_error;
-}
 
-void SetLastError(DWORD dwErrCode) {
-    g_last_error = dwErrCode;
-}
 
 void GetLocalTime(void* lpSystemTime) {
     (void)lpSystemTime;
@@ -1132,56 +881,10 @@ DWORD FormatMessageA(DWORD dwFlags, const void* lpSource,
     return (DWORD)strlen(lpBuffer);
 }
 
-HMODULE GetModuleHandleA(const char* lpModuleName) {
-    (void)lpModuleName;
-    return (HMODULE)1;
-}
 
-DWORD GetModuleFileNameA(HMODULE hModule, char* lpFilename, DWORD nSize) {
-    (void)hModule;
-    if (lpFilename == NULL || nSize == 0) {
-        return 0;
-    }
-    if (nSize > 0) {
-        lpFilename[0] = '\0';
-    }
-    return 0;
-}
 
-FARPROC GetProcAddress(HMODULE hModule, const char* lpProcName) {
-    (void)hModule;
-    (void)lpProcName;
-    return NULL;
-}
 
-BOOL FlushFileBuffers(HANDLE hFile) {
-    uint32_t idx;
 
-    if (hFile == INVALID_HANDLE_VALUE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    idx = handle_to_idx(hFile);
-    if (idx == WIN32_INVALID_HANDLE_IDX) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    if (g_handle_table[idx].type != HANDLE_TYPE_FILE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-BOOL FlushViewOfFile(const void* lpBaseAddress, DWORD dwNumberOfBytesToFlush) {
-    (void)lpBaseAddress;
-    (void)dwNumberOfBytesToFlush;
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
 DWORD GetFileType(HANDLE hFile) {
     uint32_t idx;
@@ -1270,144 +973,13 @@ BOOL SetFilePointerEx(HANDLE hFile, int64_t liDistanceToMove,
     return TRUE;
 }
 
-BOOL SetFileAttributesA(const char* lpFileName, DWORD dwFileAttributes) {
-    (void)lpFileName;
-    (void)dwFileAttributes;
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
-DWORD GetFileAttributesA(const char* lpFileName) {
-    (void)lpFileName;
-    SetLastError(ERROR_SUCCESS);
-    return FILE_ATTRIBUTE_NORMAL;
-}
 
-BOOL GetFileTime(HANDLE hFile, uint64_t* lpCreationTime,
-                 uint64_t* lpLastAccessTime, uint64_t* lpLastWriteTime) {
-    uint32_t idx;
 
-    if (hFile == INVALID_HANDLE_VALUE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
 
-    idx = handle_to_idx(hFile);
-    if (idx == WIN32_INVALID_HANDLE_IDX) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    if (g_handle_table[idx].type != HANDLE_TYPE_FILE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
 
-    if (lpCreationTime != NULL) *lpCreationTime = 0;
-    if (lpLastAccessTime != NULL) *lpLastAccessTime = 0;
-    if (lpLastWriteTime != NULL) *lpLastWriteTime = 0;
 
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
-BOOL SetFileTime(HANDLE hFile, const uint64_t* lpCreationTime,
-                 const uint64_t* lpLastAccessTime, const uint64_t* lpLastWriteTime) {
-    uint32_t idx;
-
-    (void)lpCreationTime;
-    (void)lpLastAccessTime;
-    (void)lpLastWriteTime;
-
-    if (hFile == INVALID_HANDLE_VALUE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    idx = handle_to_idx(hFile);
-    if (idx == WIN32_INVALID_HANDLE_IDX) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    if (g_handle_table[idx].type != HANDLE_TYPE_FILE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-BOOL LockFile(HANDLE hFile, DWORD dwFileOffsetLow, DWORD dwFileOffsetHigh,
-              DWORD nNumberOfBytesToLockLow, DWORD nNumberOfBytesToLockHigh) {
-    uint32_t idx;
-
-    (void)dwFileOffsetLow;
-    (void)dwFileOffsetHigh;
-    (void)nNumberOfBytesToLockLow;
-    (void)nNumberOfBytesToLockHigh;
-
-    if (hFile == INVALID_HANDLE_VALUE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    idx = handle_to_idx(hFile);
-    if (idx == WIN32_INVALID_HANDLE_IDX) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    if (g_handle_table[idx].type != HANDLE_TYPE_FILE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-BOOL UnlockFile(HANDLE hFile, DWORD dwFileOffsetLow, DWORD dwFileOffsetHigh,
-                DWORD nNumberOfBytesToUnlockLow, DWORD nNumberOfBytesToUnlockHigh) {
-    uint32_t idx;
-
-    (void)dwFileOffsetLow;
-    (void)dwFileOffsetHigh;
-    (void)nNumberOfBytesToUnlockLow;
-    (void)nNumberOfBytesToUnlockHigh;
-
-    if (hFile == INVALID_HANDLE_VALUE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    idx = handle_to_idx(hFile);
-    if (idx == WIN32_INVALID_HANDLE_IDX) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-    if (g_handle_table[idx].type != HANDLE_TYPE_FILE) {
-        SetLastError(ERROR_INVALID_HANDLE);
-        return FALSE;
-    }
-
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
-
-BOOL LockFileEx(HANDLE hFile, DWORD dwFlags, DWORD dwReserved,
-                DWORD nNumberOfBytesToLockLow, DWORD nNumberOfBytesToLockHigh,
-                void* lpOverlapped) {
-    (void)dwFlags;
-    (void)dwReserved;
-    return LockFile(hFile, 0, 0, nNumberOfBytesToLockLow, nNumberOfBytesToLockHigh);
-}
-
-BOOL UnlockFileEx(HANDLE hFile, DWORD dwReserved,
-                  DWORD nNumberOfBytesToUnlockLow, DWORD nNumberOfBytesToUnlockHigh,
-                  void* lpOverlapped) {
-    (void)dwReserved;
-    (void)lpOverlapped;
-    return UnlockFile(hFile, 0, 0, nNumberOfBytesToUnlockLow, nNumberOfBytesToUnlockHigh);
-}
 
 BOOL GetOverlappedResult(HANDLE hFile, void* lpOverlapped,
                         DWORD* lpNumberOfBytesTransferred, BOOL bWait) {
@@ -1421,225 +993,29 @@ BOOL GetOverlappedResult(HANDLE hFile, void* lpOverlapped,
     return TRUE;
 }
 
-HANDLE CreateFileMappingA(HANDLE hFile, void* lpAttributes,
-                          DWORD flProtect, DWORD dwMaximumSizeHigh,
-                          DWORD dwMaximumSizeLow, const char* lpName) {
-    (void)hFile;
-    (void)lpAttributes;
-    (void)flProtect;
-    (void)dwMaximumSizeHigh;
-    (void)dwMaximumSizeLow;
-    (void)lpName;
-    SetLastError(ERROR_SUCCESS);
-    return NULL;
-}
 
-void* MapViewOfFile(HANDLE hFileMappingObject, DWORD dwDesiredAccess,
-                    DWORD dwFileOffsetHigh, DWORD dwFileOffsetLow,
-                    SIZE_T dwNumberOfBytesToMap) {
-    (void)hFileMappingObject;
-    (void)dwDesiredAccess;
-    (void)dwFileOffsetHigh;
-    (void)dwFileOffsetLow;
-    (void)dwNumberOfBytesToMap;
-    SetLastError(ERROR_SUCCESS);
-    return NULL;
-}
 
-BOOL UnmapViewOfFile(const void* lpBaseAddress) {
-    (void)lpBaseAddress;
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
-void* VirtualAlloc(void* lpAddress, SIZE_T dwSize, DWORD flAllocationType,
-                   DWORD flProtect) {
-    (void)lpAddress;
-    (void)flProtect;
 
-    if (dwSize == 0) {
-        return NULL;
-    }
 
-    if ((flAllocationType & MEM_COMMIT) == 0) {
-        flAllocationType = MEM_COMMIT;
-    }
 
-    return memory_alloc((uint64_t)dwSize);
-}
 
-BOOL VirtualFree(void* lpAddress, SIZE_T dwSize, DWORD dwFreeType) {
-    (void)dwSize;
 
-    if (lpAddress == NULL) {
-        SetLastError(ERROR_INVALID_ADDRESS);
-        return FALSE;
-    }
 
-    if ((dwFreeType & MEM_RELEASE) != 0) {
-        memory_free(lpAddress);
-    }
 
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
-BOOL VirtualProtect(void* lpAddress, SIZE_T dwSize, DWORD flNewProtect,
-                    DWORD* lpflOldProtect) {
-    (void)lpAddress;
-    (void)dwSize;
-    (void)flNewProtect;
-    if (lpflOldProtect != NULL) {
-        *lpflOldProtect = PAGE_READWRITE;
-    }
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
-SIZE_T VirtualQuery(void* lpAddress, void* lpBuffer, SIZE_T dwLength) {
-    (void)lpAddress;
-    (void)lpBuffer;
-    return dwLength;
-}
 
-BOOL VirtualQueryEx(HANDLE hProcess, void* lpAddress,
-                    void* lpBuffer, SIZE_T dwLength) {
-    (void)hProcess;
-    return VirtualQuery(lpAddress, lpBuffer, dwLength);
-}
 
-HGLOBAL GlobalAlloc(UINT uFlags, SIZE_T dwBytes) {
-    void* p;
 
-    if (dwBytes == 0) {
-        return NULL;
-    }
 
-    p = memory_alloc((uint64_t)dwBytes);
-    if (p == NULL) {
-        return NULL;
-    }
 
-    if ((uFlags & GMEM_ZEROINIT) != 0) {
-        memset(p, 0, (size_t)dwBytes);
-    }
 
-    return (HGLOBAL)p;
-}
 
-HGLOBAL GlobalFree(HGLOBAL hMem) {
-    if (hMem == NULL) {
-        return NULL;
-    }
-    memory_free((void*)hMem);
-    return NULL;
-}
 
-void* GlobalLock(HGLOBAL hMem) {
-    (void)hMem;
-    return (void*)hMem;
-}
 
-BOOL GlobalUnlock(HGLOBAL hMem) {
-    (void)hMem;
-    return TRUE;
-}
 
-SIZE_T GlobalSize(HGLOBAL hMem) {
-    (void)hMem;
-    return 0;
-}
 
-HLOCAL LocalAlloc(UINT uFlags, SIZE_T dwBytes) {
-    return GlobalAlloc(uFlags, dwBytes);
-}
-
-HLOCAL LocalFree(HLOCAL hMem) {
-    return GlobalFree((HGLOBAL)hMem);
-}
-
-void* LocalLock(HLOCAL hMem) {
-    return GlobalLock((HGLOBAL)hMem);
-}
-
-BOOL LocalUnlock(HLOCAL hMem) {
-    return GlobalUnlock((HGLOBAL)hMem);
-}
-
-SIZE_T LocalSize(HLOCAL hMem) {
-    return GlobalSize((HGLOBAL)hMem);
-}
-
-DWORD GetTickCount(void) {
-    uint64_t jiffies;
-    uint64_t result;
-    jiffies = timer_get_jiffies();
-    if (jiffies == 0) {
-        return 0;
-    }
-    result = (jiffies / (uint64_t)HZ) * 1000ULL;
-    if (result > 0xFFFFFFFFULL) {
-        return 0xFFFFFFFFU;
-    }
-    return (DWORD)result;
-}
-
-ULONGLONG GetTickCount64(void) {
-    uint64_t jiffies;
-    jiffies = timer_get_jiffies();
-    if (jiffies == 0) {
-        return 0;
-    }
-    return (jiffies / (uint64_t)HZ) * 1000ULL;
-}
-
-void Sleep(DWORD dwMilliseconds) {
-    uint64_t total_ticks;
-    uint64_t start;
-    uint64_t current;
-    uint32_t lo;
-    uint32_t hi;
-
-    if (dwMilliseconds == 0) {
-        return;
-    }
-
-    total_ticks = (uint64_t)dwMilliseconds * 2000000ULL;
-
-    __asm__ volatile("lfence;rdtsc":"=a"(lo),"=d"(hi)::"memory");
-    start = ((uint64_t)hi << 32) | (uint64_t)lo;
-
-    do {
-        __asm__ volatile("lfence;rdtsc":"=a"(lo),"=d"(hi)::"memory");
-        current = ((uint64_t)hi << 32) | (uint64_t)lo;
-    } while ((current - start) < total_ticks);
-}
-
-void SleepEx(DWORD dwMilliseconds, BOOL bAlertable) {
-    (void)bAlertable;
-    Sleep(dwMilliseconds);
-}
-
-BOOL QueryPerformanceCounter(int64_t* lpPerformanceCount) {
-    uint32_t lo;
-    uint32_t hi;
-
-    if (lpPerformanceCount == NULL) {
-        return FALSE;
-    }
-
-    __asm__ volatile("rdtsc":"=a"(lo),"=d"(hi));
-    *lpPerformanceCount = ((int64_t)hi << 32) | (int64_t)lo;
-    return TRUE;
-}
-
-BOOL QueryPerformanceFrequency(int64_t* lpFrequency) {
-    if (lpFrequency == NULL) {
-        return FALSE;
-    }
-    *lpFrequency = 2000000000LL;
-    return TRUE;
-}
 
 BOOL GetSystemTimeAsFileTime(uint64_t* lpSystemTimeAsFileTime) {
     if (lpSystemTimeAsFileTime == NULL) {
@@ -1781,45 +1157,6 @@ BOOL SetNamedPipeHandleState(HANDLE hNamedPipe, DWORD* lpMode,
     return TRUE;
 }
 
-DWORD GetFullPathNameA(const char* lpFileName, DWORD nBufferLength,
-                       char* lpBuffer, char** lpFilePart) {
-    DWORD len;
-
-    if (lpFileName == NULL) {
-        return 0;
-    }
-
-    len = (DWORD)strlen(lpFileName);
-
-    if (lpBuffer == NULL || nBufferLength == 0) {
-        return len + 1;
-    }
-
-    if (nBufferLength <= len) {
-        return len + 1;
-    }
-
-    strncpy(lpBuffer, lpFileName, nBufferLength - 1);
-    lpBuffer[nBufferLength - 1] = '\0';
-
-    if (lpFilePart != NULL) {
-        char* last_slash = strrchr(lpBuffer, '\\');
-        char* last_forward = strrchr(lpBuffer, '/');
-        char* last = NULL;
-
-        if (last_slash != NULL && last_forward != NULL) {
-            last = (last_slash > last_forward) ? last_slash : last_forward;
-        } else if (last_slash != NULL) {
-            last = last_slash;
-        } else if (last_forward != NULL) {
-            last = last_forward;
-        }
-
-        *lpFilePart = last ? last + 1 : lpBuffer;
-    }
-
-    return (DWORD)strlen(lpBuffer);
-}
 
 DWORD GetFullPathNameW(const WCHAR* lpFileName, DWORD nBufferLength,
                        WCHAR* lpBuffer, WCHAR** lpFilePart) {
@@ -1894,9 +1231,6 @@ const char* GetEnvNameByIndex(int idx) {
 void** __imp_GetModuleHandleA = NULL;
 void** __imp_GetProcAddress = NULL;
 void** __imp_LoadLibraryA = NULL;
-    SetLastError(ERROR_SUCCESS);
-    return TRUE;
-}
 
 BOOL FlushFileBuffers(HANDLE hFile) {
     (void)hFile;
@@ -2209,6 +1543,7 @@ typedef struct {
 } proc_entry_t;
 
 extern uint32_t GetModuleFileNameA(HMODULE hModule, char* lpFilename, uint32_t nSize);
+extern BOOL SetVolumeLabelA(const char* lpRootPathName, const char* lpVolumeName);
 
 static const proc_entry_t g_kernel32_procs[] = {
     { "GetTickCount", (FARPROC)GetTickCount },
@@ -4236,7 +3571,8 @@ typedef struct _MEMORY_BASIC_INFORMATION {
 } MEMORY_BASIC_INFORMATION;
 
 SIZE_T VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress,
-                      MEMORY_BASIC_INFORMATION* lpBuffer, SIZE_T dwLength) {
+                      void* lpBuffer, SIZE_T dwLength) {
+    MEMORY_BASIC_INFORMATION* mbi = (MEMORY_BASIC_INFORMATION*)lpBuffer;
     (void)hProcess;
     (void)lpAddress;
 
@@ -4245,11 +3581,11 @@ SIZE_T VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress,
         return 0;
     }
 
-    memset(lpBuffer, 0, sizeof(MEMORY_BASIC_INFORMATION));
-    lpBuffer->RegionSize = 4096;
-    lpBuffer->State = MEM_COMMIT;
-    lpBuffer->Protect = PAGE_READWRITE;
-    lpBuffer->Type = MEM_PRIVATE;
+    memset(mbi, 0, sizeof(MEMORY_BASIC_INFORMATION));
+    mbi->RegionSize = 4096;
+    mbi->State = MEM_COMMIT;
+    mbi->Protect = PAGE_READWRITE;
+    mbi->Type = MEM_PRIVATE;
 
     SetLastError(ERROR_SUCCESS);
     return sizeof(MEMORY_BASIC_INFORMATION);

@@ -78,41 +78,9 @@ typedef struct {
     int hovered_index;
 } kanvas_context_menu_t;
 
-typedef struct {
-    bool visible;
-    int x, y;
-    kanvas_app_entry_t* pinned[KANVAS_DESKTOP_MAX_TASKBAR];
-    kanvas_app_entry_t* running[KANVAS_DESKTOP_MAX_TASKBAR];
-    int pinned_count;
-    int running_count;
-    int hovered_index;
-    bool start_hovered;
-} kanvas_taskbar_t;
-
-typedef struct {
-    bool visible;
-    int x, y;
-    char search_text[128];
-    int cursor_pos;
-    kanvas_app_entry_t* results[32];
-    int result_count;
-    int selected_index;
-    kanvas_app_entry_t* all_apps[KANVAS_DESKTOP_MAX_ICONS];
-    int all_app_count;
-} kanvas_start_menu_t;
-
-typedef struct {
-    char name[32];
-    uint32_t icon_data[32*32];
-    bool has_notification;
-    void (*on_click)(void);
-} kanvas_tray_item_t;
-
-typedef struct {
-    kanvas_tray_item_t items[KANVAS_DESKTOP_MAX_TRAY];
-    int count;
-    int hovered_index;
-} kanvas_system_tray_t;
+typedef struct kanvas_taskbar_s kanvas_taskbar_t;
+typedef struct kanvas_start_menu_s kanvas_start_menu_t;
+typedef struct kanvas_system_tray_s kanvas_system_tray_t;
 
 typedef struct {
     char name[64];
@@ -163,10 +131,10 @@ typedef struct {
     kanvas_desktop_theme_t theme;
     kanvas_desktop_icon_t icons[KANVAS_DESKTOP_MAX_ICONS];
     int icon_count;
-    kanvas_taskbar_t taskbar;
-    kanvas_start_menu_t start_menu;
+    kanvas_taskbar_t* taskbar;
+    kanvas_start_menu_t* start_menu;
     kanvas_context_menu_t context_menu;
-    kanvas_system_tray_t tray;
+    kanvas_system_tray_t* tray;
     kui_window_t* windows[KANVAS_DESKTOP_MAX_WINDOWS];
     int window_count;
     kui_window_t* active_window;

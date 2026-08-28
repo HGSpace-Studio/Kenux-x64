@@ -1,0 +1,1255 @@
+-- Start building task run all -- (829898597)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/api --
+<1> Building kernel/api/kapi_syscall.c
+<2> Building kernel/api/kapi_raid.c
+<0> Building kernel/api/kapi_process.c
+<3> Building kernel/api/kapi_params.c
+In file included from kernel/api/kapi_syscall.c:3:
+include/kapi_syscall.h: 在函数‘sys_read’中:
+include/kapi_syscall.h:494:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                      ^
+include/kapi_syscall.h:494:49: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  494 | { return kapi_syscall3(SYS_read, fd, (long)buf, count); }
+      |                                                 ^~~~~
+include/kapi_syscall.h: 在函数‘sys_write’中:
+include/kapi_syscall.h:497:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                       ^
+include/kapi_syscall.h:497:50: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  497 | { return kapi_syscall3(SYS_write, fd, (long)buf, count); }
+      |                                                  ^~~~~
+include/kapi_syscall.h: 在函数‘sys_open’中:
+include/kapi_syscall.h:500:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  500 | { return kapi_syscall3(SYS_open, (long)pathname, flags, mode); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_mmap’中:
+include/kapi_syscall.h:509:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                  ^
+include/kapi_syscall.h:509:46: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  509 | { return kapi_syscall6(SYS_mmap, (long)addr, length, prot, flags, fd, offset); }
+      |                                              ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_munmap’中:
+include/kapi_syscall.h:512:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                    ^
+include/kapi_syscall.h:512:48: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  512 | { return kapi_syscall2(SYS_munmap, (long)addr, length); }
+      |                                                ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_mprotect’中:
+include/kapi_syscall.h:515:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                      ^
+include/kapi_syscall.h:515:50: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  515 | { return kapi_syscall3(SYS_mprotect, (long)addr, len, prot); }
+      |                                                  ^~~
+include/kapi_syscall.h: 在函数‘sys_brk’中:
+include/kapi_syscall.h:518:33: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  518 | { return kapi_syscall1(SYS_brk, (long)addr); }
+      |                                 ^
+include/kapi_syscall.h: 在函数‘sys_clone’中:
+include/kapi_syscall.h:527:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                          ^
+include/kapi_syscall.h:527:55: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                       ^
+include/kapi_syscall.h:527:67: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                   ^
+include/kapi_syscall.h:527:35: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                   ^~~~~
+include/kapi_syscall.h:527:79: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  527 | { return kapi_syscall5(SYS_clone, flags, (long)stack, (long)ptid, (long)ctid, tls); }
+      |                                                                               ^~~
+include/kapi_syscall.h: 在函数‘sys_execve’中:
+include/kapi_syscall.h:530:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                    ^
+include/kapi_syscall.h:530:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                    ^
+include/kapi_syscall.h:530:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  530 | { return kapi_syscall3(SYS_execve, (long)filename, (long)argv, (long)envp); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_wait4’中:
+include/kapi_syscall.h:539:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                        ^
+include/kapi_syscall.h:539:64: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  539 | { return kapi_syscall4(SYS_wait4, pid, (long)wstatus, options, (long)rusage); }
+      |                                                                ^
+include/kapi_syscall.h: 在函数‘sys_stat’中:
+include/kapi_syscall.h:554:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                  ^
+include/kapi_syscall.h:554:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  554 | { return kapi_syscall2(SYS_stat, (long)pathname, (long)statbuf); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_fstat’中:
+include/kapi_syscall.h:557:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  557 | { return kapi_syscall2(SYS_fstat, fd, (long)statbuf); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_lstat’中:
+include/kapi_syscall.h:560:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                   ^
+include/kapi_syscall.h:560:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  560 | { return kapi_syscall2(SYS_lstat, (long)pathname, (long)statbuf); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_access’中:
+include/kapi_syscall.h:563:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  563 | { return kapi_syscall2(SYS_access, (long)pathname, mode); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_chdir’中:
+include/kapi_syscall.h:566:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  566 | { return kapi_syscall1(SYS_chdir, (long)path); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_getcwd’中:
+include/kapi_syscall.h:569:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                    ^
+include/kapi_syscall.h:569:47: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  569 | { return kapi_syscall2(SYS_getcwd, (long)buf, size); }
+      |                                               ^~~~
+include/kapi_syscall.h: 在函数‘sys_mkdir’中:
+include/kapi_syscall.h:572:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  572 | { return kapi_syscall2(SYS_mkdir, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_rmdir’中:
+include/kapi_syscall.h:575:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  575 | { return kapi_syscall1(SYS_rmdir, (long)pathname); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_unlink’中:
+include/kapi_syscall.h:578:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  578 | { return kapi_syscall1(SYS_unlink, (long)pathname); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_rename’中:
+include/kapi_syscall.h:581:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                    ^
+include/kapi_syscall.h:581:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  581 | { return kapi_syscall2(SYS_rename, (long)oldpath, (long)newpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_creat’中:
+include/kapi_syscall.h:584:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  584 | { return kapi_syscall2(SYS_creat, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_link’中:
+include/kapi_syscall.h:587:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                  ^
+include/kapi_syscall.h:587:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  587 | { return kapi_syscall2(SYS_link, (long)oldpath, (long)newpath); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_symlink’中:
+include/kapi_syscall.h:590:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                     ^
+include/kapi_syscall.h:590:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  590 | { return kapi_syscall2(SYS_symlink, (long)target, (long)linkpath); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_readlink’中:
+include/kapi_syscall.h:593:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                      ^
+include/kapi_syscall.h:593:54: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                      ^
+include/kapi_syscall.h:593:65: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  593 | { return kapi_syscall3(SYS_readlink, (long)pathname, (long)buf, bufsiz); }
+      |                                                                 ^~~~~~
+include/kapi_syscall.h: 在函数‘sys_chmod’中:
+include/kapi_syscall.h:596:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  596 | { return kapi_syscall2(SYS_chmod, (long)pathname, mode); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_chown’中:
+include/kapi_syscall.h:599:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  599 | { return kapi_syscall3(SYS_chown, (long)pathname, owner, group); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_truncate’中:
+include/kapi_syscall.h:602:38: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  602 | { return kapi_syscall2(SYS_truncate, (long)path, length); }
+      |                                      ^
+include/kapi_syscall.h: 在函数‘sys_pipe’中:
+include/kapi_syscall.h:626:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  626 | { return kapi_syscall1(SYS_pipe, (long)pipefd); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_pipe2’中:
+include/kapi_syscall.h:629:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  629 | { return kapi_syscall2(SYS_pipe2, (long)pipefd, flags); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_mount’中:
+include/kapi_syscall.h:634:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                   ^
+include/kapi_syscall.h:634:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                 ^
+include/kapi_syscall.h:634:63: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                               ^
+include/kapi_syscall.h:634:97: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                                 ^
+include/kapi_syscall.h:634:85: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  634 | { return kapi_syscall5(SYS_mount, (long)source, (long)target, (long)filesystemtype, mountflags, (long)data); }
+      |                                                                                     ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_umount2’中:
+include/kapi_syscall.h:637:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  637 | { return kapi_syscall2(SYS_umount2, (long)target, flags); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_swapon’中:
+include/kapi_syscall.h:640:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  640 | { return kapi_syscall2(SYS_swapon, (long)path, swapflags); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_swapoff’中:
+include/kapi_syscall.h:643:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  643 | { return kapi_syscall1(SYS_swapoff, (long)path); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_nanosleep’中:
+include/kapi_syscall.h:646:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                       ^
+include/kapi_syscall.h:646:50: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  646 | { return kapi_syscall2(SYS_nanosleep, (long)req, (long)rem); }
+      |                                                  ^
+include/kapi_syscall.h: 在函数‘sys_gettimeofday’中:
+include/kapi_syscall.h:649:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:649:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  649 | { return kapi_syscall2(SYS_gettimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_settimeofday’中:
+include/kapi_syscall.h:652:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                          ^
+include/kapi_syscall.h:652:52: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  652 | { return kapi_syscall2(SYS_settimeofday, (long)tv, (long)tz); }
+      |                                                    ^
+include/kapi_syscall.h: 在函数‘sys_time’中:
+include/kapi_syscall.h:655:34: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  655 | { return kapi_syscall1(SYS_time, (long)tloc); }
+      |                                  ^
+include/kapi_syscall.h: 在函数‘sys_clock_gettime’中:
+include/kapi_syscall.h:658:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  658 | { return kapi_syscall2(SYS_clock_gettime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_settime’中:
+include/kapi_syscall.h:661:51: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  661 | { return kapi_syscall2(SYS_clock_settime, clk_id, (long)tp); }
+      |                                                   ^
+include/kapi_syscall.h: 在函数‘sys_clock_nanosleep’中:
+include/kapi_syscall.h:664:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                            ^
+include/kapi_syscall.h:664:71: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  664 | { return kapi_syscall4(SYS_clock_nanosleep, clk_id, flags, (long)req, (long)rem); }
+      |                                                                       ^
+include/kapi_syscall.h: 在函数‘sys_rt_sigaction’中:
+include/kapi_syscall.h:667:47: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                               ^
+include/kapi_syscall.h:667:58: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                          ^
+include/kapi_syscall.h:667:70: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  667 | { return kapi_syscall4(SYS_rt_sigaction, sig, (long)act, (long)oact, sigsetsize); }
+      |                                                                      ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_rt_sigprocmask’中:
+include/kapi_syscall.h:670:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                 ^
+include/kapi_syscall.h:670:60: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                            ^
+include/kapi_syscall.h:670:74: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  670 | { return kapi_syscall4(SYS_rt_sigprocmask, how, (long)set, (long)oldset, sigsetsize); }
+      |                                                                          ^~~~~~~~~~
+include/kapi_syscall.h: 在函数‘sys_ioctl’中:
+include/kapi_syscall.h:679:39: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  679 | { return kapi_syscall3(SYS_ioctl, fd, request, arg); }
+      |                                       ^~~~~~~
+include/kapi_syscall.h: 在函数‘sys_pread64’中:
+include/kapi_syscall.h:682:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                         ^
+include/kapi_syscall.h:682:52: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  682 | { return kapi_syscall4(SYS_pread64, fd, (long)buf, count, offset); }
+      |                                                    ^~~~~
+include/kapi_syscall.h: 在函数‘sys_pwrite64’中:
+include/kapi_syscall.h:685:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                          ^
+include/kapi_syscall.h:685:53: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  685 | { return kapi_syscall4(SYS_pwrite64, fd, (long)buf, count, offset); }
+      |                                                     ^~~~~
+include/kapi_syscall.h: 在函数‘sys_readv’中:
+include/kapi_syscall.h:688:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  688 | { return kapi_syscall3(SYS_readv, fd, (long)iov, iovcnt); }
+      |                                       ^
+include/kapi_syscall.h: 在函数‘sys_writev’中:
+include/kapi_syscall.h:691:40: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  691 | { return kapi_syscall3(SYS_writev, fd, (long)iov, iovcnt); }
+      |                                        ^
+include/kapi_syscall.h: 在函数‘sys_getdents’中:
+include/kapi_syscall.h:694:42: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                          ^
+include/kapi_syscall.h:694:54: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  694 | { return kapi_syscall3(SYS_getdents, fd, (long)dirp, count); }
+      |                                                      ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getdents64’中:
+include/kapi_syscall.h:697:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                            ^
+include/kapi_syscall.h:697:56: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  697 | { return kapi_syscall3(SYS_getdents64, fd, (long)dirp, count); }
+      |                                                        ^~~~~
+include/kapi_syscall.h: 在函数‘sys_getgroups’中:
+include/kapi_syscall.h:718:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  718 | { return kapi_syscall2(SYS_getgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_setgroups’中:
+include/kapi_syscall.h:721:45: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  721 | { return kapi_syscall2(SYS_setgroups, size, (long)list); }
+      |                                             ^
+include/kapi_syscall.h: 在函数‘sys_uname’中:
+include/kapi_syscall.h:724:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  724 | { return kapi_syscall1(SYS_uname, (long)buf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_sysinfo’中:
+include/kapi_syscall.h:727:37: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  727 | { return kapi_syscall1(SYS_sysinfo, (long)info); }
+      |                                     ^
+include/kapi_syscall.h: 在函数‘sys_getrlimit’中:
+include/kapi_syscall.h:730:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  730 | { return kapi_syscall2(SYS_getrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_setrlimit’中:
+include/kapi_syscall.h:733:49: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  733 | { return kapi_syscall2(SYS_setrlimit, resource, (long)rlim); }
+      |                                                 ^
+include/kapi_syscall.h: 在函数‘sys_getrusage’中:
+include/kapi_syscall.h:736:44: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  736 | { return kapi_syscall2(SYS_getrusage, who, (long)usage); }
+      |                                            ^
+include/kapi_syscall.h: 在函数‘sys_times’中:
+include/kapi_syscall.h:739:35: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  739 | { return kapi_syscall1(SYS_times, (long)tbuf); }
+      |                                   ^
+include/kapi_syscall.h: 在函数‘sys_reboot’中:
+include/kapi_syscall.h:754:57: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  754 | { return kapi_syscall4(SYS_reboot, magic1, magic2, cmd, (long)arg); }
+      |                                                         ^
+include/kapi_syscall.h: 在函数‘sys_chroot’中:
+include/kapi_syscall.h:757:36: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  757 | { return kapi_syscall1(SYS_chroot, (long)path); }
+      |                                    ^
+include/kapi_syscall.h: 在函数‘sys_sethostname’中:
+include/kapi_syscall.h:760:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  760 | { return kapi_syscall2(SYS_sethostname, (long)name, len); }
+      |                                         ^
+include/kapi_syscall.h: 在函数‘sys_setdomainname’中:
+include/kapi_syscall.h:763:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  763 | { return kapi_syscall2(SYS_setdomainname, (long)name, len); }
+      |                                           ^
+include/kapi_syscall.h: 在函数‘sys_init_module’中:
+include/kapi_syscall.h:766:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                         ^
+include/kapi_syscall.h:766:66: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                                  ^
+include/kapi_syscall.h:766:61: warning: ‘long int’转换自‘long unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  766 | { return kapi_syscall3(SYS_init_module, (long)module_image, len, (long)param_values); }
+      |                                                             ^~~
+include/kapi_syscall.h: 在函数‘sys_delete_module’中:
+include/kapi_syscall.h:769:43: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                           ^
+include/kapi_syscall.h:769:55: warning: ‘long int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+  769 | { return kapi_syscall2(SYS_delete_module, (long)name, flags); }
+      |                                                       ^~~~~
+include/kapi_syscall.h: 在函数‘sys_finit_module’中:
+include/kapi_syscall.h:772:46: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  772 | { return kapi_syscall3(SYS_finit_module, fd, (long)param_values, flags); }
+      |                                              ^
+In file included from kernel/api/kapi_process.c:3:
+include/kapi_process.h:203:96: error: 未知的类型名‘off_t’
+  203 | void* kapi_proc_mmap(kapi_proc_t proc, void* addr, size_t length, int prot, int flags, int fd, off_t offset);
+      |                                                                                                ^~~~~
+kernel/api/kapi_process.c: 在函数‘kapi_proc_create’中:
+kernel/api/kapi_process.c:58:26: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+   58 |     process_create(name, (void*)entry, kernel_prio);
+      |                          ^
+kernel/api/kapi_process.c:43:76: warning: 未使用的参数‘arg’ [-Wunused-parameter]
+   43 | kapi_proc_t kapi_proc_create(const char* name, void (*entry)(void*), void* arg, int prio)
+      |                                                                      ~~~~~~^~~
+kernel/api/kapi_process.c: 在函数‘kapi_proc_kill’中:
+kernel/api/kapi_process.c:77:42: warning: 未使用的参数‘force’ [-Wunused-parameter]
+   77 | int kapi_proc_kill(kapi_proc_t proc, int force)
+      |                                      ~~~~^~~~~
+kernel/api/kapi_process.c: 在函数‘kapi_proc_kill_by_pid’中:
+kernel/api/kapi_process.c:92:40: warning: 未使用的参数‘force’ [-Wunused-parameter]
+   92 | int kapi_proc_kill_by_pid(int pid, int force)
+      |                                    ~~~~^~~~~
+kernel/api/kapi_process.c: 在函数‘kapi_thread_create’中:
+kernel/api/kapi_process.c:214:29: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+  214 |     int tid = thread_create((void*)entry, arg);
+      |                             ^
+kernel/api/kapi_process.c: 在函数‘kapi_ipc_recv’中:
+kernel/api/kapi_process.c:249:52: warning: 未使用的参数‘timeout_ms’ [-Wunused-parameter]
+  249 | int kapi_ipc_recv(void* msg, size_t size, uint64_t timeout_ms)
+      |                                           ~~~~~~~~~^~~~~~~~~~
+kernel/api/kapi_raid.c: 在函数‘kapi_raid_assemble’中:
+kernel/api/kapi_raid.c:101:12: error: ‘KAPI_RAID_ENOTSUP’ undeclared (first use in this function); did you mean ‘KAPI_RAID_ENOSPC’?
+  101 |     return KAPI_RAID_ENOTSUP;
+      |            ^~~~~~~~~~~~~~~~~
+      |            KAPI_RAID_ENOSPC
+kernel/api/kapi_raid.c:101:12: note: 每个未声明的标识符在其出现的函数内只报告一次
+kernel/api/kapi_raid.c: 在函数‘kapi_raid_list_arrays’中:
+kernel/api/kapi_raid.c:231:28: error: 隐式声明函数‘snprintf’ [-Wimplicit-function-declaration]
+  231 |             off += (size_t)snprintf(buf + off, len - off, "%s ",
+      |                            ^~~~~~~~
+kernel/api/kapi_raid.c:12:1: note: ‘snprintf’ is defined in header ‘<stdio.h>’; this is probably fixable by adding ‘#include <stdio.h>’
+   11 | #include <string.h>
+  +++ |+#include <stdio.h>
+   12 | 
+<0> Building kernel/api/kapi_notifier.c
+In file included from kernel/api/kapi_syscall.c:14:
+/usr/x86_64-w64-mingw32/include/sys/types.h: 在文件作用域：
+/usr/x86_64-w64-mingw32/include/sys/types.h:45:24: error: conflicting types for ‘ino_t’; have ‘short unsigned int’
+   45 | typedef unsigned short ino_t;
+      |                        ^~~~~
+In file included from kernel/arch/x86_64/include/arch/bpf.h:4,
+                 from include/kapi_ebpf.h:7,
+                 from include/kapi.h:67,
+                 from kernel/api/kapi_syscall.c:4:
+kernel/arch/x86_64/include/arch/types.h:24:18: note: previous declaration of ‘ino_t’ with type ‘ino_t’ {或称 ‘long long unsigned int’}
+   24 | typedef uint64_t ino_t;
+      |                  ^~~~~
+/usr/x86_64-w64-mingw32/include/sys/types.h:53:22: error: conflicting types for ‘dev_t’; have ‘unsigned int’
+   53 | typedef unsigned int dev_t;
+      |                      ^~~~~
+kernel/arch/x86_64/include/arch/types.h:23:18: note: previous declaration of ‘dev_t’ with type ‘dev_t’ {或称 ‘long long unsigned int’}
+   23 | typedef uint64_t dev_t;
+      |                  ^~~~~
+/usr/x86_64-w64-mingw32/include/sys/types.h:68:17: error: conflicting types for ‘pid_t’; have ‘_pid_t’ {或称 ‘long long int’}
+   68 | typedef _pid_t  pid_t;
+      |                 ^~~~~
+kernel/arch/x86_64/include/arch/types.h:18:17: note: previous declaration of ‘pid_t’ with type ‘pid_t’ {或称 ‘int’}
+   18 | typedef int32_t pid_t;
+      |                 ^~~~~
+/usr/x86_64-w64-mingw32/include/sys/types.h:77:17: error: conflicting types for ‘mode_t’; have ‘_mode_t’ {或称 ‘short unsigned int’}
+   77 | typedef _mode_t mode_t;
+      |                 ^~~~~~
+kernel/arch/x86_64/include/arch/types.h:22:18: note: previous declaration of ‘mode_t’ with type ‘mode_t’ {或称 ‘long long unsigned int’}
+   22 | typedef uint64_t mode_t;
+      |                  ^~~~~~
+In file included from /usr/x86_64-w64-mingw32/include/sys/types.h:81:
+/usr/x86_64-w64-mingw32/include/_mingw_off_t.h:26:17: error: conflicting types for ‘off_t’; have ‘off32_t’ {或称 ‘long int’}
+   26 | typedef off32_t off_t;
+      |                 ^~~~~
+kernel/arch/x86_64/include/arch/types.h:21:17: note: previous declaration of ‘off_t’ with type ‘off_t’ {或称 ‘long long int’}
+   21 | typedef int64_t off_t;
+      |                 ^~~~~
+/usr/x86_64-w64-mingw32/include/sys/types.h:84:22: error: conflicting types for ‘useconds_t’; have ‘unsigned int’
+   84 | typedef unsigned int useconds_t;
+      |                      ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/types.h:26:18: note: previous declaration of ‘useconds_t’ with type ‘useconds_t’ {或称 ‘long long unsigned int’}
+   26 | typedef uint64_t useconds_t;
+      |                  ^~~~~~~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_read_impl’中:
+kernel/api/kapi_syscall.c:209:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  209 |             ret = kapi_read(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                 ^
+kernel/api/kapi_syscall.c:215:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  215 |             ret = fifo_read(entry->obj.pipe, (void*)buf, (uint64_t)count);
+      |                                              ^
+kernel/api/kapi_syscall.c:223:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  223 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_write_impl’中:
+kernel/api/kapi_syscall.c:235:21: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  235 |         memcpy(tmp, (void*)buf, to_write);
+      |                     ^
+kernel/api/kapi_syscall.c:250:50: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  250 |             ret = kapi_write(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                  ^
+kernel/api/kapi_syscall.c:256:47: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  256 |             ret = fifo_write(entry->obj.pipe, (void*)buf, (uint64_t)count);
+      |                                               ^
+kernel/api/kapi_syscall.c:264:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  264 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_open_impl’中:
+kernel/api/kapi_syscall.c:282:37: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  282 |         kapi_dir_t d = kapi_opendir((const char*)pathname);
+      |                                     ^
+kernel/api/kapi_syscall.c:296:23: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  296 |     int f = kapi_open((const char*)pathname, kflags);
+      |                       ^
+kernel/api/kapi_syscall.c:298:24: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  298 |         f = kapi_creat((const char*)pathname, (mode_t)(mode & 07777));
+      |                        ^
+kernel/api/kapi_syscall.c: 在函数‘sys_close_impl’中:
+kernel/api/kapi_syscall.c:351:24: error: assignment to ‘int’ from ‘void *’ makes integer from pointer without a cast [-Wint-conversion]
+  351 |     entry->obj.file_fd = NULL;
+      |                        ^
+kernel/api/kapi_syscall.c: 在函数‘sys_stat_impl’中:
+kernel/api/kapi_syscall.c:363:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  363 |     int ret = kapi_stat((const char*)pathname, &kst);
+      |                         ^
+kernel/api/kapi_syscall.c:366:65: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  366 |     struct { uint64_t st_dev, st_ino; uint32_t st_mode; } *st = (void*)statbuf;
+      |                                                                 ^
+kernel/api/kapi_syscall.c: 在函数‘sys_fstat_impl’中:
+kernel/api/kapi_syscall.c:381:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  381 |     memset((void*)statbuf, 0, 128);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_lseek_impl’中:
+kernel/api/kapi_syscall.c:395:45: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+  395 |     return ret < 0 ? KENUX_ERR(KENUX_EBADF) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_rt_sigaction_impl’中:
+kernel/api/kapi_syscall.c:472:42: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  472 |     int ret = signal_sigaction((int)sig, (const k_sigaction_t*)act, (k_sigaction_t*)oact);
+      |                                          ^
+kernel/api/kapi_syscall.c:472:69: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  472 |     int ret = signal_sigaction((int)sig, (const k_sigaction_t*)act, (k_sigaction_t*)oact);
+      |                                                                     ^
+kernel/api/kapi_syscall.c: 在函数‘sys_rt_sigprocmask_impl’中:
+kernel/api/kapi_syscall.c:483:44: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  483 |     int ret = signal_sigprocmask((int)how, (const k_sigset_t*)set, (k_sigset_t*)oset);
+      |                                            ^
+kernel/api/kapi_syscall.c:483:68: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  483 |     int ret = signal_sigprocmask((int)how, (const k_sigset_t*)set, (k_sigset_t*)oset);
+      |                                                                    ^
+kernel/api/kapi_syscall.c: 在函数‘sys_access_impl’中:
+kernel/api/kapi_syscall.c:509:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  509 |     int ret = kapi_stat((const char*)pathname, &st);
+      |                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_pipe_impl’中:
+kernel/api/kapi_syscall.c:543:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  543 |     int* fds = (int*)pipefd;
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_nanosleep_impl’中:
+kernel/api/kapi_syscall.c:589:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  589 |     struct { long tv_sec; long tv_nsec; } *ts = (void*)req;
+      |                                                 ^
+kernel/api/kapi_syscall.c: 在函数‘sys_execve_impl’中:
+kernel/api/kapi_syscall.c:723:34: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  723 |     int ret = elf_load_from_file((const char*)filename, &info);
+      |                                  ^
+kernel/api/kapi_syscall.c:728:39: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  728 |         const char* dummy_argv[2] = { (const char*)filename, NULL };
+      |                                       ^
+kernel/api/kapi_syscall.c: 在函数‘sys_wait4_impl’中:
+kernel/api/kapi_syscall.c:753:10: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  753 |         *(int*)wstatus = status;
+      |          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_uname_impl’中:
+kernel/api/kapi_syscall.c:784:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  784 |     } *u = (void*)buf;
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getcwd_impl’中:
+kernel/api/kapi_syscall.c:826:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  826 |     char* ret = kapi_getcwd((char*)buf, (size_t)size);
+      |                             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chdir_impl’中:
+kernel/api/kapi_syscall.c:834:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  834 |     int ret = kapi_chdir((const char*)path);
+      |                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_rename_impl’中:
+kernel/api/kapi_syscall.c:842:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  842 |     int ret = kapi_rename((const char*)oldpath, (const char*)newpath);
+      |                           ^
+kernel/api/kapi_syscall.c:842:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  842 |     int ret = kapi_rename((const char*)oldpath, (const char*)newpath);
+      |                                                 ^
+kernel/api/kapi_syscall.c: 在函数‘sys_mkdir_impl’中:
+kernel/api/kapi_syscall.c:850:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  850 |     int ret = kapi_mkdir((const char*)pathname, (int)mode);
+      |                          ^
+kernel/api/kapi_syscall.c:850:49: warning: ‘mode_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  850 |     int ret = kapi_mkdir((const char*)pathname, (int)mode);
+      |                                                 ^~~~~~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_rmdir_impl’中:
+kernel/api/kapi_syscall.c:858:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  858 |     int ret = kapi_rmdir((const char*)pathname);
+      |                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_unlink_impl’中:
+kernel/api/kapi_syscall.c:879:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  879 |     int ret = kapi_unlink((const char*)pathname);
+      |                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chmod_impl’中:
+kernel/api/kapi_syscall.c:902:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  902 |     vfs_node_t* node = syscall_vfs_find_path((const char*)pathname);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chown_impl’中:
+kernel/api/kapi_syscall.c:913:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  913 |     vfs_node_t* node = syscall_vfs_find_path((const char*)pathname);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_gettimeofday_impl’中:
+kernel/api/kapi_syscall.c:936:52: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  936 |         struct { long tv_sec; long tv_usec; } *t = (void*)tv;
+      |                                                    ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getrlimit_impl’中:
+kernel/api/kapi_syscall.c:949:51: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  949 |     struct { long rlim_cur; long rlim_max; } *r = (void*)rlim;
+      |                                                   ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getrusage_impl’中:
+kernel/api/kapi_syscall.c:959:23: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  959 |     if (usage) memset((void*)usage, 0, 144);
+      |                       ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sysinfo_impl’中:
+kernel/api/kapi_syscall.c:982:13: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  982 |     } *si = (void*)info;
+      |             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_times_impl’中:
+kernel/api/kapi_syscall.c:998:22: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  998 |     if (tbuf) memset((void*)tbuf, 0, 32);
+      |                      ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getdents64_impl’中:
+kernel/api/kapi_syscall.c:1103:32: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1103 |     struct linux_dirent64* d = (struct linux_dirent64*)dirp;
+      |                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_clock_gettime_impl’中:
+kernel/api/kapi_syscall.c:1121:48: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1121 |     struct { long tv_sec; long tv_nsec; } *t = (void*)tp;
+      |                                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_chroot_impl’中:
+kernel/api/kapi_syscall.c:1172:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1172 |     vfs_node_t* node = syscall_vfs_find_path((const char*)path);
+      |                                              ^
+kernel/api/kapi_syscall.c:1176:41: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1176 |     strncpy(proc_root[current_process], (const char*)path, sizeof(proc_root[0]) - 1);
+      |                                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sethostname_impl’中:
+kernel/api/kapi_syscall.c:1189:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1189 |     memcpy(kenux_hostname, (const void*)name, (size_t)len);
+      |                            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_init_module_impl’中:
+kernel/api/kapi_syscall.c:1201:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1201 |     int ret = module_load((const void*)module_image, (uint64_t)len, "unknown");
+      |                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_delete_module_impl’中:
+kernel/api/kapi_syscall.c:1212:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1212 |     int ret = module_unload((const char*)name);
+      |                             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getrandom_impl’中:
+kernel/api/kapi_syscall.c:1248:18: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1248 |     uint8_t* p = (uint8_t*)buf;
+      |                  ^
+kernel/api/kapi_syscall.c: 在函数‘sys_kenux_info_impl’中:
+kernel/api/kapi_syscall.c:1270:15: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1270 |     } *info = (void*)buf;
+      |               ^
+kernel/api/kapi_syscall.c: 在函数‘sys_kenux_get_loadavg_impl’中:
+kernel/api/kapi_syscall.c:1306:15: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1306 |     long* l = (long*)loads;
+      |               ^
+kernel/api/kapi_syscall.c: 在函数‘sys_futex_impl’中:
+kernel/api/kapi_syscall.c:1322:53: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1322 |         struct { long tv_sec; long tv_nsec; } *ts = (void*)timeout;
+      |                                                     ^
+kernel/api/kapi_syscall.c:1330:34: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1330 |             int ret = futex_wait((void*)uaddr, (uint32_t)val, timeout_ms);
+      |                                  ^
+kernel/api/kapi_syscall.c:1334:34: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1334 |             int ret = futex_wake((void*)uaddr, (uint32_t)val);
+      |                                  ^
+kernel/api/kapi_syscall.c:1340:37: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1340 |             int ret = futex_requeue((void*)uaddr, (void*)uaddr2, (uint32_t)val);
+      |                                     ^
+kernel/api/kapi_syscall.c:1340:51: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1340 |             int ret = futex_requeue((void*)uaddr, (void*)uaddr2, (uint32_t)val);
+      |                                                   ^
+kernel/api/kapi_syscall.c:1315:47: warning: 未使用的参数‘val3’ [-Wunused-parameter]
+ 1315 |                             long uaddr2, long val3)
+      |                                          ~~~~~^~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_prctl_impl’中:
+kernel/api/kapi_syscall.c:1356:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1356 |                 strncpy((char*)arg2, processes[current_process].name, 15);
+      |                         ^
+kernel/api/kapi_syscall.c:1357:18: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1357 |                 ((char*)arg2)[15] = '\0';
+      |                  ^
+kernel/api/kapi_syscall.c:1363:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1363 |                 strncpy(processes[current_process].name, (const char*)arg2,
+      |                                                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_arch_prctl_impl’中:
+kernel/api/kapi_syscall.c:1400:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1400 |             *(uint64_t*)addr = current_process < PROCESS_MAX ?
+      |              ^
+kernel/api/kapi_syscall.c:1405:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1405 |             *(uint64_t*)addr = current_process < PROCESS_MAX ?
+      |              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_truncate_impl’中:
+kernel/api/kapi_syscall.c:1527:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1527 |     vfs_node_t* node = syscall_vfs_find_path((const char*)path);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_pread64_impl’中:
+kernel/api/kapi_syscall.c:1597:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1597 |     int64_t ret = kapi_read(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                 ^
+kernel/api/kapi_syscall.c:1599:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1599 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_pwrite64_impl’中:
+kernel/api/kapi_syscall.c:1611:50: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1611 |     int64_t ret = kapi_write(entry->obj.file_fd, (void*)buf, (size_t)count);
+      |                                                  ^
+kernel/api/kapi_syscall.c:1613:43: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1613 |     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_sendfile_impl’中:
+kernel/api/kapi_syscall.c:1629:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 1629 |         long r = sys_read_impl(in_fd, (long)buf, n, 0, 0, 0);
+      |                                       ^
+kernel/api/kapi_syscall.c:1631:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 1631 |         long w = sys_write_impl(out_fd, (long)buf, r, 0, 0, 0);
+      |                                         ^
+kernel/api/kapi_syscall.c:1634:22: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1634 |         if (offset) *(long*)offset += w;
+      |                      ^
+kernel/api/kapi_syscall.c: 在函数‘sys_time_impl’中:
+kernel/api/kapi_syscall.c:1644:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1644 |     if (tloc) *(long*)tloc = t;
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_set_tid_address_impl’中:
+kernel/api/kapi_syscall.c:1665:51: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1665 |         processes[current_process].kthread_data = (void*)tidptr;
+      |                                                   ^
+kernel/api/kapi_syscall.c: 在函数‘sys_epoll_ctl_impl’中:
+kernel/api/kapi_syscall.c:1695:59: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1695 |     int ret = kapi_epoll_ctl((int)epfd, (int)op, (int)fd, (kapi_epoll_event_t*)event);
+      |                                                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_epoll_wait_impl’中:
+kernel/api/kapi_syscall.c:1703:42: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1703 |     int ret = kapi_epoll_wait((int)epfd, (kapi_epoll_event_t*)events, (int)maxevents, (int)timeout);
+      |                                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_epoll_pwait_impl’中:
+kernel/api/kapi_syscall.c:1711:43: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1711 |     int ret = kapi_epoll_pwait((int)epfd, (kapi_epoll_event_t*)events, (int)maxevents,
+      |                                           ^
+kernel/api/kapi_syscall.c:1712:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1712 |                                (int)timeout, (const uint64_t*)sigmask);
+      |                                              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_poll_impl’中:
+kernel/api/kapi_syscall.c:1721:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1721 |     int ret = kapi_poll((kapi_pollfd_t*)fds, (uint32_t)nfds, (int)timeout);
+      |                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_select_impl’中:
+kernel/api/kapi_syscall.c:1728:40: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1728 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                        ^
+kernel/api/kapi_syscall.c:1728:65: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1728 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                                                 ^
+kernel/api/kapi_syscall.c:1729:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1729 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, NULL);
+      |                             ^
+kernel/api/kapi_syscall.c:1729:56: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1729 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, NULL);
+      |                                                        ^
+kernel/api/kapi_syscall.c: 在函数‘sys_ppoll_impl’中:
+kernel/api/kapi_syscall.c:1737:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1737 |     int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                          ^
+kernel/api/kapi_syscall.c:1737:63: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1737 |     int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                               ^
+kernel/api/kapi_syscall.c:1737:83: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1737 |     int ret = kapi_ppoll((kapi_pollfd_t*)fds, (uint32_t)nfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                                                   ^
+kernel/api/kapi_syscall.c: 在函数‘sys_pselect6_impl’中:
+kernel/api/kapi_syscall.c:1743:40: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1743 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                        ^
+kernel/api/kapi_syscall.c:1743:65: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1743 |     int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+      |                                                                 ^
+kernel/api/kapi_syscall.c:1744:29: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1744 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                             ^
+kernel/api/kapi_syscall.c:1744:56: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1744 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                        ^
+kernel/api/kapi_syscall.c:1744:76: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1744 |                             (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, (const uint64_t*)sigmask);
+      |                                                                            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_signalfd4_impl’中:
+kernel/api/kapi_syscall.c:1753:39: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1753 |     int ret = kapi_signalfd4((int)fd, (const uint64_t*)mask, (size_t)masksize, (int)flags);
+      |                                       ^
+kernel/api/kapi_syscall.c: 在函数‘sys_signalfd_impl’中:
+kernel/api/kapi_syscall.c:1761:38: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1761 |     int ret = kapi_signalfd((int)fd, (const uint64_t*)mask, (size_t)masksize, 0);
+      |                                      ^
+kernel/api/kapi_syscall.c: 在函数‘sys_timerfd_settime_impl’中:
+kernel/api/kapi_syscall.c:1778:36: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1778 |                                    (const kapi_itimerspec_t*)new_value,
+      |                                    ^
+kernel/api/kapi_syscall.c:1779:36: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1779 |                                    (kapi_itimerspec_t*)old_value);
+      |                                    ^
+kernel/api/kapi_syscall.c: 在函数‘sys_timerfd_gettime_impl’中:
+kernel/api/kapi_syscall.c:1787:45: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1787 |     int ret = kapi_timerfd_gettime((int)fd, (kapi_itimerspec_t*)curr_value);
+      |                                             ^
+kernel/api/kapi_syscall.c: 在函数‘sys_inotify_add_watch_impl’中:
+kernel/api/kapi_syscall.c:1825:47: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1825 |     int ret = kapi_inotify_add_watch((int)fd, (const char*)pathname, (uint32_t)mask);
+      |                                               ^
+kernel/api/kapi_syscall.c: 在函数‘sys_readv_impl’中:
+kernel/api/kapi_syscall.c:1846:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1846 |     struct { void* iov_base; size_t iov_len; } *iovecs = (void*)iov;
+      |                                                          ^
+kernel/api/kapi_syscall.c:1852:18: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1852 |         total += r;
+      |                  ^
+kernel/api/kapi_syscall.c: 在函数‘sys_writev_impl’中:
+kernel/api/kapi_syscall.c:1867:64: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1867 |     struct { const void* iov_base; size_t iov_len; } *iovecs = (void*)iov;
+      |                                                                ^
+kernel/api/kapi_syscall.c:1873:18: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘long int’ may change value [-Wconversion]
+ 1873 |         total += r;
+      |                  ^
+kernel/api/kapi_syscall.c: 在函数‘sys_accept4_impl’中:
+kernel/api/kapi_syscall.c:1894:48: warning: 未使用的参数‘addr’ [-Wunused-parameter]
+ 1894 | static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+      |                                           ~~~~~^~~~
+kernel/api/kapi_syscall.c:1894:59: warning: 未使用的参数‘addrlen’ [-Wunused-parameter]
+ 1894 | static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+      |                                                      ~~~~~^~~~~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_waitid_impl’中:
+kernel/api/kapi_syscall.c:1927:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1927 |         memset((void*)infop, 0, 32);
+      |                ^
+kernel/api/kapi_syscall.c:1929:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1929 |             ((int*)infop)[0] = ret;
+      |              ^
+kernel/api/kapi_syscall.c:1930:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1930 |             ((int*)infop)[1] = 4;
+      |              ^
+kernel/api/kapi_syscall.c:1931:14: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1931 |             ((int*)infop)[2] = status;
+      |              ^
+kernel/api/kapi_syscall.c: 在函数‘sys_mount_impl’中:
+kernel/api/kapi_syscall.c:1950:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1950 |     int ret = kapi_mount((const char*)dev_name, (const char*)dir_name,
+      |                          ^
+kernel/api/kapi_syscall.c:1950:49: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1950 |     int ret = kapi_mount((const char*)dev_name, (const char*)dir_name,
+      |                                                 ^
+kernel/api/kapi_syscall.c:1951:26: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1951 |                          (const char*)type, (unsigned long)flags, NULL);
+      |                          ^
+kernel/api/kapi_syscall.c: 在函数‘sys_umount2_impl’中:
+kernel/api/kapi_syscall.c:1959:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1959 |     int ret = kapi_umount((const char*)name);
+      |                           ^
+kernel/api/kapi_syscall.c: 在函数‘sys_mknod_impl’中:
+kernel/api/kapi_syscall.c:1971:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 1971 |         int f = kapi_creat((const char*)pathname, (mode_t)(m & 07777));
+      |                            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_setresuid_impl’中:
+kernel/api/kapi_syscall.c:2002:59: warning: 未使用的参数‘suid’ [-Wunused-parameter]
+ 2002 | static long sys_setresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+      |                                                      ~~~~~^~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_getresuid_impl’中:
+kernel/api/kapi_syscall.c:2015:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2015 |     if (ruid) *(uid_t*)ruid = proc_uid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2016:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2016 |     if (euid) *(uid_t*)euid = proc_euid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2017:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2017 |     if (suid) *(uid_t*)suid = proc_uid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_setresgid_impl’中:
+kernel/api/kapi_syscall.c:2021:59: warning: 未使用的参数‘sgid’ [-Wunused-parameter]
+ 2021 | static long sys_setresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+      |                                                      ~~~~~^~~~
+kernel/api/kapi_syscall.c: 在函数‘sys_getresgid_impl’中:
+kernel/api/kapi_syscall.c:2034:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2034 |     if (rgid) *(uid_t*)rgid = proc_gid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2035:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2035 |     if (egid) *(uid_t*)egid = proc_egid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c:2036:16: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2036 |     if (sgid) *(uid_t*)sgid = proc_gid[current_process];
+      |                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_rt_sigpending_impl’中:
+kernel/api/kapi_syscall.c:2079:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2079 |     memset((void*)set, 0, 8);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sched_getparam_impl’中:
+kernel/api/kapi_syscall.c:2120:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2120 |     memset((void*)param, 0, 4);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sched_rr_get_interval_impl’中:
+kernel/api/kapi_syscall.c:2152:48: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2152 |     struct { long tv_sec; long tv_nsec; } *t = (void*)interval;
+      |                                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_sched_getaffinity_impl’中:
+kernel/api/kapi_syscall.c:2170:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2170 |     memset((void*)mask, 0xff, sz);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_statfs_impl’中:
+kernel/api/kapi_syscall.c:2186:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2186 |     memset((void*)buf, 0, 64);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_fstatfs_impl’中:
+kernel/api/kapi_syscall.c:2195:12: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2195 |     memset((void*)buf, 0, 64);
+      |            ^
+kernel/api/kapi_syscall.c: 在函数‘sys_splice_impl’中:
+kernel/api/kapi_syscall.c:2376:39: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 2376 |         long r = sys_read_impl(fd_in, (long)buf, n, 0, 0, 0);
+      |                                       ^
+kernel/api/kapi_syscall.c:2378:41: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+ 2378 |         long w = sys_write_impl(fd_out, (long)buf, r, 0, 0, 0);
+      |                                         ^
+kernel/api/kapi_syscall.c: 在函数‘sys_clock_getres_impl’中:
+kernel/api/kapi_syscall.c:2516:48: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2516 |     struct { long tv_sec; long tv_nsec; } *r = (void*)res;
+      |                                                ^
+kernel/api/kapi_syscall.c: 在函数‘sys_getcpu_impl’中:
+kernel/api/kapi_syscall.c:2570:15: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+ 2570 |     if (cpu) *(unsigned int*)cpu = 0;
+      |               ^
+kernel/api/kapi_syscall.c: 在文件作用域：
+kernel/api/kapi_syscall.c:2567:13: warning: ‘sys_getcpu_impl’ 在此处定义 [-Wunused-function]
+ 2567 | static long sys_getcpu_impl(long cpu, long node, long tcache, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2560:13: warning: ‘sys_kcmp_impl’ 在此处定义 [-Wunused-function]
+ 2560 | static long sys_kcmp_impl(long pid1, long pid2, long type, long idx1, long idx2, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2553:13: warning: ‘sys_process_vm_writev_impl’ 在此处定义 [-Wunused-function]
+ 2553 | static long sys_process_vm_writev_impl(long pid, long lvec, long liovcnt, long rvec, long riovcnt, long flags)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2547:13: warning: ‘sys_process_vm_readv_impl’ 在此处定义 [-Wunused-function]
+ 2547 | static long sys_process_vm_readv_impl(long pid, long lvec, long liovcnt, long rvec, long riovcnt, long flags)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2538:13: warning: ‘sys_mincore_impl’ 在此处定义 [-Wunused-function]
+ 2538 | static long sys_mincore_impl(long start, long len, long vec, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2531:13: warning: ‘sys_clock_nanosleep_impl’ 在此处定义 [-Wunused-function]
+ 2531 | static long sys_clock_nanosleep_impl(long clk_id, long flags, long rqtp, long rmtp, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2522:13: warning: ‘sys_clock_settime_impl’ 在此处定义 [-Wunused-function]
+ 2522 | static long sys_clock_settime_impl(long clk_id, long tp, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2512:13: warning: ‘sys_clock_getres_impl’ 在此处定义 [-Wunused-function]
+ 2512 | static long sys_clock_getres_impl(long clk_id, long res, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2504:13: warning: ‘sys_prlimit64_impl’ 在此处定义 [-Wunused-function]
+ 2504 | static long sys_prlimit64_impl(long pid, long resource, long new_limit, long old_limit, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2493:13: warning: ‘sys_acct_impl’ 在此处定义 [-Wunused-function]
+ 2493 | static long sys_acct_impl(long filename, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2484:13: warning: ‘sys_adjtimex_impl’ 在此处定义 [-Wunused-function]
+ 2484 | static long sys_adjtimex_impl(long buf, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2477:13: warning: ‘sys_getdents_impl’ 在此处定义 [-Wunused-function]
+ 2477 | static long sys_getdents_impl(long fd, long dirp, long count, long a4, long a9, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2471:13: warning: ‘sys_lchown_impl’ 在此处定义 [-Wunused-function]
+ 2471 | static long sys_lchown_impl(long pathname, long owner, long group, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2463:13: warning: ‘sys_fchown_impl’ 在此处定义 [-Wunused-function]
+ 2463 | static long sys_fchown_impl(long fd, long owner, long group, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2455:13: warning: ‘sys_fchmod_impl’ 在此处定义 [-Wunused-function]
+ 2455 | static long sys_fchmod_impl(long fd, long mode, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2447:13: warning: ‘sys_fchdir_impl’ 在此处定义 [-Wunused-function]
+ 2447 | static long sys_fchdir_impl(long fd, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2440:13: warning: ‘sys_faccessat_impl’ 在此处定义 [-Wunused-function]
+ 2440 | static long sys_faccessat_impl(long dirfd, long pathname, long mode, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2434:13: warning: ‘sys_fchmodat_impl’ 在此处定义 [-Wunused-function]
+ 2434 | static long sys_fchmodat_impl(long dirfd, long pathname, long mode, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2428:13: warning: ‘sys_readlinkat_impl’ 在此处定义 [-Wunused-function]
+ 2428 | static long sys_readlinkat_impl(long dirfd, long pathname, long buf, long bufsiz, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2422:13: warning: ‘sys_symlinkat_impl’ 在此处定义 [-Wunused-function]
+ 2422 | static long sys_symlinkat_impl(long target, long newdirfd, long linkpath, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2416:13: warning: ‘sys_renameat_impl’ 在此处定义 [-Wunused-function]
+ 2416 | static long sys_renameat_impl(long olddirfd, long oldpath, long newdirfd, long newpath, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2410:13: warning: ‘sys_fchownat_impl’ 在此处定义 [-Wunused-function]
+ 2410 | static long sys_fchownat_impl(long dirfd, long pathname, long owner, long group, long flags, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2404:13: warning: ‘sys_mknodat_impl’ 在此处定义 [-Wunused-function]
+ 2404 | static long sys_mknodat_impl(long dirfd, long pathname, long mode, long dev, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2398:13: warning: ‘sys_mkdirat_impl’ 在此处定义 [-Wunused-function]
+ 2398 | static long sys_mkdirat_impl(long dirfd, long pathname, long mode, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2391:13: warning: ‘sys_vmsplice_impl’ 在此处定义 [-Wunused-function]
+ 2391 | static long sys_vmsplice_impl(long fd, long iov, long nr_segs, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2385:13: warning: ‘sys_tee_impl’ 在此处定义 [-Wunused-function]
+ 2385 | static long sys_tee_impl(long fd_in, long fd_out, long len, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2366:13: warning: ‘sys_splice_impl’ 在此处定义 [-Wunused-function]
+ 2366 | static long sys_splice_impl(long fd_in, long off_in, long fd_out, long off_out, long len, long flags)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2359:13: warning: ‘sys_seccomp_impl’ 在此处定义 [-Wunused-function]
+ 2359 | static long sys_seccomp_impl(long operation, long flags, long args, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2352:13: warning: ‘sys_bpf_impl’ 在此处定义 [-Wunused-function]
+ 2352 | static long sys_bpf_impl(long cmd, long attr, long size, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2345:13: warning: ‘sys_memfd_create_impl’ 在此处定义 [-Wunused-function]
+ 2345 | static long sys_memfd_create_impl(long name, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2337:13: warning: ‘sys_fallocate_impl’ 在此处定义 [-Wunused-function]
+ 2337 | static long sys_fallocate_impl(long fd, long mode, long offset, long length, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2330:13: warning: ‘sys_msgctl_impl’ 在此处定义 [-Wunused-function]
+ 2330 | static long sys_msgctl_impl(long msqid, long cmd, long buf, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2324:13: warning: ‘sys_msgrcv_impl’ 在此处定义 [-Wunused-function]
+ 2324 | static long sys_msgrcv_impl(long msqid, long msgp, long msgsz, long msgtyp, long msgflg, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2318:13: warning: ‘sys_msgsnd_impl’ 在此处定义 [-Wunused-function]
+ 2318 | static long sys_msgsnd_impl(long msqid, long msgp, long msgsz, long msgflg, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2312:13: warning: ‘sys_msgget_impl’ 在此处定义 [-Wunused-function]
+ 2312 | static long sys_msgget_impl(long key, long msgflg, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2305:13: warning: ‘sys_semctl_impl’ 在此处定义 [-Wunused-function]
+ 2305 | static long sys_semctl_impl(long semid, long semnum, long cmd, long arg, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2299:13: warning: ‘sys_semop_impl’ 在此处定义 [-Wunused-function]
+ 2299 | static long sys_semop_impl(long semid, long sops, long nsops, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2293:13: warning: ‘sys_semget_impl’ 在此处定义 [-Wunused-function]
+ 2293 | static long sys_semget_impl(long key, long nsems, long semflg, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2286:13: warning: ‘sys_shmdt_impl’ 在此处定义 [-Wunused-function]
+ 2286 | static long sys_shmdt_impl(long shmaddr, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2280:13: warning: ‘sys_shmctl_impl’ 在此处定义 [-Wunused-function]
+ 2280 | static long sys_shmctl_impl(long shmid, long cmd, long buf, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2274:13: warning: ‘sys_shmat_impl’ 在此处定义 [-Wunused-function]
+ 2274 | static long sys_shmat_impl(long shmid, long shmaddr, long shmflg, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2268:13: warning: ‘sys_shmget_impl’ 在此处定义 [-Wunused-function]
+ 2268 | static long sys_shmget_impl(long key, long size, long shmflg, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2261:13: warning: ‘sys_syslog_impl’ 在此处定义 [-Wunused-function]
+ 2261 | static long sys_syslog_impl(long type, long buf, long len, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2252:13: warning: ‘sys_pivot_root_impl’ 在此处定义 [-Wunused-function]
+ 2252 | static long sys_pivot_root_impl(long new_root, long put_old, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2243:13: warning: ‘sys_ioperm_impl’ 在此处定义 [-Wunused-function]
+ 2243 | static long sys_ioperm_impl(long from, long num, long on, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2235:13: warning: ‘sys_iopl_impl’ 在此处定义 [-Wunused-function]
+ 2235 | static long sys_iopl_impl(long level, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2226:13: warning: ‘sys_swapoff_impl’ 在此处定义 [-Wunused-function]
+ 2226 | static long sys_swapoff_impl(long specialfile, long swapflags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2218:13: warning: ‘sys_swapon_impl’ 在此处定义 [-Wunused-function]
+ 2218 | static long sys_swapon_impl(long specialfile, long swapflags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2209:13: warning: ‘sys_reboot_impl’ 在此处定义 [-Wunused-function]
+ 2209 | static long sys_reboot_impl(long magic1, long magic2, long cmd, long arg, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2200:13: warning: ‘sys_settimeofday_impl’ 在此处定义 [-Wunused-function]
+ 2200 | static long sys_settimeofday_impl(long tv, long tz, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2190:13: warning: ‘sys_fstatfs_impl’ 在此处定义 [-Wunused-function]
+ 2190 | static long sys_fstatfs_impl(long fd, long buf, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2182:13: warning: ‘sys_statfs_impl’ 在此处定义 [-Wunused-function]
+ 2182 | static long sys_statfs_impl(long pathname, long buf, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2175:13: warning: ‘sys_personality_impl’ 在此处定义 [-Wunused-function]
+ 2175 | static long sys_personality_impl(long persona, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2165:13: warning: ‘sys_sched_getaffinity_impl’ 在此处定义 [-Wunused-function]
+ 2165 | static long sys_sched_getaffinity_impl(long pid, long len, long mask, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2159:13: warning: ‘sys_sched_setaffinity_impl’ 在此处定义 [-Wunused-function]
+ 2159 | static long sys_sched_setaffinity_impl(long pid, long len, long mask, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2148:13: warning: ‘sys_sched_rr_get_interval_impl’ 在此处定义 [-Wunused-function]
+ 2148 | static long sys_sched_rr_get_interval_impl(long pid, long interval, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2142:13: warning: ‘sys_sched_get_priority_min_impl’ 在此处定义 [-Wunused-function]
+ 2142 | static long sys_sched_get_priority_min_impl(long policy, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2136:13: warning: ‘sys_sched_get_priority_max_impl’ 在此处定义 [-Wunused-function]
+ 2136 | static long sys_sched_get_priority_max_impl(long policy, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2130:13: warning: ‘sys_sched_getscheduler_impl’ 在此处定义 [-Wunused-function]
+ 2130 | static long sys_sched_getscheduler_impl(long pid, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2124:13: warning: ‘sys_sched_setscheduler_impl’ 在此处定义 [-Wunused-function]
+ 2124 | static long sys_sched_setscheduler_impl(long pid, long policy, long param, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2116:13: warning: ‘sys_sched_getparam_impl’ 在此处定义 [-Wunused-function]
+ 2116 | static long sys_sched_getparam_impl(long pid, long param, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2110:13: warning: ‘sys_sched_setparam_impl’ 在此处定义 [-Wunused-function]
+ 2110 | static long sys_sched_setparam_impl(long pid, long param, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2103:13: warning: ‘sys_sigaltstack_impl’ 在此处定义 [-Wunused-function]
+ 2103 | static long sys_sigaltstack_impl(long ss, long oss, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2095:13: warning: ‘sys_rt_sigsuspend_impl’ 在此处定义 [-Wunused-function]
+ 2095 | static long sys_rt_sigsuspend_impl(long mask, long sigsetsize, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2089:13: warning: ‘sys_rt_sigqueueinfo_impl’ 在此处定义 [-Wunused-function]
+ 2089 | static long sys_rt_sigqueueinfo_impl(long pid, long sig, long info, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2083:13: warning: ‘sys_rt_sigtimedwait_impl’ 在此处定义 [-Wunused-function]
+ 2083 | static long sys_rt_sigtimedwait_impl(long set, long info, long timeout, long sigsetsize, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2075:13: warning: ‘sys_rt_sigpending_impl’ 在此处定义 [-Wunused-function]
+ 2075 | static long sys_rt_sigpending_impl(long set, long sigsetsize, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2066:13: warning: ‘sys_capset_impl’ 在此处定义 [-Wunused-function]
+ 2066 | static long sys_capset_impl(long header, long data, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2060:13: warning: ‘sys_capget_impl’ 在此处定义 [-Wunused-function]
+ 2060 | static long sys_capget_impl(long header, long dataptr, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2050:13: warning: ‘sys_setfsgid_impl’ 在此处定义 [-Wunused-function]
+ 2050 | static long sys_setfsgid_impl(long gid, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2041:13: warning: ‘sys_setfsuid_impl’ 在此处定义 [-Wunused-function]
+ 2041 | static long sys_setfsuid_impl(long uid, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2030:13: warning: ‘sys_getresgid_impl’ 在此处定义 [-Wunused-function]
+ 2030 | static long sys_getresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2021:13: warning: ‘sys_setresgid_impl’ 在此处定义 [-Wunused-function]
+ 2021 | static long sys_setresgid_impl(long rgid, long egid, long sgid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2011:13: warning: ‘sys_getresuid_impl’ 在此处定义 [-Wunused-function]
+ 2011 | static long sys_getresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:2002:13: warning: ‘sys_setresuid_impl’ 在此处定义 [-Wunused-function]
+ 2002 | static long sys_setresuid_impl(long ruid, long euid, long suid, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1993:13: warning: ‘sys_setgroups_impl’ 在此处定义 [-Wunused-function]
+ 1993 | static long sys_setgroups_impl(long size, long list, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1987:13: warning: ‘sys_getgroups_impl’ 在此处定义 [-Wunused-function]
+ 1987 | static long sys_getgroups_impl(long size, long list, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1980:13: warning: ‘sys_lstat_impl’ 在此处定义 [-Wunused-function]
+ 1980 | static long sys_lstat_impl(long pathname, long statbuf, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1955:13: warning: ‘sys_umount2_impl’ 在此处定义 [-Wunused-function]
+ 1955 | static long sys_umount2_impl(long name, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1946:13: warning: ‘sys_mount_impl’ 在此处定义 [-Wunused-function]
+ 1946 | static long sys_mount_impl(long dev_name, long dir_name, long type, long flags, long data, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1938:13: warning: ‘sys_setrlimit_impl’ 在此处定义 [-Wunused-function]
+ 1938 | static long sys_setrlimit_impl(long resource, long rlim, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1921:13: warning: ‘sys_waitid_impl’ 在此处定义 [-Wunused-function]
+ 1921 | static long sys_waitid_impl(long idtype, long id, long infop, long options, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1894:13: warning: ‘sys_accept4_impl’ 在此处定义 [-Wunused-function]
+ 1894 | static long sys_accept4_impl(long sockfd, long addr, long addrlen, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1887:13: warning: ‘sys_dup3_impl’ 在此处定义 [-Wunused-function]
+ 1887 | static long sys_dup3_impl(long oldfd, long newfd, long flags, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1880:13: warning: ‘sys_pipe2_impl’ 在此处定义 [-Wunused-function]
+ 1880 | static long sys_pipe2_impl(long pipefd, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1858:13: warning: ‘sys_writev_impl’ 在此处定义 [-Wunused-function]
+ 1858 | static long sys_writev_impl(long fd, long iov, long iovcnt, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1837:13: warning: ‘sys_readv_impl’ 在此处定义 [-Wunused-function]
+ 1837 | static long sys_readv_impl(long fd, long iov, long iovcnt, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1829:13: warning: ‘sys_inotify_rm_watch_impl’ 在此处定义 [-Wunused-function]
+ 1829 | static long sys_inotify_rm_watch_impl(long fd, long wd, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1821:13: warning: ‘sys_inotify_add_watch_impl’ 在此处定义 [-Wunused-function]
+ 1821 | static long sys_inotify_add_watch_impl(long fd, long pathname, long mask, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1814:13: warning: ‘sys_inotify_init1_impl’ 在此处定义 [-Wunused-function]
+ 1814 | static long sys_inotify_init1_impl(long flags, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1807:13: warning: ‘sys_inotify_init_impl’ 在此处定义 [-Wunused-function]
+ 1807 | static long sys_inotify_init_impl(long a1, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1799:13: warning: ‘sys_eventfd_impl’ 在此处定义 [-Wunused-function]
+ 1799 | static long sys_eventfd_impl(long initval, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1792:13: warning: ‘sys_eventfd2_impl’ 在此处定义 [-Wunused-function]
+ 1792 | static long sys_eventfd2_impl(long initval, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1783:13: warning: ‘sys_timerfd_gettime_impl’ 在此处定义 [-Wunused-function]
+ 1783 | static long sys_timerfd_gettime_impl(long fd, long curr_value, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1773:13: warning: ‘sys_timerfd_settime_impl’ 在此处定义 [-Wunused-function]
+ 1773 | static long sys_timerfd_settime_impl(long fd, long flags, long new_value, long old_value, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1766:13: warning: ‘sys_timerfd_create_impl’ 在此处定义 [-Wunused-function]
+ 1766 | static long sys_timerfd_create_impl(long clockid, long flags, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1757:13: warning: ‘sys_signalfd_impl’ 在此处定义 [-Wunused-function]
+ 1757 | static long sys_signalfd_impl(long fd, long mask, long masksize, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1749:13: warning: ‘sys_signalfd4_impl’ 在此处定义 [-Wunused-function]
+ 1749 | static long sys_signalfd4_impl(long fd, long mask, long masksize, long flags, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1741:13: warning: ‘sys_pselect6_impl’ 在此处定义 [-Wunused-function]
+ 1741 | static long sys_pselect6_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long sigmask)
+      |             ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1733:13: warning: ‘sys_ppoll_impl’ 在此处定义 [-Wunused-function]
+ 1733 | static long sys_ppoll_impl(long fds, long nfds, long timeout, long sigmask, long a5, long a6)
+      |             ^~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1725:13: warning: ‘sys_select_impl’ 在此处定义 [-Wunused-function]
+ 1725 | static long sys_select_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long a6)
+      |             ^~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1717:13: warning: ‘sys_poll_impl’ 在此处定义 [-Wunused-function]
+ 1717 | static long sys_poll_impl(long fds, long nfds, long timeout, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1707:13: warning: ‘sys_epoll_pwait_impl’ 在此处定义 [-Wunused-function]
+ 1707 | static long sys_epoll_pwait_impl(long epfd, long events, long maxevents, long timeout, long sigmask, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1699:13: warning: ‘sys_epoll_wait_impl’ 在此处定义 [-Wunused-function]
+ 1699 | static long sys_epoll_wait_impl(long epfd, long events, long maxevents, long timeout, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1691:13: warning: ‘sys_epoll_ctl_impl’ 在此处定义 [-Wunused-function]
+ 1691 | static long sys_epoll_ctl_impl(long epfd, long op, long fd, long event, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1684:13: warning: ‘sys_epoll_create1_impl’ 在此处定义 [-Wunused-function]
+ 1684 | static long sys_epoll_create1_impl(long flags, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:1677:13: warning: ‘sys_epoll_create_impl’ 在此处定义 [-Wunused-function]
+ 1677 | static long sys_epoll_create_impl(long size, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_syscall.c:182:13: warning: ‘sys_nosys’ 在此处定义 [-Wunused-function]
+  182 | static long sys_nosys(long a1, long a2, long a3, long a4, long a5, long a6)
+      |             ^~~~~~~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/api/kapi_syscall.c.o.d -c kernel/api/kapi_syscall.c -o build/obj/kernel/api/kapi_syscall.c.o

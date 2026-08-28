@@ -259,7 +259,7 @@ static uint64_t cfs_jiffies = 0;
 
 void cfs_init(void)
 {
-    rbtree_init(&global_rq.tasks);
+    rbtree_init(&global_rq.tasks_timeline);
     spin_init(&global_rq.lock);
     global_rq.min_vruntime = 0;
     global_rq.exec_clock = 0;
@@ -271,7 +271,7 @@ void cfs_init(void)
 
 void cfs_rq_init(cfs_rq_t* rq)
 {
-    rbtree_init(&rq->tasks);
+    rbtree_init(&rq->tasks_timeline);
     spin_init(&rq->lock);
     rq->min_vruntime = 0;
     rq->exec_clock = 0;
@@ -303,7 +303,7 @@ void cfs_enqueue_task(cfs_rq_t* rq, cfs_task_t* task)
         task->vruntime = rq->min_vruntime - CFS_TARGET_LATENCY * 4;
     }
 
-    rbtree_insert(&rq->tasks, &task->rb_node, task->vruntime);
+    rbtree_insert(&rq->tasks_timeline, &task->rb_node, task->vruntime);
     task->on_rq = 1;
     rq->nr_running++;
     rq->nr_tasks++;
@@ -320,7 +320,7 @@ void cfs_dequeue_task(cfs_rq_t* rq, cfs_task_t* task)
         return;
     }
 
-    rbtree_delete(&rq->tasks, &task->rb_node);
+    rbtree_delete(&rq->tasks_timeline, &task->rb_node);
     task->rb_node.parent = NULL;
     task->rb_node.left = NULL;
     task->rb_node.right = NULL;
@@ -337,7 +337,7 @@ cfs_task_t* cfs_pick_next_task(cfs_rq_t* rq)
 {
     spin_lock(&rq->lock);
 
-    rb_node_t* node = rbtree_min(&rq->tasks);
+    rb_node_t* node = rbtree_min(&rq->tasks_timeline);
     if (!node) {
         spin_unlock(&rq->lock);
         return rq->idle;
@@ -364,7 +364,7 @@ void cfs_account_exec(cfs_rq_t* rq, cfs_task_t* task, uint64_t delta_ns)
 
 void cfs_update_min_vruntime(cfs_rq_t* rq)
 {
-    rb_node_t* node = rbtree_min(&rq->tasks);
+    rb_node_t* node = rbtree_min(&rq->tasks_timeline);
     if (node) {
         cfs_task_t* task = (cfs_task_t*)((uint8_t*)node - offsetof(cfs_task_t, rb_node));
         if (task->vruntime > rq->min_vruntime) {

@@ -50,33 +50,33 @@ int kanvas_gui_init(int screen_w, int screen_h, uint32_t* fb, int stride)
     kanvas_desktop_add_icon(g_desktop, "Kex Runner", 9, 96, icon_y_start + 240);
     kanvas_desktop_add_icon(g_desktop, "Task Manager", 10, 96, icon_y_start + 320);
 
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Files", "/kex/files", 1, KANVAS_START_SECTION_PINNED, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Terminal", "/kex/terminal", 2, KANVAS_START_SECTION_PINNED, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Browser", "/kex/browser", 4, KANVAS_START_SECTION_PINNED, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Editor", "/kex/editor", 5, KANVAS_START_SECTION_PINNED, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Kex Runner", "/kex/kex-runner", 9, KANVAS_START_SECTION_PINNED, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Settings", "/kex/settings", 3, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Calculator", "/kex/calc", 6, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Image Viewer", "/kex/imgview", 7, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Music Player", "/kex/music", 8, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "System Monitor", "/kex/sysmon", 10, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Task Manager", "/kex/taskmgr", 10, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Package Manager", "/kex/pkgman", 11, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Kex Installer", "/kex/kex-install", 9, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "File Manager", "/kex/filemgr", 1, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Text Editor", "/kex/textedit", 5, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Calendar", "/kex/calendar", 12, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Network Tools", "/kex/nettools", 13, KANVAS_START_SECTION_ALL, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Compatibility", "/kex/compat", 14, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "Display Settings", "/kex/display", 15, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_add_item(&g_desktop->start_menu, "About Kenux", "/kex/about", 16, KANVAS_START_SECTION_SYSTEM, NULL);
-    kanvas_start_menu_filter(&g_desktop->start_menu);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Files", "/kex/files", 1, KANVAS_START_SECTION_PINNED, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Terminal", "/kex/terminal", 2, KANVAS_START_SECTION_PINNED, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Browser", "/kex/browser", 4, KANVAS_START_SECTION_PINNED, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Editor", "/kex/editor", 5, KANVAS_START_SECTION_PINNED, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Kex Runner", "/kex/kex-runner", 9, KANVAS_START_SECTION_PINNED, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Settings", "/kex/settings", 3, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Calculator", "/kex/calc", 6, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Image Viewer", "/kex/imgview", 7, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Music Player", "/kex/music", 8, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "System Monitor", "/kex/sysmon", 10, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Task Manager", "/kex/taskmgr", 10, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Package Manager", "/kex/pkgman", 11, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Kex Installer", "/kex/kex-install", 9, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "File Manager", "/kex/filemgr", 1, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Text Editor", "/kex/textedit", 5, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Calendar", "/kex/calendar", 12, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Network Tools", "/kex/nettools", 13, KANVAS_START_SECTION_ALL, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Compatibility", "/kex/compat", 14, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "Display Settings", "/kex/display", 15, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_add_item(g_desktop->start_menu, "About Kenux", "/kex/about", 16, KANVAS_START_SECTION_SYSTEM, NULL);
+    kanvas_start_menu_filter(g_desktop->start_menu);
 
-    kanvas_taskbar_add_item(&g_desktop->taskbar, "Files", 1, true, NULL);
-    kanvas_taskbar_add_item(&g_desktop->taskbar, "Terminal", 2, true, NULL);
-    kanvas_taskbar_add_item(&g_desktop->taskbar, "Browser", 4, true, NULL);
-    kanvas_taskbar_add_item(&g_desktop->taskbar, "Editor", 5, true, NULL);
-    kanvas_taskbar_add_item(&g_desktop->taskbar, "Kex", 9, true, NULL);
+    kanvas_taskbar_add_item(g_desktop->taskbar, "Files", 1, true, NULL);
+    kanvas_taskbar_add_item(g_desktop->taskbar, "Terminal", 2, true, NULL);
+    kanvas_taskbar_add_item(g_desktop->taskbar, "Browser", 4, true, NULL);
+    kanvas_taskbar_add_item(g_desktop->taskbar, "Editor", 5, true, NULL);
+    kanvas_taskbar_add_item(g_desktop->taskbar, "Kex", 9, true, NULL);
 
     kanvas_desktop_tray_add(g_desktop, "Network", NULL);
     kanvas_desktop_tray_add(g_desktop, "Bluetooth", NULL);
@@ -119,8 +119,8 @@ void kanvas_gui_process_key(int key, bool down, uint32_t mods)
 void kanvas_gui_process_char(uint32_t ch)
 {
     if (!g_desktop) return;
-    if (g_desktop->start_menu.visible && g_desktop->start_menu.search_focused) {
-        kanvas_start_menu_handle_char(&g_desktop->start_menu, ch);
+    if (g_desktop->start_menu->visible && g_desktop->start_menu->search_focused) {
+        kanvas_start_menu_handle_char(g_desktop->start_menu, ch);
     }
 }
 
@@ -145,9 +145,9 @@ void kanvas_gui_update(uint64_t now_ms)
 void kanvas_gui_paint(void)
 {
     if (!g_desktop) return;
+    uint32_t* fb = NULL;
+    int stride = g_desktop->screen_width * 4;
     if (g_splash && g_splash->active) {
-        uint32_t* fb = NULL;
-        int stride = g_desktop->screen_width * 4;
         kanvas_boot_splash_paint(g_splash, fb, stride, g_desktop->screen_width, g_desktop->screen_height);
         return;
     }

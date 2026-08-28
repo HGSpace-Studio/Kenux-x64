@@ -53,6 +53,15 @@ extern "C" {
 
 #define KAPI_CAP_LAST_CAP         KAPI_CHECKPOINT_RESTORE
 
+#ifndef NGROUPS_MAX
+#define NGROUPS_MAX 65536
+#endif
+
+#ifndef loff_t
+typedef int64_t loff_t;
+#endif
+
+#ifndef KAPI_SECCLASS_FILE
 #define KAPI_SECCLASS_NONE        0
 #define KAPI_SECCLASS_FILE        1
 #define KAPI_SECCLASS_DIR         2
@@ -86,6 +95,7 @@ extern "C" {
 #define KAPI_SECCLASS_BD          30
 #define KAPI_SECCLASS_KERNEL_SERVICE 31
 #define KAPI_SECCLASS_ALL         32
+#endif
 
 #define KAPI_PERM_READ            0x0001
 #define KAPI_PERM_WRITE           0x0002
@@ -245,6 +255,18 @@ int kapi_security_rmdir(const char* dirname);
 
 int kapi_security_mknod(const char* filename, mode_t mode, dev_t dev);
 
+#ifdef KAL_KERNEL
+struct dentry;
+struct vfsmnt;
+struct iattr;
+struct socket;
+struct sockaddr;
+struct msghdr;
+struct task_struct;
+struct siginfo;
+struct sched_param;
+struct cred;
+/* Kernel-internal security hooks (require kernel struct types) */
 int kapi_security_chmod(struct dentry *dentry, struct vfsmnt *mnt, mode_t mode);
 
 int kapi_security_chown(struct dentry *dentry, struct vfsmnt *mnt,
@@ -335,6 +357,8 @@ int kapi_task_wait(struct task_struct *p);
 
 int kapi_task_prctl(int option, unsigned long arg2, unsigned long arg3,
                    unsigned long arg4, unsigned long arg5);
+
+#endif /* KAL_KERNEL */
 
 int kapi_audit_init(void);
 

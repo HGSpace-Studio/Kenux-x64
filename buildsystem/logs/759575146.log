@@ -1,0 +1,141 @@
+-- Start building task run all -- (759575146)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/shell_enhanced.c
+<0> Building kernel/kernel/fs.c
+<1> Building kernel/kernel/kernel.c
+-- Enter folder kernel/gui/src --
+<3> Building kernel/gui/src/taskmgr.c
+kernel/kernel/fs.c:11:12: error: conflicting types for ‘ext4_mount’; have ‘int(const char *, vfs_node_t **)’ {或称 ‘int(const char *, struct vfs_node **)’}
+   11 | extern int ext4_mount(const char* device, vfs_node_t** root_out);
+      |            ^~~~~~~~~~
+In file included from kernel/kernel/fs.c:3:
+kernel/arch/x86_64/include/arch/ext4.h:89:6: note: previous declaration of ‘ext4_mount’ with type ‘int(vfs_node_t *, void *)’ {或称 ‘int(struct vfs_node *, void *)’}
+   89 | int  ext4_mount(vfs_node_t* mount_point, void* device);
+      |      ^~~~~~~~~~
+In file included from kernel/kernel/kernel.c:33:
+kernel/arch/x86_64/include/arch/netfilter.h: 在函数‘nf_hook_slow_eval’中:
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+kernel/kernel/fs.c: 在函数‘vfs_read’中:
+kernel/kernel/fs.c:198:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  198 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/kernel/fs.c: 在函数‘vfs_write’中:
+kernel/kernel/fs.c:208:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  208 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/kernel/fs.c: 在函数‘get_parent_and_name’中:
+kernel/kernel/fs.c:325:15: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  325 |     int len = strlen(path);
+      |               ^~~~~~
+kernel/kernel/fs.c:344:22: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+  344 |     int parent_len = last_slash - path;
+      |                      ^~~~~~~~~~
+kernel/kernel/fs.c:349:36: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  349 |         strncpy(parent_path, path, parent_len);
+      |                                    ^~~~~~~~~~
+kernel/kernel/fs.c:353:43: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  353 |     strncpy(name, last_slash + 1, max_len - 1);
+      |                                   ~~~~~~~~^~~
+kernel/kernel/fs.c: 在函数‘vfs_mkdir’中:
+kernel/kernel/fs.c:380:44: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  380 |         return parent->mkdir(parent, name, mode);
+      |                                            ^~~~
+kernel/kernel/fs.c:385:18: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  385 |     node->mode = mode;
+      |                  ^~~~
+kernel/kernel/fs.c: 在函数‘vfs_chdir’中:
+kernel/kernel/fs.c:625:9: error: 隐式声明函数‘snprintf’ [-Wimplicit-function-declaration]
+  625 |         snprintf(full, sizeof(full), "%s/%s", current_working_dir, path);
+      |         ^~~~~~~~
+kernel/kernel/fs.c:7:1: note: ‘snprintf’ is defined in header ‘<stdio.h>’; this is probably fixable by adding ‘#include <stdio.h>’
+    6 | #include <slab.h>
+  +++ |+#include <stdio.h>
+    7 | 
+<0> Building kernel/gui/src/sysinfo.c
+In file included from include/kapi.h:99,
+                 from kernel/kernel/shell_enhanced.c:13:
+include/kapi_fs_ext.h:253:60: error: array type has incomplete element type ‘struct timeval’
+  253 | int kapi_utimes(const char* filename, const struct timeval times[2]);
+      |                                                            ^~~~~
+include/kapi_fs_ext.h:253:52: warning: ‘struct timeval’ declared inside parameter list will not be visible outside of this definition or declaration
+  253 | int kapi_utimes(const char* filename, const struct timeval times[2]);
+      |                                                    ^~~~~~~
+include/kapi_fs_ext.h:255:49: error: array type has incomplete element type ‘struct timespec’
+  255 | int kapi_futimens(int fd, const struct timespec times[2]);
+      |                                                 ^~~~~
+include/kapi_fs_ext.h:255:40: warning: ‘struct timespec’ declared inside parameter list will not be visible outside of this definition or declaration
+  255 | int kapi_futimens(int fd, const struct timespec times[2]);
+      |                                        ^~~~~~~~
+include/kapi_fs_ext.h:257:75: error: array type has incomplete element type ‘struct timespec’
+  257 | int kapi_utimensat(int dirfd, const char* pathname, const struct timespec times[2], int flags);
+      |                                                                           ^~~~~
+include/kapi_fs_ext.h:257:66: warning: ‘struct timespec’ declared inside parameter list will not be visible outside of this definition or declaration
+  257 | int kapi_utimensat(int dirfd, const char* pathname, const struct timespec times[2], int flags);
+      |                                                                  ^~~~~~~~
+In file included from include/kapi.h:100:
+include/kapi_net_ext.h:292:44: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  292 | int kapi_bind_ext(int sockfd, const struct sockaddr* addr, kapi_socklen_t addrlen);
+      |                                            ^~~~~~~~
+include/kapi_net_ext.h:296:40: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  296 | int kapi_accept_ext(int sockfd, struct sockaddr* addr, kapi_socklen_t* addrlen);
+      |                                        ^~~~~~~~
+include/kapi_net_ext.h:298:37: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  298 | int kapi_accept4(int sockfd, struct sockaddr* addr, kapi_socklen_t* addrlen, int flags);
+      |                                     ^~~~~~~~
+include/kapi_net_ext.h:300:47: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  300 | int kapi_connect_ext(int sockfd, const struct sockaddr* addr, kapi_socklen_t addrlen);
+      |                                               ^~~~~~~~
+include/kapi_net_ext.h:307:34: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  307 |                     const struct sockaddr* dest_addr, kapi_socklen_t addrlen);
+      |                                  ^~~~~~~~
+include/kapi_net_ext.h:310:30: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  310 |                       struct sockaddr* src_addr, kapi_socklen_t* addrlen);
+      |                              ^~~~~~~~
+include/kapi_net_ext.h:320:45: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  320 | int kapi_getsockname_ext(int sockfd, struct sockaddr* addr, kapi_socklen_t* addrlen);
+      |                                             ^~~~~~~~
+include/kapi_net_ext.h:322:45: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  322 | int kapi_getpeername_ext(int sockfd, struct sockaddr* addr, kapi_socklen_t* addrlen);
+      |                                             ^~~~~~~~
+include/kapi_net_ext.h:395:47: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  395 | int kapi_udp_connect(int sockfd, const struct sockaddr* addr, kapi_socklen_t addrlen);
+      |                                               ^~~~~~~~
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+kernel/gui/src/sysinfo.c: 在函数‘si_int_to_str’中:
+kernel/gui/src/sysinfo.c:36:34: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘char’ may change value [-Wconversion]
+In file included from include/kapi.h:99,
+   36 |     while (val > 0) { tmp[i++] = '0' + (val % 10); val /= 10; }
+                 from kernel/kernel/kernel.c:63:
+include/kapi_fs_ext.h: 在文件作用域：
+      |                                  ^~~
+include/kapi_fs_ext.h:253:60: error: array type has incomplete element type ‘struct timeval’
+  253 | int kapi_utimes(const char* filename, const struct timeval times[2]);
+      |                                                            ^~~~~
+include/kapi_fs_ext.h:253:52: warning: ‘struct timeval’ declared inside parameter list will not be visible outside of this definition or declaration
+  253 | int kapi_utimes(const char* filename, const struct timeval times[2]);
+      |                                                    ^~~~~~~
+include/kapi_fs_ext.h:255:49: error: array type has incomplete element type ‘struct timespec’
+  255 | int kapi_futimens(int fd, const struct timespec times[2]);
+      |                                                 ^~~~~
+include/kapi_fs_ext.h:255:40: warning: ‘struct timespec’ declared inside parameter list will not be visible outside of this definition or declaration
+  255 | int kapi_futimens(int fd, const struct timespec times[2]);
+      |                                        ^~~~~~~~
+include/kapi_fs_ext.h:257:75: error: array type has incomplete element type ‘struct timespec’
+  257 | int kapi_utimensat(int dirfd, const char* pathname, const struct timespec times[2], int flags);
+      |                                                                           ^~~~~
+include/kapi_fs_ext.h:257:66: warning: ‘struct timespec’ declared inside parameter list will not be visible outside of this definition or declaration
+  257 | int kapi_utimensat(int dirfd, const char* pathname, const struct timespec times[2], int flags);
+      |                                                                  ^~~~~~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/kernel/kernel.c.o.d -c kernel/kernel/kernel.c -o build/obj/kernel/kernel/kernel.c.o

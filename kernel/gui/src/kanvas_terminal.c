@@ -14,7 +14,7 @@ static void t_fill_rect(uint32_t* fb, int stride, int fw, int fh, int x, int y, 
 
 kanvas_terminal_t* kanvas_terminal_create(void)
 {
-    kanvas_terminal_t* t = (kanvas_terminal_t*)kapi_kmalloc(sizeof(kanvas_terminal_t));
+    kanvas_terminal_t* t = (kanvas_terminal_t*)kapi_malloc(sizeof(kanvas_terminal_t));
     if (!t) return NULL;
     memset(t, 0, sizeof(kanvas_terminal_t));
     t->visible = false;
@@ -47,7 +47,7 @@ kanvas_terminal_t* kanvas_terminal_create(void)
 void kanvas_terminal_destroy(kanvas_terminal_t* term)
 {
     if (!term) return;
-    kapi_kfree(term);
+    kapi_free(term);
 }
 
 void kanvas_terminal_paint(kanvas_terminal_t* term, uint32_t* fb, int stride, int fw, int fh)

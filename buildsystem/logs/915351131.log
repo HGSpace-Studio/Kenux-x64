@@ -1,0 +1,105 @@
+-- Start building task run all -- (915351131)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/rcu.c
+<0> Building kernel/kernel/shell_enhanced.c
+<3> Building kernel/kernel/printk.c
+<1> Building kernel/kernel/process.c
+In file included from kernel/kernel/rcu.c:3:
+kernel/kernel/rcu.h:45:20: error: conflicting types for ‘rcu_read_lock’; have ‘void(void)’
+   45 | static inline void rcu_read_lock(void)
+      |                    ^~~~~~~~~~~~~
+In file included from kernel/kernel/rcu.h:7:
+kernel/arch/x86_64/include/arch/spinlock.h:258:24: note: previous definition of ‘rcu_read_lock’ with type ‘uint64_t(rcu_t *)’ {或称 ‘long long unsigned int(rcu_t *)’}
+  258 | static inline uint64_t rcu_read_lock(rcu_t* rcu)
+      |                        ^~~~~~~~~~~~~
+kernel/kernel/rcu.h:54:20: error: conflicting types for ‘rcu_read_unlock’; have ‘void(void)’
+   54 | static inline void rcu_read_unlock(void)
+      |                    ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/spinlock.h:263:20: note: previous definition of ‘rcu_read_unlock’ with type ‘void(rcu_t *)’
+  263 | static inline void rcu_read_unlock(rcu_t* rcu)
+      |                    ^~~~~~~~~~~~~~~
+kernel/kernel/rcu.h:62:6: error: conflicting types for ‘rcu_init’; have ‘void(void)’
+   62 | void rcu_init(void);
+      |      ^~~~~~~~
+kernel/arch/x86_64/include/arch/spinlock.h:252:20: note: previous definition of ‘rcu_init’ with type ‘void(rcu_t *)’
+  252 | static inline void rcu_init(rcu_t* rcu)
+      |                    ^~~~~~~~
+kernel/kernel/printk.c: 在函数‘__vsnprintf’中:
+kernel/kernel/process.c: 在函数‘__process_trampoline’中:
+kernel/kernel/process.c:18:29: warning: ISO C 不允许将一个对象指针转换为一个函数指针 [-Wpedantic]
+kernel/kernel/printk.c:86:32: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+   18 |         void (*fn)(void*) = (void (*)(void*))p->entry;
+   86 |                     num[n++] = '0' + (val % 10);
+      |                                ^~~
+kernel/kernel/printk.c:97:32: warning: conversion from ‘unsigned int’ to ‘char’ may change value [-Wconversion]
+   97 |                     num[n++] = '0' + (val % 10);
+      |                                ^~~
+kernel/kernel/printk.c:109:32: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+      |                             ^
+  109 |                     buf[i++] = (nibble < 10) ? ('0' + nibble) : ('a' + nibble - 10);
+      |                                ^
+kernel/kernel/printk.c:120:36: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘char’ may change value [-Wconversion]
+  120 |                         num[n++] = '0' + (val % 10);
+      |                                    ^~~
+kernel/kernel/printk.c:130:36: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  130 |                         buf[i++] = (nibble < 10) ? ('0' + nibble) : ('a' + nibble - 10);
+      |                                    ^
+kernel/kernel/printk.c:141:36: warning: conversion from ‘int64_t’ {或称 ‘long long int’} to ‘char’ may change value [-Wconversion]
+  141 |                         num[n++] = '0' + (val % 10);
+      |                                    ^~~
+kernel/kernel/printk.c:159:32: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  159 |                     buf[i++] = (nibble < 10) ? ('0' + nibble) : ('a' + nibble - 10);
+      |                                ^
+kernel/kernel/printk.c: 在函数‘printk’中:
+kernel/kernel/printk.c:199:22: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  199 |     __log_store(buf, len);
+      |                      ^~~
+kernel/kernel/printk.c:202:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+kernel/kernel/process.c: 在函数‘process_yield’中:
+  202 |         console_write(buf, len);
+      |                            ^~~
+kernel/kernel/process.c:119:5: error: implicit declaration of function ‘process_switch_fpu’; did you mean ‘process_switch’? [-Wimplicit-function-declaration]
+kernel/kernel/printk.c: 在函数‘printk_emerg’中:
+kernel/kernel/printk.c:213:22: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  119 |     process_switch_fpu(&processes[old_pid], &processes[next_pid]);
+      |     ^~~~~~~~~~~~~~~~~~
+  213 |     __log_store(buf, len);
+      |                      ^~~
+kernel/kernel/printk.c:214:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  214 |     console_write(buf, len);
+      |                        ^~~
+kernel/kernel/printk.c: 在函数‘printk_alert’中:
+kernel/kernel/printk.c:224:22: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  224 |     __log_store(buf, len);
+      |                      ^~~
+kernel/kernel/printk.c:225:51: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  225 |     if (1 <= console_loglevel) console_write(buf, len);
+      |                                                   ^~~
+      |     process_switch
+kernel/kernel/printk.c: 在函数‘printk_crit’中:
+kernel/kernel/printk.c:235:22: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  235 |     __log_store(buf, len);
+      |                      ^~~
+kernel/kernel/process.c:120:5: error: 隐式声明函数‘save_fs_gs’ [-Wimplicit-function-declaration]
+kernel/kernel/printk.c:236:51: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  236 |     if (2 <= console_loglevel) console_write(buf, len);
+      |                                                   ^~~
+kernel/kernel/printk.c: 在函数‘printk_err’中:
+kernel/kernel/printk.c:246:22: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  246 |     __log_store(buf, len);
+      |                      ^~~
+  120 |     save_fs_gs(&processes[old_pid]);
+kernel/kernel/printk.c:247:51: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  247 |     if (3 <= console_loglevel) console_write(buf, len);
+      |     ^~~~~~~~~~
+      |                                                   ^~~
+kernel/kernel/printk.c: 在函数‘printk_warn’中:
+kernel/kernel/printk.c:257:22: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  257 |     __log_store(buf, len);
+      |                      ^~~
+<3> Building kernel/kernel/module.c
+In file included from include/kapi.h:23,
+kernel/kernel/process.c:123:5: error: 隐式声明函数‘restore_fs_gs’ [-Wimplicit-function-declaration]
+FAILED TASK run all: 

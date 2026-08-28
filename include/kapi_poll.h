@@ -40,7 +40,7 @@ typedef struct {
 #define KAPI_FD_ISSET(fd, set) (!!((set)->bits[(fd) / 64] & (1ULL << ((fd) % 64))))
 
 int kapi_poll(kapi_pollfd_t* fds, uint32_t nfds, int timeout);
-int kapi_select(int nfds, kapi_fd_set_t* readfds, kapi_fd_set_t* writefds,
+int kapi_select_poll(int nfds, kapi_fd_set_t* readfds, kapi_fd_set_t* writefds,
                 kapi_fd_set_t* exceptfds, uint64_t* timeout_ms);
 int kapi_pselect6(int nfds, kapi_fd_set_t* readfds, kapi_fd_set_t* writefds,
                   kapi_fd_set_t* exceptfds, uint64_t* timeout_ms,

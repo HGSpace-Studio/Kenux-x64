@@ -1,0 +1,959 @@
+-- Start building task run all -- (133478053)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/systemd --
+<1> Building kernel/systemd/socket.c
+<2> Building kernel/systemd/service.c
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/workqueue.c
+<3> Building kernel/kernel/wait.c
+kernel/systemd/socket.c: 在函数‘parse_socket_config’中:
+kernel/systemd/socket.c:63:32: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   63 |                 socket->port = atoi(value);
+      |                                ^~~~
+kernel/systemd/socket.c: 在函数‘socket_accept_thread’中:
+kernel/systemd/socket.c:107:14: warning: ‘msg’的声明隐藏了先前的一个局部变量 [-Wshadow]
+  107 |         char msg[256];
+      |              ^~~
+kernel/systemd/socket.c:96:10: note: 被隐藏的声明在这里
+   96 |     char msg[256];
+      |          ^~~
+kernel/systemd/socket.c: 在函数‘socket_start’中:
+kernel/systemd/socket.c:173:44: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  173 |     socket->unix_sock = unix_socket_create(unix_type);
+      |                                            ^~~~~~~~~
+kernel/kernel/workqueue.c: 在函数‘__tasklet_add’中:
+kernel/systemd/socket.c:223:57: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+kernel/kernel/workqueue.c:216:22: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  223 |         socket->accept_thread_id = thread_create((void*)(unsigned long)socket_accept_thread, socket);
+      |                                                         ^
+  216 |         for (int i = tasklet_count; i > 0; i--) {
+      |                      ^~~~~~~~~~~~~
+kernel/systemd/socket.c:225:18: warning: ‘msg’的声明隐藏了先前的一个局部变量 [-Wshadow]
+  225 |             char msg[256];
+      |                  ^~~
+kernel/systemd/socket.c:219:14: note: 被隐藏的声明在这里
+  219 |         char msg[256];
+      |              ^~~
+kernel/systemd/service.c: 在函数‘strtoul’中:
+kernel/systemd/service.c:34:25: warning: ‘long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:34:32: warning: ‘long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: 在函数‘strtoull’中:
+kernel/systemd/service.c:64:25: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                         ^
+kernel/systemd/service.c:64:32: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         result = result * base + digit;
+      |                                ^
+kernel/systemd/service.c: 在函数‘parse_env_vars’中:
+kernel/systemd/service.c:138:15: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+  138 |     int len = eq - line;
+      |               ^~
+kernel/systemd/service.c:143:58: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  143 |     strncpy(service->env[service->env_count].name, line, len);
+      |                                                          ^~~
+kernel/systemd/service.c: 在函数‘parse_install_section’中:
+kernel/systemd/service.c:217:70: warning: 未使用的参数‘value’ [-Wunused-parameter]
+  217 | int parse_install_section(unit_t* unit, const char* key, const char* value)
+      |                                                          ~~~~~~~~~~~~^~~~~
+kernel/systemd/service.c: 在函数‘parse_service_section’中:
+kernel/systemd/service.c:244:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  244 |         service->uid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:247:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  247 |         service->gid = atoi(value);
+      |                        ^~~~
+kernel/systemd/service.c:251:32: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  251 |         service->restart_sec = atoi(value);
+      |                                ^~~~
+kernel/systemd/service.c:253:41: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  253 |         service->start_limit_interval = atoi(value);
+      |                                         ^~~~
+kernel/systemd/service.c:255:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  255 |         service->start_limit_burst = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:284:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  284 |         service->timeout_start_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:286:37: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  286 |         service->timeout_stop_sec = atoi(value);
+      |                                     ^~~~
+kernel/systemd/service.c:288:38: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  288 |         service->timeout_abort_sec = atoi(value);
+      |                                      ^~~~
+kernel/systemd/service.c:306:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  306 |         service->cpu_shares = atoi(value);
+      |                               ^~~~
+kernel/systemd/service.c: 在函数‘service_build_envp’中:
+kernel/systemd/service.c:376:50: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  376 |     char** envp = (char**)malloc((total_env + 1) * sizeof(char*));
+      |                                                  ^
+kernel/systemd/service.c: 在函数‘service_create_dynamic_user’中:
+kernel/systemd/service.c:452:20: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  452 |     service->uid = 1000 + systemd.service_count;
+      |                    ^~~~
+In file included from kernel/systemd/service.c:1:
+kernel/systemd/service.c: 在函数‘service_setup_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:536:35: note: in expansion of macro ‘time_get_timestamp’
+  536 |     service->watchdog_last_ping = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_monitor_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:550:43: note: in expansion of macro ‘time_get_timestamp’
+  550 |             service->watchdog_last_ping = time_get_timestamp();
+      |                                           ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_start_limit’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:560:18: note: in expansion of macro ‘time_get_timestamp’
+  560 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:563:44: warning: comparison of integer expressions of different signedness: ‘time_t’ {或称 ‘long long int’} and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  563 |         if (now - service->last_start_time < service->start_limit_interval) {
+      |                                            ^
+kernel/systemd/service.c: 在函数‘service_run_command’中:
+kernel/systemd/service.c:580:58: warning: 未使用的参数‘working_dir’ [-Wunused-parameter]
+  580 | int service_run_command(exec_command_t* cmd, const char* working_dir)
+      |                                              ~~~~~~~~~~~~^~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_start’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:730:32: note: in expansion of macro ‘time_get_timestamp’
+  730 |     service->last_start_time = time_get_timestamp();
+      |                                ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:782:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  782 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:797:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  797 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:810:39: note: in expansion of macro ‘time_get_timestamp’
+  810 |             service->last_exit_time = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:841:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  841 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:852:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  852 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:898:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  898 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:913:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  913 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/service.c:932:33: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  932 |             service->main_pid = pid;
+      |                                 ^~~
+kernel/systemd/service.c:947:31: warning: ISO C 不允许将‘thread_create’的第 1 个实参在函数指针和‘void *’间传递 [-Wpedantic]
+  947 |                 thread_create(service_monitor_watchdog, service);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:729:32: note: expected ‘void *’ but argument is of type ‘void (*)(void *)’
+  729 | extern int thread_create(void* entry, void* arg);
+      |                          ~~~~~~^~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:965:39: note: in expansion of macro ‘time_get_timestamp’
+  965 |         service->watchdog_last_ping = time_get_timestamp();
+      |                                       ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_stop’中:
+kernel/systemd/service.c:1009:57: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+ 1009 |         if (service->main_pid != 0 && service->main_pid != service->pid) {
+      |                                                         ^~
+kernel/systemd/service.c:1010:33: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+ 1010 |             process_kill(service->main_pid, service->kill_signal);
+      |                          ~~~~~~~^~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1054:31: note: in expansion of macro ‘time_get_timestamp’
+ 1054 |     service->last_exit_time = time_get_timestamp();
+      |                               ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c: 在函数‘service_check_watchdog’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1132:18: note: in expansion of macro ‘time_get_timestamp’
+ 1132 |     time_t now = time_get_timestamp();
+      |                  ^~~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1133:27: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘time_t’ {或称 ‘long long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1133 |     uint64_t elapsed_ms = (now - service->watchdog_last_ping) * 1000;
+      |                           ^
+kernel/systemd/service.c: 在函数‘service_monitor’中:
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1154:35: note: in expansion of macro ‘time_get_timestamp’
+ 1154 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+kernel/systemd/include/systemd.h:9:30: warning: ‘time_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+    9 | #define time_get_timestamp() timer_get_jiffies()
+      |                              ^~~~~~~~~~~~~~~~~
+kernel/systemd/service.c:1171:35: note: in expansion of macro ‘time_get_timestamp’
+ 1171 |         service->last_exit_time = time_get_timestamp();
+      |                                   ^~~~~~~~~~~~~~~~~~
+<3> Building kernel/kernel/unixsock.c
+kernel/kernel/unixsock.c: 在函数‘ring_write’中:
+kernel/kernel/unixsock.c:62:21: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   62 |     uint32_t space, to_copy, contiguous, first_chunk;
+      |                     ^~~~~~~
+kernel/kernel/unixsock.c:59:38: warning: 未使用的参数‘rpos’ [-Wunused-parameter]
+   59 |                            uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                            ~~~~~~~~~~^~~~
+kernel/kernel/unixsock.c: 在函数‘ring_read’中:
+kernel/kernel/unixsock.c:89:14: warning: 未使用的变量‘to_copy’ [-Wunused-variable]
+   89 |     uint32_t to_copy, contiguous, first_chunk;
+      |              ^~~~~~~
+kernel/kernel/unixsock.c:86:53: warning: 未使用的参数‘wpos’ [-Wunused-parameter]
+   86 |                           uint32_t* rpos, uint32_t* wpos, uint32_t* bytes,
+      |                                           ~~~~~~~~~~^~~~
+<0> Building kernel/kernel/timer.c
+<1> Building kernel/kernel/sync.c
+In file included from kernel/kernel/timer.c:3:
+kernel/kernel/timer.c: 在函数‘__calc_index’中:
+kernel/kernel/timer.h:29:31: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 | #define TIMER_WHEEL_BITS      8
+      |                               ^
+kernel/kernel/timer.c:63:22: note: in expansion of macro ‘TIMER_WHEEL_BITS’
+   63 |     uint64_t shift = TIMER_WHEEL_BITS * (*level);
+      |                      ^~~~~~~~~~~~~~~~
+kernel/kernel/timer.c: 在文件作用域：
+kernel/kernel/timer.c:274:13: warning: ‘__msleep_wakeup’ 在此处定义 [-Wunused-function]
+  274 | static void __msleep_wakeup(void* arg)
+      |             ^~~~~~~~~~~~~~~
+kernel/kernel/sync.c: 在函数‘mutex_is_locked’中:
+kernel/kernel/sync.c:249:15: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  249 |     return mtx->locked;
+      |            ~~~^~~~~~~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:310:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  310 |         if (*end == 'M') service->memory_limit *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:308:15: note: ‘end’在此声明
+  308 |         char* end;
+      |               ^~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:315:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  315 |         if (*end == 'M') service->memory_max *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:313:15: note: ‘end’在此声明
+  313 |         char* end;
+      |               ^~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:320:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  320 |         if (*end == 'M') service->memory_high *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:318:15: note: ‘end’在此声明
+  318 |         char* end;
+      |               ^~~
+在函数‘parse_service_section’中,
+    内联自‘service_load’于 kernel/systemd/service.c:682:17:
+kernel/systemd/service.c:325:13: warning: ‘end’ may be used uninitialized [-Wmaybe-uninitialized]
+  325 |         if (*end == 'M') service->memory_low *= 1024 * 1024;
+      |             ^~~~
+kernel/systemd/service.c: 在函数‘service_load’中:
+kernel/systemd/service.c:323:15: note: ‘end’在此声明
+  323 |         char* end;
+      |               ^~~
+<0> Building kernel/kernel/signal.c
+kernel/kernel/signal.c: 在函数‘signal_send_info’中:
+kernel/kernel/signal.c:184:19: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  184 |     info.si_pid = current_process;
+      |                   ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c: 在函数‘__signal_setup_frame’中:
+kernel/kernel/signal.c:222:27: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  222 |     siginfo_ptr->si_pid = current_process;
+      |                           ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c: 在函数‘signal_do_pending’中:
+kernel/kernel/signal.c:251:29: warning: ISO C 不允许在‘void *’和函数指针间比较 [-Wpedantic]
+  251 |         if (act->sa_handler == (void*)1) {
+      |                             ^~
+kernel/kernel/signal.c:280:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  280 |         info.si_pid = current_process;
+      |                       ^~~~~~~~~~~~~~~
+kernel/kernel/signal.c:289:20: warning: 未使用的变量‘old_blocked’ [-Wunused-variable]
+  289 |         k_sigset_t old_blocked = sig_data->blocked;
+      |                    ^~~~~~~~~~~
+<3> Building kernel/kernel/shell_enhanced.c
+<1> Building kernel/kernel/process.c
+kernel/kernel/process.c: 在函数‘__process_trampoline’中:
+kernel/kernel/process.c:23:29: warning: ISO C 不允许将一个对象指针转换为一个函数指针 [-Wpedantic]
+   23 |         void (*fn)(void*) = (void (*)(void*))p->entry;
+      |                             ^
+kernel/kernel/process.c: 在函数‘process_switch’中:
+kernel/kernel/process.c:133:63: warning: 未使用的参数‘old’ [-Wunused-parameter]
+  133 | __attribute__((naked)) void process_switch(process_context_t* old, process_context_t* new)
+      |                                            ~~~~~~~~~~~~~~~~~~~^~~
+kernel/kernel/process.c:133:87: warning: 未使用的参数‘new’ [-Wunused-parameter]
+  133 | __attribute__((naked)) void process_switch(process_context_t* old, process_context_t* new)
+      |                                                                    ~~~~~~~~~~~~~~~~~~~^~~
+kernel/kernel/process.c: 在函数‘process_fork’中:
+kernel/kernel/process.c:556:15: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  556 |         parent->flags,
+      |         ~~~~~~^~~~~~~
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+<0> Building kernel/kernel/kthread.c
+kernel/kernel/kthread.c: 在函数‘kthread_entry’中:
+kernel/kernel/kthread.c:29:18: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 |     kt->result = ret;
+      |                  ^~~
+kernel/kernel/kthread.c: 在函数‘kthread_create’中:
+kernel/kernel/kthread.c:50:44: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+   50 |     uint64_t pid = process_create_ex(name, (void*)kthread_entry, NULL,
+      |                                            ^
+kernel/kernel/kthread.c: 在文件作用域：
+kernel/kernel/kthread.c:14:13: warning: ‘__kthread_wrapper’声明为‘static’却从未定义过 [-Wunused-function]
+   14 | static void __kthread_wrapper(void);
+      |             ^~~~~~~~~~~~~~~~~
+<0> Building kernel/kernel/kernel.c
+<2> Building kernel/kernel/ipc.c
+kernel/kernel/ipc.c: 在函数‘shm_get’中:
+kernel/kernel/ipc.c:73:40: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   73 |     seg->size = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                        ^
+kernel/kernel/ipc.c:81:24: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+   81 |     seg->creator_pid = current_process;
+      |                        ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘shm_at’中:
+kernel/kernel/ipc.c:111:14: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-3’ to ‘4294967293’ [-Wsign-conversion]
+  111 |         prot &= ~PROT_WRITE;
+      |              ^~
+kernel/kernel/ipc.c: 在函数‘msg_get’中:
+kernel/kernel/ipc.c:245:34: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  245 |     msg_queues[id].creator_pid = current_process;
+      |                                  ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘sem_get’中:
+kernel/kernel/ipc.c:410:17: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  410 |     ss->nsems = nsems;
+      |                 ^~~~~
+kernel/kernel/ipc.c:412:23: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  412 |     ss->creator_pid = current_process;
+      |                       ^~~~~~~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘sem_op’中:
+kernel/kernel/ipc.c:452:27: warning: conversion from ‘int’ to ‘int16_t’ {或称 ‘short int’} may change value [-Wconversion]
+  452 |         ss->values[num] = val;
+      |                           ^~~
+kernel/kernel/ipc.c: 在函数‘sem_ctl’中:
+kernel/kernel/ipc.c:472:38: warning: conversion from ‘int’ to ‘int16_t’ {或称 ‘short int’} may change value [-Wconversion]
+  472 |                 ss->values[semnum] = *(int*)arg;
+      |                                      ^
+kernel/kernel/ipc.c: 在函数‘futex_wait’中:
+kernel/kernel/ipc.c:503:52: warning: 未使用的参数‘timeout_ms’ [-Wunused-parameter]
+  503 | int futex_wait(void* uaddr, uint32_t val, uint64_t timeout_ms)
+      |                                           ~~~~~~~~~^~~~~~~~~~
+kernel/kernel/ipc.c: 在函数‘futex_wake’中:
+kernel/kernel/ipc.c:573:12: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  573 |     return woken;
+      |            ^~~~~
+kernel/kernel/ipc.c: 在函数‘futex_requeue’中:
+kernel/kernel/ipc.c:600:12: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  600 |     return moved;
+      |            ^~~~~
+kernel/kernel/ipc.c: 在函数‘ipc_syscall’中:
+kernel/kernel/ipc.c:626:53: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  626 |                 void* ret = shm_at((uint32_t)first, (void*)second, (int)third);
+      |                                                     ^
+kernel/kernel/ipc.c:627:30: warning: 将一个指针转换为大小不同的整数 [-Wpointer-to-int-cast]
+  627 |                 return ret ? (long)ret : -1;
+      |                              ^
+kernel/kernel/ipc.c:630:27: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  630 |             return shm_dt((void*)first);
+      |                           ^
+kernel/kernel/ipc.c:632:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  632 |             return shm_ctl((uint32_t)first, (int)second, (void*)third);
+      |                                                          ^
+kernel/kernel/ipc.c:641:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  641 |             return msg_send((uint32_t)first, (void*)second, (uint64_t)third, (int)fourth);
+      |                                              ^
+kernel/kernel/ipc.c:643:46: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  643 |             return msg_recv((uint32_t)first, (void*)second, (uint64_t)third, (long)fourth, (int)fifth);
+      |                                              ^
+kernel/kernel/ipc.c:645:58: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  645 |             return msg_ctl((uint32_t)first, (int)second, (void*)third);
+      |                                                          ^
+kernel/kernel/ipc.c:654:44: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  654 |             return sem_op((uint32_t)first, (struct sembuf*)second, (uint32_t)third);
+      |                                            ^
+kernel/kernel/ipc.c:656:70: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+  656 |             return sem_ctl((uint32_t)first, (int)second, (int)third, (void*)fifth);
+      |                                                                      ^
+kernel/kernel/ipc.c: 在函数‘ipc_shm_create’中:
+kernel/kernel/ipc.c:917:52: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  917 |     uint64_t aligned_size = (size + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                                    ^
+<1> Building kernel/kernel/fs.c
+<0> Building kernel/kernel/fifo.c
+<3> Building kernel/kernel/epoll.c
+-- Enter folder kernel/gui/src --
+<0> Building kernel/gui/src/taskmgr.c
+<3> Building kernel/gui/src/kenux_render.c
+kernel/gui/src/kenux_render.c: 在函数‘KENUX_Render_DrawDashboardCard’中:
+kernel/gui/src/kenux_render.c:363:36: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘char’ may change value [-Wconversion]
+  363 |         while (v > 0) { tmp[i++] = '0' + (v % 10); v /= 10; }
+      |                                    ^~~
+kernel/gui/src/kenux_render.c: 在函数‘KAPI_Process_GetCount’中:
+kernel/gui/src/kenux_render.c:599:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  599 |     for (int i = 0; i < process_count; i++) {
+      |                       ^
+kernel/gui/src/kenux_render.c: 在函数‘KAPI_Process_GetList’中:
+kernel/gui/src/kenux_render.c:612:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  612 |     for (int i = 0; i < process_count; i++) {
+      |                       ^
+kernel/gui/src/kenux_render.c:620:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘uint64_t’ {或称 ‘long long unsigned int’} [-Wsign-compare]
+  620 |     for (int i = 0; i < process_count && out < max_count; i++) {
+      |                       ^
+-- Enter folder kernel/arch/x86_64 --
+<0> Building kernel/arch/x86_64/win32_process.c
+<1> Building kernel/arch/x86_64/usermode.c
+<2> Building kernel/arch/x86_64/security.c
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwClose’中:
+kernel/arch/x86_64/win32_process.c:1137:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1137 |     return NtClose(Handle);
+      |            ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwAllocateVirtualMemory’中:
+kernel/arch/x86_64/win32_process.c:1148:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1148 |     return NtAllocateVirtualMemory(ProcessHandle, BaseAddress, ZeroBits, RegionSize, AllocationType, Protect);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwFreeVirtualMemory’中:
+kernel/arch/x86_64/win32_process.c:1157:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1157 |     return NtFreeVirtualMemory(ProcessHandle, BaseAddress, RegionSize, FreeType);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwQueryInformationProcess’中:
+kernel/arch/x86_64/win32_process.c:1167:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1167 |     return NtQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwQueryInformationThread’中:
+kernel/arch/x86_64/win32_process.c:1177:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1177 |     return NtQueryInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength, ReturnLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwCreateFile’中:
+kernel/arch/x86_64/win32_process.c:1193:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1193 |     return NtCreateFile(FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock, AllocationSize, FileAttributes, ShareAccess, CreateDisposition, CreateOptions, EaBuffer, EaLength);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwReadFile’中:
+kernel/arch/x86_64/win32_process.c:1207:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1207 |     return NtReadFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwWriteFile’中:
+kernel/arch/x86_64/win32_process.c:1221:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1221 |     return NtWriteFile(FileHandle, Event, ApcRoutine, ApcContext, IoStatusBlock, Buffer, Length, ByteOffset, Key);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在函数‘ZwQueryAttributesFile’中:
+kernel/arch/x86_64/win32_process.c:1228:12: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘NTSTATUS’ {或称 ‘long int’}时可能会改变结果的符号 [-Wsign-conversion]
+ 1228 |     return NtQueryAttributesFile(ObjectAttributes, FileInformation);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/win32_process.c: 在文件作用域：
+kernel/arch/x86_64/win32_process.c:291:13: warning: ‘process_slot_cleanup’ 在此处定义 [-Wunused-function]
+  291 | static void process_slot_cleanup(win32_process_t* proc) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/usermode.c:14:9: warning: ‘USER_STACK_SIZE’ 重定义
+   14 | #define USER_STACK_SIZE 0x200000
+      |         ^~~~~~~~~~~~~~~
+In file included from kernel/arch/x86_64/usermode.c:1:
+kernel/arch/x86_64/include/arch/usermode.h:11:9: note: 这是先前定义的位置
+   11 | #define USER_STACK_SIZE 0x10000
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘__switch_to_user’中:
+kernel/arch/x86_64/usermode.c:193:11: warning: 未使用的变量‘old_pml4’ [-Wunused-variable]
+  193 |     void* old_pml4 = pmap_get();
+      |           ^~~~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_exit’中:
+kernel/arch/x86_64/usermode.c:332:20: warning: 未使用的参数‘status’ [-Wunused-parameter]
+  332 | long sys_exit(long status) {
+      |               ~~~~~^~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_getpid’中:
+kernel/arch/x86_64/usermode.c:346:12: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  346 |     return current_user_pid;
+      |            ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_getppid’中:
+kernel/arch/x86_64/usermode.c:353:25: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  353 |             long ppid = processes[i].parent_pid;
+      |                         ^~~~~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_read’中:
+kernel/arch/x86_64/usermode.c:378:40: warning: 未使用的参数‘count’ [-Wunused-parameter]
+  378 | long sys_read(long fd, void* buf, long count) {
+      |                                   ~~~~~^~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_brk’中:
+kernel/arch/x86_64/usermode.c:396:19: warning: 未使用的参数‘addr’ [-Wunused-parameter]
+  396 | long sys_brk(long addr) {
+      |              ~~~~~^~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_mmap’中:
+kernel/arch/x86_64/usermode.c:408:35: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘long int’时可能会改变结果的符号 [-Wsign-conversion]
+  408 |             processes[i].heap_end += (length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                   ^~
+kernel/arch/x86_64/usermode.c: 在函数‘usermode_page_fault_handler’中:
+kernel/arch/x86_64/usermode.c:520:43: warning: 未使用的参数‘fault_addr’ [-Wunused-parameter]
+  520 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                  ~~~~~~~~~^~~~~~~~~~
+kernel/arch/x86_64/usermode.c:520:64: warning: 未使用的参数‘error_code’ [-Wunused-parameter]
+  520 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                                       ~~~~~~~~~^~~~~~~~~~
+<2> Building kernel/arch/x86_64/procfs.c
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_cpuinfo_read’中:
+kernel/arch/x86_64/procfs.c:29:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_meminfo_read’中:
+kernel/arch/x86_64/procfs.c:65:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   65 |     n += snprintf(buf + n, max_len - n,
+      |                                    ^
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_stat_read’中:
+kernel/arch/x86_64/procfs.c:123:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  123 |     n += snprintf(buf + n, max_len - n, "cpu  %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:128:44: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  128 |             n += snprintf(buf + n, max_len - n, "cpu%u %lu 0 %lu %lu 0 0 0 0 0 0\n",
+      |                                            ^
+kernel/arch/x86_64/procfs.c:132:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  132 |     n += snprintf(buf + n, max_len - n, "intr %lu\n", irq_total);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:134:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  134 |     n += snprintf(buf + n, max_len - n, "ctxt %lu\n",
+      |                                    ^
+kernel/arch/x86_64/procfs.c:136:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  136 |     n += snprintf(buf + n, max_len - n, "btime %lu\n", __uptime_cached / 1000);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:147:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  147 |     n += snprintf(buf + n, max_len - n, "processes %lu\n", proc_count);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:148:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  148 |     n += snprintf(buf + n, max_len - n, "procs_running %lu\n", running ? running : 1);
+      |                                    ^
+kernel/arch/x86_64/procfs.c:149:36: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  149 |     n += snprintf(buf + n, max_len - n, "procs_blocked %lu\n", blocked);
+      |                                    ^
+kernel/arch/x86_64/procfs.c: 在函数‘procfs_finddir’中:
+kernel/arch/x86_64/procfs.c:272:24: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  272 |         pid = pid * 10 + (*p - '0');
+      |                        ^
+/tmp/cc6mZSCG.s: Assembler messages:
+<3> Building kernel/arch/x86_64/pagefault.c
+/tmp/cc6mZSCG.s:540: Warning: no instruction mnemonic suffix given and no register operands; using default for `sysret'
+<1> Building kernel/arch/x86_64/net.c
+kernel/arch/x86_64/pagefault.c: 在函数‘stack_expand’中:
+kernel/arch/x86_64/pagefault.c:157:37: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  157 |     uint64_t page_addr = fault_addr & ~(PAGE_SIZE - 1);
+      |                                     ^
+kernel/arch/x86_64/pagefault.c: 在函数‘pagefault_handler’中:
+kernel/arch/x86_64/pagefault.c:230:48: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  230 |                 if (demand_page_alloc(cr3, cr2 & ~(PAGE_SIZE - 1),
+      |                                                ^
+kernel/arch/x86_64/pagefault.c:243:56: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+  243 |                         proc->stack_base = (void*)(cr2 & ~(PAGE_SIZE - 1));
+      |                                                        ^
+kernel/arch/x86_64/pagefault.c: 在文件作用域：
+kernel/arch/x86_64/pagefault.c:27:13: warning: ‘pf_log_buf’ 在此处定义 [-Wunused-variable]
+   27 | static char pf_log_buf[PF_LOG_BUF_SIZE];
+      |             ^~~~~~~~~~
+kernel/arch/x86_64/net.c: 在函数‘parse_ip_addr’中:
+kernel/arch/x86_64/net.c:86:16: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   86 |             ip |= (octet << shift);
+      |                ^~
+kernel/arch/x86_64/net.c:94:8: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   94 |     ip |= (octet << shift);
+      |        ^~
+kernel/arch/x86_64/net.c: 在函数‘parse_mac_addr’中:
+kernel/arch/x86_64/net.c:105:56: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  105 |             if (c >= '0' && c <= '9') byte = byte * 16 + (c - '0');
+      |                                                        ^
+kernel/arch/x86_64/net.c:106:61: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  106 |             else if (c >= 'a' && c <= 'f') byte = byte * 16 + (c - 'a' + 10);
+      |                                                             ^
+kernel/arch/x86_64/net.c:107:61: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  107 |             else if (c >= 'A' && c <= 'F') byte = byte * 16 + (c - 'A' + 10);
+      |                                                             ^
+kernel/arch/x86_64/net.c: 在函数‘dhcp_parse_response’中:
+kernel/arch/x86_64/net.c:243:24: warning: conversion from ‘long long unsigned int’ to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  243 |     uint32_t opt_len = len - (sizeof(dhcp_packet_t) - 312);
+      |                        ^~~
+kernel/arch/x86_64/net.c: 在函数‘ip_handle_packet’中:
+kernel/arch/x86_64/net.c:479:28: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  479 |     uint16_t payload_len = total_len - ((ip->version_ihl & 0x0F) * 4);
+      |                            ^~~~~~~~~
+kernel/arch/x86_64/net.c: 在函数‘tcp_find_socket’中:
+kernel/arch/x86_64/net.c:543:47: warning: ‘local_ip’的声明隐藏了一个全局声明 [-Wshadow]
+  543 | static tcp_socket_t* tcp_find_socket(uint32_t local_ip, uint16_t local_port,
+      |                                      ~~~~~~~~~^~~~~~~~
+kernel/arch/x86_64/net.c:10:17: note: 被隐藏的声明在这里
+   10 | static uint32_t local_ip  = 0;
+      |                 ^~~~~~~~
+kernel/arch/x86_64/net.c:543:47: warning: 未使用的参数‘local_ip’ [-Wunused-parameter]
+  543 | static tcp_socket_t* tcp_find_socket(uint32_t local_ip, uint16_t local_port,
+      |                                      ~~~~~~~~~^~~~~~~~
+kernel/arch/x86_64/net.c: 在函数‘udp_handle_packet’中:
+kernel/arch/x86_64/net.c:905:25: warning: conversion from ‘long long unsigned int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  905 |     uint16_t data_len = ntohs(udp->len) - sizeof(udp_header_t);
+      |                         ^~~~~
+<2> Building kernel/arch/x86_64/jbd2.c
+kernel/arch/x86_64/jbd2.c: 在函数‘jbd2_journal_load’中:
+kernel/arch/x86_64/jbd2.c:398:56: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  398 |             uint64_t* block_nos = (uint64_t*)(scan_buf + sizeof(jbd2_block_header_t));
+      |                                                        ^
+kernel/arch/x86_64/jbd2.c: 在函数‘jbd2_trans_commit’中:
+kernel/arch/x86_64/jbd2.c:627:52: warning: ‘void *’型指针用在了算术表达式中 [-Wpointer-arith]
+  627 |         uint64_t* block_nos = (uint64_t*)(desc_buf + sizeof(jbd2_block_header_t));
+      |                                                    ^
+kernel/arch/x86_64/jbd2.c: 在函数‘jbd2_trans_abort’中:
+kernel/arch/x86_64/jbd2.c:759:20: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-2’ to ‘4294967294’ [-Wsign-conversion]
+  759 |         blk->flags &= ~JBD2_BLOCK_DIRTY;
+      |                    ^~
+kernel/arch/x86_64/jbd2.c: 在函数‘jbd2_journal_checkpoint’中:
+kernel/arch/x86_64/jbd2.c:867:32: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-2’ to ‘4294967294’ [-Wsign-conversion]
+  867 |                     blk->flags &= ~JBD2_BLOCK_DIRTY;
+      |                                ^~
+kernel/arch/x86_64/jbd2.c:875:24: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-9’ to ‘4294967287’ [-Wsign-conversion]
+  875 |             blk->flags &= ~JBD2_BLOCK_IN_LOG;
+      |                        ^~
+<3> Building kernel/arch/x86_64/ext4.c
+<0> Building kernel/arch/x86_64/elf.c
+kernel/arch/x86_64/elf.c: 在函数‘elf_load_from_memory’中:
+kernel/arch/x86_64/elf.c:91:38: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   91 |         uint64_t vaddr = ph->p_vaddr & ~(PAGE_SIZE - 1);
+      |                                      ^
+kernel/arch/x86_64/elf.c:92:40: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   92 |         uint64_t offset = ph->p_offset & ~(PAGE_SIZE - 1);
+      |                                        ^
+kernel/arch/x86_64/elf.c:95:55: warning: unsigned conversion from ‘int’ to ‘uint64_t’ {或称 ‘long long unsigned int’} changes value from ‘-4096’ to ‘18446744073709547520’ [-Wsign-conversion]
+   95 |         uint64_t page_end = (mem_end + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                                       ^
+kernel/arch/x86_64/elf.c: 在函数‘elf_load_from_file’中:
+kernel/arch/x86_64/elf.c:158:41: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  158 |     int ret = elf_load_from_memory(buf, total, info);
+      |                                         ^~~~~
+<0> Building kernel/arch/x86_64/cfs.c
+<3> Building kernel/arch/x86_64/bpf.c
+kernel/arch/x86_64/bpf.c:135:8: warning: ISO C 不允许大小为 0 的数组‘data’ [-Wpedantic]
+  135 |     u8 data[0];
+      |        ^~~~
+kernel/arch/x86_64/bpf.c: 在函数‘hash_map_update_impl’中:
+kernel/arch/x86_64/bpf.c:254:20: warning: conversion from ‘long long unsigned int’ to ‘u32’ {或称 ‘unsigned int’} may change value [-Wconversion]
+  254 |     u32 entry_sz = sizeof(bpf_hash_entry_t) + hdata->key_size + hdata->value_size;
+      |                    ^~~~~~
+kernel/arch/x86_64/bpf.c: 在函数‘array_map_alloc’中:
+kernel/arch/x86_64/bpf.c:346:34: warning: 未使用的参数‘key_size’ [-Wunused-parameter]
+  346 | static void *array_map_alloc(u32 key_size, u32 value_size, u32 max_entries)
+      |                              ~~~~^~~~~~~~
+kernel/arch/x86_64/bpf.c: 在函数‘bpf_prog_run’中:
+kernel/arch/x86_64/bpf.c:583:17: warning: 未使用的变量‘ssv’ [-Wunused-variable]
+  583 |             s64 ssv = (s64)sv;
+      |                 ^~~
+kernel/arch/x86_64/bpf.c:646:29: warning: ‘u32’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  646 |             case BPF_JA: pc += insn->off + 1; continue;
+      |                             ^~
+kernel/arch/x86_64/bpf.c:718:20: warning: ‘u32’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  718 |                 pc += insn->off + 1;
+      |                    ^~
+kernel/arch/x86_64/bpf.c:727:27: warning: ‘long long unsigned int’转换自‘long long int’时可能会改变结果的符号 [-Wsign-conversion]
+  727 |             u64 addr = sv + (s64)insn->off;
+      |                           ^
+kernel/arch/x86_64/bpf.c:725:17: warning: 未使用的变量‘dv’ [-Wunused-variable]
+  725 |             u64 dv = get_reg(&ctx, dst);
+      |                 ^~
+kernel/arch/x86_64/bpf.c:746:43: warning: ‘long long unsigned int’转换自‘long long int’时可能会改变结果的符号 [-Wsign-conversion]
+  746 |                 addr = get_reg(&ctx, dst) + (s64)insn->off;
+      |                                           ^
+kernel/arch/x86_64/bpf.c:749:43: warning: ‘long long unsigned int’转换自‘long long int’时可能会改变结果的符号 [-Wsign-conversion]
+  749 |                 addr = get_reg(&ctx, dst) + (s64)insn->off;
+      |                                           ^
+kernel/arch/x86_64/bpf.c: 在函数‘bpf_verifier’中:
+kernel/arch/x86_64/bpf.c:838:33: warning: ‘u32’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  838 |                 s32 target = pc + insn->off + 1;
+      |                                 ^
+kernel/arch/x86_64/bpf.c:838:30: warning: ‘s32’ {或称 ‘int’}转换自‘u32’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  838 |                 s32 target = pc + insn->off + 1;
+      |                              ^~
+kernel/arch/x86_64/bpf.c: 在函数‘emit_dword’中:
+kernel/arch/x86_64/bpf.c:866:27: warning: conversion from ‘u32’ {或称 ‘unsigned int’} to ‘u8’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  866 |     emit_byte((val >> 24) & 0xFF);
+      |               ~~~~~~~~~~~~^~~~~~
+kernel/arch/x86_64/bpf.c: 在文件作用域：
+kernel/arch/x86_64/bpf.c:869:13: warning: ‘emit_qword’ 在此处定义 [-Wunused-function]
+  869 | static void emit_qword(u64 val)
+      |             ^~~~~~~~~~
+<2> Building kernel/arch/x86_64/apic.c
+kernel/arch/x86_64/apic.c: 在函数‘lapic_send_ipi’中:
+kernel/arch/x86_64/apic.c:86:38: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-16777216’ to ‘4278190080’ [-Wsign-conversion]
+   86 |         lapic_write(LAPIC_ICR1, 0xFF << 24);
+      |                                 ~~~~~^~~~~
+kernel/arch/x86_64/apic.c: 在函数‘lapic_timer_calibrate’中:
+kernel/arch/x86_64/apic.c:128:44: warning: unsigned conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} changes the value of ‘-2’ [-Wsign-conversion]
+  128 |         outb(PIT_SPEAKER_PORT, speaker_val & ~0x01);
+      |                                ~~~~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/apic.c: 在函数‘lapic_lvt_unmask’中:
+kernel/arch/x86_64/apic.c:172:26: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-65537’ to ‘4294901759’ [-Wsign-conversion]
+  172 |     lapic_write(reg, val & ~LAPIC_TIMER_MASKED);
+      |                          ^
+kernel/arch/x86_64/apic.c: 在函数‘lapic_mask_irq’中:
+kernel/arch/x86_64/apic.c:180:30: warning: 未使用的参数‘vector’ [-Wunused-parameter]
+  180 | void lapic_mask_irq(uint32_t vector)
+      |                     ~~~~~~~~~^~~~~~
+kernel/arch/x86_64/apic.c: 在函数‘lapic_unmask_irq’中:
+kernel/arch/x86_64/apic.c:189:38: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-65537’ to ‘4294901759’ [-Wsign-conversion]
+  189 |     lapic_write(LAPIC_LVT_TIMER, val & ~LAPIC_TIMER_MASKED);
+      |                                      ^
+kernel/arch/x86_64/apic.c:186:32: warning: 未使用的参数‘vector’ [-Wunused-parameter]
+  186 | void lapic_unmask_irq(uint32_t vector)
+      |                       ~~~~~~~~~^~~~~~
+<0> Building kernel/arch/x86_64/ahci.c
+<2> Building kernel/arch/x86_64/acpi_pm.c
+kernel/arch/x86_64/ahci.c: 在函数‘ahci_init’中:
+kernel/arch/x86_64/ahci.c:152:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  152 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/ahci.c:152:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  152 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/ahci.c:152:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  152 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/ahci.c:156:38: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  156 |                 uint8_t class_code = (class_code_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/ahci.c:161:37: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  161 |                         ctrl->bus = b;
+      |                                     ^
+kernel/arch/x86_64/ahci.c:162:40: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  162 |                         ctrl->device = d;
+      |                                        ^
+kernel/arch/x86_64/ahci.c:163:42: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  163 |                         ctrl->function = f;
+      |                                          ^
+kernel/arch/x86_64/ahci.c:164:54: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  164 |                         ctrl->base = pci_read_config(b, d, f, 0x24) & 0xFFFFFFF0;
+      |                                                      ^
+kernel/arch/x86_64/ahci.c:164:57: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  164 |                         ctrl->base = pci_read_config(b, d, f, 0x24) & 0xFFFFFFF0;
+      |                                                         ^
+kernel/arch/x86_64/ahci.c:164:60: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  164 |                         ctrl->base = pci_read_config(b, d, f, 0x24) & 0xFFFFFFF0;
+      |                                                            ^
+kernel/arch/x86_64/ahci.c:22:22: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   22 | #define AHCI_POFF    0x100
+      |                      ^~~~~
+kernel/arch/x86_64/ahci.c:175:52: note: in expansion of macro ‘AHCI_POFF’
+  175 |                                 uint32_t cmd_off = AHCI_POFF + p * AHCI_PSIZE + AHCI_PCMD;
+      |                                                    ^~~~~~~~~
+kernel/arch/x86_64/ahci.c:178:71: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-2’ to ‘4294967294’ [-Wsign-conversion]
+  178 |                                     ahci_w32(ctrl->base, cmd_off, cmd & ~CMD_ST);
+      |                                                                       ^
+kernel/arch/x86_64/ahci.c:182:71: warning: unsigned conversion from ‘int’ to ‘uint32_t’ {或称 ‘unsigned int’} changes value from ‘-17’ to ‘4294967279’ [-Wsign-conversion]
+  182 |                                     ahci_w32(ctrl->base, cmd_off, cmd & ~CMD_FRE);
+      |                                                                       ^
+kernel/arch/x86_64/ahci.c:191:81: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  191 |                                 ahci_w32(ctrl->base, AHCI_POFF + p * AHCI_PSIZE + 0x00, (uint32_t)phys);
+      |                                                                                 ^
+kernel/arch/x86_64/ahci.c:192:81: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  192 |                                 ahci_w32(ctrl->base, AHCI_POFF + p * AHCI_PSIZE + 0x04, (uint32_t)(phys >> 32));
+      |                                                                                 ^
+kernel/arch/x86_64/ahci.c:193:81: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  193 |                                 ahci_w32(ctrl->base, AHCI_POFF + p * AHCI_PSIZE + 0x08, (uint32_t)(phys + 0x400));
+      |                                                                                 ^
+kernel/arch/x86_64/ahci.c:194:81: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  194 |                                 ahci_w32(ctrl->base, AHCI_POFF + p * AHCI_PSIZE + 0x0C, 0);
+      |                                                                                 ^
+kernel/arch/x86_64/ahci.c:195:81: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  195 |                                 ahci_w32(ctrl->base, AHCI_POFF + p * AHCI_PSIZE + AHCI_PIS, 0xFFFFFFFF);
+      |                                                                                 ^
+kernel/arch/x86_64/ahci.c:198:99: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  198 |                                 ctrl->ports[p] = (ahci_port_t*)(uintptr_t)(ctrl->base + AHCI_POFF + p * AHCI_PSIZE);
+      |                                                                                                   ^
+kernel/arch/x86_64/acpi_pm.c: 在函数‘acpi_pm_write_sleep’中:
+kernel/arch/x86_64/acpi_pm.c:137:16: warning: conversion from ‘unsigned int’ to ‘uint16_t’ {或称 ‘short unsigned int’} changes the value of ‘4294965488’ [-Wconversion]
+  137 |         cnt &= ~(0x070FU);
+      |                ^
+kernel/arch/x86_64/acpi_pm.c:145:19: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  145 |         cnt = inw(pm1_cnt_port);
+      |                   ^~~~~~~~~~~~
+kernel/arch/x86_64/acpi_pm.c:146:16: warning: conversion from ‘unsigned int’ to ‘uint16_t’ {或称 ‘short unsigned int’} changes the value of ‘4294965488’ [-Wconversion]
+  146 |         cnt &= ~(0x070FU);
+      |                ^
+kernel/arch/x86_64/acpi_pm.c:150:14: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  150 |         outw(pm1_cnt_port, cnt);
+      |              ^~~~~~~~~~~~
+kernel/arch/x86_64/acpi_pm.c: 在函数‘acpi_pm_init’中:
+kernel/arch/x86_64/acpi_pm.c:187:35: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  187 |         uint16_t cnt = inw(pm_fadt->pm1a_cnt_blk);
+      |                            ~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/acpi_pm.c:190:25: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  190 |             outw(pm_fadt->pm1a_cnt_blk, cnt);
+      |                  ~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/acpi_pm.c: 在函数‘acpi_pm_suspend’中:
+kernel/arch/x86_64/acpi_pm.c:215:35: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  215 |         pm_saved_cnt = inw(pm_fadt->pm1a_cnt_blk);
+      |                            ~~~~~~~^~~~~~~~~~~~~~
+kernel/arch/x86_64/acpi_pm.c: 在函数‘acpi_pm_get_timer’中:
+kernel/arch/x86_64/acpi_pm.c:328:32: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+  328 |         timer_val = inl(pm_fadt->pm_tmr_blk) & ACPI_PM_TIMER_MAX;
+      |                         ~~~~~~~^~~~~~~~~~~~
+kernel/arch/x86_64/acpi_pm.c: 在文件作用域：
+kernel/arch/x86_64/acpi_pm.c:154:17: warning: ‘acpi_pm_get_slp_typ’ 在此处定义 [-Wunused-function]
+  154 | static uint16_t acpi_pm_get_slp_typ(uint8_t* fadt_raw, uint32_t offset)
+      |                 ^~~~~~~~~~~~~~~~~~~
+<1> Building kernel/arch/x86_64/acpi_madt.c
+kernel/arch/x86_64/acpi_madt.c: 在函数‘__find_acpi_table’中:
+kernel/arch/x86_64/acpi_madt.c:52:23: warning: conversion from ‘long long unsigned int’ to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+   52 |         entry_count = (rsdt_len - sizeof(acpi_rsdt_t)) / 8;
+      |                       ^
+kernel/arch/x86_64/acpi_madt.c:54:23: warning: conversion from ‘long long unsigned int’ to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+   54 |         entry_count = (rsdt_len - sizeof(acpi_rsdt_t)) / 4;
+      |                       ^
+kernel/arch/x86_64/acpi_madt.c: 在函数‘acpi_madt_parse’中:
+kernel/arch/x86_64/acpi_madt.c:102:59: warning: ISO C 不允许大小为 0 的数组 [-Wpedantic]
+  102 |     uint32_t offset = sizeof(acpi_madt_t) - sizeof(uint8_t[0]);
+      |                                                           ^
+<2> Building kernel/arch/x86_64/acpi.c
+kernel/arch/x86_64/acpi.c:21:17: warning: ‘scan_for_rsdp’ 在此处定义 [-Wunused-function]
+   21 | static uint8_t* scan_for_rsdp(uint32_t start, uint32_t end)
+      |                 ^~~~~~~~~~~~~
+kernel/arch/x86_64/acpi_madt.c: 在函数‘acpi_find_rsdp’中:
+kernel/arch/x86_64/acpi_madt.c:30:37: warning: array subscript 0 is outside array bounds of ‘uint16_t[0]’ {或称 ‘short unsigned int[]’} [-Warray-bounds=]
+   30 |     uint64_t ebda_base = (uint64_t)(*ebda_seg) << 4;
+      |                                    ~^~~~~~~~~~
+cc1: note: source object is likely at address zero
+<0> Building kernel/arch/x86_64/ac97.c
+-- Enter folder kernel/api --
+<2> Building kernel/api/kapi_wireless.c
+kernel/arch/x86_64/ac97.c: 在函数‘ac97_init’中:
+kernel/arch/x86_64/ac97.c:54:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   54 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/ac97.c:54:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   54 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/ac97.c:54:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   54 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/ac97.c:58:38: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   58 |                 uint8_t class_code = (class_code_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/ac97.c:67:37: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   67 |                         ctrl->bus = b;
+      |                                     ^
+kernel/arch/x86_64/ac97.c:68:40: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   68 |                         ctrl->device = d;
+      |                                        ^
+kernel/arch/x86_64/ac97.c:69:42: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   69 |                         ctrl->function = f;
+      |                                          ^
+kernel/arch/x86_64/ac97.c:70:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   70 |                         ctrl->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                              ^
+kernel/arch/x86_64/ac97.c:70:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   70 |                         ctrl->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                 ^
+kernel/arch/x86_64/ac97.c:70:68: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   70 |                         ctrl->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                    ^
+kernel/arch/x86_64/ac97.c:71:58: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   71 |                         ctrl->dma_base = pci_read_config(b, d, f, 0x14) & 0xFFFFFFF0;
+      |                                                          ^
+kernel/arch/x86_64/ac97.c:71:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   71 |                         ctrl->dma_base = pci_read_config(b, d, f, 0x14) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/ac97.c:71:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   71 |                         ctrl->dma_base = pci_read_config(b, d, f, 0x14) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/ac97.c:72:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   72 |                         ctrl->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/ac97.c:72:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   72 |                         ctrl->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                              ^
+kernel/arch/x86_64/ac97.c:72:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   72 |                         ctrl->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                 ^
+kernel/arch/x86_64/ac97.c:73:60: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   73 |                         ctrl->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                            ^
+kernel/arch/x86_64/ac97.c:73:63: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   73 |                         ctrl->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                               ^
+kernel/arch/x86_64/ac97.c:73:66: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   73 |                         ctrl->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                                  ^
+kernel/arch/x86_64/ac97.c:74:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   74 |                         ctrl->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                           ^
+kernel/arch/x86_64/ac97.c:74:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   74 |                         ctrl->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                              ^
+kernel/arch/x86_64/ac97.c:74:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   74 |                         ctrl->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                 ^
+kernel/arch/x86_64/ac97.c:50:26: warning: 未使用的变量‘function’ [-Wunused-variable]
+   50 |     uint8_t bus, device, function;
+      |                          ^~~~~~~~
+kernel/arch/x86_64/ac97.c:50:18: warning: 未使用的变量‘device’ [-Wunused-variable]
+   50 |     uint8_t bus, device, function;
+      |                  ^~~~~~
+kernel/arch/x86_64/ac97.c:50:13: warning: 未使用的变量‘bus’ [-Wunused-variable]
+   50 |     uint8_t bus, device, function;
+      |             ^~~
+kernel/arch/x86_64/ac97.c:80:41: warning: ‘vendor1’ may be used uninitialized [-Wmaybe-uninitialized]
+   80 |                         ctrl->vendor_id = vendor1;
+      |                         ~~~~~~~~~~~~~~~~^~~~~~~~~
+kernel/arch/x86_64/ac97.c:77:34: note: ‘vendor1’在此声明
+   77 |                         uint16_t vendor1, vendor2;
+      |                                  ^~~~~~~
+kernel/arch/x86_64/ac97.c:81:41: warning: ‘vendor2’ may be used uninitialized [-Wmaybe-uninitialized]
+   81 |                         ctrl->device_id = vendor2;
+      |                         ~~~~~~~~~~~~~~~~^~~~~~~~~
+kernel/arch/x86_64/ac97.c:77:43: note: ‘vendor2’在此声明
+   77 |                         uint16_t vendor1, vendor2;
+      |                                           ^~~~~~~
+kernel/api/kapi_wireless.c:32:64: error: 形参 2 (‘netdev’) 的类型不完全
+   32 | int kapi_wifi_register_dev(kapi_wifi_dev_t *dev, kapi_netdev_t netdev)
+      |                                                  ~~~~~~~~~~~~~~^~~~~~
+kernel/api/kapi_wireless.c: 在函数‘kapi_wifi_register_dev’中:
+kernel/api/kapi_wireless.c:32:64: warning: 未使用的参数‘netdev’ [-Wunused-parameter]
+<1> Building kernel/api/kapi_wait.c
+kernel/api/kapi_wireless.c: 在函数‘kapi_wifi_unregister_dev’中:
+kernel/api/kapi_wireless.c:60:12: error: ‘KAPI_WIFI_ENOENT’ undeclared (first use in this function); did you mean ‘KAPI_WIFI_ENODEV’?
+   60 |     return KAPI_WIFI_ENOENT;
+      |            ^~~~~~~~~~~~~~~~
+      |            KAPI_WIFI_ENODEV
+kernel/api/kapi_wireless.c:60:12: note: 每个未声明的标识符在其出现的函数内只报告一次
+kernel/api/kapi_wireless.c: 在函数‘kapi_wifi_get_scan_results’中:
+kernel/api/kapi_wireless.c:89:63: warning: 未使用的参数‘max’ [-Wunused-parameter]
+   89 |                                kapi_wifi_net_t *out, uint32_t max,
+      |                                                      ~~~~~~~~~^~~
+<2> Building kernel/api/kapi_vpn.c
+FAILED TASK run all: 

@@ -33,7 +33,7 @@ typedef struct {
     void* app_data;
 } kanvas_start_item_t;
 
-typedef struct {
+typedef struct kanvas_start_menu_s {
     bool visible;
     int x, y;
     kui_color_t bg_color;

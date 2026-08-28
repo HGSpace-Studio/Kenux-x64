@@ -17,7 +17,7 @@ void syscall_init(void)
     leonos_compat_init();
 }
 
-void syscall_register(int num, void* handler)
+void syscall_register(uint64_t num, void* handler)
 {
     if (num >= SYSCALL_MAX) {
         return;

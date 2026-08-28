@@ -37,12 +37,22 @@ typedef struct {
 } user_context_t;
 
 typedef struct {
+    int used;
+    char name[64];
     uint64_t entry_point;
     uint64_t stack_top;
     uint64_t heap_start;
     uint64_t heap_end;
     uint64_t cr3;
-    uint64_t page_table;
+    uint64_t pid;
+    uint64_t parent_pid;
+    uint32_t state;
+    uint32_t priority;
+    uint64_t cpu_time;
+    uint64_t sched_count;
+    int fd_table[32];
+    int fd_count;
+    char cwd[256];
 } user_process_t;
 
 void usermode_init(void);

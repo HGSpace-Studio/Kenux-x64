@@ -6,4 +6,5 @@ build/obj/kernel/gui/src/desktop.c.o: kernel/gui/src/desktop.c \
  kernel/gui/include/color.h kernel/gui/include/color.h \
  kernel/gui/include/graphics.h kernel/gui/include/font.h \
  kernel/gui/include/window_manager.h kernel/gui/include/msf.h \
- kernel/gui/include/framebuffer.h kernel/gui/include/cursor_data.h
+ kernel/gui/include/framebuffer.h kernel/gui/include/cursor_data.h \
+ kernel/gui/include/wallpaper_data.h kernel/gui/include/logo_data.h

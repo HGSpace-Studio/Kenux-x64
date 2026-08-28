@@ -1,0 +1,111 @@
+-- Start building task run all -- (434732821)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/api --
+<2> Building kernel/api/kapi_init.c
+<0> Building kernel/api/kapi_ftrace.c
+<1> Building kernel/api/kapi_fs.c
+<3> Building kernel/api/kapi_full_disk_encryption.c
+In file included from kernel/api/kapi_fs.c:3:
+include/kapi_fs_ext.h:226:1: error: unknown type name ‘ssize_t’; did you mean ‘size_t’?
+  226 | ssize_t kapi_read(int fd, void* buf, size_t count);
+      | ^~~~~~~
+      | size_t
+include/kapi_fs_ext.h:228:1: error: unknown type name ‘ssize_t’; did you mean ‘size_t’?
+  228 | ssize_t kapi_write(int fd, const void* buf, size_t count);
+      | ^~~~~~~
+      | size_t
+include/kapi_fs_ext.h:230:1: error: unknown type name ‘ssize_t’; did you mean ‘size_t’?
+  230 | ssize_t kapi_pread(int fd, void* buf, size_t count, off_t offset);
+      | ^~~~~~~
+      | size_t
+include/kapi_fs_ext.h:232:1: error: unknown type name ‘ssize_t’; did you mean ‘size_t’?
+  232 | ssize_t kapi_pwrite(int fd, const void* buf, size_t count, off_t offset);
+      | ^~~~~~~
+      | size_t
+include/kapi_fs_ext.h:304:1: error: unknown type name ‘ssize_t’; did you mean ‘size_t’?
+  304 | ssize_t kapi_readlink(const char* pathname, char* buf, size_t bufsiz);
+      | ^~~~~~~
+      | size_t
+include/kapi_fs_ext.h:306:1: error: unknown type name ‘ssize_t’; did you mean ‘size_t’?
+  306 | ssize_t kapi_readlinkat(int dirfd, const char* pathname, char* buf, size_t bufsiz);
+      | ^~~~~~~
+      | size_t
+kernel/api/kapi_fs.c:122:1: error: unknown type name ‘kapi_file_t’; did you mean ‘kapi_futex_t’?
+  122 | kapi_file_t kapi_open(const char* path, int flags, int mode)
+      | ^~~~~~~~~~~
+      | kapi_futex_t
+kernel/api/kapi_fs.c:122:13: error: conflicting types for ‘kapi_open’; have ‘int(const char *, int,  int)’
+  122 | kapi_file_t kapi_open(const char* path, int flags, int mode)
+      |             ^~~~~~~~~
+include/kapi_fs_ext.h:218:5: note: previous declaration of ‘kapi_open’ with type ‘int(const char *, int)’
+  218 | int kapi_open(const char* pathname, int flags);
+      |     ^~~~~~~~~
+In file included from include/kapi_fs_ext.h:5:
+kernel/api/kapi_fs.c: 在函数‘kapi_open’中:
+kernel/lib/libc/include/stddef.h:8:14: error: returning ‘void *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+    8 | #define NULL ((void*)0)
+      |              ^
+kernel/api/kapi_fs.c:125:16: note: in expansion of macro ‘NULL’
+  125 |         return NULL;
+      |                ^~~~
+kernel/lib/libc/include/stddef.h:8:14: error: returning ‘void *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+    8 | #define NULL ((void*)0)
+      |              ^
+kernel/api/kapi_fs.c:137:16: note: in expansion of macro ‘NULL’
+  137 |         return NULL;
+      |                ^~~~
+kernel/lib/libc/include/stddef.h:8:14: error: returning ‘void *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+    8 | #define NULL ((void*)0)
+      |              ^
+kernel/api/kapi_fs.c:142:16: note: in expansion of macro ‘NULL’
+  142 |         return NULL;
+      |                ^~~~
+kernel/api/kapi_fs.c:147:12: error: returning ‘struct kapi_file *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+  147 |     return &kapi_file_table[slot];
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+kernel/api/kapi_fs.c:122:45: warning: 未使用的参数‘flags’ [-Wunused-parameter]
+  122 | kapi_file_t kapi_open(const char* path, int flags, int mode)
+      |                                         ~~~~^~~~~
+kernel/api/kapi_fs.c:122:56: warning: 未使用的参数‘mode’ [-Wunused-parameter]
+  122 | kapi_file_t kapi_open(const char* path, int flags, int mode)
+      |                                                    ~~~~^~~~
+kernel/api/kapi_fs.c: 在文件作用域：
+kernel/api/kapi_fs.c:163:9: error: conflicting types for ‘kapi_read’; have ‘int64_t(int,  void *, size_t)’ {或称 ‘long long int(int,  void *, long long unsigned int)’}
+  163 | ssize_t kapi_read(int fd, void* buf, size_t count)
+      |         ^~~~~~~~~
+include/kapi_fs_ext.h:226:9: note: previous declaration of ‘kapi_read’ with type ‘int(int,  void *, size_t)’ {或称 ‘int(int,  void *, long long unsigned int)’}
+  226 | ssize_t kapi_read(int fd, void* buf, size_t count);
+      |         ^~~~~~~~~
+kernel/api/kapi_fs.c:172:9: error: conflicting types for ‘kapi_write’; have ‘int64_t(int,  const void *, size_t)’ {或称 ‘long long int(int,  const void *, long long unsigned int)’}
+  172 | ssize_t kapi_write(int fd, const void* buf, size_t count)
+      |         ^~~~~~~~~~
+include/kapi_fs_ext.h:228:9: note: previous declaration of ‘kapi_write’ with type ‘int(int,  const void *, size_t)’ {或称 ‘int(int,  const void *, long long unsigned int)’}
+  228 | ssize_t kapi_write(int fd, const void* buf, size_t count);
+      |         ^~~~~~~~~~
+kernel/api/kapi_fs.c: 在函数‘kapi_stat’中:
+kernel/api/kapi_fs.c:194:21: warning: ‘kapi_off_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  194 |     stat->st_size = node->size;
+      |                     ^~~~
+kernel/api/kapi_fs.c:195:22: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  195 |     stat->st_atime = node->atime;
+      |                      ^~~~
+kernel/api/kapi_fs.c:196:22: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  196 |     stat->st_mtime = node->mtime;
+      |                      ^~~~
+kernel/api/kapi_fs.c:197:22: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  197 |     stat->st_ctime = node->ctime;
+      |                      ^~~~
+kernel/api/kapi_fs.c:198:23: warning: ‘int64_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  198 |     stat->st_blocks = node->blocks;
+      |                       ^~~~
+kernel/api/kapi_fs.c: 在函数‘kapi_readdir’中:
+kernel/api/kapi_fs.c:359:24: warning: ‘kapi_off_t’ {或称 ‘long long int’}转换自‘uint64_t’ {或称 ‘long long unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+  359 |         entry.d_size = child->size;
+      |                        ^~~~~
+<1> Building kernel/api/kapi_ebpf.c
+kernel/api/kapi_ebpf.c: 在函数‘ebpf_serial_hex’中:
+kernel/api/kapi_ebpf.c:139:23: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  139 |         buf[15 - i] = (n < 10) ? ('0' + n) : ('a' + n - 10);
+      |                       ^
+FAILED TASK run all: 

@@ -4,11 +4,73 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+
+#ifdef KAL_KERNEL
+#include <arch/types.h>
+#else
 #include <sys/types.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#ifndef KAPI_NET_TYPES_DEFINED
+#define KAPI_NET_TYPES_DEFINED
+typedef uint32_t kapi_socklen_t;
+typedef uint32_t kapi_nfds_t;
+typedef uint32_t kapi_in_addr_t;
+typedef uint8_t kapi_in6_addr_t[16];
+
+struct kapi_in_addr {
+    kapi_in_addr_t s_addr;
+};
+
+struct kapi_in6_addr {
+    kapi_in6_addr_t s6_addr;
+};
+
+struct kapi_msghdr {
+    void* msg_name;
+    kapi_socklen_t msg_namelen;
+    void* msg_iov;
+    size_t msg_iovlen;
+    void* msg_control;
+    size_t msg_controllen;
+    int msg_flags;
+};
+
+struct kapi_fd_set {
+    uint32_t fds_bits[8];
+};
+
+#ifndef KAPI_TIMEVAL_DEFINED
+#define KAPI_TIMEVAL_DEFINED
+struct kapi_timeval {
+    int64_t tv_sec;
+    int64_t tv_usec;
+};
+#endif
+
+#ifndef KAPI_TIMESPEC_DEFINED
+#define KAPI_TIMESPEC_DEFINED
+struct kapi_timespec {
+    int64_t tv_sec;
+    int64_t tv_nsec;
+};
+#endif
+
+struct kapi_pollfd {
+    int fd;
+    short events;
+    short revents;
+};
+
+struct kapi_sigset_t {
+    uint32_t sig[4];
+};
+typedef struct kapi_sigset_t kapi_sigset_t;
+#endif /* KAPI_NET_TYPES_DEFINED */
 
 #define KAPI_AF_UNSPEC     0
 #define KAPI_AF_UNIX       1
@@ -67,14 +129,20 @@ extern "C" {
 #define KAPI_SOCK_NONBLOCK   0x800
 
 #define KAPI_MSG_OOB        0x0001
+#ifndef KAPI_MSG_PEEK
 #define KAPI_MSG_PEEK       0x0002
+#endif
 #define KAPI_MSG_DONTROUTE  0x0004
 #define KAPI_MSG_CTRUNC     0x0008
 #define KAPI_MSG_PROXY      0x0010
 #define KAPI_MSG_TRUNC      0x0020
+#ifndef KAPI_MSG_DONTWAIT
 #define KAPI_MSG_DONTWAIT   0x0040
+#endif
 #define KAPI_MSG_EOR        0x0080
+#ifndef KAPI_MSG_WAITALL
 #define KAPI_MSG_WAITALL    0x0100
+#endif
 #define KAPI_MSG_FIN        0x0200
 #define KAPI_MSG_SYN        0x0400
 #define KAPI_MSG_CONFIRM    0x0800
@@ -111,8 +179,6 @@ extern "C" {
 #define KAPI_SO_PROTOCOL  38
 
 typedef uint16_t kapi_sa_family_t;
-typedef uint32_t kapi_in_addr_t;
-typedef uint8_t kapi_in6_addr_t[16];
 
 struct kapi_sockaddr {
     kapi_sa_family_t sa_family;
@@ -122,7 +188,7 @@ struct kapi_sockaddr {
 struct kapi_sockaddr_in {
     kapi_sa_family_t sin_family;
     uint16_t sin_port;
-    struct in_addr sin_addr;
+    struct kapi_in_addr sin_addr;
     unsigned char sin_zero[8];
 };
 
@@ -130,7 +196,7 @@ struct kapi_sockaddr_in6 {
     kapi_sa_family_t sin6_family;
     uint16_t sin6_port;
     uint32_t sin6_flowinfo;
-    struct in6_addr sin6_addr;
+    struct kapi_in6_addr sin6_addr;
     uint32_t sin6_scope_id;
 };
 
@@ -180,7 +246,7 @@ typedef struct {
     int family;
     uint8_t mac_addr[6];
     uint32_t ipv4_addr;
-    struct in6_addr ipv6_addr;
+    struct kapi_in6_addr ipv6_addr;
     uint32_t netmask;
     uint32_t broadcast;
     uint32_t ptp_peer;
@@ -225,45 +291,45 @@ typedef void (*kapi_packet_handler_t)(int socket, const kapi_packet_info_t* pack
 typedef void (*kapi_connection_handler_t)(int client_socket, uint32_t addr, uint16_t port, void* user_data);
 typedef void (*kapi_error_handler_t)(int socket, int error_code, void* user_data);
 
-int kapi_socket(int domain, int type, int protocol);
+int kapi_socket_ext(int domain, int type, int protocol);
 
 int kapi_socketpair(int domain, int type, int protocol, int sv[2]);
 
-int kapi_bind(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+int kapi_bind_ext(int sockfd, const struct kapi_sockaddr* addr, kapi_socklen_t addrlen);
 
-int kapi_listen(int sockfd, int backlog);
+int kapi_listen_ext(int sockfd, int backlog);
 
-int kapi_accept(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+int kapi_accept_ext(int sockfd, struct kapi_sockaddr* addr, kapi_socklen_t* addrlen);
 
-int kapi_accept4(int sockfd, struct sockaddr* addr, socklen_t* addrlen, int flags);
+int kapi_accept4(int sockfd, struct kapi_sockaddr* addr, kapi_socklen_t* addrlen, int flags);
 
-int kapi_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+int kapi_connect_ext(int sockfd, const struct kapi_sockaddr* addr, kapi_socklen_t addrlen);
 
-ssize_t kapi_send(int sockfd, const void* buf, size_t len, int flags);
+ssize_t kapi_send_ext(int sockfd, const void* buf, size_t len, int flags);
 
-ssize_t kapi_recv(int sockfd, void* buf, size_t len, int flags);
+ssize_t kapi_recv_ext(int sockfd, void* buf, size_t len, int flags);
 
-ssize_t kapi_sendto(int sockfd, const void* buf, size_t len, int flags,
-                    const struct sockaddr* dest_addr, socklen_t addrlen);
+ssize_t kapi_sendto_ext(int sockfd, const void* buf, size_t len, int flags,
+                    const struct kapi_sockaddr* dest_addr, kapi_socklen_t addrlen);
 
-ssize_t kapi_recvfrom(int sockfd, void* buf, size_t len, int flags,
-                      struct sockaddr* src_addr, socklen_t* addrlen);
+ssize_t kapi_recvfrom_ext(int sockfd, void* buf, size_t len, int flags,
+                      struct kapi_sockaddr* src_addr, kapi_socklen_t* addrlen);
 
-ssize_t kapi_sendmsg(int sockfd, const struct msghdr* msg, int flags);
+ssize_t kapi_sendmsg(int sockfd, const struct kapi_msghdr* msg, int flags);
 
-ssize_t kapi_recvmsg(int sockfd, struct msghdr* msg, int flags);
+ssize_t kapi_recvmsg(int sockfd, struct kapi_msghdr* msg, int flags);
 
-int kapi_getsockopt(int sockfd, int level, int optname, void* optval, socklen_t* optlen);
+int kapi_getsockopt_ext(int sockfd, int level, int optname, void* optval, kapi_socklen_t* optlen);
 
-int kapi_setsockopt(int sockfd, int level, int optname, const void* optval, socklen_t optlen);
+int kapi_setsockopt_ext(int sockfd, int level, int optname, const void* optval, kapi_socklen_t optlen);
 
-int kapi_getsockname(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+int kapi_getsockname_ext(int sockfd, struct kapi_sockaddr* addr, kapi_socklen_t* addrlen);
 
-int kapi_getpeername(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+int kapi_getpeername_ext(int sockfd, struct kapi_sockaddr* addr, kapi_socklen_t* addrlen);
 
-int kapi_shutdown(int sockfd, int how);
+int kapi_shutdown_ext(int sockfd, int how);
 
-int kapi_close(int sockfd);
+int kapi_close_ext(int sockfd);
 
 uint16_t kapi_htons(uint16_t hostshort);
 
@@ -275,41 +341,32 @@ uint32_t kapi_ntohl(uint32_t netlong);
 
 int kapi_inet_pton(int af, const char* src, void* dst);
 
-const char* kapi_inet_ntop(int af, const void* src, char* dst, socklen_t size);
+const char* kapi_inet_ntop(int af, const void* src, char* dst, kapi_socklen_t size);
 
-char* kapi_inet_ntoa(struct in_addr in);
+char* kapi_inet_ntoa(struct kapi_in_addr in);
 
-struct in_addr kapi_inet_makeaddr(int net, int host);
+struct kapi_in_addr kapi_inet_makeaddr(int net, int host);
 
-unsigned long kapi_inet_lnaof(struct in_addr in);
+unsigned long kapi_inet_lnaof(struct kapi_in_addr in);
 
-unsigned long kapi_inet_netof(struct in_addr in);
+unsigned long kapi_inet_netof(struct kapi_in_addr in);
 
-struct in_addr kapi_inet_network(const char* cp);
+struct kapi_in_addr kapi_inet_network(const char* cp);
 
-int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
-                struct timeval* timeout);
+int kapi_select_sock(int nfds, struct kapi_fd_set* readfds, struct kapi_fd_set* writefds, struct kapi_fd_set* exceptfds,
+                struct kapi_timeval* timeout);
 
-int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
-                 const struct timespec* timeout, const sigset_t* sigmask);
+int kapi_pselect_sock(int nfds, struct kapi_fd_set* readfds, struct kapi_fd_set* writefds, struct kapi_fd_set* exceptfds,
+                 const struct kapi_timespec* timeout, const kapi_sigset_t* sigmask);
 
-int kapi_poll(struct pollfd* fds, nfds_t nfds, int timeout);
+int kapi_poll_sock(struct kapi_pollfd* fds, kapi_nfds_t nfds, int timeout);
 
-int kapi_ppoll(struct pollfd* fds, nfds_t nfds, const struct timespec* tmo_p,
-               const sigset_t* sigmask);
-
-int kapi_epoll_create1(int flags);
-
-int kapi_epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);
-
-int kapi_epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);
-
-int kapi_epoll_pwait(int epfd, struct epoll_event* events, int maxevents, int timeout,
-                     const sigset_t* sigmask);
+int kapi_ppoll_sock(struct kapi_pollfd* fds, kapi_nfds_t nfds, const struct kapi_timespec* tmo_p,
+               const kapi_sigset_t* sigmask);
 
 int kapi_get_socket_info(int sockfd, kapi_socket_info_t* info);
 
-int kapi_set_nonblocking(int sockfd, bool nonblocking);
+int kapi_set_sock_nonblocking(int sockfd, bool nonblocking);
 
 int kapi_set_reuseaddr(int sockfd, bool reuse);
 
@@ -341,7 +398,7 @@ int kapi_tcp_congestion(int sockfd, const char* name);
 
 int kapi_tcp_window_clamp(int sockfd, int window);
 
-int kapi_udp_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+int kapi_udp_connect(int sockfd, const struct kapi_sockaddr* addr, kapi_socklen_t addrlen);
 
 int kapi_udp_disconnect(int sockfd);
 

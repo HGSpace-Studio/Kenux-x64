@@ -249,23 +249,23 @@ typedef struct {
 
 #define RCU_INIT { 0, SPINLOCK_INIT }
 
-static inline void rcu_init(rcu_t* rcu)
+static inline void spin_rcu_init(rcu_t* rcu)
 {
     rcu->counter = 0;
     spin_init(&rcu->lock);
 }
 
-static inline uint64_t rcu_read_lock(rcu_t* rcu)
+static inline uint64_t spin_rcu_read_lock(rcu_t* rcu)
 {
     return __sync_add_and_fetch(&rcu->counter, 1);
 }
 
-static inline void rcu_read_unlock(rcu_t* rcu)
+static inline void spin_rcu_read_unlock(rcu_t* rcu)
 {
     __sync_sub_and_fetch(&rcu->counter, 1);
 }
 
-static inline void rcu_synchronize(rcu_t* rcu)
+static inline void spin_rcu_synchronize(rcu_t* rcu)
 {
     while (rcu->counter > 0) {
         __asm__ volatile("pause");

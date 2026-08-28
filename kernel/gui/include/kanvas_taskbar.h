@@ -35,7 +35,7 @@ typedef struct {
     void (*on_click)(void);
 } kanvas_tray_icon_t;
 
-typedef struct {
+typedef struct kanvas_taskbar_s {
     int x, y;
     int width;
     bool visible;

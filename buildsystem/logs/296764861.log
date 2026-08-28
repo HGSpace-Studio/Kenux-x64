@@ -1,0 +1,206 @@
+-- Start building task run all -- (296764861)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/arch/x86_64 --
+<3> Building kernel/arch/x86_64/usermode.c
+<1> Building kernel/arch/x86_64/smp.c
+<2> Building kernel/arch/x86_64/sound.c
+<0> Building kernel/arch/x86_64/spi.c
+kernel/arch/x86_64/usermode.c:14:9: warning: ‘USER_STACK_SIZE’ 重定义
+In file included from kernel/arch/x86_64/smp.c:3:
+   14 | #define USER_STACK_SIZE 0x200000
+kernel/arch/x86_64/smp.c: 在函数‘ioapic_set_irq’中:
+      |         ^~~~~~~~~~~~~~~
+kernel/arch/x86_64/include/arch/smp.h:122:31: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+In file included from kernel/arch/x86_64/usermode.c:1:
+kernel/arch/x86_64/include/arch/usermode.h:11:9: note: 这是先前定义的位置
+   11 | #define USER_STACK_SIZE 0x10000
+      |         ^~~~~~~~~~~~~~~
+  122 | #define IOAPIC_REG_REDIR_BASE 0x10
+      |                               ^~~~
+kernel/arch/x86_64/smp.c:58:20: note: in expansion of macro ‘IOAPIC_REG_REDIR_BASE’
+   58 |     uint32_t reg = IOAPIC_REG_REDIR_BASE + irq * 2;
+      |                    ^~~~~~~~~~~~~~~~~~~~~
+kernel/arch/x86_64/smp.c: 在函数‘smp_setup_percpu’中:
+kernel/arch/x86_64/smp.c:63:32: warning: 未使用的参数‘apic_id’ [-Wunused-parameter]
+   63 | void smp_setup_percpu(uint32_t apic_id, void* percpu_base)
+      |                       ~~~~~~~~~^~~~~~~
+kernel/arch/x86_64/sound.c: 在函数‘sound_init’中:
+kernel/arch/x86_64/sound.c:21:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   21 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                           ^
+kernel/arch/x86_64/sound.c:21:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   21 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                              ^
+kernel/arch/x86_64/sound.c:21:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   21 |                 uint32_t class_code_reg = pci_read_config(b, d, f, 0x08);
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:25:38: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   25 |                 uint8_t class_code = (class_code_reg >> 24) & 0xFF;
+      |                                      ^
+kernel/arch/x86_64/sound.c:34:36: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   34 |                         dev->bus = b;
+kernel/arch/x86_64/usermode.c: 在函数‘__switch_to_user’中:
+      |                                    ^
+kernel/arch/x86_64/usermode.c:193:11: warning: 未使用的变量‘old_pml4’ [-Wunused-variable]
+kernel/arch/x86_64/sound.c:35:39: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   35 |                         dev->device = d;
+      |                                       ^
+kernel/arch/x86_64/sound.c:36:41: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   36 |                         dev->function = f;
+      |                                         ^
+kernel/arch/x86_64/sound.c:37:58: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   37 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:37:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   37 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:37:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   37 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                ^
+  193 |     void* old_pml4 = pmap_get();
+kernel/arch/x86_64/sound.c:38:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+      |           ^~~~~~~~
+   38 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/sound.c:38:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   38 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                              ^
+kernel/arch/x86_64/sound.c:38:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   38 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                                 ^
+kernel/arch/x86_64/sound.c:39:58: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   39 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:39:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   39 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:39:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   39 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:40:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   40 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:40:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   40 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:40:67: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   40 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                   ^
+kernel/arch/x86_64/sound.c:49:36: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+kernel/arch/x86_64/usermode.c: 在函数‘sys_exit’中:
+   49 |                         dev->bus = b;
+kernel/arch/x86_64/usermode.c:332:20: warning: 未使用的参数‘status’ [-Wunused-parameter]
+      |                                    ^
+  332 | long sys_exit(long status) {
+kernel/arch/x86_64/sound.c:50:39: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+      |               ~~~~~^~~~~~
+   50 |                         dev->device = d;
+kernel/arch/x86_64/usermode.c: 在函数‘sys_getpid’中:
+      |                                       ^
+kernel/arch/x86_64/sound.c:51:41: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   51 |                         dev->function = f;
+      |                                         ^
+kernel/arch/x86_64/sound.c:52:58: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   52 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:52:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   52 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:52:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   52 |                         dev->vendor_id = pci_read_config(b, d, f, 0x00) & 0xFFFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:53:59: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   53 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                                           ^
+kernel/arch/x86_64/sound.c:53:62: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   53 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+kernel/arch/x86_64/usermode.c:346:12: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+      |                                                              ^
+  346 |     return current_user_pid;
+      |            ^~~~~~~~~~~~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_getppid’中:
+kernel/arch/x86_64/usermode.c:353:25: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘long int’ may change value [-Wconversion]
+  353 |             long ppid = processes[i].parent_pid;
+      |                         ^~~~~~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_read’中:
+kernel/arch/x86_64/usermode.c:378:40: warning: 未使用的参数‘count’ [-Wunused-parameter]
+  378 | long sys_read(long fd, void* buf, long count) {
+      |                                   ~~~~~^~~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_brk’中:
+kernel/arch/x86_64/usermode.c:396:19: warning: 未使用的参数‘addr’ [-Wunused-parameter]
+  396 | long sys_brk(long addr) {
+      |              ~~~~~^~~~
+kernel/arch/x86_64/usermode.c: 在函数‘sys_mmap’中:
+kernel/arch/x86_64/usermode.c:408:35: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘long int’时可能会改变结果的符号 [-Wsign-conversion]
+  408 |             processes[i].heap_end += (length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+      |                                   ^~
+kernel/arch/x86_64/usermode.c: 在函数‘usermode_page_fault_handler’中:
+kernel/arch/x86_64/sound.c:53:65: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+kernel/arch/x86_64/usermode.c:520:43: warning: 未使用的参数‘fault_addr’ [-Wunused-parameter]
+  520 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+   53 |                         dev->device_id = (pci_read_config(b, d, f, 0x00) >> 16) & 0xFFFF;
+      |                                  ~~~~~~~~~^~~~~~~~~~
+      |                                                                 ^
+kernel/arch/x86_64/usermode.c:520:64: warning: 未使用的参数‘error_code’ [-Wunused-parameter]
+kernel/arch/x86_64/sound.c:54:58: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  520 | void usermode_page_fault_handler(uint64_t fault_addr, uint64_t error_code, uint64_t* stack_frame)
+      |                                                       ~~~~~~~~~^~~~~~~~~~
+   54 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                          ^
+kernel/arch/x86_64/sound.c:54:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   54 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:54:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   54 |                         dev->interrupt = pci_read_config(b, d, f, 0x3C) & 0xFF;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:55:61: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   55 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                             ^
+kernel/arch/x86_64/sound.c:55:64: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   55 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                ^
+kernel/arch/x86_64/sound.c:55:67: warning: conversion from ‘int’ to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+   55 |                         dev->base_address = pci_read_config(b, d, f, 0x10) & 0xFFFFFFF0;
+      |                                                                   ^
+kernel/arch/x86_64/sound.c:17:26: warning: 未使用的变量‘function’ [-Wunused-variable]
+   17 |     uint8_t bus, device, function;
+      |                          ^~~~~~~~
+kernel/arch/x86_64/sound.c:17:18: warning: 未使用的变量‘device’ [-Wunused-variable]
+   17 |     uint8_t bus, device, function;
+      |                  ^~~~~~
+kernel/arch/x86_64/sound.c:17:13: warning: 未使用的变量‘bus’ [-Wunused-variable]
+   17 |     uint8_t bus, device, function;
+      |             ^~~
+kernel/arch/x86_64/sound.c: 在函数‘sound_play’中:
+kernel/arch/x86_64/sound.c:104:25: error: 传递‘hda_play’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+  104 |         return hda_play(data, length);
+      |                         ^~~~
+      |                         |
+      |                         const uint8_t * {或称 const unsigned char *}
+In file included from kernel/arch/x86_64/sound.c:4:
+kernel/arch/x86_64/include/arch/hda.h:168:21: note: expected ‘hda_t *’ but argument is of type ‘const uint8_t *’ {或称 ‘const unsigned char *’}
+  168 | int hda_play(hda_t* dev, const void* data, uint32_t size);
+      |              ~~~~~~~^~~
+kernel/arch/x86_64/sound.c:104:31: error: 传递‘hda_play’的第 2 个参数时将整数赋给指针，未作类型转换 [-Wint-conversion]
+  104 |         return hda_play(data, length);
+      |                               ^~~~~~
+      |                               |
+      |                               uint32_t {或称 unsigned int}
+kernel/arch/x86_64/include/arch/hda.h:168:38: note: expected ‘const void *’ but argument is of type ‘uint32_t’ {或称 ‘unsigned int’}
+  168 | int hda_play(hda_t* dev, const void* data, uint32_t size);
+      |                          ~~~~~~~~~~~~^~~~
+kernel/arch/x86_64/sound.c:104:16: error: too few arguments to function ‘hda_play’; expected 3, have 2
+  104 |         return hda_play(data, length);
+      |                ^~~~~~~~
+kernel/arch/x86_64/include/arch/hda.h:168:5: note: 在此声明
+  168 | int hda_play(hda_t* dev, const void* data, uint32_t size);
+      |     ^~~~~~~~
+kernel/arch/x86_64/sound.c: 在函数‘sound_record’中:
+kernel/arch/x86_64/sound.c:118:16: error: 隐式声明函数‘hda_record’ [-Wimplicit-function-declaration]
+  118 |         return hda_record(buffer, length);
+      |                ^~~~~~~~~~
+<2> Building kernel/arch/x86_64/smbios.c
+/tmp/ccefaCho.s: Assembler messages:
+/tmp/ccefaCho.s:540: Warning: no instruction mnemonic suffix given and no register operands; using default for `sysret'
+FAILED TASK run all: 

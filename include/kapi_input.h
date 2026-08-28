@@ -44,14 +44,22 @@ extern "C" {
 #define KAPI_INPUT_EVENT_GESTURE   10
 
 /* Keyboard event types */
+#ifndef KAPI_KEY_EVENT_DOWN
 #define KAPI_KEY_EVENT_DOWN         0
 #define KAPI_KEY_EVENT_UP           1
+#endif
+#ifndef KAPI_KEY_EVENT_REPEAT
 #define KAPI_KEY_EVENT_REPEAT      2
+#endif
 
 /* Mouse event types */
+#ifndef KAPI_MOUSE_EVENT_DOWN
 #define KAPI_MOUSE_EVENT_DOWN      0
 #define KAPI_MOUSE_EVENT_UP        1
+#endif
+#ifndef KAPI_MOUSE_EVENT_MOVE
 #define KAPI_MOUSE_EVENT_MOVE      2
+#endif
 #define KAPI_MOUSE_EVENT_DRAG      3
 #define KAPI_MOUSE_EVENT_SCROLL    4
 #define KAPI_MOUSE_EVENT_CLICK     5
@@ -195,12 +203,24 @@ extern "C" {
 #define KAPI_KEY_MEDIA_RECORD     0x8E
 
 /* Mouse buttons */
+#ifndef KAPI_MOUSE_BUTTON_NONE
 #define KAPI_MOUSE_BUTTON_NONE     0x00
+#endif
+#ifndef KAPI_MOUSE_BUTTON_LEFT
 #define KAPI_MOUSE_BUTTON_LEFT    0x01
+#endif
+#ifndef KAPI_MOUSE_BUTTON_RIGHT
 #define KAPI_MOUSE_BUTTON_RIGHT   0x02
+#endif
+#ifndef KAPI_MOUSE_BUTTON_MIDDLE
 #define KAPI_MOUSE_BUTTON_MIDDLE  0x03
+#endif
+#ifndef KAPI_MOUSE_BUTTON_X1
 #define KAPI_MOUSE_BUTTON_X1      0x04
+#endif
+#ifndef KAPI_MOUSE_BUTTON_X2
 #define KAPI_MOUSE_BUTTON_X2      0x05
+#endif
 #define KAPI_MOUSE_BUTTON_WHEEL_UP 0x06
 #define KAPI_MOUSE_BUTTON_WHEEL_DOWN 0x07
 

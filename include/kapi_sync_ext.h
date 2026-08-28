@@ -4,11 +4,21 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+
+#ifdef KAL_KERNEL
+#include <arch/types.h>
+#else
 #include <time.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef struct {
+    int64_t tv_sec;
+    int64_t tv_nsec;
+} kapi_timespec;
 
 #define KAPI_MUTEX_NORMAL      0
 #define KAPI_MUTEX_RECURSIVE   1
@@ -103,17 +113,17 @@ typedef struct {
     uint64_t spurious_wakeups;
 } kapi_cond_stats_t;
 
-kapi_mutex_t kapi_mutex_create(int type);
+kapi_mutex_t kapi_mutex_create_ext(int type);
 
-int kapi_mutex_destroy(kapi_mutex_t mutex);
+int kapi_mutex_destroy_ext(kapi_mutex_t mutex);
 
-int kapi_mutex_lock(kapi_mutex_t mutex);
+int kapi_mutex_lock_ext(kapi_mutex_t mutex);
 
-int kapi_mutex_trylock(kapi_mutex_t mutex);
+int kapi_mutex_trylock_ext(kapi_mutex_t mutex);
 
-int kapi_mutex_timedlock(kapi_mutex_t mutex, const struct timespec* abs_timeout);
+int kapi_mutex_timedlock(kapi_mutex_t mutex, const kapi_timespec* abs_timeout);
 
-int kapi_mutex_unlock(kapi_mutex_t mutex);
+int kapi_mutex_unlock_ext(kapi_mutex_t mutex);
 
 int kapi_mutex_getprioceiling(kapi_mutex_t mutex, int* prioceiling);
 
@@ -135,9 +145,9 @@ int kapi_rwlock_trywrlock(kapi_rwlock_t rwlock);
 
 int kapi_rwlock_unlock(kapi_rwlock_t rwlock);
 
-int kapi_rwlock_timedrdlock(kapi_rwlock_t rwlock, const struct timespec* abs_timeout);
+int kapi_rwlock_timedrdlock(kapi_rwlock_t rwlock, const kapi_timespec* abs_timeout);
 
-int kapi_rwlock_timedwrlock(kapi_rwlock_t rwlock, const struct timespec* abs_timeout);
+int kapi_rwlock_timedwrlock(kapi_rwlock_t rwlock, const kapi_timespec* abs_timeout);
 
 int kapi_rwlock_get_stats(kapi_rwlock_t rwlock, kapi_rwlock_stats_t* stats);
 
@@ -165,7 +175,7 @@ int kapi_sem_wait(kapi_sem_t sem);
 
 int kapi_sem_trywait(kapi_sem_t sem);
 
-int kapi_sem_timedwait(kapi_sem_t sem, const struct timespec* abs_timeout);
+int kapi_sem_timedwait(kapi_sem_t sem, const kapi_timespec* abs_timeout);
 
 int kapi_sem_post(kapi_sem_t sem);
 
@@ -179,7 +189,7 @@ int kapi_cond_destroy(kapi_cond_t cond);
 
 int kapi_cond_wait(kapi_cond_t cond, kapi_mutex_t mutex);
 
-int kapi_cond_timedwait(kapi_cond_t cond, kapi_mutex_t mutex, const struct timespec* abs_timeout);
+int kapi_cond_timedwait(kapi_cond_t cond, kapi_mutex_t mutex, const kapi_timespec* abs_timeout);
 
 int kapi_cond_signal(kapi_cond_t cond);
 
@@ -197,7 +207,7 @@ kapi_futex_t kapi_futex_create(uint32_t* uaddr, int init_val);
 
 int kapi_futex_destroy(kapi_futex_t futex);
 
-int kapi_futex_wait(kapi_futex_t futex, uint32_t val, const struct timespec* timeout);
+int kapi_futex_wait(kapi_futex_t futex, uint32_t val, const kapi_timespec* timeout);
 
 int kapi_futex_wake(kapi_futex_t futex, int count);
 
@@ -226,17 +236,17 @@ int kapi_read_write_lock_downgrade(kapi_rwlock_ext_t* rwl);
 
 int kapi_read_write_lock_upgrade(kapi_rwlock_ext_t* rwl);
 
-int kapi_atomic_inc(volatile int* addr);
+int kapi_atomic_inc_ext(volatile int* addr);
 
-int kapi_atomic_dec(volatile int* addr);
+int kapi_atomic_dec_ext(volatile int* addr);
 
-int kapi_atomic_add(volatile int* addr, int val);
+int kapi_atomic_add_ext(volatile int* addr, int val);
 
-int kapi_atomic_sub(volatile int* addr, int val);
+int kapi_atomic_sub_ext(volatile int* addr, int val);
 
-int kapi_atomic_xchg(volatile int* addr, int newval);
+int kapi_atomic_xchg_ext(volatile int* addr, int newval);
 
-int kapi_atomic_cmpxchg(volatile int* addr, int oldval, int newval);
+int kapi_atomic_cmpxchg_ext(volatile int* addr, int oldval, int newval);
 
 int kapi_atomic_test_and_set(volatile int* addr, int newval);
 
@@ -258,23 +268,27 @@ int kapi_smp_rmb(void);
 
 int kapi_smp_wmb(void);
 
-int kapi_rcu_read_lock(void);
+int kapi_rcu_read_lock_ext(void);
 
-int kapi_rcu_read_unlock(void);
+int kapi_rcu_read_unlock_ext(void);
 
 void kapi_rcu_synchronize(void);
 
-void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+void kapi_call_rcu_ext(kapi_rcu_head_t* head, void (*func)(void*), void* arg);
 
 int kapi_completion_init(kapi_completion_t* comp);
 
+#ifndef KAPI_COMPLETION_H
 void kapi_completion_wait(kapi_completion_t* comp);
+#endif
 
 bool kapi_completion_trywait(kapi_completion_t* comp);
 
 bool kapi_completion_timeout(kapi_completion_t* comp, unsigned long timeout);
 
+#ifndef KAPI_COMPLETION_H
 void kapi_completion_complete(kapi_completion_t* comp);
+#endif
 
 void kapi_completion_complete_all(kapi_completion_t* comp);
 

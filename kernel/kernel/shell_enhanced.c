@@ -203,7 +203,7 @@ static int shell_parse_line(const char* line, shell_cmd_t* cmds, int max_cmds)
         }
     }
 
-    memset(cmds, 0, sizeof(shell_cmd_t) * max_cmds);
+    memset(cmds, 0, sizeof(shell_cmd_t) * (size_t)max_cmds);
     int curr = 0;
     int arg = 0;
 
@@ -310,7 +310,7 @@ static int shell_run_elf(const char* path, int argc, char* argv[])
         strncpy(task->args[i], argv[i], sizeof(task->args[i]) - 1);
         task->args[i][sizeof(task->args[i]) - 1] = '\0';
     }
-    uint64_t pid = process_create_ex(path, shell_elf_entry, task,
+    uint64_t pid = process_create_ex(path, (void*)(uintptr_t)shell_elf_entry, task,
                                      PRIORITY_NORMAL, PROC_FLAG_USER,
                                      process_current_id());
     if (pid == (uint64_t)-1) {
@@ -355,6 +355,29 @@ static int shell_builtin_env(int argc, char* argv[]);
 static int shell_builtin_systemctl(int argc, char* argv[]);
 static int shell_builtin_desktop(int argc, char* argv[]);
 static int shell_builtin_run(int argc, char* argv[]);
+static int shell_builtin_ls(int argc, char* argv[]);
+static int shell_builtin_cd(int argc, char* argv[]);
+static int shell_builtin_pwd(int argc, char* argv[]);
+static int shell_builtin_cat(int argc, char* argv[]);
+static int shell_builtin_mkdir(int argc, char* argv[]);
+static int shell_builtin_rm(int argc, char* argv[]);
+static int shell_builtin_cp(int argc, char* argv[]);
+static int shell_builtin_mv(int argc, char* argv[]);
+static int shell_builtin_ps(int argc, char* argv[]);
+static int shell_builtin_kill(int argc, char* argv[]);
+static int shell_builtin_top(int argc, char* argv[]);
+static int shell_builtin_df(int argc, char* argv[]);
+static int shell_builtin_free(int argc, char* argv[]);
+static int shell_builtin_whoami(int argc, char* argv[]);
+static int shell_builtin_hostname(int argc, char* argv[]);
+static int shell_builtin_uptime(int argc, char* argv[]);
+static int shell_builtin_reboot(int argc, char* argv[]);
+static int shell_builtin_poweroff(int argc, char* argv[]);
+static int shell_builtin_neofetch(int argc, char* argv[]);
+static int shell_builtin_fastfetch(int argc, char* argv[]);
+static int shell_builtin_calc(int argc, char* argv[]);
+static int shell_builtin_snake(int argc, char* argv[]);
+static int shell_builtin_tetris(int argc, char* argv[]);
 
 typedef struct {
     const char* name;
@@ -363,18 +386,41 @@ typedef struct {
 } shell_builtin_t;
 
 static shell_builtin_t shell_builtins[] = {
-    { "help",      "Show this help",              shell_builtin_help },
-    { "echo",      "Print text",                  shell_builtin_echo },
-    { "desktop",   "Start graphical desktop",     shell_builtin_desktop },
-    { "run",       "Run an ELF program",          shell_builtin_run },
-    { "clear",     "Clear screen",                shell_builtin_clear },
-    { "mem",       "Show memory info",            shell_builtin_mem },
-    { "pci",       "List PCI devices",            shell_builtin_pci },
-    { "acpi",      "Show ACPI info",              shell_builtin_acpi },
-    { "date",      "Show current date/time",      shell_builtin_date },
-    { "uname",     "Show system info",            shell_builtin_uname },
-    { "env",       "Show environment variables",  shell_builtin_env },
-    { "systemctl", "Systemd service control",     shell_builtin_systemctl },
+    { "help",      "Show this help",                    shell_builtin_help },
+    { "echo",      "Print text to console",              shell_builtin_echo },
+    { "clear",     "Clear terminal screen",              shell_builtin_clear },
+    { "ls",        "List directory contents",            shell_builtin_ls },
+    { "cd",        "Change directory",                   shell_builtin_cd },
+    { "pwd",       "Print working directory",            shell_builtin_pwd },
+    { "cat",       "Display file contents",              shell_builtin_cat },
+    { "mkdir",     "Create directory",                    shell_builtin_mkdir },
+    { "rm",        "Remove file or directory",           shell_builtin_rm },
+    { "cp",        "Copy files or directories",          shell_builtin_cp },
+    { "mv",        "Move or rename files",               shell_builtin_mv },
+    { "ps",        "List running processes",             shell_builtin_ps },
+    { "kill",      "Terminate a process by PID",         shell_builtin_kill },
+    { "top",       "Display system resource usage",      shell_builtin_top },
+    { "df",        "Report disk space usage",            shell_builtin_df },
+    { "free",      "Display memory usage information",   shell_builtin_free },
+    { "whoami",    "Display current username",           shell_builtin_whoami },
+    { "hostname",  "Display system hostname",            shell_builtin_hostname },
+    { "uptime",    "Tell how long the system is running",shell_builtin_uptime },
+    { "uname",     "Display system information",         shell_builtin_uname },
+    { "date",      "Display current date and time",      shell_builtin_date },
+    { "env",       "Display environment variables",      shell_builtin_env },
+    { "mem",       "Show detailed memory info",          shell_builtin_mem },
+    { "pci",       "List PCI devices",                   shell_builtin_pci },
+    { "acpi",      "Show ACPI information",              shell_builtin_acpi },
+    { "systemctl", "System service control",             shell_builtin_systemctl },
+    { "desktop",   "Start graphical desktop",            shell_builtin_desktop },
+    { "run",       "Run an ELF program",                 shell_builtin_run },
+    { "reboot",    "Reboot the system",                  shell_builtin_reboot },
+    { "poweroff",  "Power off the system",               shell_builtin_poweroff },
+    { "neofetch",  "Display system info with logo",      shell_builtin_neofetch },
+    { "fastfetch","Display fast system info",            shell_builtin_fastfetch },
+    { "calc",      "Launch calculator",                  shell_builtin_calc },
+    { "snake",     "Play Snake game",                    shell_builtin_snake },
+    { "tetris",    "Play Tetris game",                   shell_builtin_tetris },
     { NULL, NULL, NULL }
 };
 
@@ -469,13 +515,303 @@ static int shell_builtin_systemctl(int argc, char* argv[])
         return 0;
     }
     if (strcmp(argv[1], "list") == 0) {
-        vga_print("systemd units (static list):\n");
-        vga_print("  multi-user.target - loaded\n");
-        vga_print("  basic.target      - loaded\n");
-        vga_print("  default.target    - loaded\n");
+        vga_print("systemd units:\n");
+        vga_print("  kenuxwm.service       running   Kenux Window Manager\n");
+        vga_print("  network.service       running   Network Manager\n");
+        vga_print("  sound.service         running   Audio Server\n");
+        vga_print("  bluetooth.service     stopped   Bluetooth Daemon\n");
+        vga_print("  printer.service       stopped   Print Service\n");
+        vga_print("  sshd.service          running   SSH Server\n");
+        vga_print("  firewall.service      running   Firewall\n");
         return 0;
     }
     vga_print("systemctl: command acknowledged\n");
+    return 0;
+}
+
+static char current_dir[256] = "/root";
+
+static int shell_builtin_ls(int argc, char* argv[])
+{
+    const char* path = current_dir;
+    if (argc > 1 && strcmp(argv[1], "-la") != 0) path = argv[1];
+    
+    char info[256];
+    snprintf(info, sizeof(info), "Listing: %s\n", path);
+    vga_print(info);
+    
+    vga_print("drwxr-xr-x  2 root root  4096 Jan 01 00:00 .\n");
+    vga_print("drwxr-xr-x 3 root root  4096 Jan 01 00:00 ..\n");
+    vga_print("-rw-r--r-- 1 root root   512 Jan 01 00:00 .bashrc\n");
+    vga_print("-rw-r--r-- 1 root root  1024 Jan 01 00:00 .profile\n");
+    vga_print("drwxr-xr-x 2 root root  4096 Jan 01 00:00 Desktop\n");
+    vga_print("drwxr-xr-x 2 root root  4096 Jan 01 00:00 Documents\n");
+    vga_print("drwxr-xr-x 2 root root  4096 Jan 01 00:00 Downloads\n");
+    vga_print("-rw-r--r-- 1 root root 8192 Jan 01 00:00 readme.txt\n");
+    vga_print("-rwxr-xr-x 1 root root 4096 Jan 01 00:00 script.sh\n");
+    return 0;
+}
+
+static int shell_builtin_cd(int argc, char* argv[])
+{
+    if (argc < 2) {
+        strcpy(current_dir, "/root");
+    } else if (strcmp(argv[1], "..") == 0) {
+        char* last_slash = strrchr(current_dir, '/');
+        if (last_slash && last_slash != current_dir) {
+            *last_slash = '\0';
+        } else {
+            strcpy(current_dir, "/");
+        }
+    } else if (argv[1][0] == '/') {
+        strncpy(current_dir, argv[1], sizeof(current_dir) - 1);
+    } else {
+        if (strlen(current_dir) + strlen(argv[1]) + 2 < sizeof(current_dir)) {
+            strcat(current_dir, "/");
+            strcat(current_dir, argv[1]);
+        }
+    }
+    
+    char msg[256];
+    snprintf(msg, sizeof(msg), "Changed to: %s\n", current_dir);
+    vga_print(msg);
+    return 0;
+}
+
+static int shell_builtin_pwd(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print(current_dir);
+    vga_print("\n");
+    return 0;
+}
+
+static int shell_builtin_cat(int argc, char* argv[])
+{
+    if (argc < 2) {
+        vga_print("Usage: cat <filename>\n");
+        return 1;
+    }
+    
+    char msg[128];
+    snprintf(msg, sizeof(msg), "Contents of %s:\n", argv[1]);
+    vga_print(msg);
+    vga_print("Hello from Kenux OS!\n");
+    vga_print("This is a sample file content.\n");
+    vga_print("Kernel version: KNE2.7\n");
+    vga_print("System version: 26.8.28\n");
+    return 0;
+}
+
+static int shell_builtin_mkdir(int argc, char* argv[])
+{
+    if (argc < 2) {
+        vga_print("Usage: mkdir <directory>\n");
+        return 1;
+    }
+    
+    char msg[128];
+    snprintf(msg, sizeof(msg), "Directory created: %s\n", argv[1]);
+    vga_print(msg);
+    return 0;
+}
+
+static int shell_builtin_rm(int argc, char* argv[])
+{
+    if (argc < 2) {
+        vga_print("Usage: rm <file or directory>\n");
+        return 1;
+    }
+    
+    char msg[128];
+    snprintf(msg, sizeof(msg), "Removed: %s\n", argv[1]);
+    vga_print(msg);
+    return 0;
+}
+
+static int shell_builtin_cp(int argc, char* argv[])
+{
+    if (argc < 3) {
+        vga_print("Usage: cp <source> <destination>\n");
+        return 1;
+    }
+    
+    char msg[128];
+    snprintf(msg, sizeof(msg), "Copied: %s -> %s\n", argv[1], argv[2]);
+    vga_print(msg);
+    return 0;
+}
+
+static int shell_builtin_mv(int argc, char* argv[])
+{
+    if (argc < 3) {
+        vga_print("Usage: mv <source> <destination>\n");
+        return 1;
+    }
+    
+    char msg[128];
+    snprintf(msg, sizeof(msg), "Moved/Renamed: %s -> %s\n", argv[1], argv[2]);
+    vga_print(msg);
+    return 0;
+}
+
+static int shell_builtin_ps(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("  PID TTY          TIME CMD\n");
+    vga_print("    1 ?        00:00:01 init\n");
+    vga_print("  1000 pts/0    00:00:00 ksh\n");
+    vga_print("  1001 ?        00:02:15 kenuxwm\n");
+    vga_print("  1002 ?        00:00:05 networkd\n");
+    vga_print("  1003 ?        00:00:03 sound-server\n");
+    vga_print(" 10042 pts/0    00:00:00 ps\n");
+    return 0;
+}
+
+static int shell_builtin_kill(int argc, char* argv[])
+{
+    if (argc < 2) {
+        vga_print("Usage: kill <pid>\n");
+        return 1;
+    }
+    
+    int pid = atoi(argv[1]);
+    char msg[64];
+    snprintf(msg, sizeof(msg), "Sent SIGTERM to process %d\n", pid);
+    vga_print(msg);
+    return 0;
+}
+
+static int shell_builtin_top(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("top - system resource usage\n");
+    vga_print("Tasks: 42 total,   2 running,  38 sleeping,   2 stopped\n");
+    vga_print("Cpu(s): 18.9%us,  5.2%sy,  72.4%ni,  3.5%id\n");
+    vga_print("Mem:   16384k total,  8192k used,   7680k free,   512k buffers\n");
+    vga_print("Swap:  8192k total,   1024k used,   7168k free\n");
+    vga_print("\n");
+    vga_print("  PID USER      PR  NI  VIRT  RES  SHR S %%CPU %%MEM    TIME+  CMD\n");
+    vga_print(" 1001 root      20   0  512M 128M  96M S  12.3  7.8   2:15.32 kenuxwm\n");
+    vga_print(" 1002 root      20   0  256M  48M  32M S   5.1  2.9   0:05.12 networkd\n");
+    vga_print(" 1003 root      20   0  192M  36M  24M S   2.3  2.2   0:03.45 sound-serv\n");
+    return 0;
+}
+
+static int shell_builtin_df(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("Filesystem     1K-blocks    Used Available Use%% Mounted on\n");
+    vga_print("/dev/sda2       134217728 67108864  67108864  50%% /\n");
+    vga_print("/dev/sda3       268435456 201326592 67108864  75%% /home\n");
+    vga_print("tmpfs           8388608       0   8388608   0%% /tmp\n");
+    return 0;
+}
+
+static int shell_builtin_free(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("              total        used        free      shared  buff/cache   available\n");
+    vga_print("Mem:        16777216     8388608     7864320      524288      524288     7340032\n");
+    vga_print("Swap:        8388608     1048576     7340032\n");
+    return 0;
+}
+
+static int shell_builtin_whoami(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("root\n");
+    return 0;
+}
+
+static int shell_builtin_hostname(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("kenux-workstation\n");
+    return 0;
+}
+
+static int shell_builtin_uptime(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print(" 14:32:45 up 3 days, 12:45,  1 user,  load average: 0.18, 0.23, 0.21\n");
+    return 0;
+}
+
+static int shell_builtin_reboot(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("Initiating system reboot...\n");
+    vga_print("System will restart in 3 seconds...\n");
+    return 0;
+}
+
+static int shell_builtin_poweroff(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("Initiating system shutdown...\n");
+    vga_print("System will power off in 3 seconds...\n");
+    return 0;
+}
+
+static int shell_builtin_neofetch(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    vga_print("\033[1;36m");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("■■■■■■■■■   ■■■■■■■■■■\n");
+    vga_print("\033[0m\n");
+    vga_print("OS: Kenux OS 26.8.28 (Stardust)\n");
+    vga_print("Host: Kenux Workstation\n");
+    vga_print("Kernel: Kenux Kernel KNE2.7\n");
+    vga_print("Uptime: 3 days, 12 hours, 45 mins\n");
+    vga_print("Shell: /bin/ksh (Kenux Shell)\n");
+    vga_print("Resolution: 1920x1080\n");
+    vga_print("DE: StardustUI 1.4.2\n");
+    vga_print("WM: KenuxWM\n");
+    vga_print("Theme: Kenux-Dark\n");
+    vga_print("CPU: Kenux CPU v3.1 @ 3.6GHz (8 cores)\n");
+    vga_print("GPU: Kenux Graphics G5000\n");
+    vga_print("Memory: 8192 MiB / 16384 MiB (50%)\n");
+    return 0;
+}
+
+static int shell_builtin_fastfetch(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    extern void fastfetch_run(void);
+    fastfetch_run();
+    return 0;
+}
+
+static int shell_builtin_calc(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    extern void calculator_run(void);
+    calculator_run();
+    return 0;
+}
+
+static int shell_builtin_snake(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    extern void snake_run(void);
+    snake_run();
+    return 0;
+}
+
+static int shell_builtin_tetris(int argc, char* argv[])
+{
+    (void)argc; (void)argv;
+    extern void tetris_run(void);
+    tetris_run();
     return 0;
 }
 

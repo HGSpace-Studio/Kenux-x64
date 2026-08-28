@@ -12,7 +12,9 @@ build/obj/kernel/gui/src/main.c.o: kernel/gui/src/main.c \
  include/kapi_netdevice.h kernel/gui/include/taskmgr.h \
  kernel/gui/include/thispc.h kernel/gui/include/sysinfo.h \
  kernel/gui/include/filemgr.h kernel/gui/include/terminal.h \
+ kernel/gui/include/compat_center.h \
  kernel/arch/x86_64/include/arch/keyboard.h \
  kernel/arch/x86_64/include/arch/types.h \
- kernel/arch/x86_64/include/arch/mouse.h kernel/kernel/timer.h \
+ kernel/arch/x86_64/include/arch/mouse.h \
+ kernel/arch/x86_64/include/arch/acpi_pm.h kernel/kernel/timer.h \
  kernel/arch/x86_64/include/arch/spinlock.h

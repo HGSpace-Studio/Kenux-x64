@@ -1,0 +1,290 @@
+-- Start building task run all -- (457491427)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/api --
+<0> Building kernel/api/kapi_init.c
+<1> Building kernel/api/kapi_ftrace.c
+<3> Building kernel/api/kapi_full_disk_encryption.c
+<2> Building kernel/api/kapi_fs.c
+In file included from include/kapi.h:69,
+                 from kernel/api/kapi_fs.c:4:
+include/kapi_leonos.h:20:9: warning: ‘KAPI_O_RDONLY’ 重定义
+   20 | #define KAPI_O_RDONLY 0x0000
+      |         ^~~~~~~~~~~~~
+In file included from kernel/api/kapi_fs.c:3:
+include/kapi_fs.h:17:9: note: 这是先前定义的位置
+   17 | #define KAPI_O_RDONLY    0x0001
+      |         ^~~~~~~~~~~~~
+include/kapi_leonos.h:21:9: warning: ‘KAPI_O_WRONLY’ 重定义
+   21 | #define KAPI_O_WRONLY 0x0001
+      |         ^~~~~~~~~~~~~
+include/kapi_fs.h:18:9: note: 这是先前定义的位置
+   18 | #define KAPI_O_WRONLY    0x0002
+      |         ^~~~~~~~~~~~~
+include/kapi_leonos.h:22:9: warning: ‘KAPI_O_RDWR’ 重定义
+   22 | #define KAPI_O_RDWR 0x0002
+      |         ^~~~~~~~~~~
+include/kapi_fs.h:19:9: note: 这是先前定义的位置
+   19 | #define KAPI_O_RDWR      0x0004
+      |         ^~~~~~~~~~~
+include/kapi_leonos.h:23:9: warning: ‘KAPI_O_CREAT’ 重定义
+   23 | #define KAPI_O_CREAT 0x0040
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:20:9: note: 这是先前定义的位置
+   20 | #define KAPI_O_CREAT     0x0008
+      |         ^~~~~~~~~~~~
+include/kapi_leonos.h:24:9: warning: ‘KAPI_O_TRUNC’ 重定义
+   24 | #define KAPI_O_TRUNC 0x0200
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:21:9: note: 这是先前定义的位置
+   21 | #define KAPI_O_TRUNC     0x0010
+      |         ^~~~~~~~~~~~
+include/kapi_leonos.h:25:9: warning: ‘KAPI_O_APPEND’ 重定义
+   25 | #define KAPI_O_APPEND 0x0400
+      |         ^~~~~~~~~~~~~
+include/kapi_fs.h:22:9: note: 这是先前定义的位置
+   22 | #define KAPI_O_APPEND    0x0020
+      |         ^~~~~~~~~~~~~
+In file included from include/kapi.h:99:
+include/kapi_fs_ext.h:77:9: warning: ‘KAPI_S_IRUSR’ 重定义
+   77 | #define KAPI_S_IRUSR           0000400
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:27:9: note: 这是先前定义的位置
+   27 | #define KAPI_S_IRUSR     0400
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:78:9: warning: ‘KAPI_S_IWUSR’ 重定义
+   78 | #define KAPI_S_IWUSR           0000200
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:28:9: note: 这是先前定义的位置
+   28 | #define KAPI_S_IWUSR     0200
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:79:9: warning: ‘KAPI_S_IXUSR’ 重定义
+   79 | #define KAPI_S_IXUSR           0000100
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:29:9: note: 这是先前定义的位置
+   29 | #define KAPI_S_IXUSR     0100
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:80:9: warning: ‘KAPI_S_IRGRP’ 重定义
+   80 | #define KAPI_S_IRGRP           0000040
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:30:9: note: 这是先前定义的位置
+   30 | #define KAPI_S_IRGRP     0040
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:81:9: warning: ‘KAPI_S_IWGRP’ 重定义
+   81 | #define KAPI_S_IWGRP           0000020
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:31:9: note: 这是先前定义的位置
+   31 | #define KAPI_S_IWGRP     0020
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:82:9: warning: ‘KAPI_S_IXGRP’ 重定义
+   82 | #define KAPI_S_IXGRP           0000010
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:32:9: note: 这是先前定义的位置
+   32 | #define KAPI_S_IXGRP     0010
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:83:9: warning: ‘KAPI_S_IROTH’ 重定义
+   83 | #define KAPI_S_IROTH           0000004
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:33:9: note: 这是先前定义的位置
+   33 | #define KAPI_S_IROTH     0004
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:84:9: warning: ‘KAPI_S_IWOTH’ 重定义
+   84 | #define KAPI_S_IWOTH           0000002
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:34:9: note: 这是先前定义的位置
+   34 | #define KAPI_S_IWOTH     0002
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:85:9: warning: ‘KAPI_S_IXOTH’ 重定义
+   85 | #define KAPI_S_IXOTH           0000001
+      |         ^~~~~~~~~~~~
+include/kapi_fs.h:35:9: note: 这是先前定义的位置
+   35 | #define KAPI_S_IXOTH     0001
+      |         ^~~~~~~~~~~~
+include/kapi_fs_ext.h:170:3: error: conflicting types for ‘kapi_dirent_t’; have ‘struct dirent’
+  170 | } kapi_dirent_t;
+      |   ^~~~~~~~~~~~~
+include/kapi_fs.h:62:3: note: previous declaration of ‘kapi_dirent_t’ with type ‘kapi_dirent_t’
+   62 | } kapi_dirent_t;
+      |   ^~~~~~~~~~~~~
+include/kapi_fs_ext.h:211:15: error: conflicting types for ‘kapi_dir_t’; have ‘void *’
+  211 | typedef void* kapi_dir_t;
+      |               ^~~~~~~~~~
+include/kapi_fs.h:15:26: note: previous declaration of ‘kapi_dir_t’ with type ‘kapi_dir_t’ {或称 ‘struct kapi_dir *’}
+   15 | typedef struct kapi_dir* kapi_dir_t;
+      |                          ^~~~~~~~~~
+include/kapi_fs_ext.h:216:5: error: conflicting types for ‘kapi_open’; have ‘int(const char *, int)’
+  216 | int kapi_open(const char* pathname, int flags);
+      |     ^~~~~~~~~
+include/kapi_fs.h:64:13: note: previous declaration of ‘kapi_open’ with type ‘struct kapi_file *(const char *, int,  int)’
+   64 | kapi_file_t kapi_open(const char* path, int flags, int mode);
+      |             ^~~~~~~~~
+include/kapi_fs_ext.h:222:5: error: conflicting types for ‘kapi_close’; have ‘int(int)’
+  222 | int kapi_close(int fd);
+      |     ^~~~~~~~~~
+include/kapi_fs.h:66:5: note: previous declaration of ‘kapi_close’ with type ‘int(struct kapi_file *)’
+   66 | int kapi_close(kapi_file_t file);
+      |     ^~~~~~~~~~
+include/kapi_fs_ext.h:224:9: error: conflicting types for ‘kapi_read’; have ‘int64_t(int,  void *, size_t)’ {或称 ‘long long int(int,  void *, long long unsigned int)’}
+  224 | ssize_t kapi_read(int fd, void* buf, size_t count);
+      |         ^~~~~~~~~
+include/kapi_fs.h:68:9: note: previous declaration of ‘kapi_read’ with type ‘int64_t(struct kapi_file *, void *, size_t)’ {或称 ‘long long int(struct kapi_file *, void *, long long unsigned int)’}
+   68 | int64_t kapi_read(kapi_file_t file, void* buf, size_t count);
+      |         ^~~~~~~~~
+include/kapi_fs_ext.h:226:9: error: conflicting types for ‘kapi_write’; have ‘int64_t(int,  const void *, size_t)’ {或称 ‘long long int(int,  const void *, long long unsigned int)’}
+  226 | ssize_t kapi_write(int fd, const void* buf, size_t count);
+      |         ^~~~~~~~~~
+include/kapi_fs.h:70:9: note: previous declaration of ‘kapi_write’ with type ‘int64_t(struct kapi_file *, const void *, size_t)’ {或称 ‘long long int(struct kapi_file *, const void *, long long unsigned int)’}
+   70 | int64_t kapi_write(kapi_file_t file, const void* buf, size_t count);
+      |         ^~~~~~~~~~
+include/kapi_fs_ext.h:246:5: error: conflicting types for ‘kapi_stat’; have ‘int(const char *, kapi_stat_t *)’
+  246 | int kapi_stat(const char* pathname, kapi_stat_t* statbuf);
+      |     ^~~~~~~~~
+include/kapi_fs.h:74:5: note: previous declaration of ‘kapi_stat’ with type ‘int(const char *, kapi_file_stat_t *)’
+   74 | int kapi_stat(const char* path, kapi_file_stat_t* stat);
+      |     ^~~~~~~~~
+include/kapi_fs_ext.h:278:5: error: conflicting types for ‘kapi_mkdir’; have ‘int(const char *, mode_t)’ {或称 ‘int(const char *, long long unsigned int)’}
+  278 | int kapi_mkdir(const char* pathname, mode_t mode);
+      |     ^~~~~~~~~~
+include/kapi_fs.h:80:5: note: previous declaration of ‘kapi_mkdir’ with type ‘int(const char *, int)’
+   80 | int kapi_mkdir(const char* path, int mode);
+      |     ^~~~~~~~~~
+include/kapi_fs_ext.h:310:12: error: conflicting types for ‘kapi_opendir’; have ‘void *(const char *)’
+  310 | kapi_dir_t kapi_opendir(const char* name);
+      |            ^~~~~~~~~~~~
+include/kapi_fs.h:84:12: note: previous declaration of ‘kapi_opendir’ with type ‘struct kapi_dir *(const char *)’
+   84 | kapi_dir_t kapi_opendir(const char* path);
+      |            ^~~~~~~~~~~~
+include/kapi_fs_ext.h:314:5: error: conflicting types for ‘kapi_closedir’; have ‘int(void *)’
+  314 | int kapi_closedir(kapi_dir_t dirp);
+      |     ^~~~~~~~~~~~~
+include/kapi_fs.h:88:5: note: previous declaration of ‘kapi_closedir’ with type ‘int(struct kapi_dir *)’
+   88 | int kapi_closedir(kapi_dir_t dir);
+      |     ^~~~~~~~~~~~~
+include/kapi_fs_ext.h:316:16: error: conflicting types for ‘kapi_readdir’; have ‘kapi_dirent_t *(void *)’ {或称 ‘struct dirent *(void *)’}
+  316 | kapi_dirent_t* kapi_readdir(kapi_dir_t dirp);
+      |                ^~~~~~~~~~~~
+include/kapi_fs.h:86:5: note: previous declaration of ‘kapi_readdir’ with type ‘int(struct kapi_dir *, kapi_dirent_t *)’
+   86 | int kapi_readdir(kapi_dir_t dir, kapi_dirent_t* entry);
+      |     ^~~~~~~~~~~~
+include/kapi_fs_ext.h:362:5: error: conflicting types for ‘kapi_mount’; have ‘int(const char *, const char *, const char *, long unsigned int,  const void *)’
+  362 | int kapi_mount(const char* source, const char* target, const char* filesystemtype, unsigned long mountflags, const void* data);
+      |     ^~~~~~~~~~
+include/kapi_fs.h:94:5: note: previous declaration of ‘kapi_mount’ with type ‘int(const char *, const char *, const char *, uint64_t)’ {或称 ‘int(const char *, const char *, const char *, long long unsigned int)’}
+   94 | int kapi_mount(const char* source, const char* target, const char* fstype, uint64_t flags);
+      |     ^~~~~~~~~~
+kernel/api/kapi_init.c:34:12: error: conflicting types for ‘kapi_logging_init’; have ‘int(const struct kapi_logger_config *)’
+   34 | extern int kapi_logging_init(const struct kapi_logger_config* config);
+      |            ^~~~~~~~~~~~~~~~~
+In file included from include/kapi_trace.h:6,
+                 from include/kapi.h:75,
+                 from kernel/api/kapi_init.c:1:
+include/kapi_logging.h:92:5: note: previous declaration of ‘kapi_logging_init’ with type ‘int(const kapi_logger_config_t *)’
+   92 | int kapi_logging_init(const kapi_logger_config_t* config);
+      |     ^~~~~~~~~~~~~~~~~
+kernel/api/kapi_full_disk_encryption.c: 在函数‘kapi_fde_remove_volume’中:
+kernel/api/kapi_full_disk_encryption.c:91:16: error: ‘KAPI_FDE_EBUSY’ undeclared (first use in this function); did you mean ‘KAPI_NS_EBUSY’?
+   91 |         return KAPI_FDE_EBUSY;
+      |                ^~~~~~~~~~~~~~
+      |                KAPI_NS_EBUSY
+kernel/api/kapi_full_disk_encryption.c:91:16: note: 每个未声明的标识符在其出现的函数内只报告一次
+kernel/api/kapi_fs.c:63:1: error: 对‘vfs_find_path’的静态声明出现在非静态声明之后
+   63 | {
+      | ^
+In file included from kernel/api/kapi_fs.c:6:
+kernel/arch/x86_64/include/arch/fs.h:132:13: note: previous declaration of ‘vfs_find_path’ with type ‘vfs_node_t *(const char *)’ {或称 ‘struct vfs_node *(const char *)’}
+  132 | vfs_node_t* vfs_find_path(const char* path);
+      |             ^~~~~~~~~~~~~
+kernel/api/kapi_fs.c: 在函数‘kapi_open’中:
+kernel/api/kapi_fs.c:122:45: warning: 未使用的参数‘flags’ [-Wunused-parameter]
+  122 | kapi_file_t kapi_open(const char* path, int flags, int mode)
+      |                                         ~~~~^~~~~
+kernel/api/kapi_fs.c:122:56: warning: 未使用的参数‘mode’ [-Wunused-parameter]
+  122 | kapi_file_t kapi_open(const char* path, int flags, int mode)
+      |                                                    ~~~~^~~~
+kernel/api/kapi_fs.c: 在函数‘kapi_seek’中:
+kernel/api/kapi_fs.c:181:57: warning: 未使用的参数‘whence’ [-Wunused-parameter]
+  181 | int64_t kapi_seek(kapi_file_t file, int64_t offset, int whence)
+      |                                                     ~~~~^~~~~~
+kernel/api/kapi_fs.c: 在文件作用域：
+kernel/api/kapi_fs.c:302:12: error: conflicting types for ‘kapi_opendir’; have ‘void *(const char *)’
+  302 | kapi_dir_t kapi_opendir(const char* path)
+      |            ^~~~~~~~~~~~
+include/kapi_fs.h:84:12: note: previous declaration of ‘kapi_opendir’ with type ‘struct kapi_dir *(const char *)’
+   84 | kapi_dir_t kapi_opendir(const char* path);
+      |            ^~~~~~~~~~~~
+kernel/api/kapi_fs.c:328:5: error: conflicting types for ‘kapi_readdir’; have ‘int(void *, kapi_dirent_t *)’ {或称 ‘int(void *, struct dirent *)’}
+  328 | int kapi_readdir(kapi_dir_t dir, kapi_dirent_t* entry)
+      |     ^~~~~~~~~~~~
+include/kapi_fs.h:86:5: note: previous declaration of ‘kapi_readdir’ with type ‘int(struct kapi_dir *, kapi_dirent_t *)’
+   86 | int kapi_readdir(kapi_dir_t dir, kapi_dirent_t* entry);
+      |     ^~~~~~~~~~~~
+kernel/api/kapi_fs.c: 在函数‘kapi_readdir’中:
+kernel/api/kapi_fs.c:330:21: warning: 提领‘void *’指针
+  330 |     if (!dir || !dir->valid || !entry) {
+      |                     ^~
+kernel/api/kapi_fs.c:330:21: error: 在非结构或联合中请求成员‘valid’
+kernel/api/kapi_fs.c:334:41: warning: 提领‘void *’指针
+  334 |     vfs_node_t* node = vfs_find_path(dir->path);
+      |                                         ^~
+kernel/api/kapi_fs.c:334:41: error: 在非结构或联合中请求成员‘path’
+kernel/api/kapi_fs.c:344:38: warning: 提领‘void *’指针
+  344 |     int ret = node->readdir(node, dir->index, name_buf, sizeof(name_buf));
+      |                                      ^~
+kernel/api/kapi_fs.c:344:38: error: 在非结构或联合中请求成员‘index’
+kernel/api/kapi_fs.c:350:20: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’} has no member named ‘name’; did you mean ‘d_name’?
+  350 |     strncpy(entry->name, name_buf, sizeof(entry->name) - 1);
+      |                    ^~~~
+      |                    d_name
+kernel/api/kapi_fs.c:350:50: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’} has no member named ‘name’; did you mean ‘d_name’?
+  350 |     strncpy(entry->name, name_buf, sizeof(entry->name) - 1);
+      |                                                  ^~~~
+      |                                                  d_name
+kernel/api/kapi_fs.c:351:12: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’} has no member named ‘name’; did you mean ‘d_name’?
+  351 |     entry->name[sizeof(entry->name) - 1] = '\0';
+      |            ^~~~
+      |            d_name
+kernel/api/kapi_fs.c:351:31: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’} has no member named ‘name’; did you mean ‘d_name’?
+  351 |     entry->name[sizeof(entry->name) - 1] = '\0';
+      |                               ^~~~
+      |                               d_name
+kernel/api/kapi_fs.c:359:16: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’} has no member named ‘type’; did you mean ‘d_type’?
+  359 |         entry->type = (int)child->type;
+      |                ^~~~
+      |                d_type
+kernel/api/kapi_fs.c:360:14: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’}没有名为‘size’的成员
+  360 |         entry->size = child->size;
+      |              ^~
+kernel/api/kapi_fs.c:362:16: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’} has no member named ‘type’; did you mean ‘d_type’?
+  362 |         entry->type = KAPI_FT_UNKNOWN;
+      |                ^~~~
+      |                d_type
+kernel/api/kapi_fs.c:363:14: error: ‘kapi_dirent_t’ {或称 ‘struct dirent’}没有名为‘size’的成员
+  363 |         entry->size = 0;
+      |              ^~
+kernel/api/kapi_fs.c:366:8: warning: 提领‘void *’指针
+  366 |     dir->index++;
+      |        ^~
+kernel/api/kapi_fs.c:366:8: error: 在非结构或联合中请求成员‘index’
+kernel/api/kapi_fs.c: 在文件作用域：
+kernel/api/kapi_fs.c:370:5: error: conflicting types for ‘kapi_closedir’; have ‘int(void *)’
+  370 | int kapi_closedir(kapi_dir_t dir)
+      |     ^~~~~~~~~~~~~
+include/kapi_fs.h:88:5: note: previous declaration of ‘kapi_closedir’ with type ‘int(struct kapi_dir *)’
+   88 | int kapi_closedir(kapi_dir_t dir);
+      |     ^~~~~~~~~~~~~
+kernel/api/kapi_fs.c: 在函数‘kapi_closedir’中:
+kernel/api/kapi_fs.c:372:21: warning: 提领‘void *’指针
+  372 |     if (!dir || !dir->valid) {
+      |                     ^~
+kernel/api/kapi_fs.c:372:21: error: 在非结构或联合中请求成员‘valid’
+kernel/api/kapi_fs.c:376:8: warning: 提领‘void *’指针
+  376 |     dir->valid = 0;
+      |        ^~
+kernel/api/kapi_fs.c:376:8: error: 在非结构或联合中请求成员‘valid’
+<0> Building kernel/api/kapi_ebpf.c
+<3> Building kernel/api/kapi_dma.c
+kernel/api/kapi_ebpf.c: 在函数‘ebpf_serial_hex’中:
+kernel/api/kapi_ebpf.c:139:23: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+  139 |         buf[15 - i] = (n < 10) ? ('0' + n) : ('a' + n - 10);
+      |                       ^
+FAILED TASK run all: 

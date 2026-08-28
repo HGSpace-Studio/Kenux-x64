@@ -9,6 +9,15 @@
 extern "C" {
 #endif
 
+#ifndef ABS_CNT
+#define ABS_CNT 64
+#endif
+
+#ifndef KAPI_DMA_ADDR_T_DEFINED
+#define KAPI_DMA_ADDR_T_DEFINED
+typedef uint64_t kapi_dma_addr_t;
+#endif
+
 #define KAPI_DEV_MAX_NAME     64
 #define KAPI_DEV_MAX_PATH     256
 #define KAPI_DEV_MAX_CLASS    32
@@ -85,7 +94,7 @@ typedef struct {
     size_t size;
     uint64_t block_size;
     void* private_data;
-} kapi_device_info_t;
+} kapi_device_ext_info_t;
 
 typedef struct {
     kapi_dev_id_t id;
@@ -110,7 +119,6 @@ typedef struct {
     uint32_t subsystem_id;
     uint32_t expansion_rom_base;
     uint8_t capabilities_ptr;
-    uint8_t interrupt_line;
     uint32_t irq;
     void* mmio_base[6];
     size_t mmio_size[6];
@@ -232,11 +240,11 @@ typedef struct {
     kapi_dev_suspend_t suspend;
     kapi_dev_resume_t resume;
     kapi_dev_reset_t reset;
-} kapi_device_ops_t;
+} kapi_device_ext_ops_t;
 
-int kapi_device_register(const char* name, int type, const kapi_device_ops_t* ops, void* priv);
+int kapi_device_register_ext(const char* name, int type, const kapi_device_ext_ops_t* ops, void* priv);
 
-int kapi_device_unregister(kapi_dev_id_t dev);
+int kapi_device_unregister_ext(kapi_dev_id_t dev);
 
 int kapi_device_open(kapi_dev_id_t dev, int flags);
 
@@ -264,7 +272,7 @@ kapi_dev_id_t kapi_device_find_by_path(const char* path);
 
 kapi_dev_id_t kapi_device_find_by_class(int class_code);
 
-int kapi_device_get_info(kapi_dev_id_t dev, kapi_device_info_t* info);
+int kapi_device_get_info(kapi_dev_id_t dev, kapi_device_ext_info_t* info);
 
 int kapi_device_set_private_data(kapi_dev_id_t dev, void* data);
 
@@ -272,19 +280,19 @@ void* kapi_device_get_private_data(kapi_dev_id_t dev);
 
 int kapi_device_get_count(void);
 
-int kapi_device_list(kapi_device_info_t* devs, int count);
+int kapi_device_list(kapi_device_ext_info_t* devs, int count);
 
-int kapi_device_list_by_type(int type, kapi_device_info_t* devs, int count);
+int kapi_device_list_by_type(int type, kapi_device_ext_info_t* devs, int count);
 
 char* kapi_device_create_node(kapi_dev_id_t dev, const char* name, int mode);
 
 int kapi_device_remove_node(const char* path);
 
-int kapi_chardev_register(int major, int minor, const char* name, const kapi_device_ops_t* ops);
+int kapi_chardev_register(int major, int minor, const char* name, const kapi_device_ext_ops_t* ops);
 
 int kapi_chardev_unregister(int major, int minor);
 
-int kapi_blockdev_register(int major, int minor, const char* name, const kapi_device_ops_t* ops,
+int kapi_blockdev_register(int major, int minor, const char* name, const kapi_device_ext_ops_t* ops,
                            size_t block_size, uint64_t num_blocks);
 
 int kapi_blockdev_unregister(int major, int minor);
@@ -299,29 +307,29 @@ int kapi_blockdev_ioctl(int major, int minor, unsigned long request, void* arg);
 
 int kapi_pci_scan_bus(uint8_t bus);
 
-int kapi_pci_find_device(uint16_t vendor, uint16_t device, kapi_pci_info_t* info);
+int kapi_pci_find_device_ext(uint16_t vendor, uint16_t device, kapi_pci_info_t* info);
 
-int kapi_pci_find_class(uint32_t class_code, kapi_pci_info_t* info);
+int kapi_pci_find_class_ext(uint32_t class_code, kapi_pci_info_t* info);
 
-int kapi_pci_enable_device(kapi_pci_info_t* pci);
+int kapi_pci_enable_device_ext(kapi_pci_info_t* pci);
 
-int kapi_pci_disable_device(kapi_pci_info_t* pci);
+int kapi_pci_disable_device_ext(kapi_pci_info_t* pci);
 
-int kapi_pci_set_master(kapi_pci_info_t* pci);
+int kapi_pci_set_master_ext(kapi_pci_info_t* pci);
 
-int kapi_pci_clear_master(kapi_pci_info_t* pci);
+int kapi_pci_clear_master_ext(kapi_pci_info_t* pci);
 
-uint32_t kapi_pci_read_config_byte(kapi_pci_info_t* pci, int offset);
+uint32_t kapi_pci_read_config_byte_ext(kapi_pci_info_t* pci, int offset);
 
-uint32_t kapi_pci_read_config_word(kapi_pci_info_t* pci, int offset);
+uint32_t kapi_pci_read_config_word_ext(kapi_pci_info_t* pci, int offset);
 
-uint32_t kapi_pci_read_config_dword(kapi_pci_info_t* pci, int offset);
+uint32_t kapi_pci_read_config_dword_ext(kapi_pci_info_t* pci, int offset);
 
-void kapi_pci_write_config_byte(kapi_pci_info_t* pci, int offset, uint8_t value);
+void kapi_pci_write_config_byte_ext(kapi_pci_info_t* pci, int offset, uint8_t value);
 
-void kapi_pci_write_config_word(kapi_pci_info_t* pci, int offset, uint16_t value);
+void kapi_pci_write_config_word_ext(kapi_pci_info_t* pci, int offset, uint16_t value);
 
-void kapi_pci_write_config_dword(kapi_pci_info_t* pci, int offset, uint32_t value);
+void kapi_pci_write_config_dword_ext(kapi_pci_info_t* pci, int offset, uint32_t value);
 
 void* kapi_pci_map_bar(kapi_pci_info_t* pci, int bar);
 
@@ -333,9 +341,9 @@ void kapi_pci_free_irq(kapi_pci_info_t* pci);
 
 int kapi_pci_set_dma_mask(kapi_pci_info_t* pci, uint64_t mask);
 
-int kapi_pci_alloc_consistent(kapi_pci_info_t* pci, size_t size, dma_addr_t* dma_handle);
+int kapi_pci_alloc_consistent(kapi_pci_info_t* pci, size_t size, kapi_dma_addr_t* dma_handle);
 
-void kapi_pci_free_consistent(kapi_pci_info_t* pci, size_t size, void* cpu_addr, dma_addr_t dma_handle);
+void kapi_pci_free_consistent(kapi_pci_info_t* pci, size_t size, void* cpu_addr, kapi_dma_addr_t dma_handle);
 
 int kapi_fb_open(kapi_dev_id_t dev, int flags);
 
@@ -357,7 +365,7 @@ int kapi_fb_copyarea(kapi_dev_id_t dev, int sx, int sy, int dx, int dy, int widt
 
 int kapi_fb_imageblit(kapi_dev_id_t dev, int dx, int dy, int width, int height, const void* image);
 
-int kapi_fb_cursor(kapi_dev_id_t dev, const kapi_fb_cursor_t* cursor);
+int kapi_fb_cursor(kapi_dev_id_t dev, int enable, int x, int y);
 
 int kapi_fb_setcolreg(kapi_dev_id_t dev, unsigned regno, unsigned red, unsigned green, unsigned blue, unsigned transp);
 
@@ -367,7 +375,7 @@ int kapi_input_close(kapi_dev_id_t dev);
 
 int kapi_input_get_info(kapi_dev_id_t dev, kapi_input_dev_info_t* info);
 
-ssize_t kapi_input_event_read(kapi_dev_id_t dev, struct input_event* events, size_t count);
+ssize_t kapi_input_event_read(kapi_dev_id_t dev, void* events, size_t count);
 
 int kapi_input_grab(kapi_dev_id_t dev);
 

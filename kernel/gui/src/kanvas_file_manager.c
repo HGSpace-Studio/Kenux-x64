@@ -14,7 +14,7 @@ static void fm_fill_rect(uint32_t* fb, int stride, int fw, int fh, int x, int y,
 
 kanvas_file_manager_t* kanvas_file_manager_create(void)
 {
-    kanvas_file_manager_t* fm = (kanvas_file_manager_t*)kapi_kmalloc(sizeof(kanvas_file_manager_t));
+    kanvas_file_manager_t* fm = (kanvas_file_manager_t*)kapi_malloc(sizeof(kanvas_file_manager_t));
     if (!fm) return NULL;
     memset(fm, 0, sizeof(kanvas_file_manager_t));
     fm->visible = false;
@@ -39,9 +39,9 @@ kanvas_file_manager_t* kanvas_file_manager_create(void)
 void kanvas_file_manager_destroy(kanvas_file_manager_t* fm)
 {
     if (!fm) return;
-    if (fm->left.entries) kapi_kfree(fm->left.entries);
-    if (fm->right.entries) kapi_kfree(fm->right.entries);
-    kapi_kfree(fm);
+    if (fm->left.entries) kapi_free(fm->left.entries);
+    if (fm->right.entries) kapi_free(fm->right.entries);
+    kapi_free(fm);
 }
 
 void kanvas_file_manager_paint(kanvas_file_manager_t* fm, uint32_t* fb, int stride, int fw, int fh)
@@ -89,7 +89,7 @@ void kanvas_file_manager_navigate(kanvas_file_manager_t* fm, int pane, const cha
 {
     if (!fm || !path) return;
     kfm_pane_t* p = pane == 0 ? &fm->left : &fm->right;
-    size_t len = kapi_strlen(path);
+    size_t len = strlen(path);
     if (len >= KFM_PATH_MAX) len = KFM_PATH_MAX - 1;
     memcpy(p->path, path, len);
     p->path[len] = '\0';

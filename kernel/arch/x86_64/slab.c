@@ -350,3 +350,13 @@ uint64_t ksize(void* ptr)
     if (order > BUDDY_MAX_ORDER) order = BUDDY_MAX_ORDER;
     return (uint64_t)(PAGE_SIZE << order);
 }
+
+void* slab_alloc(uint64_t size)
+{
+    return kmalloc(size);
+}
+
+void slab_free(void* ptr)
+{
+    kfree(ptr);
+}

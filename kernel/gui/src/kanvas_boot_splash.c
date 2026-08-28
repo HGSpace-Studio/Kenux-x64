@@ -1,8 +1,9 @@
 #include "kanvas_boot_splash.h"
 #include "kanvas_animator.h"
+#include "kapi.h"
 #include <string.h>
 
-static uint32_t kui_col32(kui_color_t c)
+static uint32_t splash_col32(kui_color_t c)
 {
     return ((uint32_t)c.a << 24) | ((uint32_t)c.r << 16) | ((uint32_t)c.g << 8) | c.b;
 }
@@ -27,7 +28,7 @@ static void fill_rounded_rect(uint32_t* fb, int stride, int fw, int fh, int x, i
     fill_rect(fb, stride, fw, fh, x, y + r, r, h - 2 * r, color);
     fill_rect(fb, stride, fw, fh, x + w - r, y + r, r, h - 2 * r, color);
     for (int dy = 0; dy < r; dy++) {
-        int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+        int dx = (int)__builtin_sqrtf((float)(r * r - dy * dy));
         int cx1 = x + r - dx, cx2 = x + w - r + dx;
         int ry1 = y + r - dy - 1, ry2 = y - r + h + dy;
         fill_rect(fb, stride, fw, fh, cx1, ry1, cx2 - cx1, 1, color);
@@ -48,7 +49,7 @@ static void blend_pixel(uint32_t* fb, int stride, int fw, int fh, int x, int y, 
 
 kanvas_boot_splash_t* kanvas_boot_splash_create(int screen_w, int screen_h)
 {
-    kanvas_boot_splash_t* s = (kanvas_boot_splash_t*)kapi_kmalloc(sizeof(kanvas_boot_splash_t));
+    kanvas_boot_splash_t* s = (kanvas_boot_splash_t*)kapi_malloc(sizeof(kanvas_boot_splash_t));
     if (!s) return NULL;
     memset(s, 0, sizeof(kanvas_boot_splash_t));
     s->state = KENUX_SPLASH_STATE_LOGO;
@@ -74,14 +75,14 @@ kanvas_boot_splash_t* kanvas_boot_splash_create(int screen_w, int screen_h)
 void kanvas_boot_splash_destroy(kanvas_boot_splash_t* splash)
 {
     if (!splash) return;
-    kapi_kfree(splash);
+    kapi_free(splash);
 }
 
 void kanvas_boot_splash_paint(kanvas_boot_splash_t* splash, uint32_t* fb, int stride, int fw, int fh)
 {
     if (!splash || !fb || !splash->active) return;
 
-    uint32_t bg = kui_col32(splash->bg_color);
+    uint32_t bg = splash_col32(splash->bg_color);
     fill_rect(fb, stride, fw, fh, 0, 0, fw, fh, bg);
 
     int cx = fw / 2;
@@ -92,12 +93,12 @@ void kanvas_boot_splash_paint(kanvas_boot_splash_t* splash, uint32_t* fb, int st
         int lx = cx - logo_sz / 2;
         int ly = cy - logo_sz / 2;
 
-        uint32_t accent = kui_col32(splash->accent_color);
+        uint32_t accent = splash_col32(splash->accent_color);
         int ring_r = logo_sz / 2;
         for (int angle = 0; angle < 360; angle += 2) {
             float rad = (float)angle * 3.14159265f / 180.0f;
-            int px = cx + (int)(ring_r * kapi_cosf(rad));
-            int py = cy + (int)(ring_r * kapi_sinf(rad));
+            int px = cx + (int)(ring_r * __builtin_cosf(rad));
+            int py = cy + (int)(ring_r * __builtin_sinf(rad));
             if (px >= 0 && px < fw && py >= 0 && py < fh) {
                 blend_pixel(fb, stride, fw, fh, px, py, accent, 180);
             }
@@ -110,7 +111,7 @@ void kanvas_boot_splash_paint(kanvas_boot_splash_t* splash, uint32_t* fb, int st
     }
 
     if (splash->show_text) {
-        uint32_t text_col = kui_col32(splash->text_color);
+        uint32_t text_col = splash_col32(splash->text_color);
         kui_draw_text(fb, stride, fw, fh, cx - 52, cy + KENUX_SPLASH_LOGO_SIZE / 2 + 16, splash->version_text, text_col, 16, 0);
 
         uint32_t status_col = 0x808090FF;
@@ -120,8 +121,8 @@ void kanvas_boot_splash_paint(kanvas_boot_splash_t* splash, uint32_t* fb, int st
     if (splash->show_progress) {
         int bar_x = cx - KENUX_SPLASH_BAR_W / 2;
         int bar_y = cy + KENUX_SPLASH_LOGO_SIZE / 2 + 64;
-        uint32_t bar_bg = kui_col32(splash->bar_bg_color);
-        uint32_t bar_fg = kui_col32(splash->bar_fg_color);
+        uint32_t bar_bg = splash_col32(splash->bar_bg_color);
+        uint32_t bar_fg = splash_col32(splash->bar_fg_color);
 
         fill_rounded_rect(fb, stride, fw, fh, bar_x, bar_y, KENUX_SPLASH_BAR_W, KENUX_SPLASH_BAR_H, KENUX_SPLASH_BAR_RADIUS, bar_bg);
 
@@ -216,7 +217,7 @@ void kanvas_boot_splash_set_progress(kanvas_boot_splash_t* splash, float progres
 void kanvas_boot_splash_set_status(kanvas_boot_splash_t* splash, const char* text)
 {
     if (!splash || !text) return;
-    size_t len = kapi_strlen(text);
+    size_t len = strlen(text);
     if (len >= 64) len = 63;
     memcpy(splash->status_text, text, len);
     splash->status_text[len] = '\0';

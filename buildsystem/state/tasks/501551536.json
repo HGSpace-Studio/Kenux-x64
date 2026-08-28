@@ -1,0 +1,811 @@
+{
+  "command": [
+    "run",
+    "all"
+  ],
+  "created_at": "2026-08-28T05:45:27+00:00",
+  "elapsed_seconds": 5.966,
+  "error": "",
+  "finished_at": "2026-08-28T05:45:33+00:00",
+  "id": "501551536",
+  "log": "buildsystem/logs/501551536.log",
+  "metrics": {
+    "built_files": 109,
+    "completed": 110,
+    "downloaded_files": 0,
+    "elapsed_seconds": 5.966,
+    "entered_folders": 6,
+    "errors": 1,
+    "executed_targets": 108,
+    "generated_files": 0,
+    "peak_parallel_workers": 4,
+    "ran_commands": 0,
+    "skipped_targets": 2,
+    "started_tasks": 3,
+    "timings": [
+      {
+        "kind": "generate",
+        "seconds": 0.0006,
+        "status": "skipped",
+        "target": "bootloader",
+        "worker": 0
+      },
+      {
+        "kind": "assemble",
+        "seconds": 0.0012,
+        "status": "skipped",
+        "target": "assemble:kernel/arch/x86_64/interrupt.S",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.098,
+        "status": "executed",
+        "target": "compile:kernel/systemd/target.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1176,
+        "status": "executed",
+        "target": "compile:kernel/systemd/util.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1794,
+        "status": "executed",
+        "target": "compile:kernel/systemd/udev.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0739,
+        "status": "executed",
+        "target": "compile:kernel/systemd/systemctl.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0522,
+        "status": "executed",
+        "target": "compile:kernel/systemd/swap.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2803,
+        "status": "executed",
+        "target": "compile:kernel/systemd/timer.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0598,
+        "status": "executed",
+        "target": "compile:kernel/systemd/slice.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1013,
+        "status": "executed",
+        "target": "compile:kernel/systemd/socket.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0596,
+        "status": "executed",
+        "target": "compile:kernel/systemd/path.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0723,
+        "status": "executed",
+        "target": "compile:kernel/systemd/mount.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0593,
+        "status": "executed",
+        "target": "compile:kernel/systemd/journalctl.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0583,
+        "status": "executed",
+        "target": "compile:kernel/systemd/fstab.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1354,
+        "status": "executed",
+        "target": "compile:kernel/systemd/journal.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.066,
+        "status": "executed",
+        "target": "compile:kernel/systemd/device.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0648,
+        "status": "executed",
+        "target": "compile:kernel/systemd/automount.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4737,
+        "status": "executed",
+        "target": "compile:kernel/systemd/systemd.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0551,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/vsprintf.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1012,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/unistd.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1201,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/string.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4382,
+        "status": "executed",
+        "target": "compile:kernel/systemd/service.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1475,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/time.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0301,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/stdio.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0209,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/setjmp.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0266,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/signal.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0209,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/errno.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.116,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/stdlib.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0696,
+        "status": "executed",
+        "target": "compile:kernel/kernel/wait.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0947,
+        "status": "executed",
+        "target": "compile:kernel/kernel/workqueue.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1246,
+        "status": "executed",
+        "target": "compile:kernel/lib/libc/math.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0337,
+        "status": "executed",
+        "target": "compile:boot:kernel/kernel/syscall.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0759,
+        "status": "executed",
+        "target": "compile:kernel/kernel/sysfs.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1089,
+        "status": "executed",
+        "target": "compile:kernel/kernel/timer.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1774,
+        "status": "executed",
+        "target": "compile:kernel/kernel/unixsock.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1623,
+        "status": "executed",
+        "target": "compile:kernel/kernel/sync.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1267,
+        "status": "executed",
+        "target": "compile:kernel/kernel/signal.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1573,
+        "status": "executed",
+        "target": "compile:kernel/kernel/stacktrace.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0692,
+        "status": "executed",
+        "target": "compile:kernel/kernel/rcu.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2339,
+        "status": "executed",
+        "target": "compile:kernel/kernel/shell_enhanced.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1697,
+        "status": "executed",
+        "target": "compile:kernel/kernel/process.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0635,
+        "status": "executed",
+        "target": "compile:kernel/kernel/kthread.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2151,
+        "status": "executed",
+        "target": "compile:kernel/kernel/printk.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0402,
+        "status": "executed",
+        "target": "compile:kernel/kernel/interrupt.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0952,
+        "status": "executed",
+        "target": "compile:boot:kernel/kernel/kernel.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2262,
+        "status": "executed",
+        "target": "compile:kernel/kernel/module.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0837,
+        "status": "executed",
+        "target": "compile:kernel/kernel/fifo.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1776,
+        "status": "executed",
+        "target": "compile:kernel/kernel/gdb_stub.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0471,
+        "status": "executed",
+        "target": "compile:kernel/kernel/drivers.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1517,
+        "status": "executed",
+        "target": "compile:kernel/kernel/epoll.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2718,
+        "status": "executed",
+        "target": "compile:kernel/kernel/fs.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3522,
+        "status": "executed",
+        "target": "compile:kernel/kernel/ipc.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0659,
+        "status": "executed",
+        "target": "compile:kernel/kernel/devtmpfs.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1217,
+        "status": "executed",
+        "target": "compile:kernel/kernel/cgroup.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1263,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/widget.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1486,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/window.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.15,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/thispc.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.158,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/textedit.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3659,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/window_manager.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.121,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/taskmgr.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1532,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/sysinfo.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1198,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/psf.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.358,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/terminal.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.118,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/logo_data.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2868,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/main.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.3034,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kenux_render.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.6339,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/msf.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0204,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kenux_asset_folder.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0195,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kenux_asset_file.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2307,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_window.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.756,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kenux_ui.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1376,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_terminal.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.457,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kapi_curvo_icons.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1349,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_taskbar.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1424,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_task_manager.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1825,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_start_menu.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1596,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_kex_runner.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2269,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_system_tray.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 1.7427,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/wallpaper_data.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1031,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_gui.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1105,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_file_manager.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0536,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/icon_registry.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1705,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_boot_splash.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2456,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_desktop.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1901,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/kanvas_animator.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0624,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/graphics.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2586,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/icon.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0196,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/font_data.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1064,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/font.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.36,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/framebuffer.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0506,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/emoji_font.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2618,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/filemgr.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0351,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/cursor_data.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0556,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/compat_center.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.147,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/color.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.926,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/icon_data.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.8373,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/font_ttf.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4938,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/desktop.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0775,
+        "status": "executed",
+        "target": "compile:kernel/compat/leonos_compat.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0463,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/xhci.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0382,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_stubs.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2791,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/cjk_font.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2905,
+        "status": "executed",
+        "target": "compile:kernel/gui/src/browser.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2323,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/wmi.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2196,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_security.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2585,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_process.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0497,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_kernel32.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2851,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_ntdll.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.5161,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_msvcrt.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 1.0851,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_shell.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.8228,
+        "status": "executed",
+        "target": "compile:kernel/arch/x86_64/win32_gdi_and_msg.c",
+        "worker": 1
+      }
+    ],
+    "total": 264,
+    "worker_busy_seconds": 22.485928512982355
+  },
+  "started_at": "2026-08-28T05:45:27+00:00",
+  "status": "failed",
+  "task": "run all",
+  "total_targets": 264
+}

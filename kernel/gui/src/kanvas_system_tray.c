@@ -1,8 +1,9 @@
 #include "kanvas_system_tray.h"
 #include "kanvas_animator.h"
+#include "kapi.h"
 #include <string.h>
 
-static uint32_t kui_col32(kui_color_t c)
+static uint32_t tray_col32(kui_color_t c)
 {
     return ((uint32_t)c.a << 24) | ((uint32_t)c.r << 16) | ((uint32_t)c.g << 8) | c.b;
 }
@@ -27,7 +28,7 @@ static void fill_rounded_rect(uint32_t* fb, int stride, int fw, int fh, int x, i
     fill_rect(fb, stride, fw, fh, x, y + r, r, h - 2 * r, color);
     fill_rect(fb, stride, fw, fh, x + w - r, y + r, r, h - 2 * r, color);
     for (int dy = 0; dy < r; dy++) {
-        int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+        int dx = (int)__builtin_sqrtf((float)(r * r - dy * dy));
         int cx1 = x + r - dx, cx2 = x + w - r + dx;
         int ry1 = y + r - dy - 1, ry2 = y - r + h + dy;
         fill_rect(fb, stride, fw, fh, cx1, ry1, cx2 - cx1, 1, color);
@@ -48,8 +49,8 @@ static void draw_icon_glyph(uint32_t* fb, int stride, int fw, int fh, int cx, in
                 int arc_y = cy - r;
                 for (int a = -30 - i * 15; a <= 30 + i * 15; a++) {
                     float rad = (float)a * 3.14159265f / 180.0f;
-                    int px = cx + (int)(r * kapi_sinf(rad));
-                    int py = arc_y + (int)(r * kapi_cosf(rad));
+                    int px = cx + (int)(r * __builtin_sinf(rad));
+                    int py = arc_y + (int)(r * __builtin_cosf(rad));
                     if (px >= 0 && px < fw && py >= 0 && py < fh) {
                         uint32_t* p = (uint32_t*)((uint8_t*)fb + py * stride);
                         p[px] = color;
@@ -83,10 +84,10 @@ static void draw_icon_glyph(uint32_t* fb, int stride, int fw, int fh, int cx, in
             int rays = 6;
             for (int i = 0; i < rays; i++) {
                 float angle = (float)i * 360.0f / rays * 3.14159265f / 180.0f;
-                int x1 = cx + (int)(4 * kapi_cosf(angle));
-                int y1 = cy + (int)(4 * kapi_sinf(angle));
-                int x2 = cx + (int)(8 * kapi_cosf(angle));
-                int y2 = cy + (int)(8 * kapi_sinf(angle));
+                int x1 = cx + (int)(4 * __builtin_cosf(angle));
+                int y1 = cy + (int)(4 * __builtin_sinf(angle));
+                int x2 = cx + (int)(8 * __builtin_cosf(angle));
+                int y2 = cy + (int)(8 * __builtin_sinf(angle));
                 fill_rect(fb, stride, fw, fh, x1, y1, 1, 1, color);
                 fill_rect(fb, stride, fw, fh, x2, y2, 1, 1, color);
             }
@@ -111,7 +112,7 @@ static void draw_icon_glyph(uint32_t* fb, int stride, int fw, int fh, int cx, in
 
 kanvas_system_tray_t* kanvas_system_tray_create(void)
 {
-    kanvas_system_tray_t* t = (kanvas_system_tray_t*)kapi_kmalloc(sizeof(kanvas_system_tray_t));
+    kanvas_system_tray_t* t = (kanvas_system_tray_t*)kapi_malloc(sizeof(kanvas_system_tray_t));
     if (!t) return NULL;
     memset(t, 0, sizeof(kanvas_system_tray_t));
     t->visible = true;
@@ -141,15 +142,15 @@ kanvas_system_tray_t* kanvas_system_tray_create(void)
 void kanvas_system_tray_destroy(kanvas_system_tray_t* tray)
 {
     if (!tray) return;
-    kapi_kfree(tray);
+    kapi_free(tray);
 }
 
 void kanvas_system_tray_paint(kanvas_system_tray_t* tray, uint32_t* fb, int stride, int fw, int fh, int tray_x, int tray_y)
 {
     if (!tray || !fb || !tray->visible) return;
 
-    uint32_t fg = kui_col32(tray->fg_color);
-    uint32_t hover = kui_col32(tray->hover_color);
+    uint32_t fg = tray_col32(tray->fg_color);
+    uint32_t hover = tray_col32(tray->hover_color);
     int x = tray_x;
     int y = tray_y;
     int icon_sz = KANVAS_TRAY_ICON_SZ;
@@ -179,9 +180,9 @@ void kanvas_system_tray_paint_popup(kanvas_system_tray_t* tray, uint32_t* fb, in
 {
     if (!tray || !fb || !tray->popup_visible) return;
 
-    uint32_t bg = kui_col32(tray->bg_color);
-    uint32_t fg = kui_col32(tray->fg_color);
-    uint32_t accent = kui_col32(tray->accent_color);
+    uint32_t bg = tray_col32(tray->bg_color);
+    uint32_t fg = tray_col32(tray->fg_color);
+    uint32_t accent = tray_col32(tray->accent_color);
     int px = tray->popup_x, py = tray->popup_y;
     int pw = KANVAS_TRAY_POPUP_W, ph = 0;
 
@@ -320,7 +321,7 @@ void kanvas_system_tray_set_network(kanvas_system_tray_t* tray, kanvas_net_state
 {
     if (!tray) return;
     tray->network.net_state = state;
-    if (ssid) { size_t len = kapi_strlen(ssid); if (len >= 32) len = 31; memcpy(tray->network.wifi_ssid, ssid, len); tray->network.wifi_ssid[len] = '\0'; }
+    if (ssid) { size_t len = strlen(ssid); if (len >= 32) len = 31; memcpy(tray->network.wifi_ssid, ssid, len); tray->network.wifi_ssid[len] = '\0'; }
     tray->network.wifi_signal = signal;
 }
 
@@ -328,7 +329,7 @@ void kanvas_system_tray_set_bluetooth(kanvas_system_tray_t* tray, kanvas_bt_stat
 {
     if (!tray) return;
     tray->bluetooth.bt_state = state;
-    if (device) { size_t len = kapi_strlen(device); if (len >= 32) len = 31; memcpy(tray->bluetooth.paired_device, device, len); tray->bluetooth.paired_device[len] = '\0'; }
+    if (device) { size_t len = strlen(device); if (len >= 32) len = 31; memcpy(tray->bluetooth.paired_device, device, len); tray->bluetooth.paired_device[len] = '\0'; }
 }
 
 void kanvas_system_tray_set_volume(kanvas_system_tray_t* tray, int volume, bool muted)

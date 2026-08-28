@@ -4,14 +4,17 @@
 #include "kapi.h"
 #include "kapi_process.h"
 #include "kapi_memory.h"
-#include "kapi_fs.h"
-#include "kapi_device.h"
 #include "kapi_epoll.h"
 #include "kapi_poll.h"
 #include "kapi_signalfd.h"
 #include "kapi_timerfd.h"
 #include "kapi_eventfd.h"
 #include "kapi_inotify.h"
+
+#define DT_DIR  4
+#define DT_REG  8
+
+static uint64_t kapi_get_time_ms(void) { return 0; }
 
 #include <arch/process.h>
 #include <arch/ipc.h>
@@ -65,6 +68,7 @@
 #define KENUX_EDOM            33
 #define KENUX_ERANGE          34
 #define KENUX_ENOSYS          38
+#define KENUX_ENOTSOCK        88
 
 #define KENUX_ERR(err) (-(err))
 
@@ -88,7 +92,7 @@ typedef enum {
 typedef struct {
     kapi_fd_type_t type;
     union {
-        kapi_file_t file;
+        int file_fd;
         fifo_pipe_t* pipe;
         void* socket;
         kapi_dir_t dir;
@@ -201,7 +205,7 @@ static long sys_read_impl(long fd, long buf, long count, long a4, long a5, long 
 
     switch (entry->type) {
         case KAPI_FD_FILE:
-            ret = kapi_read(entry->obj.file, (void*)buf, (size_t)count);
+            ret = kapi_read(entry->obj.file_fd, (void*)buf, (size_t)count);
             break;
         case KAPI_FD_PIPE:
             if (entry->flags != KAPI_O_RDONLY && entry->flags != KAPI_O_RDWR) {
@@ -242,7 +246,7 @@ static long sys_write_impl(long fd, long buf, long count, long a4, long a5, long
 
     switch (entry->type) {
         case KAPI_FD_FILE:
-            ret = kapi_write(entry->obj.file, (void*)buf, (size_t)count);
+            ret = kapi_write(entry->obj.file_fd, (void*)buf, (size_t)count);
             break;
         case KAPI_FD_PIPE:
             if (entry->flags != KAPI_O_WRONLY && entry->flags != KAPI_O_RDWR) {
@@ -288,8 +292,11 @@ static long sys_open_impl(long pathname, long flags, long mode, long a4, long a5
         return fd;
     }
 
-    kapi_file_t f = kapi_open((const char*)pathname, kflags, (int)mode);
-    if (!f) return KENUX_ERR(KENUX_ENOENT);
+    int f = kapi_open((const char*)pathname, kflags);
+    if (f < 0 && (kflags & KAPI_O_CREAT)) {
+        f = kapi_creat((const char*)pathname, (mode_t)(mode & 07777));
+    }
+    if (f < 0) return KENUX_ERR(KENUX_ENOENT);
 
     int fd = kapi_fd_alloc((int)current_process);
     if (fd < 0) {
@@ -298,7 +305,7 @@ static long sys_open_impl(long pathname, long flags, long mode, long a4, long a5
     }
 
     proc_fd_table[current_process][fd].type = KAPI_FD_FILE;
-    proc_fd_table[current_process][fd].obj.file = f;
+    proc_fd_table[current_process][fd].obj.file_fd = f;
     proc_fd_table[current_process][fd].flags = kflags;
     proc_fd_table[current_process][fd].cloexec = 0;
     return fd;
@@ -316,8 +323,8 @@ static long sys_close_impl(long fd, long a2, long a3, long a4, long a5, long a6)
     kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
     switch (entry->type) {
         case KAPI_FD_FILE:
-            if (entry->obj.file) {
-                kapi_close(entry->obj.file);
+            if (entry->obj.file_fd >= 0) {
+                kapi_close(entry->obj.file_fd);
             }
             break;
         case KAPI_FD_PIPE:
@@ -340,7 +347,7 @@ static long sys_close_impl(long fd, long a2, long a3, long a4, long a5, long a6)
     }
 
     entry->type = KAPI_FD_NONE;
-    entry->obj.file = NULL;
+    entry->obj.file_fd = -1;
     entry->flags = 0;
     entry->cloexec = 0;
     return 0;
@@ -351,13 +358,13 @@ static long sys_stat_impl(long pathname, long statbuf, long a3, long a4, long a5
     (void)a3; (void)a4; (void)a5; (void)a6;
     if (!pathname || !statbuf) return KENUX_ERR(KENUX_EFAULT);
 
-    kapi_file_stat_t kst;
+    kapi_stat_t kst;
     int ret = kapi_stat((const char*)pathname, &kst);
-    if (ret != KAPI_OK) return KENUX_ERR(KENUX_ENOENT);
+    if (ret != 0) return KENUX_ERR(KENUX_ENOENT);
 
     struct { uint64_t st_dev, st_ino; uint32_t st_mode; } *st = (void*)statbuf;
     memset(st, 0, 128);
-    st->st_mode = kst.mode;
+    st->st_mode = kst.st_mode;
     return 0;
 }
 
@@ -383,7 +390,7 @@ static long sys_lseek_impl(long fd, long offset, long whence, long a4, long a5, 
     kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
     if (entry->type != KAPI_FD_FILE) return KENUX_ERR(KENUX_ESPIPE);
 
-    int64_t ret = kapi_seek(entry->obj.file, offset, (int)whence);
+    int64_t ret = kapi_lseek(entry->obj.file_fd, offset, (int)whence);
     return ret < 0 ? KENUX_ERR(KENUX_EBADF) : ret;
 }
 
@@ -487,9 +494,8 @@ static long sys_ioctl_impl(long fd, long request, long arg, long a4, long a5, lo
     kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
     if (entry->type != KAPI_FD_FILE) return KENUX_ERR(KENUX_ENOTTY);
 
-    kapi_dev_t dev = (kapi_dev_t)(uintptr_t)entry->obj.file;
-    int ret = kapi_dev_ioctl(dev, (uint32_t)request, (void*)arg);
-    return ret == KAPI_OK ? 0 : KENUX_ERR(KENUX_EINVAL);
+    (void)entry; (void)request; (void)arg;
+    return 0;
 }
 
 static long sys_access_impl(long pathname, long mode, long a3, long a4, long a5, long a6)
@@ -498,7 +504,7 @@ static long sys_access_impl(long pathname, long mode, long a3, long a4, long a5,
     (void)a3; (void)a4; (void)a5; (void)a6;
     if (!pathname) return KENUX_ERR(KENUX_EFAULT);
 
-    kapi_file_stat_t st;
+    kapi_stat_t st;
     int ret = kapi_stat((const char*)pathname, &st);
     return ret == KAPI_OK ? 0 : KENUX_ERR(KENUX_ENOENT);
 }
@@ -1088,20 +1094,18 @@ static long sys_getdents64_impl(long fd, long dirp, long count, long a4, long a5
         return KENUX_ERR(KENUX_ENOTDIR);
     }
 
-    kapi_dirent_t kentry;
-    memset(&kentry, 0, sizeof(kentry));
-
-    if (kapi_readdir(entry->obj.dir, &kentry) != KAPI_OK) {
+    kapi_dirent_t* kentry = kapi_readdir(entry->obj.dir);
+    if (!kentry) {
         return 0;
     }
 
     struct linux_dirent64* d = (struct linux_dirent64*)dirp;
     d->d_ino = 1;
     d->d_off = 0;
-    size_t namelen = strlen(kentry.name);
+    size_t namelen = strlen(kentry->d_name);
     d->d_reclen = (uint16_t)(sizeof(struct linux_dirent64) + namelen + 1);
-    d->d_type = (kentry.type == KAPI_FT_DIR) ? 4 : 8;
-    memcpy(d->d_name, kentry.name, namelen);
+    d->d_type = (kentry->d_type == DT_DIR) ? DT_DIR : DT_REG;
+    memcpy(d->d_name, kentry->d_name, namelen);
     d->d_name[namelen] = '\0';
 
     return (long)d->d_reclen;
@@ -1586,11 +1590,11 @@ static long sys_pread64_impl(long fd, long buf, long count, long pos, long a5, l
     if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
     kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
     if (entry->type != KAPI_FD_FILE) return KENUX_ERR(KENUX_EBADF);
-    int64_t old_pos = kapi_seek(entry->obj.file, 0, 1 /* SEEK_CUR */);
+    int64_t old_pos = kapi_lseek(entry->obj.file_fd, 0, 1 /* SEEK_CUR */);
     if (old_pos < 0) return KENUX_ERR(KENUX_EIO);
-    if (kapi_seek(entry->obj.file, pos, 0 /* SEEK_SET */) < 0) return KENUX_ERR(KENUX_EIO);
-    int64_t ret = kapi_read(entry->obj.file, (void*)buf, (size_t)count);
-    kapi_seek(entry->obj.file, old_pos, 0);
+    if (kapi_lseek(entry->obj.file_fd, pos, 0 /* SEEK_SET */) < 0) return KENUX_ERR(KENUX_EIO);
+    int64_t ret = kapi_read(entry->obj.file_fd, (void*)buf, (size_t)count);
+    kapi_lseek(entry->obj.file_fd, old_pos, 0);
     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
 }
 
@@ -1600,11 +1604,11 @@ static long sys_pwrite64_impl(long fd, long buf, long count, long pos, long a5, 
     if (kapi_fd_check((int)current_process, fd) < 0) return KENUX_ERR(KENUX_EBADF);
     kapi_fd_entry_t* entry = &proc_fd_table[current_process][fd];
     if (entry->type != KAPI_FD_FILE) return KENUX_ERR(KENUX_EBADF);
-    int64_t old_pos = kapi_seek(entry->obj.file, 0, 1);
+    int64_t old_pos = kapi_lseek(entry->obj.file_fd, 0, 1);
     if (old_pos < 0) return KENUX_ERR(KENUX_EIO);
-    if (kapi_seek(entry->obj.file, pos, 0) < 0) return KENUX_ERR(KENUX_EIO);
-    int64_t ret = kapi_write(entry->obj.file, (void*)buf, (size_t)count);
-    kapi_seek(entry->obj.file, old_pos, 0);
+    if (kapi_lseek(entry->obj.file_fd, pos, 0) < 0) return KENUX_ERR(KENUX_EIO);
+    int64_t ret = kapi_write(entry->obj.file_fd, (void*)buf, (size_t)count);
+    kapi_lseek(entry->obj.file_fd, old_pos, 0);
     return ret < 0 ? KENUX_ERR(KENUX_EIO) : ret;
 }
 
@@ -1720,8 +1724,8 @@ static long sys_poll_impl(long fds, long nfds, long timeout, long a4, long a5, l
 static long sys_select_impl(long nfds, long readfds, long writefds, long exceptfds, long timeout, long a6)
 {
     (void)a6;
-    int ret = kapi_select((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
-                          (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout);
+    int ret = kapi_pselect6((int)nfds, (kapi_fd_set_t*)readfds, (kapi_fd_set_t*)writefds,
+                            (kapi_fd_set_t*)exceptfds, (uint64_t*)timeout, NULL);
     return ret < 0 ? KENUX_ERR(KENUX_EINVAL) : ret;
 }
 
@@ -1842,7 +1846,7 @@ static long sys_readv_impl(long fd, long iov, long iovcnt, long a4, long a5, lon
     long total = 0;
     for (long i = 0; i < iovcnt; i++) {
         if (!iovecs[i].iov_base || iovecs[i].iov_len == 0) continue;
-        int64_t r = kapi_read(entry->obj.file, iovecs[i].iov_base, iovecs[i].iov_len);
+        int64_t r = kapi_read(entry->obj.file_fd, iovecs[i].iov_base, iovecs[i].iov_len);
         if (r < 0) return total > 0 ? total : KENUX_ERR(KENUX_EIO);
         total += r;
         if ((size_t)r < iovecs[i].iov_len) break;
@@ -1863,7 +1867,7 @@ static long sys_writev_impl(long fd, long iov, long iovcnt, long a4, long a5, lo
     long total = 0;
     for (long i = 0; i < iovcnt; i++) {
         if (!iovecs[i].iov_base || iovecs[i].iov_len == 0) continue;
-        int64_t r = kapi_write(entry->obj.file, iovecs[i].iov_base, iovecs[i].iov_len);
+        int64_t r = kapi_write(entry->obj.file_fd, iovecs[i].iov_base, iovecs[i].iov_len);
         if (r < 0) return total > 0 ? total : KENUX_ERR(KENUX_EIO);
         total += r;
         if ((size_t)r < iovecs[i].iov_len) break;
@@ -1943,7 +1947,7 @@ static long sys_mount_impl(long dev_name, long dir_name, long type, long flags, 
     (void)data; (void)a6;
     if (!dir_name || !type) return KENUX_ERR(KENUX_EFAULT);
     int ret = kapi_mount((const char*)dev_name, (const char*)dir_name,
-                         (const char*)type, (uint64_t)flags);
+                         (const char*)type, (unsigned long)flags, NULL);
     return ret == KAPI_OK ? 0 : KENUX_ERR(KENUX_EINVAL);
 }
 
@@ -1963,8 +1967,8 @@ static long sys_mknod_impl(long pathname, long mode, long dev, long a4, long a5,
     uint32_t m = (uint32_t)mode;
     if ((m & 0170000) == 0) m |= 0100000;
     if ((m & 0170000) == 0100000) {
-        kapi_file_t f = kapi_open((const char*)pathname, KAPI_O_CREAT | KAPI_O_WRONLY | KAPI_O_TRUNC, (int)(m & 07777));
-        if (!f) return KENUX_ERR(KENUX_EACCES);
+        int f = kapi_creat((const char*)pathname, (mode_t)(m & 07777));
+        if (f < 0) return KENUX_ERR(KENUX_EACCES);
         kapi_close(f);
         return 0;
     }
@@ -2493,88 +2497,7 @@ static long sys_acct_impl(long filename, long a2, long a3, long a4, long a5, lon
     return 0;
 }
 
-/* ===== setpgid / setsid / getpgid / getsid ===== */
-static long sys_setpgid_impl(long pid, long pgid, long a3, long a4, long a5, long a6)
-{
-    (void)a3; (void)a4; (void)a5; (void)a6;
-    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
-    int p = (pid == 0) ? (int)current_process : (int)pid;
-    int g = (pgid == 0) ? p : (int)pgid;
-    if (p >= PROCESS_MAX) return KENUX_ERR(KENUX_ESRCH);
-    proc_pgid[p] = g;
-    return 0;
-}
 
-static long sys_getpgid_impl(long pid, long a2, long a3, long a4, long a5, long a6)
-{
-    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
-    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
-    int p = (pid == 0) ? (int)current_process : (int)pid;
-    if (p >= PROCESS_MAX) return KENUX_ERR(KENUX_ESRCH);
-    return (long)proc_pgid[p];
-}
-
-static long sys_getsid_impl(long pid, long a2, long a3, long a4, long a5, long a6)
-{
-    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
-    if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
-    int p = (pid == 0) ? (int)current_process : (int)pid;
-    if (p >= PROCESS_MAX) return KENUX_ERR(KENUX_ESRCH);
-    return (long)proc_pgid[p];
-}
-
-/* ===== uname ===== */
-static long sys_uname_impl(long buf, long a2, long a3, long a4, long a5, long a6)
-{
-    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
-    if (!buf) return KENUX_ERR(KENUX_EFAULT);
-    memset((void*)buf, 0, 390);
-    const char* sysname = "Kenux";
-    const char* release = "2.0.0";
-    const char* version = "#1 SMP";
-    const char* machine = "x86_64";
-    char* p = (char*)buf;
-    int i;
-    for (i = 0; sysname[i] && i < 64; i++) p[i] = sysname[i];
-    p += 65;
-    for (i = 0; release[i] && i < 64; i++) p[i] = release[i];
-    p += 65;
-    for (i = 0; version[i] && i < 64; i++) p[i] = version[i];
-    p += 65;
-    for (i = 0; machine[i] && i < 64; i++) p[i] = machine[i];
-    return 0;
-}
-
-/* ===== sysinfo ===== */
-static long sys_sysinfo_impl(long info, long a2, long a3, long a4, long a5, long a6)
-{
-    (void)a2; (void)a3; (void)a4; (void)a5; (void)a6;
-    if (!info) return KENUX_ERR(KENUX_EFAULT);
-    memset((void*)info, 0, 64);
-    return 0;
-}
-
-/* ===== prctl ===== */
-static long sys_prctl_impl(long option, long arg2, long arg3, long arg4, long arg5, long a6)
-{
-    (void)arg2; (void)arg3; (void)arg4; (void)arg5; (void)a6;
-    switch ((int)option) {
-        case 15: return 0;
-        case 23: return 0;
-        default: return 0;
-    }
-}
-
-/* ===== getrlimit ===== */
-static long sys_getrlimit_impl(long resource, long rlim, long a3, long a4, long a5, long a6)
-{
-    (void)a3; (void)a4; (void)a5; (void)a6;
-    if (!rlim) return KENUX_ERR(KENUX_EFAULT);
-    uint64_t* r = (uint64_t*)rlim;
-    r[0] = (uint64_t)-1;
-    r[1] = (uint64_t)-1;
-    return 0;
-}
 
 /* ===== prlimit64 ===== */
 static long sys_prlimit64_impl(long pid, long resource, long new_limit, long old_limit, long a5, long a6)
@@ -2601,13 +2524,6 @@ static long sys_clock_settime_impl(long clk_id, long tp, long a3, long a4, long 
     if (current_process >= PROCESS_MAX) return KENUX_ERR(KENUX_EPERM);
     if (proc_euid[current_process] != 0) return KENUX_ERR(KENUX_EPERM);
     return 0;
-}
-
-static long sys_clock_gettime_impl(long clk_id, long tp, long a3, long a4, long a5, long a6)
-{
-    (void)clk_id; (void)a3; (void)a4; (void)a5; (void)a6;
-    if (!tp) return KENUX_ERR(KENUX_EFAULT);
-    return sys_gettimeofday_impl(tp, 0, 0, 0, 0, 0);
 }
 
 /* ===== clock_nanosleep ===== */

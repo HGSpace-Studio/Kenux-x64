@@ -1,6 +1,7 @@
 #include <arch/hda.h>
 #include <arch/pci.h>
 #include <arch/memory.h>
+#include <arch/spinlock.h>
 #include <string.h>
 
 #define HDA_MAX_CONTROLLERS 4
@@ -31,6 +32,18 @@ static inline void hda_write16(hda_t* dev, uint32_t reg, uint16_t val)
 {
     volatile uint16_t* ptr = (volatile uint16_t*)(dev->mmio_base + reg);
     *ptr = val;
+}
+
+static inline void hda_write8(hda_t* dev, uint32_t reg, uint8_t val)
+{
+    volatile uint8_t* ptr = (volatile uint8_t*)(dev->mmio_base + reg);
+    *ptr = val;
+}
+
+static inline uint8_t hda_read8(hda_t* dev, uint32_t reg)
+{
+    volatile uint8_t* ptr = (volatile uint8_t*)(dev->mmio_base + reg);
+    return *ptr;
 }
 
 static int hda_match_device(uint16_t vendor, uint16_t device)
@@ -72,7 +85,7 @@ uint32_t hda_send_cmd(hda_t* dev, uint32_t codec, uint32_t nid, uint32_t verb, u
 {
     if (!dev || !dev->corb || !dev->rirb) return HDA_RIRB_RESPONSE_INVALID;
 
-    spinlock_acquire(&dev->lock);
+    spin_lock(&dev->lock);
 
     uint32_t cmd = (codec << 28) | (nid << 20) | (verb << 8) | (param & 0xFF);
     if (verb >= 0xF00) {
@@ -91,12 +104,12 @@ uint32_t hda_send_cmd(hda_t* dev, uint32_t codec, uint32_t nid, uint32_t verb, u
             uint32_t rp = (dev->rirb_rp + 1) % HDA_RIRB_ENTRIES;
             uint32_t response = dev->rirb[rp * 2];
             dev->rirb_rp = rp;
-            spinlock_release(&dev->lock);
+            spin_unlock(&dev->lock);
             return response;
         }
     }
 
-    spinlock_release(&dev->lock);
+    spin_unlock(&dev->lock);
     return HDA_RIRB_RESPONSE_INVALID;
 }
 
@@ -265,9 +278,9 @@ hda_t* hda_get_controller(uint8_t index)
 int hda_set_sample_rate(hda_t* dev, uint32_t rate)
 {
     if (!dev || !dev->initialized) return -1;
-    spinlock_acquire(&dev->lock);
+    spin_lock(&dev->lock);
     dev->sample_rate = rate;
-    spinlock_release(&dev->lock);
+    spin_unlock(&dev->lock);
     return 0;
 }
 
@@ -276,10 +289,10 @@ int hda_set_format(hda_t* dev, uint8_t channels, uint8_t bits)
     if (!dev || !dev->initialized) return -1;
     if (channels < 1 || channels > 8) return -2;
     if (bits != 8 && bits != 16 && bits != 24 && bits != 32) return -3;
-    spinlock_acquire(&dev->lock);
+    spin_lock(&dev->lock);
     dev->channels = channels;
     dev->bits = bits;
-    spinlock_release(&dev->lock);
+    spin_unlock(&dev->lock);
     return 0;
 }
 
@@ -287,16 +300,16 @@ int hda_play(hda_t* dev, const void* data, uint32_t size)
 {
     if (!dev || !dev->initialized || !data || size == 0) return -1;
 
-    spinlock_acquire(&dev->lock);
+    spin_lock(&dev->lock);
 
     if (dev->codec_count == 0) {
-        spinlock_release(&dev->lock);
+        spin_unlock(&dev->lock);
         return -2;
     }
 
     hda_codec_t* codec = &dev->codecs[0];
     if (codec->default_dac == 0) {
-        spinlock_release(&dev->lock);
+        spin_unlock(&dev->lock);
         return -3;
     }
 
@@ -336,18 +349,45 @@ int hda_play(hda_t* dev, const void* data, uint32_t size)
     hda_write32(dev, stream_offset + 0x00, 0x80000001);
 
     dev->playing = 1;
-    spinlock_release(&dev->lock);
+    spin_unlock(&dev->lock);
     return (int)copy_size;
+}
+
+int hda_record(hda_t* dev, void* buffer, uint32_t* length)
+{
+    if (!dev || !dev->initialized || !buffer || !length) return -1;
+
+    spin_lock(&dev->lock);
+
+    if (dev->codec_count == 0) {
+        spin_unlock(&dev->lock);
+        return -2;
+    }
+
+    hda_codec_t* codec = &dev->codecs[0];
+    if (codec->default_adc == 0) {
+        spin_unlock(&dev->lock);
+        return -3;
+    }
+
+    uint32_t copy_size = *length;
+    if (copy_size > HDA_STREAM_BUF_SIZE) copy_size = HDA_STREAM_BUF_SIZE;
+
+    memcpy(buffer, dev->stream_bufs[1], copy_size);
+    *length = copy_size;
+
+    spin_unlock(&dev->lock);
+    return 0;
 }
 
 int hda_stop(hda_t* dev)
 {
     if (!dev || !dev->initialized) return -1;
-    spinlock_acquire(&dev->lock);
+    spin_lock(&dev->lock);
     uint32_t stream_offset = 0x80;
     hda_write32(dev, stream_offset + 0x00, 0);
     dev->playing = 0;
-    spinlock_release(&dev->lock);
+    spin_unlock(&dev->lock);
     return 0;
 }
 

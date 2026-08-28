@@ -8,6 +8,7 @@
 #include "kapi_container.h"
 #include "kapi.h"
 
+#include <stdio.h>
 #include <string.h>
 
 static kapi_container_t kapi_container_table[KAPI_CONTAINER_MAX];

@@ -1,8 +1,9 @@
 #include "kanvas_kex_runner.h"
 #include "kanvas_animator.h"
+#include "kapi.h"
 #include <string.h>
 
-static uint32_t kui_col32(kui_color_t c)
+static uint32_t kex_col32(kui_color_t c)
 {
     return ((uint32_t)c.a << 24) | ((uint32_t)c.r << 16) | ((uint32_t)c.g << 8) | c.b;
 }
@@ -27,7 +28,7 @@ static void fill_rounded_rect(uint32_t* fb, int stride, int fw, int fh, int x, i
     fill_rect(fb, stride, fw, fh, x, y + r, r, h - 2 * r, color);
     fill_rect(fb, stride, fw, fh, x + w - r, y + r, r, h - 2 * r, color);
     for (int dy = 0; dy < r; dy++) {
-        int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+        int dx = (int)__builtin_sqrtf((float)(r * r - dy * dy));
         int cx1 = x + r - dx, cx2 = x + w - r + dx;
         int ry1 = y + r - dy - 1, ry2 = y - r + h + dy;
         fill_rect(fb, stride, fw, fh, cx1, ry1, cx2 - cx1, 1, color);
@@ -37,7 +38,7 @@ static void fill_rounded_rect(uint32_t* fb, int stride, int fw, int fh, int x, i
 
 kanvas_kex_runner_t* kanvas_kex_runner_create(void)
 {
-    kanvas_kex_runner_t* r = (kanvas_kex_runner_t*)kapi_kmalloc(sizeof(kanvas_kex_runner_t));
+    kanvas_kex_runner_t* r = (kanvas_kex_runner_t*)kapi_malloc(sizeof(kanvas_kex_runner_t));
     if (!r) return NULL;
     memset(r, 0, sizeof(kanvas_kex_runner_t));
     r->current.state = KEX_STATE_IDLE;
@@ -56,7 +57,7 @@ kanvas_kex_runner_t* kanvas_kex_runner_create(void)
 void kanvas_kex_runner_destroy(kanvas_kex_runner_t* runner)
 {
     if (!runner) return;
-    kapi_kfree(runner);
+    kapi_free(runner);
 }
 
 void kanvas_kex_runner_paint(kanvas_kex_runner_t* runner, uint32_t* fb, int stride, int fw, int fh)
@@ -65,9 +66,9 @@ void kanvas_kex_runner_paint(kanvas_kex_runner_t* runner, uint32_t* fb, int stri
 
     int wx = runner->window_x, wy = runner->window_y;
     int ww = runner->window_w, wh = runner->window_h;
-    uint32_t bg = kui_col32(runner->bg_color);
-    uint32_t fg = kui_col32(runner->fg_color);
-    uint32_t accent = kui_col32(runner->accent_color);
+    uint32_t bg = kex_col32(runner->bg_color);
+    uint32_t fg = kex_col32(runner->fg_color);
+    uint32_t accent = kex_col32(runner->accent_color);
 
     fill_rounded_rect(fb, stride, fw, fh, wx, wy, ww, wh, 12, bg);
 
@@ -142,7 +143,7 @@ void kanvas_kex_runner_paint(kanvas_kex_runner_t* runner, uint32_t* fb, int stri
         break;
     case KEX_STATE_COMPLETED:
         {
-            uint32_t succ = kui_col32(runner->success_color);
+            uint32_t succ = kex_col32(runner->success_color);
             kui_draw_text(fb, stride, fw, fh, wx + 16, content_y, "Completed successfully", succ, 14, 0);
             kui_draw_text(fb, stride, fw, fh, wx + 16, content_y + 24, runner->current.path, 0x808080FF, 12, 0);
             int btn_x = wx + 16, btn_y = content_y + 56;
@@ -152,7 +153,7 @@ void kanvas_kex_runner_paint(kanvas_kex_runner_t* runner, uint32_t* fb, int stri
         break;
     case KEX_STATE_ERROR:
         {
-            uint32_t err = kui_col32(runner->error_color);
+            uint32_t err = kex_col32(runner->error_color);
             kui_draw_text(fb, stride, fw, fh, wx + 16, content_y, "Error occurred", err, 14, 0);
             kui_draw_text(fb, stride, fw, fh, wx + 16, content_y + 24, runner->current.output, 0xA0A0A0FF, 12, 0);
         }
@@ -184,7 +185,7 @@ void kanvas_kex_runner_update(kanvas_kex_runner_t* runner, uint64_t now_ms)
 kex_format_t kanvas_kex_detect_format(const char* path)
 {
     if (!path) return KEX_FORMAT_UNKNOWN;
-    size_t len = kapi_strlen(path);
+    size_t len = strlen(path);
     if (len >= 4) {
         const char* ext = path + len - 4;
         if (ext[0] == '.' && ext[1] == 'k' && ext[2] == 'e' && ext[3] == 'x') return KEX_FORMAT_KEX;
@@ -198,7 +199,7 @@ bool kanvas_kex_validate_package(const char* path, kex_package_info_t* info)
 {
     if (!path || !info) return false;
     memset(info, 0, sizeof(kex_package_info_t));
-    size_t len = kapi_strlen(path);
+    size_t len = strlen(path);
     if (len >= KEX_RUNNER_MAX_PATH) len = KEX_RUNNER_MAX_PATH - 1;
     memcpy(info->path, path, len);
     info->format = kanvas_kex_detect_format(path);
@@ -209,7 +210,7 @@ bool kanvas_kex_validate_package(const char* path, kex_package_info_t* info)
 int kanvas_kex_install(kanvas_kex_runner_t* runner, const char* path)
 {
     if (!runner || !path) return -1;
-    size_t len = kapi_strlen(path);
+    size_t len = strlen(path);
     if (len >= KEX_RUNNER_MAX_PATH) len = KEX_RUNNER_MAX_PATH - 1;
     memcpy(runner->current.path, path, len);
     runner->current.path[len] = '\0';
@@ -222,7 +223,7 @@ int kanvas_kex_install(kanvas_kex_runner_t* runner, const char* path)
 int kanvas_kex_run(kanvas_kex_runner_t* runner, const char* path, bool use_gfx, int gfx_w, int gfx_h)
 {
     if (!runner || !path) return -1;
-    size_t len = kapi_strlen(path);
+    size_t len = strlen(path);
     if (len >= KEX_RUNNER_MAX_PATH) len = KEX_RUNNER_MAX_PATH - 1;
     memcpy(runner->current.path, path, len);
     runner->current.path[len] = '\0';
@@ -242,7 +243,7 @@ int kanvas_kex_run_with_args(kanvas_kex_runner_t* runner, const char* path, cons
     if (ret < 0) return ret;
     runner->current.arg_count = argc < KEX_RUNNER_MAX_ARGS ? argc : KEX_RUNNER_MAX_ARGS;
     for (int i = 0; i < runner->current.arg_count; i++) {
-        size_t alen = kapi_strlen(args[i]);
+        size_t alen = strlen(args[i]);
         if (alen >= 64) alen = 63;
         memcpy(runner->current.args[i], args[i], alen);
         runner->current.args[i][alen] = '\0';

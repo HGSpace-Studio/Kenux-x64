@@ -12,6 +12,7 @@ build/obj/kernel/gui/src/kenux_render.c.o: kernel/gui/src/kenux_render.c \
  kernel/arch/x86_64/include/arch/spinlock.h \
  kernel/arch/x86_64/include/arch/process.h \
  kernel/arch/x86_64/include/arch/cfs.h \
+ kernel/arch/x86_64/include/arch/elf.h \
  kernel/arch/x86_64/include/arch/smp.h \
  kernel/arch/x86_64/include/arch/smbios.h \
  kernel/arch/x86_64/include/arch/vlan.h \

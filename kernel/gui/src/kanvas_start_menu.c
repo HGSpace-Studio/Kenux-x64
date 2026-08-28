@@ -22,7 +22,7 @@ static void fill_rect_fb(uint32_t* fb, int stride, int fw, int fh, int x, int y,
 
 kanvas_start_menu_t* kanvas_start_menu_create(int x, int y)
 {
-    kanvas_start_menu_t* sm = (kanvas_start_menu_t*)kapi_kmalloc(sizeof(kanvas_start_menu_t));
+    kanvas_start_menu_t* sm = (kanvas_start_menu_t*)kapi_malloc(sizeof(kanvas_start_menu_t));
     if (!sm) return NULL;
     memset(sm, 0, sizeof(kanvas_start_menu_t));
     sm->visible = false;
@@ -51,7 +51,7 @@ kanvas_start_menu_t* kanvas_start_menu_create(int x, int y)
 void kanvas_start_menu_destroy(kanvas_start_menu_t* sm)
 {
     if (!sm) return;
-    kapi_kfree(sm);
+    kapi_free(sm);
 }
 
 void kanvas_start_menu_paint(kanvas_start_menu_t* sm, uint32_t* fb, int stride, int fw, int fh)
@@ -123,7 +123,7 @@ void kanvas_start_menu_handle_mouse(kanvas_start_menu_t* sm, int mx, int my, boo
         if (left_down) {
             sm->cursor_pos = (mx - search_x - 12) / 8;
             if (sm->cursor_pos < 0) sm->cursor_pos = 0;
-            int max_pos = (int)kapi_strlen(sm->search_text);
+            int max_pos = (int)strlen(sm->search_text);
             if (sm->cursor_pos > max_pos) sm->cursor_pos = max_pos;
         }
         return;
@@ -196,12 +196,12 @@ int kanvas_start_menu_add_item(kanvas_start_menu_t* sm, const char* name, const 
     kanvas_start_item_t* item = &sm->all_items[idx];
     memset(item, 0, sizeof(kanvas_start_item_t));
     if (name) {
-        size_t len = kapi_strlen(name);
+        size_t len = strlen(name);
         if (len >= 64) len = 63;
         memcpy(item->name, name, len);
     }
     if (exec) {
-        size_t len = kapi_strlen(exec);
+        size_t len = strlen(exec);
         if (len >= 128) len = 127;
         memcpy(item->exec, exec, len);
     }
@@ -222,8 +222,8 @@ void kanvas_start_menu_filter(kanvas_start_menu_t* sm)
         kanvas_start_item_t* item = &sm->all_items[i];
         if (has_search) {
             bool match = false;
-            size_t name_len = kapi_strlen(item->name);
-            size_t search_len = kapi_strlen(sm->search_text);
+            size_t name_len = strlen(item->name);
+            size_t search_len = strlen(sm->search_text);
             for (size_t j = 0; j + search_len <= name_len; j++) {
                 bool sub_match = true;
                 for (size_t k = 0; k < search_len; k++) {

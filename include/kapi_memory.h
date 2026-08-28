@@ -7,6 +7,10 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#ifdef KAL_KERNEL
+#include <arch/types.h>
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -190,6 +194,29 @@ int kapi_msync(void* addr, size_t len, int flags);
 int kapi_madvise(void* addr, size_t len, int advice);
 
 int kapi_mincore(void* addr, size_t len, unsigned char* vec);
+
+#ifdef KAL_KERNEL
+typedef int key_t;
+struct kapi_ipc_perm {
+    key_t key;
+    uid_t uid;
+    gid_t gid;
+    uid_t cuid;
+    gid_t cgid;
+    mode_t mode;
+    uint64_t seq;
+};
+struct shmid_ds {
+    struct kapi_ipc_perm shm_perm;
+    size_t shm_segsz;
+    uint64_t shm_atime;
+    uint64_t shm_dtime;
+    uint64_t shm_ctime;
+    pid_t shm_cpid;
+    pid_t shm_lpid;
+    uint64_t shm_nattch;
+};
+#endif
 
 void* kapi_shmget(key_t key, size_t size, int shmflg);
 

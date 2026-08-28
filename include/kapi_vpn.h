@@ -58,7 +58,7 @@ struct kapi_vpn_tunnel {
     char            name[KAPI_VPN_NAME_MAX];
     kapi_vpn_type_t type;
     kapi_vpn_state_t state;
-    kapi_netdev_t   netdev;
+    kapi_netdev_t*   netdev;
     uint32_t        local_ip;
     uint32_t        remote_ip;
     uint32_t        mtu;

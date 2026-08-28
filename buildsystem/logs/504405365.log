@@ -1,0 +1,36 @@
+-- Start building task run all -- (504405365)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/api --
+<0> Building kernel/api/kapi_device.c
+<2> Building kernel/api/kapi_crc.c
+<3> Building kernel/api/kapi_crypto_fs.c
+<1> Building kernel/api/kapi_cpumask.c
+kernel/api/kapi_device.c: 在函数‘kapi_dev_open’中:
+kernel/api/kapi_device.c:129:48: warning: 未使用的参数‘mode’ [-Wunused-parameter]
+  129 | kapi_dev_t kapi_dev_open(const char* name, int mode)
+      |                                            ~~~~^~~~
+kernel/api/kapi_device.c: 在函数‘kapi_dev_ioctl’中:
+kernel/api/kapi_device.c:277:45: warning: 未使用的参数‘cmd’ [-Wunused-parameter]
+  277 | int kapi_dev_ioctl(kapi_dev_t dev, uint32_t cmd, void* arg)
+      |                                    ~~~~~~~~~^~~
+kernel/api/kapi_device.c:277:56: warning: 未使用的参数‘arg’ [-Wunused-parameter]
+  277 | int kapi_dev_ioctl(kapi_dev_t dev, uint32_t cmd, void* arg)
+      |                                                  ~~~~~~^~~
+kernel/api/kapi_device.c: 在函数‘kapi_dma_wait’中:
+kernel/api/kapi_device.c:361:28: warning: 未使用的参数‘timeout_ms’ [-Wunused-parameter]
+  361 | int kapi_dma_wait(uint64_t timeout_ms)
+      |                   ~~~~~~~~~^~~~~~~~~~
+<2> Building kernel/api/kapi_cpufreq.c
+<3> Building kernel/api/kapi_container.c
+<1> Building kernel/api/kapi_completion.c
+kernel/api/kapi_container.c: 在函数‘kapi_container_list’中:
+kernel/api/kapi_container.c:182:28: error: 隐式声明函数‘snprintf’ [-Wimplicit-function-declaration]
+  182 |             off += (size_t)snprintf(out + off, len - off, "%s ",
+      |                            ^~~~~~~~
+kernel/api/kapi_container.c:12:1: note: ‘snprintf’ is defined in header ‘<stdio.h>’; this is probably fixable by adding ‘#include <stdio.h>’
+   11 | #include <string.h>
+  +++ |+#include <stdio.h>
+   12 | 
+<3> Building kernel/api/kapi_cdev.c
+FAILED TASK run all: 

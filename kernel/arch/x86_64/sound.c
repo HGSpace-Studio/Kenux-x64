@@ -101,7 +101,7 @@ int sound_play(sound_device_t* dev, const uint8_t* data, uint32_t length)
     }
 
     if (dev->type == SOUND_HDA) {
-        return hda_play(data, length);
+        return hda_play((hda_t*)dev->hda_dev, data, length);
     }
 
     pcspk_play_tone(880, 70);
@@ -115,7 +115,7 @@ int sound_record(sound_device_t* dev, uint8_t* buffer, uint32_t* length)
     }
 
     if (dev->type == SOUND_HDA) {
-        return hda_record(buffer, length);
+        return hda_record((hda_t*)dev->hda_dev, buffer, length);
     }
 
     return -1;

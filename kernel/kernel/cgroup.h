@@ -17,7 +17,9 @@ typedef int atomic_t;
 #define CPU_CFS_PERIOD_DEFAULT  100000
 #define CPU_CFS_QUOTA_DEFAULT   -1
 
+#ifndef MEM_LIMIT_MAX
 #define MEM_LIMIT_MAX           ((uint64_t)(-1))
+#endif
 
 struct cgroup_subsys;
 struct cgroup;

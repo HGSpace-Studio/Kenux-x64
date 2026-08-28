@@ -5,6 +5,11 @@
 #include <string.h>
 #include <slab.h>
 
+/* Forward declarations */
+void process_switch_fpu(process_t* old_proc, process_t* new_proc);
+static inline void save_fs_gs(process_t* proc);
+static inline void restore_fs_gs(process_t* proc);
+
 process_t processes[PROCESS_MAX];
 uint64_t process_count = 0;
 uint64_t current_process = 0;

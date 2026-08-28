@@ -7,6 +7,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+typedef int64_t off_t;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -146,7 +148,10 @@ typedef struct {
     int sender_pid;
     void* data;
     size_t data_size;
-    union sigval value;
+    union {
+        int si_int;
+        void* si_ptr;
+    } value;
 } kapi_signal_info_t;
 
 typedef void (*kapi_signal_handler_t)(int signum, kapi_signal_info_t* info);

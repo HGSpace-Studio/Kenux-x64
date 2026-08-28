@@ -1,0 +1,76 @@
+{
+  "command": [
+    "run",
+    "kernel"
+  ],
+  "created_at": "2026-08-27T13:59:10+00:00",
+  "elapsed_seconds": 0.444,
+  "error": "",
+  "finished_at": "2026-08-27T13:59:10+00:00",
+  "id": "114351889",
+  "log": "buildsystem/logs/114351889.log",
+  "metrics": {
+    "built_files": 5,
+    "completed": 5,
+    "downloaded_files": 0,
+    "elapsed_seconds": 0.444,
+    "entered_folders": 1,
+    "errors": 1,
+    "executed_targets": 4,
+    "generated_files": 0,
+    "peak_parallel_workers": 4,
+    "ran_commands": 0,
+    "skipped_targets": 1,
+    "started_tasks": 2,
+    "timings": [
+      {
+        "kind": "assemble",
+        "seconds": 0.0006,
+        "status": "skipped",
+        "target": "assemble:kernel/arch/x86_64/interrupt.S",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0323,
+        "status": "executed",
+        "target": "compile:kernel/systemd/udev.c",
+        "worker": 2
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.0828,
+        "status": "executed",
+        "target": "compile:kernel/systemd/target.c",
+        "worker": 0
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.1091,
+        "status": "executed",
+        "target": "compile:kernel/systemd/util.c",
+        "worker": 1
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.2547,
+        "status": "executed",
+        "target": "compile:kernel/systemd/timer.c",
+        "worker": 3
+      },
+      {
+        "kind": "compile",
+        "seconds": 0.4083,
+        "status": "executed",
+        "target": "compile:kernel/systemd/systemd.c",
+        "worker": 2
+      }
+    ],
+    "total": 261,
+    "worker_busy_seconds": 0.8872600250015239
+  },
+  "started_at": "2026-08-27T13:59:10+00:00",
+  "status": "failed",
+  "task": "run kernel",
+  "total_targets": 261
+}

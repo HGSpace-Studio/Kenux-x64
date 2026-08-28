@@ -4,7 +4,10 @@
 #include <stdint.h>
 #include <stddef.h>
 
-typedef long ssize_t;
+#ifndef SSIZE_T_DEFINED
+#define SSIZE_T_DEFINED
+typedef long int ssize_t;
+#endif
 
 #ifdef __cplusplus
 extern "C" {

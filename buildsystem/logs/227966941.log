@@ -1,0 +1,570 @@
+-- Start building task run all -- (227966941)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/fs.c
+-- Enter folder kernel/gui/src --
+<3> Building kernel/gui/src/kapi_curvo_icons.c
+<2> Building kernel/gui/src/kenux_asset_file.c
+<1> Building kernel/gui/src/kanvas_window.c
+kernel/gui/src/kapi_curvo_icons.c: 在函数‘curvo_register_defaults’中:
+kernel/gui/src/kapi_curvo_icons.c:22:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   22 |     e[i] = (curvo_icon_entry_t){i, "上锁", "lock", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:23:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   23 |     e[i] = (curvo_icon_entry_t){i, "不可见", "invisible", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:24:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   24 |     e[i] = (curvo_icon_entry_t){i, "休息", "rest", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:25:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   25 |     e[i] = (curvo_icon_entry_t){i, "保存", "save", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:26:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   26 |     e[i] = (curvo_icon_entry_t){i, "信息", "info", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:27:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   27 |     e[i] = (curvo_icon_entry_t){i, "删除用户", "delete_user", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:28:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   28 |     e[i] = (curvo_icon_entry_t){i, "刷新", "refresh", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:29:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   29 |     e[i] = (curvo_icon_entry_t){i, "加载", "loading", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:30:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   30 |     e[i] = (curvo_icon_entry_t){i, "叉号", "close", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:31:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   31 |     e[i] = (curvo_icon_entry_t){i, "对勾", "check", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:32:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   32 |     e[i] = (curvo_icon_entry_t){i, "搜索", "search", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:33:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   33 |     e[i] = (curvo_icon_entry_t){i, "放大", "zoom_in", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:34:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   34 |     e[i] = (curvo_icon_entry_t){i, "缩小", "zoom_out", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:35:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   35 |     e[i] = (curvo_icon_entry_t){i, "用户", "user", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:36:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   36 |     e[i] = (curvo_icon_entry_t){i, "用户头像", "avatar", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:37:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   37 |     e[i] = (curvo_icon_entry_t){i, "开关", "toggle", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:38:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   38 |     e[i] = (curvo_icon_entry_t){i, "开关开启", "toggle_on", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:39:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   39 |     e[i] = (curvo_icon_entry_t){i, "开关关闭", "toggle_off", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:40:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   40 |     e[i] = (curvo_icon_entry_t){i, "菜单", "menu", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:41:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   41 |     e[i] = (curvo_icon_entry_t){i, "网格", "grid", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:42:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   42 |     e[i] = (curvo_icon_entry_t){i, "深色模式", "dark_mode", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:43:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   43 |     e[i] = (curvo_icon_entry_t){i, "浅色模式", "light_mode", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:44:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   44 |     e[i] = (curvo_icon_entry_t){i, "感叹号", "warning", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:45:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   45 |     e[i] = (curvo_icon_entry_t){i, "滑块", "slider", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:46:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   46 |     e[i] = (curvo_icon_entry_t){i, "展开", "expand", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:47:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     e[i] = (curvo_icon_entry_t){i, "圆圈", "circle", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:48:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   48 |     e[i] = (curvo_icon_entry_t){i, "可见", "visible", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:49:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   49 |     e[i] = (curvo_icon_entry_t){i, "设置", "settings", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:50:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   50 |     e[i] = (curvo_icon_entry_t){i, "禁止", "forbidden", CURVO_CAT_UI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:52:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   52 |     e[i] = (curvo_icon_entry_t){i, "无线网络", "wifi", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:53:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   53 |     e[i] = (curvo_icon_entry_t){i, "蓝牙", "bluetooth", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:54:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   54 |     e[i] = (curvo_icon_entry_t){i, "音量", "volume", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:55:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   55 |     e[i] = (curvo_icon_entry_t){i, "静音", "mute", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:56:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   56 |     e[i] = (curvo_icon_entry_t){i, "麦克风", "microphone", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:57:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   57 |     e[i] = (curvo_icon_entry_t){i, "摄像头", "camera", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:58:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   58 |     e[i] = (curvo_icon_entry_t){i, "显示器", "display", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:59:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   59 |     e[i] = (curvo_icon_entry_t){i, "电池正", "battery_full", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:60:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   60 |     e[i] = (curvo_icon_entry_t){i, "地球", "globe", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:61:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   61 |     e[i] = (curvo_icon_entry_t){i, "下载", "download", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:62:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   62 |     e[i] = (curvo_icon_entry_t){i, "上传", "upload", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:63:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   63 |     e[i] = (curvo_icon_entry_t){i, "代码", "code", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:64:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |     e[i] = (curvo_icon_entry_t){i, "通知", "notification", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:65:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   65 |     e[i] = (curvo_icon_entry_t){i, "邮件", "email", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:66:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   66 |     e[i] = (curvo_icon_entry_t){i, "消息", "message", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:67:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   67 |     e[i] = (curvo_icon_entry_t){i, "日历", "calendar", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:68:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   68 |     e[i] = (curvo_icon_entry_t){i, "闹钟", "alarm", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:69:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   69 |     e[i] = (curvo_icon_entry_t){i, "时间", "clock", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:70:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   70 |     e[i] = (curvo_icon_entry_t){i, "播放", "play", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:71:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   71 |     e[i] = (curvo_icon_entry_t){i, "暂停", "pause", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:72:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   72 |     e[i] = (curvo_icon_entry_t){i, "音乐", "music", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:73:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   73 |     e[i] = (curvo_icon_entry_t){i, "视频", "video", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:74:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   74 |     e[i] = (curvo_icon_entry_t){i, "图像", "image", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:75:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   75 |     e[i] = (curvo_icon_entry_t){i, "文件夹", "folder", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:76:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   76 |     e[i] = (curvo_icon_entry_t){i, "文档", "document", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:77:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   77 |     e[i] = (curvo_icon_entry_t){i, "互联网", "internet", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:78:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   78 |     e[i] = (curvo_icon_entry_t){i, "手机", "phone", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:79:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   79 |     e[i] = (curvo_icon_entry_t){i, "笔记本", "laptop", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:80:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   80 |     e[i] = (curvo_icon_entry_t){i, "芯片", "chip", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:81:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   81 |     e[i] = (curvo_icon_entry_t){i, "键盘", "keyboard", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:82:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   82 |     e[i] = (curvo_icon_entry_t){i, "鼠标", "mouse", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:83:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   83 |     e[i] = (curvo_icon_entry_t){i, "闪存盘", "usb_drive", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:84:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   84 |     e[i] = (curvo_icon_entry_t){i, "主机", "server", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:85:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   85 |     e[i] = (curvo_icon_entry_t){i, "电源开关", "power", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:86:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   86 |     e[i] = (curvo_icon_entry_t){i, "连接", "link", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:87:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   87 |     e[i] = (curvo_icon_entry_t){i, "分享", "share", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:88:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   88 |     e[i] = (curvo_icon_entry_t){i, "书签", "bookmark", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:89:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   89 |     e[i] = (curvo_icon_entry_t){i, "位置", "location", CURVO_CAT_MEDIA_TECH, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:91:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   91 |     e[i] = (curvo_icon_entry_t){i, "复制", "copy", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:92:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   92 |     e[i] = (curvo_icon_entry_t){i, "撤销", "undo", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:93:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   93 |     e[i] = (curvo_icon_entry_t){i, "重做", "redo", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:94:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   94 |     e[i] = (curvo_icon_entry_t){i, "粗体", "bold", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:95:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   95 |     e[i] = (curvo_icon_entry_t){i, "斜体", "italic", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:96:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   96 |     e[i] = (curvo_icon_entry_t){i, "画笔", "paintbrush", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:97:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   97 |     e[i] = (curvo_icon_entry_t){i, "橡皮", "eraser", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:98:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   98 |     e[i] = (curvo_icon_entry_t){i, "取色器", "eyedropper", CURVO_CAT_EDIT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:100:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  100 |     e[i] = (curvo_icon_entry_t){i, "爱心", "heart", CURVO_CAT_EMOJI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:101:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  101 |     e[i] = (curvo_icon_entry_t){i, "星星", "star", CURVO_CAT_EMOJI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:102:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  102 |     e[i] = (curvo_icon_entry_t){i, "表情", "smile", CURVO_CAT_EMOJI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:103:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  103 |     e[i] = (curvo_icon_entry_t){i, "点赞", "thumbs_up", CURVO_CAT_EMOJI, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:105:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  105 |     e[i] = (curvo_icon_entry_t){i, "游戏手柄", "gamepad", CURVO_CAT_GAME, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:106:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  106 |     e[i] = (curvo_icon_entry_t){i, "奖杯", "trophy", CURVO_CAT_GAME, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:107:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  107 |     e[i] = (curvo_icon_entry_t){i, "骰子", "dice", CURVO_CAT_GAME, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:109:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  109 |     e[i] = (curvo_icon_entry_t){i, "钥匙", "key", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:110:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  110 |     e[i] = (curvo_icon_entry_t){i, "锤子", "hammer", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:111:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  111 |     e[i] = (curvo_icon_entry_t){i, "盾", "shield", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:112:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  112 |     e[i] = (curvo_icon_entry_t){i, "王冠", "crown", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:113:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  113 |     e[i] = (curvo_icon_entry_t){i, "钻石", "diamond", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:114:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  114 |     e[i] = (curvo_icon_entry_t){i, "箱子", "chest", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:115:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  115 |     e[i] = (curvo_icon_entry_t){i, "书", "book", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:116:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  116 |     e[i] = (curvo_icon_entry_t){i, "地图", "map", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:117:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  117 |     e[i] = (curvo_icon_entry_t){i, "指南针", "compass", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:118:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  118 |     e[i] = (curvo_icon_entry_t){i, "灯", "lamp", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:119:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  119 |     e[i] = (curvo_icon_entry_t){i, "商店", "shop", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:120:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  120 |     e[i] = (curvo_icon_entry_t){i, "银行", "bank", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:121:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  121 |     e[i] = (curvo_icon_entry_t){i, "房子", "house", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:122:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  122 |     e[i] = (curvo_icon_entry_t){i, "火箭", "rocket", CURVO_CAT_OBJECT, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:124:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  124 |     e[i] = (curvo_icon_entry_t){i, "太阳", "sun", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:125:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  125 |     e[i] = (curvo_icon_entry_t){i, "月亮", "moon", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:126:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     e[i] = (curvo_icon_entry_t){i, "云", "cloud", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:127:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  127 |     e[i] = (curvo_icon_entry_t){i, "火", "fire", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:128:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  128 |     e[i] = (curvo_icon_entry_t){i, "水", "water", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:129:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  129 |     e[i] = (curvo_icon_entry_t){i, "树", "tree", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:130:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  130 |     e[i] = (curvo_icon_entry_t){i, "花", "flower", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:131:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  131 |     e[i] = (curvo_icon_entry_t){i, "山", "mountain", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:132:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  132 |     e[i] = (curvo_icon_entry_t){i, "雨", "rain", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:133:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  133 |     e[i] = (curvo_icon_entry_t){i, "雪", "snow", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:134:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  134 |     e[i] = (curvo_icon_entry_t){i, "雷电", "lightning", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:135:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  135 |     e[i] = (curvo_icon_entry_t){i, "风", "wind", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:136:33: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  136 |     e[i] = (curvo_icon_entry_t){i, "温度", "temperature", CURVO_CAT_NATURE, 1,1,1,1}; i++;
+      |                                 ^
+kernel/gui/src/kapi_curvo_icons.c:139:37: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  139 |         e[i] = (curvo_icon_entry_t){i, "", "", CURVO_CAT_UI, 0,0,0,0};
+      |                                     ^
+<2> Building kernel/gui/src/kanvas_terminal.c
+In file included from kernel/gui/include/kanvas_window.h:4,
+                 from kernel/gui/src/kanvas_window.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+In file included from kernel/gui/include/kanvas_terminal.h:4,
+                 from kernel/gui/src/kanvas_terminal.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_create’中:
+kernel/gui/src/kanvas_window.c:15:46: error: implicit declaration of function ‘kapi_kmalloc’; did you mean ‘kapi_malloc’? [-Wimplicit-function-declaration]
+   15 |     kanvas_window_t* win = (kanvas_window_t*)kapi_kmalloc(sizeof(kanvas_window_t));
+      |                                              ^~~~~~~~~~~~
+      |                                              kapi_malloc
+kernel/gui/src/kanvas_window.c:15:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+   15 |     kanvas_window_t* win = (kanvas_window_t*)kapi_kmalloc(sizeof(kanvas_window_t));
+      |                            ^
+kernel/gui/src/kanvas_window.c:20:22: error: implicit declaration of function ‘kapi_strlen’; did you mean ‘kapi_strdup’? [-Wimplicit-function-declaration]
+   20 |         size_t len = kapi_strlen(title);
+      |                      ^~~~~~~~~~~
+      |                      kapi_strdup
+kernel/gui/src/kanvas_window.c:20:22: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+kernel/gui/src/kanvas_window.c:60:31: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   60 |     size_t buf_sz = (size_t)w * h * 4;
+      |                               ^
+kernel/gui/src/kanvas_window.c:61:24: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+   61 |     win->back_buffer = (uint32_t*)kapi_kmalloc(buf_sz);
+      |                        ^
+kernel/gui/src/kanvas_window.c:62:25: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+   62 |     win->front_buffer = (uint32_t*)kapi_kmalloc(buf_sz);
+      |                         ^
+kernel/gui/src/kanvas_window.c:64:31: error: implicit declaration of function ‘kapi_kfree’; did you mean ‘kapi_free’? [-Wimplicit-function-declaration]
+   64 |         if (win->back_buffer) kapi_kfree(win->back_buffer);
+      |                               ^~~~~~~~~~
+      |                               kapi_free
+kernel/gui/src/kanvas_window.c: 在函数‘fill_rounded_rect’中:
+kernel/gui/src/kanvas_window.c:110:23: error: implicit declaration of function ‘kapi_sqrtf’; did you mean ‘kapi_sort’? [-Wimplicit-function-declaration]
+  110 |         int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+      |                       ^~~~~~~~~~
+      |                       kapi_sort
+kernel/gui/src/kanvas_window.c:110:34: warning: implicit conversion from ‘float’ to ‘double’ when passing argument to function [-Wdouble-promotion]
+  110 |         int dx = (int)kapi_sqrtf((float)(r * r - dy * dy));
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+kernel/gui/src/kanvas_window.c: 在函数‘blend_pixel’中:
+kernel/gui/src/kanvas_window.c:126:24: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                        ^
+kernel/gui/src/kanvas_window.c:126:65: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                 ^
+kernel/gui/src/kanvas_window.c:126:105: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  126 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                                                         ^
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_paint_shadow’中:
+kernel/gui/src/kanvas_window.c:136:63: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  136 |         uint8_t a = (uint8_t)((float)alpha * (1.0f - (float)i / blur));
+      |                                                               ^
+kernel/gui/src/kanvas_window.c: 在函数‘kanvas_window_set_title’中:
+kernel/gui/src/kanvas_window.c:291:18: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  291 |     size_t len = kapi_strlen(title);
+      |                  ^~~~~~~~~~~
+kernel/gui/src/kanvas_terminal.c: 在函数‘t_fill_rect’中:
+kernel/gui/src/kanvas_terminal.c:10:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |     ^~
+kernel/gui/src/kanvas_terminal.c:10:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |                                 ^~
+kernel/gui/src/kanvas_terminal.c: 在函数‘kanvas_terminal_create’中:
+kernel/gui/src/kanvas_terminal.c:17:48: error: implicit declaration of function ‘kapi_kmalloc’; did you mean ‘kapi_malloc’? [-Wimplicit-function-declaration]
+   17 |     kanvas_terminal_t* t = (kanvas_terminal_t*)kapi_kmalloc(sizeof(kanvas_terminal_t));
+      |                                                ^~~~~~~~~~~~
+      |                                                kapi_malloc
+kernel/gui/src/kanvas_terminal.c:17:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+   17 |     kanvas_terminal_t* t = (kanvas_terminal_t*)kapi_kmalloc(sizeof(kanvas_terminal_t));
+      |                            ^
+kernel/gui/src/kanvas_terminal.c: 在函数‘kanvas_terminal_destroy’中:
+<1> Building kernel/gui/src/kanvas_taskbar.c
+kernel/gui/src/kanvas_terminal.c:50:5: error: implicit declaration of function ‘kapi_kfree’; did you mean ‘kapi_free’? [-Wimplicit-function-declaration]
+   50 |     kapi_kfree(term);
+      |     ^~~~~~~~~~
+      |     kapi_free
+kernel/gui/src/kanvas_terminal.c: 在函数‘kanvas_terminal_paint’中:
+kernel/gui/src/kanvas_terminal.c:100:75: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  100 |             int thumb_h = (int)((float)max_lines / (float)tab->line_count * (term->h - KTERM_TAB_BAR_H));
+      |                                                                           ^
+kernel/gui/src/kanvas_terminal.c:101:110: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  101 |             int thumb_y = content_y + (int)((float)tab->scroll_offset / (float)(tab->line_count - max_lines) * (term->h - KTERM_TAB_BAR_H - thumb_h));
+      |                                                                                                              ^
+In file included from kernel/gui/include/kanvas_taskbar.h:4,
+                 from kernel/gui/src/kanvas_taskbar.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_taskbar.c: 在函数‘kanvas_taskbar_create’中:
+kernel/gui/src/kanvas_taskbar.c:12:47: error: implicit declaration of function ‘kapi_kmalloc’; did you mean ‘kapi_malloc’? [-Wimplicit-function-declaration]
+   12 |     kanvas_taskbar_t* tb = (kanvas_taskbar_t*)kapi_kmalloc(sizeof(kanvas_taskbar_t));
+      |                                               ^~~~~~~~~~~~
+      |                                               kapi_malloc
+kernel/gui/src/kanvas_taskbar.c:12:28: warning: 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+   12 |     kanvas_taskbar_t* tb = (kanvas_taskbar_t*)kapi_kmalloc(sizeof(kanvas_taskbar_t));
+      |                            ^
+kernel/gui/src/kanvas_taskbar.c: 在函数‘kanvas_taskbar_destroy’中:
+kernel/gui/src/kanvas_taskbar.c:39:5: error: implicit declaration of function ‘kapi_kfree’; did you mean ‘kapi_free’? [-Wimplicit-function-declaration]
+   39 |     kapi_kfree(tb);
+      |     ^~~~~~~~~~
+      |     kapi_free
+kernel/gui/src/kanvas_taskbar.c: 在函数‘kanvas_taskbar_paint’中:
+kernel/gui/src/kanvas_taskbar.c:48:5: error: 隐式声明函数‘fill_rect_fb’ [-Wimplicit-function-declaration]
+   48 |     fill_rect_fb(fb, stride, fw, fh, tb->x, tb->y, tb->width, KANVAS_TASKBAR_H_PX, bg);
+      |     ^~~~~~~~~~~~
+kernel/gui/src/kanvas_taskbar.c:76:24: error: implicit declaration of function ‘kapi_strlen’; did you mean ‘kapi_strdup’? [-Wimplicit-function-declaration]
+   76 |         int cw = (int)(kapi_strlen(tb->clock_text) * 8);
+      |                        ^~~~~~~~~~~
+      |                        kapi_strdup
+kernel/gui/src/kanvas_taskbar.c: 在文件作用域：
+kernel/gui/src/kanvas_taskbar.c:81:13: warning: conflicting types for ‘fill_rect_fb’; have ‘void(uint32_t *, int,  int,  int,  int,  int,  int,  int,  uint32_t)’ {或称 ‘void(unsigned int *, int,  int,  int,  int,  int,  int,  int,  unsigned int)’}
+   81 | static void fill_rect_fb(uint32_t* fb, int stride, int fw, int fh, int x, int y, int w, int h, uint32_t color)
+      |             ^~~~~~~~~~~~
+kernel/gui/src/kanvas_taskbar.c:82:1: error: 对‘fill_rect_fb’的静态声明出现在非静态声明之后
+   82 | {
+      | ^
+kernel/gui/src/kanvas_taskbar.c:48:5: note: previous implicit declaration of ‘fill_rect_fb’ with type ‘void(uint32_t *, int,  int,  int,  int,  int,  int,  int,  uint32_t)’ {或称 ‘void(unsigned int *, int,  int,  int,  int,  int,  int,  int,  unsigned int)’}
+   48 |     fill_rect_fb(fb, stride, fw, fh, tb->x, tb->y, tb->width, KANVAS_TASKBAR_H_PX, bg);
+      |     ^~~~~~~~~~~~
+kernel/gui/src/kanvas_taskbar.c: 在函数‘kanvas_taskbar_add_item’中:
+kernel/gui/src/kanvas_taskbar.c:140:22: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  140 |         size_t len = kapi_strlen(name);
+      |                      ^~~~~~~~~~~
+kernel/gui/src/kanvas_taskbar.c: 在函数‘kanvas_taskbar_add_tray’中:
+kernel/gui/src/kanvas_taskbar.c:175:22: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  175 |         size_t len = kapi_strlen(name);
+      |                      ^~~~~~~~~~~
+kernel/gui/src/kanvas_taskbar.c: 在文件作用域：
+kernel/gui/src/kanvas_taskbar.c:81:13: warning: ‘fill_rect_fb’ 在此处定义 [-Wunused-function]
+   81 | static void fill_rect_fb(uint32_t* fb, int stride, int fw, int fh, int x, int y, int w, int h, uint32_t color)
+      |             ^~~~~~~~~~~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/gui/src/kanvas_taskbar.c.o.d -c kernel/gui/src/kanvas_taskbar.c -o build/obj/kernel/gui/src/kanvas_taskbar.c.o

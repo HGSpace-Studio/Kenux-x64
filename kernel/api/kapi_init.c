@@ -29,10 +29,13 @@ extern int kapi_kprobe_init(void);
 /* System utilities */
 extern int kapi_device_manager_init(void);
 extern int kapi_memory_ext_init(void);
-extern int kapi_trace_init(void);
-extern int kapi_logging_init(void);
+extern int kapi_trace_init(uint32_t buffer_size, uint32_t enabled_categories);
+struct kapi_logger_config;
+extern int kapi_logging_init(const kapi_logger_config_t* config);
 extern int kapi_memleak_init(void);
-extern int kapi_profiler_init(void);
+struct kapi_profiler;
+extern int kapi_profiler_init(struct kapi_profiler** profiler);
+extern int kapi_wireless_init(void);
 extern int kapi_graphics2d_init(void);
 extern int kapi_input_init(void);
 extern int kapi_window_init(void);
@@ -140,17 +143,16 @@ int kapi_init(void)
     ret = kapi_memory_ext_init();
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('P');
-    ret = kapi_trace_init();
+    ret = kapi_trace_init(0, 0);
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('Q');
-    ret = kapi_logging_init();
+    ret = kapi_logging_init(NULL);
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('R');
     ret = kapi_memleak_init();
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
     SERIAL_DBG('S');
-    ret = kapi_profiler_init();
-    if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }
+    (void)kapi_profiler_init(NULL);
     SERIAL_DBG('T');
     ret = kapi_graphics2d_init();
     if (ret != KAPI_OK) { SERIAL_DBG('!'); return ret; }

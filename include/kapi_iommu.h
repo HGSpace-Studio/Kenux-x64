@@ -29,7 +29,8 @@ typedef enum {
     KAPI_IOMMU_ENOENT        = -3,
     KAPI_IOMMU_EEXIST        = -4,
     KAPI_IOMMU_EBUSY         = -5,
-    KAPI_IOMMU_ENOTSUP       = -6
+    KAPI_IOMMU_ENOTSUP       = -6,
+    KAPI_IOMMU_ENOSPC        = -7
 } kapi_iommu_err_t;
 
 typedef enum {

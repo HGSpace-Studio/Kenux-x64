@@ -1,0 +1,218 @@
+-- Start building task run all -- (471238993)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/gui/src --
+<2> Building kernel/gui/src/kanvas_file_manager.c
+<0> Building kernel/gui/src/kanvas_desktop.c
+<1> Building kernel/gui/src/kanvas_boot_splash.c
+<3> Building kernel/gui/src/kanvas_animator.c
+In file included from kernel/gui/include/kanvas_file_manager.h:4,
+                 from kernel/gui/src/kanvas_file_manager.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+In file included from kernel/gui/include/kanvas_boot_splash.h:4,
+In file included from kernel/gui/include/kanvas_desktop.h:4,
+                 from kernel/gui/src/kanvas_desktop.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+                 from kernel/gui/src/kanvas_boot_splash.c:1:
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+In file included from kernel/gui/include/kanvas_animator.h:4,
+                 from kernel/gui/src/kanvas_animator.c:1:
+include/kapi_kanvasui.h:155:29: warning: ‘struct kui_button’ declared inside parameter list will not be visible outside of this definition or declaration
+  155 |     void (*on_click)(struct kui_button*);
+      |                             ^~~~~~~~~~
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:179:36: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  179 |     void (*on_text_changed)(struct kui_textbox*);
+      |                                    ^~~~~~~~~~~
+include/kapi_kanvasui.h:180:37: warning: ‘struct kui_textbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  180 |     void (*on_enter_pressed)(struct kui_textbox*);
+      |                                     ^~~~~~~~~~~
+include/kapi_kanvasui.h:205:37: warning: ‘struct kui_slider’ declared inside parameter list will not be visible outside of this definition or declaration
+  205 |     void (*on_value_changed)(struct kui_slider*, int);
+      |                                     ^~~~~~~~~~
+include/kapi_kanvasui.h:214:37: warning: ‘struct kui_checkbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  214 |     void (*on_state_changed)(struct kui_checkbox*, bool);
+      |                                     ^~~~~~~~~~~~
+In file included from kernel/gui/src/kanvas_desktop.c:3:
+kernel/gui/include/kanvas_taskbar.h:15:9: warning: ‘KANVAS_TASKBAR_RADIUS’ 重定义
+   15 | #define KANVAS_TASKBAR_RADIUS       0
+      |         ^~~~~~~~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+kernel/gui/include/kanvas_desktop.h:16:9: note: 这是先前定义的位置
+include/kapi_kanvasui.h:238:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+   16 | #define KANVAS_TASKBAR_RADIUS       12
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+  238 |     void (*on_selection_changed)(struct kui_listbox*, int);
+      |         ^~~~~~~~~~~~~~~~~~~~~
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:239:41: warning: ‘struct kui_listbox’ declared inside parameter list will not be visible outside of this definition or declaration
+  239 |     void (*on_item_double_click)(struct kui_listbox*, int);
+      |                                         ^~~~~~~~~~~
+include/kapi_kanvasui.h:308:29: warning: ‘struct kui_toolbar_btn’ declared inside parameter list will not be visible outside of this definition or declaration
+  308 |     void (*on_click)(struct kui_toolbar_btn*);
+      |                             ^~~~~~~~~~~~~~~
+include/kapi_kanvasui.h:342:35: warning: ‘struct kui_tabcontrol’ declared inside parameter list will not be visible outside of this definition or declaration
+  342 |     void (*on_tab_changed)(struct kui_tabcontrol*, int);
+      |                                   ^~~~~~~~~~~~~~
+include/kapi_kanvasui.h:366:37: warning: ‘struct kui_treeview’ declared inside parameter list will not be visible outside of this definition or declaration
+  366 |     void (*on_node_selected)(struct kui_treeview*, kui_treeview_node_t*);
+      |                                     ^~~~~~~~~~~~
+include/kapi_kanvasui.h:379:38: warning: ‘struct kui_splitter’ declared inside parameter list will not be visible outside of this definition or declaration
+  379 |     void (*on_splitter_moved)(struct kui_splitter*, int);
+      |                                      ^~~~~~~~~~~~
+kernel/gui/src/kanvas_animator.c: 在函数‘kanvas_ease_spring’中:
+kernel/gui/src/kanvas_animator.c:30:19: error: 隐式声明函数‘kapi_cosf’ [-Wimplicit-function-declaration]
+   30 |     return 1.0f - kapi_cosf(c * t * 3.14159265f) * (1.0f - t);
+      |                   ^~~~~~~~~
+kernel/gui/src/kanvas_animator.c:30:35: warning: implicit conversion from ‘float’ to ‘double’ when passing argument to function [-Wdouble-promotion]
+   30 |     return 1.0f - kapi_cosf(c * t * 3.14159265f) * (1.0f - t);
+      |                             ~~~~~~^~~~~~~~~~~~~
+kernel/gui/src/kanvas_animator.c:30:50: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+   30 |     return 1.0f - kapi_cosf(c * t * 3.14159265f) * (1.0f - t);
+      |                                                  ^
+<3> Building kernel/gui/src/icon_registry.c
+kernel/gui/src/kanvas_file_manager.c: 在函数‘fm_fill_rect’中:
+kernel/gui/src/kanvas_file_manager.c:10:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |     ^~
+kernel/gui/src/kanvas_file_manager.c:10:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |     if (x + w > fw) w = fw - x; if (y + h > fh) h = fh - y;
+      |                                 ^~
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_create’中:
+kernel/gui/src/kanvas_desktop.c:157:79: warning: 未使用的参数‘fb’ [-Wunused-parameter]
+  157 | kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb, int stride)
+      |                                                                     ~~~~~~~~~~^~
+kernel/gui/src/kanvas_desktop.c:157:87: warning: 未使用的参数‘stride’ [-Wunused-parameter]
+  157 | kanvas_desktop_t* kanvas_desktop_create(int screen_w, int screen_h, uint32_t* fb, int stride)
+      |                                                                                   ~~~~^~~~~~
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_handle_mouse’中:
+kernel/gui/src/kanvas_desktop.c:215:100: warning: 未使用的参数‘mid’ [-Wunused-parameter]
+  215 | void kanvas_desktop_handle_mouse(kanvas_desktop_t* desk, int x, int y, bool left, bool right, bool mid)
+kernel/gui/src/kanvas_boot_splash.c: 在函数‘blend_pixel’中:
+kernel/gui/src/kanvas_boot_splash.c:47:24: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                        ^
+kernel/gui/src/kanvas_boot_splash.c:47:65: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                 ^
+kernel/gui/src/kanvas_boot_splash.c:47:105: warning: ‘unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   47 |     p[x] = 0xFF000000u | (((sr * alpha + dr * ia) / 255) << 16) | (((sg * alpha + dg * ia) / 255) << 8) | ((sb * alpha + db * ia) / 255);
+      |                                                                                                         ^
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_set_wallpaper_image’中:
+kernel/gui/src/kanvas_desktop.c:450:27: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  450 |     size_t sz = (size_t)w * h * 4;
+      |                           ^
+kernel/gui/src/kanvas_boot_splash.c: 在函数‘kanvas_boot_splash_paint’中:
+kernel/gui/src/kanvas_boot_splash.c:100:40: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  100 |             int px = cx + (int)(ring_r * __builtin_cosf(rad));
+      |                                        ^
+kernel/gui/src/kanvas_boot_splash.c:101:40: warning: conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+  101 |             int py = cy + (int)(ring_r * __builtin_sinf(rad));
+      |                                        ^
+kernel/gui/src/kanvas_boot_splash.c:94:13: warning: 未使用的变量‘ly’ [-Wunused-variable]
+   94 |         int ly = cy - logo_sz / 2;
+      |             ^~
+kernel/gui/src/kanvas_boot_splash.c:93:13: warning: 未使用的变量‘lx’ [-Wunused-variable]
+   93 |         int lx = cx - logo_sz / 2;
+      |             ^~
+kernel/gui/src/kanvas_boot_splash.c:150:29: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘uint8_t’ {或称 ‘unsigned char’} may change value [-Wconversion]
+  150 |                 uint8_t a = (c >> 24) & 0xFF;
+      |                             ^
+kernel/gui/src/kanvas_desktop.c: 在函数‘kanvas_desktop_tray_add’中:
+kernel/gui/src/kanvas_desktop.c:579:32: error: 用‘kanvas_tray_icon_t’初始化‘kanvas_tray_icon_t *’时类型不兼容
+  579 |     kanvas_tray_icon_t* tray = desk->taskbar->tray[desk->taskbar->tray_count++];
+      |                                ^~~~
+FAILED TASK run all: 

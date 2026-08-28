@@ -1,0 +1,358 @@
+-- Start building task run all -- (121720990)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<2> Building kernel/kernel/kernel.c
+<3> Building kernel/kernel/shell_enhanced.c
+<1> Building kernel/kernel/fs.c
+-- Enter folder kernel/gui/src --
+<0> Building kernel/gui/src/msf.c
+kernel/kernel/fs.c: 在函数‘fs_ext4_mount_adapter’中:
+kernel/kernel/fs.c:47:26: error: 传递‘ext4_mount’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   47 |     int ret = ext4_mount(device, &root);
+      |                          ^~~~~~
+      |                          |
+      |                          const char *
+In file included from kernel/kernel/fs.c:3:
+kernel/arch/x86_64/include/arch/ext4.h:89:29: note: expected ‘vfs_node_t *’ {或称 ‘struct vfs_node *’} but argument is of type ‘const char *’
+   89 | int  ext4_mount(vfs_node_t* mount_point, void* device);
+      |                 ~~~~~~~~~~~~^~~~~~~~~~~
+<1> Building kernel/gui/src/main.c
+kernel/gui/src/msf.c: 在函数‘hex_to_uint’中:
+kernel/gui/src/msf.c:41:43: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   41 |         if (c >= '0' && c <= '9') digit = c - '0';
+      |                                           ^
+kernel/gui/src/msf.c:42:48: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   42 |         else if (c >= 'A' && c <= 'F') digit = c - 'A' + 10;
+      |                                                ^
+kernel/gui/src/msf.c:43:48: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   43 |         else if (c >= 'a' && c <= 'f') digit = c - 'a' + 10;
+      |                                                ^
+kernel/gui/src/msf.c: 在函数‘parse_uint’中:
+kernel/gui/src/msf.c:64:24: warning: ‘uint32_t’ {或称 ‘unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+   64 |         val = val * 10 + (*s - '0');
+      |                        ^
+kernel/gui/src/msf.c: 在函数‘uint_to_str’中:
+kernel/gui/src/msf.c:647:34: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘char’ may change value [-Wconversion]
+  647 |     while (val > 0) { tmp[i++] = '0' + (val % 10); val /= 10; }
+      |                                  ^~~
+kernel/gui/src/msf.c: 在函数‘msf_save_to_buffer’中:
+kernel/gui/src/msf.c:661:45: warning: 未使用的参数‘buf_size’ [-Wunused-parameter]
+  661 | void msf_save_to_buffer(char* buf, uint32_t buf_size) {
+      |                                    ~~~~~~~~~^~~~~~~~
+kernel/gui/src/msf.c: 在文件作用域：
+kernel/gui/src/msf.c:616:13: warning: ‘uint_to_hex’ 在此处定义 [-Wunused-function]
+  616 | static void uint_to_hex(uint32_t val, char* buf) {
+      |             ^~~~~~~~~~~
+kernel/gui/src/msf.c:101:13: warning: ‘str_copy’ 在此处定义 [-Wunused-function]
+  101 | static void str_copy(char* dst, const char* src, uint32_t max) {
+      |             ^~~~~~~~
+kernel/gui/src/msf.c:92:16: warning: ‘str_find_char’ 在此处定义 [-Wunused-function]
+   92 | static int32_t str_find_char(const char* s, char c) {
+      |                ^~~~~~~~~~~~~
+kernel/gui/src/msf.c:83:13: warning: ‘str_starts_with’ 在此处定义 [-Wunused-function]
+   83 | static bool str_starts_with(const char* s, const char* prefix) {
+      |             ^~~~~~~~~~~~~~~
+kernel/gui/src/msf.c:7:20: warning: ‘default_msf’ 在此处定义 [-Wunused-variable]
+    7 | static const char* default_msf =
+      |                    ^~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+kernel/gui/src/main.c: 在函数‘int_to_string’中:
+  238 | static int shell_create_pipe(int pipefd[2])
+kernel/gui/src/main.c:53:34: warning: conversion from ‘uint32_t’ {或称 ‘unsigned int’} to ‘char’ may change value [-Wconversion]
+   53 |     while (val > 0) { tmp[i++] = '0' + (val % 10); val /= 10; }
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+      |                                  ^~~
+kernel/gui/src/main.c: 在函数‘button_ok_click’中:
+kernel/gui/src/main.c:92:39: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+   92 | static void button_ok_click(widget_t* wgt, void* user_data) {
+      |                             ~~~~~~~~~~^~~
+kernel/gui/src/main.c:92:50: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+   92 | static void button_ok_click(widget_t* wgt, void* user_data) {
+      |                                            ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘button_clear_click’中:
+kernel/gui/src/main.c:109:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  109 | static void button_clear_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:109:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  109 | static void button_clear_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘button_about_click’中:
+kernel/gui/src/main.c:117:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  117 | static void button_about_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:117:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  117 | static void button_about_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_light_click’中:
+kernel/gui/src/main.c:276:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  276 | static void theme_light_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:276:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  276 | static void theme_light_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_dark_click’中:
+kernel/gui/src/main.c:282:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  282 | static void theme_dark_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:282:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  282 | static void theme_dark_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_blue_click’中:
+kernel/gui/src/main.c:288:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  288 | static void theme_blue_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:288:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  288 | static void theme_blue_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_green_click’中:
+kernel/gui/src/main.c:294:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  294 | static void theme_green_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:294:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  294 | static void theme_green_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_sunset_click’中:
+kernel/gui/src/main.c:300:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  300 | static void theme_sunset_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:300:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  300 | static void theme_sunset_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_ocean_click’中:
+kernel/gui/src/main.c:306:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  306 | static void theme_ocean_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:306:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  306 | static void theme_ocean_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_forest_click’中:
+kernel/gui/src/main.c:312:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  312 | static void theme_forest_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:312:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  312 | static void theme_forest_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_aurora_click’中:
+kernel/gui/src/main.c:318:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  318 | static void theme_aurora_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:318:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  318 | static void theme_aurora_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_rose_click’中:
+kernel/gui/src/main.c:324:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  324 | static void theme_rose_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:324:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  324 | static void theme_rose_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_gold_click’中:
+kernel/gui/src/main.c:330:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  330 | static void theme_gold_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:330:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  330 | static void theme_gold_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_midnight_click’中:
+kernel/gui/src/main.c:336:44: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  336 | static void theme_midnight_click(widget_t* wgt, void* user_data) {
+      |                                  ~~~~~~~~~~^~~
+kernel/gui/src/main.c:336:55: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  336 | static void theme_midnight_click(widget_t* wgt, void* user_data) {
+      |                                                 ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘theme_lavender_click’中:
+kernel/gui/src/main.c:342:44: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  342 | static void theme_lavender_click(widget_t* wgt, void* user_data) {
+      |                                  ~~~~~~~~~~^~~
+kernel/gui/src/main.c:342:55: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  342 | static void theme_lavender_click(widget_t* wgt, void* user_data) {
+      |                                                 ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_blue_click’中:
+kernel/gui/src/main.c:348:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  348 | static void accent_blue_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:348:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  348 | static void accent_blue_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_red_click’中:
+kernel/gui/src/main.c:353:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  353 | static void accent_red_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:353:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  353 | static void accent_red_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_green_click’中:
+kernel/gui/src/main.c:358:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  358 | static void accent_green_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:358:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  358 | static void accent_green_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_purple_click’中:
+kernel/gui/src/main.c:363:43: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  363 | static void accent_purple_click(widget_t* wgt, void* user_data) {
+      |                                 ~~~~~~~~~~^~~
+kernel/gui/src/main.c:363:54: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  363 | static void accent_purple_click(widget_t* wgt, void* user_data) {
+      |                                                ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_orange_click’中:
+kernel/gui/src/main.c:368:43: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  368 | static void accent_orange_click(widget_t* wgt, void* user_data) {
+      |                                 ~~~~~~~~~~^~~
+kernel/gui/src/main.c:368:54: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  368 | static void accent_orange_click(widget_t* wgt, void* user_data) {
+      |                                                ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_pink_click’中:
+kernel/gui/src/main.c:373:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  373 | static void accent_pink_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:373:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  373 | static void accent_pink_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_teal_click’中:
+kernel/gui/src/main.c:378:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  378 | static void accent_teal_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:378:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  378 | static void accent_teal_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_indigo_click’中:
+kernel/gui/src/main.c:383:43: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  383 | static void accent_indigo_click(widget_t* wgt, void* user_data) {
+      |                                 ~~~~~~~~~~^~~
+kernel/gui/src/main.c:383:54: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  383 | static void accent_indigo_click(widget_t* wgt, void* user_data) {
+      |                                                ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_rose_click’中:
+kernel/gui/src/main.c:388:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  388 | static void accent_rose_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:388:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  388 | static void accent_rose_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_amber_click’中:
+kernel/gui/src/main.c:393:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  393 | static void accent_amber_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:393:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  393 | static void accent_amber_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_emerald_click’中:
+kernel/gui/src/main.c:398:44: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  398 | static void accent_emerald_click(widget_t* wgt, void* user_data) {
+      |                                  ~~~~~~~~~~^~~
+kernel/gui/src/main.c:398:55: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  398 | static void accent_emerald_click(widget_t* wgt, void* user_data) {
+      |                                                 ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_violet_click’中:
+kernel/gui/src/main.c:403:43: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  403 | static void accent_violet_click(widget_t* wgt, void* user_data) {
+      |                                 ~~~~~~~~~~^~~
+kernel/gui/src/main.c:403:54: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  403 | static void accent_violet_click(widget_t* wgt, void* user_data) {
+      |                                                ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_fuchsia_click’中:
+kernel/gui/src/main.c:408:44: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  408 | static void accent_fuchsia_click(widget_t* wgt, void* user_data) {
+      |                                  ~~~~~~~~~~^~~
+kernel/gui/src/main.c:408:55: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  408 | static void accent_fuchsia_click(widget_t* wgt, void* user_data) {
+      |                                                 ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_sky_click’中:
+kernel/gui/src/main.c:413:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  413 | static void accent_sky_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:413:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  413 | static void accent_sky_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘accent_lime_click’中:
+kernel/gui/src/main.c:418:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  418 | static void accent_lime_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:418:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  418 | static void accent_lime_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_default_click’中:
+kernel/gui/src/main.c:423:42: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  423 | static void wall_default_click(widget_t* wgt, void* user_data) {
+      |                                ~~~~~~~~~~^~~
+kernel/gui/src/main.c:423:53: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  423 | static void wall_default_click(widget_t* wgt, void* user_data) {
+      |                                               ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_sunset_click’中:
+kernel/gui/src/main.c:427:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  427 | static void wall_sunset_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:427:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  427 | static void wall_sunset_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_forest_click’中:
+kernel/gui/src/main.c:431:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  431 | static void wall_forest_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:431:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  431 | static void wall_forest_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_night_click’中:
+kernel/gui/src/main.c:435:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  435 | static void wall_night_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:435:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  435 | static void wall_night_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_ocean_click’中:
+kernel/gui/src/main.c:439:40: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  439 | static void wall_ocean_click(widget_t* wgt, void* user_data) {
+      |                              ~~~~~~~~~~^~~
+kernel/gui/src/main.c:439:51: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  439 | static void wall_ocean_click(widget_t* wgt, void* user_data) {
+      |                                             ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_aurora_click’中:
+kernel/gui/src/main.c:443:41: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  443 | static void wall_aurora_click(widget_t* wgt, void* user_data) {
+      |                               ~~~~~~~~~~^~~
+kernel/gui/src/main.c:443:52: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  443 | static void wall_aurora_click(widget_t* wgt, void* user_data) {
+      |                                              ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_rose_click’中:
+kernel/gui/src/main.c:447:39: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  447 | static void wall_rose_click(widget_t* wgt, void* user_data) {
+      |                             ~~~~~~~~~~^~~
+kernel/gui/src/main.c:447:50: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  447 | static void wall_rose_click(widget_t* wgt, void* user_data) {
+      |                                            ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘wall_gold_click’中:
+kernel/gui/src/main.c:451:39: warning: 未使用的参数‘wgt’ [-Wunused-parameter]
+  451 | static void wall_gold_click(widget_t* wgt, void* user_data) {
+      |                             ~~~~~~~~~~^~~
+kernel/gui/src/main.c:451:50: warning: 未使用的参数‘user_data’ [-Wunused-parameter]
+  451 | static void wall_gold_click(widget_t* wgt, void* user_data) {
+      |                                            ~~~~~~^~~~~~~~~
+kernel/gui/src/main.c: 在函数‘gui_run’中:
+kernel/gui/src/main.c:1036:34: warning: conversion from ‘uint64_t’ {或称 ‘long long unsigned int’} to ‘uint32_t’ {或称 ‘unsigned int’} may change value [-Wconversion]
+ 1036 |             uint32_t total_min = desktop_clock_base_min + elapsed_sec / 60;
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+kernel/gui/src/main.c: 在文件作用域：
+kernel/gui/src/main.c:133:13: warning: ‘menu_open_main’ 在此处定义 [-Wunused-function]
+  133 | static void menu_open_main(void) {
+      |             ^~~~~~~~~~~~~~
+kernel/gui/src/main.c:109:13: warning: ‘button_clear_click’ 在此处定义 [-Wunused-function]
+  109 | static void button_clear_click(widget_t* wgt, void* user_data) {
+      |             ^~~~~~~~~~~~~~~~~~
+kernel/gui/src/main.c:39:18: warning: ‘color_gallery_win’ 在此处定义 [-Wunused-variable]
+   39 | static window_t* color_gallery_win = NULL;
+      |                  ^~~~~~~~~~~~~~~~~
+kernel/gui/src/main.c:34:13: warning: ‘test_pattern_active’ 在此处定义 [-Wunused-variable]
+   34 | static bool test_pattern_active = false;  /* 颜色测试界面激活标志 */
+      |             ^~~~~~~~~~~~~~~~~~~
+kernel/gui/src/main.c:31:18: warning: ‘textbox_input’ 在此处定义 [-Wunused-variable]
+   31 | static widget_t* textbox_input;
+      |                  ^~~~~~~~~~~~~
+FAILED TASK run all: 

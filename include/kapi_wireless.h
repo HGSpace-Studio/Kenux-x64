@@ -32,7 +32,8 @@ typedef enum {
     KAPI_WIFI_EBUSY         = -4,
     KAPI_WIFI_ENOTSUP       = -5,
     KAPI_WIFI_EAUTH         = -6,
-    KAPI_WIFI_ENOTCONN      = -7
+    KAPI_WIFI_ENOTCONN      = -7,
+    KAPI_WIFI_ENOENT        = -8
 } kapi_wifi_err_t;
 
 typedef enum {
@@ -68,7 +69,7 @@ struct kapi_wifi_net {
 };
 
 struct kapi_wifi_dev {
-    kapi_netdev_t netdev;
+    kapi_netdev_t* netdev;
     char          name[KAPI_NETDEV_NAME_LEN];
     int           supported_bands;
     kapi_wifi_auth_t max_auth;
@@ -82,7 +83,7 @@ int kapi_wifi_init(void);
 void kapi_wifi_exit(void);
 
 /* Device (netdev) registration */
-int kapi_wifi_register_dev(kapi_wifi_dev_t *dev, kapi_netdev_t netdev);
+int kapi_wifi_register_dev(kapi_wifi_dev_t *dev, kapi_netdev_t* netdev);
 int kapi_wifi_unregister_dev(kapi_wifi_dev_t *dev);
 kapi_wifi_dev_t *kapi_wifi_find_dev(const char *name);
 

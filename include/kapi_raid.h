@@ -31,7 +31,8 @@ typedef enum {
     KAPI_RAID_EEXIST        = -4,
     KAPI_RAID_EBUSY         = -5,
     KAPI_RAID_ENOSPC        = -6,
-    KAPI_RAID_EDEGRADED    = -7
+    KAPI_RAID_EDEGRADED    = -7,
+    KAPI_RAID_ENOTSUP       = -8
 } kapi_raid_err_t;
 
 typedef enum {

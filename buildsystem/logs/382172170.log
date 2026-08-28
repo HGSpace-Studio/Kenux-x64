@@ -1,0 +1,1169 @@
+-- Start building task run all -- (382172170)
+-- Start building task all -- (0)
+-- Start building task kernel -- (1)
+-- Enter folder kernel/kernel --
+<0> Building kernel/kernel/shell_enhanced.c
+<1> Building kernel/kernel/kernel.c
+<3> Building kernel/kernel/fs.c
+<2> Building kernel/kernel/drivers.c
+kernel/kernel/drivers.c: 在函数‘drivers_register’中:
+kernel/kernel/drivers.c:39:34: warning: ISO C 不允许将一个对象指针转换为一个函数指针 [-Wpedantic]
+   39 |     drivers[driver_count].init = (int (*)(void))init_func;
+      |                                  ^
+kernel/kernel/fs.c:11:12: error: conflicting types for ‘ext4_mount’; have ‘int(const char *, vfs_node_t **)’ {或称 ‘int(const char *, struct vfs_node **)’}
+   11 | extern int ext4_mount(const char* device, vfs_node_t** root_out);
+      |            ^~~~~~~~~~
+In file included from kernel/kernel/fs.c:3:
+kernel/arch/x86_64/include/arch/ext4.h:89:6: note: previous declaration of ‘ext4_mount’ with type ‘int(vfs_node_t *, void *)’ {或称 ‘int(struct vfs_node *, void *)’}
+   89 | int  ext4_mount(vfs_node_t* mount_point, void* device);
+      |      ^~~~~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/shell_enhanced.c:13:
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_set_all’中:
+include/kapi_bitmap.h:33:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_clear_all’中:
+include/kapi_bitmap.h:41:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_find_first’中:
+include/kapi_bitmap.h:49:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_find_first_zero’中:
+include/kapi_bitmap.h:66:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_count’中:
+include/kapi_bitmap.h:84:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+In file included from kernel/kernel/kernel.c:33:
+kernel/arch/x86_64/include/arch/netfilter.h: 在函数‘nf_hook_slow_eval’中:
+kernel/arch/x86_64/include/arch/netfilter.h:56:16: warning: conversion from ‘int’ to ‘uint16_t’ {或称 ‘short unsigned int’} may change value [-Wconversion]
+   56 |         return verdict;
+      |                ^~~~~~~
+kernel/kernel/fs.c: 在函数‘vfs_read’中:
+kernel/kernel/fs.c:198:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  198 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/kernel/fs.c: 在函数‘vfs_write’中:
+kernel/kernel/fs.c:208:28: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  208 |     if (ret > 0) f->offset += ret;
+      |                            ^~
+kernel/kernel/fs.c: 在函数‘get_parent_and_name’中:
+kernel/kernel/fs.c:325:15: warning: conversion from ‘size_t’ {或称 ‘long long unsigned int’} to ‘int’ may change value [-Wconversion]
+  325 |     int len = strlen(path);
+      |               ^~~~~~
+kernel/kernel/fs.c:344:22: warning: conversion from ‘long long int’ to ‘int’ may change value [-Wconversion]
+  344 |     int parent_len = last_slash - path;
+      |                      ^~~~~~~~~~
+kernel/kernel/fs.c:349:36: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  349 |         strncpy(parent_path, path, parent_len);
+      |                                    ^~~~~~~~~~
+kernel/kernel/fs.c:353:43: warning: ‘size_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  353 |     strncpy(name, last_slash + 1, max_len - 1);
+      |                                   ~~~~~~~~^~~
+kernel/kernel/fs.c: 在函数‘vfs_mkdir’中:
+kernel/kernel/fs.c:380:44: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  380 |         return parent->mkdir(parent, name, mode);
+      |                                            ^~~~
+kernel/kernel/fs.c:385:18: warning: ‘uint64_t’ {或称 ‘long long unsigned int’}转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  385 |     node->mode = mode;
+      |                  ^~~~
+kernel/kernel/fs.c: 在函数‘vfs_chdir’中:
+kernel/kernel/fs.c:625:9: error: 隐式声明函数‘snprintf’ [-Wimplicit-function-declaration]
+  625 |         snprintf(full, sizeof(full), "%s/%s", current_working_dir, path);
+      |         ^~~~~~~~
+kernel/kernel/fs.c:7:1: note: ‘snprintf’ is defined in header ‘<stdio.h>’; this is probably fixable by adding ‘#include <stdio.h>’
+    6 | #include <slab.h>
+  +++ |+#include <stdio.h>
+    7 | 
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: 在函数‘kapi_nlmsg_next’中:
+include/kapi_netlink.h:19:37: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro ‘KAPI_NLMSG_ALIGNTO’
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+      |                  ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi_memory_ext.h:6,
+                 from include/kapi.h:74:
+include/kapi_memory.h: 在文件作用域：
+include/kapi_memory.h:201:21: error: 字段‘shm_perm’的类型不完全
+  201 |     struct ipc_perm shm_perm;
+      |                     ^~~~~~~~
+In file included from /usr/x86_64-w64-mingw32/include/pthread_time.h:27,
+                 from /usr/x86_64-w64-mingw32/include/time.h:329,
+                 from include/kapi_memleak.h:6,
+                 from include/kapi.h:77:
+/usr/x86_64-w64-mingw32/include/pthread_compat.h:94:24: error: conflicting types for ‘mode_t’; have ‘short unsigned int’
+   94 | typedef unsigned short mode_t;
+      |                        ^~~~~~
+In file included from kernel/arch/x86_64/include/arch/registry.h:5,
+In file included from kernel/kernel/shell_enhanced.c:3:
+                 from kernel/kernel/kernel.c:56:
+kernel/arch/x86_64/include/arch/win32.h: 在文件作用域：
+kernel/arch/x86_64/include/arch/types.h:22:18: note: previous declaration of ‘mode_t’ with type ‘mode_t’ {或称 ‘long long unsigned int’}
+   22 | typedef uint64_t mode_t;
+      |                  ^~~~~~
+<3> Building kernel/kernel/devtmpfs.c
+kernel/arch/x86_64/include/arch/win32.h:926:24: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                        ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1049:54: note: in expansion of macro ‘COORD’
+ 1049 | BOOL SetConsoleCursorPosition(HANDLE hConsoleOutput, COORD dwCursorPosition);
+      |                                                      ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:33: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1049:54: note: in expansion of macro ‘COORD’
+ 1049 | BOOL SetConsoleCursorPosition(HANDLE hConsoleOutput, COORD dwCursorPosition);
+      |                                                      ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:15: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |               ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1049:54: note: in expansion of macro ‘COORD’
+ 1049 | BOOL SetConsoleCursorPosition(HANDLE hConsoleOutput, COORD dwCursorPosition);
+      |                                                      ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:24: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                        ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1052:49: note: in expansion of macro ‘COORD’
+ 1052 |                                  DWORD nLength, COORD dwWriteCoord,
+      |                                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:33: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1052:49: note: in expansion of macro ‘COORD’
+ 1052 |                                  DWORD nLength, COORD dwWriteCoord,
+      |                                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:15: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |               ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1052:49: note: in expansion of macro ‘COORD’
+ 1052 |                                  DWORD nLength, COORD dwWriteCoord,
+      |                                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:24: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                        ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1055:48: note: in expansion of macro ‘COORD’
+ 1055 |                                 DWORD nLength, COORD dwWriteCoord,
+      |                                                ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:33: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1055:48: note: in expansion of macro ‘COORD’
+ 1055 |                                 DWORD nLength, COORD dwWriteCoord,
+      |                                                ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:15: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |               ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1055:48: note: in expansion of macro ‘COORD’
+ 1055 |                                 DWORD nLength, COORD dwWriteCoord,
+      |                                                ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:29: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                             ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1057:62: note: in expansion of macro ‘SMALL_RECT’
+ 1057 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |                                                              ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:41: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                                         ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1057:62: note: in expansion of macro ‘SMALL_RECT’
+ 1057 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |                                                              ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:52: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                                                    ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1057:62: note: in expansion of macro ‘SMALL_RECT’
+ 1057 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |                                                              ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:65: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                                                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1057:62: note: in expansion of macro ‘SMALL_RECT’
+ 1057 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |                                                              ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:29: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                             ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:38: note: in expansion of macro ‘SMALL_RECT’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                      ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:41: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                                         ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:38: note: in expansion of macro ‘SMALL_RECT’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                      ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:52: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                                                    ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:38: note: in expansion of macro ‘SMALL_RECT’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                      ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:65: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                                                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:38: note: in expansion of macro ‘SMALL_RECT’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                      ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:24: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                        ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:67: note: in expansion of macro ‘COORD’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                                                   ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:33: error: unknown type name ‘SHORT’; did you mean ‘USHORT’?
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |                                 ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:67: note: in expansion of macro ‘COORD’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                                                   ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:926:15: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+  926 | #define COORD struct { SHORT X; SHORT Y; }
+      |               ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:67: note: in expansion of macro ‘COORD’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                                                   ^~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:20: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                    ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1058:38: note: in expansion of macro ‘SMALL_RECT’
+ 1058 |                                const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin,
+      |                                      ^~~~~~~~~~
+kernel/arch/x86_64/include/arch/win32.h:927:20: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+  927 | #define SMALL_RECT struct { SHORT Left; SHORT Top; SHORT Right; SHORT Bottom; }
+      |                    ^~~~~~
+kernel/arch/x86_64/include/arch/win32.h:1057:62: note: in expansion of macro ‘SMALL_RECT’
+ 1057 | BOOL ScrollConsoleScreenBufferA(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle,
+      |                                                              ^~~~~~~~~~
+In file included from include/kapi.h:99:
+include/kapi_fs_ext.h:244:51: warning: ‘struct utimbuf’ declared inside parameter list will not be visible outside of this definition or declaration
+  244 | int kapi_utime(const char* filename, const struct utimbuf* times);
+      |                                                   ^~~~~~~
+In file included from include/kapi.h:100:
+include/kapi_net_ext.h:137:20: error: 字段‘sin_addr’的类型不完全
+  137 |     struct in_addr sin_addr;
+      |                    ^~~~~~~~
+include/kapi_net_ext.h:145:21: error: 字段‘sin6_addr’的类型不完全
+  145 |     struct in6_addr sin6_addr;
+      |                     ^~~~~~~~~
+include/kapi_net_ext.h:195:21: error: 字段‘ipv6_addr’的类型不完全
+  195 |     struct in6_addr ipv6_addr;
+      |                     ^~~~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:144:17: warning: 对包含可变数组成员的结构的无效使用 [-Wpedantic]
+  144 |     lf_entry_t  entries[];
+      |                 ^~~~~~~
+kernel/arch/x86_64/include/arch/registry.h:157:17: warning: 对包含可变数组成员的结构的无效使用 [-Wpedantic]
+  157 |     lh_entry_t  entries[];
+      |                 ^~~~~~~
+include/kapi_net_ext.h:244:56: error: 未知的类型名‘socklen_t’
+  244 | int kapi_bind(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                        ^~~~~~~~~
+include/kapi_net_ext.h:248:52: error: 未知的类型名‘socklen_t’
+  248 | int kapi_accept(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                    ^~~~~~~~~
+In file included from include/kapi.h:23,
+                 from kernel/kernel/kernel.c:63:
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_set_all’中:
+include/kapi_bitmap.h:33:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   33 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_clear_all’中:
+include/kapi_bitmap.h:41:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   41 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_find_first’中:
+include/kapi_net_ext.h:250:53: error: 未知的类型名‘socklen_t’
+  250 | int kapi_accept4(int sockfd, struct sockaddr* addr, socklen_t* addrlen, int flags);
+      |                                                     ^~~~~~~~~
+include/kapi_bitmap.h:49:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   49 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:56:35: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   56 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_find_first_zero’中:
+include/kapi_bitmap.h:66:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   66 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_bitmap.h:73:35: warning: ‘int’转换自‘unsigned int’时可能会改变结果的符号 [-Wsign-conversion]
+   73 |                     return offset + j;
+      |                            ~~~~~~~^~~
+include/kapi_bitmap.h: 在函数‘kapi_bitmap_count’中:
+include/kapi_bitmap.h:84:26: warning: conversion from ‘long long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   84 |     unsigned int longs = (nbits + KAPI_BITS_PER_LONG - 1) / KAPI_BITS_PER_LONG;
+      |                          ^
+include/kapi_net_ext.h:252:59: error: 未知的类型名‘socklen_t’
+  252 | int kapi_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                           ^~~~~~~~~
+include/kapi_net_ext.h:259:55: error: 未知的类型名‘socklen_t’
+  259 |                     const struct sockaddr* dest_addr, socklen_t addrlen);
+      |                                                       ^~~~~~~~~
+include/kapi_net_ext.h:262:50: error: 未知的类型名‘socklen_t’
+  262 |                       struct sockaddr* src_addr, socklen_t* addrlen);
+      |                                                  ^~~~~~~~~
+include/kapi_net_ext.h:264:47: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  264 | ssize_t kapi_sendmsg(int sockfd, const struct msghdr* msg, int flags);
+      |                                               ^~~~~~
+include/kapi_net_ext.h:266:41: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  266 | ssize_t kapi_recvmsg(int sockfd, struct msghdr* msg, int flags);
+      |                                         ^~~~~~
+include/kapi_net_ext.h:268:71: error: 未知的类型名‘socklen_t’
+  268 | int kapi_getsockopt(int sockfd, int level, int optname, void* optval, socklen_t* optlen);
+      |                                                                       ^~~~~~~~~
+include/kapi_net_ext.h:270:77: error: 未知的类型名‘socklen_t’
+  270 | int kapi_setsockopt(int sockfd, int level, int optname, const void* optval, socklen_t optlen);
+      |                                                                             ^~~~~~~~~
+include/kapi_net_ext.h:272:57: error: 未知的类型名‘socklen_t’
+  272 | int kapi_getsockname(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                         ^~~~~~~~~
+include/kapi_net_ext.h:274:57: error: 未知的类型名‘socklen_t’
+  274 | int kapi_getpeername(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                         ^~~~~~~~~
+include/kapi_net_ext.h:290:64: error: 未知的类型名‘socklen_t’
+  290 | const char* kapi_inet_ntop(int af, const void* src, char* dst, socklen_t size);
+      |                                                                ^~~~~~~~~
+In file included from include/kapi.h:59:
+include/kapi_netlink.h: 在函数‘kapi_nlmsg_next’中:
+include/kapi_netlink.h:19:37: warning: ‘int’转换自‘uint32_t’ {或称 ‘unsigned int’}时可能会改变结果的符号 [-Wsign-conversion]
+   19 | #define KAPI_NLMSG_ALIGNTO          4
+      |                                     ^
+include/kapi_netlink.h:75:18: note: in expansion of macro ‘KAPI_NLMSG_ALIGNTO’
+   75 |     int totlen = KAPI_NLMSG_ALIGNTO * ((nlh->nlmsg_len + KAPI_NLMSG_ALIGNTO - 1) / KAPI_NLMSG_ALIGNTO);
+include/kapi_net_ext.h:302:27: error: 未知的类型名‘fd_set’
+      |                  ^~~~~~~~~~~~~~~~~~
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                           ^~~~~~
+include/kapi_net_ext.h:302:44: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                            ^~~~~~
+include/kapi_net_ext.h:302:62: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                                              ^~~~~~
+include/kapi_net_ext.h:305:28: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                            ^~~~~~
+include/kapi_net_ext.h:305:45: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                             ^~~~~~
+include/kapi_net_ext.h:305:63: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                                               ^~~~~~
+include/kapi_net_ext.h:306:56: error: unknown type name ‘sigset_t’; did you mean ‘size_t’?
+  306 |                  const struct timespec* timeout, const sigset_t* sigmask);
+      |                                                        ^~~~~~~~
+      |                                                        size_t
+include/kapi_net_ext.h:308:35: error: 未知的类型名‘nfds_t’
+  308 | int kapi_poll(struct pollfd* fds, nfds_t nfds, int timeout);
+      |                                   ^~~~~~
+include/kapi_net_ext.h:310:36: error: 未知的类型名‘nfds_t’
+  310 | int kapi_ppoll(struct pollfd* fds, nfds_t nfds, const struct timespec* tmo_p,
+      |                                    ^~~~~~
+include/kapi_net_ext.h:311:22: error: unknown type name ‘sigset_t’; did you mean ‘size_t’?
+In file included from include/kapi_memory_ext.h:6,
+  311 |                const sigset_t* sigmask);
+      |                      ^~~~~~~~
+      |                      size_t
+include/kapi_net_ext.h:315:5: error: conflicting types for ‘kapi_set_nonblocking’; have ‘int(int,  _Bool)’
+  315 | int kapi_set_nonblocking(int sockfd, bool nonblocking);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_fs_ext.h:380:5: note: previous declaration of ‘kapi_set_nonblocking’ with type ‘int(int)’
+  380 | int kapi_set_nonblocking(int fd);
+      |     ^~~~~~~~~~~~~~~~~~~~
+                 from include/kapi.h:74:
+include/kapi_memory.h: 在文件作用域：
+include/kapi_net_ext.h:347:63: error: 未知的类型名‘socklen_t’
+  347 | int kapi_udp_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                               ^~~~~~~~~
+include/kapi_memory.h:201:21: error: 字段‘shm_perm’的类型不完全
+In file included from include/kapi.h:101:
+include/kapi_device_ext.h:88:3: error: conflicting types for ‘kapi_device_info_t’; have ‘struct <匿名>’
+  201 |     struct ipc_perm shm_perm;
+   88 | } kapi_device_info_t;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:73:
+include/kapi_device_manager.h:56:3: note: previous declaration of ‘kapi_device_info_t’ with type ‘kapi_device_info_t’
+      |                     ^~~~~~~~
+In file included from /usr/x86_64-w64-mingw32/include/pthread_time.h:27,
+                 from /usr/x86_64-w64-mingw32/include/time.h:329,
+                 from include/kapi_memleak.h:6,
+                 from include/kapi.h:77:
+   56 | } kapi_device_info_t;
+/usr/x86_64-w64-mingw32/include/pthread_compat.h:94:24: error: conflicting types for ‘mode_t’; have ‘short unsigned int’
+      |   ^~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:113:13: error: 重复的成员‘interrupt_line’
+   94 | typedef unsigned short mode_t;
+      |                        ^~~~~~
+In file included from kernel/arch/x86_64/include/arch/vga.h:4,
+                 from kernel/kernel/kernel.c:1:
+kernel/arch/x86_64/include/arch/types.h:22:18: note: previous declaration of ‘mode_t’ with type ‘mode_t’ {或称 ‘long long unsigned int’}
+  113 |     uint8_t interrupt_line;
+      |             ^~~~~~~~~~~~~~
+include/kapi_device_ext.h:203:17: error: ‘ABS_CNT’未声明(不在函数内)
+  203 |     int abs_min[ABS_CNT];
+      |                 ^~~~~~~
+include/kapi_device_ext.h:235:3: error: conflicting types for ‘kapi_device_ops_t’; have ‘struct <匿名>’
+   22 | typedef uint64_t mode_t;
+      |                  ^~~~~~
+In file included from include/kapi.h:99:
+include/kapi_fs_ext.h:244:51: warning: ‘struct utimbuf’ declared inside parameter list will not be visible outside of this definition or declaration
+  244 | int kapi_utime(const char* filename, const struct utimbuf* times);
+      |                                                   ^~~~~~~
+In file included from include/kapi.h:100:
+include/kapi_net_ext.h:137:20: error: 字段‘sin_addr’的类型不完全
+  137 |     struct in_addr sin_addr;
+      |                    ^~~~~~~~
+include/kapi_net_ext.h:145:21: error: 字段‘sin6_addr’的类型不完全
+  145 |     struct in6_addr sin6_addr;
+      |                     ^~~~~~~~~
+include/kapi_net_ext.h:195:21: error: 字段‘ipv6_addr’的类型不完全
+  195 |     struct in6_addr ipv6_addr;
+      |                     ^~~~~~~~~
+include/kapi_net_ext.h:244:56: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  244 | int kapi_bind(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                        ^~~~~~~~~
+  235 | } kapi_device_ops_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:75:3: note: previous declaration of ‘kapi_device_ops_t’ with type ‘kapi_device_ops_t’
+   75 | } kapi_device_ops_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:237:5: error: conflicting types for ‘kapi_device_register’; have ‘int(const char *, int,  const kapi_device_ops_t *, void *)’
+  237 | int kapi_device_register(const char* name, int type, const kapi_device_ops_t* ops, void* priv);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:96:5: note: previous declaration of ‘kapi_device_register’ with type ‘int(kapi_device_t *)’ {或称 ‘int(struct kapi_device *)’}
+      |                                                        socket_t
+include/kapi_net_ext.h:248:52: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  248 | int kapi_accept(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+   96 | int kapi_device_register(kapi_device_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:239:5: error: conflicting types for ‘kapi_device_unregister’; have ‘int(kapi_dev_id_t)’ {或称 ‘int(unsigned int)’}
+  239 | int kapi_device_unregister(kapi_dev_id_t dev);
+      |                                                    ^~~~~~~~~
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:97:5: note: previous declaration of ‘kapi_device_unregister’ with type ‘int(kapi_device_t *)’ {或称 ‘int(struct kapi_device *)’}
+   97 | int kapi_device_unregister(kapi_device_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:302:5: error: conflicting types for ‘kapi_pci_find_device’; have ‘int(uint16_t,  uint16_t,  kapi_pci_info_t *)’ {或称 ‘int(short unsigned int,  short unsigned int,  kapi_pci_info_t *)’}
+  302 | int kapi_pci_find_device(uint16_t vendor, uint16_t device, kapi_pci_info_t* info);
+      |     ^~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:50:
+include/kapi_pci.h:71:5: note: previous declaration of ‘kapi_pci_find_device’ with type ‘int(uint16_t,  uint16_t,  uint8_t *, uint8_t *, uint8_t *)’ {或称 ‘int(short unsigned int,  short unsigned int,  unsigned char *, unsigned char *, unsigned char *)’}
+      |                                                    socket_t
+   71 | int kapi_pci_find_device(uint16_t vendor_id, uint16_t device_id, uint8_t* bus, uint8_t* dev, uint8_t* func);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:304:5: error: conflicting types for ‘kapi_pci_find_class’; have ‘int(uint32_t,  kapi_pci_info_t *)’ {或称 ‘int(unsigned int,  kapi_pci_info_t *)’}
+include/kapi_net_ext.h:250:53: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  304 | int kapi_pci_find_class(uint32_t class_code, kapi_pci_info_t* info);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:72:5: note: previous declaration of ‘kapi_pci_find_class’ with type ‘int(uint8_t,  uint8_t,  uint8_t *, uint8_t *, uint8_t *)’ {或称 ‘int(unsigned char,  unsigned char,  unsigned char *, unsigned char *, unsigned char *)’}
+   72 | int kapi_pci_find_class(uint8_t class_code, uint8_t subclass, uint8_t* bus, uint8_t* dev, uint8_t* func);
+      |     ^~~~~~~~~~~~~~~~~~~
+  250 | int kapi_accept4(int sockfd, struct sockaddr* addr, socklen_t* addrlen, int flags);
+include/kapi_device_ext.h:306:5: error: conflicting types for ‘kapi_pci_enable_device’; have ‘int(kapi_pci_info_t *)’
+      |                                                     ^~~~~~~~~
+      |                                                     socket_t
+  306 | int kapi_pci_enable_device(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:74:5: note: previous declaration of ‘kapi_pci_enable_device’ with type ‘int(kapi_pci_dev_t *)’
+include/kapi_net_ext.h:252:59: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  252 | int kapi_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+   74 | int kapi_pci_enable_device(kapi_pci_dev_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:308:5: error: conflicting types for ‘kapi_pci_disable_device’; have ‘int(kapi_pci_info_t *)’
+      |                                                           ^~~~~~~~~
+  308 | int kapi_pci_disable_device(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:75:5: note: previous declaration of ‘kapi_pci_disable_device’ with type ‘int(kapi_pci_dev_t *)’
+   75 | int kapi_pci_disable_device(kapi_pci_dev_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:310:5: error: conflicting types for ‘kapi_pci_set_master’; have ‘int(kapi_pci_info_t *)’
+  310 | int kapi_pci_set_master(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:76:5: note: previous declaration of ‘kapi_pci_set_master’ with type ‘int(kapi_pci_dev_t *, int)’
+   76 | int kapi_pci_set_master(kapi_pci_dev_t* dev, int enable);
+      |                                                           socket_t
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:314:10: error: conflicting types for ‘kapi_pci_read_config_byte’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  314 | uint32_t kapi_pci_read_config_byte(kapi_pci_info_t* pci, int offset);
+include/kapi_net_ext.h:259:55: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:62:10: note: previous declaration of ‘kapi_pci_read_config_byte’ with type ‘uint8_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘unsigned char(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+  259 |                     const struct sockaddr* dest_addr, socklen_t addrlen);
+   62 | uint8_t  kapi_pci_read_config_byte(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:316:10: error: conflicting types for ‘kapi_pci_read_config_word’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+      |                                                       ^~~~~~~~~
+      |                                                       socket_t
+  316 | uint32_t kapi_pci_read_config_word(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:63:10: note: previous declaration of ‘kapi_pci_read_config_word’ with type ‘uint16_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘short unsigned int(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+include/kapi_net_ext.h:262:50: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+   63 | uint16_t kapi_pci_read_config_word(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:318:10: error: conflicting types for ‘kapi_pci_read_config_dword’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  262 |                       struct sockaddr* src_addr, socklen_t* addrlen);
+      |                                                  ^~~~~~~~~
+      |                                                  socket_t
+include/kapi_net_ext.h:264:47: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  264 | ssize_t kapi_sendmsg(int sockfd, const struct msghdr* msg, int flags);
+  318 | uint32_t kapi_pci_read_config_dword(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:64:10: note: previous declaration of ‘kapi_pci_read_config_dword’ with type ‘uint32_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘unsigned int(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   64 | uint32_t kapi_pci_read_config_dword(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:320:6: error: conflicting types for ‘kapi_pci_write_config_byte’; have ‘void(kapi_pci_info_t *, int,  uint8_t)’ {或称 ‘void(kapi_pci_info_t *, int,  unsigned char)’}
+      |                                               ^~~~~~
+  320 | void kapi_pci_write_config_byte(kapi_pci_info_t* pci, int offset, uint8_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:67:6: note: previous declaration of ‘kapi_pci_write_config_byte’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+include/kapi_net_ext.h:266:41: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+   67 | void kapi_pci_write_config_byte(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint8_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  266 | ssize_t kapi_recvmsg(int sockfd, struct msghdr* msg, int flags);
+include/kapi_device_ext.h:322:6: error: conflicting types for ‘kapi_pci_write_config_word’; have ‘void(kapi_pci_info_t *, int,  uint16_t)’ {或称 ‘void(kapi_pci_info_t *, int,  short unsigned int)’}
+      |                                         ^~~~~~
+  322 | void kapi_pci_write_config_word(kapi_pci_info_t* pci, int offset, uint16_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:68:6: note: previous declaration of ‘kapi_pci_write_config_word’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint16_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  short unsigned int)’}
+   68 | void kapi_pci_write_config_word(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint16_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:324:6: error: conflicting types for ‘kapi_pci_write_config_dword’; have ‘void(kapi_pci_info_t *, int,  uint32_t)’ {或称 ‘void(kapi_pci_info_t *, int,  unsigned int)’}
+  324 | void kapi_pci_write_config_dword(kapi_pci_info_t* pci, int offset, uint32_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:69:6: note: previous declaration of ‘kapi_pci_write_config_dword’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint32_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  unsigned int)’}
+include/kapi_net_ext.h:268:71: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+   69 | void kapi_pci_write_config_dword(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint32_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:336:66: error: 未知的类型名‘dma_addr_t’
+  336 | int kapi_pci_alloc_consistent(kapi_pci_info_t* pci, size_t size, dma_addr_t* dma_handle);
+      |                                                                  ^~~~~~~~~~
+include/kapi_device_ext.h:338:82: error: 未知的类型名‘dma_addr_t’
+  338 | void kapi_pci_free_consistent(kapi_pci_info_t* pci, size_t size, void* cpu_addr, dma_addr_t dma_handle);
+      |                                                                                  ^~~~~~~~~~
+include/kapi_device_ext.h:360:45: error: unknown type name ‘kapi_fb_cursor_t’; did you mean ‘kapi_fb_info_t’?
+  360 | int kapi_fb_cursor(kapi_dev_id_t dev, const kapi_fb_cursor_t* cursor);
+      |                                             ^~~~~~~~~~~~~~~~
+      |                                             kapi_fb_info_t
+include/kapi_device_ext.h:370:57: warning: ‘struct input_event’ declared inside parameter list will not be visible outside of this definition or declaration
+  268 | int kapi_getsockopt(int sockfd, int level, int optname, void* optval, socklen_t* optlen);
+  370 | ssize_t kapi_input_event_read(kapi_dev_id_t dev, struct input_event* events, size_t count);
+      |                                                         ^~~~~~~~~~~
+In file included from include/kapi.h:102:
+include/kapi_sync_ext.h:106:14: error: conflicting types for ‘kapi_mutex_create’; have ‘struct kapi_mutex *(int)’
+  106 | kapi_mutex_t kapi_mutex_create(int type);
+      |              ^~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:31:
+include/kapi_mutex.h:15:14: note: previous declaration of ‘kapi_mutex_create’ with type ‘struct kapi_mutex *(void)’
+   15 | kapi_mutex_t kapi_mutex_create(void);
+      |              ^~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:108:5: error: conflicting types for ‘kapi_mutex_destroy’; have ‘int(struct kapi_mutex *)’
+  108 | int kapi_mutex_destroy(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~~~~
+include/kapi_mutex.h:17:6: note: previous declaration of ‘kapi_mutex_destroy’ with type ‘void(struct kapi_mutex *)’
+   17 | void kapi_mutex_destroy(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:110:5: error: conflicting types for ‘kapi_mutex_lock’; have ‘int(struct kapi_mutex *)’
+  110 | int kapi_mutex_lock(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_mutex.h:19:6: note: previous declaration of ‘kapi_mutex_lock’ with type ‘void(struct kapi_mutex *)’
+   19 | void kapi_mutex_lock(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:116:5: error: conflicting types for ‘kapi_mutex_unlock’; have ‘int(struct kapi_mutex *)’
+  116 | int kapi_mutex_unlock(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~~~
+include/kapi_mutex.h:23:6: note: previous declaration of ‘kapi_mutex_unlock’ with type ‘void(struct kapi_mutex *)’
+   23 | void kapi_mutex_unlock(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:229:5: error: conflicting types for ‘kapi_atomic_inc’; have ‘int(volatile int *)’
+  229 | int kapi_atomic_inc(volatile int* addr);
+      |     ^~~~~~~~~~~~~~~
+In file included from include/kapi.h:22:
+include/kapi_atomic.h:29:20: note: previous definition of ‘kapi_atomic_inc’ with type ‘void(kapi_atomic_t *)’
+   29 | static inline void kapi_atomic_inc(kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:231:5: error: conflicting types for ‘kapi_atomic_dec’; have ‘int(volatile int *)’
+  231 | int kapi_atomic_dec(volatile int* addr);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:39:20: note: previous definition of ‘kapi_atomic_dec’ with type ‘void(kapi_atomic_t *)’
+   39 | static inline void kapi_atomic_dec(kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:233:5: error: conflicting types for ‘kapi_atomic_add’; have ‘int(volatile int *, int)’
+  233 | int kapi_atomic_add(volatile int* addr, int val);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:73:20: note: previous definition of ‘kapi_atomic_add’ with type ‘void(int,  kapi_atomic_t *)’
+   73 | static inline void kapi_atomic_add(int i, kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:235:5: error: conflicting types for ‘kapi_atomic_sub’; have ‘int(volatile int *, int)’
+  235 | int kapi_atomic_sub(volatile int* addr, int val);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:83:20: note: previous definition of ‘kapi_atomic_sub’ with type ‘void(int,  kapi_atomic_t *)’
+   83 | static inline void kapi_atomic_sub(int i, kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:237:5: error: conflicting types for ‘kapi_atomic_xchg’; have ‘int(volatile int *, int)’
+  237 | int kapi_atomic_xchg(volatile int* addr, int newval);
+      |     ^~~~~~~~~~~~~~~~
+include/kapi_atomic.h:117:19: note: previous definition of ‘kapi_atomic_xchg’ with type ‘int(kapi_atomic_t *, int)’
+  117 | static inline int kapi_atomic_xchg(kapi_atomic_t* v, int new_val)
+      |                                                                       ^~~~~~~~~
+      |                                                                       socket_t
+      |                   ^~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:239:5: error: conflicting types for ‘kapi_atomic_cmpxchg’; have ‘int(volatile int *, int,  int)’
+include/kapi_net_ext.h:270:77: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  270 | int kapi_setsockopt(int sockfd, int level, int optname, const void* optval, socklen_t optlen);
+      |                                                                             ^~~~~~~~~
+      |                                                                             socket_t
+  239 | int kapi_atomic_cmpxchg(volatile int* addr, int oldval, int newval);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_atomic.h:105:19: note: previous definition of ‘kapi_atomic_cmpxchg’ with type ‘int(kapi_atomic_t *, int,  int)’
+  105 | static inline int kapi_atomic_cmpxchg(kapi_atomic_t* v, int old, int new_val)
+      |                   ^~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:261:5: error: conflicting types for ‘kapi_rcu_read_lock’; have ‘int(void)’
+  261 | int kapi_rcu_read_lock(void);
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:34:
+include/kapi_rcu.h:25:6: note: previous declaration of ‘kapi_rcu_read_lock’ with type ‘void(void)’
+   25 | void kapi_rcu_read_lock(void);
+      |      ^~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:263:5: error: conflicting types for ‘kapi_rcu_read_unlock’; have ‘int(void)’
+  263 | int kapi_rcu_read_unlock(void);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_rcu.h:27:6: note: previous declaration of ‘kapi_rcu_read_unlock’ with type ‘void(void)’
+   27 | void kapi_rcu_read_unlock(void);
+      |      ^~~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:267:27: warning: ‘struct rcu_head’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+      |                           ^~~~~~~~
+include/kapi_sync_ext.h:267:6: error: conflicting types for ‘kapi_call_rcu’; have ‘void(struct rcu_head *, void (*)(struct rcu_head *))’
+  267 | void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+      |      ^~~~~~~~~~~~~
+include/kapi_rcu.h:29:6: note: previous declaration of ‘kapi_call_rcu’ with type ‘void(kapi_rcu_head_t *, void (*)(void *), void *)’ {或称 ‘void(struct kapi_rcu_head *, void (*)(void *), void *)’}
+   29 | void kapi_call_rcu(kapi_rcu_head_t* head, void (*func)(void*), void* arg);
+      |      ^~~~~~~~~~~~~
+include/kapi_sync_ext.h:271:6: error: conflicting types for ‘kapi_completion_wait’; have ‘void(struct kapi_completion **)’
+  271 | void kapi_completion_wait(kapi_completion_t* comp);
+      |      ^~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:32:
+include/kapi_completion.h:19:6: note: previous declaration of ‘kapi_completion_wait’ with type ‘void(struct kapi_completion *)’
+   19 | void kapi_completion_wait(kapi_completion_t c);
+      |      ^~~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:277:6: error: conflicting types for ‘kapi_completion_complete’; have ‘void(struct kapi_completion **)’
+  277 | void kapi_completion_complete(kapi_completion_t* comp);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_completion.h:21:6: note: previous declaration of ‘kapi_completion_complete’ with type ‘void(struct kapi_completion *)’
+   21 | void kapi_completion_complete(kapi_completion_t c);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:103:
+include/kapi_sysinfo.h:40:10: warning: ISO C 不允许大小为 0 的数组‘_f’ [-Wpedantic]
+   40 |     char _f[20-2*sizeof(uint64_t)-sizeof(uint32_t)];
+      |          ^~
+include/kapi_sysinfo.h:214:18: error: expected ‘:’, ‘,’, ‘;’, ‘}’ or ‘__attribute__’ before ‘migrations’
+  214 |     uint64_t cpu migrations;
+      |                  ^~~~~~~~~~
+include/kapi_sysinfo.h:327:23: warning: ISO C 不允许‘enum’类型的前向引用 [-Wpedantic]
+  327 | int kapi_suspend(enum suspend_state state);
+      |                       ^~~~~~~~~~~~~
+include/kapi_sysinfo.h:327:23: warning: ‘enum suspend_state’ declared inside parameter list will not be visible outside of this definition or declaration
+In file included from include/kapi.h:104:
+include/kapi_security_ext.h:260:55: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  260 | int kapi_security_chmod(struct dentry *dentry, struct vfsmnt *mnt, mode_t mode);
+      |                                                       ^~~~~~
+include/kapi_security_ext.h:260:32: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  260 | int kapi_security_chmod(struct dentry *dentry, struct vfsmnt *mnt, mode_t mode);
+      |                                ^~~~~~
+include/kapi_security_ext.h:262:55: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  262 | int kapi_security_chown(struct dentry *dentry, struct vfsmnt *mnt,
+      |                                                       ^~~~~~
+include/kapi_security_ext.h:262:32: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  262 | int kapi_security_chown(struct dentry *dentry, struct vfsmnt *mnt,
+      |                                ^~~~~~
+include/kapi_security_ext.h:265:35: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  265 | int kapi_security_truncate(struct dentry *dentry, loff_t length);
+      |                                   ^~~~~~
+include/kapi_security_ext.h:267:54: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | int kapi_security_getattr(struct vfsmnt *mnt, struct dentry *dentry);
+      |                                                      ^~~~~~
+include/kapi_security_ext.h:267:34: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | int kapi_security_getattr(struct vfsmnt *mnt, struct dentry *dentry);
+      |                                  ^~~~~~
+include/kapi_security_ext.h:269:57: warning: ‘struct iattr’ declared inside parameter list will not be visible outside of this definition or declaration
+  269 | int kapi_security_setattr(struct dentry *dentry, struct iattr *iattr);
+      |                                                         ^~~~~
+include/kapi_security_ext.h:269:34: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  269 | int kapi_security_setattr(struct dentry *dentry, struct iattr *iattr);
+      |                                  ^~~~~~
+include/kapi_security_ext.h:271:35: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  271 | int kapi_security_setxattr(struct dentry *dentry, const char *name,
+      |                                   ^~~~~~
+include/kapi_security_ext.h:274:38: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  274 | int kapi_security_removexattr(struct dentry *dentry, const char *name);
+      |                                      ^~~~~~
+include/kapi_security_ext.h:276:35: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  276 | int kapi_security_getxattr(struct dentry *dentry, const char *name,
+      |                                   ^~~~~~
+include/kapi_security_ext.h:279:36: warning: ‘struct dentry’ declared inside parameter list will not be visible outside of this definition or declaration
+  279 | int kapi_security_listxattr(struct dentry *dentry, char *list, size_t list_size);
+      |                                    ^~~~~~
+include/kapi_security_ext.h:283:45: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  283 | int kapi_security_socket_post_create(struct socket *sock, int family,
+      |                                             ^~~~~~
+include/kapi_security_ext.h:287:37: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  287 |                              struct sockaddr *address, int addrlen);
+      |                                     ^~~~~~~~
+include/kapi_security_ext.h:286:38: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  286 | int kapi_security_socket_bind(struct socket *sock,
+      |                                      ^~~~~~
+include/kapi_net_ext.h:272:57: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  272 | int kapi_getsockname(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                         ^~~~~~~~~
+      |                                                         socket_t
+include/kapi_security_ext.h:290:39: warning: ‘struct sockaddr’ declared inside parameter list will not be visible outside of this definition or declaration
+  290 |                                struct sockaddr *address, int addrlen);
+      |                                       ^~~~~~~~
+include/kapi_security_ext.h:289:41: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  289 | int kapi_security_socket_connect(struct socket *sock,
+      |                                         ^~~~~~
+include/kapi_security_ext.h:292:40: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  292 | int kapi_security_socket_listen(struct socket *sock, int backlog);
+      |                                        ^~~~~~
+include/kapi_security_ext.h:294:40: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  294 | int kapi_security_socket_accept(struct socket *sock, struct socket *newsock);
+      |                                        ^~~~~~
+include/kapi_security_ext.h:296:62: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  296 | int kapi_security_socket_sendmsg(struct socket *sock, struct msghdr *msg,
+      |                                                              ^~~~~~
+include/kapi_security_ext.h:296:41: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  296 | int kapi_security_socket_sendmsg(struct socket *sock, struct msghdr *msg,
+      |                                         ^~~~~~
+include/kapi_security_ext.h:299:62: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  299 | int kapi_security_socket_recvmsg(struct socket *sock, struct msghdr *msg,
+      |                                                              ^~~~~~
+include/kapi_security_ext.h:299:41: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  299 | int kapi_security_socket_recvmsg(struct socket *sock, struct msghdr *msg,
+      |                                         ^~~~~~
+include/kapi_security_ext.h:302:45: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  302 | int kapi_security_socket_getsockname(struct socket *sock);
+      |                                             ^~~~~~
+include/kapi_security_ext.h:304:45: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  304 | int kapi_security_socket_getpeername(struct socket *sock);
+      |                                             ^~~~~~
+include/kapi_security_ext.h:306:44: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  306 | int kapi_security_socket_setsockopt(struct socket *sock, int level,
+      |                                            ^~~~~~
+include/kapi_security_ext.h:309:44: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  309 | int kapi_security_socket_getsockopt(struct socket *sock, int level,
+      |                                            ^~~~~~
+include/kapi_security_ext.h:312:42: warning: ‘struct socket’ declared inside parameter list will not be visible outside of this definition or declaration
+  312 | int kapi_security_socket_shutdown(struct socket *sock, int how);
+      |                                          ^~~~~~
+include/kapi_security_ext.h:316:37: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  316 | int kapi_task_alloc_security(struct task_struct *p);
+      |                                     ^~~~~~~~~~~
+include/kapi_security_ext.h:318:37: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  318 | void kapi_task_free_security(struct task_struct *p);
+      |                                     ^~~~~~~~~~~
+include/kapi_security_ext.h:321:28: warning: ‘struct cred’ declared inside parameter list will not be visible outside of this definition or declaration
+  321 |                     struct cred *new);
+      |                            ^~~~
+include/kapi_security_ext.h:324:28: warning: ‘struct cred’ declared inside parameter list will not be visible outside of this definition or declaration
+  324 |                     struct cred *new);
+      |                            ^~~~
+include/kapi_security_ext.h:326:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  326 | int kapi_task_setpgid(struct task_struct *p, pid_t pgid);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:328:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  328 | int kapi_task_getpgid(struct task_struct *p);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:330:29: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  330 | int kapi_task_getsid(struct task_struct *p);
+      |                             ^~~~~~~~~~~
+include/kapi_security_ext.h:332:32: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  332 | void kapi_task_getsecid(struct task_struct *p, u32 *secid);
+      |                                ^~~~~~~~~~~
+include/kapi_security_ext.h:334:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  334 | int kapi_task_setnice(struct task_struct *p, int nice);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:337:33: warning: ‘struct sched_param’ declared inside parameter list will not be visible outside of this definition or declaration
+  337 |                          struct sched_param *lp);
+      |                                 ^~~~~~~~~~~
+include/kapi_security_ext.h:336:35: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  336 | int kapi_task_setscheduler(struct task_struct *p, int policy,
+      |                                   ^~~~~~~~~~~
+include/kapi_security_ext.h:339:35: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  339 | int kapi_task_getscheduler(struct task_struct *p);
+      |                                   ^~~~~~~~~~~
+include/kapi_security_ext.h:341:33: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  341 | int kapi_task_movememory(struct task_struct *p);
+      |                                 ^~~~~~~~~~~
+include/kapi_security_ext.h:343:50: warning: ‘struct siginfo’ declared inside parameter list will not be visible outside of this definition or declaration
+  343 | int kapi_task_kill(struct task_struct *p, struct siginfo *info,
+      |                                                  ^~~~~~~
+include/kapi_security_ext.h:343:27: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  343 | int kapi_task_kill(struct task_struct *p, struct siginfo *info,
+      |                           ^~~~~~~~~~~
+include/kapi_security_ext.h:346:27: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  346 | int kapi_task_wait(struct task_struct *p);
+      |                           ^~~~~~~~~~~
+kernel/kernel/shell_enhanced.c: 在函数‘shell_parse_line’中:
+kernel/kernel/shell_enhanced.c:206:41: warning: ‘long long unsigned int’转换自‘int’时可能会改变结果的符号 [-Wsign-conversion]
+  206 |     memset(cmds, 0, sizeof(shell_cmd_t) * max_cmds);
+      |                                         ^
+kernel/kernel/shell_enhanced.c: 在函数‘shell_run_elf’中:
+kernel/kernel/shell_enhanced.c:313:44: warning: ISO C 不允许将一个函数指针转换为一个对象指针 [-Wpedantic]
+  313 |     uint64_t pid = process_create_ex(path, (void*)shell_elf_entry, task,
+      |                                            ^
+kernel/kernel/shell_enhanced.c: 在文件作用域：
+kernel/kernel/shell_enhanced.c:238:12: warning: ‘shell_create_pipe’ 在此处定义 [-Wunused-function]
+  238 | static int shell_create_pipe(int pipefd[2])
+      |            ^~~~~~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:139:13: warning: ‘shell_unquote’ 在此处定义 [-Wunused-function]
+  139 | static void shell_unquote(char* dst, const char* src, uint64_t max)
+      |             ^~~~~~~~~~~~~
+kernel/kernel/shell_enhanced.c:84:17: warning: ‘history_index’ 在此处定义 [-Wunused-variable]
+include/kapi_net_ext.h:274:57: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  274 | int kapi_getpeername(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+      |                                                         ^~~~~~~~~
+      |                                                         socket_t
+   84 | static uint32_t history_index = 0;
+      |                 ^~~~~~~~~~~~~
+include/kapi_net_ext.h:290:64: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  290 | const char* kapi_inet_ntop(int af, const void* src, char* dst, socklen_t size);
+      |                                                                ^~~~~~~~~
+      |                                                                socket_t
+include/kapi_net_ext.h:302:27: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                           ^~~~~~
+include/kapi_net_ext.h:302:44: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                            ^~~~~~
+include/kapi_net_ext.h:302:62: error: 未知的类型名‘fd_set’
+  302 | int kapi_select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                                              ^~~~~~
+include/kapi_net_ext.h:305:28: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                            ^~~~~~
+include/kapi_net_ext.h:305:45: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                             ^~~~~~
+include/kapi_net_ext.h:305:63: error: 未知的类型名‘fd_set’
+  305 | int kapi_pselect(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
+      |                                                               ^~~~~~
+include/kapi_net_ext.h:306:56: error: 未知的类型名‘sigset_t’
+  306 |                  const struct timespec* timeout, const sigset_t* sigmask);
+      |                                                        ^~~~~~~~
+include/kapi_net_ext.h:308:35: error: 未知的类型名‘nfds_t’
+  308 | int kapi_poll(struct pollfd* fds, nfds_t nfds, int timeout);
+      |                                   ^~~~~~
+include/kapi_net_ext.h:310:36: error: 未知的类型名‘nfds_t’
+  310 | int kapi_ppoll(struct pollfd* fds, nfds_t nfds, const struct timespec* tmo_p,
+      |                                    ^~~~~~
+include/kapi_net_ext.h:311:22: error: 未知的类型名‘sigset_t’
+  311 |                const sigset_t* sigmask);
+      |                      ^~~~~~~~
+include/kapi_net_ext.h:315:5: error: conflicting types for ‘kapi_set_nonblocking’; have ‘int(int,  _Bool)’
+  315 | int kapi_set_nonblocking(int sockfd, bool nonblocking);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_fs_ext.h:380:5: note: previous declaration of ‘kapi_set_nonblocking’ with type ‘int(int)’
+  380 | int kapi_set_nonblocking(int fd);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_net_ext.h:347:63: error: unknown type name ‘socklen_t’; did you mean ‘socket_t’?
+  347 | int kapi_udp_connect(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+      |                                                               ^~~~~~~~~
+      |                                                               socket_t
+In file included from include/kapi.h:101:
+include/kapi_device_ext.h:88:3: error: conflicting types for ‘kapi_device_info_t’; have ‘struct <匿名>’
+   88 | } kapi_device_info_t;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:73:
+include/kapi_device_manager.h:56:3: note: previous declaration of ‘kapi_device_info_t’ with type ‘kapi_device_info_t’
+   56 | } kapi_device_info_t;
+      |   ^~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:113:13: error: 重复的成员‘interrupt_line’
+  113 |     uint8_t interrupt_line;
+      |             ^~~~~~~~~~~~~~
+include/kapi_device_ext.h:203:17: error: ‘ABS_CNT’未声明(不在函数内)
+  203 |     int abs_min[ABS_CNT];
+      |                 ^~~~~~~
+include/kapi_device_ext.h:235:3: error: conflicting types for ‘kapi_device_ops_t’; have ‘struct <匿名>’
+  235 | } kapi_device_ops_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:75:3: note: previous declaration of ‘kapi_device_ops_t’ with type ‘kapi_device_ops_t’
+   75 | } kapi_device_ops_t;
+      |   ^~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:237:5: error: conflicting types for ‘kapi_device_register’; have ‘int(const char *, int,  const kapi_device_ops_t *, void *)’
+  237 | int kapi_device_register(const char* name, int type, const kapi_device_ops_t* ops, void* priv);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:96:5: note: previous declaration of ‘kapi_device_register’ with type ‘int(kapi_device_t *)’ {或称 ‘int(struct kapi_device *)’}
+   96 | int kapi_device_register(kapi_device_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:239:5: error: conflicting types for ‘kapi_device_unregister’; have ‘int(kapi_dev_id_t)’ {或称 ‘int(unsigned int)’}
+  239 | int kapi_device_unregister(kapi_dev_id_t dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_manager.h:97:5: note: previous declaration of ‘kapi_device_unregister’ with type ‘int(kapi_device_t *)’ {或称 ‘int(struct kapi_device *)’}
+   97 | int kapi_device_unregister(kapi_device_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:302:5: error: conflicting types for ‘kapi_pci_find_device’; have ‘int(uint16_t,  uint16_t,  kapi_pci_info_t *)’ {或称 ‘int(short unsigned int,  short unsigned int,  kapi_pci_info_t *)’}
+  302 | int kapi_pci_find_device(uint16_t vendor, uint16_t device, kapi_pci_info_t* info);
+      |     ^~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:50:
+include/kapi_pci.h:71:5: note: previous declaration of ‘kapi_pci_find_device’ with type ‘int(uint16_t,  uint16_t,  uint8_t *, uint8_t *, uint8_t *)’ {或称 ‘int(short unsigned int,  short unsigned int,  unsigned char *, unsigned char *, unsigned char *)’}
+   71 | int kapi_pci_find_device(uint16_t vendor_id, uint16_t device_id, uint8_t* bus, uint8_t* dev, uint8_t* func);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:304:5: error: conflicting types for ‘kapi_pci_find_class’; have ‘int(uint32_t,  kapi_pci_info_t *)’ {或称 ‘int(unsigned int,  kapi_pci_info_t *)’}
+  304 | int kapi_pci_find_class(uint32_t class_code, kapi_pci_info_t* info);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:72:5: note: previous declaration of ‘kapi_pci_find_class’ with type ‘int(uint8_t,  uint8_t,  uint8_t *, uint8_t *, uint8_t *)’ {或称 ‘int(unsigned char,  unsigned char,  unsigned char *, unsigned char *, unsigned char *)’}
+   72 | int kapi_pci_find_class(uint8_t class_code, uint8_t subclass, uint8_t* bus, uint8_t* dev, uint8_t* func);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:306:5: error: conflicting types for ‘kapi_pci_enable_device’; have ‘int(kapi_pci_info_t *)’
+  306 | int kapi_pci_enable_device(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:74:5: note: previous declaration of ‘kapi_pci_enable_device’ with type ‘int(kapi_pci_dev_t *)’
+   74 | int kapi_pci_enable_device(kapi_pci_dev_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:308:5: error: conflicting types for ‘kapi_pci_disable_device’; have ‘int(kapi_pci_info_t *)’
+  308 | int kapi_pci_disable_device(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:75:5: note: previous declaration of ‘kapi_pci_disable_device’ with type ‘int(kapi_pci_dev_t *)’
+   75 | int kapi_pci_disable_device(kapi_pci_dev_t* dev);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:310:5: error: conflicting types for ‘kapi_pci_set_master’; have ‘int(kapi_pci_info_t *)’
+  310 | int kapi_pci_set_master(kapi_pci_info_t* pci);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:76:5: note: previous declaration of ‘kapi_pci_set_master’ with type ‘int(kapi_pci_dev_t *, int)’
+   76 | int kapi_pci_set_master(kapi_pci_dev_t* dev, int enable);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:314:10: error: conflicting types for ‘kapi_pci_read_config_byte’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  314 | uint32_t kapi_pci_read_config_byte(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:62:10: note: previous declaration of ‘kapi_pci_read_config_byte’ with type ‘uint8_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘unsigned char(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   62 | uint8_t  kapi_pci_read_config_byte(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:316:10: error: conflicting types for ‘kapi_pci_read_config_word’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  316 | uint32_t kapi_pci_read_config_word(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:63:10: note: previous declaration of ‘kapi_pci_read_config_word’ with type ‘uint16_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘short unsigned int(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   63 | uint16_t kapi_pci_read_config_word(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:318:10: error: conflicting types for ‘kapi_pci_read_config_dword’; have ‘uint32_t(kapi_pci_info_t *, int)’ {或称 ‘unsigned int(kapi_pci_info_t *, int)’}
+  318 | uint32_t kapi_pci_read_config_dword(kapi_pci_info_t* pci, int offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:64:10: note: previous declaration of ‘kapi_pci_read_config_dword’ with type ‘uint32_t(uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘unsigned int(unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   64 | uint32_t kapi_pci_read_config_dword(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:320:6: error: conflicting types for ‘kapi_pci_write_config_byte’; have ‘void(kapi_pci_info_t *, int,  uint8_t)’ {或称 ‘void(kapi_pci_info_t *, int,  unsigned char)’}
+  320 | void kapi_pci_write_config_byte(kapi_pci_info_t* pci, int offset, uint8_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:67:6: note: previous declaration of ‘kapi_pci_write_config_byte’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint8_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  unsigned char)’}
+   67 | void kapi_pci_write_config_byte(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint8_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:322:6: error: conflicting types for ‘kapi_pci_write_config_word’; have ‘void(kapi_pci_info_t *, int,  uint16_t)’ {或称 ‘void(kapi_pci_info_t *, int,  short unsigned int)’}
+  322 | void kapi_pci_write_config_word(kapi_pci_info_t* pci, int offset, uint16_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:68:6: note: previous declaration of ‘kapi_pci_write_config_word’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint16_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  short unsigned int)’}
+   68 | void kapi_pci_write_config_word(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint16_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:324:6: error: conflicting types for ‘kapi_pci_write_config_dword’; have ‘void(kapi_pci_info_t *, int,  uint32_t)’ {或称 ‘void(kapi_pci_info_t *, int,  unsigned int)’}
+  324 | void kapi_pci_write_config_dword(kapi_pci_info_t* pci, int offset, uint32_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_pci.h:69:6: note: previous declaration of ‘kapi_pci_write_config_dword’ with type ‘void(uint8_t,  uint8_t,  uint8_t,  uint8_t,  uint32_t)’ {或称 ‘void(unsigned char,  unsigned char,  unsigned char,  unsigned char,  unsigned int)’}
+   69 | void kapi_pci_write_config_dword(uint8_t bus, uint8_t dev, uint8_t func, uint8_t offset, uint32_t value);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_device_ext.h:336:66: error: 未知的类型名‘dma_addr_t’
+  336 | int kapi_pci_alloc_consistent(kapi_pci_info_t* pci, size_t size, dma_addr_t* dma_handle);
+      |                                                                  ^~~~~~~~~~
+include/kapi_device_ext.h:338:82: error: 未知的类型名‘dma_addr_t’
+  338 | void kapi_pci_free_consistent(kapi_pci_info_t* pci, size_t size, void* cpu_addr, dma_addr_t dma_handle);
+      |                                                                                  ^~~~~~~~~~
+include/kapi_device_ext.h:360:45: error: unknown type name ‘kapi_fb_cursor_t’; did you mean ‘kapi_fb_info_t’?
+  360 | int kapi_fb_cursor(kapi_dev_id_t dev, const kapi_fb_cursor_t* cursor);
+      |                                             ^~~~~~~~~~~~~~~~
+      |                                             kapi_fb_info_t
+include/kapi_device_ext.h:370:57: warning: ‘struct input_event’ declared inside parameter list will not be visible outside of this definition or declaration
+  370 | ssize_t kapi_input_event_read(kapi_dev_id_t dev, struct input_event* events, size_t count);
+      |                                                         ^~~~~~~~~~~
+In file included from include/kapi.h:102:
+include/kapi_sync_ext.h:106:14: error: conflicting types for ‘kapi_mutex_create’; have ‘struct kapi_mutex *(int)’
+  106 | kapi_mutex_t kapi_mutex_create(int type);
+      |              ^~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:31:
+include/kapi_mutex.h:15:14: note: previous declaration of ‘kapi_mutex_create’ with type ‘struct kapi_mutex *(void)’
+   15 | kapi_mutex_t kapi_mutex_create(void);
+      |              ^~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:108:5: error: conflicting types for ‘kapi_mutex_destroy’; have ‘int(struct kapi_mutex *)’
+  108 | int kapi_mutex_destroy(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~~~~
+include/kapi_mutex.h:17:6: note: previous declaration of ‘kapi_mutex_destroy’ with type ‘void(struct kapi_mutex *)’
+   17 | void kapi_mutex_destroy(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:110:5: error: conflicting types for ‘kapi_mutex_lock’; have ‘int(struct kapi_mutex *)’
+  110 | int kapi_mutex_lock(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_mutex.h:19:6: note: previous declaration of ‘kapi_mutex_lock’ with type ‘void(struct kapi_mutex *)’
+   19 | void kapi_mutex_lock(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:116:5: error: conflicting types for ‘kapi_mutex_unlock’; have ‘int(struct kapi_mutex *)’
+  116 | int kapi_mutex_unlock(kapi_mutex_t mutex);
+      |     ^~~~~~~~~~~~~~~~~
+include/kapi_mutex.h:23:6: note: previous declaration of ‘kapi_mutex_unlock’ with type ‘void(struct kapi_mutex *)’
+   23 | void kapi_mutex_unlock(kapi_mutex_t mtx);
+      |      ^~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:229:5: error: conflicting types for ‘kapi_atomic_inc’; have ‘int(volatile int *)’
+  229 | int kapi_atomic_inc(volatile int* addr);
+      |     ^~~~~~~~~~~~~~~
+In file included from include/kapi.h:22:
+include/kapi_atomic.h:29:20: note: previous definition of ‘kapi_atomic_inc’ with type ‘void(kapi_atomic_t *)’
+   29 | static inline void kapi_atomic_inc(kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:231:5: error: conflicting types for ‘kapi_atomic_dec’; have ‘int(volatile int *)’
+  231 | int kapi_atomic_dec(volatile int* addr);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:39:20: note: previous definition of ‘kapi_atomic_dec’ with type ‘void(kapi_atomic_t *)’
+   39 | static inline void kapi_atomic_dec(kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:233:5: error: conflicting types for ‘kapi_atomic_add’; have ‘int(volatile int *, int)’
+  233 | int kapi_atomic_add(volatile int* addr, int val);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:73:20: note: previous definition of ‘kapi_atomic_add’ with type ‘void(int,  kapi_atomic_t *)’
+   73 | static inline void kapi_atomic_add(int i, kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:235:5: error: conflicting types for ‘kapi_atomic_sub’; have ‘int(volatile int *, int)’
+  235 | int kapi_atomic_sub(volatile int* addr, int val);
+      |     ^~~~~~~~~~~~~~~
+include/kapi_atomic.h:83:20: note: previous definition of ‘kapi_atomic_sub’ with type ‘void(int,  kapi_atomic_t *)’
+   83 | static inline void kapi_atomic_sub(int i, kapi_atomic_t* v)
+      |                    ^~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:237:5: error: conflicting types for ‘kapi_atomic_xchg’; have ‘int(volatile int *, int)’
+  237 | int kapi_atomic_xchg(volatile int* addr, int newval);
+      |     ^~~~~~~~~~~~~~~~
+include/kapi_atomic.h:117:19: note: previous definition of ‘kapi_atomic_xchg’ with type ‘int(kapi_atomic_t *, int)’
+  117 | static inline int kapi_atomic_xchg(kapi_atomic_t* v, int new_val)
+      |                   ^~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:239:5: error: conflicting types for ‘kapi_atomic_cmpxchg’; have ‘int(volatile int *, int,  int)’
+  239 | int kapi_atomic_cmpxchg(volatile int* addr, int oldval, int newval);
+      |     ^~~~~~~~~~~~~~~~~~~
+include/kapi_atomic.h:105:19: note: previous definition of ‘kapi_atomic_cmpxchg’ with type ‘int(kapi_atomic_t *, int,  int)’
+  105 | static inline int kapi_atomic_cmpxchg(kapi_atomic_t* v, int old, int new_val)
+      |                   ^~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:261:5: error: conflicting types for ‘kapi_rcu_read_lock’; have ‘int(void)’
+  261 | int kapi_rcu_read_lock(void);
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:34:
+include/kapi_rcu.h:25:6: note: previous declaration of ‘kapi_rcu_read_lock’ with type ‘void(void)’
+   25 | void kapi_rcu_read_lock(void);
+      |      ^~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:263:5: error: conflicting types for ‘kapi_rcu_read_unlock’; have ‘int(void)’
+  263 | int kapi_rcu_read_unlock(void);
+      |     ^~~~~~~~~~~~~~~~~~~~
+include/kapi_rcu.h:27:6: note: previous declaration of ‘kapi_rcu_read_unlock’ with type ‘void(void)’
+   27 | void kapi_rcu_read_unlock(void);
+      |      ^~~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:267:27: warning: ‘struct rcu_head’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+      |                           ^~~~~~~~
+include/kapi_sync_ext.h:267:6: error: conflicting types for ‘kapi_call_rcu’; have ‘void(struct rcu_head *, void (*)(struct rcu_head *))’
+  267 | void kapi_call_rcu(struct rcu_head* head, void (*func)(struct rcu_head* head));
+      |      ^~~~~~~~~~~~~
+include/kapi_rcu.h:29:6: note: previous declaration of ‘kapi_call_rcu’ with type ‘void(kapi_rcu_head_t *, void (*)(void *), void *)’ {或称 ‘void(struct kapi_rcu_head *, void (*)(void *), void *)’}
+   29 | void kapi_call_rcu(kapi_rcu_head_t* head, void (*func)(void*), void* arg);
+      |      ^~~~~~~~~~~~~
+include/kapi_sync_ext.h:271:6: error: conflicting types for ‘kapi_completion_wait’; have ‘void(struct kapi_completion **)’
+  271 | void kapi_completion_wait(kapi_completion_t* comp);
+      |      ^~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:32:
+include/kapi_completion.h:19:6: note: previous declaration of ‘kapi_completion_wait’ with type ‘void(struct kapi_completion *)’
+   19 | void kapi_completion_wait(kapi_completion_t c);
+      |      ^~~~~~~~~~~~~~~~~~~~
+include/kapi_sync_ext.h:277:6: error: conflicting types for ‘kapi_completion_complete’; have ‘void(struct kapi_completion **)’
+  277 | void kapi_completion_complete(kapi_completion_t* comp);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+include/kapi_completion.h:21:6: note: previous declaration of ‘kapi_completion_complete’ with type ‘void(struct kapi_completion *)’
+   21 | void kapi_completion_complete(kapi_completion_t c);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from include/kapi.h:103:
+include/kapi_sysinfo.h:40:10: warning: ISO C 不允许大小为 0 的数组‘_f’ [-Wpedantic]
+   40 |     char _f[20-2*sizeof(uint64_t)-sizeof(uint32_t)];
+      |          ^~
+include/kapi_sysinfo.h:214:18: error: expected ‘:’, ‘,’, ‘;’, ‘}’ or ‘__attribute__’ before ‘migrations’
+  214 |     uint64_t cpu migrations;
+      |                  ^~~~~~~~~~
+include/kapi_sysinfo.h:327:23: warning: ISO C 不允许‘enum’类型的前向引用 [-Wpedantic]
+  327 | int kapi_suspend(enum suspend_state state);
+      |                       ^~~~~~~~~~~~~
+include/kapi_sysinfo.h:327:23: warning: ‘enum suspend_state’ declared inside parameter list will not be visible outside of this definition or declaration
+In file included from include/kapi.h:104:
+include/kapi_security_ext.h:260:55: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  260 | int kapi_security_chmod(struct dentry *dentry, struct vfsmnt *mnt, mode_t mode);
+      |                                                       ^~~~~~
+include/kapi_security_ext.h:262:55: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  262 | int kapi_security_chown(struct dentry *dentry, struct vfsmnt *mnt,
+      |                                                       ^~~~~~
+include/kapi_security_ext.h:267:34: warning: ‘struct vfsmnt’ declared inside parameter list will not be visible outside of this definition or declaration
+  267 | int kapi_security_getattr(struct vfsmnt *mnt, struct dentry *dentry);
+      |                                  ^~~~~~
+include/kapi_security_ext.h:269:57: warning: ‘struct iattr’ declared inside parameter list will not be visible outside of this definition or declaration
+  269 | int kapi_security_setattr(struct dentry *dentry, struct iattr *iattr);
+      |                                                         ^~~~~
+include/kapi_security_ext.h:296:62: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  296 | int kapi_security_socket_sendmsg(struct socket *sock, struct msghdr *msg,
+      |                                                              ^~~~~~
+include/kapi_security_ext.h:299:62: warning: ‘struct msghdr’ declared inside parameter list will not be visible outside of this definition or declaration
+  299 | int kapi_security_socket_recvmsg(struct socket *sock, struct msghdr *msg,
+      |                                                              ^~~~~~
+include/kapi_security_ext.h:316:37: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  316 | int kapi_task_alloc_security(struct task_struct *p);
+      |                                     ^~~~~~~~~~~
+include/kapi_security_ext.h:318:37: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  318 | void kapi_task_free_security(struct task_struct *p);
+      |                                     ^~~~~~~~~~~
+include/kapi_security_ext.h:326:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  326 | int kapi_task_setpgid(struct task_struct *p, pid_t pgid);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:328:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  328 | int kapi_task_getpgid(struct task_struct *p);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:330:29: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  330 | int kapi_task_getsid(struct task_struct *p);
+      |                             ^~~~~~~~~~~
+include/kapi_security_ext.h:332:32: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  332 | void kapi_task_getsecid(struct task_struct *p, u32 *secid);
+      |                                ^~~~~~~~~~~
+include/kapi_security_ext.h:334:30: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  334 | int kapi_task_setnice(struct task_struct *p, int nice);
+      |                              ^~~~~~~~~~~
+include/kapi_security_ext.h:337:33: warning: ‘struct sched_param’ declared inside parameter list will not be visible outside of this definition or declaration
+  337 |                          struct sched_param *lp);
+      |                                 ^~~~~~~~~~~
+include/kapi_security_ext.h:336:35: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  336 | int kapi_task_setscheduler(struct task_struct *p, int policy,
+      |                                   ^~~~~~~~~~~
+include/kapi_security_ext.h:339:35: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  339 | int kapi_task_getscheduler(struct task_struct *p);
+      |                                   ^~~~~~~~~~~
+include/kapi_security_ext.h:341:33: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  341 | int kapi_task_movememory(struct task_struct *p);
+      |                                 ^~~~~~~~~~~
+include/kapi_security_ext.h:343:50: warning: ‘struct siginfo’ declared inside parameter list will not be visible outside of this definition or declaration
+  343 | int kapi_task_kill(struct task_struct *p, struct siginfo *info,
+      |                                                  ^~~~~~~
+include/kapi_security_ext.h:343:27: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  343 | int kapi_task_kill(struct task_struct *p, struct siginfo *info,
+      |                           ^~~~~~~~~~~
+include/kapi_security_ext.h:346:27: warning: ‘struct task_struct’ declared inside parameter list will not be visible outside of this definition or declaration
+  346 | int kapi_task_wait(struct task_struct *p);
+      |                           ^~~~~~~~~~~
+kernel/kernel/kernel.c: 在函数‘kernel_main’中:
+kernel/kernel/kernel.c:107:71: warning: 未使用的参数‘mmi’ [-Wunused-parameter]
+  107 | void kernel_main(struct FrameBufferConfig *fbc, struct MemoryMapInfo *mmi)
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~^~~
+FAILED TASK run all: command failed with exit 1: x86_64-w64-mingw32-gcc -Wall -Wextra -Wpedantic -Wshadow -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -std=c17 -O2 -m64 -mcmodel=large -ffreestanding -fno-pic -nostdlib -nostartfiles -nodefaultlibs -mno-stack-arg-probe -fno-asynchronous-unwind-tables -fno-unwind-tables -DKAL_KERNEL -Iinclude -Ikernel/include -Ikernel/kernel -Ikernel/arch/x86_64/include -Ikernel/lib/libc/include -Ikernel/systemd/include -Iapps/container-os/include -Ikernel/gui/include -Ikernel/compat -Ikal/include -MMD -MF build/obj/kernel/kernel/kernel.c.o.d -c kernel/kernel/kernel.c -o build/obj/kernel/kernel/kernel.c.o

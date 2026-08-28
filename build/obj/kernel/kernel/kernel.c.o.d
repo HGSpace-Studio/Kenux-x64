@@ -4,6 +4,7 @@ build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  kernel/lib/libc/include/stdbool.h \
  kernel/arch/x86_64/include/arch/drivers.h kernel/include/fs.h \
  kernel/arch/x86_64/include/arch/ipc.h \
+ kernel/arch/x86_64/include/arch/spinlock.h \
  kernel/arch/x86_64/include/arch/usermode.h \
  kernel/arch/x86_64/include/arch/shell.h \
  kernel/arch/x86_64/include/arch/pci.h \
@@ -20,10 +21,10 @@ build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  kernel/arch/x86_64/include/arch/ehci.h \
  kernel/arch/x86_64/include/arch/xhci.h \
  kernel/arch/x86_64/include/arch/net.h \
- kernel/arch/x86_64/include/arch/spinlock.h \
  kernel/arch/x86_64/include/arch/sound.h \
  kernel/arch/x86_64/include/arch/ac97.h \
  kernel/arch/x86_64/include/arch/hda.h \
+ kernel/arch/x86_64/include/arch/system_sounds.h \
  kernel/arch/x86_64/include/arch/framebuffer.h \
  kernel/arch/x86_64/include/arch/boot.h \
  kernel/arch/x86_64/include/arch/memory.h \
@@ -42,8 +43,10 @@ build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  kernel/arch/x86_64/include/arch/thermal.h \
  kernel/arch/x86_64/include/arch/dns.h \
  kernel/arch/x86_64/include/arch/ext4.h \
- kernel/arch/x86_64/include/arch/fs.h \
+ kernel/arch/x86_64/include/arch/ext3.h \
+ kernel/arch/x86_64/include/arch/ext2.h \
  kernel/arch/x86_64/include/arch/jbd2.h kernel/kernel/wait.h \
+ kernel/arch/x86_64/include/arch/fs.h \
  kernel/arch/x86_64/include/arch/mouse.h \
  kernel/arch/x86_64/include/arch/keyboard.h \
  kernel/arch/x86_64/include/arch/uart.h \
@@ -52,7 +55,7 @@ build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  kernel/arch/x86_64/include/arch/vlan.h \
  kernel/arch/x86_64/include/arch/route.h \
  kernel/arch/x86_64/include/arch/watchdog.h \
- kernel/arch/x86_64/include/arch/efi.h \
+ kernel/arch/x86_64/include/arch/efi.h kernel/include/gpu.h \
  kernel/arch/x86_64/include/arch/efi_runtime.h \
  kernel/arch/x86_64/include/arch/kvm.h \
  kernel/arch/x86_64/include/arch/kvm_vmx.h \
@@ -77,8 +80,21 @@ build/obj/kernel/kernel/kernel.c.o: kernel/kernel/kernel.c \
  include/kapi_debugfs.h include/kapi_kobject.h include/kapi_mempool.h \
  include/kapi_ftrace.h include/kapi_ebpf.h \
  kernel/arch/x86_64/include/arch/bpf.h include/kapi_kprobe.h \
- kernel/gui/include/gui.h kal/include/kal.h kal/include/kal_types.h \
- kal/include/kal_errno.h kal/include/kal_capability.h \
- kal/include/kal_backend.h kal/include/kal_registry.h \
- kal/include/kal_dispatcher.h kal/include/kal_governance.h \
- kal/include/kal_ssi.h
+ include/kapi_leonos.h include/kapi_leonos_ext.h \
+ include/kapi_device_manager.h include/kapi_memory_ext.h \
+ include/kapi_memory.h include/kapi_trace.h include/kapi_logging.h \
+ include/kapi_memleak.h include/kapi_profiler.h include/kapi_graphics2d.h \
+ include/kapi_window.h include/kapi_input.h include/kapi_crypto_fs.h \
+ include/kapi_lvm.h include/kapi_raid.h include/kapi_wireless.h \
+ include/kapi_vpn.h include/kapi_netstat.h include/kapi_cpufreq.h \
+ include/kapi_namespace.h include/kapi_container.h \
+ include/kapi_full_disk_encryption.h include/kapi_iommu.h \
+ include/kapi_process.h include/kapi_fs_ext.h include/kapi_net_ext.h \
+ include/kapi_device_ext.h include/kapi_sync_ext.h include/kapi_sysinfo.h \
+ include/kapi_security_ext.h include/kapi_virt_ext.h include/kapi_epoll.h \
+ include/kapi_poll.h include/kapi_signalfd.h include/kapi_timerfd.h \
+ include/kapi_eventfd.h include/kapi_inotify.h kernel/gui/include/gui.h \
+ kal/include/kal.h kal/include/kal_types.h kal/include/kal_errno.h \
+ kal/include/kal_capability.h kal/include/kal_backend.h \
+ kal/include/kal_registry.h kal/include/kal_dispatcher.h \
+ kal/include/kal_governance.h kal/include/kal_ssi.h

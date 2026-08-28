@@ -9,6 +9,13 @@
 extern "C" {
 #endif
 
+enum suspend_state {
+    SUSPEND_STATE_NONE = 0,
+    SUSPEND_STATE_STANDBY = 1,
+    SUSPEND_STATE_SUSPEND = 2,
+    SUSPEND_STATE_HIBERNATE = 3,
+};
+
 #define KAPI_SYS_NAME_MAX    64
 #define KAPI_SYS_VERSION_MAX 64
 #define KAPI_SYS_HOSTNAME_MAX 256
@@ -37,7 +44,7 @@ typedef struct {
     uint64_t totalhigh;
     uint64_t freehigh;
     uint32_t mem_unit;
-    char _f[20-2*sizeof(uint64_t)-sizeof(uint32_t)];
+    char _f[20-2*sizeof(uint64_t)-sizeof(uint32_t) > 0 ? 20-2*sizeof(uint64_t)-sizeof(uint32_t) : 1];
 } kapi_sysinfo_t;
 
 typedef struct {
@@ -211,7 +218,7 @@ typedef struct {
     uint64_t context_switches;
     uint64_t forks;
     uint64_t interrupts;
-    uint64_t cpu migrations;
+    uint64_t cpu_migrations;
     uint64_t page_faults_major;
     uint64_t page_faults_minor;
     uint64_t processes_created;

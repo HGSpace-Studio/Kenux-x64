@@ -692,7 +692,7 @@ int timer_start(timer_t* timer)
     timer->base.active_time = time_get_timestamp();
     spinlock_unlock(&systemd.lock);
     
-    thread_create(timer_monitor_thread, timer);
+    thread_create((void*)(unsigned long)timer_monitor_thread, timer);
     
     char msg[256];
     sprintf(msg, "Timer active, next elapse at %llu", timer->next_elapse_time);
@@ -739,7 +739,7 @@ void timer_reload_all(void)
     }
 }
 
-int timer_find_next_activation(timer_t* timer, uint64_t now)
+static int timer_find_next_activation(timer_t* timer, uint64_t now)
 {
     if (!timer) return -1;
     

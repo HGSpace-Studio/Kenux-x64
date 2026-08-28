@@ -76,7 +76,7 @@ typedef struct {
     int time_remaining_min;
 } kanvas_battery_ind_t;
 
-typedef struct {
+typedef struct kanvas_system_tray_s {
     bool visible;
     int x, y;
     kanvas_tray_ind_id_t type;
@@ -87,7 +87,7 @@ typedef struct {
     kanvas_network_ind_t network;
     kanvas_bluetooth_ind_t bluetooth;
     kanvas_volume_ind_t volume;
-    kanvas_brightness_ind brightness;
+    kanvas_brightness_ind_t brightness;
     kanvas_battery_ind_t battery;
     bool popup_visible;
     kanvas_tray_ind_id_t popup_type;

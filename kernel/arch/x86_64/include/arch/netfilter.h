@@ -53,7 +53,7 @@ static inline uint16_t nf_hook_slow_eval(struct nf_hook_ops** hook_list,
 {
     int verdict = NF_ACCEPT;
     if (!hook_list || !*hook_list)
-        return verdict;
+        return (uint16_t)verdict;
     struct nf_hook_ops* ops = *hook_list;
     while (ops) {
         verdict = ops->hook(skb, state, ops->priv);

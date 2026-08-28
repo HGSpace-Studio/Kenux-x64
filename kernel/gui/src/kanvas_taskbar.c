@@ -2,6 +2,8 @@
 #include "kapi.h"
 #include <string.h>
 
+static void fill_rect_fb(uint32_t* fb, int stride, int fw, int fh, int x, int y, int w, int h, uint32_t color);
+
 static uint32_t kui_col32_inline(kui_color_t c)
 {
     return ((uint32_t)c.a << 24) | ((uint32_t)c.r << 16) | ((uint32_t)c.g << 8) | c.b;
@@ -9,7 +11,7 @@ static uint32_t kui_col32_inline(kui_color_t c)
 
 kanvas_taskbar_t* kanvas_taskbar_create(int x, int y, int width)
 {
-    kanvas_taskbar_t* tb = (kanvas_taskbar_t*)kapi_kmalloc(sizeof(kanvas_taskbar_t));
+    kanvas_taskbar_t* tb = (kanvas_taskbar_t*)kapi_malloc(sizeof(kanvas_taskbar_t));
     if (!tb) return NULL;
     memset(tb, 0, sizeof(kanvas_taskbar_t));
     tb->x = x; tb->y = y;
@@ -36,7 +38,7 @@ kanvas_taskbar_t* kanvas_taskbar_create(int x, int y, int width)
 void kanvas_taskbar_destroy(kanvas_taskbar_t* tb)
 {
     if (!tb) return;
-    kapi_kfree(tb);
+    kapi_free(tb);
 }
 
 void kanvas_taskbar_paint(kanvas_taskbar_t* tb, uint32_t* fb, int stride, int fw, int fh)
@@ -73,7 +75,7 @@ void kanvas_taskbar_paint(kanvas_taskbar_t* tb, uint32_t* fb, int stride, int fw
         tray_x -= KANVAS_TASKBAR_PAD;
     }
     if (tb->clock_text[0]) {
-        int cw = (int)(kapi_strlen(tb->clock_text) * 8);
+        int cw = (int)(strlen(tb->clock_text) * 8);
         kui_draw_text(fb, stride, fw, fh, tb->x + tb->width - cw - 16, tb->y + (KANVAS_TASKBAR_H_PX - 13) / 2, tb->clock_text, fg, 13, 0);
     }
 }
@@ -137,7 +139,7 @@ int kanvas_taskbar_add_item(kanvas_taskbar_t* tb, const char* name, int icon_id,
     kanvas_taskbar_item_t* item = &tb->items[idx];
     memset(item, 0, sizeof(kanvas_taskbar_item_t));
     if (name) {
-        size_t len = kapi_strlen(name);
+        size_t len = strlen(name);
         if (len >= 64) len = 63;
         memcpy(item->name, name, len);
     }
@@ -172,7 +174,7 @@ int kanvas_taskbar_add_tray(kanvas_taskbar_t* tb, const char* name, int icon_id,
     kanvas_tray_icon_t* tray = &tb->tray[idx];
     memset(tray, 0, sizeof(kanvas_tray_icon_t));
     if (name) {
-        size_t len = kapi_strlen(name);
+        size_t len = strlen(name);
         if (len >= 32) len = 31;
         memcpy(tray->name, name, len);
     }

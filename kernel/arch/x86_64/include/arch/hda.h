@@ -166,6 +166,7 @@ int hda_enum_codec(hda_t* dev, uint32_t codec_addr);
 int hda_set_sample_rate(hda_t* dev, uint32_t rate);
 int hda_set_format(hda_t* dev, uint8_t channels, uint8_t bits);
 int hda_play(hda_t* dev, const void* data, uint32_t size);
+int hda_record(hda_t* dev, void* buffer, uint32_t* length);
 int hda_stop(hda_t* dev);
 void hda_set_volume(hda_t* dev, uint32_t nid, int left, int right);
 void hda_irq_handler(void);

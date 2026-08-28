@@ -7,7 +7,6 @@
 #include <arch/spinlock.h>
 #include <arch/process.h>
 #include <kernel/syscall.h>
-#include <kapi_syscall.h>
 #include <string.h>
 #include <arch/vga.h>
 
@@ -16,25 +15,6 @@
 #define USER_STACK_TOP  0x00007FFFFFFFFFFFULL
 #define USER_HEAP_START 0x000000400000ULL
 #define USER_HEAP_END   0x000000600000ULL
-
-typedef struct {
-    int used;
-    char name[64];
-    uint64_t entry_point;
-    uint64_t stack_top;
-    uint64_t heap_start;
-    uint64_t heap_end;
-    uint64_t cr3;
-    uint64_t pid;
-    uint64_t parent_pid;
-    uint32_t state;
-    uint32_t priority;
-    uint64_t cpu_time;
-    uint64_t sched_count;
-    int fd_table[32];
-    int fd_count;
-    char cwd[256];
-} user_process_t;
 
 static user_process_t processes[USER_PROCESS_MAX];
 static uint64_t next_pid = 1;
@@ -383,7 +363,7 @@ long sys_write(long fd, const void* buf, long count) {
     if (!buf) return -14;
     
     if (fd == 1 || fd == 2) {
-        extern int vga_print(const char*);
+        extern void vga_print(const char*);
         char tmp[512];
         size_t to_write = (size_t)count > 511 ? 511 : (size_t)count;
         memcpy(tmp, buf, to_write);

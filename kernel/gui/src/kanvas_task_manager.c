@@ -14,7 +14,7 @@ static void tm_fill_rect(uint32_t* fb, int stride, int fw, int fh, int x, int y,
 
 kanvas_task_manager_t* kanvas_task_manager_create(void)
 {
-    kanvas_task_manager_t* tm = (kanvas_task_manager_t*)kapi_kmalloc(sizeof(kanvas_task_manager_t));
+    kanvas_task_manager_t* tm = (kanvas_task_manager_t*)kapi_malloc(sizeof(kanvas_task_manager_t));
     if (!tm) return NULL;
     memset(tm, 0, sizeof(kanvas_task_manager_t));
     tm->visible = false;
@@ -34,7 +34,7 @@ kanvas_task_manager_t* kanvas_task_manager_create(void)
     return tm;
 }
 
-void kanvas_task_manager_destroy(kanvas_task_manager_t* tm) { if (tm) kapi_kfree(tm); }
+void kanvas_task_manager_destroy(kanvas_task_manager_t* tm) { if (tm) kapi_free(tm); }
 
 void kanvas_task_manager_paint(kanvas_task_manager_t* tm, uint32_t* fb, int stride, int fw, int fh)
 {
