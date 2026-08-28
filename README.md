@@ -394,7 +394,6 @@ This project is licensed under the GPL v3 License - see the [LICENSE](LICENSE) f
 
 **Built with ❤️ by the Kenux Team**
 
-For more information, visit: https://kenux-os.org
 
 *System Logo: Kenux ASCII Art*
 *Kernel: KNE2.7 | Codename: Stardust*
