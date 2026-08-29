@@ -47,18 +47,8 @@ int kapi_fde_format(kapi_blkdev_t dev, const char *name,
     if (!dev || !name || !passphrase) {
         return KAPI_FDE_EINVAL;
     }
-    /* TODO: derive master key from passphrase + write header to LBA0 */
     (void)passphrase;
-    kapi_fde_volume_t *v = fde_slot_alloc();
-    if (!v) {
-        return KAPI_FDE_ENOMEM;
-    }
-    memset(v, 0, sizeof(*v));
-    strncpy(v->name, name, KAPI_FDE_NAME_MAX - 1);
-    v->backing_dev = dev;
-    v->state = KAPI_FDE_STATE_LOCKED;
-    v->registered = 1;
-    return KAPI_FDE_OK;
+    return KAPI_FDE_ENOTSUP;
 }
 
 int kapi_fde_add_volume(const char *name, kapi_blkdev_t dev)
@@ -115,10 +105,8 @@ int kapi_fde_unlock(const char *name, const char *passphrase)
     if (!v || !passphrase) {
         return KAPI_FDE_ENOENT;
     }
-    /* TODO: read header, derive key from passphrase, verify auth tag */
     (void)passphrase;
-    v->state = KAPI_FDE_STATE_UNLOCKED;
-    return KAPI_FDE_OK;
+    return KAPI_FDE_ENOTSUP;
 }
 
 int kapi_fde_lock(const char *name)
@@ -141,9 +129,8 @@ int kapi_fde_change_passphrase(const char *name,
     if (!v || !old_pass || !new_pass) {
         return KAPI_FDE_EINVAL;
     }
-    /* TODO: verify old, derive new salt, re-encrypt master key in header */
     (void)old_pass; (void)new_pass;
-    return KAPI_FDE_OK;
+    return KAPI_FDE_ENOTSUP;
 }
 
 int kapi_fde_read(kapi_fde_volume_t *vol, uint64_t sector,
@@ -155,9 +142,8 @@ int kapi_fde_read(kapi_fde_volume_t *vol, uint64_t sector,
     if (vol->state != KAPI_FDE_STATE_UNLOCKED) {
         return KAPI_FDE_EAUTH;
     }
-    /* TODO: issue blkdev read on backing_dev at sector+1, then XTS-decrypt */
     (void)sector; (void)count;
-    return KAPI_FDE_OK;
+    return KAPI_FDE_ENOTSUP;
 }
 
 int kapi_fde_write(kapi_fde_volume_t *vol, uint64_t sector,
@@ -169,9 +155,8 @@ int kapi_fde_write(kapi_fde_volume_t *vol, uint64_t sector,
     if (vol->state != KAPI_FDE_STATE_UNLOCKED) {
         return KAPI_FDE_EAUTH;
     }
-    /* TODO: XTS-encrypt buf, then issue blkdev write on backing_dev */
     (void)sector; (void)count;
-    return KAPI_FDE_OK;
+    return KAPI_FDE_ENOTSUP;
 }
 
 int kapi_fde_zeroize_keys(void)

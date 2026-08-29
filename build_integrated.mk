@@ -60,23 +60,20 @@ ENHANCED_OBJ := $(patsubst %.c,$(BUILD_ENHANCED_DIR)/%.o,$(notdir $(ENHANCED_FEA
 APPS_OBJ := $(patsubst %.c,$(BUILD_APPS_DIR)/%.o,$(notdir $(APPS_SRC)))
 
 # Main kernel target
-kernel: $(BUILD_KERNEL_DIR) $(KERNEL_OBJ)
-	@echo "Building main kernel..."
-	$(LD) $(LDFLAGS_KERNEL) -o kernel.elf $(KERNEL_OBJ)
+kernel:
+	python3 build.py run kernel
 
 # Enhanced features target
-enhanced_features: $(BUILD_ENHANCED_DIR) $(ENHANCED_OBJ)
-	@echo "Building enhanced features..."
-	$(AR) rcs enhanced_features.a $(ENHANCED_OBJ)
+enhanced_features:
+	python3 build.py run components
 
 # Applications target
-apps: $(BUILD_APPS_DIR) $(APPS_OBJ)
-	@echo "Building applications..."
-	$(CC) $(CFLAGS_BASE) $(INCLUDE_BASE) -o kernel_apps $(APPS_OBJ)
+apps:
+	python3 build.py run components
 
 # Complete system target
-all: kernel enhanced_features apps
-	@echo "Building complete Kenux Kernel system with enhanced features"
+all:
+	python3 build.py run all
 
 # Build kernel object files
 $(BUILD_KERNEL_DIR)/%.o: kernel/%.c
@@ -100,9 +97,7 @@ $(BUILD_KERNEL_DIR) $(BUILD_ENHANCED_DIR) $(BUILD_APPS_DIR):
 
 # Clean targets
 clean:
-	@echo "Cleaning build directories..."
-	rm -rf $(BUILD_DIR)
-	rm -f kernel.elf enhanced_features.a kernel_apps
+	python3 build.py run clean
 
 distclean: clean
 	@echo "Cleaning all generated files..."

@@ -47,7 +47,7 @@ Kenux OS 是一个现代化的高性能操作系统，从零开始构建，专�
 
 ```bash
 # 构建依赖
-sudo apt-get install build-essential ninja-build gcc make nasm qemu-system-x86
+sudo apt-get install build-essential ninja-build gcc make nasm qemu-system-x86 mingw-w64
 
 # 可选: 交叉编译工具链
 sudo apt-get install gcc-x86_64-linux-gnu binutils-x86_64-linux-gnu
@@ -58,4 +58,21 @@ sudo apt-get install gcc-x86_64-linux-gnu binutils-x86_64-linux-gnu
 ```bash
 # 克隆仓库
 git clone https://github.com/kenux-os/Kenux-x64.git
-*内核: KNE2.7 | 代号: 星尘*
+cd Kenux-x64
+
+# 唯一构建入口
+python3 build.py run all
+
+# 仅构建内核、UEFI bootloader 或用户态组件
+python3 build.py run kernel
+python3 build.py run bootloader
+python3 build.py run components
+```
+
+兼容脚本 `build_all.sh`、`build_native.sh` 和 `build_components.sh` 只转发到 `build.py`；它们不再生成占位应用或安装文件到宿主机目录。
+
+Host test gate:
+
+```bash
+node tests/host/test-runner-exit.js
+```

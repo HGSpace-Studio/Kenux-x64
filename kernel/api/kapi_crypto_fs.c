@@ -49,12 +49,9 @@ int kapi_crypto_fs_derive_key(const char *passphrase,
     if (!passphrase || !salt || !out) {
         return KAPI_CRYPTO_EINVAL;
     }
-    /* TODO: PBKDF2/Argon2 backend; placeholder uses zeroed key. */
-    memset(out, 0, sizeof(*out));
-    memcpy(out->salt, salt, KAPI_CRYPTO_FS_SALT_LEN);
-    out->iterations = iterations ? iterations : KAPI_CRYPTO_FS_ITERATIONS;
-    out->refcount = 0;
-    return KAPI_CRYPTO_OK;
+    (void)iterations;
+    (void)out;
+    return KAPI_CRYPTO_ENOTSUP;
 }
 
 int kapi_crypto_fs_add_key(const char *name, const kapi_crypto_key_t *key)
@@ -123,9 +120,8 @@ int kapi_crypto_fs_encrypt(kapi_crypto_ctx_t *ctx,
     if (!ctx || !plain || !cipher) {
         return KAPI_CRYPTO_EINVAL;
     }
-    /* TODO: dispatch to AES backend per ctx->mode */
-    memcpy(cipher, plain, len);
-    return (int)len;
+    (void)len;
+    return KAPI_CRYPTO_ENOTSUP;
 }
 
 int kapi_crypto_fs_decrypt(kapi_crypto_ctx_t *ctx,
@@ -135,9 +131,8 @@ int kapi_crypto_fs_decrypt(kapi_crypto_ctx_t *ctx,
     if (!ctx || !cipher || !plain) {
         return KAPI_CRYPTO_EINVAL;
     }
-    /* TODO: dispatch to AES backend per ctx->mode; verify auth tag */
-    memcpy(plain, cipher, len);
-    return (int)len;
+    (void)len;
+    return KAPI_CRYPTO_ENOTSUP;
 }
 
 int kapi_crypto_fs_hook_read(void *buf, size_t len, uint64_t offset,

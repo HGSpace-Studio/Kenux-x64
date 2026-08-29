@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import sys
 import time
+import tempfile
 from pathlib import Path
 from typing import Callable, Iterable
 
@@ -53,10 +54,13 @@ if IS_WINDOWS:
     AS = os.environ.get("AS", os.path.join(NASM_PATH, "nasm.exe"))
     QEMU = os.environ.get("QEMU", os.path.join(QEMU_PATH, "qemu-system-x86_64.exe"))
 else:
-    CC = os.environ.get("CC", "x86_64-w64-mingw32-gcc")
-    OBJCOPY = os.environ.get("OBJCOPY", "x86_64-w64-mingw32-objcopy")
+    CC = os.environ.get("CC", "gcc")
+    OBJCOPY = os.environ.get("OBJCOPY", "objcopy")
     AS = os.environ.get("AS", "nasm")
     QEMU = os.environ.get("QEMU", "qemu-system-x86_64")
+
+EFI_CC = os.environ.get("EFI_CC", CC if IS_WINDOWS else "x86_64-w64-mingw32-gcc")
+EFI_OBJCOPY = os.environ.get("EFI_OBJCOPY", OBJCOPY)
 
 # OVMF 固件
 OVMF_CODE = ROOT / "resources" / "firmware" / "OVMF_CODE.fd"
@@ -111,6 +115,7 @@ CFLAGS_BASE = [
 CFLAGS_KERNEL = [
     "-m64", "-mcmodel=large", "-ffreestanding", "-fno-pic",
     "-nostdlib", "-nostartfiles", "-nodefaultlibs",
+    "-fno-stack-protector",
     "-mno-stack-arg-probe", "-fno-asynchronous-unwind-tables", "-fno-unwind-tables",
     "-DKAL_KERNEL", "-DVGA_NATIVE",
 ]
@@ -146,6 +151,12 @@ BOOT_COMPILE_SOURCES = {"kernel/kernel/kernel.c", "kernel/kernel/syscall.c"}
 EXCLUDED_SOURCES = {
     "kernel/arch/x86_64/boot/boot.S",
 }
+WINDOWS_COMPAT_SOURCES = {
+    "kernel/arch/x86_64/compat_main.c",
+    "kernel/arch/x86_64/compat_ntvdm.c",
+    "kernel/arch/x86_64/compat_sdb.c",
+    "kernel/arch/x86_64/powershell.c",
+}
 
 # 构建 OVMF 时需要的 ESP 目录
 ESP_DIR = ROOT / "esp"
@@ -165,8 +176,6 @@ def relative(path: Path) -> str:
 
 
 def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
-    """从 kernelbuild.ninja 解析源文件列表，确保与原构建系统一致。
-    如果 ninja 文件不存在，则自动扫描。"""
     ninja_file = ROOT / "kernelbuild.ninja"
     c_sources: list[Path] = []
     asm_sources: list[Path] = []
@@ -180,23 +189,20 @@ def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
     if ninja_file.exists():
         import re
         content = ninja_file.read_text(encoding="utf-8")
-        # 匹配: build $builddir/xxx.o: cc kernel/path/file.c
         for match in re.finditer(r'build\s+\$builddir/\S+\.o:\s+\w+\s+(\S+)', content):
             src_path = match.group(1)
             if src_path.startswith("$"):
-                continue  # 跳过 $builddir/.dir 等
-            # 应用排除列表（按相对路径匹配）
+                continue
             if src_path.replace("\\", "/") in EXCLUDED_SOURCES:
                 continue
             full_path = ROOT / src_path
-            if full_path.suffix.lower() in (".c",):
+            if full_path.suffix.lower() == ".c":
                 c_sources.append(full_path)
-            elif full_path.suffix.lower() in (".s",):
+            elif full_path.suffix.lower() == ".s":
                 asm_sources.append(full_path)
         c_sources = sorted(set(c_sources))
         asm_sources = sorted(set(asm_sources))
     else:
-        # 自动扫描（fallback）
         c_sources = collect_paths("kernel/kernel/*.c", "kernel/arch/x86_64/*.c",
                                   "kernel/api/*.c", "kernel/lib/libc/*.c")
         asm_sources = collect_paths("kernel/arch/x86_64/*.S", "kernel/arch/x86_64/*.s")
@@ -215,6 +221,11 @@ def collect_kernel_sources() -> tuple[list[Path], list[Path]]:
         "apps/tetris.c",
     ))
     c_sources = sorted(set(c_sources))
+    if not IS_WINDOWS:
+        c_sources = [
+            source for source in c_sources
+            if relative(source) not in WINDOWS_COMPAT_SOURCES
+        ]
 
     # Windows 大小写不敏感去重
     seen: set[Path] = set()
@@ -309,31 +320,67 @@ def add_link(
     )
 
 
-def ensure_tools() -> None:
-    """检查必需的工具链"""
+def ensure_tools(*, require_kernel: bool = False, require_bootloader: bool = False,
+                 require_qemu: bool = False) -> None:
+    required = [("gcc", CC)]
+    if require_kernel:
+        required.extend((("objcopy", OBJCOPY), ("nasm", AS)))
+    if require_bootloader:
+        required.append(("EFI gcc", EFI_CC))
+    if require_qemu:
+        required.append(("qemu-system-x86_64", QEMU))
     missing = []
-    for name, path in [("gcc", CC), ("objcopy", OBJCOPY), ("nasm", AS)]:
-        if not Path(path).exists():
-            # 尝试从 PATH 查找
-            found = shutil.which(Path(path).name)
-            if not found:
-                missing.append(f"{name} ({path})")
+    for name, configured in required:
+        if shutil.which(configured) is None and not Path(configured).is_file():
+            missing.append(f"{name} ({configured})")
     if missing:
-        raise BuildFailure("缺少工具链: " + ", ".join(missing) +
-                          "\n请确保 MinGW, NASM 已安装并配置正确的路径。")
+        raise BuildFailure(
+            "缺少工具链: " + ", ".join(missing) +
+            "\n请安装目标平台所需的 gcc、objcopy、NASM；运行任务还需要 QEMU。"
+        )
 
 
-def qemu_command(*, debug: bool = False) -> tuple[str, ...]:
+def validate_sources(
+    *, require_kernel: bool = False, require_components: bool = False,
+    require_bootloader: bool = False,
+) -> None:
+    missing: list[str] = []
+    if require_components:
+        for source in (ROOT / path for _, sources, _ in COMPONENT_SOURCES for path in sources):
+            if not source.is_file():
+                missing.append(relative(source))
+    if require_kernel:
+        for source in (ROOT / path for path in BOOT_COMPILE_SOURCES):
+            if not source.is_file():
+                missing.append(relative(source))
+        if not LINKER_SCRIPT.is_file():
+            missing.append(relative(LINKER_SCRIPT))
+    if require_bootloader and not (ROOT / "bootloader" / "bootx64.c").is_file():
+        missing.append("bootloader/bootx64.c")
+    if missing:
+        raise BuildFailure("缺少构建输入，拒绝继续: " + ", ".join(sorted(set(missing))))
+
+
+def qemu_command(*, debug: bool = False, vars_path: Path | None = None) -> tuple[str, ...]:
     """生成 QEMU 启动命令（UEFI 模式，VVFAT 挂载 esp 目录）"""
     command = [QEMU, "-m", "256M"]
-    if OVMF_CODE.exists():
-        command += ["-pflash", str(OVMF_CODE)]
+    firmware_code = OVMF_CODE
+    system_code = Path("/usr/share/edk2/x64/OVMF_CODE.4m.fd")
+    if not IS_WINDOWS and system_code.exists():
+        firmware_code = system_code
+    if firmware_code.exists() and vars_path is not None:
+        command += [
+            "-drive", f"if=pflash,format=raw,readonly=on,file={firmware_code}",
+            "-drive", f"if=pflash,format=raw,file={vars_path}",
+        ]
+    elif firmware_code.exists():
+        command += ["-drive", f"if=pflash,format=raw,readonly=on,file={firmware_code}"]
     # VVFAT 模式直接挂载 esp 目录，并把 Kenux EFI 盘设为固件第一启动项。
     command += ["-drive", f"if=none,id=kenuxesp,file=fat:rw:{ESP_DIR},format=raw"]
-    command += ["-device", "ahci,id=ahci"]
-    command += ["-device", "ide-hd,bus=ahci.0,drive=kenuxesp,bootindex=0"]
+    command += ["-device", "ide-hd,drive=kenuxesp,bootindex=0"]
     command += ["-boot", "menu=off,strict=on"]
     command += ["-serial", f"file:{SERIAL_LOG}"]
+    command += ["-debugcon", "file:/tmp/kenux-debugcon.log", "-global", "isa-debugcon.iobase=0xe9"]
     command += ["-display", "none" if debug else "gtk"]
     command += ["-no-reboot"]
     return tuple(command)
@@ -417,17 +464,17 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
     graph.add(Target(name="kernel", depends_on=("kernel-bin",), group=True, kind="aggregate"))
 
     # ===== 4. 更新 ESP 目录中的内核文件 =====
-    esp_kernel = ESP_DIR / "KENUXK.BIN"
+    esp_kernel = ESP_DIR / "kernel.elf"
 
     def copy_kernel(context: ActionContext) -> None:
         ESP_DIR.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(KERNEL_BIN, esp_kernel)
+        shutil.copyfile(KERNEL_ELF, esp_kernel)
 
     graph.add(
-        Target(
-            name="esp-update",
-            outputs=(esp_kernel,),
-            inputs=(KERNEL_BIN,),
+            Target(
+                name="esp-update",
+                outputs=(esp_kernel,),
+                inputs=(KERNEL_ELF, KERNEL_BIN),
             kind="generate",
             action=copy_kernel,
             action_key="copy-kernel-v1",
@@ -437,20 +484,28 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
     # ===== 5. 构建 bootloader (bootx64.efi) =====
     bootloader_source = ROOT / "bootloader" / "bootx64.c"
     bootloader_efi = ESP_DIR / "EFI" / "BOOT" / "BOOTX64.EFI"
+    bootloader_pe = ROOT / "build" / "bootloader" / "BOOTX64.EFI.pe"
 
     if bootloader_source.exists():
         efi_flags = [
-            CC, "-ffreestanding",
-            "-fno-stack-protector", "-fno-short-enums",
-            "-Wall", "-Wextra", "-O2", "-Wl,--subsystem,10",
-            "-Wl,-e,efi_main", "-nostdlib", "-nostartfiles",
+            EFI_CC, "-m64", "-ffreestanding", "-fno-builtin", "-mno-red-zone",
+            "-fno-stack-protector", "-fno-short-enums", "-fshort-wchar",
+            "-fno-asynchronous-unwind-tables", "-fno-unwind-tables",
+            "-Wall", "-Wextra", "-O2",
+            "-Wl,-e,efi_main", "-Wl,--subsystem,10", "-Wl,--image-base=0x0",
+            "-nostdlib", "-nostartfiles",
             "-I", relative(ROOT / "bootloader"),
         ]
-
         def build_bootloader(context: ActionContext) -> None:
             bootloader_efi.parent.mkdir(parents=True, exist_ok=True)
+            bootloader_pe.parent.mkdir(parents=True, exist_ok=True)
             context.run(
-                tuple(efi_flags + ["-o", relative(bootloader_efi), relative(bootloader_source)]),
+                tuple(efi_flags + ["-o", relative(bootloader_pe), relative(bootloader_source)]),
+                announce=True,
+            )
+            context.run(
+                (EFI_OBJCOPY, "-j", ".text", "-j", ".rdata", "-j", ".data", "-j", ".reloc",
+                 "--target=efi-app-x86_64", relative(bootloader_pe), relative(bootloader_efi)),
                 announce=True,
             )
 
@@ -459,9 +514,11 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
                 name="bootloader",
                 outputs=(bootloader_efi,),
                 inputs=(bootloader_source,),
+                implicit_inputs=(ROOT / "bootloader" / "include" / "efi.h",
+                                 ROOT / "bootloader" / "include" / "fbc.h"),
                 kind="generate",
                 action=build_bootloader,
-                action_key="bootloader-v1",
+                action_key="bootloader-v4",
             )
         )
     else:
@@ -498,8 +555,6 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
     # ===== 10. 用户态组件构建 =====
     # 16 个组件: bash, fastfetch, git, make, gcc, clang, ld, mkfs, dd,
     # xorriso, qemu, wayland/xorg, kde, gnome, firefox, systemd
-    COMPONENTS_BIN.mkdir(parents=True, exist_ok=True)
-    COMPONENTS_BUILD.mkdir(parents=True, exist_ok=True)
     component_exes: list[Path] = []
     exe_suffix = ".exe" if IS_WINDOWS else ""
 
@@ -507,8 +562,8 @@ def build_graph(paths: BuildPaths) -> BuildGraph:
         comp_sources_full: list[Path] = []
         for sf in src_files:
             src_path = ROOT / sf
-            if not src_path.exists():
-                continue
+            if not src_path.is_file():
+                raise BuildFailure(f"组件 {comp_name} 缺少源文件: {relative(src_path)}")
             comp_sources_full.append(src_path)
 
         if not comp_sources_full:
@@ -609,12 +664,24 @@ def complete_simple(store: TaskStore, task_id: str, command: str, text: str, suc
 
 
 def run_foreground(paths: BuildPaths, graph: BuildGraph, task_id: str, target: Target, label: str) -> int:
+    if target.name in {"run", "run-debug"}:
+        vars_template = ROOT / "OVMF_VARS_4M.fd"
+        system_vars = Path("/usr/share/edk2/x64/OVMF_VARS.4m.fd")
+        if not IS_WINDOWS and system_vars.exists():
+            vars_template = system_vars
+        vars_fd, vars_name = tempfile.mkstemp(prefix="kenux-ovmf-vars-", suffix=".fd")
+        vars_path = Path(vars_name)
+        with os.fdopen(vars_fd, "wb") as vars_file, vars_template.open("rb") as template_file:
+            shutil.copyfileobj(template_file, vars_file)
+        target.command = qemu_command(debug=target.name == "run-debug", vars_path=vars_path)
+    else:
+        vars_path = None
     runner = create_runner(paths, graph, task_id)
-    runner.run(build_roots(graph, target), label)
-    # 如果是 run/run-debug 任务，执行 QEMU 命令
-    if target.kind == "command" and target.command:
-        print(f"\n启动: {' '.join(target.command)}")
-        subprocess.run(list(target.command))
+    try:
+        runner.run(build_roots(graph, target), label)
+    finally:
+        if vars_path is not None:
+            vars_path.unlink(missing_ok=True)
     return 0
 
 
@@ -746,7 +813,7 @@ def affected_targets(paths: BuildPaths, graph: BuildGraph, subject: str) -> dict
 
 
 def parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(add_help=False, prog="build.py")
+    p = argparse.ArgumentParser(prog="build.py")
     p.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     p.add_argument("--task-id", help=argparse.SUPPRESS)
     p.add_argument("--json", dest="json_output", action="store_true", help="输出 JSON 格式")
@@ -806,6 +873,22 @@ def main(argv: list[str] | None = None) -> int:
             edit_settings(paths)
             complete_simple(store, task_id, "settings", "settings closed")
             return 0
+        needs_build = arguments.command in {"run", "profile"}
+        if needs_build:
+            requested_task = arguments.task
+            require_kernel = requested_task in {"all", "kernel", "run", "run-debug", "rebuild"}
+            require_components = requested_task == "components"
+            require_bootloader = requested_task in {"all", "bootloader", "run", "run-debug", "rebuild"}
+            ensure_tools(
+                require_kernel=require_kernel,
+                require_bootloader=require_bootloader,
+                require_qemu=arguments.command == "run" and requested_task in {"run", "run-debug"},
+            )
+            validate_sources(
+                require_kernel=require_kernel,
+                require_components=require_components,
+                require_bootloader=require_bootloader,
+            )
         graph_started = time.perf_counter()
         graph = build_graph(paths)
         graph_seconds = time.perf_counter() - graph_started

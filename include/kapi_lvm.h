@@ -35,7 +35,8 @@ typedef enum {
     KAPI_LVM_ENOENT        = -3,
     KAPI_LVM_EEXIST        = -4,
     KAPI_LVM_EBUSY         = -5,
-    KAPI_LVM_ENOSPC        = -6
+    KAPI_LVM_ENOSPC        = -6,
+    KAPI_LVM_ENOTSUP       = -7
 } kapi_lvm_err_t;
 
 typedef enum {

@@ -33,7 +33,7 @@ if [ ! -f "kenux-system.img" ]; then
     # 使用 mtools 复制文件
     mmd -i kenux-system.img ::EFI ::EFI/BOOT ::apps 2>/dev/null || true
     mcopy -i kenux-system.img esp/EFI/BOOT/BOOTX64.EFI ::EFI/BOOT/ 2>/dev/null || true
-    mcopy -i kenux-system.img esp/KENUXK.BIN :: 2>/dev/null || true
+    mcopy -i kenux-system.img esp/kernel.elf :: 2>/dev/null || true
     mcopy -i kenux-system.img esp/apps/* ::apps/ 2>/dev/null || true
 fi
 

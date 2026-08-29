@@ -520,29 +520,41 @@ typedef struct {
 #define ELF_MAGIC2 'L'
 #define ELF_MAGIC3 'F'
 #define ELFCLASS64 2
+#define ELFDATA2LSB 1
+#define EV_CURRENT 1
 #define ET_EXEC 2
 #define EM_X86_64 62
 #define PT_LOAD 1
+#define UINT64_MAX_VALUE (~(UINT64)0)
 
 static UINT64 align_down(UINT64 value, UINT64 align) {
     return value & ~(align - 1);
 }
 
-static UINT64 align_up(UINT64 value, UINT64 align) {
-    return (value + align - 1) & ~(align - 1);
+static int align_up_checked(UINT64 value, UINT64 align, UINT64 *result) {
+    if (!result || align == 0 || (align & (align - 1)) != 0 ||
+        value > UINT64_MAX_VALUE - (align - 1)) {
+        return 0;
+    }
+    *result = (value + align - 1) & ~(align - 1);
+    return 1;
 }
 
 static UINT64 load_elf64_exec(void *buf, UINTN len, struct EFI_SYSTEM_TABLE *ST) {
     ELF64_EHDR *eh = (ELF64_EHDR *)buf;
-    UINT64 low = 0xffffffffffffffffULL;
+    UINT64 low = UINT64_MAX_VALUE;
     UINT64 high = 0;
+    int entry_in_segment = 0;
 
     if (len < sizeof(ELF64_EHDR) ||
         eh->e_ident[0] != ELF_MAGIC0 || eh->e_ident[1] != ELF_MAGIC1 ||
         eh->e_ident[2] != ELF_MAGIC2 || eh->e_ident[3] != ELF_MAGIC3 ||
-        eh->e_ident[4] != ELFCLASS64 || eh->e_type != ET_EXEC ||
-        eh->e_machine != EM_X86_64 ||
-        eh->e_phoff + ((UINT64)eh->e_phnum * eh->e_phentsize) > len) {
+        eh->e_ident[4] != ELFCLASS64 || eh->e_ident[5] != ELFDATA2LSB ||
+        eh->e_ident[6] != EV_CURRENT || eh->e_type != ET_EXEC ||
+        eh->e_machine != EM_X86_64 || eh->e_ehsize != sizeof(ELF64_EHDR) ||
+        eh->e_phentsize != sizeof(ELF64_PHDR) || eh->e_phnum == 0 ||
+        eh->e_phoff > len ||
+        (UINT64)eh->e_phnum > ((UINT64)len - eh->e_phoff) / sizeof(ELF64_PHDR)) {
         print(ST, L"ELF64 kernel invalid\n");
         return 0;
     }
@@ -550,22 +562,29 @@ static UINT64 load_elf64_exec(void *buf, UINTN len, struct EFI_SYSTEM_TABLE *ST)
     for (UINT16 i = 0; i < eh->e_phnum; i++) {
         ELF64_PHDR *ph = (ELF64_PHDR *)((UINT8 *)buf + eh->e_phoff + ((UINT64)i * eh->e_phentsize));
         if (ph->p_type != PT_LOAD) continue;
-        if (ph->p_offset + ph->p_filesz > len || ph->p_filesz > ph->p_memsz) {
+        if (ph->p_offset > len || ph->p_filesz > (UINT64)len - ph->p_offset ||
+            ph->p_filesz > ph->p_memsz || ph->p_paddr != ph->p_vaddr ||
+            ph->p_paddr == 0 || ph->p_memsz > UINT64_MAX_VALUE - ph->p_paddr) {
             print(ST, L"ELF64 segment invalid\n");
             return 0;
         }
-        UINT64 dst = ph->p_paddr ? ph->p_paddr : ph->p_vaddr;
+        UINT64 dst = ph->p_paddr;
+        UINT64 segment_end = ph->p_paddr + ph->p_memsz;
         UINT64 seg_start = align_down(dst, 4096);
-        UINT64 seg_end = align_up(dst + ph->p_memsz, 4096);
-        if (!dst || seg_end <= seg_start) {
+        UINT64 seg_end = 0;
+        if (!align_up_checked(segment_end, 4096, &seg_end) || seg_end <= seg_start ||
+            seg_end > 0x100000000ULL) {
             print(ST, L"ELF64 segment address invalid\n");
             return 0;
         }
         if (seg_start < low) low = seg_start;
         if (seg_end > high) high = seg_end;
+        if (eh->e_entry >= ph->p_paddr && eh->e_entry < segment_end) {
+            entry_in_segment = 1;
+        }
     }
 
-    if (low == 0xffffffffffffffffULL || high <= low) {
+    if (low == UINT64_MAX_VALUE || high <= low || !entry_in_segment) {
         print(ST, L"ELF64 has no loadable segments\n");
         return 0;
     }
@@ -573,8 +592,12 @@ static UINT64 load_elf64_exec(void *buf, UINTN len, struct EFI_SYSTEM_TABLE *ST)
     struct EFI_BOOT_SERVICES *BS = ST->BootServices;
     EFI_PHYSICAL_ADDRESS alloc_addr = low;
     UINTN pages = (UINTN)((high - low) / 4096);
+    if (pages == 0 || (UINT64)pages * 4096ULL != high - low) {
+        print(ST, L"ELF64 allocation size invalid\n");
+        return 0;
+    }
     EFI_STATUS alloc_status = BS->AllocatePages(AllocateAddress, EfiLoaderData, pages, &alloc_addr);
-    if (EFI_ERROR(alloc_status)) {
+    if (EFI_ERROR(alloc_status) || alloc_addr != low) {
         print(ST, L"ELF64 AllocatePages failed at 0x");
         print_hex64(ST, low);
         print(ST, L"\n");
@@ -585,78 +608,18 @@ static UINT64 load_elf64_exec(void *buf, UINTN len, struct EFI_SYSTEM_TABLE *ST)
     for (UINT16 i = 0; i < eh->e_phnum; i++) {
         ELF64_PHDR *ph = (ELF64_PHDR *)((UINT8 *)buf + eh->e_phoff + ((UINT64)i * eh->e_phentsize));
         if (ph->p_type != PT_LOAD) continue;
-        UINT64 dst = ph->p_paddr ? ph->p_paddr : ph->p_vaddr;
+        UINT64 dst = ph->p_paddr;
         xmemcpy((void *)(UINTN)dst, (UINT8 *)buf + ph->p_offset, (UINTN)ph->p_filesz);
+        if (ph->p_memsz > ph->p_filesz) {
+            xmemset((void *)(UINTN)(dst + ph->p_filesz), 0,
+                    (UINTN)(ph->p_memsz - ph->p_filesz));
+        }
     }
 
     print(ST, L"ELF64 kernel loaded entry=0x");
     print_hex64(ST, eh->e_entry);
     print(ST, L"\n");
     return eh->e_entry;
-}
-
-static UINT64 load_pe64(void *buf, struct EFI_SYSTEM_TABLE *ST) {
-    IMAGE_DOS_HEADER *dos = (IMAGE_DOS_HEADER *)buf;
-    if (dos->e_magic != 0x5a4d) {
-        print(ST, L"Not MZ\n");
-        return 0;
-    }
-
-    UINT32 pe_off = dos->e_lfanew;
-    UINT32 *pe_sig = (UINT32 *)((UINT8 *)buf + pe_off);
-    if (*pe_sig != 0x00004550) {
-        print(ST, L"PE sig bad\n");
-        return 0;
-    }
-
-    IMAGE_FILE_HEADER *coff = (IMAGE_FILE_HEADER *)((UINT8 *)buf + pe_off + 4);
-    if (coff->Machine != IMAGE_FILE_MACHINE_AMD64) {
-        print(ST, L"Not AMD64\n");
-        return 0;
-    }
-
-    IMAGE_OPTIONAL_HEADER64 *opt = (IMAGE_OPTIONAL_HEADER64 *)((UINT8 *)coff + sizeof(IMAGE_FILE_HEADER));
-    if (opt->Magic != 0x20b) {
-        print(ST, L"Not PE32+\n");
-        return 0;
-    }
-
-    UINT64 image_base = opt->ImageBase;
-    UINT64 entry = image_base + opt->AddressOfEntryPoint;
-
-    print(ST, L"PE32+ OK, base=0x");
-    print_hex64(ST, image_base);
-    print(ST, L" entry=0x");
-    print_hex64(ST, entry);
-    print(ST, L"\n");
-
-    struct EFI_BOOT_SERVICES *BS = ST->BootServices;
-    UINTN num_pages = (opt->SizeOfImage + 4095) / 4096;
-    EFI_PHYSICAL_ADDRESS alloc_addr = image_base;
-    EFI_STATUS alloc_status = BS->AllocatePages(AllocateAddress, EfiLoaderData, num_pages, &alloc_addr);
-    if (EFI_ERROR(alloc_status)) {
-        print(ST, L"Alloc failed\n");
-        return 0;
-    }
-
-    xmemset((void *)(UINTN)image_base, 0, (UINTN)opt->SizeOfImage);
-    xmemcpy((void *)(UINTN)image_base, buf, (UINTN)opt->SizeOfHeaders);
-
-    IMAGE_SECTION_HEADER *sect = (IMAGE_SECTION_HEADER *)((UINT8 *)opt + coff->SizeOfOptionalHeader);
-    for (UINTN i = 0; i < coff->NumberOfSections; i++) {
-        if (sect[i].VirtualAddress >= opt->SizeOfImage) {
-            continue;
-        }
-        UINT8 *src = (UINT8 *)buf + sect[i].PointerToRawData;
-        UINT8 *dst = (UINT8 *)(UINTN)(image_base + sect[i].VirtualAddress);
-        UINTN sz = (UINTN)sect[i].SizeOfRawData;
-        if (sz > 0) {
-            xmemcpy(dst, src, sz);
-        }
-    }
-
-    print(ST, L"PE loaded\n");
-    return entry;
 }
 
 EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, struct EFI_SYSTEM_TABLE *SystemTable) {
@@ -668,7 +631,6 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, struct EFI_SYSTEM_TABLE *Syst
     struct EFI_FILE_PROTOCOL *root = NULL;
     struct EFI_FILE_PROTOCOL *file = NULL;
     EFI_STATUS status;
-    int kernel_is_elf = 0;
 
     print(SystemTable, L"\nKenux UEFI Bootloader\n");
     print(SystemTable, L"========================\n");
@@ -717,12 +679,6 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, struct EFI_SYSTEM_TABLE *Syst
 
     print(SystemTable, L"Loading kernel ELF...\n");
     status = root->Open(root, &file, L"kernel.elf", EFI_FILE_MODE_READ, 0);
-    if (!EFI_ERROR(status)) {
-        kernel_is_elf = 1;
-    } else {
-        print(SystemTable, L"kernel.elf missing, fallback to KENUXK.BIN\n");
-        status = root->Open(root, &file, L"KENUXK.BIN", EFI_FILE_MODE_READ, 0);
-    }
     if (EFI_ERROR(status)) {
         print(SystemTable, L"Open kernel file failed\n");
         while (1);
@@ -732,11 +688,24 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, struct EFI_SYSTEM_TABLE *Syst
     EFI_GUID file_info_guid = {0x09576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b}};
     UINTN info_size = sizeof(EFI_FILE_INFO);
     EFI_FILE_INFO *info = (EFI_FILE_INFO *)kmalloc(info_size, BS);
-    file->GetInfo(file, &file_info_guid, &info_size, (void *)info);
-    if (info_size > sizeof(EFI_FILE_INFO)) {
+    if (!info) {
+        print(SystemTable, L"File info allocation failed\n");
+        while (1);
+    }
+    status = file->GetInfo(file, &file_info_guid, &info_size, (void *)info);
+    if (EFI_ERROR(status) && info_size > sizeof(EFI_FILE_INFO)) {
         kfree(info, BS);
         info = (EFI_FILE_INFO *)kmalloc(info_size, BS);
-        file->GetInfo(file, &file_info_guid, &info_size, (void *)info);
+        if (!info) {
+            print(SystemTable, L"File info allocation failed\n");
+            while (1);
+        }
+        status = file->GetInfo(file, &file_info_guid, &info_size, (void *)info);
+    }
+    if (EFI_ERROR(status) || info_size < sizeof(EFI_FILE_INFO)) {
+        kfree(info, BS);
+        print(SystemTable, L"GetInfo failed\n");
+        while (1);
     }
     UINTN kernel_size = (UINTN)info->FileSize;
     kfree(info, BS);
@@ -762,30 +731,20 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, struct EFI_SYSTEM_TABLE *Syst
         while (1);
     }
     UINTN read_size = kernel_size;
-    file->Read(file, &read_size, kernel_buf);
+    status = file->Read(file, &read_size, kernel_buf);
     file->Close(file);
+    if (EFI_ERROR(status) || read_size != kernel_size) {
+        kfree(kernel_buf, BS);
+        print(SystemTable, L"Kernel read failed\n");
+        while (1);
+    }
     if (GOP) draw_kenux_splash(SystemTable, GOP, 60, "Reading kernel payload");
 
-    UINT64 entry = 0;
-    if (kernel_is_elf) {
-        entry = load_elf64_exec(kernel_buf, kernel_size, SystemTable);
-        kfree(kernel_buf, BS);
-        if (!entry) {
-            print(SystemTable, L"Load kernel.elf failed\n");
-            while (1);
-        }
-    } else {
-        UINTN kernel_pages = (kernel_size + 4095) / 4096;
-        EFI_PHYSICAL_ADDRESS load_addr = KERNEL_LOAD_ADDR;
-        status = BS->AllocatePages(AllocateAddress, EfiLoaderData, kernel_pages, &load_addr);
-        if (EFI_ERROR(status)) {
-            print(SystemTable, L"AllocatePages at kernel load address failed\n");
-            while (1);
-        }
-        xmemcpy((void *)(UINTN)KERNEL_LOAD_ADDR, kernel_buf, kernel_size);
-        kfree(kernel_buf, BS);
-        print(SystemTable, L"Kernel loaded at 0x2000000\n");
-        entry = KERNEL_LOAD_ADDR;
+    UINT64 entry = load_elf64_exec(kernel_buf, kernel_size, SystemTable);
+    kfree(kernel_buf, BS);
+    if (!entry) {
+        print(SystemTable, L"Load kernel.elf failed\n");
+        while (1);
     }
     if (GOP) draw_kenux_splash(SystemTable, GOP, 76, "Preparing framebuffer handoff");
 

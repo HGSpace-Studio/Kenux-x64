@@ -11,6 +11,13 @@ const FeatureLayer = require('./src/feature/feature-layer');
 console.log('🧪 开始运行单点测试器系统测试...\n');
 
 async function runTests() {
+  const failures = [];
+  const recordFailure = (name, error) => {
+    const message = error instanceof Error ? error.message : String(error);
+    failures.push({ name, message });
+    console.error(`❌ ${name}: ${message}`);
+  };
+
   // 测试1: 内核模块管理
   console.log('📋 测试1: 内核模块管理');
   try {
@@ -30,7 +37,7 @@ async function runTests() {
     console.log('✅ 已加载模块:', modules);
     
   } catch (error) {
-    console.error('❌ 内核模块管理测试失败:', error.message);
+    recordFailure('内核模块管理测试失败', error);
   }
 
   // 测试2: 文件系统模块功能
@@ -56,7 +63,7 @@ async function runTests() {
     console.log('✅ 状态获取测试:', status.state);
     
   } catch (error) {
-    console.error('❌ 文件系统模块测试失败:', error.message);
+    recordFailure('文件系统模块测试失败', error);
   }
 
   // 测试3: 网络模块功能
@@ -85,7 +92,7 @@ async function runTests() {
     console.log('✅ 状态获取测试:', status.state);
     
   } catch (error) {
-    console.error('❌ 网络模块测试失败:', error.message);
+    recordFailure('网络模块测试失败', error);
   }
 
   // 测试4: 接口契约验证
@@ -99,7 +106,10 @@ async function runTests() {
         break;
       }
     }
-    console.log('✅ 文件系统模块接口验证:', interfaceValid ? '通过' : '失败');
+    if (!interfaceValid) {
+      throw new Error('文件系统模块接口验证失败');
+    }
+    console.log('✅ 文件系统模块接口验证: 通过');
     
     // 验证网络模块接口
     interfaceValid = true;
@@ -109,10 +119,13 @@ async function runTests() {
         break;
       }
     }
-    console.log('✅ 网络模块接口验证:', interfaceValid ? '通过' : '失败');
+    if (!interfaceValid) {
+      throw new Error('网络模块接口验证失败');
+    }
+    console.log('✅ 网络模块接口验证: 通过');
     
   } catch (error) {
-    console.error('❌ 接口契约验证测试失败:', error.message);
+    recordFailure('接口契约验证测试失败', error);
   }
 
   // 测试5: 完整系统集成测试
@@ -156,17 +169,33 @@ async function runTests() {
     
     const testEnvId = sandbox.createTestEnvironment('FileSystemModule');
     const results = await sandbox.runModuleTest(testEnvId, fsTestCases);
+    if (results.failed !== 0) {
+      throw new Error(`Sandbox 测试失败: ${results.failed}/${results.total}`);
+    }
     
     console.log('✅ 模块测试执行成功');
-    console.log('✅ 测试结果:', results.summary);
+    console.log('✅ 测试结果:', results);
     
   } catch (error) {
-    console.error('❌ 完整系统集成测试失败:', error.message);
+    recordFailure('完整系统集成测试失败', error);
     console.error('错误堆栈:', error.stack);
   }
 
+  if (process.env.KENUX_TEST_INJECT_FAILURE === '1') {
+    recordFailure('失败传播测试', new Error('注入的测试失败'));
+  }
+
+  if (failures.length > 0) {
+    console.error(`\n测试失败: ${failures.length} 项`);
+    process.exitCode = 1;
+    return false;
+  }
   console.log('\n🎉 所有测试完成！');
+  return true;
 }
 
 // 运行测试
-runTests().catch(console.error);
+runTests().catch((error) => {
+  console.error('❌ 测试运行器异常:', error);
+  process.exitCode = 1;
+});
